@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "tools"))
 
-from proof_records.records import canonical_bytes  # noqa: E402
+from proof_records.records import canonical_bytes, identity  # noqa: E402
 import make_vectors as mv  # noqa: E402
 import replay_mojo as replay  # noqa: E402
 
@@ -35,7 +35,7 @@ def reference_transcript(data: dict) -> list[str]:
         checked = mv.validate(record)
         reason = checked.field("reason") if checked.kind is mv.Kind.REJECTED else ""
         octets = ".".join(str(b) for b in canonical_bytes(record))
-        lines.append("\t".join(["V", key, checked.kind.value, reason or "", octets]))
+        lines.append("\t".join(["V", key, checked.kind.value, reason or "", identity(record), octets]))
     for case in data["closures"]:
         closure = mv.close(mv.LEDGER, case["root"], mv.POLICIES[case["policy"]])
         lines.append("\t".join(["C", case["root"], "1" if closure.complete else "0", ",".join(closure.reached),
@@ -47,7 +47,7 @@ def test_expected_lines_are_what_the_reference_would_print():
     data = replay.load()
     assert replay.compare(reference_transcript(data), data) == []
     digest = hashlib.sha256(canonical_bytes(mv.CENSUS)).hexdigest()
-    assert data["validation"]["census"]["digest"] == digest
+    assert data["validation"][mv.CENSUS.id]["digest"] == digest
 
 
 def test_harness_rejects_a_corrupted_transcript():
@@ -60,6 +60,12 @@ def test_harness_rejects_a_corrupted_transcript():
     errors = replay.compare(tampered, data)
     assert len(errors) == 1 and errors[0].startswith(f"line {len(good)}")
     assert replay.compare(good[:-1], data) != []
+    forged = list(good)
+    fields = forged[0].split("\t")
+    fields[4] = "sha256:" + "0" * 64
+    forged[0] = "\t".join(fields)
+    errors = replay.compare(forged, data)
+    assert len(errors) == 1 and errors[0].startswith("line 1:") and "sha256:" + "0" * 64 in errors[0]
 
 
 @pytest.mark.skipif(shutil.which("mojo") is None, reason="mojo binary not on PATH")

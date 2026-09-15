@@ -32,7 +32,7 @@ Result carriers `BigZDivModResult`, `BigZExactDivisionResult`, `BigZCanonicalByt
 
 ## 4. Verification of the boundary
 
-- `tests/test_finite_exact.mojo` executes the field laws, the sticky-rejection rule, `bigz_long_division_smoke`, and `q_cancellation_smoke` on every CI run (`pixi run smoke`).
+- `tests/finite_exact/test_finite_exact.mojo` executes the field laws, the sticky-rejection rule, `bigz_long_division_smoke`, and `q_cancellation_smoke` on every CI run (`pixi run test-finite-exact`).
 - `tests/property_probe.mojo` draws deterministic pseudo-random operands and prints the canonical bytes of every result; `tools/property_oracle.py --layers zq` recomputes them with Python `int` and `fractions.Fraction` and compares token by token. Long division is checked in-process against the shift-and-subtract reference on every case, and every produced value is checked for canonical form (`pixi run property`).
 - `tests/test_property_oracle.py` checks the oracle's own encoder against the documented byte examples and, when a `mojo` binary is present, runs the full comparison; `tests/test_public_boundary.py` checks the wiring above (`pixi run test`).
 

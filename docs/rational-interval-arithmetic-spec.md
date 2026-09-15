@@ -234,7 +234,7 @@ Promotion of a DEMO row to CONFORMS requires that the consumer's certificate-acc
 
 The specification is a hook, not a note. In this package:
 
-1. **Law tests.** `tests/test_finite_exact.mojo` executes 1.3 (normalization, decidable equality, `1/10 + 2/10 = 3/10`, order-independence, lossless cancellation) and the sticky-rejection rule of the public boundary; `pixi run smoke`.
+1. **Law tests.** `tests/finite_exact/test_finite_exact.mojo` executes 1.3 (normalization, decidable equality, `1/10 + 2/10 = 3/10`, order-independence, lossless cancellation) and the sticky-rejection rule of the public boundary; `pixi run test-finite-exact`.
 2. **Property probe.** `tests/property_probe.mojo` draws deterministic pseudo-random operands and prints canonical bytes of every `BigZ` and `Q` result; `tools/property_oracle.py` recomputes them with Python `int` and `fractions.Fraction`; `pixi run property`. A disagreement on any canonical byte fails the build. `larsbx/interval_q` runs the same oracle with the I layer appended.
 3. **Public boundary.** `docs/exact-arithmetic-public-boundary.md` fixes the names, semantics, and encodings a consumer may rely on; a change there requires a matching change in this file and a passing probe.
 

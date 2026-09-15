@@ -2,10 +2,13 @@
 """Replay fixtures/vectors.json through the Mojo implementation and compare.
 
 Writes the vectors as the tab-separated transcript that
-``tests/replay_vectors.mojo`` reads, runs it under ``mojo run -I .``, and
-compares every validation result, canonical digest (SHA-256 of the octets
-the Mojo side prints), and closure with the fixture. Nothing printed by
-Mojo is parsed into a number except the complete flag and list counts.
+``tests/proof_records/replay_vectors.mojo`` reads, runs it under
+``mojo run -I .``, and compares every validation result, identity, canonical
+digest (SHA-256 of the octets the Mojo side prints), and closure with the
+fixture. The identity field is the Mojo SHA-256 over the preimage, so the
+two SHA-256 implementations cross-check each other on every record. Nothing
+printed by Mojo is parsed into a number except the complete flag and list
+counts.
 
 Usage:
     replay_mojo.py               run ``mojo`` and compare
@@ -47,7 +50,8 @@ def input_lines(data: dict) -> list[str]:
     for name, pairs in POLICIES.items():
         lines.append("\t".join(["P", name, str(len(pairs)), *(x for pair in pairs for x in _clean(*pair))]))
     for key, r in data["ledger"].items():
-        fields = ["R", key, *_clean(r["id"], r["kind"], r["statement"]), str(len(r["depends_on"])), *_clean(*r["depends_on"]),
+        fields = ["R", key, *_clean(r["id"], r["kind"], r["statement"], r["scope"]),
+                  str(len(r["depends_on"])), *(x for e in r["depends_on"] for x in _clean(*e)),
                   str(len(r["evidence"])), *(x for pair in r["evidence"] for x in _clean(*pair)), str(len(r["tags"])), *_clean(*r["tags"])]
         lines.append("\t".join(fields))
     for case in data["closures"]:
@@ -58,7 +62,7 @@ def input_lines(data: dict) -> list[str]:
 def expected_lines(data: dict) -> list[str]:
     lines = []
     for key, v in data["validation"].items():
-        lines.append("\t".join(["V", key, v["kind"], v["reason"] or "", v["digest"]]))
+        lines.append("\t".join(["V", key, v["kind"], v["reason"] or "", v["identity"], v["digest"]]))
     for case in data["closures"]:
         lines.append("\t".join(["C", case["root"], "1" if case["complete"] else "0", ",".join(case["reached"]), str(len(case["missing_links"])),
                                 *(x for link in case["missing_links"] for x in link)]))
@@ -70,9 +74,9 @@ def normalize(actual: list[str]) -> list[str]:
     out = []
     for line in actual:
         fields = line.split("\t")
-        if fields[0] == "V" and len(fields) == 5:
-            octets = bytes(int(o) for o in fields[4].split(".")) if fields[4] else b""
-            fields[4] = hashlib.sha256(octets).hexdigest()
+        if fields[0] == "V" and len(fields) == 6:
+            octets = bytes(int(o) for o in fields[5].split(".")) if fields[5] else b""
+            fields[5] = hashlib.sha256(octets).hexdigest()
         out.append("\t".join(fields))
     return out
 

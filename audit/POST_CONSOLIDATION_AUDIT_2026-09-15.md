@@ -1,6 +1,8 @@
 # Post-consolidation package audit — 2026-09-15
 
-Status: audit of `main` at `807ae7ed5461af9fe07b1cbbca96f680a105e0e7`.
+Status: audit of `main` at `807ae7ed5461af9fe07b1cbbca96f680a105e0e7`,
+amended after review; resolutions are recorded under each finding and
+summarised in "Resolution status" at the end.
 
 Scope: the `finite-math-kernels` monorepo and the six source repositories
 `finite_exact`, `interval_q`, `finite_linear_algebra`,
@@ -78,6 +80,21 @@ Required repair:
 
 Do not migrate consumer proof ledgers to this package until this repair lands.
 
+Resolution: landed on `claude/latest-pr-audit-8q9kl3`. `Edge(record_id,
+expected_claim, use_site, scope_relation, required_outcome)` replaces bare
+identifiers in both implementations; `Record` carries `scope`; the record-ID
+preimage excludes the identifier and `validate` rejects an identifier that
+is not `sha256:` over that preimage; `close` checks claim, scope, and
+outcome per edge and reports `claim mismatch`, `scope mismatch`, and
+`outcome mismatch` links; open and bounded records keep their identity;
+`fixtures/vectors.json` (format 2) carries 26 records and 20 closures
+including forged-identifier, mismatch, duplicate, unknown-relation,
+unknown-outcome, and bounded-outside-scope negatives, and the Mojo SHA-256
+is cross-checked against `hashlib` on every record.
+`docs/proof-records-specification.md` is version 2 and cites the NLAP-JT
+contract commit. The consumer migration gate is therefore open at the
+package level; consumer policy adapters remain the consumers' work.
+
 ### FMK-AUDIT-002 — Consolidation provenance is mutable and incomplete
 
 Severity: high.
@@ -96,6 +113,15 @@ Required repair:
   files;
 - add an automated provenance verifier that fails on unexplained divergence.
 
+Resolution: landed. `audit/provenance.json` pins, per source repository, the
+branch, commit, and tree id of every top-level directory at that commit, and,
+per tracked file, its git blob id, its relation (`copy`, `modified`, `facade`,
+`authored`, `generated`), and for imported files the source path and blob.
+`tools/provenance.py --check` fails on any unlisted, missing, or drifted
+file and on any relation the blobs contradict; `tests/provenance` runs it
+under `pixi run test`. `audit/CONSOLIDATION_PROVENANCE.md` now states the
+pins and the rules.
+
 ### FMK-AUDIT-003 — Stable facades are outside direct compatibility coverage
 
 Severity: high.
@@ -112,6 +138,14 @@ Required repair:
 - instantiate and exercise every exported type/function promised by each
   facade;
 - keep implementation-module tests as internal coverage, not API coverage.
+
+Resolution: landed. `tests/facades/test_stable_facades.mojo` imports only
+the five stable modules and exercises every exported name of each
+(`pixi run test-facades`, in the `test` closure). One boundary observation
+recorded for the maintainers: `rational.mojo` exports `q_from_bigz` but no
+`BigZ` constructor, so a facade-only consumer reaches `BigZ` through the
+parts of an accepted `Q`; the README lists `bigint_z.mojo` itself as
+public, which this test does not cover.
 
 ## Medium-priority findings
 
@@ -131,6 +165,9 @@ cross-check. The gap is that the check is conditional, not that it is absent.
 Required repair: make the probe unconditional under `pixi run test` (fail,
 not skip, when `mojo` is missing), or add `property` to the `test`
 dependency closure.
+
+Resolution: landed. `property` is in the `test` dependency closure, so a
+missing `mojo` fails the aggregate task instead of skipping.
 
 ### FMK-AUDIT-005 — Relocation left stale paths and commands
 
@@ -152,6 +189,12 @@ Examples:
 
 Required repair: add an automated local-link/task-reference audit and correct
 all relocated references.
+
+Resolution: the listed references are corrected (`docs/specification.md`
+to `docs/proof-records-specification.md`, `finite_proof_records/` to
+`proof_records/`, `pixi run smoke` to the per-package tasks, `pixi run
+replay` now defined, the vendoring-protocol comment replaced). The
+automated link audit is not yet added; the finding stays open on that item.
 
 ### FMK-AUDIT-006 — Source repositories do not declare retirement
 
@@ -234,6 +277,21 @@ violations through the existing rejection carrier.
 
 The arithmetic, interval, linear-algebra, substitution-dynamics, and
 claim-governance packages are suitable for continued integration testing.
-Proof-record consumer migration and formal retirement of the source
-repositories should remain blocked until FMK-AUDIT-001 through
-FMK-AUDIT-003 are resolved.
+With FMK-AUDIT-001 through FMK-AUDIT-003 resolved, proof-record consumer
+migration is unblocked at the package level, subject to each consumer
+supplying its policy adapter and re-deriving its ledger identifiers under
+the version-2 preimage. Formal retirement of the source repositories still
+waits on FMK-AUDIT-006 and FMK-AUDIT-007.
+
+## Resolution status
+
+| Finding | Status |
+| --- | --- |
+| FMK-AUDIT-001 | resolved |
+| FMK-AUDIT-002 | resolved |
+| FMK-AUDIT-003 | resolved |
+| FMK-AUDIT-004 | resolved |
+| FMK-AUDIT-005 | references corrected; automated link audit open |
+| FMK-AUDIT-006 | open |
+| FMK-AUDIT-007 | open |
+| FMK-AUDIT-008 | open |

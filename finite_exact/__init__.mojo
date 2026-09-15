@@ -13,5 +13,4 @@
 # Nothing in this package raises, aborts, or decides certificate acceptance:
 # invalid arithmetic is reported through the `rejected` flag, and what an
 # accepted value is allowed to prove is the consumer's decision. Consumers
-# vendor this directory byte-for-byte and pin it in their vendored.toml (see
-# docs/vendoring-protocol.md).
+# pin a released commit of this monorepo; see audit/CONSOLIDATION_PROVENANCE.md.
