@@ -1,0 +1,600 @@
+{
+  "closures": [
+    {
+      "complete": true,
+      "missing_links": [],
+      "name": "complete closure",
+      "policy": "none",
+      "reached": [
+        "bsw",
+        "census",
+        "lemma",
+        "theorem"
+      ],
+      "root": "theorem"
+    },
+    {
+      "complete": false,
+      "missing_links": [
+        [
+          "galois",
+          "pending: source pending"
+        ]
+      ],
+      "name": "pending link below a verified record",
+      "policy": "none",
+      "reached": [
+        "bsw",
+        "census",
+        "conditional",
+        "galois",
+        "lemma"
+      ],
+      "root": "conditional"
+    },
+    {
+      "complete": false,
+      "missing_links": [
+        [
+          "sweep",
+          "bounded experiment is evidence, not a theorem"
+        ]
+      ],
+      "name": "bounded experiment cited as support",
+      "policy": "none",
+      "reached": [
+        "evidence",
+        "sweep"
+      ],
+      "root": "evidence"
+    },
+    {
+      "complete": false,
+      "missing_links": [
+        [
+          "sweep",
+          "bounded experiment is evidence, not a theorem"
+        ]
+      ],
+      "name": "bounded experiment as root",
+      "policy": "none",
+      "reached": [
+        "sweep"
+      ],
+      "root": "sweep"
+    },
+    {
+      "complete": false,
+      "missing_links": [
+        [
+          "unchecked",
+          "rejected: imported theorem with unchecked hypotheses"
+        ]
+      ],
+      "name": "unchecked import",
+      "policy": "none",
+      "reached": [
+        "unchecked"
+      ],
+      "root": "unchecked"
+    },
+    {
+      "complete": false,
+      "missing_links": [
+        [
+          "nowhere",
+          "unknown record"
+        ]
+      ],
+      "name": "unknown record",
+      "policy": "none",
+      "reached": [
+        "dangling",
+        "nowhere"
+      ],
+      "root": "dangling"
+    },
+    {
+      "complete": false,
+      "missing_links": [
+        [
+          "mismatch",
+          "ledger key differs from record identifier"
+        ]
+      ],
+      "name": "ledger key mismatch",
+      "policy": "none",
+      "reached": [
+        "mismatch"
+      ],
+      "root": "mismatch"
+    },
+    {
+      "complete": false,
+      "missing_links": [
+        [
+          "bad",
+          "rejected: duplicate or self dependency"
+        ]
+      ],
+      "name": "malformed record",
+      "policy": "none",
+      "reached": [
+        "bad"
+      ],
+      "root": "bad"
+    },
+    {
+      "complete": false,
+      "missing_links": [
+        [
+          "a",
+          "dependency cycle"
+        ]
+      ],
+      "name": "cycle",
+      "policy": "none",
+      "reached": [
+        "a",
+        "b"
+      ],
+      "root": "a"
+    },
+    {
+      "complete": false,
+      "missing_links": [
+        [
+          "circle",
+          "policy: uses_rank2_circle: rank-2 circle primitive rejected"
+        ]
+      ],
+      "name": "consumer policy refuses a tag",
+      "policy": "nlap_rank2",
+      "reached": [
+        "circle",
+        "on_circle"
+      ],
+      "root": "on_circle"
+    },
+    {
+      "complete": true,
+      "missing_links": [],
+      "name": "same tag without the policy",
+      "policy": "none",
+      "reached": [
+        "circle",
+        "on_circle"
+      ],
+      "root": "on_circle"
+    },
+    {
+      "complete": false,
+      "missing_links": [
+        [
+          "mlc",
+          "pending: open frontier"
+        ]
+      ],
+      "name": "open frontier is pending, never imported",
+      "policy": "nlap_rank2",
+      "reached": [
+        "frontier",
+        "mlc"
+      ],
+      "root": "frontier"
+    }
+  ],
+  "format": "finite_proof_records vectors 1",
+  "ledger": {
+    "a": {
+      "depends_on": [
+        "b"
+      ],
+      "evidence": [
+        [
+          "digest",
+          "y"
+        ],
+        [
+          "replay",
+          "x"
+        ]
+      ],
+      "id": "a",
+      "kind": "verified_finite_computation",
+      "statement": "a",
+      "tags": []
+    },
+    "b": {
+      "depends_on": [
+        "a"
+      ],
+      "evidence": [
+        [
+          "digest",
+          "y"
+        ],
+        [
+          "replay",
+          "x"
+        ]
+      ],
+      "id": "b",
+      "kind": "verified_finite_computation",
+      "statement": "b",
+      "tags": []
+    },
+    "bad": {
+      "depends_on": [
+        "bad"
+      ],
+      "evidence": [
+        [
+          "digest",
+          "y"
+        ],
+        [
+          "replay",
+          "x"
+        ]
+      ],
+      "id": "bad",
+      "kind": "verified_finite_computation",
+      "statement": "self dependency",
+      "tags": []
+    },
+    "bsw": {
+      "depends_on": [],
+      "evidence": [
+        [
+          "hypotheses_checked",
+          "true"
+        ],
+        [
+          "source",
+          "Barge-Stimac-Williams"
+        ]
+      ],
+      "id": "bsw",
+      "kind": "imported_theorem",
+      "statement": "coincidence density theorem",
+      "tags": []
+    },
+    "census": {
+      "depends_on": [],
+      "evidence": [
+        [
+          "digest",
+          "sha256:census"
+        ],
+        [
+          "replay",
+          "pixi run mojo run -I . census.mojo"
+        ]
+      ],
+      "id": "census",
+      "kind": "verified_finite_computation",
+      "statement": "4554 PIP specimens, 0 capped",
+      "tags": []
+    },
+    "circle": {
+      "depends_on": [],
+      "evidence": [
+        [
+          "digest",
+          "y"
+        ],
+        [
+          "replay",
+          "x"
+        ]
+      ],
+      "id": "circle",
+      "kind": "verified_finite_computation",
+      "statement": "uses a rank-2 circle",
+      "tags": [
+        "uses_rank2_circle"
+      ]
+    },
+    "conditional": {
+      "depends_on": [
+        "lemma",
+        "galois"
+      ],
+      "evidence": [
+        [
+          "digest",
+          "y"
+        ],
+        [
+          "replay",
+          "x"
+        ]
+      ],
+      "id": "conditional",
+      "kind": "verified_finite_computation",
+      "statement": "depends on pending material",
+      "tags": []
+    },
+    "dangling": {
+      "depends_on": [
+        "nowhere"
+      ],
+      "evidence": [
+        [
+          "digest",
+          "y"
+        ],
+        [
+          "replay",
+          "x"
+        ]
+      ],
+      "id": "dangling",
+      "kind": "verified_finite_computation",
+      "statement": "cites a missing record",
+      "tags": []
+    },
+    "evidence": {
+      "depends_on": [
+        "sweep"
+      ],
+      "evidence": [
+        [
+          "digest",
+          "y"
+        ],
+        [
+          "replay",
+          "x"
+        ]
+      ],
+      "id": "evidence",
+      "kind": "verified_finite_computation",
+      "statement": "cites a sweep as support",
+      "tags": []
+    },
+    "frontier": {
+      "depends_on": [
+        "mlc"
+      ],
+      "evidence": [
+        [
+          "digest",
+          "y"
+        ],
+        [
+          "replay",
+          "x"
+        ]
+      ],
+      "id": "frontier",
+      "kind": "verified_finite_computation",
+      "statement": "depends on the open frontier",
+      "tags": []
+    },
+    "galois": {
+      "depends_on": [],
+      "evidence": [
+        [
+          "reason",
+          "source pending"
+        ]
+      ],
+      "id": "galois",
+      "kind": "pending_dependency",
+      "statement": "Galois propagation",
+      "tags": []
+    },
+    "lemma": {
+      "depends_on": [
+        "census",
+        "bsw"
+      ],
+      "evidence": [
+        [
+          "digest",
+          "sha256:lemma"
+        ],
+        [
+          "replay",
+          "pixi run test"
+        ]
+      ],
+      "id": "lemma",
+      "kind": "verified_finite_computation",
+      "statement": "finite lemma",
+      "tags": []
+    },
+    "mismatch": {
+      "depends_on": [],
+      "evidence": [
+        [
+          "digest",
+          "y"
+        ],
+        [
+          "replay",
+          "x"
+        ]
+      ],
+      "id": "elsewhere",
+      "kind": "verified_finite_computation",
+      "statement": "key differs from id",
+      "tags": []
+    },
+    "mlc": {
+      "depends_on": [],
+      "evidence": [
+        [
+          "reason",
+          "open frontier"
+        ]
+      ],
+      "id": "mlc",
+      "kind": "pending_dependency",
+      "statement": "global MLC-strength claim",
+      "tags": []
+    },
+    "on_circle": {
+      "depends_on": [
+        "circle"
+      ],
+      "evidence": [
+        [
+          "digest",
+          "y"
+        ],
+        [
+          "replay",
+          "x"
+        ]
+      ],
+      "id": "on_circle",
+      "kind": "verified_finite_computation",
+      "statement": "depends on the circle record",
+      "tags": []
+    },
+    "sweep": {
+      "depends_on": [],
+      "evidence": [
+        [
+          "domain",
+          "images of length <= 3"
+        ]
+      ],
+      "id": "sweep",
+      "kind": "bounded_experiment",
+      "statement": "no counterexample up to length 7",
+      "tags": []
+    },
+    "theorem": {
+      "depends_on": [
+        "lemma"
+      ],
+      "evidence": [
+        [
+          "digest",
+          "sha256:theorem"
+        ],
+        [
+          "replay",
+          "pixi run verify"
+        ]
+      ],
+      "id": "theorem",
+      "kind": "verified_finite_computation",
+      "statement": "closure over verified and imported records",
+      "tags": []
+    },
+    "unchecked": {
+      "depends_on": [],
+      "evidence": [
+        [
+          "hypotheses_checked",
+          "false"
+        ],
+        [
+          "source",
+          "somewhere"
+        ]
+      ],
+      "id": "unchecked",
+      "kind": "imported_theorem",
+      "statement": "import with open hypotheses",
+      "tags": []
+    }
+  },
+  "validation": {
+    "a": {
+      "digest": "b5ff2e9931ecc702469f6ae1ab48537f93420ebd7909f55d781769e2c6ca350c",
+      "kind": "verified_finite_computation",
+      "reason": null
+    },
+    "b": {
+      "digest": "ab8bbb1281f5c83e498c984986ec282a2d0a26062e8b7e3f2aa7e58cd9034c0a",
+      "kind": "verified_finite_computation",
+      "reason": null
+    },
+    "bad": {
+      "digest": "035bf0dd6eb1762d7c01100dcfd17c1345e6d26431b86de7019e3961caf45958",
+      "kind": "rejected",
+      "reason": "duplicate or self dependency"
+    },
+    "bsw": {
+      "digest": "3850b3324474db5b0f34ea2b56cca1a3d5ccbda14652633dd53d41776c066809",
+      "kind": "imported_theorem",
+      "reason": null
+    },
+    "census": {
+      "digest": "cfbd29e0dcfee1f1a85531cb5117a491fc567f54087a6de45826795783c7cb8e",
+      "kind": "verified_finite_computation",
+      "reason": null
+    },
+    "circle": {
+      "digest": "a31c736ccbbbd0901446f6ad51b074888177a7e2d649f0b7ee708fc19a48a56e",
+      "kind": "verified_finite_computation",
+      "reason": null
+    },
+    "conditional": {
+      "digest": "4165899253097299c41d41aed59e1b47b43dc30ed340c5f114fe78cb430637e7",
+      "kind": "verified_finite_computation",
+      "reason": null
+    },
+    "dangling": {
+      "digest": "80b5e90f5e8833c7d32381b3e639f6665370f2fa69f65c9aa355af054e82c874",
+      "kind": "verified_finite_computation",
+      "reason": null
+    },
+    "evidence": {
+      "digest": "b078c463a86897972e06e25494f964bfdd9bc31751b0706a19ebcdf048d69044",
+      "kind": "verified_finite_computation",
+      "reason": null
+    },
+    "frontier": {
+      "digest": "313f5db02fe9932b15c9a8904b738824a920633805fda5713e16799b38177e1d",
+      "kind": "verified_finite_computation",
+      "reason": null
+    },
+    "galois": {
+      "digest": "606527137ff1cc7aaf493fc100e94415d3aece8269c5957188937f12b8587b5d",
+      "kind": "pending_dependency",
+      "reason": null
+    },
+    "lemma": {
+      "digest": "92da873f62c93b2fa30c5140a1acdae072e2ebee2cf1920cf477f87ad369970f",
+      "kind": "verified_finite_computation",
+      "reason": null
+    },
+    "mismatch": {
+      "digest": "f16f90389d25c4e0b4323df1b57974f26f427323993dc6c5c967cf6ba6aebaad",
+      "kind": "verified_finite_computation",
+      "reason": null
+    },
+    "mlc": {
+      "digest": "a7154b1b86eb28a588eed9a43db3d4c49fb063029f5ff9dcf11f5d7c9fb7d188",
+      "kind": "pending_dependency",
+      "reason": null
+    },
+    "on_circle": {
+      "digest": "bf095895fbbad862a35c866ac595bce7dcd883a9c8f70a3c8baf0cace5b489e4",
+      "kind": "verified_finite_computation",
+      "reason": null
+    },
+    "sweep": {
+      "digest": "931cdfd2b14846c5eb39f1db480982113903accbd9ed7650190d6fbcdec03d2e",
+      "kind": "bounded_experiment",
+      "reason": null
+    },
+    "theorem": {
+      "digest": "1391909a268bd4883963d53e69d58cb02b8169517c17943db5bb64dc161ee8a2",
+      "kind": "verified_finite_computation",
+      "reason": null
+    },
+    "unchecked": {
+      "digest": "439f0ae50aee649829b19278a6aafc4bb83f6343cf9452868f1880ee201e3119",
+      "kind": "rejected",
+      "reason": "imported theorem with unchecked hypotheses"
+    }
+  }
+}

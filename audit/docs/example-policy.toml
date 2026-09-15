@@ -1,0 +1,28 @@
+# Minimal policy that audits this repository's own documentation.  It doubles
+# as a smoke test of the CLI in CI and as a copyable starting point.
+
+[repository]
+name = "larsbx/claim_governance_tools"
+
+[scan]
+prose = ["README.md", "docs/*.md"]
+
+[status]
+classes = ["proved", "open"]
+[status.synonyms]
+"[PROVED]" = "proved"
+"[OPEN]" = "open"
+
+[terminology]
+risky_phrases = ["obvious isomorphism", "proof by analogy"]
+negating_context = ["not ", "never", "no "]
+
+[claims]
+paths = ["docs/*.md", "README.md"]
+statement_kinds = ["Theorem", "Proposition", "Lemma"]
+
+[[numerics.rule]]
+name = "no-float-in-package"
+pattern = '\bfloat\b'
+paths = ["claim_governance/**/*.py"]
+message = "the package must not compute with floats"
