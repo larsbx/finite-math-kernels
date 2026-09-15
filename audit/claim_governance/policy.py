@@ -278,6 +278,15 @@ def _numerics(table: Mapping[str, Any]) -> NumericsRule:
     )
 
 
+def _numerics_rules(table: Any) -> tuple[NumericsRule, ...]:
+    if not isinstance(table, Mapping):
+        raise PolicyError("[numerics] must be a table")
+    rules = table.get("rule", [])
+    if not isinstance(rules, list) or any(not isinstance(rule, Mapping) for rule in rules):
+        raise PolicyError("numerics.rule must be a list of tables")
+    return tuple(_numerics(rule) for rule in rules)
+
+
 def policy_from_mapping(data: Mapping[str, Any]) -> Policy:
     repository = _require(data.get("repository", {}), "name", "[repository]")
     scan = data.get("scan", {})
@@ -298,7 +307,7 @@ def policy_from_mapping(data: Mapping[str, Any]) -> Policy:
         ),
         ledger=ledger,
         promotion=_promotion(data.get("promotion", {}), status.classes),
-        numerics=tuple(_numerics(r) for r in data.get("numerics", {}).get("rule", [])),
+        numerics=_numerics_rules(data.get("numerics", {})),
     )
 
 
