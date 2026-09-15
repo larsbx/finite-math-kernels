@@ -1,0 +1,20 @@
+[workspace]
+name = "finite-math-kernels"
+channels = ["https://conda.modular.com/max-nightly/", "conda-forge"]
+platforms = ["linux-64"]
+
+[dependencies]
+modular = ">=26.6.0.dev2026090805,<27"
+python = ">=3.11"
+pytest = "*"
+
+[tasks]
+property = "python tools/property_oracle.py --layers zq"
+test-finite-exact = "mojo run -I . tests/finite_exact/test_finite_exact.mojo"
+test-interval = "mojo run -I . tests/interval/test_interval_q.mojo"
+test-linear-algebra = "mojo run -I . tests/finite_linear_algebra/test_finite_linear_algebra.mojo"
+test-substitution = "mojo run -I . tests/substitution_dynamics/test_substitution_dynamics.mojo"
+test-proof-records = "python -m pytest -q tests/proof_records"
+test-python = "python -m pytest -q tests/finite_exact tests/proof_records"
+test-audit = "PYTHONPATH=audit python -m pytest -q tests/audit"
+test = { depends-on = ["test-finite-exact", "test-interval", "test-linear-algebra", "test-substitution", "test-proof-records", "test-python", "test-audit"] }
