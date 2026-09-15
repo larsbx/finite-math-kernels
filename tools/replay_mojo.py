@@ -27,7 +27,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 FIXTURE = ROOT / "fixtures" / "vectors.json"
-DRIVER = ROOT / "tests" / "replay_vectors.mojo"
+DRIVER = ROOT / "tests" / "proof_records" / "replay_vectors.mojo"
 POLICIES = {"none": [], "nlap_rank2": [("uses_rank2_circle", "rank-2 circle primitive rejected")]}
 
 
