@@ -7,7 +7,7 @@ larsbx/finite_exact:docs/rational-interval-arithmetic-spec.md sections 2.2 to 2.
 """
 
 from finite_exact.rat_q import Q
-from interval_q.closed_q import IQ, ComplexIQ, bigq_interval_conformance_smoke, demo_complex_quadrance_point, demo_interval_mul
+from finite_exact.closed_interval import IQ, ComplexIQ, bigq_interval_conformance_smoke, demo_complex_quadrance_point, demo_interval_mul
 
 
 def test_interval_enclosure_laws() -> Bool:
