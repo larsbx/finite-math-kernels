@@ -67,6 +67,15 @@ def test_cli_policy_error_exit_code(tmp_path, capsys):
     assert "policy error" in capsys.readouterr().err
 
 
+def test_cli_malformed_numerics_rule_exits_two(tmp_path, capsys):
+    (tmp_path / "claim_governance.toml").write_text(
+        '[repository]\nname = "example/repo"\n[numerics]\nrule = "bad"\n',
+        encoding="utf-8",
+    )
+    assert cli.main(["--root", str(tmp_path)]) == 2
+    assert "numerics.rule must be a list of tables" in capsys.readouterr().err
+
+
 def test_cli_lists_checks(capsys):
     assert cli.main(["--list-checks"]) == 0
     assert capsys.readouterr().out.split() == list(CHECKS)

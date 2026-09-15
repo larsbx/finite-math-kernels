@@ -32,6 +32,8 @@ def test_status_labels_match_on_word_boundaries_and_case_by_default():
         ({"claim": [{"name": "G1", "status": "mythical"}]}, "undeclared status class"),
         ({"claim": [{"name": "G1", "status": "open"}, {"name": "G1", "status": "open"}]}, "duplicate claim names"),
         ({"numerics": {"rule": [{"name": "bad", "pattern": "(", "paths": ["src/*.py"]}]}}, "invalid pattern"),
+        ({"numerics": {"rule": "bad"}}, "list of tables"),
+        ({"numerics": {"rule": ["bad"]}}, "list of tables"),
         ({"promotion": {"settled_classes": ["nope"]}}, "undeclared classes"),
         ({"scan": {"prose": "docs/*.md"}}, "list of strings"),
         ({"claims": {"window_lines": -1}}, "non-negative integer"),
