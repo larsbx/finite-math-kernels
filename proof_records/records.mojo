@@ -362,22 +362,28 @@ struct _Walk(Copyable, Movable):
         self.stack = List[String]()
 
     def visit(mut self, ledger: Ledger, policy: TagPolicy, record_id: String, via: Edge, has_edge: Bool, own_scope: String):
+        """Links about the record itself are reported on its first visit and
+        its dependencies walked once; links about the edge that reached it
+        (claim, scope, outcome) are reported for every incoming edge."""
         if _contains(self.stack, record_id):
             self.links.append(MissingLink(record_id, "dependency cycle"))
             return
-        if _contains(self.reached, record_id):
-            return
-        self.reached.append(record_id)
+        var first = not _contains(self.reached, record_id)
+        if first:
+            self.reached.append(record_id)
         var index = ledger.index_of(record_id)
         if index < 0:
-            self.links.append(MissingLink(record_id, "unknown record"))
+            if first:
+                self.links.append(MissingLink(record_id, "unknown record"))
             return
         var record = validate(ledger.records[index])
         if record.id != record_id:
-            self.links.append(MissingLink(record_id, "ledger key differs from record identifier"))
+            if first:
+                self.links.append(MissingLink(record_id, "ledger key differs from record identifier"))
             return
         if record.kind == KIND_REJECTED:
-            self.links.append(MissingLink(record_id, "rejected: " + record.field("reason")))
+            if first:
+                self.links.append(MissingLink(record_id, "rejected: " + record.field("reason")))
             return
         var required = via.required_outcome if has_edge else String(ACCEPTED)
         if has_edge:
@@ -387,11 +393,14 @@ struct _Walk(Copyable, Movable):
                 self.links.append(MissingLink(record_id, "scope mismatch: " + via.use_site))
         var found = outcome(record)
         if found == OPEN:
-            self.links.append(MissingLink(record_id, "pending: " + record.field("reason")))
+            if first:
+                self.links.append(MissingLink(record_id, "pending: " + record.field("reason")))
         elif found == BOUNDED and required != BOUNDED:
             self.links.append(MissingLink(record_id, "bounded experiment is evidence, not a theorem"))
         elif found == ACCEPTED and required != ACCEPTED:
             self.links.append(MissingLink(record_id, "outcome mismatch: " + via.use_site + " requires " + required + ", found " + found))
+        if not first:
+            return
         var verdict = policy.verdict(record)
         if verdict.byte_length() > 0:
             self.links.append(MissingLink(record_id, "policy: " + verdict))

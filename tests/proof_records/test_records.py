@@ -129,6 +129,15 @@ def test_edges_bind_claim_and_scope():
     assert links(close(mv.LEDGER, mv.WRONG_SCOPE.id)) == [(mv.LEMMA.id, "scope mismatch: wrong_scope/lemma")]
 
 
+def test_every_incoming_edge_to_a_shared_record_is_checked():
+    assert links(close(mv.LEDGER, mv.DIAMOND.id)) == [(mv.LEMMA.id, "claim mismatch: diamond/lemma")]
+    ok = close(mv.LEDGER, mv.DIAMOND_OK.id)
+    assert ok.complete and ok.reached.count(mv.LEMMA.id) == 1
+    twice_pending = identified(Record("", Kind.VERIFIED, "t", mv.PISOT, (edge(mv.CONDITIONAL, "t/conditional"), edge(mv.GALOIS, "t/galois")),
+                                      (("digest", "y"), ("replay", "x"))))
+    assert links(close({**mv.LEDGER, twice_pending.id: twice_pending}, twice_pending.id)) == [(mv.GALOIS.id, "pending: source pending")]
+
+
 def test_pending_unknown_rejected_and_mismatched_links_are_named():
     assert links(close(mv.LEDGER, mv.CONDITIONAL.id)) == [(mv.GALOIS.id, "pending: source pending")]
     assert links(close(mv.LEDGER, mv.DANGLING.id)) == [(mv.NOWHERE, "unknown record")]

@@ -168,6 +168,41 @@
       "complete": false,
       "missing_links": [
         [
+          "sha256:62c9eb30291a3996ff8e916cc91ab10f3b9aadcb6db79ea91bd238ff20540724",
+          "claim mismatch: diamond/lemma"
+        ]
+      ],
+      "name": "second incoming edge to a shared record is checked",
+      "policy": "none",
+      "reached": [
+        "sha256:2420cf5ecc4839ea1ecfa0cc500eed520e2766cfea47d606bc231076588b4dda",
+        "sha256:5100a3ec500701af89712f22227a928d5e99d00a99f17c5d9e2b08a9635187cc",
+        "sha256:62c9eb30291a3996ff8e916cc91ab10f3b9aadcb6db79ea91bd238ff20540724",
+        "sha256:71c641952049688ca026bf20181d38c66c6172f00b31862275ad0e23b32f4e06",
+        "sha256:bd1b7d5c93a6c6461df7461a8d2a372ddae5f1b6ebb19712f94771893bbca6f5"
+      ],
+      "root": "sha256:bd1b7d5c93a6c6461df7461a8d2a372ddae5f1b6ebb19712f94771893bbca6f5",
+      "root_label": "diamond"
+    },
+    {
+      "complete": true,
+      "missing_links": [],
+      "name": "shared record reached twice with correct edges",
+      "policy": "none",
+      "reached": [
+        "sha256:001a24a9ce8e016ad2a958792eac7112ad92a14711955bfd0606f1e50314bdd4",
+        "sha256:2420cf5ecc4839ea1ecfa0cc500eed520e2766cfea47d606bc231076588b4dda",
+        "sha256:5100a3ec500701af89712f22227a928d5e99d00a99f17c5d9e2b08a9635187cc",
+        "sha256:62c9eb30291a3996ff8e916cc91ab10f3b9aadcb6db79ea91bd238ff20540724",
+        "sha256:71c641952049688ca026bf20181d38c66c6172f00b31862275ad0e23b32f4e06"
+      ],
+      "root": "sha256:001a24a9ce8e016ad2a958792eac7112ad92a14711955bfd0606f1e50314bdd4",
+      "root_label": "diamond_ok"
+    },
+    {
+      "complete": false,
+      "missing_links": [
+        [
           "sha256:5100a3ec500701af89712f22227a928d5e99d00a99f17c5d9e2b08a9635187cc",
           "outcome mismatch: wrong_outcome/census requires bounded, found accepted"
         ]
@@ -336,6 +371,8 @@
     "circle": "sha256:2757ec620be189dde07adaa1132ea273985351be4c6636efebc0da65e06d2d58",
     "conditional": "sha256:d33bd488a0d2754cf690a70ed07d738aa0cef4a6ba82cf86bafac0beb83c5dad",
     "dangling": "sha256:8714a580b2016efae9d476ecf28abd7af80047a21805784fb0923fc9abb5bc8b",
+    "diamond": "sha256:bd1b7d5c93a6c6461df7461a8d2a372ddae5f1b6ebb19712f94771893bbca6f5",
+    "diamond_ok": "sha256:001a24a9ce8e016ad2a958792eac7112ad92a14711955bfd0606f1e50314bdd4",
     "elsewhere": "sha256:f19383b04af5afd4a9bf0c0d820763e167d6f1327dba10eb62c8bce8fd816501",
     "evidence": "sha256:aded72322c570f87636e97a98cb029820bf2e8a9c94cbcebd005787e58bf92ff",
     "forged": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
@@ -370,6 +407,39 @@
       "kind": "verified_finite_computation",
       "scope": "primitive Pisot substitutions",
       "statement": "key differs from id",
+      "tags": []
+    },
+    "sha256:001a24a9ce8e016ad2a958792eac7112ad92a14711955bfd0606f1e50314bdd4": {
+      "depends_on": [
+        [
+          "sha256:71c641952049688ca026bf20181d38c66c6172f00b31862275ad0e23b32f4e06",
+          "closure over verified and imported records",
+          "ok/theorem",
+          "same",
+          "accepted"
+        ],
+        [
+          "sha256:62c9eb30291a3996ff8e916cc91ab10f3b9aadcb6db79ea91bd238ff20540724",
+          "finite lemma",
+          "ok/lemma",
+          "same",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "digest",
+          "y"
+        ],
+        [
+          "replay",
+          "x"
+        ]
+      ],
+      "id": "sha256:001a24a9ce8e016ad2a958792eac7112ad92a14711955bfd0606f1e50314bdd4",
+      "kind": "verified_finite_computation",
+      "scope": "primitive Pisot substitutions",
+      "statement": "reaches the lemma twice, correctly",
       "tags": []
     },
     "sha256:1d870aeb3117cbeede3ced77cc15c6053d125cb17759187a6d77324b6efa85d9": {
@@ -866,6 +936,39 @@
       "statement": "b",
       "tags": []
     },
+    "sha256:bd1b7d5c93a6c6461df7461a8d2a372ddae5f1b6ebb19712f94771893bbca6f5": {
+      "depends_on": [
+        [
+          "sha256:71c641952049688ca026bf20181d38c66c6172f00b31862275ad0e23b32f4e06",
+          "closure over verified and imported records",
+          "diamond/theorem",
+          "same",
+          "accepted"
+        ],
+        [
+          "sha256:62c9eb30291a3996ff8e916cc91ab10f3b9aadcb6db79ea91bd238ff20540724",
+          "not the finite lemma",
+          "diamond/lemma",
+          "same",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "digest",
+          "y"
+        ],
+        [
+          "replay",
+          "x"
+        ]
+      ],
+      "id": "sha256:bd1b7d5c93a6c6461df7461a8d2a372ddae5f1b6ebb19712f94771893bbca6f5",
+      "kind": "verified_finite_computation",
+      "scope": "primitive Pisot substitutions",
+      "statement": "reaches the lemma twice, once with the wrong claim",
+      "tags": []
+    },
     "sha256:c60b54b820da32f78e5e2caf4bfc369055bff3d7c29d967b4e77a669732d3814": {
       "depends_on": [
         [
@@ -974,6 +1077,12 @@
     "mismatch": {
       "digest": "aef4c095a3ec2808798bf2d6f8aaa92e8828b6442423cded4b1c99cdb3fd24aa",
       "identity": "sha256:dcba2222a20e99335c4bb5c550aa932e212b47bab6a45d824d8533c96e30d8db",
+      "kind": "verified_finite_computation",
+      "reason": null
+    },
+    "sha256:001a24a9ce8e016ad2a958792eac7112ad92a14711955bfd0606f1e50314bdd4": {
+      "digest": "37a24f5ee9537befbcf788c14fdc265f0eac3a57a66f22f3c98f2997bc650eeb",
+      "identity": "sha256:001a24a9ce8e016ad2a958792eac7112ad92a14711955bfd0606f1e50314bdd4",
       "kind": "verified_finite_computation",
       "reason": null
     },
@@ -1102,6 +1211,12 @@
       "identity": "sha256:2cd9b670ea51e00751ae849e03d029842970f792cde45e67f44d5f6792427228",
       "kind": "rejected",
       "reason": "identifier does not match preimage"
+    },
+    "sha256:bd1b7d5c93a6c6461df7461a8d2a372ddae5f1b6ebb19712f94771893bbca6f5": {
+      "digest": "fa7d3e32f41ba10cdc44acc2d9461b86923499adec59dd1d9e64ce7aeef68667",
+      "identity": "sha256:bd1b7d5c93a6c6461df7461a8d2a372ddae5f1b6ebb19712f94771893bbca6f5",
+      "kind": "verified_finite_computation",
+      "reason": null
     },
     "sha256:c60b54b820da32f78e5e2caf4bfc369055bff3d7c29d967b4e77a669732d3814": {
       "digest": "4318a4c7cf97355db9bfc8c0bbad156e7cff71bb7488bdc5284b1d013a768ff0",

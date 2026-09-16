@@ -217,22 +217,28 @@ def close(ledger: Mapping[str, Record], root: str, policy: Policy = no_policy) -
     stack: list[str] = []
 
     def visit(record_id: str, via: Edge | None, own_scope: str) -> None:
+        """Links about the record itself are reported on its first visit and
+        its dependencies walked once; links about the edge that reached it
+        (claim, scope, outcome) are reported for every incoming edge."""
         if record_id in stack:
             links.append(MissingLink(record_id, "dependency cycle"))
             return
-        if record_id in reached:
-            return
-        reached.append(record_id)
+        first = record_id not in reached
+        if first:
+            reached.append(record_id)
         raw = ledger.get(record_id)
         if raw is None:
-            links.append(MissingLink(record_id, "unknown record"))
+            if first:
+                links.append(MissingLink(record_id, "unknown record"))
             return
         record = validate(raw)
         if record.id != record_id:
-            links.append(MissingLink(record_id, "ledger key differs from record identifier"))
+            if first:
+                links.append(MissingLink(record_id, "ledger key differs from record identifier"))
             return
         if record.kind is Kind.REJECTED:
-            links.append(MissingLink(record_id, "rejected: " + (record.field("reason") or "")))
+            if first:
+                links.append(MissingLink(record_id, "rejected: " + (record.field("reason") or "")))
             return
         required = via.required_outcome if via is not None else ACCEPTED
         if via is not None:
@@ -242,11 +248,14 @@ def close(ledger: Mapping[str, Record], root: str, policy: Policy = no_policy) -
                 links.append(MissingLink(record_id, "scope mismatch: " + via.use_site))
         found = outcome(record)
         if found == OPEN:
-            links.append(MissingLink(record_id, "pending: " + (record.field("reason") or "")))
+            if first:
+                links.append(MissingLink(record_id, "pending: " + (record.field("reason") or "")))
         elif found == BOUNDED and required != BOUNDED:
             links.append(MissingLink(record_id, "bounded experiment is evidence, not a theorem"))
         elif found == ACCEPTED and required != ACCEPTED:
             links.append(MissingLink(record_id, f"outcome mismatch: {via.use_site} requires {required}, found {found}"))
+        if not first:
+            return
         verdict = policy(record)
         if verdict is not None:
             links.append(MissingLink(record_id, "policy: " + verdict))

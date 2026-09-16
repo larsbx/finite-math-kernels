@@ -73,6 +73,10 @@ DUPLICATE_DEP = rec(Kind.VERIFIED, "duplicate dependency", PISOT, (edge(CENSUS, 
 BAD_RELATION = rec(Kind.VERIFIED, "unknown scope relation", PISOT, (edge(CENSUS, "bad_relation/census", "within"),), replay="x", digest="y")
 BAD_OUTCOME = rec(Kind.VERIFIED, "unknown required outcome", PISOT, (edge(CENSUS, "bad_outcome/census", required_outcome="proved"),),
                   replay="x", digest="y")
+DIAMOND = rec(Kind.VERIFIED, "reaches the lemma twice, once with the wrong claim", PISOT,
+              (edge(THEOREM, "diamond/theorem"), Edge(LEMMA.id, "not the finite lemma", "diamond/lemma")), replay="x", digest="y")
+DIAMOND_OK = rec(Kind.VERIFIED, "reaches the lemma twice, correctly", PISOT, (edge(THEOREM, "ok/theorem"), edge(LEMMA, "ok/lemma")),
+                 replay="x", digest="y")
 BOUNDED_ELSEWHERE = rec(Kind.VERIFIED, "bounded dependency outside its own scope", PISOT,
                         (edge(SWEEP, "elsewhere/sweep", "scope=" + SHORT, BOUNDED),), replay="x", digest="y")
 
@@ -81,7 +85,7 @@ LABELS = {
     "evidence": EVIDENCE_ONLY, "within": WITHIN_SWEEP, "unchecked": UNCHECKED, "circle": CIRCLE, "mlc": MLC, "on_circle": ON_CIRCLE,
     "frontier": FRONTIER, "dangling": DANGLING, "wrong_claim": WRONG_CLAIM, "wrong_scope": WRONG_SCOPE, "wrong_outcome": WRONG_OUTCOME,
     "forged": FORGED_ID, "a": LOOP_A, "b": LOOP_B, "bad": DUPLICATE_DEP, "bad_relation": BAD_RELATION, "bad_outcome": BAD_OUTCOME,
-    "elsewhere": BOUNDED_ELSEWHERE,
+    "elsewhere": BOUNDED_ELSEWHERE, "diamond": DIAMOND, "diamond_ok": DIAMOND_OK,
 }
 KEYS = {label: r.id for label, r in LABELS.items()}
 KEYS["mismatch"] = "mismatch"
@@ -99,6 +103,8 @@ CASES = [
     ("ledger key mismatch", "mismatch", "none"),
     ("claim mismatch", "wrong_claim", "none"),
     ("scope mismatch", "wrong_scope", "none"),
+    ("second incoming edge to a shared record is checked", "diamond", "none"),
+    ("shared record reached twice with correct edges", "diamond_ok", "none"),
     ("outcome mismatch", "wrong_outcome", "none"),
     ("forged identifier", "forged", "none"),
     ("cycle is unconstructible: forged identifiers reject", "a", "none"),
