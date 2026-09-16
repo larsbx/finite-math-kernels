@@ -4,7 +4,7 @@
 Specification: docs/rational-interval-arithmetic-spec.md (section 7, law tests).
 Public boundary: docs/exact-arithmetic-public-boundary.md.
 
-The Mojo probe ``tests/property_probe.mojo`` prints a transcript of canonical
+The Mojo probe ``tests/finite_exact/property_probe.mojo`` prints a transcript of canonical
 byte encodings. This script regenerates the same operands from the same
 xorshift64* stream, recomputes every result with Python ``int`` and
 ``fractions.Fraction``, encodes the expectation with the canonical

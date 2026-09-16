@@ -193,8 +193,12 @@ all relocated references.
 Resolution: the listed references are corrected (`docs/specification.md`
 to `docs/proof-records-specification.md`, `finite_proof_records/` to
 `proof_records/`, `pixi run smoke` to the per-package tasks, `pixi run
-replay` now defined, the vendoring-protocol comment replaced). The
-automated link audit is not yet added; the finding stays open on that item.
+replay` now defined, the vendoring-protocol comment replaced), and
+`tools/check_references.py` now checks every backticked path and `pixi run`
+task in the tree on every CI run (`tests/references`, in the `test`
+closure). External references are attested against their repository in the
+checker's `EXTERNAL` table; dated audit records, which quote past states,
+are skipped. Resolved.
 
 ### FMK-AUDIT-006 — Source repositories do not declare retirement
 
@@ -211,6 +215,14 @@ Required repair:
 - direct issues and new development to `finite-math-kernels`;
 - archive only after consumers pin a released monorepo commit.
 
+Resolution: migration notices are proposed to each source repository's
+`main` (`larsbx/finite_exact#1`, `larsbx/interval_q#1`,
+`larsbx/finite_linear_algebra#1`, `larsbx/substitution_dynamics#1`,
+`larsbx/finite_proof_records#1`, `larsbx/claim_governance_tools#2`). Each
+names the canonical home, the preserved branch, the frozen commit and
+subtree id, the provenance record, and the archive gate. Resolved on merge;
+archiving stays gated on consumer pins.
+
 ### FMK-AUDIT-007 — Main has no enforced status gate
 
 Severity: medium.
@@ -222,6 +234,12 @@ workflow.
 Required repair: require the complete CI gate before merge and prevent direct
 unreviewed updates to the release branch, or document the external canonical
 merge authority and verify mirrored commit/tree identity.
+
+Resolution: requires repository administration, which this audit's tooling
+cannot perform. The setting to apply is a ruleset or branch protection on
+`main` that requires a pull request, requires the `test` status check
+(the `CI` workflow's `test` job) to pass on the head commit, and blocks
+force pushes and deletions. Open until an administrator applies it.
 
 ### FMK-AUDIT-008 — `BigZ` field mutation bypasses fail-closed arithmetic
 
@@ -238,6 +256,15 @@ Required repair: either state in the public-boundary document that values
 are only valid when constructor-produced and field mutation is undefined, or
 validate `sign` and limb normalization at operation entry and route
 violations through the existing rejection carrier.
+
+Resolution: the boundary is declared. `docs/exact-arithmetic-public-boundary.md`
+section 2 item 3 states that `BigZ` values are constructor-produced, that
+direct field assignment is outside the boundary and undetected by `BigZ`
+operations (per the specification's invariant I3), and that `q_from_bigz`
+is the validating entry through `bigz_is_canonical`; the README's
+fail-closed claim is scoped the same way. Operation-entry validation was
+not added: it would put a canonical-form scan on every ring operation to
+defend against a use the boundary now excludes. Resolved.
 
 ## Positive findings
 
@@ -281,7 +308,8 @@ With FMK-AUDIT-001 through FMK-AUDIT-003 resolved, proof-record consumer
 migration is unblocked at the package level, subject to each consumer
 supplying its policy adapter and re-deriving its ledger identifiers under
 the version-2 preimage. Formal retirement of the source repositories still
-waits on FMK-AUDIT-006 and FMK-AUDIT-007.
+waits on the merge of the FMK-AUDIT-006 notices, consumer pins, and the
+FMK-AUDIT-007 ruleset.
 
 ## Resolution status
 
@@ -291,7 +319,7 @@ waits on FMK-AUDIT-006 and FMK-AUDIT-007.
 | FMK-AUDIT-002 | resolved |
 | FMK-AUDIT-003 | resolved |
 | FMK-AUDIT-004 | resolved |
-| FMK-AUDIT-005 | references corrected; automated link audit open |
-| FMK-AUDIT-006 | open |
-| FMK-AUDIT-007 | open |
-| FMK-AUDIT-008 | open |
+| FMK-AUDIT-005 | resolved |
+| FMK-AUDIT-006 | resolved on merge of the six source-repository notices |
+| FMK-AUDIT-007 | open: needs an administrator to apply the `main` ruleset |
+| FMK-AUDIT-008 | resolved by boundary declaration |

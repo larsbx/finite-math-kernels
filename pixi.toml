@@ -21,4 +21,6 @@ test-proof-records = "python -m pytest -q tests/proof_records"
 test-python = "python -m pytest -q tests/finite_exact tests/proof_records"
 test-audit = "PYTHONPATH=audit python -m pytest -q tests/audit"
 test-provenance = "python -m pytest -q tests/provenance"
-test = { depends-on = ["test-finite-exact", "test-interval", "test-linear-algebra", "test-substitution", "test-facades", "test-proof-records", "test-python", "test-audit", "test-provenance", "property"] }
+test-references = "python -m pytest -q tests/references"
+references = "python tools/check_references.py"
+test = { depends-on = ["test-finite-exact", "test-interval", "test-linear-algebra", "test-substitution", "test-facades", "test-proof-records", "test-python", "test-audit", "test-provenance", "test-references", "property"] }

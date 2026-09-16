@@ -5,7 +5,7 @@ tuples of :class:`Finding`.  Nothing here decides mathematics: every check is
 a lexical guard that keeps a repository's own status vocabulary, terminology
 registry, claim ledger, and numerical-primitive bans consistent with its
 prose and source.  Repository policy lives in the consumer's
-``claim_governance.toml`` (see ``docs/policy-format.md``); this package ships
+``claim_governance.toml`` (see ``audit/docs/policy-format.md``); this package ships
 no policy of its own.
 """
 

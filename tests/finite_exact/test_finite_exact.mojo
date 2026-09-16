@@ -26,7 +26,7 @@ def test_rational_field_laws() -> Bool:
 
 
 def test_rejection_is_explicit_and_sticky() -> Bool:
-    # docs/exact-arithmetic-public-boundary.md section 2, item 3.
+    # docs/exact-arithmetic-public-boundary.md section 2, item 4.
     var zero_den = Q(1, 0)
     var by_zero = Q(1, 2).div(Q.zero())
     return (
