@@ -2,7 +2,7 @@
 
 **Status:** specification of three modules of the `substitution_dynamics` package: `substitution_dynamics/tuning.mojo`, `substitution_dynamics/sadic.mojo`, and `substitution_dynamics/coincidence.mojo`. Written before the code, as the package's extraction audit requires for new kernels; the executable reference is `tools/tuning_reference.py`, and `tests/substitution_dynamics/test_tuning_reference.py` and `tests/substitution_dynamics/test_tuning.mojo` pin the same constants. The package states no theorem: it computes finite combinatorial facts about words and substitutions. Which classical statements those facts support is each consumer's imported theorem, recorded in the consumer's own ledger (section 5).
 
-Origin: item R1 of the round-two cross-pollination audit (`docs/cross-pollination-round-two-2026-09-16.md` in `larsbx/NLAP-JT` and `larsbx/pisot-substitution-conjecture-research`). That audit observed that the residual class of the NLAP-JT program, the infinitely renormalizable parameters, is described combinatorially by iterated tuning, and that tuning acts on kneading sequences as a constant-length substitution, an object this package already models. This specification fixes the finite objects; it does not restate the audit's literature claims.
+Origin: item R1 of the round-two cross-pollination audit (`docs/cross-pollination-round-two-2026-09-16.md` in `larsbx/finite-mandlebrot-research` and `larsbx/pisot-substitution-conjecture-research`). That audit observed that the residual class of the Mandelbrot program, the infinitely renormalizable parameters, is described combinatorially by iterated tuning, and that tuning acts on kneading sequences as a constant-length substitution, an object this package already models. This specification fixes the finite objects; it does not restate the audit's literature claims.
 
 Terminology is field-recognizable (kneading sequence, tuning, star product, constant-length substitution, S-adic directive sequence, coincidence). No novel bridge term is introduced.
 
@@ -17,7 +17,7 @@ In scope:
 
 Out of scope, by design:
 
-- external angles, itineraries of the doubling map, Hubbard trees, and every other object of the quadratic family (consumer side, NLAP-JT);
+- external angles, itineraries of the doubling map, Hubbard trees, and every other object of the quadratic family (consumer side, the Mandelbrot program);
 - the height of a constant-length substitution and the spectral conclusion of Dekking's theorem (consumer's imported theorem; section 3.4);
 - infinite directive sequences, S-adic limits, primitivity or recognizability of S-adic systems;
 - any claim about fibres, local connectivity, renormalization, or pure discrete spectrum.
@@ -144,7 +144,7 @@ The package ships no policy; each consumer binds these kernels to its own claims
 
 | Consumer | Binding | Where it lives |
 | --- | --- | --- |
-| `larsbx/NLAP-JT` | the kneading form of tuning (`tau_{A', continuation}` is Douady–Hubbard tuning on 0/1 kneading sequences) as the scaffolded theorem tag `TuningKneadingSubstitution`; the residual-class carrier of the C1 program as a directive prefix of continuation patterns computed from exact periodic ray addresses, with the twist checked against exact angle tuning on the doubling, rabbit, airplane, and both period-4 components for every base angle of period at most 10. The parity twist is never used there: it holds on the real centres checked and fails on the rabbit | `docs/C1_theorem_tag_import_ledger.md`, `docs/C1_residual_directive_carrier.md`, `src/checked_ray_address.mojo` (NLAP-JT) |
+| `larsbx/finite-mandlebrot-research` | the kneading form of tuning (`tau_{A', continuation}` is Douady–Hubbard tuning on 0/1 kneading sequences) as the scaffolded theorem tag `TuningKneadingSubstitution`; the residual-class carrier of the C1 program as a directive prefix of continuation patterns computed from exact periodic ray addresses, with the twist checked against exact angle tuning on the doubling, rabbit, airplane, and both period-4 components for every base angle of period at most 10. The parity twist is never used there: it holds on the real centres checked and fails on the rabbit | `docs/C1_theorem_tag_import_ledger.md`, `docs/C1_residual_directive_carrier.md`, `src/checked_ray_address.mojo` |
 | `larsbx/pisot-substitution-conjecture-research` | constant-length coincidence as the alphabet-generic special case beside the balanced-pair and overlap coincidence kernels; Dekking's theorem as an imported theorem where a constant-length specimen is used as a calibration | `docs/overlap-finiteness-and-coincidence-density-2026-09-13.md` (PSC) for the coincidence vocabulary it must stay consistent with |
 
 Citation targets for consumers, not for this package: Douady and Hubbard, *Étude dynamique des polynômes complexes* (tuning); Derrida, Gervois, and Pomeau, the star product for unimodal kneading; Milnor, *Periodic orbits, external rays and the Mandelbrot set*; Dekking, *The spectrum of dynamical systems arising from substitutions of constant length* (1978).

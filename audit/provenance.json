@@ -9,7 +9,7 @@
       "relation": "authored"
     },
     "README.md": {
-      "blob": "66ee4527e44d5d5d1dc18d87b80a05d909398e58",
+      "blob": "d48ac455ff17d090d94829517b03b4433ab36629",
       "relation": "authored"
     },
     "audit/CONSOLIDATION_PROVENANCE.md": {
@@ -148,21 +148,21 @@
       "relation": "authored"
     },
     "docs/proof-records-specification.md": {
-      "blob": "400377b9ebe41ff4c4a73fd157330e569d6367fc",
+      "blob": "cb610e0492493634527f429ac0702fea761c193d",
       "relation": "modified",
       "source": "finite_proof_records",
       "source_blob": "145c282052309b9fdbcc7baeef4bbeadc4963875",
       "source_path": "docs/specification.md"
     },
     "docs/rational-interval-arithmetic-spec.md": {
-      "blob": "e453cced811cb9953c5d6bbc46e7e141d2dfe525",
+      "blob": "516c4f9f9152b5c7d5cc74ce448ba6ddcd4828b7",
       "relation": "modified",
       "source": "finite_exact",
       "source_blob": "86478aa8777903f6c605d4bcfd7d899ac51a74fa",
       "source_path": "docs/rational-interval-arithmetic-spec.md"
     },
     "docs/tuning-substitutions-spec.md": {
-      "blob": "c44c95f753a098c7ee7e09da131356fb2e10b9d4",
+      "blob": "0b1ca62bbd7e86fafb3fe2a4d4fae4ca7dadcdf7",
       "relation": "authored"
     },
     "finite_exact/__init__.mojo": {

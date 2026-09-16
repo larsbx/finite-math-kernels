@@ -1,7 +1,8 @@
 # finite-math-kernels
 
 Canonical monorepo for reusable exact finite-mathematics kernels extracted
-from NLAP-JT and the Pisot substitution research program.
+from the finite-regime Mandelbrot program (`larsbx/finite-mandlebrot-research`,
+formerly `larsbx/NLAP-JT`) and the Pisot substitution research program.
 
 ```text
 finite_exact/
