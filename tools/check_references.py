@@ -55,6 +55,7 @@ EXTERNAL: Mapping[str, str] = {
     "src/psc_research/bpa.py": PSC,
     "tests/test_substitution_dynamics_oracle.py": PSC,
     "claim_governance.toml": "the consumer repository root (audit/docs/policy-format.md)",
+    "docs/ledger-index.md": "the consumer repository (docs/ledger-generation-spec.md, section 3.4)",
     "interval_q/closed_q.mojo": "larsbx/interval_q at the commit pinned in audit/provenance.json",
 }
 

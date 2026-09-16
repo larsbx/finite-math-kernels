@@ -1,0 +1,247 @@
+{
+  "format": "finite_proof_records ledger 1",
+  "repository": "larsbx/finite-math-kernels (example)",
+  "module": "Example",
+  "tla_dir": "tla",
+  "index_path": "ledger-index.md",
+  "assumption_sets": {
+    "GaloisAssumed": [
+      "Galois"
+    ]
+  },
+  "status_classes": {
+    "pending_dependency": "open-frontier"
+  },
+  "status_labels": {
+    "proved": "theorem",
+    "open-frontier": "open"
+  },
+  "records": {
+    "Census": {
+      "id": "sha256:5100a3ec500701af89712f22227a928d5e99d00a99f17c5d9e2b08a9635187cc",
+      "kind": "verified_finite_computation",
+      "statement": "4554 PIP specimens, 0 capped",
+      "scope": "4554 PIP specimens",
+      "depends_on": [],
+      "evidence": [
+        [
+          "digest",
+          "sha256:census"
+        ],
+        [
+          "replay",
+          "pixi run mojo run -I . census.mojo"
+        ]
+      ],
+      "tags": []
+    },
+    "Density": {
+      "id": "sha256:2420cf5ecc4839ea1ecfa0cc500eed520e2766cfea47d606bc231076588b4dda",
+      "kind": "imported_theorem",
+      "statement": "coincidence density theorem",
+      "scope": "primitive Pisot substitutions",
+      "depends_on": [],
+      "evidence": [
+        [
+          "hypotheses_checked",
+          "true"
+        ],
+        [
+          "source",
+          "Barge-Stimac-Williams"
+        ]
+      ],
+      "tags": []
+    },
+    "Galois": {
+      "id": "sha256:9c6a2f67dcdf8fc99ea5f72fc0bc63872b59387467c851b033b4882d77d9f9f7",
+      "kind": "pending_dependency",
+      "statement": "Galois propagation",
+      "scope": "primitive Pisot substitutions",
+      "depends_on": [],
+      "evidence": [
+        [
+          "reason",
+          "source pending"
+        ]
+      ],
+      "tags": []
+    },
+    "Sweep": {
+      "id": "sha256:521c88fff63253237c424fe1a327caa3dc1e45b5c3454cd7aba097aa9808add6",
+      "kind": "bounded_experiment",
+      "statement": "no counterexample up to length 7",
+      "scope": "images of length <= 3",
+      "depends_on": [],
+      "evidence": [
+        [
+          "domain",
+          "images of length <= 3"
+        ]
+      ],
+      "tags": []
+    },
+    "Lemma": {
+      "id": "sha256:62c9eb30291a3996ff8e916cc91ab10f3b9aadcb6db79ea91bd238ff20540724",
+      "kind": "verified_finite_computation",
+      "statement": "finite lemma",
+      "scope": "primitive Pisot substitutions",
+      "depends_on": [
+        [
+          "sha256:5100a3ec500701af89712f22227a928d5e99d00a99f17c5d9e2b08a9635187cc",
+          "4554 PIP specimens, 0 capped",
+          "lemma/census",
+          "scope=4554 PIP specimens",
+          "accepted"
+        ],
+        [
+          "sha256:2420cf5ecc4839ea1ecfa0cc500eed520e2766cfea47d606bc231076588b4dda",
+          "coincidence density theorem",
+          "lemma/density",
+          "same",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "digest",
+          "sha256:lemma"
+        ],
+        [
+          "replay",
+          "pixi run test"
+        ]
+      ],
+      "tags": []
+    },
+    "Theorem": {
+      "id": "sha256:71c641952049688ca026bf20181d38c66c6172f00b31862275ad0e23b32f4e06",
+      "kind": "verified_finite_computation",
+      "statement": "closure over verified and imported records",
+      "scope": "primitive Pisot substitutions",
+      "depends_on": [
+        [
+          "sha256:62c9eb30291a3996ff8e916cc91ab10f3b9aadcb6db79ea91bd238ff20540724",
+          "finite lemma",
+          "theorem/lemma",
+          "same",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "digest",
+          "sha256:theorem"
+        ],
+        [
+          "replay",
+          "pixi run verify"
+        ]
+      ],
+      "tags": []
+    },
+    "Conditional": {
+      "id": "sha256:d33bd488a0d2754cf690a70ed07d738aa0cef4a6ba82cf86bafac0beb83c5dad",
+      "kind": "verified_finite_computation",
+      "statement": "depends on pending material",
+      "scope": "primitive Pisot substitutions",
+      "depends_on": [
+        [
+          "sha256:62c9eb30291a3996ff8e916cc91ab10f3b9aadcb6db79ea91bd238ff20540724",
+          "finite lemma",
+          "conditional/lemma",
+          "same",
+          "accepted"
+        ],
+        [
+          "sha256:9c6a2f67dcdf8fc99ea5f72fc0bc63872b59387467c851b033b4882d77d9f9f7",
+          "Galois propagation",
+          "conditional/galois",
+          "same",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "digest",
+          "y"
+        ],
+        [
+          "replay",
+          "x"
+        ]
+      ],
+      "tags": []
+    },
+    "WithinSweep": {
+      "id": "sha256:baf4caa6e3801c78aa979aa5126cb57ea14e03ce0f49b160309add6c80bde265",
+      "kind": "verified_finite_computation",
+      "statement": "bounded claim closed by a bounded experiment",
+      "scope": "images of length <= 3",
+      "depends_on": [
+        [
+          "sha256:521c88fff63253237c424fe1a327caa3dc1e45b5c3454cd7aba097aa9808add6",
+          "no counterexample up to length 7",
+          "within/sweep",
+          "same",
+          "bounded"
+        ]
+      ],
+      "evidence": [
+        [
+          "digest",
+          "y"
+        ],
+        [
+          "replay",
+          "x"
+        ]
+      ],
+      "tags": []
+    },
+    "Retracted": {
+      "id": "sha256:d41caab65e53366adae75731de2f5021fe3998d19cdf3c1270519531fa9c38eb",
+      "kind": "pending_dependency",
+      "statement": "retracted renewal lemma",
+      "scope": "primitive Pisot substitutions",
+      "depends_on": [],
+      "evidence": [
+        [
+          "reason",
+          "withdrawn 2026-09-16"
+        ]
+      ],
+      "tags": [
+        "withdrawn"
+      ]
+    },
+    "OnRetracted": {
+      "id": "sha256:078294b0c4cd262054723db0d4a355f980e75102ee095d32780abe3be72770df",
+      "kind": "verified_finite_computation",
+      "statement": "depends on the retracted lemma",
+      "scope": "primitive Pisot substitutions",
+      "depends_on": [
+        [
+          "sha256:d41caab65e53366adae75731de2f5021fe3998d19cdf3c1270519531fa9c38eb",
+          "retracted renewal lemma",
+          "on_retracted/retracted",
+          "same",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "digest",
+          "y"
+        ],
+        [
+          "replay",
+          "x"
+        ]
+      ],
+      "tags": [
+        "status:blocked"
+      ]
+    }
+  }
+}
