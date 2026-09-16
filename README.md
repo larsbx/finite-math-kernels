@@ -23,6 +23,7 @@ substitution_dynamics/
   sadic.mojo
   coincidence.mojo
 proof_records/
+  ProofArchitecture.tla
 audit/
   claim_governance/
 ```
@@ -50,6 +51,11 @@ not part of this repository.
   conclusion (Dekking) and the kneading interpretation of tuning are the
   consumer's imported theorems.
 - Proof-record acceptance policy belongs to the consumer.
+- Generated ledgers (`docs/ledger-generation-spec.md`) are functions of a
+  consumer's named proof records: the TLA+ ledger and TLC models over
+  `proof_records/ProofArchitecture.tla`, the `[[claim]]` entries, and the
+  Markdown index all say what the records say, and the generator refuses a
+  ledger it cannot render faithfully. It promotes nothing.
 - Claim-governance checks enforce only a consumer-supplied policy; the
   monorepo does not encode NLAP or PSC theorem status as library truth.
 
