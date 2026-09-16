@@ -1,4 +1,4 @@
-"""Conformance tests for tools/generate_ledgers.py against docs/ledger-generation-spec.md."""
+"""Conformance tests for proof_records/generate_ledgers.py against docs/ledger-generation-spec.md."""
 
 from __future__ import annotations
 
@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "tools"))
 
-import generate_ledgers as gl  # noqa: E402
+from proof_records import generate_ledgers as gl  # noqa: E402
 import make_ledger_example as mle  # noqa: E402
 import make_vectors as mv  # noqa: E402
 
@@ -33,6 +33,7 @@ def ledger(**changes) -> gl.Ledger:
         assumption_sets={k: tuple(v) for k, v in data["assumption_sets"].items()},
         status_classes={**gl.DEFAULT_STATUS_CLASSES, **data["status_classes"]},
         status_labels=data["status_labels"], tla_dir=data["tla_dir"], index_path=data["index_path"], source="example.json",
+        aliases={k: tuple(v) for k, v in data["aliases"].items()}, surfaces={k: tuple(v) for k, v in data["surfaces"].items()},
     )
 
 
@@ -74,11 +75,12 @@ def test_claim_governance_audit_of_the_example_passes():
 
 
 def test_partition_of_the_results():
-    assert ANALYSIS.proved == ("Census", "Conditional", "Lemma", "OnRetracted", "Theorem", "WithinSweep")
+    assert ANALYSIS.proved == ("Census", "Conditional", "Lemma", "OnRetracted", "Proof", "Theorem", "WithinSweep")
     assert ANALYSIS.imported == ("Density",)
     assert ANALYSIS.bounded == ("Sweep",)
     assert ANALYSIS.withdrawn == ("Retracted",)
     requires = {e.name: e.requires for e in ANALYSIS.entries}
+    assert requires["Theorem"] == ("Lemma", "Proof") and requires["Proof"] == ()
     assert requires["Conditional"] == ("Lemma", "Galois")
     assert requires["Lemma"] == ("Census", "Density")
     assert requires["Census"] == ()
@@ -86,18 +88,18 @@ def test_partition_of_the_results():
 
 def test_status_classes_follow_kind_tags_and_closure():
     status = {e.name: e.status for e in ANALYSIS.entries}
-    assert status == {"Census": "proved", "Lemma": "proved", "Theorem": "proved", "WithinSweep": "proved",
+    assert status == {"Census": "proved", "Proof": "proved", "Lemma": "proved", "Theorem": "proved", "WithinSweep": "proved",
                       "Conditional": "conditional", "Density": "imported", "Sweep": "finite-domain",
                       "Galois": "open-frontier", "Retracted": "retired", "OnRetracted": "blocked"}
     assert {e.name for e in ANALYSIS.entries if not e.closure.complete} == {"Conditional", "Galois", "OnRetracted", "Retracted", "Sweep"}
 
 
 def test_established_is_the_least_fixpoint():
-    assert gl.established(ANALYSIS, ()) == {"Census"}
-    assert gl.established(ANALYSIS, ("Density",)) == {"Census", "Density", "Lemma", "Theorem"}
-    assert gl.established(ANALYSIS, ("Galois",)) == {"Census", "Galois"}
-    assert gl.established(ANALYSIS, ("Density", "Galois")) == {"Census", "Density", "Galois", "Lemma", "Theorem", "Conditional"}
-    assert gl.established(ANALYSIS, ("Sweep",)) == {"Census", "Sweep", "WithinSweep"}
+    assert gl.established(ANALYSIS, ()) == {"Census", "Proof"}
+    assert gl.established(ANALYSIS, ("Density",)) == {"Census", "Proof", "Density", "Lemma", "Theorem"}
+    assert gl.established(ANALYSIS, ("Galois",)) == {"Census", "Proof", "Galois"}
+    assert gl.established(ANALYSIS, ("Density", "Galois")) == {"Census", "Proof", "Density", "Galois", "Lemma", "Theorem", "Conditional"}
+    assert gl.established(ANALYSIS, ("Sweep",)) == {"Census", "Proof", "Sweep", "WithinSweep"}
 
 
 def test_assumptions_that_would_break_no_withdrawn_dependency_are_refused():
@@ -118,7 +120,7 @@ def test_output_paths_stay_inside_the_root_and_never_collide():
     assert "index_path 'tla/Example.tla' collides with a generated TLA+ file" in refusal(ledger(index_path="tla/Example.tla"))
     assert "index_path 'tla//MCExampleOpen.cfg' collides" in refusal(ledger(index_path="tla//MCExampleOpen.cfg"))
     assert gl.output_paths(ledger()) == ("tla/Example.tla", "tla/MCExampleOpen.tla", "tla/MCExampleOpen.cfg", "tla/MCExampleImports.tla",
-                                         "tla/MCExampleImports.cfg", "ledger-index.md")
+                                         "tla/MCExampleImports.cfg", "tla/MCExampleGaloisAssumed.tla", "tla/MCExampleGaloisAssumed.cfg", "ledger-index.md")
 
 
 def tagged(record, *tags):
@@ -138,6 +140,11 @@ def test_each_refusal_names_its_reason():
     assert "assumption set 'ProvedDef': invalid or reserved name" in refusal(ledger(assumption_sets={"ProvedDef": ["Census"]}))
     assert "assumption set 'Census' collides with a record name" in refusal(ledger(assumption_sets={"Census": []}))
     assert "assumption set 'S': unknown record 'Nobody'" in refusal(ledger(assumption_sets={"S": ["Nobody"]}))
+    assert "aliases for unknown record 'Nobody'" in refusal(ledger(aliases={"Nobody": ["x"]}))
+    assert "surfaces for unknown record 'Nobody'" in refusal(ledger(surfaces={"Nobody": [{"path": "x"}]}))
+    assert "Census: a passthrough surface needs a path" in refusal(ledger(surfaces={"Census": [{"anchor": "x"}]}))
+    assert "assumption set 'Open': invalid or reserved name" in refusal(ledger(assumption_sets={"Open": ["Census"]}))
+    assert "assumption set 'Imports': invalid or reserved name" in refusal(ledger(assumption_sets={"Imports": ["Census"]}))
 
 
 def test_load_refuses_wrong_format_and_empty_ledgers(tmp_path):
@@ -148,6 +155,22 @@ def test_load_refuses_wrong_format_and_empty_ledgers(tmp_path):
     path.write_text(json.dumps({"format": gl.FORMAT, "records": {}}))
     with pytest.raises(gl.LedgerError, match="no records"):
         gl.load_ledger(path)
+    base = mle.example()
+    path.write_text(json.dumps({**base, "aliases": {"Census": "PIP census"}}))
+    with pytest.raises(gl.LedgerError, match="aliases\\['Census'\\] must be a list of strings"):
+        gl.load_ledger(path)
+    path.write_text(json.dumps({**base, "surfaces": {"Census": "ledger-index.md"}}))
+    with pytest.raises(gl.LedgerError, match="surfaces\\['Census'\\] must be a list of tables"):
+        gl.load_ledger(path)
+
+
+def test_passthrough_strings_are_toml_safe_beyond_the_basic_plane():
+    import tomllib
+    exotic = ledger(aliases={"Census": ["𝔓 census 😀", 'quote " and backslash \\']}, surfaces={"Census": [{"path": "ledger-index.md", "anchor": "| 𝔓 |", "expect": "present"}]})
+    fragment = gl.render_claims(gl.analyse(exotic))
+    parsed = tomllib.loads("[repository]\nname = 'x'\n" + fragment)
+    census = next(c for c in parsed["claim"] if c["name"] == "Census")
+    assert census["aliases"] == ["𝔓 census 😀", 'quote " and backslash \\'] and census["surfaces"][-1]["anchor"] == "| 𝔓 |"
 
 
 # --- section 3: surfaces -----------------------------------------------------
@@ -165,6 +188,7 @@ def test_tla_ledger_rendering():
     assert 'ImportedDef == {\n    "Density"\n}' in text
     assert 'WithdrawnDef == {\n    "Retracted"\n}' in text
     assert 'GaloisAssumed == {\n    "Galois"\n}' in text
+    assert '      [] r = "Theorem" -> {"Lemma", "Proof"}' in text
     assert "ImportsAssumed == ImportedDef" in text
     assert 'RetractedNotEstablished == "Retracted" \\notin established' in text
     assert text == gl.render_tla(gl.analyse(ledger()))
@@ -172,14 +196,17 @@ def test_tla_ledger_rendering():
 
 def test_models_list_the_unreachable_results_and_the_reachable_set():
     models = gl.render_models(ANALYSIS)
-    assert set(models) == {"MCExampleOpen.tla", "MCExampleOpen.cfg", "MCExampleImports.tla", "MCExampleImports.cfg"}
+    assert set(models) == {f"MCExample{s}.{ext}" for s in ("Open", "Imports", "GaloisAssumed") for ext in ("tla", "cfg")}
     open_cfg, imports_cfg = models["MCExampleOpen.cfg"], models["MCExampleImports.cfg"]
     assert "CONSTANT Assumed   <- NoAssumptions" in open_cfg and "CONSTANT Assumed   <- ImportsAssumed" in imports_cfg
     invariants = lambda cfg: [l.strip() for l in cfg[cfg.index("INVARIANTS"):cfg.index("PROPERTY")].splitlines()[1:] if l.strip()]
     assert invariants(open_cfg) == list(gl.BASE_INVARIANTS) + [f"{n}NotEstablished" for n in
                                                                 ("Conditional", "Density", "Galois", "Lemma", "OnRetracted", "Retracted", "Sweep", "Theorem", "WithinSweep")]
+    galois_cfg = models["MCExampleGaloisAssumed.cfg"]
+    assert "CONSTANT Assumed   <- GaloisAssumed" in galois_cfg and "GaloisNotEstablished" not in galois_cfg
+    assert 'Reachable == {\n    "Census",\n    "Galois",\n    "Proof"\n}' in models["MCExampleGaloisAssumed.tla"]
     assert "LemmaNotEstablished" not in invariants(imports_cfg) and "ConditionalNotEstablished" in invariants(imports_cfg)
-    assert 'Reachable == {\n    "Census"\n}' in models["MCExampleOpen.tla"]
+    assert 'Reachable == {\n    "Census",\n    "Proof"\n}' in models["MCExampleOpen.tla"]
     assert '"Theorem"' in models["MCExampleImports.tla"]
     assert "EventuallyReachable == <>(established = Reachable)" in models["MCExampleImports.tla"]
     assert "EXTENDS Example" in models["MCExampleOpen.tla"]
@@ -191,6 +218,11 @@ def test_claims_rendering_and_splice():
     assert fragment.count("[[claim]]") == len(ANALYSIS.entries)
     census = fragment[fragment.index('name = "Census"'):fragment.index('name = "Conditional"')]
     assert 'section = "ProvedDef == {"' in census and 'expect = "present"' in census and "anchor = '| Census |'" in census
+    assert 'aliases = ["PIP census", "4554 specimens"]' in census
+    assert census.count("[[claim.surfaces]]") == 3 and 'anchor = "| Census | theorem |"' in census
+    assert census.rstrip("\n").endswith('expect = "present"\n\n[[claim]]')
+    proof = fragment[fragment.index('name = "Proof"'):fragment.index('name = "Retracted"')]
+    assert 'status = "proved"' in proof and proof.count("[[claim.surfaces]]") == 2
     density = fragment[fragment.index('name = "Density"'):fragment.index('name = "Galois"')]
     assert 'section = "ImportedDef == {"' in density
     galois = fragment[fragment.index('name = "Galois"'):fragment.index('name = "Lemma"')]
@@ -220,6 +252,7 @@ def test_index_rows_carry_label_dependencies_and_closure():
     rows = {line.split(" | ")[0].strip("| "): line for line in text.splitlines() if line.startswith("| ") and not line.startswith("| Claim") and not line.startswith("| ---")}
     assert rows["Census"].startswith("| Census | theorem | verified_finite_computation | 4554 PIP specimens |")
     assert rows["Lemma"].endswith("| `Census`, `Density` | complete |")
+    assert rows["Theorem"].endswith("| `Lemma`, `Proof` | complete |") and rows["Proof"].split(" | ")[2] == "repository_theorem"
     assert rows["Conditional"].endswith("| `Lemma`, `Galois` | incomplete: Galois (pending: source pending) |")
     assert rows["Sweep"].endswith("| none | incomplete: Sweep (bounded experiment is evidence, not a theorem) |")
     assert rows["Galois"].split(" | ")[1] == "open"
@@ -266,7 +299,7 @@ def test_tlc_verifies_both_models_and_rejects_a_wrong_configuration(tmp_path):
     for path in (FIXTURE / "tla").iterdir():
         shutil.copy(path, tmp_path / path.name)
     shutil.copy(ROOT / "proof_records" / "ProofArchitecture.tla", tmp_path / "ProofArchitecture.tla")
-    for model, states in (("MCExampleOpen", 2), ("MCExampleImports", 4)):
+    for model, states in (("MCExampleOpen", 2), ("MCExampleImports", 4), ("MCExampleGaloisAssumed", 2)):
         log = tlc(tmp_path, model)
         assert "No error has been found" in log, log
         assert f"{states} distinct states found" in log

@@ -40,13 +40,15 @@ def rec(kind: Kind, statement: str, scope: str, deps: tuple[Edge, ...] = (), tag
     return identified(Record("", kind, statement, scope, deps, tuple(sorted(evidence.items())), tags))
 
 
+PROOF = rec(Kind.REPOSITORY, "seed-patch overlap graph finiteness", PISOT, source="manuscript Theorem 4.22", proof_reviewed="true")
+UNREVIEWED = rec(Kind.REPOSITORY, "repository theorem with an unreviewed proof", PISOT, source="draft", proof_reviewed="false")
 CENSUS = rec(Kind.VERIFIED, "4554 PIP specimens, 0 capped", SPECIMENS, replay="pixi run mojo run -I . census.mojo", digest="sha256:census")
 DENSITY = rec(Kind.IMPORTED, "coincidence density theorem", PISOT, source="Barge-Stimac-Williams", hypotheses_checked="true")
 GALOIS = rec(Kind.PENDING, "Galois propagation", PISOT, reason="source pending")
 SWEEP = rec(Kind.BOUNDED, "no counterexample up to length 7", SHORT, domain=SHORT)
 LEMMA = rec(Kind.VERIFIED, "finite lemma", PISOT, (edge(CENSUS, "lemma/census", "scope=" + SPECIMENS), edge(DENSITY, "lemma/density")),
             replay="pixi run test", digest="sha256:lemma")
-THEOREM = rec(Kind.VERIFIED, "closure over verified and imported records", PISOT, (edge(LEMMA, "theorem/lemma"),),
+THEOREM = rec(Kind.VERIFIED, "closure over verified and imported records", PISOT, (edge(LEMMA, "theorem/lemma"), edge(PROOF, "theorem/proof")),
               replay="pixi run verify", digest="sha256:theorem")
 CONDITIONAL = rec(Kind.VERIFIED, "depends on pending material", PISOT, (edge(LEMMA, "conditional/lemma"), edge(GALOIS, "conditional/galois")),
                   replay="x", digest="y")
@@ -81,7 +83,7 @@ BOUNDED_ELSEWHERE = rec(Kind.VERIFIED, "bounded dependency outside its own scope
                         (edge(SWEEP, "elsewhere/sweep", "scope=" + SHORT, BOUNDED),), replay="x", digest="y")
 
 LABELS = {
-    "census": CENSUS, "bsw": DENSITY, "galois": GALOIS, "sweep": SWEEP, "lemma": LEMMA, "theorem": THEOREM, "conditional": CONDITIONAL,
+    "proof": PROOF, "unreviewed": UNREVIEWED, "census": CENSUS, "bsw": DENSITY, "galois": GALOIS, "sweep": SWEEP, "lemma": LEMMA, "theorem": THEOREM, "conditional": CONDITIONAL,
     "evidence": EVIDENCE_ONLY, "within": WITHIN_SWEEP, "unchecked": UNCHECKED, "circle": CIRCLE, "mlc": MLC, "on_circle": ON_CIRCLE,
     "frontier": FRONTIER, "dangling": DANGLING, "wrong_claim": WRONG_CLAIM, "wrong_scope": WRONG_SCOPE, "wrong_outcome": WRONG_OUTCOME,
     "forged": FORGED_ID, "a": LOOP_A, "b": LOOP_B, "bad": DUPLICATE_DEP, "bad_relation": BAD_RELATION, "bad_outcome": BAD_OUTCOME,
@@ -99,6 +101,8 @@ CASES = [
     ("bounded experiment cited as support", "evidence", "none"),
     ("bounded experiment as root", "sweep", "none"),
     ("unchecked import", "unchecked", "none"),
+    ("repository theorem as root", "proof", "none"),
+    ("unreviewed repository theorem", "unreviewed", "none"),
     ("unknown record", "dangling", "none"),
     ("ledger key mismatch", "mismatch", "none"),
     ("claim mismatch", "wrong_claim", "none"),

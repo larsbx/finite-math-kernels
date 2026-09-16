@@ -19,6 +19,7 @@ from enum import Enum
 
 class Kind(str, Enum):
     VERIFIED = "verified_finite_computation"
+    REPOSITORY = "repository_theorem"
     IMPORTED = "imported_theorem"
     PENDING = "pending_dependency"
     BOUNDED = "bounded_experiment"
@@ -27,6 +28,7 @@ class Kind(str, Enum):
 
 REQUIRED_EVIDENCE: Mapping[Kind, frozenset[str]] = {
     Kind.VERIFIED: frozenset({"replay", "digest"}),
+    Kind.REPOSITORY: frozenset({"source", "proof_reviewed"}),
     Kind.IMPORTED: frozenset({"source", "hypotheses_checked"}),
     Kind.PENDING: frozenset({"reason"}),
     Kind.BOUNDED: frozenset({"domain"}),
@@ -132,8 +134,9 @@ def validate(record: Record) -> Record:
     Fail closed, in the order of docs/proof-records-specification.md
     section 3: unknown kind; rejected without reason; empty statement or
     scope; duplicate evidence key; missing required evidence; malformed
-    dependency edges; imported theorem with unchecked hypotheses; an
-    identifier that is not the digest of the record's preimage.
+    dependency edges; imported theorem with unchecked hypotheses; repository
+    theorem without a reviewed proof; an identifier that is not the digest
+    of the record's preimage.
     """
     if not isinstance(record.kind, Kind):
         return rejected(record, "unknown record kind")
@@ -152,6 +155,8 @@ def validate(record: Record) -> Record:
         return rejected(record, edge_reason)
     if record.kind is Kind.IMPORTED and record.field("hypotheses_checked") != TRUE:
         return rejected(record, "imported theorem with unchecked hypotheses")
+    if record.kind is Kind.REPOSITORY and record.field("proof_reviewed") != TRUE:
+        return rejected(record, "repository theorem without a reviewed proof")
     if record.id != identity(record):
         return rejected(record, "identifier does not match preimage")
     return record
