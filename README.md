@@ -19,6 +19,9 @@ substitution_dynamics/
   balanced_pairs.mojo
   automaton.mojo
   discrepancy.mojo
+  tuning.mojo
+  sadic.mojo
+  coincidence.mojo
 proof_records/
 audit/
   claim_governance/
@@ -41,6 +44,11 @@ not part of this repository.
   or conjectural theorem claims.
 - A capped balanced-pair automaton is inconclusive, never a proof or
   counterexample.
+- Tuning patterns, directive prefixes, and column coincidence are finite
+  combinatorics (`docs/tuning-substitutions-spec.md`). A coincidence witness
+  is a fact about columns of powers of a substitution; the spectral
+  conclusion (Dekking) and the kneading interpretation of tuning are the
+  consumer's imported theorems.
 - Proof-record acceptance policy belongs to the consumer.
 - Claim-governance checks enforce only a consumer-supplied policy; the
   monorepo does not encode NLAP or PSC theorem status as library truth.

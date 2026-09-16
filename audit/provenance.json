@@ -9,7 +9,7 @@
       "relation": "authored"
     },
     "README.md": {
-      "blob": "3ee3f6e9ccea2a4c1074d7ad204679c7fbf672b7",
+      "blob": "e4bf9f8f682bf4d2f68c6761776bcef89131f5d3",
       "relation": "authored"
     },
     "audit/CONSOLIDATION_PROVENANCE.md": {
@@ -153,6 +153,10 @@
       "source_blob": "86478aa8777903f6c605d4bcfd7d899ac51a74fa",
       "source_path": "docs/rational-interval-arithmetic-spec.md"
     },
+    "docs/tuning-substitutions-spec.md": {
+      "blob": "594a306f8ba938efb3dd52005c9b867a113d4528",
+      "relation": "authored"
+    },
     "finite_exact/__init__.mojo": {
       "blob": "4397b5e5e7ad08dd46986a1313e5772a60eb47b4",
       "relation": "modified",
@@ -249,7 +253,7 @@
       "relation": "generated"
     },
     "pixi.toml": {
-      "blob": "42daf573a04195b721cff8f8483bef5860ea7e60",
+      "blob": "c0326969faa12df6bd82208fdf29381af3452751",
       "relation": "authored"
     },
     "proof_records/__init__.mojo": {
@@ -285,8 +289,8 @@
       "relation": "authored"
     },
     "substitution_dynamics/__init__.mojo": {
-      "blob": "39630ebf50177ba3e2cdd73b6b5ed1898b76324a",
-      "relation": "copy",
+      "blob": "76f83f038f0df80fc776202b5a5d52f8c18677e4",
+      "relation": "modified",
       "source": "substitution_dynamics",
       "source_blob": "39630ebf50177ba3e2cdd73b6b5ed1898b76324a",
       "source_path": "substitution_dynamics/__init__.mojo"
@@ -305,6 +309,10 @@
       "source_blob": "9cc1c10b81df03f83db5502509c3088cf04e5291",
       "source_path": "substitution_dynamics/balanced_pairs.mojo"
     },
+    "substitution_dynamics/coincidence.mojo": {
+      "blob": "7e1c389545a95480e275613da42826f0a87f33df",
+      "relation": "authored"
+    },
     "substitution_dynamics/discrepancy.mojo": {
       "blob": "04f6f0d04f3320397c1f1c16bde2d038260d994e",
       "relation": "copy",
@@ -312,12 +320,20 @@
       "source_blob": "04f6f0d04f3320397c1f1c16bde2d038260d994e",
       "source_path": "substitution_dynamics/discrepancy.mojo"
     },
+    "substitution_dynamics/sadic.mojo": {
+      "blob": "bf2c6d0113b645161dbffb78884d6385588aaf60",
+      "relation": "authored"
+    },
     "substitution_dynamics/substitution.mojo": {
       "blob": "6ff23b0f8d48cffcc551c48ad6347278669cb6c7",
       "relation": "copy",
       "source": "substitution_dynamics",
       "source_blob": "6ff23b0f8d48cffcc551c48ad6347278669cb6c7",
       "source_path": "substitution_dynamics/substitution.mojo"
+    },
+    "substitution_dynamics/tuning.mojo": {
+      "blob": "9339bbf18a4cc916119dc589ea4c05a92e1bdff4",
+      "relation": "authored"
     },
     "substitution_dynamics/words.mojo": {
       "blob": "7666617cfd592d99f1c15c88dbb47deca6f82277",
@@ -489,8 +505,16 @@
       "source_blob": "e7761a4b496ac948ab94f5070af80ad4f5f30a70",
       "source_path": "tests/test_substitution_dynamics.mojo"
     },
+    "tests/substitution_dynamics/test_tuning.mojo": {
+      "blob": "256013e1c9d7f9d3d557eae96876b08c4ea7a527",
+      "relation": "authored"
+    },
+    "tests/substitution_dynamics/test_tuning_reference.py": {
+      "blob": "6afb355b672df944628a2eaacf58b939d5bd35ba",
+      "relation": "authored"
+    },
     "tools/check_references.py": {
-      "blob": "1b8288b6471d51041e876df6bfc567608b6c2e13",
+      "blob": "06b8284ff927264d6cb1a1ced8bd21195faed5d1",
       "relation": "authored"
     },
     "tools/make_vectors.py": {
@@ -517,6 +541,10 @@
       "source": "finite_proof_records",
       "source_blob": "8d3744bdb731f8cff72f6379f52dbc50d27bec6e",
       "source_path": "tools/replay_mojo.py"
+    },
+    "tools/tuning_reference.py": {
+      "blob": "1dffd28d5e21d442268fc4101b7f124e3ed3aef3",
+      "relation": "authored"
     }
   },
   "format": "finite-math-kernels provenance 1",

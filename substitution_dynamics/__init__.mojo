@@ -1,6 +1,6 @@
 # substitution_dynamics: finite words, substitutions, balanced pairs, the
-# balanced-pair automaton, and swap-walk discrepancy over an explicit
-# alphabet.
+# balanced-pair automaton, swap-walk discrepancy, tuning patterns, directive
+# prefixes, and column coincidence over an explicit alphabet.
 #
 # Extracted from the PSC research kernel (psc/words.mojo, psc/bpa.mojo,
 # psc/swap_discrepancy.mojo). The package knows nothing about the Pisot
