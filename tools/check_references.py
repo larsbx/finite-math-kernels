@@ -36,7 +36,10 @@ TASK_TOKEN = re.compile(r"pixi run ([A-Za-z0-9_-]+)")
 QUOTED = re.compile(r'"[^"]*"')
 TASK_DEFINITION = re.compile(r"^([A-Za-z0-9_-]+) = ", re.M)
 
-NLAP = "larsbx/NLAP-JT"
+# The finite-regime Mandelbrot program moved from larsbx/NLAP-JT to this
+# repository on 2026-09-16; NLAP-JT is historical and receives no new work,
+# so every row below names the live home of the file it attests.
+NLAP = "larsbx/finite-mandlebrot-research (formerly larsbx/NLAP-JT)"
 PSC = "larsbx/pisot-substitution-conjecture-research"
 EXTERNAL: Mapping[str, str] = {
     "docs/canonical-serialization.md": NLAP,

@@ -13,6 +13,8 @@ Translating a receipt **preserves or lowers authority, never raises it**. Concre
 | `larsbx/sprucegoose` | five evidence classes | `docs/release-provenance.md`, section "Evidence classes", at commit `c211ff6` |
 | `larsbx/crypto-composer` | two ledger statuses | `tdd_ledger.zig` (`Status = enum { red, green }`) and `test/harness.zig` (`requireProof`), at commit `6b8ee2c` |
 
+The Mandelbrot consumer named in `tools/check_references.py` is `larsbx/finite-mandlebrot-research`, which took over from `larsbx/NLAP-JT` on 2026-09-16; the historical name is kept only where a sentence quotes a past commit.
+
 Both were read at those commits rather than transcribed from the round-two audit; if either vocabulary changes, this document and `proof_records/vocabularies.py` change with it, and the conformance tests fail until they do.
 
 ## 2. The map

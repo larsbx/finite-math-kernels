@@ -133,7 +133,7 @@
       "source_path": "docs/canonical-encoding.md"
     },
     "docs/evidence-vocabulary-map.md": {
-      "blob": "191f970d3b1ec419cbf0d5525acb325aa0c787fa",
+      "blob": "1182b5b0c6a165a0763acd39df53f82ffb9f054b",
       "relation": "authored"
     },
     "docs/exact-arithmetic-public-boundary.md": {
@@ -148,7 +148,7 @@
       "relation": "authored"
     },
     "docs/proof-records-specification.md": {
-      "blob": "92ebd67ef6e49c0433b43f8337a85bb83c9788ab",
+      "blob": "400377b9ebe41ff4c4a73fd157330e569d6367fc",
       "relation": "modified",
       "source": "finite_proof_records",
       "source_blob": "145c282052309b9fdbcc7baeef4bbeadc4963875",
@@ -323,7 +323,7 @@
       "source_path": "finite_proof_records/__init__.py"
     },
     "proof_records/generate_ledgers.py": {
-      "blob": "c58b388113e0c7c007e6951ec02daa977e1f4b15",
+      "blob": "fa17c9dee6c70994eacac62a18332efbdc275467",
       "relation": "authored"
     },
     "proof_records/records.mojo": {
@@ -582,7 +582,7 @@
       "relation": "authored"
     },
     "tools/check_references.py": {
-      "blob": "a07cbbf52db3d3be24ea15e2956b56b700bf8620",
+      "blob": "cd164bc45d5071f878bda56fd7d6768115c668ca",
       "relation": "authored"
     },
     "tools/make_ledger_example.py": {
