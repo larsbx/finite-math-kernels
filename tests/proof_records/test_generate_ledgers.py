@@ -1,4 +1,4 @@
-"""Conformance tests for tools/generate_ledgers.py against docs/ledger-generation-spec.md."""
+"""Conformance tests for proof_records/generate_ledgers.py against docs/ledger-generation-spec.md."""
 
 from __future__ import annotations
 
@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "tools"))
 
-import generate_ledgers as gl  # noqa: E402
+from proof_records import generate_ledgers as gl  # noqa: E402
 import make_ledger_example as mle  # noqa: E402
 import make_vectors as mv  # noqa: E402
 

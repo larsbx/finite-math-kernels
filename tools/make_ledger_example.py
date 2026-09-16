@@ -3,7 +3,7 @@
 
 The example names the records of `tools/make_vectors.py` plus a withdrawn
 pending claim and a record that depends on it, so that every branch of
-`tools/generate_ledgers.py` (proved, imported, bounded, open, withdrawn,
+`proof_records/generate_ledgers.py` (proved, imported, bounded, open, withdrawn,
 unreachable, assumption sets, status overrides) appears in the committed
 output. `tests/proof_records/test_generate_ledgers.py` fails if the committed
 files differ from the regeneration. Usage: make_ledger_example.py [--check]
@@ -20,7 +20,7 @@ sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "tools"))
 
 from proof_records.records import Kind, Record, edge  # noqa: E402
-import generate_ledgers as gl  # noqa: E402
+from proof_records import generate_ledgers as gl  # noqa: E402
 import make_vectors as mv  # noqa: E402
 
 DIR = ROOT / "fixtures" / "ledger"

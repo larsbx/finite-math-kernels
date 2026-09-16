@@ -140,7 +140,7 @@
       "source_path": "docs/exact-arithmetic-public-boundary.md"
     },
     "docs/ledger-generation-spec.md": {
-      "blob": "32bde420e6f55104e6d45bb496dd2c3349947866",
+      "blob": "2898a6f6080b19a946cdae307b5fe747964bd003",
       "relation": "authored"
     },
     "docs/proof-records-specification.md": {
@@ -256,15 +256,15 @@
       "relation": "authored"
     },
     "fixtures/ledger/ledger-index.md": {
-      "blob": "cd518bd7d1f5a79d188803dc0697d0bcc9fd9d47",
+      "blob": "ad363f24b6b05f5de4bcae3700dde4f973dc3e92",
       "relation": "authored"
     },
     "fixtures/ledger/policy.toml": {
-      "blob": "3a9c8ea679190d7d883a0420f1f7d65d8a8c014b",
+      "blob": "7abef6e04b544a22b335edff94a529733a4671ec",
       "relation": "authored"
     },
     "fixtures/ledger/tla/Example.tla": {
-      "blob": "ac778eab1facddea9528b6df3789c2e6970cf85d",
+      "blob": "3fcb6f7ceef0d71b304048725732e4b1943cea30",
       "relation": "authored"
     },
     "fixtures/ledger/tla/MCExampleGaloisAssumed.cfg": {
@@ -272,7 +272,7 @@
       "relation": "authored"
     },
     "fixtures/ledger/tla/MCExampleGaloisAssumed.tla": {
-      "blob": "f236e76c946ac452cd0caf1907950b7268e9f8b1",
+      "blob": "6ac1f846fe8f08fae84d7cb97243e77cc5970ba5",
       "relation": "authored"
     },
     "fixtures/ledger/tla/MCExampleImports.cfg": {
@@ -280,7 +280,7 @@
       "relation": "authored"
     },
     "fixtures/ledger/tla/MCExampleImports.tla": {
-      "blob": "6d48ff13dde5d6e8d634d68657a9d5590e606a09",
+      "blob": "cb559c1c7cffc062407d3e1eda6fb7f26b2cd035",
       "relation": "authored"
     },
     "fixtures/ledger/tla/MCExampleOpen.cfg": {
@@ -288,7 +288,7 @@
       "relation": "authored"
     },
     "fixtures/ledger/tla/MCExampleOpen.tla": {
-      "blob": "a21b4654a2715cf1833c86c723628db89d32ba9d",
+      "blob": "3464b5ac0cdabf311fbd07d98d79fd1867d76c37",
       "relation": "authored"
     },
     "fixtures/vectors.json": {
@@ -301,7 +301,7 @@
       "relation": "authored"
     },
     "proof_records/ProofArchitecture.tla": {
-      "blob": "a089f692c4c025ac91a7c1aaaaa49d2960b015ab",
+      "blob": "6e616fb85ffe0cf62306c1ee1f89f730f3fb9cd2",
       "relation": "authored"
     },
     "proof_records/__init__.mojo": {
@@ -317,6 +317,10 @@
       "source": "finite_proof_records",
       "source_blob": "d33f5a642cb92373432a521c805aeb6c7b248484",
       "source_path": "finite_proof_records/__init__.py"
+    },
+    "proof_records/generate_ledgers.py": {
+      "blob": "8ef03fdc7b4fbbde7acdcb01ac50e2e2f5f9bc9a",
+      "relation": "authored"
     },
     "proof_records/records.mojo": {
       "blob": "4c5e8a0244f19e46fbffcdd5cdf4d07d59d07fcc",
@@ -518,7 +522,7 @@
       "source_path": "tests/replay_vectors.mojo"
     },
     "tests/proof_records/test_generate_ledgers.py": {
-      "blob": "12de3cd9631f742f973c8aac4ee1aacae759c8e5",
+      "blob": "502c30aa2fd78819ceb8a6963761288eb0191d66",
       "relation": "authored"
     },
     "tests/proof_records/test_mojo_replay.py": {
@@ -566,15 +570,11 @@
       "relation": "authored"
     },
     "tools/check_references.py": {
-      "blob": "b015e56333930ea89b61c8cd6d5f5e66f92d5c65",
-      "relation": "authored"
-    },
-    "tools/generate_ledgers.py": {
-      "blob": "ce2d3579312dd852a943094ac15e6e74232dbacb",
+      "blob": "cedd5623750653273b10bf738fdcb6b97b5f71eb",
       "relation": "authored"
     },
     "tools/make_ledger_example.py": {
-      "blob": "d3bab09b889f20054a1611dbb1dc939ebdd5f054",
+      "blob": "27a0713317763a534df21f4f484f2819d1cb0683",
       "relation": "authored"
     },
     "tools/make_vectors.py": {
