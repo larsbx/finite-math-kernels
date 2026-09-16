@@ -140,7 +140,7 @@
       "source_path": "docs/exact-arithmetic-public-boundary.md"
     },
     "docs/ledger-generation-spec.md": {
-      "blob": "7ba2f3114d1aaf4593628b71bd2640df5029e843",
+      "blob": "caf719cd0fe39a4101b24899715bf1802973a2c5",
       "relation": "authored"
     },
     "docs/proof-records-specification.md": {
@@ -510,7 +510,7 @@
       "source_path": "tests/replay_vectors.mojo"
     },
     "tests/proof_records/test_generate_ledgers.py": {
-      "blob": "9de9c1a82071d13fd2f6ee971ff20c8c4d84c81e",
+      "blob": "6c3d09e6e510fa073cf10128499523d133df853f",
       "relation": "authored"
     },
     "tests/proof_records/test_mojo_replay.py": {
@@ -562,7 +562,7 @@
       "relation": "authored"
     },
     "tools/generate_ledgers.py": {
-      "blob": "1d4b177df22d019ee5822524a3c1d3199f05344e",
+      "blob": "b112c3ec45f15e11946498df5d72f8e7fb710044",
       "relation": "authored"
     },
     "tools/make_ledger_example.py": {

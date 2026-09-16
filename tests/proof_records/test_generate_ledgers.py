@@ -92,13 +92,33 @@ def test_status_classes_follow_kind_tags_and_closure():
     assert {e.name for e in ANALYSIS.entries if not e.closure.complete} == {"Conditional", "Galois", "OnRetracted", "Retracted", "Sweep"}
 
 
-def test_established_is_the_least_fixpoint_and_excludes_withdrawn_assumptions():
+def test_established_is_the_least_fixpoint():
     assert gl.established(ANALYSIS, ()) == {"Census"}
     assert gl.established(ANALYSIS, ("Density",)) == {"Census", "Density", "Lemma", "Theorem"}
     assert gl.established(ANALYSIS, ("Galois",)) == {"Census", "Galois"}
     assert gl.established(ANALYSIS, ("Density", "Galois")) == {"Census", "Density", "Galois", "Lemma", "Theorem", "Conditional"}
-    assert gl.established(ANALYSIS, ("Retracted",)) == {"Census"}
     assert gl.established(ANALYSIS, ("Sweep",)) == {"Census", "Sweep", "WithinSweep"}
+
+
+def test_assumptions_that_would_break_no_withdrawn_dependency_are_refused():
+    # ProofArchitecture.Init establishes Assumed outright, so an assumed result
+    # that is withdrawn or requires a withdrawn result violates the invariant
+    # in the initial state; the ledger is refused instead of rendered.
+    assert "GaloisAssumed: Retracted is withdrawn and cannot be assumed" in refusal(ledger(assumption_sets={"GaloisAssumed": ["Retracted"]}))
+    assert "S: OnRetracted requires a withdrawn result and cannot be assumed" in refusal(ledger(assumption_sets={"S": ["OnRetracted"]}))
+    tainted = mv.rec(mv.Kind.IMPORTED, "import citing the retracted lemma", mv.PISOT, (mv.edge(mle.RETRACTED, "tainted/retracted"),),
+                     source="somewhere", hypotheses_checked="true")
+    assert "ImportsAssumed: Tainted requires a withdrawn result and cannot be assumed" in refusal(with_records(Tainted=mle.record_json(tainted)))
+
+
+def test_output_paths_stay_inside_the_root_and_never_collide():
+    for bad in ("/tmp/tla", "../tla", "tla/../..", ""):
+        assert f"tla_dir {bad!r} must be a normalized path" in refusal(ledger(tla_dir=bad))
+    assert "index_path '/etc/index.md' must be a normalized path" in refusal(ledger(index_path="/etc/index.md"))
+    assert "index_path 'tla/Example.tla' collides with a generated TLA+ file" in refusal(ledger(index_path="tla/Example.tla"))
+    assert "index_path 'tla//MCExampleOpen.cfg' collides" in refusal(ledger(index_path="tla//MCExampleOpen.cfg"))
+    assert gl.output_paths(ledger()) == ("tla/Example.tla", "tla/MCExampleOpen.tla", "tla/MCExampleOpen.cfg", "tla/MCExampleImports.tla",
+                                         "tla/MCExampleImports.cfg", "ledger-index.md")
 
 
 def tagged(record, *tags):
@@ -188,6 +208,8 @@ def test_policy_check_refuses_undeclared_classes_and_labels():
     assert gl.check_policy(policy, ANALYSIS) == []
     bare = "[repository]\nname = 'x'\n" + gl.render_claims(ANALYSIS)
     assert gl.check_policy(bare, ANALYSIS) == ["policy: claim 'Census' has undeclared status class 'proved'"]
+    assert gl.check_policy("repository = []\n" + gl.render_claims(ANALYSIS), ANALYSIS) == ["policy: AttributeError(\"'list' object has no attribute 'get'\")"]
+    assert gl.check_policy("[repository]\nname = 'x'\n[status]\nclasses = 'proved'\n", ANALYSIS)[0].startswith("policy: ")
     unlabelled = policy.replace('"theorem" = "proved"\n', "")
     assert gl.check_policy(unlabelled, ANALYSIS) == [f"{n}: index label 'theorem' is not a [status.synonyms] label of class 'proved'"
                                                      for n in ANALYSIS.names(lambda e: e.status == "proved")]
@@ -225,6 +247,8 @@ def test_cli_writes_checks_and_detects_hand_edits(tmp_path):
     bad.write_text(json.dumps({**mle.example(), "assumption_sets": {"ProvedDef": []}}))
     assert gl.main(["gl", str(bad), "--out", str(out)]) == 2
     assert gl.main(["gl", str(tmp_path / "missing.json"), "--out", str(out)]) == 2
+    assert gl.main(argv[:-2] + ["--claims", str(out / "ledger-index.md")]) == 2
+    assert gl.main(argv[:-2] + ["--claims", str(out / "tla" / ".." / "tla" / "Example.tla")]) == 2
 
 
 # --- section 5: TLC, when available --------------------------------------------

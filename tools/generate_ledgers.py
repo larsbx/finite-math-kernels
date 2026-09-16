@@ -155,6 +155,18 @@ def load_ledger(path: Path) -> Ledger:
 # --- section 2: analysis, fail closed --------------------------------------------
 
 
+def _inside_root(path: str) -> bool:
+    """A non-empty relative path with no `..` component and no absolute prefix."""
+    parts = Path(path).parts
+    return bool(parts) and not Path(path).is_absolute() and ".." not in parts and parts[0] not in ("/", "\\")
+
+
+def output_paths(ledger: Ledger) -> tuple[str, ...]:
+    """Every generated surface's path relative to the output root, the index last."""
+    tla = [f"{ledger.tla_dir}/{ledger.module}.tla"] + [f"{ledger.tla_dir}/MC{ledger.module}{s}.{ext}" for s in ("Open", "Imports") for ext in ("tla", "cfg")]
+    return (*tla, ledger.index_path)
+
+
 def analyse(ledger: Ledger) -> Analysis:
     errors: list[str] = []
     if not NAME.match(ledger.module):
@@ -176,6 +188,11 @@ def analyse(ledger: Ledger) -> Analysis:
     for name in ledger.assumption_sets:
         if name in ledger.records:
             errors.append(f"assumption set {name!r} collides with a record name")
+    for label, value in (("tla_dir", ledger.tla_dir), ("index_path", ledger.index_path)):
+        if not _inside_root(value):
+            errors.append(f"{label} {value!r} must be a normalized path relative to the output root")
+    if Path(ledger.index_path).as_posix() in {Path(p).as_posix() for p in output_paths(ledger)[:-1]}:
+        errors.append(f"index_path {ledger.index_path!r} collides with a generated TLA+ file")
 
     id_ledger = {r.id: r for r in ledger.records.values()}
     entries: list[Entry] = []
@@ -201,9 +218,18 @@ def analyse(ledger: Ledger) -> Analysis:
             errors.append(f"{name}: more than one status override tag")
         closure = close(id_ledger, record.id)
         entries.append(Entry(name, record, found, withdrawn, _status(ledger, record, withdrawn, overrides, closure), tuple(requires), closure))
+    analysis = Analysis(ledger, tuple(entries))
+    withdrawn = set(analysis.withdrawn)
+    requires = {e.name: set(e.requires) for e in entries}
+    for set_name, members in (("ImportsAssumed", analysis.imported), *sorted(ledger.assumption_sets.items())):
+        for member in members:
+            if member in withdrawn:
+                errors.append(f"{set_name}: {member} is withdrawn and cannot be assumed")
+            elif requires.get(member, set()) & withdrawn:
+                errors.append(f"{set_name}: {member} requires a withdrawn result and cannot be assumed")
     if errors:
         raise LedgerError("ledger refused:\n  " + "\n  ".join(errors))
-    return Analysis(ledger, tuple(entries))
+    return analysis
 
 
 def _status(ledger: Ledger, record: Record, withdrawn: bool, overrides: Sequence[str], closure: Closure) -> str:
@@ -219,13 +245,15 @@ def _status(ledger: Ledger, record: Record, withdrawn: bool, overrides: Sequence
 
 
 def established(analysis: Analysis, assumed: Sequence[str]) -> frozenset[str]:
-    """Least fixpoint of ProofArchitecture: assumed results plus every proved
-    result whose prerequisites are established. Withdrawn results are never
-    established and block whatever requires them."""
+    """Least fixpoint of ProofArchitecture: the assumed results plus every
+    proved result whose prerequisites are established. Withdrawn results are
+    never established and block whatever requires them; `analyse` has already
+    refused assumptions that are withdrawn or require a withdrawn result, so
+    the fixpoint is exactly the reachable limit of the state machine."""
     proved = set(analysis.proved)
     withdrawn = set(analysis.withdrawn)
     requires = {e.name: set(e.requires) for e in analysis.entries}
-    done = set(assumed) - withdrawn
+    done = set(assumed)
     while True:
         ready = {r for r in proved - done if requires[r] <= done and not (requires[r] & withdrawn)}
         if not ready:
@@ -330,8 +358,8 @@ def check_policy(text: str, analysis: Analysis) -> list[str]:
     from claim_governance.policy import PolicyError, policy_from_mapping  # noqa: E402
     try:
         policy = policy_from_mapping(tomllib.loads(text))
-    except (PolicyError, tomllib.TOMLDecodeError) as exc:
-        return [f"policy: {exc}"]
+    except (PolicyError, tomllib.TOMLDecodeError, AttributeError, TypeError, ValueError, KeyError) as exc:
+        return [f"policy: {exc!r}" if not isinstance(exc, PolicyError) else f"policy: {exc}"]
     labels = analysis.ledger.status_labels
     return [f"{e.name}: index label {labels.get(e.status, e.status)!r} is not a [status.synonyms] label of class {e.status!r}"
             for e in analysis.entries if e.status not in policy.status.classes_in(labels.get(e.status, e.status))]
@@ -374,8 +402,10 @@ def _name(analysis: Analysis, record_id: str) -> str:
 def render_all(analysis: Analysis) -> dict[str, str]:
     """Every generated surface keyed by path relative to the consumer root, except the spliced policy."""
     tla_dir = analysis.ledger.tla_dir
-    out = {f"{tla_dir}/{analysis.ledger.module}.tla": render_tla(analysis), analysis.ledger.index_path: render_index(analysis)}
+    out = {f"{tla_dir}/{analysis.ledger.module}.tla": render_tla(analysis)}
     out.update({f"{tla_dir}/{k}": v for k, v in render_models(analysis).items()})
+    out[analysis.ledger.index_path] = render_index(analysis)
+    assert tuple(out) == output_paths(analysis.ledger)
     return out
 
 
@@ -396,6 +426,9 @@ def main(argv: list[str]) -> int:
         return 2
     outputs = {args.out / rel: text for rel, text in render_all(analysis).items()}
     if args.claims is not None:
+        if any(args.claims.resolve() == p.resolve() for p in outputs):
+            print(f"policy refused:\n  {args.claims} is itself a generated surface")
+            return 2
         existing = args.claims.read_text(encoding="utf-8") if args.claims.exists() else ""
         outputs[args.claims] = splice_claims(existing, render_claims(analysis))
         problems = check_policy(outputs[args.claims], analysis)

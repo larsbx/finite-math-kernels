@@ -32,7 +32,7 @@ Two tags are interpreted. `withdrawn` marks a withdrawn claim; it is allowed onl
 
 ### 2.1 Fail closed
 
-The ledger is refused, with every reason listed, when: the module or a record name is not an identifier; two names share an identifier; an assumption set has an invalid or reserved name (`ResultSet`, `RequiresDef`, `ProvedDef`, `ImportedDef`, `BoundedDef`, `WithdrawnDef`, `NoAssumptions`, `ImportsAssumed`), collides with a record name, or names an unknown record; a record validates as `rejected` (the reason is reported); a record depends on an unknown identifier; a record tagged `withdrawn` is not pending; a record carries more than one `status:` tag. A refused ledger renders nothing (exit 2).
+The ledger is refused, with every reason listed, when: the module or a record name is not an identifier; two names share an identifier; an assumption set has an invalid or reserved name (`ResultSet`, `RequiresDef`, `ProvedDef`, `ImportedDef`, `BoundedDef`, `WithdrawnDef`, `NoAssumptions`, `ImportsAssumed`), collides with a record name, or names an unknown record; a record validates as `rejected` (the reason is reported); a record depends on an unknown identifier; a record tagged `withdrawn` is not pending; a record carries more than one `status:` tag; `tla_dir` or `index_path` is absolute, empty, or contains `..` (every surface is written under the output root); `index_path` names one of the generated TLA+ files; a result that is assumed by any model (`ImportsAssumed`, or a declared assumption set) is withdrawn or requires a withdrawn result. The last rule keeps the Python fixpoint and the state machine in agreement: `ProofArchitecture` establishes `Assumed` in its initial state, where `NoWithdrawnDependency` would already fail for such a result. A refused ledger renders nothing (exit 2).
 
 ### 2.2 Partition of the results
 
@@ -54,7 +54,7 @@ In order: `withdrawn` (class `retired`); a `status:<class>` tag; kind `verified_
 
 ### 2.4 The established fixpoint
 
-`established(A, assumed)` is the least set containing `assumed` minus `WithdrawnDef` and closed under: if `r` is in `ProvedDef`, every name in `RequiresDef[r]` is in the set, and none is withdrawn, then `r` is in the set. This is the reachable-state limit of `ProofArchitecture` under the same constants; the models of section 3.2 make TLC verify the agreement.
+`established(A, assumed)` is the least set containing `assumed` and closed under: if `r` is in `ProvedDef`, every name in `RequiresDef[r]` is in the set, and none is withdrawn, then `r` is in the set. This is the reachable-state limit of `ProofArchitecture` under the same constants; the models of section 3.2 make TLC verify the agreement.
 
 ## 3. Generated surfaces
 
@@ -68,7 +68,7 @@ Each model is a `.tla` extending the ledger and a `.cfg` binding `Results`, `Req
 
 ### 3.3 Claim-governance entries (`--claims POLICY`)
 
-One `[[claim]]` per result, `name` the result name and `status` its class, with two surfaces: the TLA+ ledger, anchored on the quoted name inside `ProvedDef == {` (`expect = "present"`) for proved results, inside `ImportedDef` for imports, inside `WithdrawnDef` for withdrawn claims, and `expect = "absent"` from `ProvedDef` otherwise; and the index, anchored on the row `| <Name> |` with `window_lines = 0` and the default `expect = "labelled"`, so the row's label must spell the claim's class through the consumer's `[status.synonyms]`. The entries are spliced between the markers `# BEGIN generated claims ...` and `# END generated claims` of the policy file, or appended when the markers are absent; the head of the file stays the consumer's. The spliced policy is then loaded with the claim-governance package and refused (exit 2) if it does not load or if any index label is not a synonym of its class, so the generator never writes a policy the checker would reject.
+One `[[claim]]` per result, `name` the result name and `status` its class, with two surfaces: the TLA+ ledger, anchored on the quoted name inside `ProvedDef == {` (`expect = "present"`) for proved results, inside `ImportedDef` for imports, inside `WithdrawnDef` for withdrawn claims, and `expect = "absent"` from `ProvedDef` otherwise; and the index, anchored on the row `| <Name> |` with `window_lines = 0` and the default `expect = "labelled"`, so the row's label must spell the claim's class through the consumer's `[status.synonyms]`. The entries are spliced between the markers `# BEGIN generated claims ...` and `# END generated claims` of the policy file, or appended when the markers are absent; the head of the file stays the consumer's. The spliced policy is then loaded with the claim-governance package and refused (exit 2) if it does not load (a policy error or a malformed table shape alike), if any index label is not a synonym of its class, or if the policy path is itself one of the generated surfaces, so the generator never writes a policy the checker would reject.
 
 ### 3.4 The index `<index_path>`
 
