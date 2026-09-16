@@ -52,6 +52,10 @@ not part of this repository.
   consumer's imported theorems. The parity twist is the real-line
   convention; the continuation twist is the general rule.
 - Proof-record acceptance policy belongs to the consumer.
+- The evidence-vocabulary map (`docs/evidence-vocabulary-map.md`) only preserves
+  or lowers authority: a non-transferable exercise never becomes a theorem, an
+  unexecuted step never becomes a failure, and a failing test never becomes a
+  malformed record.
 - Generated ledgers (`docs/ledger-generation-spec.md`) are functions of a
   consumer's named proof records: the TLA+ ledger and TLC models over
   `proof_records/ProofArchitecture.tla`, the `[[claim]]` entries, and the

@@ -20,6 +20,7 @@ test-substitution = "mojo run -I . tests/substitution_dynamics/test_substitution
 test-tuning = "mojo run -I . tests/substitution_dynamics/test_tuning.mojo"
 test-facades = "mojo run -I . tests/facades/test_stable_facades.mojo"
 test-proof-records = "python -m pytest -q tests/proof_records"
+vocabularies = "python -m pytest -q tests/proof_records/test_vocabularies.py"
 test-python = "python -m pytest -q tests/finite_exact tests/proof_records tests/substitution_dynamics"
 test-audit = "PYTHONPATH=audit python -m pytest -q tests/audit"
 test-provenance = "python -m pytest -q tests/provenance"
