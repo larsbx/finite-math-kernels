@@ -1,6 +1,8 @@
 # Post-consolidation package audit — 2026-09-15
 
-Status: audit of `main` at `807ae7ed5461af9fe07b1cbbca96f680a105e0e7`.
+Status: audit of `main` at `807ae7ed5461af9fe07b1cbbca96f680a105e0e7`,
+amended after review; resolutions are recorded under each finding and
+summarised in "Resolution status" at the end.
 
 Scope: the `finite-math-kernels` monorepo and the six source repositories
 `finite_exact`, `interval_q`, `finite_linear_algebra`,
@@ -22,8 +24,8 @@ treated as a fully governed release because three high-priority gaps remain:
 2. migration provenance does not pin immutable source commits and trees;
 3. the advertised stable facades are not tested as the consumer-facing API.
 
-Four medium-priority release-governance and documentation gaps are also listed
-below.
+Five medium-priority release-governance, documentation, and boundary gaps
+are also listed below.
 
 ## Evidence examined
 
@@ -32,6 +34,10 @@ below.
 - package implementations and stable facade modules;
 - Mojo and Python tests, replay vectors, and property oracle;
 - `audit/CONSOLIDATION_PROVENANCE.md`;
+- the in-tree `docs/proof-records-specification.md`;
+- `larsbx/NLAP-JT` `docs/finite-proof-records-spec.md` at commit
+  `e10c665` ("Make proof-record identity and dependency use explicit"), the
+  contract that FMK-AUDIT-001 measures against;
 - the six source repositories' current `main` branches;
 - GitHub Actions run 35019844042, which succeeded for the audited head.
 
@@ -52,8 +58,15 @@ Record identity is also caller-supplied. `canonical_bytes` includes the
 caller-provided `id`, while `digest` is calculated separately; validation
 does not recompute a non-circular identity preimage and verify the identifier.
 
-This is weaker than the corrected finite-proof-record contract developed after
-NLAP-JT's specification review.
+This conforms to the in-tree `docs/proof-records-specification.md`
+(section 2: `depends_on` is an ordered tuple of bare identifiers; `id` is
+caller-supplied). It is weaker than the corrected contract in
+`larsbx/NLAP-JT` `docs/finite-proof-records-spec.md` at commit `e10c665`,
+which defines identity-bearing dependency edges (`dependency_record_id`,
+expected claim, use site, scope relation, outcome; section 3) and a record-ID
+preimage that excludes `record_id` (section 8). The finding is therefore
+specification drift between the two repositories, and the repair must update
+the in-tree specification together with both implementations.
 
 Required repair:
 
@@ -66,6 +79,21 @@ Required repair:
 - extend Python/Mojo golden vectors and negative closure tests.
 
 Do not migrate consumer proof ledgers to this package until this repair lands.
+
+Resolution: landed on `claude/latest-pr-audit-8q9kl3`. `Edge(record_id,
+expected_claim, use_site, scope_relation, required_outcome)` replaces bare
+identifiers in both implementations; `Record` carries `scope`; the record-ID
+preimage excludes the identifier and `validate` rejects an identifier that
+is not `sha256:` over that preimage; `close` checks claim, scope, and
+outcome per edge and reports `claim mismatch`, `scope mismatch`, and
+`outcome mismatch` links; open and bounded records keep their identity;
+`fixtures/vectors.json` (format 2) carries 26 records and 20 closures
+including forged-identifier, mismatch, duplicate, unknown-relation,
+unknown-outcome, and bounded-outside-scope negatives, and the Mojo SHA-256
+is cross-checked against `hashlib` on every record.
+`docs/proof-records-specification.md` is version 2 and cites the NLAP-JT
+contract commit. The consumer migration gate is therefore open at the
+package level; consumer policy adapters remain the consumers' work.
 
 ### FMK-AUDIT-002 — Consolidation provenance is mutable and incomplete
 
@@ -85,6 +113,15 @@ Required repair:
   files;
 - add an automated provenance verifier that fails on unexplained divergence.
 
+Resolution: landed. `audit/provenance.json` pins, per source repository, the
+branch, commit, and tree id of every top-level directory at that commit, and,
+per tracked file, its git blob id, its relation (`copy`, `modified`, `facade`,
+`authored`, `generated`), and for imported files the source path and blob.
+`tools/provenance.py --check` fails on any unlisted, missing, or drifted
+file and on any relation the blobs contradict; `tests/provenance` runs it
+under `pixi run test`. `audit/CONSOLIDATION_PROVENANCE.md` now states the
+pins and the rules.
+
 ### FMK-AUDIT-003 — Stable facades are outside direct compatibility coverage
 
 Severity: high.
@@ -102,20 +139,35 @@ Required repair:
   facade;
 - keep implementation-module tests as internal coverage, not API coverage.
 
+Resolution: landed. `tests/facades/test_stable_facades.mojo` imports only
+the five stable modules and exercises every exported name of each
+(`pixi run test-facades`, in the `test` closure). One boundary observation
+recorded for the maintainers: `rational.mojo` exports `q_from_bigz` but no
+`BigZ` constructor, so a facade-only consumer reaches `BigZ` through the
+parts of an accepted `Q`; the README lists `bigint_z.mojo` itself as
+public, which this test does not cover.
+
 ## Medium-priority findings
 
-### FMK-AUDIT-004 — Property oracle is not a required CI dependency
+### FMK-AUDIT-004 — Property oracle is skip-guarded, not required
 
 Severity: medium.
 
-`pixi.toml` defines the stronger `property` task, but the aggregate `test`
-task does not depend on it. GitHub CI runs only `pixi run test`. Documentation
-inside the arithmetic tests describes the property probe as the stronger
-check, so a green default CI result does not exercise the strongest arithmetic
-cross-check.
+`pixi.toml` defines the `property` task, and the aggregate `test` task does
+not depend on it. The same Mojo-versus-Python comparison does run under
+`pixi run test`, through `test-python`:
+`tests/finite_exact/test_property_oracle.py::test_mojo_probe_agrees_with_python_oracle`
+executes the `zq` probe and compares it with the oracle. That test is guarded
+by `pytest.mark.skipif(shutil.which("mojo") is None)`, so a CI environment
+without `mojo` on `PATH` reports green while skipping the strongest arithmetic
+cross-check. The gap is that the check is conditional, not that it is absent.
 
-Required repair: include `property` in a required CI task or document and
-enforce an equivalent separate required job.
+Required repair: make the probe unconditional under `pixi run test` (fail,
+not skip, when `mojo` is missing), or add `property` to the `test`
+dependency closure.
+
+Resolution: landed. `property` is in the `test` dependency closure, so a
+missing `mojo` fails the aggregate task instead of skipping.
 
 ### FMK-AUDIT-005 — Relocation left stale paths and commands
 
@@ -129,10 +181,24 @@ Examples:
 - it names `pixi run replay`, which is not defined in `pixi.toml`;
 - `finite_exact/__init__.mojo` refers to nonexistent
   `docs/vendoring-protocol.md`;
-- test headers name nonexistent `pixi run smoke` tasks and old paths.
+- test headers name nonexistent `pixi run smoke` tasks and old paths;
+- `docs/exact-arithmetic-public-boundary.md` and
+  `docs/rational-interval-arithmetic-spec.md` cite
+  `tests/test_finite_exact.mojo` (now `tests/finite_exact/test_finite_exact.mojo`)
+  and `pixi run smoke`.
 
 Required repair: add an automated local-link/task-reference audit and correct
 all relocated references.
+
+Resolution: the listed references are corrected (`docs/specification.md`
+to `docs/proof-records-specification.md`, `finite_proof_records/` to
+`proof_records/`, `pixi run smoke` to the per-package tasks, `pixi run
+replay` now defined, the vendoring-protocol comment replaced), and
+`tools/check_references.py` now checks every backticked path and `pixi run`
+task in the tree on every CI run (`tests/references`, in the `test`
+closure). External references are attested against their repository in the
+checker's `EXTERNAL` table; dated audit records, which quote past states,
+are skipped. Resolved.
 
 ### FMK-AUDIT-006 — Source repositories do not declare retirement
 
@@ -149,6 +215,14 @@ Required repair:
 - direct issues and new development to `finite-math-kernels`;
 - archive only after consumers pin a released monorepo commit.
 
+Resolution: migration notices are proposed to each source repository's
+`main` (`larsbx/finite_exact#1`, `larsbx/interval_q#1`,
+`larsbx/finite_linear_algebra#1`, `larsbx/substitution_dynamics#1`,
+`larsbx/finite_proof_records#1`, `larsbx/claim_governance_tools#2`). Each
+names the canonical home, the preserved branch, the frozen commit and
+subtree id, the provenance record, and the archive gate. Resolved on merge;
+archiving stays gated on consumer pins.
+
 ### FMK-AUDIT-007 — Main has no enforced status gate
 
 Severity: medium.
@@ -161,10 +235,47 @@ Required repair: require the complete CI gate before merge and prevent direct
 unreviewed updates to the release branch, or document the external canonical
 merge authority and verify mirrored commit/tree identity.
 
+Resolution: requires repository administration, which this audit's tooling
+cannot perform. The setting to apply is a ruleset or branch protection on
+`main` that requires a pull request, requires the `test` status check
+(the `CI` workflow's `test` job) to pass on the head commit, and blocks
+force pushes and deletions. Open until an administrator applies it.
+
+### FMK-AUDIT-008 — `BigZ` field mutation bypasses fail-closed arithmetic
+
+Severity: medium.
+
+`BigZ.sign` and `BigZ.limbs` are public mutable fields
+(`finite_exact/bigint_z.mojo`). Operations assume constructor invariants and
+do not validate them: `bigz_add` with a zero operand returns the other
+operand by copy, so a value with `sign = 2` or non-normalized limbs
+propagates unchanged and unrejected. `docs/exact-arithmetic-public-boundary.md`
+does not currently exclude field mutation from the boundary.
+
+Required repair: either state in the public-boundary document that values
+are only valid when constructor-produced and field mutation is undefined, or
+validate `sign` and limb normalization at operation entry and route
+violations through the existing rejection carrier.
+
+Resolution: the boundary is declared. `docs/exact-arithmetic-public-boundary.md`
+section 2 item 3 states that `BigZ` values are constructor-produced, that
+direct field assignment is outside the boundary and undetected by `BigZ`
+operations (per the specification's invariant I3), and that `q_from_bigz`
+is the validating entry through `bigz_is_canonical`; the README's
+fail-closed claim is scoped the same way. Operation-entry validation was
+not added: it would put a canonical-form scan on every ring operation to
+defend against a use the boundary now excludes. Resolved.
+
 ## Positive findings
 
 - Package boundaries match the consolidation plan.
-- `BigZ` and `Q` remain exact and fail closed.
+- `BigZ` and `Q` remain exact and fail closed for constructor-produced
+  values. The claim does not extend to a `BigZ` whose public `sign` or
+  `limbs` fields a consumer has mutated: `bigz_add` returns such a value by
+  copy without validation, and no operation carries a rejection for it. The
+  public-boundary contract must state that direct field mutation is outside
+  the boundary, or the operations must validate their inputs; see the
+  boundary note in FMK-AUDIT-008.
 - Closed rational intervals remain conservative filters and do not promote
   unknown results.
 - The interval API is consolidated under `finite_exact`, avoiding a second
@@ -182,16 +293,33 @@ merge authority and verify mirrored commit/tree identity.
 1. Repair proof-record identity and dependency semantics.
 2. Pin immutable migration provenance and automate its verification.
 3. Compile and test stable public facades.
-4. Put the arithmetic property oracle in the required CI closure.
+4. Make the arithmetic property oracle unconditional under `pixi run test`.
 5. Repair relocated links, paths, and task names.
-6. Publish source-repository migration notices, then archive after consumer
+6. Close the `BigZ` field-mutation boundary (FMK-AUDIT-008).
+7. Publish source-repository migration notices, then archive after consumer
    migration.
-7. Enforce the canonical status gate and commit/tree readback.
+8. Enforce the canonical status gate and commit/tree readback.
 
 ## Release judgment
 
 The arithmetic, interval, linear-algebra, substitution-dynamics, and
 claim-governance packages are suitable for continued integration testing.
-Proof-record consumer migration and formal retirement of the source
-repositories should remain blocked until FMK-AUDIT-001 through
-FMK-AUDIT-003 are resolved.
+With FMK-AUDIT-001 through FMK-AUDIT-003 resolved, proof-record consumer
+migration is unblocked at the package level, subject to each consumer
+supplying its policy adapter and re-deriving its ledger identifiers under
+the version-2 preimage. Formal retirement of the source repositories still
+waits on the merge of the FMK-AUDIT-006 notices, consumer pins, and the
+FMK-AUDIT-007 ruleset.
+
+## Resolution status
+
+| Finding | Status |
+| --- | --- |
+| FMK-AUDIT-001 | resolved |
+| FMK-AUDIT-002 | resolved |
+| FMK-AUDIT-003 | resolved |
+| FMK-AUDIT-004 | resolved |
+| FMK-AUDIT-005 | resolved |
+| FMK-AUDIT-006 | resolved on merge of the six source-repository notices |
+| FMK-AUDIT-007 | open: needs an administrator to apply the `main` ruleset |
+| FMK-AUDIT-008 | resolved by boundary declaration |

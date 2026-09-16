@@ -6,93 +6,111 @@
       "name": "complete closure",
       "policy": "none",
       "reached": [
-        "bsw",
-        "census",
-        "lemma",
-        "theorem"
+        "sha256:2420cf5ecc4839ea1ecfa0cc500eed520e2766cfea47d606bc231076588b4dda",
+        "sha256:5100a3ec500701af89712f22227a928d5e99d00a99f17c5d9e2b08a9635187cc",
+        "sha256:62c9eb30291a3996ff8e916cc91ab10f3b9aadcb6db79ea91bd238ff20540724",
+        "sha256:71c641952049688ca026bf20181d38c66c6172f00b31862275ad0e23b32f4e06"
       ],
-      "root": "theorem"
+      "root": "sha256:71c641952049688ca026bf20181d38c66c6172f00b31862275ad0e23b32f4e06",
+      "root_label": "theorem"
+    },
+    {
+      "complete": true,
+      "missing_links": [],
+      "name": "bounded claim closed by a bounded experiment on its own scope",
+      "policy": "none",
+      "reached": [
+        "sha256:521c88fff63253237c424fe1a327caa3dc1e45b5c3454cd7aba097aa9808add6",
+        "sha256:baf4caa6e3801c78aa979aa5126cb57ea14e03ce0f49b160309add6c80bde265"
+      ],
+      "root": "sha256:baf4caa6e3801c78aa979aa5126cb57ea14e03ce0f49b160309add6c80bde265",
+      "root_label": "within"
     },
     {
       "complete": false,
       "missing_links": [
         [
-          "galois",
+          "sha256:9c6a2f67dcdf8fc99ea5f72fc0bc63872b59387467c851b033b4882d77d9f9f7",
           "pending: source pending"
         ]
       ],
       "name": "pending link below a verified record",
       "policy": "none",
       "reached": [
-        "bsw",
-        "census",
-        "conditional",
-        "galois",
-        "lemma"
+        "sha256:2420cf5ecc4839ea1ecfa0cc500eed520e2766cfea47d606bc231076588b4dda",
+        "sha256:5100a3ec500701af89712f22227a928d5e99d00a99f17c5d9e2b08a9635187cc",
+        "sha256:62c9eb30291a3996ff8e916cc91ab10f3b9aadcb6db79ea91bd238ff20540724",
+        "sha256:9c6a2f67dcdf8fc99ea5f72fc0bc63872b59387467c851b033b4882d77d9f9f7",
+        "sha256:d33bd488a0d2754cf690a70ed07d738aa0cef4a6ba82cf86bafac0beb83c5dad"
       ],
-      "root": "conditional"
+      "root": "sha256:d33bd488a0d2754cf690a70ed07d738aa0cef4a6ba82cf86bafac0beb83c5dad",
+      "root_label": "conditional"
     },
     {
       "complete": false,
       "missing_links": [
         [
-          "sweep",
+          "sha256:521c88fff63253237c424fe1a327caa3dc1e45b5c3454cd7aba097aa9808add6",
           "bounded experiment is evidence, not a theorem"
         ]
       ],
       "name": "bounded experiment cited as support",
       "policy": "none",
       "reached": [
-        "evidence",
-        "sweep"
+        "sha256:521c88fff63253237c424fe1a327caa3dc1e45b5c3454cd7aba097aa9808add6",
+        "sha256:aded72322c570f87636e97a98cb029820bf2e8a9c94cbcebd005787e58bf92ff"
       ],
-      "root": "evidence"
+      "root": "sha256:aded72322c570f87636e97a98cb029820bf2e8a9c94cbcebd005787e58bf92ff",
+      "root_label": "evidence"
     },
     {
       "complete": false,
       "missing_links": [
         [
-          "sweep",
+          "sha256:521c88fff63253237c424fe1a327caa3dc1e45b5c3454cd7aba097aa9808add6",
           "bounded experiment is evidence, not a theorem"
         ]
       ],
       "name": "bounded experiment as root",
       "policy": "none",
       "reached": [
-        "sweep"
+        "sha256:521c88fff63253237c424fe1a327caa3dc1e45b5c3454cd7aba097aa9808add6"
       ],
-      "root": "sweep"
+      "root": "sha256:521c88fff63253237c424fe1a327caa3dc1e45b5c3454cd7aba097aa9808add6",
+      "root_label": "sweep"
     },
     {
       "complete": false,
       "missing_links": [
         [
-          "unchecked",
+          "sha256:1d870aeb3117cbeede3ced77cc15c6053d125cb17759187a6d77324b6efa85d9",
           "rejected: imported theorem with unchecked hypotheses"
         ]
       ],
       "name": "unchecked import",
       "policy": "none",
       "reached": [
-        "unchecked"
+        "sha256:1d870aeb3117cbeede3ced77cc15c6053d125cb17759187a6d77324b6efa85d9"
       ],
-      "root": "unchecked"
+      "root": "sha256:1d870aeb3117cbeede3ced77cc15c6053d125cb17759187a6d77324b6efa85d9",
+      "root_label": "unchecked"
     },
     {
       "complete": false,
       "missing_links": [
         [
-          "nowhere",
+          "sha256:0000000000000000000000000000000000000000000000000000000000000000",
           "unknown record"
         ]
       ],
       "name": "unknown record",
       "policy": "none",
       "reached": [
-        "dangling",
-        "nowhere"
+        "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+        "sha256:8714a580b2016efae9d476ecf28abd7af80047a21805784fb0923fc9abb5bc8b"
       ],
-      "root": "dangling"
+      "root": "sha256:8714a580b2016efae9d476ecf28abd7af80047a21805784fb0923fc9abb5bc8b",
+      "root_label": "dangling"
     },
     {
       "complete": false,
@@ -107,54 +125,209 @@
       "reached": [
         "mismatch"
       ],
-      "root": "mismatch"
+      "root": "mismatch",
+      "root_label": "mismatch"
     },
     {
       "complete": false,
       "missing_links": [
         [
-          "bad",
+          "sha256:5100a3ec500701af89712f22227a928d5e99d00a99f17c5d9e2b08a9635187cc",
+          "claim mismatch: wrong_claim/census"
+        ]
+      ],
+      "name": "claim mismatch",
+      "policy": "none",
+      "reached": [
+        "sha256:4d2ab51820559ecda070acd8cca9d039d918f7e6ad09143881c037230ea0b6f7",
+        "sha256:5100a3ec500701af89712f22227a928d5e99d00a99f17c5d9e2b08a9635187cc"
+      ],
+      "root": "sha256:4d2ab51820559ecda070acd8cca9d039d918f7e6ad09143881c037230ea0b6f7",
+      "root_label": "wrong_claim"
+    },
+    {
+      "complete": false,
+      "missing_links": [
+        [
+          "sha256:62c9eb30291a3996ff8e916cc91ab10f3b9aadcb6db79ea91bd238ff20540724",
+          "scope mismatch: wrong_scope/lemma"
+        ]
+      ],
+      "name": "scope mismatch",
+      "policy": "none",
+      "reached": [
+        "sha256:2420cf5ecc4839ea1ecfa0cc500eed520e2766cfea47d606bc231076588b4dda",
+        "sha256:5100a3ec500701af89712f22227a928d5e99d00a99f17c5d9e2b08a9635187cc",
+        "sha256:62c9eb30291a3996ff8e916cc91ab10f3b9aadcb6db79ea91bd238ff20540724",
+        "sha256:b5f7d838a018842027d81f7942d9f90a77a2d1710eb41492141ca519fd91b983"
+      ],
+      "root": "sha256:b5f7d838a018842027d81f7942d9f90a77a2d1710eb41492141ca519fd91b983",
+      "root_label": "wrong_scope"
+    },
+    {
+      "complete": false,
+      "missing_links": [
+        [
+          "sha256:62c9eb30291a3996ff8e916cc91ab10f3b9aadcb6db79ea91bd238ff20540724",
+          "claim mismatch: diamond/lemma"
+        ]
+      ],
+      "name": "second incoming edge to a shared record is checked",
+      "policy": "none",
+      "reached": [
+        "sha256:2420cf5ecc4839ea1ecfa0cc500eed520e2766cfea47d606bc231076588b4dda",
+        "sha256:5100a3ec500701af89712f22227a928d5e99d00a99f17c5d9e2b08a9635187cc",
+        "sha256:62c9eb30291a3996ff8e916cc91ab10f3b9aadcb6db79ea91bd238ff20540724",
+        "sha256:71c641952049688ca026bf20181d38c66c6172f00b31862275ad0e23b32f4e06",
+        "sha256:bd1b7d5c93a6c6461df7461a8d2a372ddae5f1b6ebb19712f94771893bbca6f5"
+      ],
+      "root": "sha256:bd1b7d5c93a6c6461df7461a8d2a372ddae5f1b6ebb19712f94771893bbca6f5",
+      "root_label": "diamond"
+    },
+    {
+      "complete": true,
+      "missing_links": [],
+      "name": "shared record reached twice with correct edges",
+      "policy": "none",
+      "reached": [
+        "sha256:001a24a9ce8e016ad2a958792eac7112ad92a14711955bfd0606f1e50314bdd4",
+        "sha256:2420cf5ecc4839ea1ecfa0cc500eed520e2766cfea47d606bc231076588b4dda",
+        "sha256:5100a3ec500701af89712f22227a928d5e99d00a99f17c5d9e2b08a9635187cc",
+        "sha256:62c9eb30291a3996ff8e916cc91ab10f3b9aadcb6db79ea91bd238ff20540724",
+        "sha256:71c641952049688ca026bf20181d38c66c6172f00b31862275ad0e23b32f4e06"
+      ],
+      "root": "sha256:001a24a9ce8e016ad2a958792eac7112ad92a14711955bfd0606f1e50314bdd4",
+      "root_label": "diamond_ok"
+    },
+    {
+      "complete": false,
+      "missing_links": [
+        [
+          "sha256:5100a3ec500701af89712f22227a928d5e99d00a99f17c5d9e2b08a9635187cc",
+          "outcome mismatch: wrong_outcome/census requires bounded, found accepted"
+        ]
+      ],
+      "name": "outcome mismatch",
+      "policy": "none",
+      "reached": [
+        "sha256:5100a3ec500701af89712f22227a928d5e99d00a99f17c5d9e2b08a9635187cc",
+        "sha256:b7912f0a2404169ffe73d172757e3569fddcf5eaa241dff356b63a9995b1b692"
+      ],
+      "root": "sha256:b7912f0a2404169ffe73d172757e3569fddcf5eaa241dff356b63a9995b1b692",
+      "root_label": "wrong_outcome"
+    },
+    {
+      "complete": false,
+      "missing_links": [
+        [
+          "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+          "rejected: identifier does not match preimage"
+        ]
+      ],
+      "name": "forged identifier",
+      "policy": "none",
+      "reached": [
+        "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+      ],
+      "root": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "root_label": "forged"
+    },
+    {
+      "complete": false,
+      "missing_links": [
+        [
+          "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "rejected: identifier does not match preimage"
+        ]
+      ],
+      "name": "cycle is unconstructible: forged identifiers reject",
+      "policy": "none",
+      "reached": [
+        "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      ],
+      "root": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "root_label": "a"
+    },
+    {
+      "complete": false,
+      "missing_links": [
+        [
+          "sha256:9155e2f51ff797603d78cf87765d510fabee465df8bfcbe121fa7aba021b66ce",
           "rejected: duplicate or self dependency"
         ]
       ],
-      "name": "malformed record",
+      "name": "duplicate dependency",
       "policy": "none",
       "reached": [
-        "bad"
+        "sha256:9155e2f51ff797603d78cf87765d510fabee465df8bfcbe121fa7aba021b66ce"
       ],
-      "root": "bad"
+      "root": "sha256:9155e2f51ff797603d78cf87765d510fabee465df8bfcbe121fa7aba021b66ce",
+      "root_label": "bad"
     },
     {
       "complete": false,
       "missing_links": [
         [
-          "a",
-          "dependency cycle"
+          "sha256:c60b54b820da32f78e5e2caf4bfc369055bff3d7c29d967b4e77a669732d3814",
+          "rejected: unknown scope relation: within"
         ]
       ],
-      "name": "cycle",
+      "name": "unknown scope relation",
       "policy": "none",
       "reached": [
-        "a",
-        "b"
+        "sha256:c60b54b820da32f78e5e2caf4bfc369055bff3d7c29d967b4e77a669732d3814"
       ],
-      "root": "a"
+      "root": "sha256:c60b54b820da32f78e5e2caf4bfc369055bff3d7c29d967b4e77a669732d3814",
+      "root_label": "bad_relation"
     },
     {
       "complete": false,
       "missing_links": [
         [
-          "circle",
+          "sha256:56b4b6f9510eca23daa997e0443fb6eca3f04c7371a657b5ed391f7482ae9b4a",
+          "rejected: unknown required outcome: proved"
+        ]
+      ],
+      "name": "unknown required outcome",
+      "policy": "none",
+      "reached": [
+        "sha256:56b4b6f9510eca23daa997e0443fb6eca3f04c7371a657b5ed391f7482ae9b4a"
+      ],
+      "root": "sha256:56b4b6f9510eca23daa997e0443fb6eca3f04c7371a657b5ed391f7482ae9b4a",
+      "root_label": "bad_outcome"
+    },
+    {
+      "complete": false,
+      "missing_links": [
+        [
+          "sha256:f19383b04af5afd4a9bf0c0d820763e167d6f1327dba10eb62c8bce8fd816501",
+          "rejected: bounded dependency outside its own scope"
+        ]
+      ],
+      "name": "bounded dependency outside its own scope",
+      "policy": "none",
+      "reached": [
+        "sha256:f19383b04af5afd4a9bf0c0d820763e167d6f1327dba10eb62c8bce8fd816501"
+      ],
+      "root": "sha256:f19383b04af5afd4a9bf0c0d820763e167d6f1327dba10eb62c8bce8fd816501",
+      "root_label": "elsewhere"
+    },
+    {
+      "complete": false,
+      "missing_links": [
+        [
+          "sha256:2757ec620be189dde07adaa1132ea273985351be4c6636efebc0da65e06d2d58",
           "policy: uses_rank2_circle: rank-2 circle primitive rejected"
         ]
       ],
       "name": "consumer policy refuses a tag",
       "policy": "nlap_rank2",
       "reached": [
-        "circle",
-        "on_circle"
+        "sha256:2757ec620be189dde07adaa1132ea273985351be4c6636efebc0da65e06d2d58",
+        "sha256:2f560b42d4c0eda5f79840d4ba70737acdc92896c9287a5a8bf5097d68914f46"
       ],
-      "root": "on_circle"
+      "root": "sha256:2f560b42d4c0eda5f79840d4ba70737acdc92896c9287a5a8bf5097d68914f46",
+      "root_label": "on_circle"
     },
     {
       "complete": true,
@@ -162,250 +335,62 @@
       "name": "same tag without the policy",
       "policy": "none",
       "reached": [
-        "circle",
-        "on_circle"
+        "sha256:2757ec620be189dde07adaa1132ea273985351be4c6636efebc0da65e06d2d58",
+        "sha256:2f560b42d4c0eda5f79840d4ba70737acdc92896c9287a5a8bf5097d68914f46"
       ],
-      "root": "on_circle"
+      "root": "sha256:2f560b42d4c0eda5f79840d4ba70737acdc92896c9287a5a8bf5097d68914f46",
+      "root_label": "on_circle"
     },
     {
       "complete": false,
       "missing_links": [
         [
-          "mlc",
+          "sha256:327d17733b5ff0b03279546c08792b8070c6f54c6d6fcf9040dde4935064e4ce",
           "pending: open frontier"
         ]
       ],
       "name": "open frontier is pending, never imported",
       "policy": "nlap_rank2",
       "reached": [
-        "frontier",
-        "mlc"
+        "sha256:327d17733b5ff0b03279546c08792b8070c6f54c6d6fcf9040dde4935064e4ce",
+        "sha256:b4dadd2d5175dc126f8334752e78a169943eda67ac0b9c22a424a20582c6e63d"
       ],
-      "root": "frontier"
+      "root": "sha256:b4dadd2d5175dc126f8334752e78a169943eda67ac0b9c22a424a20582c6e63d",
+      "root_label": "frontier"
     }
   ],
-  "format": "finite_proof_records vectors 1",
+  "format": "finite_proof_records vectors 2",
+  "labels": {
+    "a": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "b": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "bad": "sha256:9155e2f51ff797603d78cf87765d510fabee465df8bfcbe121fa7aba021b66ce",
+    "bad_outcome": "sha256:56b4b6f9510eca23daa997e0443fb6eca3f04c7371a657b5ed391f7482ae9b4a",
+    "bad_relation": "sha256:c60b54b820da32f78e5e2caf4bfc369055bff3d7c29d967b4e77a669732d3814",
+    "bsw": "sha256:2420cf5ecc4839ea1ecfa0cc500eed520e2766cfea47d606bc231076588b4dda",
+    "census": "sha256:5100a3ec500701af89712f22227a928d5e99d00a99f17c5d9e2b08a9635187cc",
+    "circle": "sha256:2757ec620be189dde07adaa1132ea273985351be4c6636efebc0da65e06d2d58",
+    "conditional": "sha256:d33bd488a0d2754cf690a70ed07d738aa0cef4a6ba82cf86bafac0beb83c5dad",
+    "dangling": "sha256:8714a580b2016efae9d476ecf28abd7af80047a21805784fb0923fc9abb5bc8b",
+    "diamond": "sha256:bd1b7d5c93a6c6461df7461a8d2a372ddae5f1b6ebb19712f94771893bbca6f5",
+    "diamond_ok": "sha256:001a24a9ce8e016ad2a958792eac7112ad92a14711955bfd0606f1e50314bdd4",
+    "elsewhere": "sha256:f19383b04af5afd4a9bf0c0d820763e167d6f1327dba10eb62c8bce8fd816501",
+    "evidence": "sha256:aded72322c570f87636e97a98cb029820bf2e8a9c94cbcebd005787e58bf92ff",
+    "forged": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "frontier": "sha256:b4dadd2d5175dc126f8334752e78a169943eda67ac0b9c22a424a20582c6e63d",
+    "galois": "sha256:9c6a2f67dcdf8fc99ea5f72fc0bc63872b59387467c851b033b4882d77d9f9f7",
+    "lemma": "sha256:62c9eb30291a3996ff8e916cc91ab10f3b9aadcb6db79ea91bd238ff20540724",
+    "mismatch": "mismatch",
+    "mlc": "sha256:327d17733b5ff0b03279546c08792b8070c6f54c6d6fcf9040dde4935064e4ce",
+    "on_circle": "sha256:2f560b42d4c0eda5f79840d4ba70737acdc92896c9287a5a8bf5097d68914f46",
+    "sweep": "sha256:521c88fff63253237c424fe1a327caa3dc1e45b5c3454cd7aba097aa9808add6",
+    "theorem": "sha256:71c641952049688ca026bf20181d38c66c6172f00b31862275ad0e23b32f4e06",
+    "unchecked": "sha256:1d870aeb3117cbeede3ced77cc15c6053d125cb17759187a6d77324b6efa85d9",
+    "within": "sha256:baf4caa6e3801c78aa979aa5126cb57ea14e03ce0f49b160309add6c80bde265",
+    "wrong_claim": "sha256:4d2ab51820559ecda070acd8cca9d039d918f7e6ad09143881c037230ea0b6f7",
+    "wrong_outcome": "sha256:b7912f0a2404169ffe73d172757e3569fddcf5eaa241dff356b63a9995b1b692",
+    "wrong_scope": "sha256:b5f7d838a018842027d81f7942d9f90a77a2d1710eb41492141ca519fd91b983"
+  },
   "ledger": {
-    "a": {
-      "depends_on": [
-        "b"
-      ],
-      "evidence": [
-        [
-          "digest",
-          "y"
-        ],
-        [
-          "replay",
-          "x"
-        ]
-      ],
-      "id": "a",
-      "kind": "verified_finite_computation",
-      "statement": "a",
-      "tags": []
-    },
-    "b": {
-      "depends_on": [
-        "a"
-      ],
-      "evidence": [
-        [
-          "digest",
-          "y"
-        ],
-        [
-          "replay",
-          "x"
-        ]
-      ],
-      "id": "b",
-      "kind": "verified_finite_computation",
-      "statement": "b",
-      "tags": []
-    },
-    "bad": {
-      "depends_on": [
-        "bad"
-      ],
-      "evidence": [
-        [
-          "digest",
-          "y"
-        ],
-        [
-          "replay",
-          "x"
-        ]
-      ],
-      "id": "bad",
-      "kind": "verified_finite_computation",
-      "statement": "self dependency",
-      "tags": []
-    },
-    "bsw": {
-      "depends_on": [],
-      "evidence": [
-        [
-          "hypotheses_checked",
-          "true"
-        ],
-        [
-          "source",
-          "Barge-Stimac-Williams"
-        ]
-      ],
-      "id": "bsw",
-      "kind": "imported_theorem",
-      "statement": "coincidence density theorem",
-      "tags": []
-    },
-    "census": {
-      "depends_on": [],
-      "evidence": [
-        [
-          "digest",
-          "sha256:census"
-        ],
-        [
-          "replay",
-          "pixi run mojo run -I . census.mojo"
-        ]
-      ],
-      "id": "census",
-      "kind": "verified_finite_computation",
-      "statement": "4554 PIP specimens, 0 capped",
-      "tags": []
-    },
-    "circle": {
-      "depends_on": [],
-      "evidence": [
-        [
-          "digest",
-          "y"
-        ],
-        [
-          "replay",
-          "x"
-        ]
-      ],
-      "id": "circle",
-      "kind": "verified_finite_computation",
-      "statement": "uses a rank-2 circle",
-      "tags": [
-        "uses_rank2_circle"
-      ]
-    },
-    "conditional": {
-      "depends_on": [
-        "lemma",
-        "galois"
-      ],
-      "evidence": [
-        [
-          "digest",
-          "y"
-        ],
-        [
-          "replay",
-          "x"
-        ]
-      ],
-      "id": "conditional",
-      "kind": "verified_finite_computation",
-      "statement": "depends on pending material",
-      "tags": []
-    },
-    "dangling": {
-      "depends_on": [
-        "nowhere"
-      ],
-      "evidence": [
-        [
-          "digest",
-          "y"
-        ],
-        [
-          "replay",
-          "x"
-        ]
-      ],
-      "id": "dangling",
-      "kind": "verified_finite_computation",
-      "statement": "cites a missing record",
-      "tags": []
-    },
-    "evidence": {
-      "depends_on": [
-        "sweep"
-      ],
-      "evidence": [
-        [
-          "digest",
-          "y"
-        ],
-        [
-          "replay",
-          "x"
-        ]
-      ],
-      "id": "evidence",
-      "kind": "verified_finite_computation",
-      "statement": "cites a sweep as support",
-      "tags": []
-    },
-    "frontier": {
-      "depends_on": [
-        "mlc"
-      ],
-      "evidence": [
-        [
-          "digest",
-          "y"
-        ],
-        [
-          "replay",
-          "x"
-        ]
-      ],
-      "id": "frontier",
-      "kind": "verified_finite_computation",
-      "statement": "depends on the open frontier",
-      "tags": []
-    },
-    "galois": {
-      "depends_on": [],
-      "evidence": [
-        [
-          "reason",
-          "source pending"
-        ]
-      ],
-      "id": "galois",
-      "kind": "pending_dependency",
-      "statement": "Galois propagation",
-      "tags": []
-    },
-    "lemma": {
-      "depends_on": [
-        "census",
-        "bsw"
-      ],
-      "evidence": [
-        [
-          "digest",
-          "sha256:lemma"
-        ],
-        [
-          "replay",
-          "pixi run test"
-        ]
-      ],
-      "id": "lemma",
-      "kind": "verified_finite_computation",
-      "statement": "finite lemma",
-      "tags": []
-    },
     "mismatch": {
       "depends_on": [],
       "evidence": [
@@ -418,27 +403,28 @@
           "x"
         ]
       ],
-      "id": "elsewhere",
+      "id": "sha256:dcba2222a20e99335c4bb5c550aa932e212b47bab6a45d824d8533c96e30d8db",
       "kind": "verified_finite_computation",
+      "scope": "primitive Pisot substitutions",
       "statement": "key differs from id",
       "tags": []
     },
-    "mlc": {
-      "depends_on": [],
-      "evidence": [
-        [
-          "reason",
-          "open frontier"
-        ]
-      ],
-      "id": "mlc",
-      "kind": "pending_dependency",
-      "statement": "global MLC-strength claim",
-      "tags": []
-    },
-    "on_circle": {
+    "sha256:001a24a9ce8e016ad2a958792eac7112ad92a14711955bfd0606f1e50314bdd4": {
       "depends_on": [
-        "circle"
+        [
+          "sha256:71c641952049688ca026bf20181d38c66c6172f00b31862275ad0e23b32f4e06",
+          "closure over verified and imported records",
+          "ok/theorem",
+          "same",
+          "accepted"
+        ],
+        [
+          "sha256:62c9eb30291a3996ff8e916cc91ab10f3b9aadcb6db79ea91bd238ff20540724",
+          "finite lemma",
+          "ok/lemma",
+          "same",
+          "accepted"
+        ]
       ],
       "evidence": [
         [
@@ -450,44 +436,13 @@
           "x"
         ]
       ],
-      "id": "on_circle",
+      "id": "sha256:001a24a9ce8e016ad2a958792eac7112ad92a14711955bfd0606f1e50314bdd4",
       "kind": "verified_finite_computation",
-      "statement": "depends on the circle record",
+      "scope": "primitive Pisot substitutions",
+      "statement": "reaches the lemma twice, correctly",
       "tags": []
     },
-    "sweep": {
-      "depends_on": [],
-      "evidence": [
-        [
-          "domain",
-          "images of length <= 3"
-        ]
-      ],
-      "id": "sweep",
-      "kind": "bounded_experiment",
-      "statement": "no counterexample up to length 7",
-      "tags": []
-    },
-    "theorem": {
-      "depends_on": [
-        "lemma"
-      ],
-      "evidence": [
-        [
-          "digest",
-          "sha256:theorem"
-        ],
-        [
-          "replay",
-          "pixi run verify"
-        ]
-      ],
-      "id": "theorem",
-      "kind": "verified_finite_computation",
-      "statement": "closure over verified and imported records",
-      "tags": []
-    },
-    "unchecked": {
+    "sha256:1d870aeb3117cbeede3ced77cc15c6053d125cb17759187a6d77324b6efa85d9": {
       "depends_on": [],
       "evidence": [
         [
@@ -499,102 +454,793 @@
           "somewhere"
         ]
       ],
-      "id": "unchecked",
+      "id": "sha256:1d870aeb3117cbeede3ced77cc15c6053d125cb17759187a6d77324b6efa85d9",
       "kind": "imported_theorem",
+      "scope": "primitive Pisot substitutions",
       "statement": "import with open hypotheses",
+      "tags": []
+    },
+    "sha256:2420cf5ecc4839ea1ecfa0cc500eed520e2766cfea47d606bc231076588b4dda": {
+      "depends_on": [],
+      "evidence": [
+        [
+          "hypotheses_checked",
+          "true"
+        ],
+        [
+          "source",
+          "Barge-Stimac-Williams"
+        ]
+      ],
+      "id": "sha256:2420cf5ecc4839ea1ecfa0cc500eed520e2766cfea47d606bc231076588b4dda",
+      "kind": "imported_theorem",
+      "scope": "primitive Pisot substitutions",
+      "statement": "coincidence density theorem",
+      "tags": []
+    },
+    "sha256:2757ec620be189dde07adaa1132ea273985351be4c6636efebc0da65e06d2d58": {
+      "depends_on": [],
+      "evidence": [
+        [
+          "digest",
+          "y"
+        ],
+        [
+          "replay",
+          "x"
+        ]
+      ],
+      "id": "sha256:2757ec620be189dde07adaa1132ea273985351be4c6636efebc0da65e06d2d58",
+      "kind": "verified_finite_computation",
+      "scope": "primitive Pisot substitutions",
+      "statement": "uses a rank-2 circle",
+      "tags": [
+        "uses_rank2_circle"
+      ]
+    },
+    "sha256:2f560b42d4c0eda5f79840d4ba70737acdc92896c9287a5a8bf5097d68914f46": {
+      "depends_on": [
+        [
+          "sha256:2757ec620be189dde07adaa1132ea273985351be4c6636efebc0da65e06d2d58",
+          "uses a rank-2 circle",
+          "on_circle/circle",
+          "same",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "digest",
+          "y"
+        ],
+        [
+          "replay",
+          "x"
+        ]
+      ],
+      "id": "sha256:2f560b42d4c0eda5f79840d4ba70737acdc92896c9287a5a8bf5097d68914f46",
+      "kind": "verified_finite_computation",
+      "scope": "primitive Pisot substitutions",
+      "statement": "depends on the circle record",
+      "tags": []
+    },
+    "sha256:327d17733b5ff0b03279546c08792b8070c6f54c6d6fcf9040dde4935064e4ce": {
+      "depends_on": [],
+      "evidence": [
+        [
+          "reason",
+          "open frontier"
+        ]
+      ],
+      "id": "sha256:327d17733b5ff0b03279546c08792b8070c6f54c6d6fcf9040dde4935064e4ce",
+      "kind": "pending_dependency",
+      "scope": "primitive Pisot substitutions",
+      "statement": "global MLC-strength claim",
+      "tags": []
+    },
+    "sha256:4d2ab51820559ecda070acd8cca9d039d918f7e6ad09143881c037230ea0b6f7": {
+      "depends_on": [
+        [
+          "sha256:5100a3ec500701af89712f22227a928d5e99d00a99f17c5d9e2b08a9635187cc",
+          "4555 PIP specimens, 0 capped",
+          "wrong_claim/census",
+          "same",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "digest",
+          "y"
+        ],
+        [
+          "replay",
+          "x"
+        ]
+      ],
+      "id": "sha256:4d2ab51820559ecda070acd8cca9d039d918f7e6ad09143881c037230ea0b6f7",
+      "kind": "verified_finite_computation",
+      "scope": "4554 PIP specimens",
+      "statement": "expects a claim the census does not make",
+      "tags": []
+    },
+    "sha256:5100a3ec500701af89712f22227a928d5e99d00a99f17c5d9e2b08a9635187cc": {
+      "depends_on": [],
+      "evidence": [
+        [
+          "digest",
+          "sha256:census"
+        ],
+        [
+          "replay",
+          "pixi run mojo run -I . census.mojo"
+        ]
+      ],
+      "id": "sha256:5100a3ec500701af89712f22227a928d5e99d00a99f17c5d9e2b08a9635187cc",
+      "kind": "verified_finite_computation",
+      "scope": "4554 PIP specimens",
+      "statement": "4554 PIP specimens, 0 capped",
+      "tags": []
+    },
+    "sha256:521c88fff63253237c424fe1a327caa3dc1e45b5c3454cd7aba097aa9808add6": {
+      "depends_on": [],
+      "evidence": [
+        [
+          "domain",
+          "images of length <= 3"
+        ]
+      ],
+      "id": "sha256:521c88fff63253237c424fe1a327caa3dc1e45b5c3454cd7aba097aa9808add6",
+      "kind": "bounded_experiment",
+      "scope": "images of length <= 3",
+      "statement": "no counterexample up to length 7",
+      "tags": []
+    },
+    "sha256:56b4b6f9510eca23daa997e0443fb6eca3f04c7371a657b5ed391f7482ae9b4a": {
+      "depends_on": [
+        [
+          "sha256:5100a3ec500701af89712f22227a928d5e99d00a99f17c5d9e2b08a9635187cc",
+          "4554 PIP specimens, 0 capped",
+          "bad_outcome/census",
+          "same",
+          "proved"
+        ]
+      ],
+      "evidence": [
+        [
+          "digest",
+          "y"
+        ],
+        [
+          "replay",
+          "x"
+        ]
+      ],
+      "id": "sha256:56b4b6f9510eca23daa997e0443fb6eca3f04c7371a657b5ed391f7482ae9b4a",
+      "kind": "verified_finite_computation",
+      "scope": "primitive Pisot substitutions",
+      "statement": "unknown required outcome",
+      "tags": []
+    },
+    "sha256:62c9eb30291a3996ff8e916cc91ab10f3b9aadcb6db79ea91bd238ff20540724": {
+      "depends_on": [
+        [
+          "sha256:5100a3ec500701af89712f22227a928d5e99d00a99f17c5d9e2b08a9635187cc",
+          "4554 PIP specimens, 0 capped",
+          "lemma/census",
+          "scope=4554 PIP specimens",
+          "accepted"
+        ],
+        [
+          "sha256:2420cf5ecc4839ea1ecfa0cc500eed520e2766cfea47d606bc231076588b4dda",
+          "coincidence density theorem",
+          "lemma/density",
+          "same",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "digest",
+          "sha256:lemma"
+        ],
+        [
+          "replay",
+          "pixi run test"
+        ]
+      ],
+      "id": "sha256:62c9eb30291a3996ff8e916cc91ab10f3b9aadcb6db79ea91bd238ff20540724",
+      "kind": "verified_finite_computation",
+      "scope": "primitive Pisot substitutions",
+      "statement": "finite lemma",
+      "tags": []
+    },
+    "sha256:71c641952049688ca026bf20181d38c66c6172f00b31862275ad0e23b32f4e06": {
+      "depends_on": [
+        [
+          "sha256:62c9eb30291a3996ff8e916cc91ab10f3b9aadcb6db79ea91bd238ff20540724",
+          "finite lemma",
+          "theorem/lemma",
+          "same",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "digest",
+          "sha256:theorem"
+        ],
+        [
+          "replay",
+          "pixi run verify"
+        ]
+      ],
+      "id": "sha256:71c641952049688ca026bf20181d38c66c6172f00b31862275ad0e23b32f4e06",
+      "kind": "verified_finite_computation",
+      "scope": "primitive Pisot substitutions",
+      "statement": "closure over verified and imported records",
+      "tags": []
+    },
+    "sha256:8714a580b2016efae9d476ecf28abd7af80047a21805784fb0923fc9abb5bc8b": {
+      "depends_on": [
+        [
+          "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+          "nothing",
+          "dangling/nowhere",
+          "same",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "digest",
+          "y"
+        ],
+        [
+          "replay",
+          "x"
+        ]
+      ],
+      "id": "sha256:8714a580b2016efae9d476ecf28abd7af80047a21805784fb0923fc9abb5bc8b",
+      "kind": "verified_finite_computation",
+      "scope": "primitive Pisot substitutions",
+      "statement": "cites a missing record",
+      "tags": []
+    },
+    "sha256:9155e2f51ff797603d78cf87765d510fabee465df8bfcbe121fa7aba021b66ce": {
+      "depends_on": [
+        [
+          "sha256:5100a3ec500701af89712f22227a928d5e99d00a99f17c5d9e2b08a9635187cc",
+          "4554 PIP specimens, 0 capped",
+          "bad/first",
+          "scope=4554 PIP specimens",
+          "accepted"
+        ],
+        [
+          "sha256:5100a3ec500701af89712f22227a928d5e99d00a99f17c5d9e2b08a9635187cc",
+          "4554 PIP specimens, 0 capped",
+          "bad/second",
+          "scope=4554 PIP specimens",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "digest",
+          "y"
+        ],
+        [
+          "replay",
+          "x"
+        ]
+      ],
+      "id": "sha256:9155e2f51ff797603d78cf87765d510fabee465df8bfcbe121fa7aba021b66ce",
+      "kind": "verified_finite_computation",
+      "scope": "primitive Pisot substitutions",
+      "statement": "duplicate dependency",
+      "tags": []
+    },
+    "sha256:9c6a2f67dcdf8fc99ea5f72fc0bc63872b59387467c851b033b4882d77d9f9f7": {
+      "depends_on": [],
+      "evidence": [
+        [
+          "reason",
+          "source pending"
+        ]
+      ],
+      "id": "sha256:9c6a2f67dcdf8fc99ea5f72fc0bc63872b59387467c851b033b4882d77d9f9f7",
+      "kind": "pending_dependency",
+      "scope": "primitive Pisot substitutions",
+      "statement": "Galois propagation",
+      "tags": []
+    },
+    "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa": {
+      "depends_on": [
+        [
+          "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "b",
+          "a/b",
+          "same",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "digest",
+          "y"
+        ],
+        [
+          "replay",
+          "x"
+        ]
+      ],
+      "id": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "kind": "verified_finite_computation",
+      "scope": "primitive Pisot substitutions",
+      "statement": "a",
+      "tags": []
+    },
+    "sha256:aded72322c570f87636e97a98cb029820bf2e8a9c94cbcebd005787e58bf92ff": {
+      "depends_on": [
+        [
+          "sha256:521c88fff63253237c424fe1a327caa3dc1e45b5c3454cd7aba097aa9808add6",
+          "no counterexample up to length 7",
+          "evidence/sweep",
+          "same",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "digest",
+          "y"
+        ],
+        [
+          "replay",
+          "x"
+        ]
+      ],
+      "id": "sha256:aded72322c570f87636e97a98cb029820bf2e8a9c94cbcebd005787e58bf92ff",
+      "kind": "verified_finite_computation",
+      "scope": "images of length <= 3",
+      "statement": "cites a sweep as support",
+      "tags": []
+    },
+    "sha256:b4dadd2d5175dc126f8334752e78a169943eda67ac0b9c22a424a20582c6e63d": {
+      "depends_on": [
+        [
+          "sha256:327d17733b5ff0b03279546c08792b8070c6f54c6d6fcf9040dde4935064e4ce",
+          "global MLC-strength claim",
+          "frontier/mlc",
+          "same",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "digest",
+          "y"
+        ],
+        [
+          "replay",
+          "x"
+        ]
+      ],
+      "id": "sha256:b4dadd2d5175dc126f8334752e78a169943eda67ac0b9c22a424a20582c6e63d",
+      "kind": "verified_finite_computation",
+      "scope": "primitive Pisot substitutions",
+      "statement": "depends on the open frontier",
+      "tags": []
+    },
+    "sha256:b5f7d838a018842027d81f7942d9f90a77a2d1710eb41492141ca519fd91b983": {
+      "depends_on": [
+        [
+          "sha256:62c9eb30291a3996ff8e916cc91ab10f3b9aadcb6db79ea91bd238ff20540724",
+          "finite lemma",
+          "wrong_scope/lemma",
+          "same",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "digest",
+          "y"
+        ],
+        [
+          "replay",
+          "x"
+        ]
+      ],
+      "id": "sha256:b5f7d838a018842027d81f7942d9f90a77a2d1710eb41492141ca519fd91b983",
+      "kind": "verified_finite_computation",
+      "scope": "4554 PIP specimens",
+      "statement": "expects the lemma on the wrong scope",
+      "tags": []
+    },
+    "sha256:b7912f0a2404169ffe73d172757e3569fddcf5eaa241dff356b63a9995b1b692": {
+      "depends_on": [
+        [
+          "sha256:5100a3ec500701af89712f22227a928d5e99d00a99f17c5d9e2b08a9635187cc",
+          "4554 PIP specimens, 0 capped",
+          "wrong_outcome/census",
+          "same",
+          "bounded"
+        ]
+      ],
+      "evidence": [
+        [
+          "digest",
+          "y"
+        ],
+        [
+          "replay",
+          "x"
+        ]
+      ],
+      "id": "sha256:b7912f0a2404169ffe73d172757e3569fddcf5eaa241dff356b63a9995b1b692",
+      "kind": "verified_finite_computation",
+      "scope": "4554 PIP specimens",
+      "statement": "requires a bounded outcome from an accepted record",
+      "tags": []
+    },
+    "sha256:baf4caa6e3801c78aa979aa5126cb57ea14e03ce0f49b160309add6c80bde265": {
+      "depends_on": [
+        [
+          "sha256:521c88fff63253237c424fe1a327caa3dc1e45b5c3454cd7aba097aa9808add6",
+          "no counterexample up to length 7",
+          "within/sweep",
+          "same",
+          "bounded"
+        ]
+      ],
+      "evidence": [
+        [
+          "digest",
+          "y"
+        ],
+        [
+          "replay",
+          "x"
+        ]
+      ],
+      "id": "sha256:baf4caa6e3801c78aa979aa5126cb57ea14e03ce0f49b160309add6c80bde265",
+      "kind": "verified_finite_computation",
+      "scope": "images of length <= 3",
+      "statement": "bounded claim closed by a bounded experiment",
+      "tags": []
+    },
+    "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb": {
+      "depends_on": [
+        [
+          "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "a",
+          "b/a",
+          "same",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "digest",
+          "y"
+        ],
+        [
+          "replay",
+          "x"
+        ]
+      ],
+      "id": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "kind": "verified_finite_computation",
+      "scope": "primitive Pisot substitutions",
+      "statement": "b",
+      "tags": []
+    },
+    "sha256:bd1b7d5c93a6c6461df7461a8d2a372ddae5f1b6ebb19712f94771893bbca6f5": {
+      "depends_on": [
+        [
+          "sha256:71c641952049688ca026bf20181d38c66c6172f00b31862275ad0e23b32f4e06",
+          "closure over verified and imported records",
+          "diamond/theorem",
+          "same",
+          "accepted"
+        ],
+        [
+          "sha256:62c9eb30291a3996ff8e916cc91ab10f3b9aadcb6db79ea91bd238ff20540724",
+          "not the finite lemma",
+          "diamond/lemma",
+          "same",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "digest",
+          "y"
+        ],
+        [
+          "replay",
+          "x"
+        ]
+      ],
+      "id": "sha256:bd1b7d5c93a6c6461df7461a8d2a372ddae5f1b6ebb19712f94771893bbca6f5",
+      "kind": "verified_finite_computation",
+      "scope": "primitive Pisot substitutions",
+      "statement": "reaches the lemma twice, once with the wrong claim",
+      "tags": []
+    },
+    "sha256:c60b54b820da32f78e5e2caf4bfc369055bff3d7c29d967b4e77a669732d3814": {
+      "depends_on": [
+        [
+          "sha256:5100a3ec500701af89712f22227a928d5e99d00a99f17c5d9e2b08a9635187cc",
+          "4554 PIP specimens, 0 capped",
+          "bad_relation/census",
+          "within",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "digest",
+          "y"
+        ],
+        [
+          "replay",
+          "x"
+        ]
+      ],
+      "id": "sha256:c60b54b820da32f78e5e2caf4bfc369055bff3d7c29d967b4e77a669732d3814",
+      "kind": "verified_finite_computation",
+      "scope": "primitive Pisot substitutions",
+      "statement": "unknown scope relation",
+      "tags": []
+    },
+    "sha256:d33bd488a0d2754cf690a70ed07d738aa0cef4a6ba82cf86bafac0beb83c5dad": {
+      "depends_on": [
+        [
+          "sha256:62c9eb30291a3996ff8e916cc91ab10f3b9aadcb6db79ea91bd238ff20540724",
+          "finite lemma",
+          "conditional/lemma",
+          "same",
+          "accepted"
+        ],
+        [
+          "sha256:9c6a2f67dcdf8fc99ea5f72fc0bc63872b59387467c851b033b4882d77d9f9f7",
+          "Galois propagation",
+          "conditional/galois",
+          "same",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "digest",
+          "y"
+        ],
+        [
+          "replay",
+          "x"
+        ]
+      ],
+      "id": "sha256:d33bd488a0d2754cf690a70ed07d738aa0cef4a6ba82cf86bafac0beb83c5dad",
+      "kind": "verified_finite_computation",
+      "scope": "primitive Pisot substitutions",
+      "statement": "depends on pending material",
+      "tags": []
+    },
+    "sha256:f19383b04af5afd4a9bf0c0d820763e167d6f1327dba10eb62c8bce8fd816501": {
+      "depends_on": [
+        [
+          "sha256:521c88fff63253237c424fe1a327caa3dc1e45b5c3454cd7aba097aa9808add6",
+          "no counterexample up to length 7",
+          "elsewhere/sweep",
+          "scope=images of length <= 3",
+          "bounded"
+        ]
+      ],
+      "evidence": [
+        [
+          "digest",
+          "y"
+        ],
+        [
+          "replay",
+          "x"
+        ]
+      ],
+      "id": "sha256:f19383b04af5afd4a9bf0c0d820763e167d6f1327dba10eb62c8bce8fd816501",
+      "kind": "verified_finite_computation",
+      "scope": "primitive Pisot substitutions",
+      "statement": "bounded dependency outside its own scope",
+      "tags": []
+    },
+    "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff": {
+      "depends_on": [],
+      "evidence": [
+        [
+          "digest",
+          "sha256:census"
+        ],
+        [
+          "replay",
+          "pixi run mojo run -I . census.mojo"
+        ]
+      ],
+      "id": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "kind": "verified_finite_computation",
+      "scope": "4554 PIP specimens",
+      "statement": "4554 PIP specimens, 0 capped",
       "tags": []
     }
   },
   "validation": {
-    "a": {
-      "digest": "b5ff2e9931ecc702469f6ae1ab48537f93420ebd7909f55d781769e2c6ca350c",
+    "mismatch": {
+      "digest": "aef4c095a3ec2808798bf2d6f8aaa92e8828b6442423cded4b1c99cdb3fd24aa",
+      "identity": "sha256:dcba2222a20e99335c4bb5c550aa932e212b47bab6a45d824d8533c96e30d8db",
       "kind": "verified_finite_computation",
       "reason": null
     },
-    "b": {
-      "digest": "ab8bbb1281f5c83e498c984986ec282a2d0a26062e8b7e3f2aa7e58cd9034c0a",
+    "sha256:001a24a9ce8e016ad2a958792eac7112ad92a14711955bfd0606f1e50314bdd4": {
+      "digest": "37a24f5ee9537befbcf788c14fdc265f0eac3a57a66f22f3c98f2997bc650eeb",
+      "identity": "sha256:001a24a9ce8e016ad2a958792eac7112ad92a14711955bfd0606f1e50314bdd4",
       "kind": "verified_finite_computation",
       "reason": null
     },
-    "bad": {
-      "digest": "035bf0dd6eb1762d7c01100dcfd17c1345e6d26431b86de7019e3961caf45958",
+    "sha256:1d870aeb3117cbeede3ced77cc15c6053d125cb17759187a6d77324b6efa85d9": {
+      "digest": "464511dfeb6f6afebe7ab982b29f4bc330a4511153b3762b2bac076f201e0977",
+      "identity": "sha256:1d870aeb3117cbeede3ced77cc15c6053d125cb17759187a6d77324b6efa85d9",
       "kind": "rejected",
-      "reason": "duplicate or self dependency"
+      "reason": "imported theorem with unchecked hypotheses"
     },
-    "bsw": {
-      "digest": "3850b3324474db5b0f34ea2b56cca1a3d5ccbda14652633dd53d41776c066809",
+    "sha256:2420cf5ecc4839ea1ecfa0cc500eed520e2766cfea47d606bc231076588b4dda": {
+      "digest": "8863de94c8bcd078dc1a306e0d0b209d24cbb35be37a762d79aeba97baa3fb8f",
+      "identity": "sha256:2420cf5ecc4839ea1ecfa0cc500eed520e2766cfea47d606bc231076588b4dda",
       "kind": "imported_theorem",
       "reason": null
     },
-    "census": {
-      "digest": "cfbd29e0dcfee1f1a85531cb5117a491fc567f54087a6de45826795783c7cb8e",
+    "sha256:2757ec620be189dde07adaa1132ea273985351be4c6636efebc0da65e06d2d58": {
+      "digest": "83515e0d5b13c06c59930f945565fcca15ef9e5628580f94899486d6a755592d",
+      "identity": "sha256:2757ec620be189dde07adaa1132ea273985351be4c6636efebc0da65e06d2d58",
       "kind": "verified_finite_computation",
       "reason": null
     },
-    "circle": {
-      "digest": "a31c736ccbbbd0901446f6ad51b074888177a7e2d649f0b7ee708fc19a48a56e",
+    "sha256:2f560b42d4c0eda5f79840d4ba70737acdc92896c9287a5a8bf5097d68914f46": {
+      "digest": "972d0d154b4bee0bc2d949c3d1788c0c5bc837a2efe5e7d5be678a7f56c6a514",
+      "identity": "sha256:2f560b42d4c0eda5f79840d4ba70737acdc92896c9287a5a8bf5097d68914f46",
       "kind": "verified_finite_computation",
       "reason": null
     },
-    "conditional": {
-      "digest": "4165899253097299c41d41aed59e1b47b43dc30ed340c5f114fe78cb430637e7",
-      "kind": "verified_finite_computation",
-      "reason": null
-    },
-    "dangling": {
-      "digest": "80b5e90f5e8833c7d32381b3e639f6665370f2fa69f65c9aa355af054e82c874",
-      "kind": "verified_finite_computation",
-      "reason": null
-    },
-    "evidence": {
-      "digest": "b078c463a86897972e06e25494f964bfdd9bc31751b0706a19ebcdf048d69044",
-      "kind": "verified_finite_computation",
-      "reason": null
-    },
-    "frontier": {
-      "digest": "313f5db02fe9932b15c9a8904b738824a920633805fda5713e16799b38177e1d",
-      "kind": "verified_finite_computation",
-      "reason": null
-    },
-    "galois": {
-      "digest": "606527137ff1cc7aaf493fc100e94415d3aece8269c5957188937f12b8587b5d",
+    "sha256:327d17733b5ff0b03279546c08792b8070c6f54c6d6fcf9040dde4935064e4ce": {
+      "digest": "017ceedb431ac8401b743699e3e803391bddb1291181fb8137616b951aa06971",
+      "identity": "sha256:327d17733b5ff0b03279546c08792b8070c6f54c6d6fcf9040dde4935064e4ce",
       "kind": "pending_dependency",
       "reason": null
     },
-    "lemma": {
-      "digest": "92da873f62c93b2fa30c5140a1acdae072e2ebee2cf1920cf477f87ad369970f",
+    "sha256:4d2ab51820559ecda070acd8cca9d039d918f7e6ad09143881c037230ea0b6f7": {
+      "digest": "f1aa9d1ed5cbfce692c1cb9b78adac22143eafbfe2f376ed685520bd17c4728d",
+      "identity": "sha256:4d2ab51820559ecda070acd8cca9d039d918f7e6ad09143881c037230ea0b6f7",
       "kind": "verified_finite_computation",
       "reason": null
     },
-    "mismatch": {
-      "digest": "f16f90389d25c4e0b4323df1b57974f26f427323993dc6c5c967cf6ba6aebaad",
+    "sha256:5100a3ec500701af89712f22227a928d5e99d00a99f17c5d9e2b08a9635187cc": {
+      "digest": "050a1bf28efc131e86387e70e28c5913557f36a2dd0a3e33078c088bd0916388",
+      "identity": "sha256:5100a3ec500701af89712f22227a928d5e99d00a99f17c5d9e2b08a9635187cc",
       "kind": "verified_finite_computation",
       "reason": null
     },
-    "mlc": {
-      "digest": "a7154b1b86eb28a588eed9a43db3d4c49fb063029f5ff9dcf11f5d7c9fb7d188",
-      "kind": "pending_dependency",
-      "reason": null
-    },
-    "on_circle": {
-      "digest": "bf095895fbbad862a35c866ac595bce7dcd883a9c8f70a3c8baf0cace5b489e4",
-      "kind": "verified_finite_computation",
-      "reason": null
-    },
-    "sweep": {
-      "digest": "931cdfd2b14846c5eb39f1db480982113903accbd9ed7650190d6fbcdec03d2e",
+    "sha256:521c88fff63253237c424fe1a327caa3dc1e45b5c3454cd7aba097aa9808add6": {
+      "digest": "3b49479a5f86820100e54fb8828c0c2e80b453b1a733f78f1ffafdb107e6ab6d",
+      "identity": "sha256:521c88fff63253237c424fe1a327caa3dc1e45b5c3454cd7aba097aa9808add6",
       "kind": "bounded_experiment",
       "reason": null
     },
-    "theorem": {
-      "digest": "1391909a268bd4883963d53e69d58cb02b8169517c17943db5bb64dc161ee8a2",
+    "sha256:56b4b6f9510eca23daa997e0443fb6eca3f04c7371a657b5ed391f7482ae9b4a": {
+      "digest": "2da1f9b12eb258d60b09c1c056c355be23f46068b832d3d2fe91d87ff03afde3",
+      "identity": "sha256:56b4b6f9510eca23daa997e0443fb6eca3f04c7371a657b5ed391f7482ae9b4a",
+      "kind": "rejected",
+      "reason": "unknown required outcome: proved"
+    },
+    "sha256:62c9eb30291a3996ff8e916cc91ab10f3b9aadcb6db79ea91bd238ff20540724": {
+      "digest": "eb0470b019721976bbf7e74f7ecda40690da238e1d175ad9b8c13632c54c9f28",
+      "identity": "sha256:62c9eb30291a3996ff8e916cc91ab10f3b9aadcb6db79ea91bd238ff20540724",
       "kind": "verified_finite_computation",
       "reason": null
     },
-    "unchecked": {
-      "digest": "439f0ae50aee649829b19278a6aafc4bb83f6343cf9452868f1880ee201e3119",
+    "sha256:71c641952049688ca026bf20181d38c66c6172f00b31862275ad0e23b32f4e06": {
+      "digest": "931a5cfe79e4f202bd27d34279f6c701734d41adfad2c707f0660ca160993eff",
+      "identity": "sha256:71c641952049688ca026bf20181d38c66c6172f00b31862275ad0e23b32f4e06",
+      "kind": "verified_finite_computation",
+      "reason": null
+    },
+    "sha256:8714a580b2016efae9d476ecf28abd7af80047a21805784fb0923fc9abb5bc8b": {
+      "digest": "345ba91ae7f2f66c9e845342f7703c31d5640a95cf21359b060ca3e3a6ffeb0c",
+      "identity": "sha256:8714a580b2016efae9d476ecf28abd7af80047a21805784fb0923fc9abb5bc8b",
+      "kind": "verified_finite_computation",
+      "reason": null
+    },
+    "sha256:9155e2f51ff797603d78cf87765d510fabee465df8bfcbe121fa7aba021b66ce": {
+      "digest": "324f3c72e499f03d3d26441f3ea2988541502443de93331648e4fae138e77ed4",
+      "identity": "sha256:9155e2f51ff797603d78cf87765d510fabee465df8bfcbe121fa7aba021b66ce",
       "kind": "rejected",
-      "reason": "imported theorem with unchecked hypotheses"
+      "reason": "duplicate or self dependency"
+    },
+    "sha256:9c6a2f67dcdf8fc99ea5f72fc0bc63872b59387467c851b033b4882d77d9f9f7": {
+      "digest": "8b31e7027c76162a3221ca6108cb6f3af3811c3c9e4931beb900f5b39e5fff18",
+      "identity": "sha256:9c6a2f67dcdf8fc99ea5f72fc0bc63872b59387467c851b033b4882d77d9f9f7",
+      "kind": "pending_dependency",
+      "reason": null
+    },
+    "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa": {
+      "digest": "1c19e8b442d16ccf09ecde64b36dab20c2c4aefa8d1ca4d2b849cdf67f715a4b",
+      "identity": "sha256:94abdb4d2498b41408be5654c5d990c32bf31f26fb4585b6852fe4b6b248e00d",
+      "kind": "rejected",
+      "reason": "identifier does not match preimage"
+    },
+    "sha256:aded72322c570f87636e97a98cb029820bf2e8a9c94cbcebd005787e58bf92ff": {
+      "digest": "0c855035c4faeef7696a921e0f8d615a2db0f6aa98d9cb07bd74f0b8d91302e9",
+      "identity": "sha256:aded72322c570f87636e97a98cb029820bf2e8a9c94cbcebd005787e58bf92ff",
+      "kind": "verified_finite_computation",
+      "reason": null
+    },
+    "sha256:b4dadd2d5175dc126f8334752e78a169943eda67ac0b9c22a424a20582c6e63d": {
+      "digest": "dc245d20eb06aab8b1c9474c1bafbf17384ad999b239120d6d671785174b66d0",
+      "identity": "sha256:b4dadd2d5175dc126f8334752e78a169943eda67ac0b9c22a424a20582c6e63d",
+      "kind": "verified_finite_computation",
+      "reason": null
+    },
+    "sha256:b5f7d838a018842027d81f7942d9f90a77a2d1710eb41492141ca519fd91b983": {
+      "digest": "b6748d6beb62f1433484629224a385003060d297ac04eff18ca91a0b5b284db4",
+      "identity": "sha256:b5f7d838a018842027d81f7942d9f90a77a2d1710eb41492141ca519fd91b983",
+      "kind": "verified_finite_computation",
+      "reason": null
+    },
+    "sha256:b7912f0a2404169ffe73d172757e3569fddcf5eaa241dff356b63a9995b1b692": {
+      "digest": "93466e378fa390668727fa779e9ace0a43bc0e7aa7e50a33755b1a32de29d82b",
+      "identity": "sha256:b7912f0a2404169ffe73d172757e3569fddcf5eaa241dff356b63a9995b1b692",
+      "kind": "verified_finite_computation",
+      "reason": null
+    },
+    "sha256:baf4caa6e3801c78aa979aa5126cb57ea14e03ce0f49b160309add6c80bde265": {
+      "digest": "9c3402dbd63d19e250380ecfefba92ffcd37b34ca3303b063175a896e589087f",
+      "identity": "sha256:baf4caa6e3801c78aa979aa5126cb57ea14e03ce0f49b160309add6c80bde265",
+      "kind": "verified_finite_computation",
+      "reason": null
+    },
+    "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb": {
+      "digest": "a0923de992e1b0313a0bb41430e7a2a7d0d36efbc9829c59af32f4ccbc994b03",
+      "identity": "sha256:2cd9b670ea51e00751ae849e03d029842970f792cde45e67f44d5f6792427228",
+      "kind": "rejected",
+      "reason": "identifier does not match preimage"
+    },
+    "sha256:bd1b7d5c93a6c6461df7461a8d2a372ddae5f1b6ebb19712f94771893bbca6f5": {
+      "digest": "fa7d3e32f41ba10cdc44acc2d9461b86923499adec59dd1d9e64ce7aeef68667",
+      "identity": "sha256:bd1b7d5c93a6c6461df7461a8d2a372ddae5f1b6ebb19712f94771893bbca6f5",
+      "kind": "verified_finite_computation",
+      "reason": null
+    },
+    "sha256:c60b54b820da32f78e5e2caf4bfc369055bff3d7c29d967b4e77a669732d3814": {
+      "digest": "4318a4c7cf97355db9bfc8c0bbad156e7cff71bb7488bdc5284b1d013a768ff0",
+      "identity": "sha256:c60b54b820da32f78e5e2caf4bfc369055bff3d7c29d967b4e77a669732d3814",
+      "kind": "rejected",
+      "reason": "unknown scope relation: within"
+    },
+    "sha256:d33bd488a0d2754cf690a70ed07d738aa0cef4a6ba82cf86bafac0beb83c5dad": {
+      "digest": "1e191dc7dc640909eef48920c99e7d694478443c8631affb979f4ff2e8420f8f",
+      "identity": "sha256:d33bd488a0d2754cf690a70ed07d738aa0cef4a6ba82cf86bafac0beb83c5dad",
+      "kind": "verified_finite_computation",
+      "reason": null
+    },
+    "sha256:f19383b04af5afd4a9bf0c0d820763e167d6f1327dba10eb62c8bce8fd816501": {
+      "digest": "9ec5cf02eb516001408163acbc0672c1e58fbc8e119e9f3b2ee3c1def33330b0",
+      "identity": "sha256:f19383b04af5afd4a9bf0c0d820763e167d6f1327dba10eb62c8bce8fd816501",
+      "kind": "rejected",
+      "reason": "bounded dependency outside its own scope"
+    },
+    "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff": {
+      "digest": "a976e3e45ba5e9a15264bced4b54d8ba152a79bb8042065ecb4ffa36fc1defcb",
+      "identity": "sha256:5100a3ec500701af89712f22227a928d5e99d00a99f17c5d9e2b08a9635187cc",
+      "kind": "rejected",
+      "reason": "identifier does not match preimage"
     }
   }
 }

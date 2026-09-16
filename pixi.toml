@@ -10,11 +10,17 @@ pytest = "*"
 
 [tasks]
 property = "python tools/property_oracle.py --layers zq"
+replay = "python tools/replay_mojo.py"
+provenance = "python tools/provenance.py --update"
 test-finite-exact = "mojo run -I . tests/finite_exact/test_finite_exact.mojo"
 test-interval = "mojo run -I . tests/interval/test_interval_q.mojo"
 test-linear-algebra = "mojo run -I . tests/finite_linear_algebra/test_finite_linear_algebra.mojo"
 test-substitution = "mojo run -I . tests/substitution_dynamics/test_substitution_dynamics.mojo"
+test-facades = "mojo run -I . tests/facades/test_stable_facades.mojo"
 test-proof-records = "python -m pytest -q tests/proof_records"
 test-python = "python -m pytest -q tests/finite_exact tests/proof_records"
 test-audit = "PYTHONPATH=audit python -m pytest -q tests/audit"
-test = { depends-on = ["test-finite-exact", "test-interval", "test-linear-algebra", "test-substitution", "test-proof-records", "test-python", "test-audit"] }
+test-provenance = "python -m pytest -q tests/provenance"
+test-references = "python -m pytest -q tests/references"
+references = "python tools/check_references.py"
+test = { depends-on = ["test-finite-exact", "test-interval", "test-linear-algebra", "test-substitution", "test-facades", "test-proof-records", "test-python", "test-audit", "test-provenance", "test-references", "property"] }

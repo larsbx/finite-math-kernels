@@ -217,7 +217,7 @@ A consumer of either package keeps a **binding table** in its own repository: on
 | DEMO | unchecked fixed-width backend; algebra conformant; barred from certificate acceptance |
 | QUARANTINED | uses floating point; allowlisted; barred from every certificate path; scheduled for replacement |
 
-The packages themselves are CONFORMS rows in every consumer: `finite_exact/bigint_z.mojo` (1.1 integer backend, unbounded), `finite_exact/rat_q.mojo` (1.1–1.3 ℚ), and, from `larsbx/interval_q`, `interval_q/closed_q.mojo` (2.1–2.5 I_Q and rank-2 boxes). A consumer must not re-implement a layer beside the vendored package; a second rational or interval type in a consumer is a binding-table violation.
+The packages themselves are CONFORMS rows in every consumer: `finite_exact/bigint_z.mojo` (1.1 integer backend, unbounded), `finite_exact/rat_q.mojo` (1.1–1.3 ℚ), and `finite_exact/closed_q.mojo` (2.1–2.5 I_Q and rank-2 boxes; stable facade `finite_exact/closed_interval.mojo`). A consumer must not re-implement a layer beside the vendored package; a second rational or interval type in a consumer is a binding-table violation.
 
 Known consumers and their binding tables:
 
@@ -234,13 +234,13 @@ Promotion of a DEMO row to CONFORMS requires that the consumer's certificate-acc
 
 The specification is a hook, not a note. In this package:
 
-1. **Law tests.** `tests/test_finite_exact.mojo` executes 1.3 (normalization, decidable equality, `1/10 + 2/10 = 3/10`, order-independence, lossless cancellation) and the sticky-rejection rule of the public boundary; `pixi run smoke`.
-2. **Property probe.** `tests/property_probe.mojo` draws deterministic pseudo-random operands and prints canonical bytes of every `BigZ` and `Q` result; `tools/property_oracle.py` recomputes them with Python `int` and `fractions.Fraction`; `pixi run property`. A disagreement on any canonical byte fails the build. `larsbx/interval_q` runs the same oracle with the I layer appended.
+1. **Law tests.** `tests/finite_exact/test_finite_exact.mojo` executes 1.3 (normalization, decidable equality, `1/10 + 2/10 = 3/10`, order-independence, lossless cancellation) and the sticky-rejection rule of the public boundary; `pixi run test-finite-exact`.
+2. **Property probe.** `tests/finite_exact/property_probe.mojo` draws deterministic pseudo-random operands and prints canonical bytes of every `BigZ` and `Q` result; `tools/property_oracle.py` recomputes them with Python `int` and `fractions.Fraction`; `pixi run property`. A disagreement on any canonical byte fails the build. `larsbx/interval_q` runs the same oracle with the I layer appended.
 3. **Public boundary.** `docs/exact-arithmetic-public-boundary.md` fixes the names, semantics, and encodings a consumer may rely on; a change there requires a matching change in this file and a passing probe.
 
 In a consumer:
 
-4. **Pinned vendoring.** The package directory is copied byte-for-byte, and `tools/check_vendored_sync.py` (shipped here, copied into the consumer) verifies every file against the SHA-256 digests pinned in the consumer's `vendored.toml` on every CI run. A change to the arithmetic is made here, then re-vendored; a local patch fails the consumer's CI.
+4. **Pinned consumption.** Consumers pin a commit of this repository, and `tools/provenance.py --check` verifies every imported file here against the blobs pinned in `audit/provenance.json` on every CI run (`audit/CONSOLIDATION_PROVENANCE.md`). A change to the arithmetic is made here, then the consumer moves its pin; a local patch in a consumer is a binding-table violation.
 5. **Audit script and allowlist**, where the consumer has certificate paths: a lexical scan of the kernel scope for floating-point types and literals outside an allowlist, discovery of direct arithmetic consumers with a binding row required for each, and the C7 citation check. NLAP-JT's `tools/audit_exact_arithmetic.py` is the reference implementation.
 6. **Policy pointers.** The consumer's README and implementation-policy file name this specification as the arithmetic policy.
 

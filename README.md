@@ -31,8 +31,10 @@ not part of this repository.
 
 ## Boundaries
 
-- `BigZ` and `Q` are exact and unbounded; malformed or invalid arithmetic is
-  rejected fail-closed.
+- `BigZ` and `Q` are exact and unbounded; malformed construction and invalid
+  arithmetic on constructor-produced values are rejected fail-closed. Direct
+  assignment to `BigZ` fields is outside the boundary
+  (`docs/exact-arithmetic-public-boundary.md`, section 2).
 - Closed intervals are conservative filters. Unknown containment or sign is
   never promoted to equality or certificate acceptance.
 - Linear algebra computes exact finite-dimensional facts and makes no spectral

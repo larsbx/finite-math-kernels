@@ -1,6 +1,6 @@
 """Repository policy: immutable records loaded from ``claim_governance.toml``.
 
-The schema is documented in ``docs/policy-format.md``.  Loading validates
+The schema is documented in ``audit/docs/policy-format.md``.  Loading validates
 shape and cross-references (every claim status and status synonym must name a
 declared status class) and raises :class:`PolicyError` otherwise, so a
 misconfigured policy fails closed instead of auditing nothing.

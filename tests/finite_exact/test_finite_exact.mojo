@@ -1,6 +1,6 @@
 """Executable smoke and law checks for the finite_exact package.
 
-Run with `pixi run smoke` (`mojo run -I . tests/test_finite_exact.mojo`).
+Run with `pixi run test-finite-exact` (`mojo run -I . tests/finite_exact/test_finite_exact.mojo`).
 The randomized property probe (`pixi run property`) is the stronger check;
 this driver pins the documented examples and the field laws of
 docs/rational-interval-arithmetic-spec.md section 1.3.
@@ -26,7 +26,7 @@ def test_rational_field_laws() -> Bool:
 
 
 def test_rejection_is_explicit_and_sticky() -> Bool:
-    # docs/exact-arithmetic-public-boundary.md section 2, item 3.
+    # docs/exact-arithmetic-public-boundary.md section 2, item 4.
     var zero_den = Q(1, 0)
     var by_zero = Q(1, 2).div(Q.zero())
     return (

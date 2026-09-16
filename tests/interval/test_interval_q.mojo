@@ -1,6 +1,6 @@
 """Executable smoke and law checks for the interval_q package.
 
-Run with `pixi run smoke` (`mojo run -I . tests/test_interval_q.mojo`).
+Run with `pixi run test-interval` (`mojo run -I . tests/interval/test_interval_q.mojo`).
 The randomized property probe (`pixi run property`) is the stronger check;
 this driver pins the documented examples and the enclosure laws of
 larsbx/finite_exact:docs/rational-interval-arithmetic-spec.md sections 2.2 to 2.5.
