@@ -16,8 +16,6 @@ Reference oracle: `tools/tuning_reference.py`.
 
 from substitution_dynamics.substitution import Substitution
 
-alias MAX_COINCIDENCE_ALPHABET = 60
-
 
 struct CoincidenceWitness(Copyable, Movable):
     """`found` with the least depth and its column digits, or `found == False`
@@ -62,7 +60,8 @@ def _popcount(mask: Int) -> Int:
 def column_coincidence(sigma: Substitution) raises -> CoincidenceWitness:
     var q = constant_length(sigma)
     var n = sigma.size
-    if n > MAX_COINCIDENCE_ALPHABET:
+    # Subsets are machine-word bitmasks; 60 letters keep 2^n comfortably inside Int.
+    if n > 60:
         raise Error("alphabet too large for the subset search")
     var start = (1 << n) - 1
     if n == 1:
