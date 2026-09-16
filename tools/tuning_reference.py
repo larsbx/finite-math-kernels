@@ -103,6 +103,8 @@ def directive_composite(subs: Sequence[Images]) -> Images:
 
 def apply_directive(subs: Sequence[Images], word: Sequence[int]) -> Word:
     """``sigma_1(sigma_2(... sigma_n(word)))`` without forming the composite."""
+    if not subs:
+        raise ValueError("directive sequence must be non-empty")
     w = tuple(word)
     for s in reversed(subs):
         w = apply(s, w)

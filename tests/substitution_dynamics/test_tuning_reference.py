@@ -95,6 +95,8 @@ def test_directive_composite_and_application_agree():
         tr.compose(THUE_MORSE, ((0, 1, 2), (0,), (1,)))
     with pytest.raises(ValueError):
         tr.directive_composite([])
+    with pytest.raises(ValueError):
+        tr.apply_directive([], (0, 1))
 
 
 def test_kneading_prefix_is_a_prefix_of_every_tuning_image():

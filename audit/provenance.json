@@ -510,7 +510,7 @@
       "relation": "authored"
     },
     "tests/substitution_dynamics/test_tuning_reference.py": {
-      "blob": "6afb355b672df944628a2eaacf58b939d5bd35ba",
+      "blob": "3d19830114f84866804d7202518002d1fbdfe080",
       "relation": "authored"
     },
     "tools/check_references.py": {
@@ -543,7 +543,7 @@
       "source_path": "tools/replay_mojo.py"
     },
     "tools/tuning_reference.py": {
-      "blob": "1dffd28d5e21d442268fc4101b7f124e3ed3aef3",
+      "blob": "b338d8e6b44194aae94d604b0c624f64c7a60df5",
       "relation": "authored"
     }
   },
