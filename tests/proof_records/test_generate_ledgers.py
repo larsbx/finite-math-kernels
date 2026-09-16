@@ -143,6 +143,8 @@ def test_each_refusal_names_its_reason():
     assert "aliases for unknown record 'Nobody'" in refusal(ledger(aliases={"Nobody": ["x"]}))
     assert "surfaces for unknown record 'Nobody'" in refusal(ledger(surfaces={"Nobody": [{"path": "x"}]}))
     assert "Census: a passthrough surface needs a path" in refusal(ledger(surfaces={"Census": [{"anchor": "x"}]}))
+    assert "assumption set 'Open': invalid or reserved name" in refusal(ledger(assumption_sets={"Open": ["Census"]}))
+    assert "assumption set 'Imports': invalid or reserved name" in refusal(ledger(assumption_sets={"Imports": ["Census"]}))
 
 
 def test_load_refuses_wrong_format_and_empty_ledgers(tmp_path):
@@ -153,6 +155,22 @@ def test_load_refuses_wrong_format_and_empty_ledgers(tmp_path):
     path.write_text(json.dumps({"format": gl.FORMAT, "records": {}}))
     with pytest.raises(gl.LedgerError, match="no records"):
         gl.load_ledger(path)
+    base = mle.example()
+    path.write_text(json.dumps({**base, "aliases": {"Census": "PIP census"}}))
+    with pytest.raises(gl.LedgerError, match="aliases\\['Census'\\] must be a list of strings"):
+        gl.load_ledger(path)
+    path.write_text(json.dumps({**base, "surfaces": {"Census": "ledger-index.md"}}))
+    with pytest.raises(gl.LedgerError, match="surfaces\\['Census'\\] must be a list of tables"):
+        gl.load_ledger(path)
+
+
+def test_passthrough_strings_are_toml_safe_beyond_the_basic_plane():
+    import tomllib
+    exotic = ledger(aliases={"Census": ["𝔓 census 😀", 'quote " and backslash \\']}, surfaces={"Census": [{"path": "ledger-index.md", "anchor": "| 𝔓 |", "expect": "present"}]})
+    fragment = gl.render_claims(gl.analyse(exotic))
+    parsed = tomllib.loads("[repository]\nname = 'x'\n" + fragment)
+    census = next(c for c in parsed["claim"] if c["name"] == "Census")
+    assert census["aliases"] == ["𝔓 census 😀", 'quote " and backslash \\'] and census["surfaces"][-1]["anchor"] == "| 𝔓 |"
 
 
 # --- section 3: surfaces -----------------------------------------------------

@@ -159,9 +159,28 @@ def load_ledger(path: Path) -> Ledger:
         tla_dir=str(data.get("tla_dir", "tla")),
         index_path=str(data.get("index_path", "docs/ledger-index.md")),
         source=path.name,
-        aliases={str(k): tuple(str(a) for a in v) for k, v in data.get("aliases", {}).items()},
-        surfaces={str(k): tuple(dict(t) for t in v) for k, v in data.get("surfaces", {}).items()},
+        aliases={str(k): _strings(v, f"aliases[{k!r}]") for k, v in data.get("aliases", {}).items()},
+        surfaces={str(k): _tables(v, f"surfaces[{k!r}]") for k, v in data.get("surfaces", {}).items()},
     )
+
+
+def _strings(value, where: str) -> tuple[str, ...]:
+    if not isinstance(value, list) or not all(isinstance(x, str) for x in value):
+        raise LedgerError(f"{where} must be a list of strings")
+    return tuple(value)
+
+
+def _tables(value, where: str) -> tuple[Mapping[str, object], ...]:
+    if not isinstance(value, list) or not all(isinstance(t, dict) for t in value):
+        raise LedgerError(f"{where} must be a list of tables")
+    return tuple(dict(t) for t in value)
+
+
+def _toml(value) -> str:
+    """A TOML basic string (or integer) for a passthrough value: JSON escaping
+    without ASCII-only output, so non-BMP characters stay literal rather than
+    becoming the surrogate escapes TOML rejects."""
+    return json.dumps(value, ensure_ascii=False)
 
 
 # --- section 2: analysis, fail closed --------------------------------------------
@@ -190,7 +209,7 @@ def analyse(ledger: Ledger) -> Analysis:
         if record.id in by_id:
             errors.append(f"{name}: identifier already used by {by_id[record.id]}")
         by_id[record.id] = name
-    reserved = {"ResultSet", "RequiresDef", "ProvedDef", "ImportedDef", "BoundedDef", "WithdrawnDef", "NoAssumptions", "ImportsAssumed"}
+    reserved = {"ResultSet", "RequiresDef", "ProvedDef", "ImportedDef", "BoundedDef", "WithdrawnDef", "NoAssumptions", "ImportsAssumed", "Open", "Imports"}
     for set_name, members in ledger.assumption_sets.items():
         if not NAME.match(set_name) or set_name in reserved:
             errors.append(f"assumption set {set_name!r}: invalid or reserved name")
@@ -373,13 +392,13 @@ def render_claims(analysis: Analysis) -> str:
             else ("WithdrawnDef", "present") if e.withdrawn else ("ProvedDef", "absent")
         out += ["", "[[claim]]", f'name = "{e.name}"', f'status = "{e.status}"']
         if ledger.aliases.get(e.name):
-            out.append("aliases = [" + ", ".join(json.dumps(a) for a in ledger.aliases[e.name]) + "]")
+            out.append("aliases = [" + ", ".join(_toml(a) for a in ledger.aliases[e.name]) + "]")
         out += ["[[claim.surfaces]]", f'path = "{tla_path}"', f"anchor = '\"{e.name}\"'", f'section = "{member[0]} == {{"',
                 'section_end = "}"', f'expect = "{member[1]}"',
                 "[[claim.surfaces]]", f'path = "{ledger.index_path}"', f"anchor = '| {e.name} |'", "window_lines = 0"]
         for table in ledger.surfaces.get(e.name, ()):
             out.append("[[claim.surfaces]]")
-            out += [f"{k} = {json.dumps(table[k])}" for k in SURFACE_KEYS if k in table]
+            out += [f"{k} = {_toml(table[k])}" for k in SURFACE_KEYS if k in table]
     out.append(CLAIMS_END)
     return "\n".join(out) + "\n"
 

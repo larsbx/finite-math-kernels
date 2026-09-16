@@ -319,7 +319,7 @@
       "source_path": "finite_proof_records/__init__.py"
     },
     "proof_records/generate_ledgers.py": {
-      "blob": "8ef03fdc7b4fbbde7acdcb01ac50e2e2f5f9bc9a",
+      "blob": "c58b388113e0c7c007e6951ec02daa977e1f4b15",
       "relation": "authored"
     },
     "proof_records/records.mojo": {
@@ -522,7 +522,7 @@
       "source_path": "tests/replay_vectors.mojo"
     },
     "tests/proof_records/test_generate_ledgers.py": {
-      "blob": "502c30aa2fd78819ceb8a6963761288eb0191d66",
+      "blob": "0fc5c3c98e73d6c9d74a3ffe5b7b623ae687b55e",
       "relation": "authored"
     },
     "tests/proof_records/test_mojo_replay.py": {
