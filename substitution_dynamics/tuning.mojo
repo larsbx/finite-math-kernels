@@ -1,13 +1,16 @@
 """Tuning patterns and the star product: constant-length substitutions on
 `{0, 1}` of the form `tau(s) = prefix . (s xor twist)`.
 
-Specification: `docs/tuning-substitutions-spec.md`, sections 1 and 2. A
-pattern with the parity twist of Derrida, Gervois, and Pomeau (`dgp`) is the
-kneading form of tuning by a superattracting centre of period
-`len(prefix) + 1`; the package treats it as finite combinatorics only. The
-star product is defined so that `star_product(a, b).substitution()` equals
+Specification: `docs/tuning-substitutions-spec.md`, sections 1 and 2. Two
+twist rules are shipped: the parity twist of Derrida, Gervois, and Pomeau
+(`dgp`), the real-line kneading convention, and the continuation twist
+(`continuation`), the general rule under which the image of `1` is the
+periodic continuation of the prefix whose internal address contains the
+period. They differ already on the prefix `11`. The package treats both as
+finite combinatorics only. The star product is defined so that
+`star_product(a, b).substitution()` equals
 `compose(a.substitution(), b.substitution())` for every pair of patterns,
-whatever their twists, and the DGP parity is closed under it.
+whatever their twists, and both twist rules are closed under it.
 
 Reference oracle: `tools/tuning_reference.py`.
 """
@@ -38,8 +41,15 @@ struct TuningPattern(Copyable, Movable):
 
     @staticmethod
     def dgp(prefix: List[Int]) raises -> TuningPattern:
-        """The pattern with the parity twist: an odd number of `1` in the prefix."""
+        """The pattern with the parity twist: an odd number of `1` in the prefix.
+        This is the real-line convention (spec 1.3); use `continuation` otherwise."""
         return TuningPattern.checked(prefix, dgp_twist(prefix))
+
+    @staticmethod
+    def continuation(prefix: List[Int]) raises -> TuningPattern:
+        """The pattern whose image of `1` is the continuation of the prefix with
+        the period in its internal address (spec 1.3)."""
+        return TuningPattern.checked(prefix, continuation_twist(prefix))
 
     def period(self) -> Int:
         return len(self.prefix) + 1
@@ -64,6 +74,27 @@ def dgp_twist(prefix: List[Int]) -> Bool:
         if prefix[i] == 1:
             ones += 1
     return ones % 2 == 1
+
+
+def continuation_twist(prefix: List[Int]) raises -> Bool:
+    """`A'_(n - S)` for `n = len(prefix) + 1` and `S` the last defined term of
+    `1, rho(1), rho(rho(1)), ...` with `rho(m) = min {k in (m, n-1] : A'_k != A'_(k-m)}`
+    (1-indexed). Spec 1.3: exactly one periodic continuation of `A' *` has `n`
+    in its internal address, namely the one whose last letter is `1 - A'_(n-S)`."""
+    var n = len(prefix) + 1
+    if n < 2:
+        raise Error("tuning prefix must be non-empty (period at least 2)")
+    var s = 1
+    while True:
+        var r = 0
+        for k in range(s + 1, n):
+            if prefix[k - 1] != prefix[k - s - 1]:
+                r = k
+                break
+        if r == 0:
+            break
+        s = r
+    return prefix[n - s - 1] == 1
 
 
 def star_product(a: TuningPattern, b: TuningPattern) -> TuningPattern:

@@ -38,15 +38,33 @@ tau_{A',eps}(s) = A' . (s xor eps),     s in {0, 1}.
 
 `tau` is a substitution on `{0, 1}` of constant length `p`. Both images share the prefix `A'` and differ exactly in their last letter. `TuningPattern.substitution()` returns it as a `Substitution` of size 2.
 
-### 1.3 The parity twist (DGP)
+### 1.3 The twist: parity (real convention) and continuation (general)
 
-For the kneading form of tuning, the twist is the parity of the number of `1` in `A'`:
+Two twist rules are shipped. Both are definitions of this package; what either has to do with tuning is a consumer citation (section 5).
+
+**Parity twist (DGP).**
 
 ```text
 dgp_twist(A') = (number of 1 in A') mod 2.
 ```
 
-`TuningPattern.dgp(prefix)` constructs the pattern with this twist. With the convention `0 = L`, `1 = R` for the itinerary of a real quadratic map, the period-2 centre has `A' = R`, so `dgp([1])` is `([1], 1)` and its substitution is `0 -> 11`, `1 -> 10`: the period-doubling substitution, whose fixed point beginning with `1` is `RLRRRLRL...`. This is a definition of the package's convention; the identification of `tau_{A', dgp}` with Douady–Hubbard tuning on kneading sequences is a consumer citation (section 5).
+`TuningPattern.dgp(prefix)` constructs the pattern with this twist. With the convention `0 = L`, `1 = R` for the itinerary of a real quadratic map, the period-2 centre has `A' = R`, so `dgp([1])` is `([1], 1)` and its substitution is `0 -> 11`, `1 -> 10`: the period-doubling substitution, whose fixed point beginning with `1` is `RLRRRLRL...`. This is the star product of Derrida, Gervois, and Pomeau for **real** unimodal kneading sequences and is not the general rule: on the prefix `11` (the kneading prefix of the rabbit angles `1/7`, `2/7` in the 0/1 convention of section 5) the parity twist is `0`, while tuning sends `1` to `110`, not `111`.
+
+**Continuation twist (general).** Write `n = |A'| + 1` and index `A'` from 1. Let
+
+```text
+rho(m) = min { k in (m, n-1] : A'_k != A'_(k-m) }      (undefined when no such k exists),
+S      = the last defined term of  1, rho(1), rho(rho(1)), ...
+continuation_twist(A') = A'_(n-S).
+```
+
+`TuningPattern.continuation(prefix)` constructs the pattern with this twist, so that `tau(1) = A' . (1 - A'_(n-S))`.
+
+*Characterization.* Of the two `n`-periodic continuations `A' . b` (`b` in `{0, 1}`), exactly one has `n` in its internal address `1 -> rho(1) -> rho(rho(1)) -> ...` (the `rho` function taken over the periodic sequence), namely `b = 1 - A'_(n-S)`; `tau(1)` is that continuation. Proof: the internal-address entries below `n` are decided by `A'` alone, and `S` is the largest of them; `n` is an entry iff `rho(S) = n`, i.e. iff `A'_k = A'_(k-S)` for `S < k < n` (automatic, since otherwise `rho(S) < n` would be a larger entry below `n`) and `b != A'_(n-S)`. The reference tests replay this characterization against a brute-force internal address for every prefix of length at most 10.
+
+*Identity (continuation closure), bounded.* `continuation_twist(A * B) = continuation_twist(A') xor continuation_twist(B')` when `A`, `B` carry the continuation twist; checked exhaustively for `|A'| <= 6`, `|B'| <= 5` and replayed by the tests for `|A'| <= 5`, `|B'| <= 4`. It is recorded as a bounded check, not proved here.
+
+The two rules agree on `1`, `10`, `100`, `101` and on every real kneading prefix the consumer binding has checked (section 5), and disagree on `11`. A consumer describing centres that are not real must use `continuation`.
 
 ### 1.4 The star product
 
@@ -126,7 +144,7 @@ The package ships no policy; each consumer binds these kernels to its own claims
 
 | Consumer | Binding | Where it lives |
 | --- | --- | --- |
-| `larsbx/NLAP-JT` | the kneading form of tuning (`tau_{A', dgp}` is Douady–Hubbard tuning on kneading sequences) as an imported theorem tag with source; the residual-class carrier of the C1 program represented as a directive prefix of DGP patterns, computed from the repository's exact rational-angle machinery | `docs/C1_theorem_tag_import_ledger.md`, `src/checked_ray_address.mojo` (NLAP-JT) |
+| `larsbx/NLAP-JT` | the kneading form of tuning (`tau_{A', continuation}` is Douady–Hubbard tuning on 0/1 kneading sequences) as the scaffolded theorem tag `TuningKneadingSubstitution`; the residual-class carrier of the C1 program as a directive prefix of continuation patterns computed from exact periodic ray addresses, with the twist checked against exact angle tuning on the doubling, rabbit, airplane, and both period-4 components for every base angle of period at most 10. The parity twist is never used there: it holds on the real centres checked and fails on the rabbit | `docs/C1_theorem_tag_import_ledger.md`, `docs/C1_residual_directive_carrier.md`, `src/checked_ray_address.mojo` (NLAP-JT) |
 | `larsbx/pisot-substitution-conjecture-research` | constant-length coincidence as the alphabet-generic special case beside the balanced-pair and overlap coincidence kernels; Dekking's theorem as an imported theorem where a constant-length specimen is used as a calibration | `docs/overlap-finiteness-and-coincidence-density-2026-09-13.md` (PSC) for the coincidence vocabulary it must stay consistent with |
 
 Citation targets for consumers, not for this package: Douady and Hubbard, *Étude dynamique des polynômes complexes* (tuning); Derrida, Gervois, and Pomeau, the star product for unimodal kneading; Milnor, *Periodic orbits, external rays and the Mandelbrot set*; Dekking, *The spectrum of dynamical systems arising from substitutions of constant length* (1978).

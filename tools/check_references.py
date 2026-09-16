@@ -49,6 +49,7 @@ EXTERNAL: Mapping[str, str] = {
     "tools/audit_exact_arithmetic.py": NLAP,
     "docs/C1_theorem_tag_import_ledger.md": NLAP,
     "src/checked_ray_address.mojo": NLAP,
+    "docs/C1_residual_directive_carrier.md": NLAP,
     "docs/cross-pollination-round-two-2026-09-16.md": f"{NLAP} and {PSC}",
     "docs/exact-arithmetic-binding.md": PSC,
     "docs/overlap-finiteness-and-coincidence-density-2026-09-13.md": PSC,
