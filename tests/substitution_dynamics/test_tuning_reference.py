@@ -75,6 +75,49 @@ def test_dgp_parity_is_closed_under_the_star_product():
         assert twist == tr.dgp_twist(prefix)
 
 
+def _rho(nu, m):
+    n = len(nu)
+    return next((k for k in range(m + 1, m + 4 * n + 2) if nu[(k - 1) % n] != nu[(k - m - 1) % n]), None)
+
+
+def _internal_address(nu):
+    address, m = [1], 1
+    while (r := _rho(nu, m)) is not None and r <= len(nu):
+        address.append(r)
+        m = r
+    return address
+
+
+def test_continuation_twist_pinned_values_and_disagreement_with_parity():
+    assert [tr.continuation_twist(p) for p in ((1,), (1, 0), (1, 1), (1, 0, 0), (1, 0, 1))] == [True, True, True, True, False]
+    assert [tr.dgp_twist(p) for p in ((1,), (1, 0), (1, 1), (1, 0, 0), (1, 0, 1))] == [True, True, False, True, False]
+    assert tr.tuning_substitution(tr.continuation_pattern((1, 1))) == ((1, 1, 1), (1, 1, 0))
+    assert tr.star_product(tr.continuation_pattern((1, 1)), tr.continuation_pattern((1,))) == ((1, 1, 0, 1, 1), False)
+    assert tr.star_product(tr.continuation_pattern((1, 0)), tr.continuation_pattern((1,))) == ((1, 0, 0, 1, 0), False)
+    with pytest.raises(ValueError):
+        tr.continuation_twist(())
+
+
+def test_continuation_is_the_unique_continuation_with_the_period_in_its_internal_address():
+    from itertools import product
+    for length in range(1, 11):
+        for prefix in product((0, 1), repeat=length):
+            n = length + 1
+            qualifying = [b for b in (0, 1) if n in _internal_address(list(prefix) + [b])]
+            assert len(qualifying) == 1, prefix
+            assert tr.tuning_substitution(tr.continuation_pattern(prefix))[1] == prefix + (qualifying[0],)
+
+
+def test_continuation_twist_is_closed_under_the_star_product():
+    from itertools import product
+    for la in range(1, 6):
+        for lb in range(1, 5):
+            for pa in product((0, 1), repeat=la):
+                for pb in product((0, 1), repeat=lb):
+                    ab = tr.star_product(tr.continuation_pattern(pa), tr.continuation_pattern(pb))
+                    assert tr.continuation_twist(ab[0]) == ab[1], (pa, pb)
+
+
 def test_star_product_is_associative():
     rng = random.Random(3)
     for _ in range(100):

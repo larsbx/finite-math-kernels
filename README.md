@@ -49,7 +49,8 @@ not part of this repository.
   combinatorics (`docs/tuning-substitutions-spec.md`). A coincidence witness
   is a fact about columns of powers of a substitution; the spectral
   conclusion (Dekking) and the kneading interpretation of tuning are the
-  consumer's imported theorems.
+  consumer's imported theorems. The parity twist is the real-line
+  convention; the continuation twist is the general rule.
 - Proof-record acceptance policy belongs to the consumer.
 - Generated ledgers (`docs/ledger-generation-spec.md`) are functions of a
   consumer's named proof records: the TLA+ ledger and TLC models over
