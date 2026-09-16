@@ -159,6 +159,23 @@ def test_directive_composite_and_application_agree() raises:
     except:
         caught = True
     assert_true(caught)
+    # A mixed-alphabet prefix is rejected by application as by composition, even
+    # when the inner two-letter images index the outer three-letter alphabet.
+    var mixed_prefix = List[Substitution]()
+    mixed_prefix.append(Substitution.checked(three))
+    mixed_prefix.append(thue_morse())
+    caught = False
+    try:
+        _ = apply_directive(mixed_prefix, w)
+    except:
+        caught = True
+    assert_true(caught)
+    caught = False
+    try:
+        _ = directive_composite(mixed_prefix)
+    except:
+        caught = True
+    assert_true(caught)
 
 
 def test_kneading_prefix_is_a_prefix_of_every_tuning_image() raises:

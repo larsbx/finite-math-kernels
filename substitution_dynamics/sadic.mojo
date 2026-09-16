@@ -33,9 +33,13 @@ def directive_composite(subs: List[Substitution]) raises -> Substitution:
 
 
 def apply_directive(subs: List[Substitution], w: List[Int]) raises -> List[Int]:
-    """`sigma_1(sigma_2(... sigma_n(w)))` without forming the composite."""
+    """`sigma_1(sigma_2(... sigma_n(w)))` without forming the composite; the
+    same one-alphabet check as `compose`, so a mixed prefix never yields data."""
     if len(subs) == 0:
         raise Error("directive sequence must be non-empty")
+    for i in range(1, len(subs)):
+        if subs[i].size != subs[0].size:
+            raise Error("directive prefix needs substitutions over one alphabet")
     var out = w.copy()
     for i in range(len(subs) - 1, -1, -1):
         out = subs[i].apply(out)

@@ -83,7 +83,7 @@ For patterns `A_1, ..., A_n`, `kneading_prefix([A_1, ..., A_n])` is the prefix o
 
 ## 2. Directive prefixes
 
-A **directive prefix** is a non-empty list `sigma_1, ..., sigma_n` of substitutions over one alphabet. `compose(outer, inner)` rejects substitutions of different alphabet sizes. `directive_composite` returns `sigma_1 o ... o sigma_n`; `apply_directive(subs, w)` returns `sigma_1(sigma_2(... sigma_n(w)))` without forming the composite. Both reject an empty list. Nothing in this section concerns limits: the package models finite prefixes only, and a consumer that reasons about an infinite directive sequence does so in its own ledger.
+A **directive prefix** is a non-empty list `sigma_1, ..., sigma_n` of substitutions over one alphabet. `compose(outer, inner)` rejects substitutions of different alphabet sizes. `directive_composite` returns `sigma_1 o ... o sigma_n`; `apply_directive(subs, w)` returns `sigma_1(sigma_2(... sigma_n(w)))` without forming the composite. Both reject an empty list and a list whose substitutions do not all share one alphabet size, so a mixed prefix never yields data through either path. Nothing in this section concerns limits: the package models finite prefixes only, and a consumer that reasons about an infinite directive sequence does so in its own ledger.
 
 ## 3. Column coincidence
 

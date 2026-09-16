@@ -97,6 +97,12 @@ def test_directive_composite_and_application_agree():
         tr.directive_composite([])
     with pytest.raises(ValueError):
         tr.apply_directive([], (0, 1))
+    # A mixed-alphabet prefix is rejected even when every letter happens to index
+    # an image: the larger outer alphabet must not launder a two-letter inner one.
+    with pytest.raises(ValueError):
+        tr.apply_directive([((0, 1, 2), (0,), (1,)), THUE_MORSE], (0, 1))
+    with pytest.raises(ValueError):
+        tr.directive_composite([((0, 1, 2), (0,), (1,)), THUE_MORSE])
 
 
 def test_kneading_prefix_is_a_prefix_of_every_tuning_image():

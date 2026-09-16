@@ -105,6 +105,8 @@ def apply_directive(subs: Sequence[Images], word: Sequence[int]) -> Word:
     """``sigma_1(sigma_2(... sigma_n(word)))`` without forming the composite."""
     if not subs:
         raise ValueError("directive sequence must be non-empty")
+    if any(len(s) != len(subs[0]) for s in subs):
+        raise ValueError("directive prefix needs substitutions over one alphabet")
     w = tuple(word)
     for s in reversed(subs):
         w = apply(s, w)

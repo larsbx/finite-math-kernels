@@ -154,7 +154,7 @@
       "source_path": "docs/rational-interval-arithmetic-spec.md"
     },
     "docs/tuning-substitutions-spec.md": {
-      "blob": "594a306f8ba938efb3dd52005c9b867a113d4528",
+      "blob": "7e500ec5ffc77c1fcb16fd26ef8064e5378b06ce",
       "relation": "authored"
     },
     "finite_exact/__init__.mojo": {
@@ -321,7 +321,7 @@
       "source_path": "substitution_dynamics/discrepancy.mojo"
     },
     "substitution_dynamics/sadic.mojo": {
-      "blob": "bf2c6d0113b645161dbffb78884d6385588aaf60",
+      "blob": "a9c96a97afbb3d74be987b33ae433dc26ae107ce",
       "relation": "authored"
     },
     "substitution_dynamics/substitution.mojo": {
@@ -506,11 +506,11 @@
       "source_path": "tests/test_substitution_dynamics.mojo"
     },
     "tests/substitution_dynamics/test_tuning.mojo": {
-      "blob": "256013e1c9d7f9d3d557eae96876b08c4ea7a527",
+      "blob": "186f4936d4705569488a6b96024068f8f25ab766",
       "relation": "authored"
     },
     "tests/substitution_dynamics/test_tuning_reference.py": {
-      "blob": "3d19830114f84866804d7202518002d1fbdfe080",
+      "blob": "ac67b68e7eb4f6c03a10b8b086b49a965883a8b2",
       "relation": "authored"
     },
     "tools/check_references.py": {
@@ -543,7 +543,7 @@
       "source_path": "tools/replay_mojo.py"
     },
     "tools/tuning_reference.py": {
-      "blob": "b338d8e6b44194aae94d604b0c624f64c7a60df5",
+      "blob": "476b94e87dd775deed29170cd6eac6d03942e747",
       "relation": "authored"
     }
   },
