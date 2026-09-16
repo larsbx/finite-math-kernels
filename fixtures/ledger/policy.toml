@@ -24,6 +24,7 @@ classes = ["proved", "conditional", "imported", "finite-domain", "open-frontier"
 [[claim]]
 name = "Census"
 status = "proved"
+aliases = ["PIP census", "4554 specimens"]
 [[claim.surfaces]]
 path = "tla/Example.tla"
 anchor = '"Census"'
@@ -34,6 +35,11 @@ expect = "present"
 path = "ledger-index.md"
 anchor = '| Census |'
 window_lines = 0
+[[claim.surfaces]]
+path = "ledger-index.md"
+anchor = "| Census | theorem |"
+window_lines = 0
+expect = "present"
 
 [[claim]]
 name = "Conditional"
@@ -103,6 +109,20 @@ expect = "present"
 [[claim.surfaces]]
 path = "ledger-index.md"
 anchor = '| OnRetracted |'
+window_lines = 0
+
+[[claim]]
+name = "Proof"
+status = "proved"
+[[claim.surfaces]]
+path = "tla/Example.tla"
+anchor = '"Proof"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "ledger-index.md"
+anchor = '| Proof |'
 window_lines = 0
 
 [[claim]]

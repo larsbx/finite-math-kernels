@@ -9,12 +9,13 @@ The package states no theorem. It classifies records of work, checks that each c
 | Kind | Value | Meaning | Outcome | Can support a theorem |
 | --- | --- | --- | --- | --- |
 | verified finite computation | `verified_finite_computation` | replayable, canonical, machine-checked; carries the replay command and the canonical digest of its inputs and outputs | `accepted` | yes |
+| repository theorem | `repository_theorem` | a theorem proved in the consumer repository by a human-reviewed proof at a named location (manuscript section, proof note, pull request) | `accepted` | yes, when `proof_reviewed` is `true` |
 | imported theorem | `imported_theorem` | an external result with a named source whose hypotheses were checked against finite data | `accepted` | yes, when `hypotheses_checked` is `true` |
 | pending dependency | `pending_dependency` | a conjectural or source-pending premise: named, unchecked, blocks completion | `open` | no |
 | bounded experiment | `bounded_experiment` | evidence over an enumerated finite domain; never a general theorem | `bounded` | only its own bounded proposition, on its own scope |
 | rejected | `rejected` | malformed or refused; carries the reason | `rejected` | no |
 
-These five kinds, together with the two-valued **closure status** of section 5, are the generalizable content of NLAP-JT's C1 ledgers and PSC's census, import, and obligation records. The C1 vocabulary (theorem tags, payload strength classes, proof blocks) and the PSC vocabulary (censuses, Barge-Stimac-Williams import, source-pending Galois material, the G1, concentration, and renewal obligations) are instances, not part of the package. The NLAP-JT contract's further kinds (`formal_derivation`, `countermodel`) and states (`incomplete`, `refuted`) are not implemented here; a consumer needing them records them as `pending_dependency` until the package grows.
+These six kinds, together with the two-valued **closure status** of section 5, are the generalizable content of NLAP-JT's C1 ledgers and PSC's census, import, and obligation records. The C1 vocabulary (theorem tags, payload strength classes, proof blocks) and the PSC vocabulary (repository-proved theorems, censuses, Barge-Stimac-Williams import, source-pending Galois material, the G1, concentration, and renewal obligations) are instances, not part of the package. A `repository_theorem` is distinguished from a `verified_finite_computation` by what closes it, a reviewed proof rather than a replay, and from an `imported_theorem` by where the proof lives; the package checks only that the proof is named and marked reviewed, never the proof itself. The NLAP-JT contract's further kinds (`formal_derivation`, `countermodel`) and states (`incomplete`, `refuted`) are not implemented here; a consumer needing them records them as `pending_dependency` until the package grows.
 
 The **outcome** of a validated record is the fourth column: `outcome(record)`. Consumer policy is reported separately (section 6) and never changes the outcome.
 
@@ -23,7 +24,7 @@ The **outcome** of a validated record is the fourth column: `outcome(record)`. C
 ```text
 Record(
   id          the identifier the preimage determines (section 4); verified, never trusted
-  kind        one of the five kinds
+  kind        one of the six kinds
   statement   non-empty opaque text; the package never interprets it
   scope       non-empty opaque text: the exact domain on which the statement is asserted
   depends_on  ordered tuple of dependency edges, no two naming the same record
@@ -48,6 +49,7 @@ Required evidence keys:
 | Kind | Required keys | Constraint |
 | --- | --- | --- |
 | verified | `replay`, `digest` | `replay` is the command that reproduces the computation; `digest` is the canonical digest of its inputs and outputs |
+| repository | `source`, `proof_reviewed` | `source` names where the proof is; `proof_reviewed` must be exactly `true` |
 | imported | `source`, `hypotheses_checked` | `hypotheses_checked` must be exactly `true` |
 | pending | `reason` | why it is unchecked (conjectural, source pending, open obligation) |
 | bounded | `domain` | the enumerated finite domain |
@@ -69,6 +71,7 @@ Required evidence keys:
 | `unknown required outcome: <outcome>` | neither `accepted` nor `bounded` |
 | `bounded dependency outside its own scope` | `required_outcome` is `bounded` under a relation other than `same` |
 | `imported theorem with unchecked hypotheses` | |
+| `repository theorem without a reviewed proof` | |
 | `identifier does not match preimage` | `id` is not `identity(record)` (section 4) |
 
 Structural checks precede the identity check: a construction that cannot produce the envelope is not a record and has no authoritative encoding, whatever identifier it carries. A structurally well-formed record whose outcome is `open` or `bounded` validates unchanged and keeps its identity, so a closure can name it exactly. A record refused only by consumer policy likewise keeps its identity; the refusal is a missing link, not a rejection. A malformed record is therefore never silently a valid one, and a consumer that reads a record kind reads it after validation.

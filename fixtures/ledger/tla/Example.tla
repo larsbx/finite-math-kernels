@@ -14,6 +14,7 @@ ResultSet == {
     "Galois",
     "Lemma",
     "OnRetracted",
+    "Proof",
     "Retracted",
     "Sweep",
     "Theorem",
@@ -27,9 +28,10 @@ RequiresDef == [r \in ResultSet |->
       [] r = "Galois" -> {}
       [] r = "Lemma" -> {"Census", "Density"}
       [] r = "OnRetracted" -> {"Retracted"}
+      [] r = "Proof" -> {}
       [] r = "Retracted" -> {}
       [] r = "Sweep" -> {}
-      [] r = "Theorem" -> {"Lemma"}
+      [] r = "Theorem" -> {"Lemma", "Proof"}
       [] r = "WithinSweep" -> {"Sweep"}]
 
 ProvedDef == {
@@ -37,6 +39,7 @@ ProvedDef == {
     "Conditional",
     "Lemma",
     "OnRetracted",
+    "Proof",
     "Theorem",
     "WithinSweep"
 }
@@ -67,6 +70,7 @@ DensityNotEstablished == "Density" \notin established
 GaloisNotEstablished == "Galois" \notin established
 LemmaNotEstablished == "Lemma" \notin established
 OnRetractedNotEstablished == "OnRetracted" \notin established
+ProofNotEstablished == "Proof" \notin established
 RetractedNotEstablished == "Retracted" \notin established
 SweepNotEstablished == "Sweep" \notin established
 TheoremNotEstablished == "Theorem" \notin established

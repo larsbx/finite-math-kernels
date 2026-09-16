@@ -16,6 +16,22 @@
     "proved": "theorem",
     "open-frontier": "open"
   },
+  "aliases": {
+    "Census": [
+      "PIP census",
+      "4554 specimens"
+    ]
+  },
+  "surfaces": {
+    "Census": [
+      {
+        "path": "ledger-index.md",
+        "anchor": "| Census | theorem |",
+        "window_lines": 0,
+        "expect": "present"
+      }
+    ]
+  },
   "records": {
     "Census": {
       "id": "sha256:5100a3ec500701af89712f22227a928d5e99d00a99f17c5d9e2b08a9635187cc",
@@ -31,6 +47,24 @@
         [
           "replay",
           "pixi run mojo run -I . census.mojo"
+        ]
+      ],
+      "tags": []
+    },
+    "Proof": {
+      "id": "sha256:4186b87b2d1ac68b99019582fd255d44d03620f9975b4c9510f4d00e8fd63a55",
+      "kind": "repository_theorem",
+      "statement": "seed-patch overlap graph finiteness",
+      "scope": "primitive Pisot substitutions",
+      "depends_on": [],
+      "evidence": [
+        [
+          "proof_reviewed",
+          "true"
+        ],
+        [
+          "source",
+          "manuscript Theorem 4.22"
         ]
       ],
       "tags": []
@@ -115,7 +149,7 @@
       "tags": []
     },
     "Theorem": {
-      "id": "sha256:71c641952049688ca026bf20181d38c66c6172f00b31862275ad0e23b32f4e06",
+      "id": "sha256:8bc9843a47f568093d6fdae522ed446742b67d21210a4bb34ed1a9953db6db46",
       "kind": "verified_finite_computation",
       "statement": "closure over verified and imported records",
       "scope": "primitive Pisot substitutions",
@@ -124,6 +158,13 @@
           "sha256:62c9eb30291a3996ff8e916cc91ab10f3b9aadcb6db79ea91bd238ff20540724",
           "finite lemma",
           "theorem/lemma",
+          "same",
+          "accepted"
+        ],
+        [
+          "sha256:4186b87b2d1ac68b99019582fd255d44d03620f9975b4c9510f4d00e8fd63a55",
+          "seed-patch overlap graph finiteness",
+          "theorem/proof",
           "same",
           "accepted"
         ]

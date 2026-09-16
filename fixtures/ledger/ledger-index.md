@@ -10,7 +10,8 @@
 | Galois | open | pending_dependency | primitive Pisot substitutions | Galois propagation | none | incomplete: Galois (pending: source pending) |
 | Lemma | theorem | verified_finite_computation | primitive Pisot substitutions | finite lemma | `Census`, `Density` | complete |
 | OnRetracted | blocked | verified_finite_computation | primitive Pisot substitutions | depends on the retracted lemma | `Retracted` | incomplete: Retracted (pending: withdrawn 2026-09-16) |
+| Proof | theorem | repository_theorem | primitive Pisot substitutions | seed-patch overlap graph finiteness | none | complete |
 | Retracted | retired | pending_dependency | primitive Pisot substitutions | retracted renewal lemma | none | incomplete: Retracted (pending: withdrawn 2026-09-16) |
 | Sweep | finite-domain | bounded_experiment | images of length <= 3 | no counterexample up to length 7 | none | incomplete: Sweep (bounded experiment is evidence, not a theorem) |
-| Theorem | theorem | verified_finite_computation | primitive Pisot substitutions | closure over verified and imported records | `Lemma` | complete |
+| Theorem | theorem | verified_finite_computation | primitive Pisot substitutions | closure over verified and imported records | `Lemma`, `Proof` | complete |
 | WithinSweep | theorem | verified_finite_computation | images of length <= 3 | bounded claim closed by a bounded experiment | `Sweep` | complete |

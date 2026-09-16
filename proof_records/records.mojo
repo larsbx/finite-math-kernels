@@ -19,6 +19,7 @@ package ships none.
 from proof_records.sha256 import hex, sha256
 
 comptime KIND_VERIFIED = "verified_finite_computation"
+comptime KIND_REPOSITORY = "repository_theorem"
 comptime KIND_IMPORTED = "imported_theorem"
 comptime KIND_PENDING = "pending_dependency"
 comptime KIND_BOUNDED = "bounded_experiment"
@@ -184,7 +185,10 @@ def no_policy() -> TagPolicy:
 
 
 def kind_known(kind: String) -> Bool:
-    return kind == KIND_VERIFIED or kind == KIND_IMPORTED or kind == KIND_PENDING or kind == KIND_BOUNDED or kind == KIND_REJECTED
+    return (
+        kind == KIND_VERIFIED or kind == KIND_REPOSITORY or kind == KIND_IMPORTED
+        or kind == KIND_PENDING or kind == KIND_BOUNDED or kind == KIND_REJECTED
+    )
 
 
 def required_evidence(kind: String) -> List[String]:
@@ -192,6 +196,9 @@ def required_evidence(kind: String) -> List[String]:
     if kind == KIND_VERIFIED:
         out.append("digest")
         out.append("replay")
+    elif kind == KIND_REPOSITORY:
+        out.append("proof_reviewed")
+        out.append("source")
     elif kind == KIND_IMPORTED:
         out.append("hypotheses_checked")
         out.append("source")
@@ -260,7 +267,8 @@ def validate(record: Record) -> Record:
     section 3: unknown kind; rejected without reason; empty statement or
     scope; duplicate evidence key; missing required evidence; malformed
     dependency edges; imported theorem whose hypotheses are not marked
-    checked; an identifier that is not the digest of the record's preimage.
+    checked; repository theorem whose proof is not marked reviewed; an
+    identifier that is not the digest of the record's preimage.
     """
     if not kind_known(record.kind):
         return rejected(record, "unknown record kind")
@@ -287,6 +295,8 @@ def validate(record: Record) -> Record:
         return rejected(record, edge_reason)
     if record.kind == KIND_IMPORTED and record.field("hypotheses_checked") != TRUE:
         return rejected(record, "imported theorem with unchecked hypotheses")
+    if record.kind == KIND_REPOSITORY and record.field("proof_reviewed") != TRUE:
+        return rejected(record, "repository theorem without a reviewed proof")
     if record.id != identity(record):
         return rejected(record, "identifier does not match preimage")
     return record.copy()

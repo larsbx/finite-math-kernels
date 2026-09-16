@@ -140,11 +140,11 @@
       "source_path": "docs/exact-arithmetic-public-boundary.md"
     },
     "docs/ledger-generation-spec.md": {
-      "blob": "caf719cd0fe39a4101b24899715bf1802973a2c5",
+      "blob": "32bde420e6f55104e6d45bb496dd2c3349947866",
       "relation": "authored"
     },
     "docs/proof-records-specification.md": {
-      "blob": "9fda641187304eb38b7ff41c9f5b8bc0ab3aa556",
+      "blob": "92ebd67ef6e49c0433b43f8337a85bb83c9788ab",
       "relation": "modified",
       "source": "finite_proof_records",
       "source_blob": "145c282052309b9fdbcc7baeef4bbeadc4963875",
@@ -252,19 +252,27 @@
       "source_path": "finite_linear_algebra/w3.mojo"
     },
     "fixtures/ledger/example.json": {
-      "blob": "01ea2741ebc6708b093f088d6662e5c208d4480a",
+      "blob": "d7adda71b7ed5452295848222a2637d7f2b5eb52",
       "relation": "authored"
     },
     "fixtures/ledger/ledger-index.md": {
-      "blob": "0e02f5f059380a41c1505e22d36ea874e972b979",
+      "blob": "cd518bd7d1f5a79d188803dc0697d0bcc9fd9d47",
       "relation": "authored"
     },
     "fixtures/ledger/policy.toml": {
-      "blob": "d4d9f70456132759a9eeaa50a7a2559359ada1c5",
+      "blob": "3a9c8ea679190d7d883a0420f1f7d65d8a8c014b",
       "relation": "authored"
     },
     "fixtures/ledger/tla/Example.tla": {
-      "blob": "e612ac2e79ad2673a0a108f77bcad905905b0010",
+      "blob": "ac778eab1facddea9528b6df3789c2e6970cf85d",
+      "relation": "authored"
+    },
+    "fixtures/ledger/tla/MCExampleGaloisAssumed.cfg": {
+      "blob": "accbcefc49b15c656d28645540142e7564eab860",
+      "relation": "authored"
+    },
+    "fixtures/ledger/tla/MCExampleGaloisAssumed.tla": {
+      "blob": "f236e76c946ac452cd0caf1907950b7268e9f8b1",
       "relation": "authored"
     },
     "fixtures/ledger/tla/MCExampleImports.cfg": {
@@ -272,7 +280,7 @@
       "relation": "authored"
     },
     "fixtures/ledger/tla/MCExampleImports.tla": {
-      "blob": "743b1415d86551127395628fd1eaf5ec8ba72c26",
+      "blob": "6d48ff13dde5d6e8d634d68657a9d5590e606a09",
       "relation": "authored"
     },
     "fixtures/ledger/tla/MCExampleOpen.cfg": {
@@ -280,11 +288,11 @@
       "relation": "authored"
     },
     "fixtures/ledger/tla/MCExampleOpen.tla": {
-      "blob": "39648825acd9e3711adfb1741243900b762677c4",
+      "blob": "a21b4654a2715cf1833c86c723628db89d32ba9d",
       "relation": "authored"
     },
     "fixtures/vectors.json": {
-      "blob": "474ef923faa4e3abab070f1e81ea760cf92b6384",
+      "blob": "ac459b6280c847831c3f274831cfe1b8fed4bfe5",
       "generator": "tools/make_vectors.py",
       "relation": "generated"
     },
@@ -311,14 +319,14 @@
       "source_path": "finite_proof_records/__init__.py"
     },
     "proof_records/records.mojo": {
-      "blob": "12ce775d1426e4f0134f9c8cf9e9e0903036287c",
+      "blob": "4c5e8a0244f19e46fbffcdd5cdf4d07d59d07fcc",
       "relation": "modified",
       "source": "finite_proof_records",
       "source_blob": "51f5ee8cb61f0b6bdbc33f15f99e5f9b37fe4b9f",
       "source_path": "finite_proof_records/records.mojo"
     },
     "proof_records/records.py": {
-      "blob": "ba861f74efdcb591ee2542d202dd0d694b63d5b1",
+      "blob": "da1c7b00aba5f1bbd3d1d73c4d13413ebf4b3518",
       "relation": "modified",
       "source": "finite_proof_records",
       "source_blob": "04c2650793e8c7a0d87eb360b845be5750b149a7",
@@ -510,7 +518,7 @@
       "source_path": "tests/replay_vectors.mojo"
     },
     "tests/proof_records/test_generate_ledgers.py": {
-      "blob": "6c3d09e6e510fa073cf10128499523d133df853f",
+      "blob": "12de3cd9631f742f973c8aac4ee1aacae759c8e5",
       "relation": "authored"
     },
     "tests/proof_records/test_mojo_replay.py": {
@@ -521,14 +529,14 @@
       "source_path": "tests/test_mojo_replay.py"
     },
     "tests/proof_records/test_records.py": {
-      "blob": "ef32c86d161dea3ce24ab9bb3c29b86103097716",
+      "blob": "352e58008952c49b80f3785d8eaebf13beb1711d",
       "relation": "modified",
       "source": "finite_proof_records",
       "source_blob": "cb619cb75510b50cb9a7adcd2179af86217502c6",
       "source_path": "tests/test_records.py"
     },
     "tests/proof_records/test_vectors.py": {
-      "blob": "45344e851efaf4d7ed8cf6d878d82be569aa56fc",
+      "blob": "d02552bc8d270a464c3ba4be444f04a07afd17b9",
       "relation": "modified",
       "source": "finite_proof_records",
       "source_blob": "da63ce6a26101ea89b1d162c50016b680a54f24d",
@@ -558,19 +566,19 @@
       "relation": "authored"
     },
     "tools/check_references.py": {
-      "blob": "cedd5623750653273b10bf738fdcb6b97b5f71eb",
+      "blob": "b015e56333930ea89b61c8cd6d5f5e66f92d5c65",
       "relation": "authored"
     },
     "tools/generate_ledgers.py": {
-      "blob": "b112c3ec45f15e11946498df5d72f8e7fb710044",
+      "blob": "ce2d3579312dd852a943094ac15e6e74232dbacb",
       "relation": "authored"
     },
     "tools/make_ledger_example.py": {
-      "blob": "938cdbed810cf51068bc1814498212f97e2045a6",
+      "blob": "d3bab09b889f20054a1611dbb1dc939ebdd5f054",
       "relation": "authored"
     },
     "tools/make_vectors.py": {
-      "blob": "7029956e13002da26699ec446f7b663f1e33989f",
+      "blob": "aaa4e2d849deb7337656d9a7f6348a1cac16dc36",
       "relation": "modified",
       "source": "finite_proof_records",
       "source_blob": "dc86359eff444feb288cb63e35dad6b5849f9869",

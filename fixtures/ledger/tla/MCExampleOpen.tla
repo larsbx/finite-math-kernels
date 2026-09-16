@@ -3,7 +3,8 @@
 EXTENDS Example
 
 Reachable == {
-    "Census"
+    "Census",
+    "Proof"
 }
 EventuallyReachable == <>(established = Reachable)
 ====
