@@ -9,7 +9,7 @@
       "relation": "authored"
     },
     "README.md": {
-      "blob": "8cd0d830ebebdad29f92e3ea2d486e7a6c5e97da",
+      "blob": "d48ac455ff17d090d94829517b03b4433ab36629",
       "relation": "authored"
     },
     "audit/CONSOLIDATION_PROVENANCE.md": {
@@ -126,11 +126,15 @@
       "source_path": "docs/policy-format.md"
     },
     "docs/canonical-encoding.md": {
-      "blob": "0e3f8f4b3dedc597d7a779a1f2f216f7fc5e8700",
-      "relation": "copy",
+      "blob": "f21baa96832c6051021d3fecec0bee9aff03c926",
+      "relation": "modified",
       "source": "finite_exact",
       "source_blob": "0e3f8f4b3dedc597d7a779a1f2f216f7fc5e8700",
       "source_path": "docs/canonical-encoding.md"
+    },
+    "docs/evidence-vocabulary-map.md": {
+      "blob": "1182b5b0c6a165a0763acd39df53f82ffb9f054b",
+      "relation": "authored"
     },
     "docs/exact-arithmetic-public-boundary.md": {
       "blob": "7903ce2fa262475105b7ebf4400f212881d1c934",
@@ -144,21 +148,21 @@
       "relation": "authored"
     },
     "docs/proof-records-specification.md": {
-      "blob": "92ebd67ef6e49c0433b43f8337a85bb83c9788ab",
+      "blob": "cb610e0492493634527f429ac0702fea761c193d",
       "relation": "modified",
       "source": "finite_proof_records",
       "source_blob": "145c282052309b9fdbcc7baeef4bbeadc4963875",
       "source_path": "docs/specification.md"
     },
     "docs/rational-interval-arithmetic-spec.md": {
-      "blob": "e453cced811cb9953c5d6bbc46e7e141d2dfe525",
+      "blob": "516c4f9f9152b5c7d5cc74ce448ba6ddcd4828b7",
       "relation": "modified",
       "source": "finite_exact",
       "source_blob": "86478aa8777903f6c605d4bcfd7d899ac51a74fa",
       "source_path": "docs/rational-interval-arithmetic-spec.md"
     },
     "docs/tuning-substitutions-spec.md": {
-      "blob": "c44c95f753a098c7ee7e09da131356fb2e10b9d4",
+      "blob": "0b1ca62bbd7e86fafb3fe2a4d4fae4ca7dadcdf7",
       "relation": "authored"
     },
     "finite_exact/__init__.mojo": {
@@ -297,7 +301,7 @@
       "relation": "generated"
     },
     "pixi.toml": {
-      "blob": "292755fd65a4c7c0871841cb9601582c44228e0c",
+      "blob": "91e063c70c990a4394229fe99c81c0a117b490f5",
       "relation": "authored"
     },
     "proof_records/ProofArchitecture.tla": {
@@ -319,7 +323,7 @@
       "source_path": "finite_proof_records/__init__.py"
     },
     "proof_records/generate_ledgers.py": {
-      "blob": "c58b388113e0c7c007e6951ec02daa977e1f4b15",
+      "blob": "fa17c9dee6c70994eacac62a18332efbdc275467",
       "relation": "authored"
     },
     "proof_records/records.mojo": {
@@ -338,6 +342,10 @@
     },
     "proof_records/sha256.mojo": {
       "blob": "d8438abb884b5d03d2c4715fcbec66fe721432b9",
+      "relation": "authored"
+    },
+    "proof_records/vocabularies.py": {
+      "blob": "8b68b61b91d2d45c3394bae801368378c384f137",
       "relation": "authored"
     },
     "substitution_dynamics/__init__.mojo": {
@@ -546,6 +554,10 @@
       "source_blob": "da63ce6a26101ea89b1d162c50016b680a54f24d",
       "source_path": "tests/test_vectors.py"
     },
+    "tests/proof_records/test_vocabularies.py": {
+      "blob": "4596dc30e0982445029c19b3f60eb51b5d40ed7f",
+      "relation": "authored"
+    },
     "tests/provenance/test_provenance.py": {
       "blob": "12c2247c59b8cbca47cdd1d733e8e966907ea8c4",
       "relation": "authored"
@@ -570,7 +582,7 @@
       "relation": "authored"
     },
     "tools/check_references.py": {
-      "blob": "b763bbb4e53b364756c327068ad4d519fb70fd86",
+      "blob": "cd164bc45d5071f878bda56fd7d6768115c668ca",
       "relation": "authored"
     },
     "tools/make_ledger_example.py": {

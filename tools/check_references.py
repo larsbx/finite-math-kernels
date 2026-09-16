@@ -36,7 +36,10 @@ TASK_TOKEN = re.compile(r"pixi run ([A-Za-z0-9_-]+)")
 QUOTED = re.compile(r'"[^"]*"')
 TASK_DEFINITION = re.compile(r"^([A-Za-z0-9_-]+) = ", re.M)
 
-NLAP = "larsbx/NLAP-JT"
+# The finite-regime Mandelbrot program moved from larsbx/NLAP-JT to this
+# repository on 2026-09-16; NLAP-JT is historical and receives no new work,
+# so every row below names the live home of the file it attests.
+NLAP = "larsbx/finite-mandlebrot-research (formerly larsbx/NLAP-JT)"
 PSC = "larsbx/pisot-substitution-conjecture-research"
 EXTERNAL: Mapping[str, str] = {
     "docs/canonical-serialization.md": NLAP,
@@ -51,6 +54,9 @@ EXTERNAL: Mapping[str, str] = {
     "src/checked_ray_address.mojo": NLAP,
     "docs/C1_residual_directive_carrier.md": NLAP,
     "docs/cross-pollination-round-two-2026-09-16.md": f"{NLAP} and {PSC}",
+    "docs/release-provenance.md": "larsbx/sprucegoose at the commit named in docs/evidence-vocabulary-map.md",
+    "tdd_ledger.zig": "larsbx/crypto-composer at the commit named in docs/evidence-vocabulary-map.md",
+    "test/harness.zig": "larsbx/crypto-composer at the commit named in docs/evidence-vocabulary-map.md",
     "docs/exact-arithmetic-binding.md": PSC,
     "docs/overlap-finiteness-and-coincidence-density-2026-09-13.md": PSC,
     "src/psc_research/bpa.py": PSC,

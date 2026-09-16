@@ -37,7 +37,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 # Relocatable: in the monorepo `proof_records/` sits at the root and the audit
 # package under `audit/`; a consumer vendors `proof_records/` and
-# `claim_governance/` side by side under one directory (NLAP-JT and PSC: `tools/`).
+# `claim_governance/` side by side under one directory (both consumers: `tools/`).
 for _base in (ROOT / "audit", ROOT):
     sys.path.insert(0, str(_base))
 
