@@ -67,15 +67,12 @@ def column_coincidence(sigma: Substitution) raises -> CoincidenceWitness:
     if n == 1:
         return CoincidenceWitness(True, 0, List[Int]())
 
-    var total = 1 << n
-    var visited = List[Bool]()
-    var parent_mask = List[Int]()
-    var parent_col = List[Int]()
-    for _ in range(total):
-        visited.append(False)
-        parent_mask.append(-1)
-        parent_col.append(-1)
-    visited[start] = True
+    # Parent tables are filled lazily, as in the reference model: only the
+    # subsets the search reaches are stored, never all 2^n of them.
+    var parent_mask = Dict[Int, Int]()
+    var parent_col = Dict[Int, Int]()
+    parent_mask[start] = -1
+    parent_col[start] = -1
 
     var queue = List[Int]()
     queue.append(start)
@@ -88,9 +85,8 @@ def column_coincidence(sigma: Substitution) raises -> CoincidenceWitness:
             for a in range(n):
                 if (s & (1 << a)) != 0:
                     t = t | (1 << sigma.images[a][c])
-            if visited[t]:
+            if t in parent_mask:
                 continue
-            visited[t] = True
             parent_mask[t] = s
             parent_col[t] = c
             if _popcount(t) == 1:
