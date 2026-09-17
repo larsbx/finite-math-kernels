@@ -139,6 +139,45 @@ def test_a_theorem_backed_edge_whose_claim_names_no_source_is_refused():
     assert any("theorem-backed edge whose claim names no source" in r for r in tg.refusals(broken))
 
 
+def _without_source(graph, name):
+    stripped = replace(node(graph, name), source="")
+    return replace(graph, nodes=tuple(stripped if n.id == name else n for n in graph.nodes))
+
+
+def _source_rule(graph) -> list[str]:
+    return [r for r in tg.refusals(graph) if "names no source" in r]
+
+
+def test_an_implication_is_backed_by_its_premise_not_its_conclusion():
+    """`Proof -> Theorem` takes its provenance from Proof, so Proof is the
+    node that must carry the citation. Checking Theorem instead accepts an
+    unsourced theorem-backed premise and rejects a well-backed edge whose
+    conclusion happens to name nothing -- wrong in both directions."""
+    assert any("Proof -> Theorem" in r for r in _source_rule(_without_source(GRAPH, "Proof")))
+    conclusion_only = _source_rule(_without_source(GRAPH, "Theorem"))
+    assert not any("-> Theorem" in r for r in conclusion_only), conclusion_only
+
+
+def test_an_alias_is_backed_by_the_claim_it_renames():
+    """The other direction: a synonymous edge reads its provenance from the
+    target, and the alias node carries no source of its own by construction."""
+    assert any("-> Census" in r for r in _source_rule(_without_source(GRAPH, "Census")))
+    assert node(GRAPH, "PIP census").source == ""
+    assert not _source_rule(GRAPH)
+
+
+def test_a_membership_edge_is_backed_by_its_member():
+    backed = replace(next(e for e in GRAPH.edges if e.type == tg.PART_WHOLE), provenance=tg.THEOREM_BACKED)
+    graph = replace(GRAPH, edges=tuple(backed if e.type == tg.PART_WHOLE else e for e in GRAPH.edges))
+    assert not _source_rule(graph)
+    assert any("Galois ->" in r for r in _source_rule(_without_source(graph, "Galois")))
+
+
+def test_every_backing_endpoint_is_a_field_of_an_edge():
+    assert set(tg.BACKING) <= set(tg.EDGE_TYPES)
+    assert set(tg.BACKING.values()) == {"source", "target"}
+
+
 def test_an_unknown_edge_type_or_provenance_is_refused():
     broken = replace(GRAPH, edges=(*GRAPH.edges, tg.Edge("guessed", "Census", "Lemma", "hunch")))
     assert [r.split(": ")[-1] for r in tg.refusals(broken)] == ["unknown edge type", "unknown provenance 'hunch'"]

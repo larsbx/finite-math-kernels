@@ -129,10 +129,19 @@ mojo/tests/test_finite_exact.mojo	contract	the vendored exact arithmetic contrac
 
 A declaration the run did not reach is reported and guards nothing, so a
 claim whose only test body is never called from `main` is uncovered rather
-than credited; a receipt no test declares is reported as drift; a malformed
-receipts file is one finding and credits nothing. An absent receipts file
-leaves the static layer alone, so a checkout without the test toolchain still
-audits the declarations it can read.
+than credited; a receipt no test declares is reported as drift.
+
+The three states are distinct, and a malformed log is not an absent one:
+
+| Receipts | Effect |
+| --- | --- |
+| not configured, or the file absent | the static declarations stand on their own, so a checkout without the test toolchain still audits what it can read |
+| present and parsed | a declaration counts only where the run reached it |
+| present and malformed | one finding, and it credits nothing: every required class is reported uncovered until the file parses |
+
+The last row is the one that matters for a gate. A broken run log says
+nothing about what executed, so reading it as an absent one would make a
+green audit out of a file nobody can read.
 
 ## `[[claim]]`: the ledger
 

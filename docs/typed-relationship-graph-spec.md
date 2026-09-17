@@ -58,9 +58,18 @@ An `implicative` edge takes the provenance of its premise, a `synonymous` edge t
 
 ## 4. The source rule
 
-**An `implicative` or `synonymous` edge of provenance `theorem-backed` must name its source, or the export is refused.** This is the constraint A3.2 proposed for the `tui-story` edge schema, enforced at the exporting end: it is what keeps a verified relationship from being stored like a guess.
+**An edge of provenance `theorem-backed` must name its source, or the export is refused.** This is the constraint A3.2 proposed for the `tui-story` edge schema, enforced at the exporting end: it is what keeps a verified relationship from being stored like a guess.
 
-A node's `source` is the evidence its kind requires, mirroring `REQUIRED_EVIDENCE` of the proof-records specification: `replay` and `digest` for a verified finite computation, `source` for a repository or imported theorem, `domain` for a bounded experiment, `reason` for a pending or rejected record. The reference model already refuses a record missing that evidence, so the rule bites only on a record whose backing evidence is present but empty.
+**Which endpoint must name it follows section 3**, and is not always the target: the provenance was read off one endpoint's record, so that is the endpoint the citation must come from. For an `implicative` edge it is the **premise**, not the conclusion; for a `synonymous` edge the claim the alias names, which is the target; for a `part-whole` edge the member, which is the source. A `contradictory` edge is `withdrawn` by construction and names nothing. Checking the wrong end is wrong in both directions at once: it accepts an unsourced theorem-backed premise, and refuses a well-backed edge whose conclusion happens to name nothing.
+
+| Edge type | Provenance read from | Endpoint that must carry the source |
+| --- | --- | --- |
+| `implicative` | the premise | `source` |
+| `synonymous` | the claim the alias names | `target` |
+| `part-whole` | the member | `source` |
+| `contradictory` | none; `withdrawn` by construction | — |
+
+A node's `source` is the evidence its kind requires, mirroring `REQUIRED_EVIDENCE` of the proof-records specification: `replay` and `digest` for a verified finite computation, `source` for a repository or imported theorem, `domain` for a bounded experiment, `reason` for a pending or rejected record. The reference model already refuses a record whose required evidence is absent *or blank*, so on a validated ledger this rule is a second line rather than the first; it bites on a graph assembled by hand or by a future producer that does not validate first, which is exactly when a guess could enter.
 
 ## 5. Leaks
 

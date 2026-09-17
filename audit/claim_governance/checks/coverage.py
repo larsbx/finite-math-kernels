@@ -10,6 +10,13 @@ A declaration is static text.  When the policy names a receipts file and
 that file exists, it is the run log of the suite: a declaration the run did
 not reach does not count, so a claim guarded only by a test body that is
 never called is reported rather than credited.
+
+The three states are distinct.  No receipts configured, or the file absent,
+means the declarations stand on their own.  A parsed log means a declaration
+counts only if the run reached it.  A *malformed* log is neither: it says
+nothing about what executed, so it credits nothing and every required class
+is reported uncovered until the file parses.  Reading a broken run log as an
+absent one would make a green suite out of a file nobody can read.
 """
 
 from __future__ import annotations
@@ -62,6 +69,10 @@ def check(policy: Policy, repo: Repo) -> tuple[Finding, ...]:
     canonical = {name.casefold(): claim.name for claim in policy.ledger for name in claim.names}
     receipts, malformed = read_receipts(cfg, repo)
     findings = [malformed] if malformed is not None else []
+    # A malformed run log is not a missing one. It says nothing about which
+    # declarations executed, so it credits none of them: every required class
+    # is reported uncovered until the file parses.
+    credits = malformed is None
     guarded: dict[str, list[str]] = {}
     declared: set[Receipt] = set()
     for rel in repo.files(cfg.tests):
@@ -80,7 +91,7 @@ def check(policy: Policy, repo: Repo) -> tuple[Finding, ...]:
             if receipts is not None and (rel, kind, value) not in receipts:
                 findings.append(Finding(rel, line, CHECK, name or value, "declared, but the recorded run did not reach it"))
                 continue
-            if kind == CLAIM:
+            if kind == CLAIM and credits:
                 guarded.setdefault(name or value, []).append(rel)
     for stale in sorted((receipts or frozenset()) - declared):
         findings.append(Finding(cfg.receipts or "", 0, CHECK, stale[2], f"receipt for {stale[1]} is not declared by {stale[0]}"))

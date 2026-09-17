@@ -49,7 +49,7 @@
       "source_path": "claim_governance/checks/consistency.py"
     },
     "audit/claim_governance/checks/coverage.py": {
-      "blob": "6211617fdc45a93decb0c141ac2e4e349b301644",
+      "blob": "3675ade437f9cee64d1bd1088b482c60e14c0d49",
       "relation": "authored"
     },
     "audit/claim_governance/checks/numerics.py": {
@@ -123,7 +123,7 @@
       "source_path": "docs/example-policy.toml"
     },
     "audit/docs/policy-format.md": {
-      "blob": "0a3ff905e60b750ea45736abd344acfc700c2c75",
+      "blob": "e36f1feefe115ccbb8ddc16928ff7b478dd3e83c",
       "relation": "modified",
       "source": "claim_governance_tools",
       "source_blob": "1aabe8474bbdd10bea1f268e70448265387c1c33",
@@ -174,7 +174,7 @@
       "relation": "authored"
     },
     "docs/typed-relationship-graph-spec.md": {
-      "blob": "5d308557a6299ea4f218c5e72c065741f36861cf",
+      "blob": "13805e96baa1c14e0876f49c0253c89c76e8a00d",
       "relation": "authored"
     },
     "finite_exact/__init__.mojo": {
@@ -347,7 +347,7 @@
       "relation": "authored"
     },
     "proof_records/graph.py": {
-      "blob": "c193ef25afb1d697d550945b474227874e758858",
+      "blob": "ef2e4bbe3b1dbc16ec6bc501b06991a9fd7b8f00",
       "relation": "authored"
     },
     "proof_records/records.mojo": {
@@ -466,7 +466,7 @@
       "source_path": "tests/test_consistency.py"
     },
     "tests/audit/test_coverage.py": {
-      "blob": "dd2983426d58f5f86d738a888fc0ffab600624e4",
+      "blob": "39c33083a1a369d7aee9750690c48f357106af11",
       "relation": "authored"
     },
     "tests/audit/test_lexing.py": {
@@ -570,7 +570,7 @@
       "relation": "authored"
     },
     "tests/proof_records/test_graph.py": {
-      "blob": "5c5419e8f6c5e780f5a3233b08adf3fd74707e4b",
+      "blob": "864afcbca7f4fd2d20eeb0dab64979ff57a2dd23",
       "relation": "authored"
     },
     "tests/proof_records/test_mojo_replay.py": {

@@ -98,10 +98,25 @@ def test_a_receipt_nothing_declares_is_drift(tree):
 
 
 def test_a_malformed_receipts_file_is_one_finding_and_credits_nothing(tree):
+    """A broken run log says nothing about what executed, so the claim its
+    declaration would have guarded is reported uncovered.  Reading it as an
+    absent log instead would make a green suite out of a file nobody can
+    read -- which is what this test asserted before it asserted it."""
     for body in ("wrong banner\n", f"{RECEIPTS}\ntests/test_a.mojo\tclaim\n", f"{RECEIPTS}\ntests/test_a.mojo\tguess\tBoundedExclusion\n"):
         root = tree({"tests/test_a.mojo": 'require_claim("BoundedExclusion")\n', "build/receipts.tsv": body})
         findings = run_check("coverage", policy(receipts="build/receipts.tsv"), root)
-        assert [f.rule for f in findings] == ["receipts"], body
+        assert [f.rule for f in findings] == ["receipts", "BoundedExclusion"], body
+        assert findings[1].message == "no test guards this 'finite-domain' claim"
+
+
+def test_a_parsed_receipts_file_still_credits_what_the_run_reached(tree):
+    """The other side of the same rule: malformed credits nothing, but a log
+    that parses must not be treated as malformed."""
+    root = tree({
+        "tests/test_a.mojo": 'require_claim("BoundedExclusion")\n',
+        "build/receipts.tsv": f"{RECEIPTS}\n# a comment, and a blank line follow\n\ntests/test_a.mojo\tclaim\tBoundedExclusion\n",
+    })
+    assert run_check("coverage", policy(receipts="build/receipts.tsv"), root) == ()
 
 
 def test_absent_receipts_leave_the_static_layer_alone(tree):

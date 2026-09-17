@@ -11,7 +11,8 @@ This module re-types it in the vocabulary of `larsbx/tui-story`'s semantic
 graph (nine edge types with a certainty score) and carries into it what an
 LLM-asserted graph lacks: each edge states its provenance and its leaks, and
 an edge whose provenance is ``theorem-backed`` must name the source that
-backs it or the export is refused. Nothing here decides mathematics; it
+backs it -- at the endpoint the provenance was read from, which for an
+implication is the premise and not the conclusion -- or the export is refused. Nothing here decides mathematics; it
 re-presents records the ledger already validated.
 """
 
@@ -48,7 +49,12 @@ CITATION_KEYS: Mapping[Kind, tuple[str, ...]] = {
 }
 #: Every edge here is read off a registry, never estimated, so certainty is exact.
 CERTAIN = 1
-SOURCED = (IMPLICATIVE, SYNONYMOUS)
+#: For each edge type whose provenance is read from one endpoint's record, the
+#: endpoint that must therefore carry the citation. An implication takes its
+#: provenance from the premise it starts at, an alias edge and a membership edge
+#: from the claim they end at and the member they start at. A contradictory edge
+#: is provenance `withdrawn` by construction and names nothing.
+BACKING: Mapping[str, str] = {IMPLICATIVE: "source", SYNONYMOUS: "target", PART_WHOLE: "source"}
 
 
 class GraphError(ValueError):
@@ -172,8 +178,9 @@ def edges(analysis) -> tuple[Edge, ...]:
 
 def refusals(graph: Graph) -> list[str]:
     """Reasons to refuse the graph: an unknown edge type or provenance, an
-    edge whose endpoint is no node, or a theorem-backed implicative or
-    synonymous edge whose claim names no source."""
+    edge whose endpoint is no node, or a theorem-backed edge whose backing
+    record -- the endpoint its provenance was read from, per BACKING -- names
+    no source."""
     sourced = {n.id: n.source for n in graph.nodes}
     claims = {n.id for n in graph.nodes if n.kind == CLAIM}
     problems: list[str] = []
@@ -194,8 +201,11 @@ def refusals(graph: Graph) -> list[str]:
             problems.append(f"{where}: target is not a node")
         if edge.source not in sourced:
             problems.append(f"{where}: source is not a node")
-        if edge.type in SOURCED and edge.provenance == THEOREM_BACKED and not sourced.get(edge.target):
-            problems.append(f"{where}: theorem-backed edge whose claim names no source")
+        backing = BACKING.get(edge.type)
+        if backing is not None and edge.provenance == THEOREM_BACKED:
+            backer = getattr(edge, backing)
+            if not sourced.get(backer):
+                problems.append(f"{where}: theorem-backed edge whose claim names no source: {backer}")
     return problems
 
 
