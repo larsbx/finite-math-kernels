@@ -72,6 +72,10 @@ not part of this repository.
   monorepo does not encode NLAP or PSC theorem status as library truth. The
   `coverage` check reports which claims no test guards; it never decides that
   a test establishes one.
+  `docs/provenance-for-computer-assisted-proof.md` states the record and
+  enforcement layers for readers outside these programmes: the three outcomes,
+  the five record kinds, the six checks, and what adopting them costs. It is
+  methodology, not mathematics, and proves nothing.
 
 ## Verification
 
