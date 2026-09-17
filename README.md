@@ -64,6 +64,10 @@ not part of this repository.
   ledger it cannot render faithfully. It promotes nothing.
 - Claim-governance checks enforce only a consumer-supplied policy; the
   monorepo does not encode NLAP or PSC theorem status as library truth.
+  `docs/provenance-for-computer-assisted-proof.md` states the record and
+  enforcement layers for readers outside these programmes: the three outcomes,
+  the five record kinds, the five checks, and what adopting them costs. It is
+  methodology, not mathematics, and proves nothing.
 
 ## Verification
 

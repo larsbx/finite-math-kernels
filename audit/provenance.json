@@ -9,7 +9,7 @@
       "relation": "authored"
     },
     "README.md": {
-      "blob": "d48ac455ff17d090d94829517b03b4433ab36629",
+      "blob": "df10403d09dcf46e18491aab3a3ff78af57df366",
       "relation": "authored"
     },
     "audit/CONSOLIDATION_PROVENANCE.md": {
@@ -157,6 +157,10 @@
       "source": "finite_proof_records",
       "source_blob": "145c282052309b9fdbcc7baeef4bbeadc4963875",
       "source_path": "docs/specification.md"
+    },
+    "docs/provenance-for-computer-assisted-proof.md": {
+      "blob": "ae912ee3dd49b8d069b3e7c052c7b5142a98e59d",
+      "relation": "authored"
     },
     "docs/rational-interval-arithmetic-spec.md": {
       "blob": "516c4f9f9152b5c7d5cc74ce448ba6ddcd4828b7",
