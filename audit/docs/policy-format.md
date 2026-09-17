@@ -94,6 +94,55 @@ Within `window_lines` lines after a statement some status label from
 `file_status_marker` within its first `file_status_lines` lines declares a
 file-level status and its statements need no individual label.
 
+## `[coverage]`: every test names what it guards
+
+```toml
+[coverage]
+tests = ["mojo/tests/test_*.mojo"]
+require_classes = ["finite-domain"]     # claim classes that must be guarded by a test
+receipts = "mojo/build/claim-receipts.tsv"        # optional run log, see below
+claim_pattern = 'require_claim\("(?P<claim>[^"]*)"\)'         # default
+contract_pattern = 'require_contract\("(?P<contract>[^"]*)"\)'  # default
+```
+
+The proof-driven-test discipline of `larsbx/crypto-composer`, where a test
+may not exist without a proof statement, read onto the ledger. Each test file
+declares what it stands for: `require_claim` names a ledger claim (by name or
+alias) whose supporting contract it guards, `require_contract` states a
+contract that is no ledger claim, such as a vendored kernel's arithmetic.
+Findings: a test file that declares neither; a named claim that is not in the
+ledger; an empty contract; and, against `claim_governance.toml` itself, a
+claim whose class is in `require_classes` that no test guards. Declarations
+are read with comments blanked, so a commented-out declaration does not
+count. Both patterns are regexes and must capture the named group
+(`claim`, `contract`) the check reads, which is what lets a repository whose
+tests are not Mojo keep its own spelling.
+
+`receipts`, when named and present, is the run log of the suite in this
+format, tab-separated, one line per declaration the run actually reached:
+
+```text
+# finite proof-test receipts 1
+mojo/tests/test_overlap_context.mojo	claim	OneStepContextEquality
+mojo/tests/test_finite_exact.mojo	contract	the vendored exact arithmetic contract
+```
+
+A declaration the run did not reach is reported and guards nothing, so a
+claim whose only test body is never called from `main` is uncovered rather
+than credited; a receipt no test declares is reported as drift.
+
+The three states are distinct, and a malformed log is not an absent one:
+
+| Receipts | Effect |
+| --- | --- |
+| not configured, or the file absent | the static declarations stand on their own, so a checkout without the test toolchain still audits what it can read |
+| present and parsed | a declaration counts only where the run reached it |
+| present and malformed | one finding, and it credits nothing: every required class is reported uncovered until the file parses |
+
+The last row is the one that matters for a gate. A broken run log says
+nothing about what executed, so reading it as an absent one would make a
+green audit out of a file nobody can read.
+
 ## `[[claim]]`: the ledger
 
 ```toml

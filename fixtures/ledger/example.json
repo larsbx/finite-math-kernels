@@ -4,6 +4,7 @@
   "module": "Example",
   "tla_dir": "tla",
   "index_path": "ledger-index.md",
+  "graph_path": "relationship-graph.json",
   "assumption_sets": {
     "GaloisAssumed": [
       "Galois"

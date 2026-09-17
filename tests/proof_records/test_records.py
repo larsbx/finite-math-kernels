@@ -51,6 +51,28 @@ def test_each_validation_rejection_names_its_reason():
     assert validate(mv.BOUNDED_ELSEWHERE).field("reason") == "bounded dependency outside its own scope"
 
 
+def test_a_required_key_carrying_no_value_is_not_evidence():
+    """Presence is not citation. A `source` of "" names no source, and a
+    repository theorem holding one must not validate as accepted and close
+    what depends on it."""
+    blank = identified(Record("", Kind.REPOSITORY, "s", "d", (), (("source", ""), ("proof_reviewed", "true"))))
+    assert validate(blank).kind is Kind.REJECTED
+    assert validate(blank).field("reason") == "missing evidence: source"
+    spaces = identified(Record("", Kind.VERIFIED, "s", "d", (), (("replay", "   "), ("digest", ""))))
+    assert validate(spaces).field("reason") == "missing evidence: digest, replay"
+    imported = identified(Record("", Kind.IMPORTED, "s", "d", (), (("source", ""), ("hypotheses_checked", "true"))))
+    assert validate(imported).field("reason") == "missing evidence: source"
+    assert validate(identified(Record("", Kind.BOUNDED, "s", "d", (), (("domain", " "),)))).field("reason") == "missing evidence: domain"
+    assert validate(Record("x", Kind.REJECTED, "s", evidence=(("reason", "  "),))).field("reason") == "rejected without reason"
+
+
+def test_a_blank_required_key_cannot_close_a_dependency():
+    """The defect this guards is downstream: a record that validates on an
+    empty citation is `accepted`, and an edge requiring `accepted` takes it."""
+    blank = identified(Record("", Kind.REPOSITORY, "s", "d", (), (("source", ""), ("proof_reviewed", "true"))))
+    assert outcome(validate(blank)) == "rejected"
+
+
 def test_identifier_is_verified_against_the_preimage():
     assert validate(mv.FORGED_ID).field("reason") == "identifier does not match preimage"
     assert validate(replace(mv.CENSUS, id="")).field("reason") == "identifier does not match preimage"

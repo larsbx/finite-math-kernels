@@ -6,7 +6,7 @@ from collections.abc import Callable, Iterable
 from pathlib import Path
 from types import MappingProxyType
 
-from claim_governance.checks import claims, consistency, numerics, promotion, terminology
+from claim_governance.checks import claims, consistency, coverage, numerics, promotion, terminology
 from claim_governance.findings import Finding
 from claim_governance.policy import Policy
 from claim_governance.repo import Repo
@@ -16,6 +16,7 @@ Check = Callable[[Policy, Repo], tuple[Finding, ...]]
 CHECKS: dict[str, Check] = MappingProxyType({  # type: ignore[assignment]
     terminology.CHECK: terminology.check,
     claims.CHECK: claims.check,
+    coverage.CHECK: coverage.check,
     promotion.CHECK: promotion.check,
     numerics.CHECK: numerics.check,
     consistency.CHECK: consistency.check,

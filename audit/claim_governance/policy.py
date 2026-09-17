@@ -97,6 +97,33 @@ class Claims:
     allow: tuple[str, ...] = ()
 
 
+@dataclass(frozen=True)
+class Coverage:
+    """Which executable tests must name the claim they guard.
+
+    ``tests`` are globs of test files.  Each test declares what it stands
+    for: ``claim_pattern`` matches a ledger claim it guards,
+    ``contract_pattern`` a stated contract that is no ledger claim (a
+    vendored kernel's arithmetic, say).  ``require_classes`` names the
+    status classes whose claims must be guarded by at least one test.
+    ``receipts``, when that file exists, is the run log of a test suite:
+    a declaration counts only if the run reached it, so a claim guarded by
+    a test that never ran is not covered.
+    """
+
+    tests: tuple[str, ...] = ()
+    claim_pattern: str = r'require_claim\("(?P<claim>[^"]*)"\)'
+    contract_pattern: str = r'require_contract\("(?P<contract>[^"]*)"\)'
+    require_classes: tuple[str, ...] = ()
+    receipts: str | None = None
+
+    def claims(self) -> re.Pattern[str]:
+        return re.compile(self.claim_pattern)
+
+    def contracts(self) -> re.Pattern[str]:
+        return re.compile(self.contract_pattern)
+
+
 EXPECTATIONS = ("labelled", "present", "absent")
 
 
@@ -165,6 +192,7 @@ class Policy:
     status: StatusVocabulary = StatusVocabulary()
     terminology: Terminology = Terminology()
     claims: Claims = Claims()
+    coverage: Coverage = Coverage()
     ledger: tuple[Claim, ...] = ()
     promotion: Promotion = Promotion()
     numerics: tuple[NumericsRule, ...] = ()
@@ -250,6 +278,27 @@ def _surface(table: Mapping[str, Any], claim: str) -> Surface:
     return Surface(_require(table, "path", where), _str(table, "anchor"), _int(table, "window_lines", 3), expect, section, section_end)
 
 
+def _coverage(table: Mapping[str, Any], classes: tuple[str, ...]) -> Coverage:
+    """The declaration patterns must compile and expose the named group the
+    check reads; every required class must be a declared status class."""
+    defaults = Coverage()
+    patterns = {"claim_pattern": defaults.claim_pattern, "contract_pattern": defaults.contract_pattern}
+    for key, group in (("claim_pattern", "claim"), ("contract_pattern", "contract")):
+        pattern = _str(table, key, patterns[key]) or ""
+        try:
+            compiled = re.compile(pattern)
+        except re.error as exc:
+            raise PolicyError(f"coverage.{key}: invalid pattern ({exc})") from exc
+        if group not in compiled.groupindex:
+            raise PolicyError(f"coverage.{key} must capture a group named {group!r}")
+        patterns[key] = pattern
+    required = _strs(table, "require_classes")
+    bad = sorted(set(required) - set(classes))
+    if bad:
+        raise PolicyError(f"coverage.require_classes names undeclared classes {bad}")
+    return Coverage(_strs(table, "tests"), patterns["claim_pattern"], patterns["contract_pattern"], required, _str(table, "receipts"))
+
+
 def _promotion(table: Mapping[str, Any], classes: tuple[str, ...]) -> Promotion:
     settled = _strs(table, "settled_classes")
     bad = sorted(set(settled) - set(classes))
@@ -305,6 +354,7 @@ def policy_from_mapping(data: Mapping[str, Any]) -> Policy:
             _strs(claims, "paths"), _strs(claims, "statement_kinds"), _int(claims, "window_lines", 6),
             _str(claims, "file_status_marker"), _int(claims, "file_status_lines", 10), _strs(claims, "allow"),
         ),
+        coverage=_coverage(data.get("coverage", {}), status.classes),
         ledger=ledger,
         promotion=_promotion(data.get("promotion", {}), status.classes),
         numerics=_numerics_rules(data.get("numerics", {})),

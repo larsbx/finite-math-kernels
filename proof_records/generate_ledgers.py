@@ -41,6 +41,7 @@ ROOT = Path(__file__).resolve().parents[1]
 for _base in (ROOT / "audit", ROOT):
     sys.path.insert(0, str(_base))
 
+from proof_records import graph as typed_graph  # noqa: E402
 from proof_records.records import (ACCEPTED, BOUNDED, OPEN, Closure, Edge, Kind, Record, close, outcome,  # noqa: E402
                                    validate)
 
@@ -82,6 +83,7 @@ class Ledger:
     tla_dir: str
     index_path: str
     source: str
+    graph_path: str = ""
     aliases: Mapping[str, tuple[str, ...]] = field(default_factory=dict)
     surfaces: Mapping[str, tuple[Mapping[str, object], ...]] = field(default_factory=dict)
 
@@ -159,6 +161,7 @@ def load_ledger(path: Path) -> Ledger:
         tla_dir=str(data.get("tla_dir", "tla")),
         index_path=str(data.get("index_path", "docs/ledger-index.md")),
         source=path.name,
+        graph_path=str(data.get("graph_path", "")),
         aliases={str(k): _strings(v, f"aliases[{k!r}]") for k, v in data.get("aliases", {}).items()},
         surfaces={str(k): _tables(v, f"surfaces[{k!r}]") for k, v in data.get("surfaces", {}).items()},
     )
@@ -195,7 +198,8 @@ def _inside_root(path: str) -> bool:
 def output_paths(ledger: Ledger) -> tuple[str, ...]:
     """Every generated surface's path relative to the output root, the index last."""
     tla = [f"{ledger.tla_dir}/{ledger.module}.tla"] + [f"{ledger.tla_dir}/MC{ledger.module}{s}.{ext}" for s in model_suffixes(ledger) for ext in ("tla", "cfg")]
-    return (*tla, ledger.index_path)
+    graph = (ledger.graph_path,) if ledger.graph_path else ()
+    return (*tla, ledger.index_path, *graph)
 
 
 def analyse(ledger: Ledger) -> Analysis:
@@ -219,11 +223,15 @@ def analyse(ledger: Ledger) -> Analysis:
     for name in ledger.assumption_sets:
         if name in ledger.records:
             errors.append(f"assumption set {name!r} collides with a record name")
-    for label, value in (("tla_dir", ledger.tla_dir), ("index_path", ledger.index_path)):
+    for label, value in (("tla_dir", ledger.tla_dir), ("index_path", ledger.index_path), *((("graph_path", ledger.graph_path),) if ledger.graph_path else ())):
         if not _inside_root(value):
             errors.append(f"{label} {value!r} must be a normalized path relative to the output root")
-    if Path(ledger.index_path).as_posix() in {Path(p).as_posix() for p in output_paths(ledger)[:-1]}:
-        errors.append(f"index_path {ledger.index_path!r} collides with a generated TLA+ file")
+    tla_paths = {Path(p).as_posix() for p in output_paths(ledger)[: -2 if ledger.graph_path else -1]}
+    for label, value in (("index_path", ledger.index_path), *((("graph_path", ledger.graph_path),) if ledger.graph_path else ())):
+        if Path(value).as_posix() in tla_paths:
+            errors.append(f"{label} {value!r} collides with a generated TLA+ file")
+    if ledger.graph_path and Path(ledger.graph_path).as_posix() == Path(ledger.index_path).as_posix():
+        errors.append(f"graph_path {ledger.graph_path!r} collides with index_path")
     for label, table in (("aliases", ledger.aliases), ("surfaces", ledger.surfaces)):
         for name in table:
             if name not in ledger.records:
@@ -457,6 +465,8 @@ def render_all(analysis: Analysis) -> dict[str, str]:
     out = {f"{tla_dir}/{analysis.ledger.module}.tla": render_tla(analysis)}
     out.update({f"{tla_dir}/{k}": v for k, v in render_models(analysis).items()})
     out[analysis.ledger.index_path] = render_index(analysis)
+    if analysis.ledger.graph_path:
+        out[analysis.ledger.graph_path] = typed_graph.render(typed_graph.build(analysis), GENERATED.format(source=analysis.ledger.source))
     assert tuple(out) == output_paths(analysis.ledger)
     return out
 
@@ -476,7 +486,11 @@ def main(argv: list[str]) -> int:
     except (LedgerError, OSError, ValueError, KeyError, TypeError) as exc:
         print(str(exc))
         return 2
-    outputs = {args.out / rel: text for rel, text in render_all(analysis).items()}
+    try:
+        outputs = {args.out / rel: text for rel, text in render_all(analysis).items()}
+    except typed_graph.GraphError as exc:
+        print(str(exc))
+        return 2
     if args.claims is not None:
         if any(args.claims.resolve() == p.resolve() for p in outputs):
             print(f"policy refused:\n  {args.claims} is itself a generated surface")

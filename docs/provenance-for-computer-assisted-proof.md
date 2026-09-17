@@ -75,7 +75,7 @@ open frontier, or an acceptable source is the consumer's, supplied as a predicat
 ## 4. The enforcement layer
 
 One policy file per repository (`audit/docs/policy-format.md`, with a worked example in
-`audit/docs/example-policy.toml`) drives five checks over prose and source:
+`audit/docs/example-policy.toml`) drives six checks over prose and source:
 
 - **status vocabulary** — every claim has a declared status from a closed set;
 - **promotion** — a claim the prose describes as proved must be proved in the ledger; this is the
@@ -83,7 +83,10 @@ One policy file per repository (`audit/docs/policy-format.md`, with a worked exa
 - **risky phrases** — "essentially the same", "obvious isomorphism", "proof by analogy" and their
   relatives, flagged wherever a declaration is not present;
 - **numerics** — no floating point inside a declared exact-arithmetic scope;
-- **consistency** — a claim's status agrees across every surface that names it.
+- **consistency** — a claim's status agrees across every surface that names it;
+- **coverage** — every claim of a class the policy requires guarded is named by a test, and
+  the run log shows that test executed. A declaration in a source file says a test *intends*
+  to guard a claim; only a receipt from a run says it did.
 
 The checks run in CI beside the tests, and they are cheap. What makes them useful is not their
 sophistication but their placement: they read the same prose a referee reads.
