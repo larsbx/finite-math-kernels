@@ -60,6 +60,8 @@ EXTERNAL: Mapping[str, str] = {
     "docs/exact-arithmetic-binding.md": PSC,
     "docs/overlap-finiteness-and-coincidence-density-2026-09-13.md": PSC,
     "src/psc_research/bpa.py": PSC,
+    "mojo/psc/finite_cokernel_address.mojo": PSC,
+    "docs/padic-representation-literature-gate-2026-09-16.md": PSC,
     "tests/test_substitution_dynamics_oracle.py": PSC,
     "claim_governance.toml": "the consumer repository root (audit/docs/policy-format.md)",
     "docs/ledger-index.md": "the consumer repository (docs/ledger-generation-spec.md, section 3.4)",

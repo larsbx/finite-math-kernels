@@ -147,6 +147,10 @@
       "blob": "2898a6f6080b19a946cdae307b5fe747964bd003",
       "relation": "authored"
     },
+    "docs/madic-ball-arithmetic-spec.md": {
+      "blob": "4461f9e4ce58085e3718a60fc0a620e782cce956",
+      "relation": "authored"
+    },
     "docs/proof-records-specification.md": {
       "blob": "cb610e0492493634527f429ac0702fea761c193d",
       "relation": "modified",
@@ -207,6 +211,10 @@
       "source": "finite_linear_algebra",
       "source_blob": "5cefbb9810a7919dfd37a6cf4360d60e87e7b12e",
       "source_path": "finite_linear_algebra/__init__.mojo"
+    },
+    "finite_linear_algebra/madic_ball.mojo": {
+      "blob": "7a7b9ca26a3d98903ddddd11ee26f9d5d7cf4981",
+      "relation": "authored"
     },
     "finite_linear_algebra/mat3.mojo": {
       "blob": "57d78d54fc4457c4d444eb2f88af7eb731b0e27e",
@@ -301,7 +309,7 @@
       "relation": "generated"
     },
     "pixi.toml": {
-      "blob": "91e063c70c990a4394229fe99c81c0a117b490f5",
+      "blob": "eb0bc4fa460bc5104a7eaec375c4077ff36706cf",
       "relation": "authored"
     },
     "proof_records/ProofArchitecture.tla": {
@@ -515,6 +523,14 @@
       "source_blob": "c68eac9e0f00760b10eb03ab8314a7c97d928841",
       "source_path": "tests/test_finite_linear_algebra.mojo"
     },
+    "tests/finite_linear_algebra/test_madic_ball.mojo": {
+      "blob": "829bfd7e78cc97c47d8d7766858a0c1a26d86f86",
+      "relation": "authored"
+    },
+    "tests/finite_linear_algebra/test_madic_oracle.py": {
+      "blob": "095ac7492182d33356e4a7ef2f6ee819eef4fc14",
+      "relation": "authored"
+    },
     "tests/interval/test_interval_q.mojo": {
       "blob": "b47dd49ac71dd6fb17ed69a06b1e0428e300e563",
       "relation": "modified",
@@ -582,7 +598,11 @@
       "relation": "authored"
     },
     "tools/check_references.py": {
-      "blob": "cd164bc45d5071f878bda56fd7d6768115c668ca",
+      "blob": "cb0f93d9edfa21d1640d130a5aa9b1ca60529509",
+      "relation": "authored"
+    },
+    "tools/madic_oracle.py": {
+      "blob": "b3049688990150610cf6851b33403823f354dbf7",
       "relation": "authored"
     },
     "tools/make_ledger_example.py": {
