@@ -39,6 +39,10 @@ The third row is what keeps the second honest. Without it, "declared missed" wou
 
 A class is a region **of the codomain**, so class predicates are evaluated only over values that satisfied `holds`. One malformed draw is reported once, rather than turning every class into an error.
 
+`holds` must carry every bound the `codomain` sentence states. A predicate that only checks the type accepts a draw the sentence excludes — a seventh limb, say — and the run then passes while the corpus has left its declaration, which is the failure this file exists to make visible.
+
+**A generator is judged on every call it makes, not on the operands a layer prints.** A fraction draws two integers and an interval draws two fractions, so auditing `random_int` against the `Z` operands alone would judge it on a third of its own output, and a declaration the rest of the corpus contradicts would pass. `Draws` records each generator's own returns wherever they are produced; passing it changes nothing about the stream, since the transcript path never supplies one.
+
 ## 3. Declaring a gap is not dismissing it
 
 Each missed class states the branch it leaves unexercised, and `tests/refinement/test_refinement.py` requires the reason to be substantive. The declarations this repository ships, for the exact-arithmetic property probe, record three:

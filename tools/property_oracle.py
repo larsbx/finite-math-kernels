@@ -37,6 +37,7 @@ import math
 import shutil
 import subprocess
 import sys
+from dataclasses import dataclass, field
 from fractions import Fraction
 from pathlib import Path
 
@@ -77,9 +78,27 @@ class Xorshift64Star:
         return (x * 2685821657736338717) & MASK64
 
 
-def random_int(rng: Xorshift64Star, max_limbs: int = MAX_LIMBS) -> int:
+@dataclass
+class Draws:
+    """Every value each declared generator produced, nested calls included.
+
+    A fraction draws two integers and an interval draws two fractions, so
+    auditing only the operands a layer prints would judge `random_int` on a
+    fraction of its own output and could accept a declaration that the rest of
+    the corpus contradicts. Passing a `Draws` changes nothing about the stream:
+    the recorder is a parameter the transcript path never supplies."""
+
+    integers: list[int] = field(default_factory=list)
+    fractions: list[Fraction] = field(default_factory=list)
+    intervals: list[tuple[Fraction, Fraction]] = field(default_factory=list)
+
+
+def random_int(rng: Xorshift64Star, max_limbs: int = MAX_LIMBS, draws: Draws | None = None) -> int:
     if rng.next() % 4 == 0:
-        return rng.next() % 2001 - 1000
+        value = rng.next() % 2001 - 1000
+        if draws is not None:
+            draws.integers.append(value)
+        return value
     count = rng.next() % max_limbs + 1
     limbs = []
     for _ in range(count):
@@ -88,21 +107,29 @@ def random_int(rng: Xorshift64Star, max_limbs: int = MAX_LIMBS) -> int:
     value = sum(limb * BASE**i for i, limb in enumerate(limbs))
     if value != 0 and rng.next() % 2 == 1:
         value = -value
+    if draws is not None:
+        draws.integers.append(value)
     return value
 
 
-def random_nonzero_int(rng: Xorshift64Star) -> int:
-    return random_int(rng) or 1
+def random_nonzero_int(rng: Xorshift64Star, draws: Draws | None = None) -> int:
+    return random_int(rng, draws=draws) or 1
 
 
-def random_fraction(rng: Xorshift64Star) -> Fraction:
-    numerator = random_int(rng)
-    return Fraction(numerator, random_nonzero_int(rng))
+def random_fraction(rng: Xorshift64Star, draws: Draws | None = None) -> Fraction:
+    numerator = random_int(rng, draws=draws)
+    value = Fraction(numerator, random_nonzero_int(rng, draws=draws))
+    if draws is not None:
+        draws.fractions.append(value)
+    return value
 
 
-def random_interval(rng: Xorshift64Star) -> tuple[Fraction, Fraction]:
-    a, b = random_fraction(rng), random_fraction(rng)
-    return (min(a, b), max(a, b))
+def random_interval(rng: Xorshift64Star, draws: Draws | None = None) -> tuple[Fraction, Fraction]:
+    a, b = random_fraction(rng, draws=draws), random_fraction(rng, draws=draws)
+    value = (min(a, b), max(a, b))
+    if draws is not None:
+        draws.intervals.append(value)
+    return value
 
 
 # --- phi_G: what these generators produce, and what they do not ---------------
@@ -116,7 +143,7 @@ def random_interval(rng: Xorshift64Star) -> tuple[Fraction, Fraction]:
 INTEGER = Refinement(
     "random_int",
     f"an integer of at most {MAX_LIMBS} base-{BASE} limbs, either sign",
-    lambda v: isinstance(v, int),
+    lambda v: isinstance(v, int) and abs(v) < BASE**MAX_LIMBS,
     (
         Class("negative", lambda v: v < 0),
         Class("small", lambda v: abs(v) <= 1000),
@@ -134,8 +161,9 @@ INTEGER = Refinement(
 
 FRACTION = Refinement(
     "random_fraction",
-    "a rational with a non-zero denominator",
-    lambda v: isinstance(v, Fraction) and v.denominator != 0,
+    f"a rational whose parts are each an integer of at most {MAX_LIMBS} base-{BASE} limbs",
+    lambda v: (isinstance(v, Fraction) and v.denominator > 0
+               and abs(v.numerator) < BASE**MAX_LIMBS and v.denominator < BASE**MAX_LIMBS),
     (
         Class("negative", lambda v: v < 0),
         Class("proper", lambda v: abs(v) < 1),
@@ -151,8 +179,9 @@ FRACTION = Refinement(
 
 INTERVAL = Refinement(
     "random_interval",
-    "a closed interval with lo <= hi",
-    lambda v: isinstance(v, tuple) and len(v) == 2 and v[0] <= v[1],
+    "a closed interval whose endpoints are two draws of random_fraction, lo <= hi",
+    lambda v: (isinstance(v, tuple) and len(v) == 2 and v[0] <= v[1]
+               and all(FRACTION.holds(end) for end in v)),
     (
         Class("straddling zero", lambda v: v[0] < 0 < v[1]),
         Class("strictly positive", lambda v: v[0] > 0),
@@ -176,13 +205,18 @@ def limbs_of(value: int) -> list[int]:
     return limbs or [0]
 
 
-def drawn(i_cases: int = I_CASES) -> tuple[list[int], list[Fraction], list[tuple[Fraction, Fraction]]]:
-    """The operands the transcript of `expected_lines` is built from, in order."""
-    rng = Xorshift64Star(SEED)
-    integers = [v for _ in range(Z_CASES) for v in (random_int(rng), random_int(rng))]
-    fractions = [v for _ in range(Q_CASES) for v in (random_fraction(rng), random_fraction(rng))]
-    intervals = [v for _ in range(i_cases) for v in (random_interval(rng), random_interval(rng))]
-    return integers, fractions, intervals
+def drawn(i_cases: int = I_CASES) -> Draws:
+    """Every value the transcript's stream produces, nested draws included: the
+    integers inside each fraction and the fractions inside each interval count
+    against their generator's declaration exactly as the printed operands do."""
+    rng, draws = Xorshift64Star(SEED), Draws()
+    for _ in range(Z_CASES):
+        random_int(rng, draws=draws), random_int(rng, draws=draws)
+    for _ in range(Q_CASES):
+        random_fraction(rng, draws=draws), random_fraction(rng, draws=draws)
+    for _ in range(i_cases):
+        random_interval(rng, draws=draws), random_interval(rng, draws=draws)
+    return draws
 
 
 def declared(i_cases: int = I_CASES) -> tuple[Refinement, ...]:
@@ -194,7 +228,9 @@ def declared(i_cases: int = I_CASES) -> tuple[Refinement, ...]:
 
 def distribution_problems(i_cases: int = I_CASES) -> tuple[str, ...]:
     """Every way the realized corpus departs from the declarations above."""
-    return audit_all(zip(declared(i_cases), drawn(i_cases)))
+    draws = drawn(i_cases)
+    corpora = (draws.integers, draws.fractions, draws.intervals)
+    return audit_all(zip(declared(i_cases), corpora))
 
 
 # --- canonical encodings -----------------------------------------------------

@@ -148,7 +148,7 @@
       "source_path": "docs/exact-arithmetic-public-boundary.md"
     },
     "docs/generator-refinement-spec.md": {
-      "blob": "f37ccfa0a012ac350833674728028ce0fff53b76",
+      "blob": "0924212adad19fcf5073d511eea61f0831f1b5e3",
       "relation": "authored"
     },
     "docs/ledger-generation-spec.md": {
@@ -615,7 +615,7 @@
       "relation": "authored"
     },
     "tests/refinement/test_refinement.py": {
-      "blob": "2b4e05efd1664c7d964f3927513031d53e43473c",
+      "blob": "b7970b8c59493da71258be60a7e3ae8c5588e30e",
       "relation": "authored"
     },
     "tests/substitution_dynamics/test_substitution_dynamics.mojo": {
@@ -653,7 +653,7 @@
       "source_path": "tools/make_vectors.py"
     },
     "tools/property_oracle.py": {
-      "blob": "d6eac693714186d1176d78bdf34f0e74feb004d2",
+      "blob": "58ec7f50a84c9a4ef467ab13aec91921724afa13",
       "relation": "modified",
       "source": "finite_exact",
       "source_blob": "fd1aaef547d8ed6c659c98785cf41865ec859fcf",
