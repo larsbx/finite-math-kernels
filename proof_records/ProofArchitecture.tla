@@ -59,7 +59,7 @@ NoWithdrawnDependency ==
 
 -----------------------------------------------------------------------------
 (* Observables are configuration-specific and live in the generated ledger   *)
-(* module (tools/generate_ledgers.py): one `<Name>NotEstablished` per result. *)
+(* module (proof_records/generate_ledgers.py): one `<Name>NotEstablished` per result. *)
 (* A model asserts them negatively for the results its assumptions leave      *)
 (* unreachable, so that a TLC violation trace demonstrates a derivation.      *)
 

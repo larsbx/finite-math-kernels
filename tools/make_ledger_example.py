@@ -3,7 +3,7 @@
 
 The example names the records of `tools/make_vectors.py` plus a withdrawn
 pending claim and a record that depends on it, so that every branch of
-`tools/generate_ledgers.py` (proved, imported, bounded, open, withdrawn,
+`proof_records/generate_ledgers.py` (proved, imported, bounded, open, withdrawn,
 unreachable, assumption sets, status overrides) appears in the committed
 output. `tests/proof_records/test_generate_ledgers.py` fails if the committed
 files differ from the regeneration. Usage: make_ledger_example.py [--check]
@@ -20,7 +20,7 @@ sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "tools"))
 
 from proof_records.records import Kind, Record, edge  # noqa: E402
-import generate_ledgers as gl  # noqa: E402
+from proof_records import generate_ledgers as gl  # noqa: E402
 import make_vectors as mv  # noqa: E402
 
 DIR = ROOT / "fixtures" / "ledger"
@@ -32,7 +32,7 @@ ON_RETRACTED = mv.rec(Kind.VERIFIED, "depends on the retracted lemma", mv.PISOT,
                       tags=frozenset({gl.STATUS_TAG + "blocked"}), replay="x", digest="y")
 
 RECORDS: dict[str, Record] = {
-    "Census": mv.CENSUS, "Density": mv.DENSITY, "Galois": mv.GALOIS, "Sweep": mv.SWEEP, "Lemma": mv.LEMMA, "Theorem": mv.THEOREM,
+    "Census": mv.CENSUS, "Proof": mv.PROOF, "Density": mv.DENSITY, "Galois": mv.GALOIS, "Sweep": mv.SWEEP, "Lemma": mv.LEMMA, "Theorem": mv.THEOREM,
     "Conditional": mv.CONDITIONAL, "WithinSweep": mv.WITHIN_SWEEP, "Retracted": RETRACTED, "OnRetracted": ON_RETRACTED,
 }
 
@@ -53,6 +53,8 @@ def example() -> dict:
         "assumption_sets": {"GaloisAssumed": ["Galois"]},
         "status_classes": {Kind.PENDING.value: "open-frontier"},
         "status_labels": {"proved": "theorem", "open-frontier": "open"},
+        "aliases": {"Census": ["PIP census", "4554 specimens"]},
+        "surfaces": {"Census": [{"path": "ledger-index.md", "anchor": "| Census | theorem |", "window_lines": 0, "expect": "present"}]},
         "records": {name: record_json(r) for name, r in RECORDS.items()},
     }
 

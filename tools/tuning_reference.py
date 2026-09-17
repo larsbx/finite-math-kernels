@@ -11,7 +11,8 @@ pinned value. Pure functions over tuples; no repository policy, no theorem.
 
 A substitution is a tuple of images, ``images[a]`` a tuple of letters over the
 alphabet ``0 .. len(images)-1``. A tuning pattern is ``(prefix, twist)`` with
-``prefix`` a non-empty tuple over ``{0, 1}`` and ``twist`` a bool.
+``prefix`` a non-empty tuple over ``{0, 1}`` and ``twist`` a bool; ``dgp_twist``
+is the real-line parity convention and ``continuation_twist`` the general rule.
 """
 
 from __future__ import annotations
@@ -46,6 +47,23 @@ def dgp_twist(prefix: Sequence[int]) -> bool:
 
 def dgp_pattern(prefix: Sequence[int]) -> Pattern:
     return checked_pattern(prefix, dgp_twist(prefix))
+
+
+def continuation_twist(prefix: Sequence[int]) -> bool:
+    """General twist (spec 1.3): ``A'_(n-S)`` with ``S`` the last defined term of
+    ``1, rho(1), rho(rho(1)), ...``, ``rho(m) = min {k in (m, n-1] : A'_k != A'_(k-m)}``."""
+    p = tuple(prefix)
+    n = len(p) + 1
+    if not p:
+        raise ValueError("tuning prefix must be non-empty (period at least 2)")
+    s = 1
+    while (r := next((k for k in range(s + 1, n) if p[k - 1] != p[k - s - 1]), None)) is not None:
+        s = r
+    return p[n - s - 1] == 1
+
+
+def continuation_pattern(prefix: Sequence[int]) -> Pattern:
+    return checked_pattern(prefix, continuation_twist(prefix))
 
 
 def period(pattern: Pattern) -> int:

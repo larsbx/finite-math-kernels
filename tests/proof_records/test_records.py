@@ -29,14 +29,17 @@ def pending(statement: str = "s", scope: str = "d", **kw) -> Record:
 
 
 def test_well_formed_records_validate_unchanged():
-    for record in (mv.CENSUS, mv.DENSITY, mv.GALOIS, mv.SWEEP, mv.LEMMA, mv.WITHIN_SWEEP):
+    for record in (mv.CENSUS, mv.DENSITY, mv.GALOIS, mv.SWEEP, mv.LEMMA, mv.WITHIN_SWEEP, mv.PROOF):
         assert validate(record) == record
+    assert outcome(mv.PROOF) == "accepted"
 
 
 def test_each_validation_rejection_names_its_reason():
     assert validate(mv.DUPLICATE_DEP).field("reason") == "duplicate or self dependency"
     assert validate(identified(Record("", Kind.VERIFIED, "s", "d", (), (("replay", "r"),)))).field("reason") == "missing evidence: digest"
     assert validate(mv.UNCHECKED).field("reason") == "imported theorem with unchecked hypotheses"
+    assert validate(mv.UNREVIEWED).field("reason") == "repository theorem without a reviewed proof"
+    assert validate(identified(Record("", Kind.REPOSITORY, "s", "d", (), (("source", "x"),)))).field("reason") == "missing evidence: proof_reviewed"
     assert validate(pending(statement="")).field("reason") == "empty statement or scope"
     assert validate(pending(scope="")).field("reason") == "empty statement or scope"
     dup = identified(Record("", Kind.PENDING, "s", "d", (), (("reason", "a"), ("reason", "b"))))
@@ -113,7 +116,7 @@ def test_canonical_bytes_layout():
 
 def test_complete_closure_over_verified_and_imported_records():
     closure = close(mv.LEDGER, mv.THEOREM.id)
-    assert closure.complete and closure.reached == tuple(sorted([mv.DENSITY.id, mv.CENSUS.id, mv.LEMMA.id, mv.THEOREM.id]))
+    assert closure.complete and closure.reached == tuple(sorted([mv.DENSITY.id, mv.CENSUS.id, mv.LEMMA.id, mv.THEOREM.id, mv.PROOF.id]))
     assert not closure.missing_links
 
 

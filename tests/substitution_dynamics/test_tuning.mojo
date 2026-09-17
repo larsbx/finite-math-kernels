@@ -10,7 +10,7 @@ from std.testing import assert_equal, assert_false, assert_true
 from substitution_dynamics.coincidence import CoincidenceWitness, column_coincidence, constant_length, is_constant_length
 from substitution_dynamics.sadic import apply_directive, compose, directive_composite
 from substitution_dynamics.substitution import Substitution
-from substitution_dynamics.tuning import TuningPattern, dgp_twist, kneading_prefix, star_product
+from substitution_dynamics.tuning import TuningPattern, continuation_twist, dgp_twist, kneading_prefix, star_product
 
 
 def period_doubling() raises -> TuningPattern:
@@ -179,6 +179,41 @@ def test_kneading_prefix_is_a_prefix_of_every_tuning_image() raises:
             assert_equal(img[i], prefix[i])
 
 
+def test_continuation_twist_pinned_values_and_disagreement_with_parity() raises:
+    var one: List[Int] = [1]
+    var ten: List[Int] = [1, 0]
+    var eleven: List[Int] = [1, 1]
+    var prim4: List[Int] = [1, 0, 0]
+    var sat4: List[Int] = [1, 0, 1]
+    assert_true(continuation_twist(one))
+    assert_true(continuation_twist(ten))
+    assert_true(continuation_twist(eleven))
+    assert_true(continuation_twist(prim4))
+    assert_false(continuation_twist(sat4))
+    # Parity agrees on 1, 10, 100, 101 and disagrees on 11.
+    assert_equal(dgp_twist(one), continuation_twist(one))
+    assert_equal(dgp_twist(ten), continuation_twist(ten))
+    assert_equal(dgp_twist(prim4), continuation_twist(prim4))
+    assert_equal(dgp_twist(sat4), continuation_twist(sat4))
+    assert_false(dgp_twist(eleven))
+    var rabbit = TuningPattern.continuation(eleven)
+    assert_equal(rabbit.substitution().image(1), [1, 1, 0])
+    assert_equal(rabbit.substitution().image(0), [1, 1, 1])
+    # Closure under the star product, on the pinned pairs.
+    var ab = star_product(rabbit, TuningPattern.continuation(one))
+    assert_equal(ab.prefix, [1, 1, 0, 1, 1])
+    assert_equal(continuation_twist(ab.prefix), ab.twist)
+    var ba = star_product(TuningPattern.continuation(ten), TuningPattern.continuation(one))
+    assert_equal(ba.prefix, [1, 0, 0, 1, 0])
+    assert_equal(continuation_twist(ba.prefix), ba.twist)
+    var caught = False
+    try:
+        _ = continuation_twist(List[Int]())
+    except:
+        caught = True
+    assert_true(caught)
+
+
 def test_every_tuning_substitution_has_a_coincidence_in_its_first_column() raises:
     var p: List[Int] = [0, 1, 1, 0]
     var w = column_coincidence(TuningPattern.checked(p, True).substitution())
@@ -236,6 +271,8 @@ def main() raises:
     print("[PASS] test_directive_composite_and_application_agree")
     test_kneading_prefix_is_a_prefix_of_every_tuning_image()
     print("[PASS] test_kneading_prefix_is_a_prefix_of_every_tuning_image")
+    test_continuation_twist_pinned_values_and_disagreement_with_parity()
+    print("[PASS] test_continuation_twist_pinned_values_and_disagreement_with_parity")
     test_every_tuning_substitution_has_a_coincidence_in_its_first_column()
     print("[PASS] test_every_tuning_substitution_has_a_coincidence_in_its_first_column")
     test_thue_morse_has_no_column_coincidence()
@@ -244,4 +281,4 @@ def main() raises:
     print("[PASS] test_three_letter_example_needs_depth_two")
     test_non_constant_length_is_rejected()
     print("[PASS] test_non_constant_length_is_rejected")
-    print("11 tuning Mojo tests passed.")
+    print("12 tuning Mojo tests passed.")

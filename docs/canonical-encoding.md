@@ -1,6 +1,6 @@
 # Canonical encoding of integers and rationals
 
-Status: byte-level contract of `bigz_canonical_bytes` and `q_canonical_bytes`. It fixes one encoding per value so that consumers can hash, compare, and replay exact data without parsing decimal text. It is the only channel trusted between the Mojo probe and the Python oracle (`tools/property_oracle.py`). Composite record schemas (certificates, boxes, ray addresses) are consumer matters; NLAP-JT keeps its own in `docs/canonical-serialization.md`.
+Status: byte-level contract of `bigz_canonical_bytes` and `q_canonical_bytes`. It fixes one encoding per value so that consumers can hash, compare, and replay exact data without parsing decimal text. It is the only channel trusted between the Mojo probe and the Python oracle (`tools/property_oracle.py`). Composite record schemas (certificates, boxes, ray addresses) are consumer matters; `larsbx/finite-mandlebrot-research` keeps its own in `docs/canonical-serialization.md`. A proof record's own preimage is fixed by section 4 of `docs/proof-records-specification.md`, and `docs/evidence-vocabulary-map.md` states how a receipt from another program's ledger becomes such a record: the external receipt's identity travels as evidence, never as the record identifier, so exactly one encoding is authoritative per record.
 
 ## Integer
 

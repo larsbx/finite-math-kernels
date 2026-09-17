@@ -2,7 +2,7 @@
 
 **Status:** specification of the `finite_exact` package (layer ℚ, sections 0 to 1) and of the `larsbx/interval_q` package built on it (layer I, sections 2 to 3); shared by every consumer that vendors either package. Sections 0 to 5 are repository-independent and carry no theorem: exactness removes one class of error from a computation, and the epistemic status of the computation is governed by each consumer's own claim-status documents. Section 6 names the consumers and where each keeps its binding table; section 7 says how a consumer enforces the specification.
 
-History: this text was written in `larsbx/NLAP-JT` (`docs/rational-interval-arithmetic-spec.md`) while the arithmetic lived there, and moved here unchanged in sections 0 to 5 when the arithmetic was extracted. NLAP-JT and `larsbx/pisot-substitution-conjecture-research` keep only their binding rows.
+History: this text was written in `larsbx/NLAP-JT` (`docs/rational-interval-arithmetic-spec.md`) while the arithmetic lived there, and moved here unchanged in sections 0 to 5 when the arithmetic was extracted. That program, now `larsbx/finite-mandlebrot-research`, and `larsbx/pisot-substitution-conjecture-research` keep only their binding rows.
 
 Terminology in this file is field-recognizable (rational arithmetic, interval arithmetic, natural interval extension, dependency problem, floating-point filter). No novel bridge term is introduced.
 
@@ -225,7 +225,7 @@ Known consumers and their binding tables:
 | --- | --- | --- |
 | `larsbx/interval_q` | `README.md` | `finite_exact/` at the repository root |
 | `larsbx/finite_linear_algebra` | `README.md` | `finite_exact/` at the repository root |
-| `larsbx/NLAP-JT` | `docs/rational-interval-arithmetic-spec.md` (sections 6 and 7 only) | `src/finite_exact/`, `src/interval_q/` |
+| `larsbx/finite-mandlebrot-research` | `docs/rational-interval-arithmetic-spec.md` (sections 6 and 7 only) | `src/finite_exact/`, `src/interval_q/` |
 | `larsbx/pisot-substitution-conjecture-research` | `docs/exact-arithmetic-binding.md` | `mojo/finite_exact/`, `mojo/interval_q/` |
 
 Promotion of a DEMO row to CONFORMS requires that the consumer's certificate-acceptance gate, not this package, be satisfied; `Q.accepted()` says only that a value is a well-formed rational.
@@ -241,7 +241,7 @@ The specification is a hook, not a note. In this package:
 In a consumer:
 
 4. **Pinned consumption.** Consumers pin a commit of this repository, and `tools/provenance.py --check` verifies every imported file here against the blobs pinned in `audit/provenance.json` on every CI run (`audit/CONSOLIDATION_PROVENANCE.md`). A change to the arithmetic is made here, then the consumer moves its pin; a local patch in a consumer is a binding-table violation.
-5. **Audit script and allowlist**, where the consumer has certificate paths: a lexical scan of the kernel scope for floating-point types and literals outside an allowlist, discovery of direct arithmetic consumers with a binding row required for each, and the C7 citation check. NLAP-JT's `tools/audit_exact_arithmetic.py` is the reference implementation.
+5. **Audit script and allowlist**, where the consumer has certificate paths: a lexical scan of the kernel scope for floating-point types and literals outside an allowlist, discovery of direct arithmetic consumers with a binding row required for each, and the C7 citation check. `larsbx/finite-mandlebrot-research`'s `tools/audit_exact_arithmetic.py` is the reference implementation.
 6. **Policy pointers.** The consumer's README and implementation-policy file name this specification as the arithmetic policy.
 
 ## 8. Non-goals

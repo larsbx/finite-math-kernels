@@ -9,7 +9,7 @@
       "relation": "authored"
     },
     "README.md": {
-      "blob": "457adc5e1fe698fb89440d7dd997f6bdb1df5489",
+      "blob": "df10403d09dcf46e18491aab3a3ff78af57df366",
       "relation": "authored"
     },
     "audit/CONSOLIDATION_PROVENANCE.md": {
@@ -126,11 +126,15 @@
       "source_path": "docs/policy-format.md"
     },
     "docs/canonical-encoding.md": {
-      "blob": "0e3f8f4b3dedc597d7a779a1f2f216f7fc5e8700",
-      "relation": "copy",
+      "blob": "f21baa96832c6051021d3fecec0bee9aff03c926",
+      "relation": "modified",
       "source": "finite_exact",
       "source_blob": "0e3f8f4b3dedc597d7a779a1f2f216f7fc5e8700",
       "source_path": "docs/canonical-encoding.md"
+    },
+    "docs/evidence-vocabulary-map.md": {
+      "blob": "1182b5b0c6a165a0763acd39df53f82ffb9f054b",
+      "relation": "authored"
     },
     "docs/exact-arithmetic-public-boundary.md": {
       "blob": "7903ce2fa262475105b7ebf4400f212881d1c934",
@@ -140,11 +144,15 @@
       "source_path": "docs/exact-arithmetic-public-boundary.md"
     },
     "docs/ledger-generation-spec.md": {
-      "blob": "caf719cd0fe39a4101b24899715bf1802973a2c5",
+      "blob": "2898a6f6080b19a946cdae307b5fe747964bd003",
+      "relation": "authored"
+    },
+    "docs/madic-ball-arithmetic-spec.md": {
+      "blob": "c46a1615b697688d241db5c47c9f4385af50cf91",
       "relation": "authored"
     },
     "docs/proof-records-specification.md": {
-      "blob": "9fda641187304eb38b7ff41c9f5b8bc0ab3aa556",
+      "blob": "cb610e0492493634527f429ac0702fea761c193d",
       "relation": "modified",
       "source": "finite_proof_records",
       "source_blob": "145c282052309b9fdbcc7baeef4bbeadc4963875",
@@ -155,14 +163,14 @@
       "relation": "authored"
     },
     "docs/rational-interval-arithmetic-spec.md": {
-      "blob": "e453cced811cb9953c5d6bbc46e7e141d2dfe525",
+      "blob": "516c4f9f9152b5c7d5cc74ce448ba6ddcd4828b7",
       "relation": "modified",
       "source": "finite_exact",
       "source_blob": "86478aa8777903f6c605d4bcfd7d899ac51a74fa",
       "source_path": "docs/rational-interval-arithmetic-spec.md"
     },
     "docs/tuning-substitutions-spec.md": {
-      "blob": "594a306f8ba938efb3dd52005c9b867a113d4528",
+      "blob": "0b1ca62bbd7e86fafb3fe2a4d4fae4ca7dadcdf7",
       "relation": "authored"
     },
     "finite_exact/__init__.mojo": {
@@ -207,6 +215,10 @@
       "source": "finite_linear_algebra",
       "source_blob": "5cefbb9810a7919dfd37a6cf4360d60e87e7b12e",
       "source_path": "finite_linear_algebra/__init__.mojo"
+    },
+    "finite_linear_algebra/madic_ball.mojo": {
+      "blob": "d19744a6e6323bd69d482e154f7e3ac7d3366ba1",
+      "relation": "authored"
     },
     "finite_linear_algebra/mat3.mojo": {
       "blob": "57d78d54fc4457c4d444eb2f88af7eb731b0e27e",
@@ -256,19 +268,27 @@
       "source_path": "finite_linear_algebra/w3.mojo"
     },
     "fixtures/ledger/example.json": {
-      "blob": "01ea2741ebc6708b093f088d6662e5c208d4480a",
+      "blob": "d7adda71b7ed5452295848222a2637d7f2b5eb52",
       "relation": "authored"
     },
     "fixtures/ledger/ledger-index.md": {
-      "blob": "0e02f5f059380a41c1505e22d36ea874e972b979",
+      "blob": "ad363f24b6b05f5de4bcae3700dde4f973dc3e92",
       "relation": "authored"
     },
     "fixtures/ledger/policy.toml": {
-      "blob": "d4d9f70456132759a9eeaa50a7a2559359ada1c5",
+      "blob": "7abef6e04b544a22b335edff94a529733a4671ec",
       "relation": "authored"
     },
     "fixtures/ledger/tla/Example.tla": {
-      "blob": "e612ac2e79ad2673a0a108f77bcad905905b0010",
+      "blob": "3fcb6f7ceef0d71b304048725732e4b1943cea30",
+      "relation": "authored"
+    },
+    "fixtures/ledger/tla/MCExampleGaloisAssumed.cfg": {
+      "blob": "accbcefc49b15c656d28645540142e7564eab860",
+      "relation": "authored"
+    },
+    "fixtures/ledger/tla/MCExampleGaloisAssumed.tla": {
+      "blob": "6ac1f846fe8f08fae84d7cb97243e77cc5970ba5",
       "relation": "authored"
     },
     "fixtures/ledger/tla/MCExampleImports.cfg": {
@@ -276,7 +296,7 @@
       "relation": "authored"
     },
     "fixtures/ledger/tla/MCExampleImports.tla": {
-      "blob": "743b1415d86551127395628fd1eaf5ec8ba72c26",
+      "blob": "cb559c1c7cffc062407d3e1eda6fb7f26b2cd035",
       "relation": "authored"
     },
     "fixtures/ledger/tla/MCExampleOpen.cfg": {
@@ -284,20 +304,20 @@
       "relation": "authored"
     },
     "fixtures/ledger/tla/MCExampleOpen.tla": {
-      "blob": "39648825acd9e3711adfb1741243900b762677c4",
+      "blob": "3464b5ac0cdabf311fbd07d98d79fd1867d76c37",
       "relation": "authored"
     },
     "fixtures/vectors.json": {
-      "blob": "474ef923faa4e3abab070f1e81ea760cf92b6384",
+      "blob": "ac459b6280c847831c3f274831cfe1b8fed4bfe5",
       "generator": "tools/make_vectors.py",
       "relation": "generated"
     },
     "pixi.toml": {
-      "blob": "292755fd65a4c7c0871841cb9601582c44228e0c",
+      "blob": "eb0bc4fa460bc5104a7eaec375c4077ff36706cf",
       "relation": "authored"
     },
     "proof_records/ProofArchitecture.tla": {
-      "blob": "a089f692c4c025ac91a7c1aaaaa49d2960b015ab",
+      "blob": "6e616fb85ffe0cf62306c1ee1f89f730f3fb9cd2",
       "relation": "authored"
     },
     "proof_records/__init__.mojo": {
@@ -314,15 +334,19 @@
       "source_blob": "d33f5a642cb92373432a521c805aeb6c7b248484",
       "source_path": "finite_proof_records/__init__.py"
     },
+    "proof_records/generate_ledgers.py": {
+      "blob": "fa17c9dee6c70994eacac62a18332efbdc275467",
+      "relation": "authored"
+    },
     "proof_records/records.mojo": {
-      "blob": "12ce775d1426e4f0134f9c8cf9e9e0903036287c",
+      "blob": "4c5e8a0244f19e46fbffcdd5cdf4d07d59d07fcc",
       "relation": "modified",
       "source": "finite_proof_records",
       "source_blob": "51f5ee8cb61f0b6bdbc33f15f99e5f9b37fe4b9f",
       "source_path": "finite_proof_records/records.mojo"
     },
     "proof_records/records.py": {
-      "blob": "ba861f74efdcb591ee2542d202dd0d694b63d5b1",
+      "blob": "da1c7b00aba5f1bbd3d1d73c4d13413ebf4b3518",
       "relation": "modified",
       "source": "finite_proof_records",
       "source_blob": "04c2650793e8c7a0d87eb360b845be5750b149a7",
@@ -330,6 +354,10 @@
     },
     "proof_records/sha256.mojo": {
       "blob": "d8438abb884b5d03d2c4715fcbec66fe721432b9",
+      "relation": "authored"
+    },
+    "proof_records/vocabularies.py": {
+      "blob": "8b68b61b91d2d45c3394bae801368378c384f137",
       "relation": "authored"
     },
     "substitution_dynamics/__init__.mojo": {
@@ -376,7 +404,7 @@
       "source_path": "substitution_dynamics/substitution.mojo"
     },
     "substitution_dynamics/tuning.mojo": {
-      "blob": "9339bbf18a4cc916119dc589ea4c05a92e1bdff4",
+      "blob": "6721567c32c6ff55e8e7ebe035539f14253cf5c4",
       "relation": "authored"
     },
     "substitution_dynamics/words.mojo": {
@@ -499,6 +527,14 @@
       "source_blob": "c68eac9e0f00760b10eb03ab8314a7c97d928841",
       "source_path": "tests/test_finite_linear_algebra.mojo"
     },
+    "tests/finite_linear_algebra/test_madic_ball.mojo": {
+      "blob": "213c9cb5c6359b0b87ba27715ad0ab257f51f0e4",
+      "relation": "authored"
+    },
+    "tests/finite_linear_algebra/test_madic_oracle.py": {
+      "blob": "1718aba5db75905a46909da63c59f4960cfcff6e",
+      "relation": "authored"
+    },
     "tests/interval/test_interval_q.mojo": {
       "blob": "b47dd49ac71dd6fb17ed69a06b1e0428e300e563",
       "relation": "modified",
@@ -514,7 +550,7 @@
       "source_path": "tests/replay_vectors.mojo"
     },
     "tests/proof_records/test_generate_ledgers.py": {
-      "blob": "6c3d09e6e510fa073cf10128499523d133df853f",
+      "blob": "0fc5c3c98e73d6c9d74a3ffe5b7b623ae687b55e",
       "relation": "authored"
     },
     "tests/proof_records/test_mojo_replay.py": {
@@ -525,18 +561,22 @@
       "source_path": "tests/test_mojo_replay.py"
     },
     "tests/proof_records/test_records.py": {
-      "blob": "ef32c86d161dea3ce24ab9bb3c29b86103097716",
+      "blob": "352e58008952c49b80f3785d8eaebf13beb1711d",
       "relation": "modified",
       "source": "finite_proof_records",
       "source_blob": "cb619cb75510b50cb9a7adcd2179af86217502c6",
       "source_path": "tests/test_records.py"
     },
     "tests/proof_records/test_vectors.py": {
-      "blob": "45344e851efaf4d7ed8cf6d878d82be569aa56fc",
+      "blob": "d02552bc8d270a464c3ba4be444f04a07afd17b9",
       "relation": "modified",
       "source": "finite_proof_records",
       "source_blob": "da63ce6a26101ea89b1d162c50016b680a54f24d",
       "source_path": "tests/test_vectors.py"
+    },
+    "tests/proof_records/test_vocabularies.py": {
+      "blob": "4596dc30e0982445029c19b3f60eb51b5d40ed7f",
+      "relation": "authored"
     },
     "tests/provenance/test_provenance.py": {
       "blob": "12c2247c59b8cbca47cdd1d733e8e966907ea8c4",
@@ -554,27 +594,27 @@
       "source_path": "tests/test_substitution_dynamics.mojo"
     },
     "tests/substitution_dynamics/test_tuning.mojo": {
-      "blob": "256013e1c9d7f9d3d557eae96876b08c4ea7a527",
+      "blob": "30c80c136eff653ff9dc87a92788960e7068c20a",
       "relation": "authored"
     },
     "tests/substitution_dynamics/test_tuning_reference.py": {
-      "blob": "3d19830114f84866804d7202518002d1fbdfe080",
+      "blob": "7d5cf3e7cd1f67618205d7cbcded87b3472f3015",
       "relation": "authored"
     },
     "tools/check_references.py": {
-      "blob": "cedd5623750653273b10bf738fdcb6b97b5f71eb",
+      "blob": "cb0f93d9edfa21d1640d130a5aa9b1ca60529509",
       "relation": "authored"
     },
-    "tools/generate_ledgers.py": {
-      "blob": "b112c3ec45f15e11946498df5d72f8e7fb710044",
+    "tools/madic_oracle.py": {
+      "blob": "25ec820a10f2d9235b486ab568f95a4c4865c1bc",
       "relation": "authored"
     },
     "tools/make_ledger_example.py": {
-      "blob": "938cdbed810cf51068bc1814498212f97e2045a6",
+      "blob": "27a0713317763a534df21f4f484f2819d1cb0683",
       "relation": "authored"
     },
     "tools/make_vectors.py": {
-      "blob": "7029956e13002da26699ec446f7b663f1e33989f",
+      "blob": "aaa4e2d849deb7337656d9a7f6348a1cac16dc36",
       "relation": "modified",
       "source": "finite_proof_records",
       "source_blob": "dc86359eff444feb288cb63e35dad6b5849f9869",
@@ -599,7 +639,7 @@
       "source_path": "tools/replay_mojo.py"
     },
     "tools/tuning_reference.py": {
-      "blob": "b338d8e6b44194aae94d604b0c624f64c7a60df5",
+      "blob": "1bd2d18fced0df5989b49e507f0eb5bdbc6b0651",
       "relation": "authored"
     }
   },

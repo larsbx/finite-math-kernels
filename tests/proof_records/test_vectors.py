@@ -68,5 +68,6 @@ def test_fixture_covers_every_missing_link_reason_and_the_complete_closures():
     rejections = {link[1] for case in data["closures"] for link in case["missing_links"] if link[1].startswith("rejected: ")}
     assert rejections == {"rejected: imported theorem with unchecked hypotheses", "rejected: identifier does not match preimage",
                           "rejected: duplicate or self dependency", "rejected: unknown scope relation: within",
-                          "rejected: unknown required outcome: proved", "rejected: bounded dependency outside its own scope"}
-    assert [case["root_label"] for case in data["closures"] if case["complete"]] == ["theorem", "within", "diamond_ok", "on_circle"]
+                          "rejected: unknown required outcome: proved", "rejected: bounded dependency outside its own scope",
+                          "rejected: repository theorem without a reviewed proof"}
+    assert [case["root_label"] for case in data["closures"] if case["complete"]] == ["theorem", "within", "proof", "diamond_ok", "on_circle"]
