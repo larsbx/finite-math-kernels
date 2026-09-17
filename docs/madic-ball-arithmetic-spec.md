@@ -40,11 +40,19 @@ Level `0` is the whole of `Z^n` in one coset, and the filtration is monotone: a
 pair separated at level `k` is separated at every deeper level, because
 `M^(k+1) Z^n ⊆ M^k Z^n`.
 
-Inputs are machine integers, matching the `Mat3` convention of the consumers.
-Every internal value is `Q` or `BigZ` from `finite_exact`, so no intermediate can
-overflow: the entries of `M^k` grow like the spectral radius to the `k`, and a
-64-bit ceiling inside a carrier whose purpose is exactness would be a defect and
-not a bound.
+Inputs are machine integers, matching the `Mat3` convention of the consumers,
+and **every coordinate is lifted into `Q` before any arithmetic touches it**.
+Nothing overflows: the entries of `M^k` grow like the spectral radius to the `k`,
+and a 64-bit ceiling inside a carrier whose purpose is exactness would be a
+defect and not a bound.
+
+The order of the lift is part of the contract rather than an implementation
+detail. Forming a coordinate difference in `Int` and lifting the result is not
+the same thing: with `M = [3]`, `a = 2^63 - 1` and `b = -2`, the true difference
+`2^63 + 1` is divisible by three while the wrapped 64-bit difference is not, so a
+carrier that subtracts first reports a separation that does not hold. That is a
+false certificate of the only thing this carrier certifies, and review of the
+first implementation found exactly it.
 
 ## 2. The contract, which is the closed interval's transposed
 
@@ -131,7 +139,11 @@ The carrier fails closed. Three inputs are refused rather than answered:
 
 - **a singular `M`.** With `det M = 0` there is no filtration of finite index and
   no level to speak of, so `contains` aborts instead of returning a value that
-  could be read as membership.
+  could be read as membership. The determinant of the **original** `M` is checked
+  before exponentiation: at `level = 0` the power is the identity whatever `M`
+  was, so a check made afterwards would miss the singular case entirely and read
+  every correctly sized delta as a member. Review of the first implementation
+  found that too.
 - **a dimension above `MAX_DIMENSION`.** Minor enumeration is exponential in the
   dimension; a larger one is refused rather than silently made slow.
 - **a negative level.** The filtration is indexed by `k ≥ 0`.

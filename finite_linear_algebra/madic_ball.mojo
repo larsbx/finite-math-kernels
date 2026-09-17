@@ -15,9 +15,12 @@ only certificate this carrier issues. `same_coset_means_equal` pins the
 non-claim, exactly as the interval layer refuses to promote an unknown sign.
 
 Inputs are machine integers, matching the `Mat3` and `Diff3` convention of the
-consumers. Every internal value is `Q` or `BigZ`, so no intermediate can
-overflow: `M^k` grows like the spectral radius to the `k`, and a 64-bit ceiling
-in a carrier whose purpose is exactness would be a defect rather than a bound.
+consumers, and every coordinate is lifted into `Q` *before* any arithmetic
+touches it. Nothing overflows: `M^k` grows like the spectral radius to the `k`,
+and a 64-bit ceiling in a carrier whose purpose is exactness would be a defect
+rather than a bound. The lift has to come first, not merely happen somewhere --
+a difference formed in `Int` and lifted afterwards can wrap, and a wrapped
+difference changes the membership answer.
 
 The specification is `docs/madic-ball-arithmetic-spec.md`.
 """
@@ -227,21 +230,28 @@ def quotient_order(entries: List[Int], n: Int, level: Int) -> BigZ:
     return value^
 
 
-def contains(entries: List[Int], n: Int, level: Int, delta: List[Int]) -> Bool:
-    """Whether `delta` lies in the lattice `M^k Z^n`.
+def contains_exact(entries: List[Int], n: Int, level: Int, delta: List[Q]) -> Bool:
+    """Whether the exact vector `delta` lies in the lattice `M^k Z^n`.
 
-    Solves `M^k x = delta` over `Q` and asks whether `x` is integral. A singular
-    `M` has no level filtration at all, so it aborts rather than answering.
+    Solves `M^k x = delta` over `Q` and asks whether `x` is integral.
+
+    The determinant of the *original* `M` is checked before exponentiation, not
+    after. At `level = 0` the power is the identity whatever `M` was, so a
+    singular matrix would otherwise go undetected and every correctly sized
+    delta would read as a member -- the opposite of the documented refusal.
     """
     if len(delta) != n:
         abort("M-adic difference vector has the wrong dimension")
-    var lattice = qmat_pow(lift_square(entries, n), level)
+    var m = lift_square(entries, n)
+    if q_is_zero(qmat_det(m)):
+        abort("singular M-adic lattice: det M must be non-zero")
+    var lattice = qmat_pow(m, level)
     var rows = List[List[Q]]()
     for i in range(n):
         var row = List[Q]()
         for j in range(n):
             row.append(lattice[i][j].copy())
-        row.append(q_int(delta[i]))
+        row.append(delta[i].copy())
         rows.append(row^)
     for c in range(n):
         var pivot = -1
@@ -250,7 +260,7 @@ def contains(entries: List[Int], n: Int, level: Int, delta: List[Int]) -> Bool:
                 pivot = r
                 break
         if pivot < 0:
-            abort("singular M-adic lattice: det M must be non-zero")
+            abort("M-adic elimination found no pivot in a non-singular lattice")
         if pivot != c:
             var swap = rows[c].copy()
             rows[c] = rows[pivot].copy()
@@ -270,12 +280,30 @@ def contains(entries: List[Int], n: Int, level: Int, delta: List[Int]) -> Bool:
     return True
 
 
+def contains(entries: List[Int], n: Int, level: Int, delta: List[Int]) -> Bool:
+    """Whether the integer vector `delta` lies in the lattice `M^k Z^n`."""
+    var lifted = List[Q]()
+    for i in range(len(delta)):
+        lifted.append(q_int(delta[i]))
+    return contains_exact(entries, n, level, lifted)
+
+
 def same_coset(entries: List[Int], n: Int, level: Int, a: List[Int], b: List[Int]) -> Bool:
-    """Whether `a` and `b` agree modulo `M^k Z^n`. This is **not** equality."""
-    var delta = List[Int]()
+    """Whether `a` and `b` agree modulo `M^k Z^n`. This is **not** equality.
+
+    Each coordinate is lifted into `Q` *before* the subtraction. Forming
+    `a[i] - b[i]` in `Int` first would wrap for coordinates far apart, and a
+    wrapped difference can change the membership answer: with `M = [3]`,
+    `a = 2^63 - 1` and `b = -2` the true difference is divisible by three while
+    the wrapped one is not, so the carrier would have issued a false separation
+    certificate -- the one thing it claims to be able to certify.
+    """
+    if len(a) != len(b):
+        abort("M-adic points have different dimensions")
+    var delta = List[Q]()
     for i in range(len(a)):
-        delta.append(a[i] - b[i])
-    return contains(entries, n, level, delta)
+        delta.append(q_int(a[i]).sub(q_int(b[i])))
+    return contains_exact(entries, n, level, delta)
 
 
 def separated(entries: List[Int], n: Int, level: Int, a: List[Int], b: List[Int]) -> Bool:

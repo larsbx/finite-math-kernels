@@ -122,6 +122,21 @@ def test_separation_is_the_only_certificate() raises:
     assert_false(carrier_is_scalar_padic())
 
 
+def test_far_apart_coordinates_do_not_wrap() raises:
+    """Review found this: the difference was formed in `Int` before the lift.
+
+    With `M = [3]`, `a = 2^63 - 1` and `b = -2` the true difference is `2^63 + 1`
+    and divisible by three, so the points share a coset. The wrapped 64-bit
+    difference is not divisible by three, so the carrier used to issue a false
+    separation certificate here -- the one thing it claims to be able to certify.
+    """
+    var m: List[Int] = [3]
+    var a: List[Int] = [9223372036854775807]
+    var b: List[Int] = [-2]
+    assert_true(same_coset(m, 1, 1, a, b))
+    assert_false(separated(m, 1, 1, a, b))
+
+
 def test_index_subsets_enumerates_each_subset_once() raises:
     assert_equal(len(index_subsets(3, 0)), 1)
     assert_equal(len(index_subsets(3, 1)), 3)
@@ -148,6 +163,8 @@ def main() raises:
     print("[PASS] test_same_coset_is_the_unknown_answer_and_refinement_can_separate")
     test_separation_is_the_only_certificate()
     print("[PASS] test_separation_is_the_only_certificate")
+    test_far_apart_coordinates_do_not_wrap()
+    print("[PASS] test_far_apart_coordinates_do_not_wrap")
     test_index_subsets_enumerates_each_subset_once()
     print("[PASS] test_index_subsets_enumerates_each_subset_once")
-    print("8 M-adic ball Mojo tests passed.")
+    print("9 M-adic ball Mojo tests passed.")

@@ -127,16 +127,21 @@ def contains(m: Matrix, level: int, delta: list[int]) -> bool:
     """Whether `delta` lies in the lattice `M^k Z^n`.
 
     Solves `M^k x = delta` over the rationals and asks whether `x` is integral.
-    Requires `det M != 0`; a singular `M` has no well-defined level filtration
-    and is refused by the caller rather than answered here.
+
+    The determinant of the *original* `M` is checked before exponentiation, not
+    after. At `level = 0` the power is the identity whatever `M` was, so a
+    singular matrix would otherwise go undetected and every correctly sized
+    delta would read as a member -- the opposite of the documented refusal.
     """
+    if determinant(m) == 0:
+        raise ValueError("singular lattice: det M must be non-zero")
     lattice = power(m, level)
     n = len(lattice)
     rows = [[Fraction(x) for x in lattice[i]] + [Fraction(delta[i])] for i in range(n)]
     for c in range(n):
         pivot = next((r for r in range(c, n) if rows[r][c] != 0), None)
         if pivot is None:
-            raise ValueError("singular lattice: det M must be non-zero")
+            raise ValueError("no pivot in a non-singular lattice")
         rows[c], rows[pivot] = rows[pivot], rows[c]
         lead = rows[c][c]
         rows[c] = [x / lead for x in rows[c]]
@@ -148,7 +153,15 @@ def contains(m: Matrix, level: int, delta: list[int]) -> bool:
 
 
 def same_coset(m: Matrix, level: int, a: list[int], b: list[int]) -> bool:
-    """Whether `a` and `b` agree modulo `M^k Z^n`. **Not** equality: see below."""
+    """Whether `a` and `b` agree modulo `M^k Z^n`. **Not** equality: see below.
+
+    Python integers are unbounded, so the subtraction here is already exact. The
+    Mojo carrier lifts each coordinate into `Q` before subtracting, because there
+    an `Int` difference would wrap; this docstring records why the two look
+    different at this one line.
+    """
+    if len(a) != len(b):
+        raise ValueError("points have different dimensions")
     return contains(m, level, [a[i] - b[i] for i in range(len(a))])
 
 

@@ -120,6 +120,33 @@ def test_a_singular_lattice_is_refused_rather_than_answered():
         oracle.contains(singular, 1, [1, 0])
 
 
+def test_a_singular_lattice_is_refused_at_level_zero_too():
+    """Review found this hole: `power(m, 0)` is the identity whatever `m` was, so
+    the singular matrix used to go undetected and every delta read as a member."""
+    singular = [[1, 2], [2, 4]]
+    with pytest.raises(ValueError):
+        oracle.contains(singular, 0, [1, 0])
+    with pytest.raises(ValueError):
+        oracle.same_coset(singular, 0, [5, 7], [1, 0])
+
+
+def test_far_apart_coordinates_do_not_wrap():
+    """The Mojo carrier formed `a[i] - b[i]` in `Int` before lifting, which wraps.
+
+    With `M = [3]`, `a = 2^63 - 1` and `b = -2`, the true difference is
+    `2^63 + 1` and divisible by three, so the points share a coset. The wrapped
+    64-bit difference is not divisible by three, which would have made the
+    carrier issue a false separation certificate. Python is unbounded and so was
+    always right here, which is exactly why the earlier differential run missed
+    it: every generated coordinate was small.
+    """
+    m = [[3]]
+    a, b = [2**63 - 1], [-2]
+    assert (a[0] - b[0]) % 3 == 0
+    assert oracle.same_coset(m, 1, a, b)
+    assert not oracle.separated(m, 1, a, b)
+
+
 def test_the_dimension_is_bounded_and_a_larger_one_is_refused():
     big = oracle.identity(oracle.MAX_DIMENSION + 1)
     with pytest.raises(ValueError):

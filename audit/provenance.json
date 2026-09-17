@@ -148,7 +148,7 @@
       "relation": "authored"
     },
     "docs/madic-ball-arithmetic-spec.md": {
-      "blob": "4461f9e4ce58085e3718a60fc0a620e782cce956",
+      "blob": "c46a1615b697688d241db5c47c9f4385af50cf91",
       "relation": "authored"
     },
     "docs/proof-records-specification.md": {
@@ -213,7 +213,7 @@
       "source_path": "finite_linear_algebra/__init__.mojo"
     },
     "finite_linear_algebra/madic_ball.mojo": {
-      "blob": "7a7b9ca26a3d98903ddddd11ee26f9d5d7cf4981",
+      "blob": "d19744a6e6323bd69d482e154f7e3ac7d3366ba1",
       "relation": "authored"
     },
     "finite_linear_algebra/mat3.mojo": {
@@ -524,11 +524,11 @@
       "source_path": "tests/test_finite_linear_algebra.mojo"
     },
     "tests/finite_linear_algebra/test_madic_ball.mojo": {
-      "blob": "829bfd7e78cc97c47d8d7766858a0c1a26d86f86",
+      "blob": "213c9cb5c6359b0b87ba27715ad0ab257f51f0e4",
       "relation": "authored"
     },
     "tests/finite_linear_algebra/test_madic_oracle.py": {
-      "blob": "095ac7492182d33356e4a7ef2f6ee819eef4fc14",
+      "blob": "1718aba5db75905a46909da63c59f4960cfcff6e",
       "relation": "authored"
     },
     "tests/interval/test_interval_q.mojo": {
@@ -602,7 +602,7 @@
       "relation": "authored"
     },
     "tools/madic_oracle.py": {
-      "blob": "b3049688990150610cf6851b33403823f354dbf7",
+      "blob": "25ec820a10f2d9235b486ab568f95a4c4865c1bc",
       "relation": "authored"
     },
     "tools/make_ledger_example.py": {
