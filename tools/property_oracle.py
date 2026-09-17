@@ -18,11 +18,17 @@ layers and its probe prints zero interval cases (``--layers zq``);
 which appends the I layer (``--layers zqi``). Both probes draw from one
 generator stream, so the Z and Q lines are identical in both transcripts.
 
+Every run first checks the generators against their declared refinement
+(``docs/generator-refinement-spec.md``), because a differential comparison is
+only as strong as the corpus it draws from.
+
 Usage:
     property_oracle.py [--layers zq|zqi]              run ``mojo`` and compare
     property_oracle.py [--layers zq|zqi] TRANSCRIPT   compare a saved transcript
+    property_oracle.py [--layers zq|zqi] --distribution   report phi_G only
 
-Exit status 0 on agreement, 1 on any mismatch, 2 when ``mojo`` is unavailable.
+Exit status 0 on agreement, 1 on any mismatch or on a corpus that departs from
+its declaration, 2 when ``mojo`` is unavailable.
 """
 
 from __future__ import annotations
@@ -33,6 +39,10 @@ import subprocess
 import sys
 from fractions import Fraction
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+from refinement import Class, Refinement, audit_all  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 PROBE = ROOT / "tests" / "finite_exact" / "property_probe.mojo"
@@ -93,6 +103,98 @@ def random_fraction(rng: Xorshift64Star) -> Fraction:
 def random_interval(rng: Xorshift64Star) -> tuple[Fraction, Fraction]:
     a, b = random_fraction(rng), random_fraction(rng)
     return (min(a, b), max(a, b))
+
+
+# --- phi_G: what these generators produce, and what they do not ---------------
+#
+# `docs/generator-refinement-spec.md`. The stream is deterministic, so these are
+# exact statements about a fixed corpus rather than probabilistic ones, and
+# `--distribution` refuses the run when any of them stops holding. A class
+# declared missed carries the consequence of missing it: each one below names a
+# branch of the transcript grammar that no case exercises.
+
+INTEGER = Refinement(
+    "random_int",
+    f"an integer of at most {MAX_LIMBS} base-{BASE} limbs, either sign",
+    lambda v: isinstance(v, int),
+    (
+        Class("negative", lambda v: v < 0),
+        Class("small", lambda v: abs(v) <= 1000),
+        Class("beyond 64 bits", lambda v: abs(v) >= 1 << 63),
+        Class("a maximal limb", lambda v: (BASE - 1) in limbs_of(v)),
+        Class("zero", lambda v: v == 0,
+              reason="the small branch draws one of 2001 values and the limb branch sums "
+                     "non-zero-biased limbs, so this stream never lands on it; the `Z` "
+                     "division-by-zero branch of the grammar is therefore unexercised"),
+        Class("a unit", lambda v: abs(v) == 1,
+              reason="same window, and this stream misses it; the sign and gcd edges at "
+                     "plus or minus one are covered only by the known-answer suites"),
+    ),
+)
+
+FRACTION = Refinement(
+    "random_fraction",
+    "a rational with a non-zero denominator",
+    lambda v: isinstance(v, Fraction) and v.denominator != 0,
+    (
+        Class("negative", lambda v: v < 0),
+        Class("proper", lambda v: abs(v) < 1),
+        Class("zero", lambda v: v == 0,
+              reason="its numerator is random_int, which this stream never draws at zero; "
+                     "the `Q` division-by-zero branch is therefore unexercised"),
+        Class("integer-valued", lambda v: v.denominator == 1,
+              reason="both parts are drawn independently from a wide range, so this stream "
+                     "never cancels to one; canonicalisation to denominator one is covered "
+                     "only by the known-answer suites"),
+    ),
+)
+
+INTERVAL = Refinement(
+    "random_interval",
+    "a closed interval with lo <= hi",
+    lambda v: isinstance(v, tuple) and len(v) == 2 and v[0] <= v[1],
+    (
+        Class("straddling zero", lambda v: v[0] < 0 < v[1]),
+        Class("strictly positive", lambda v: v[0] > 0),
+        Class("strictly negative", lambda v: v[1] < 0),
+        Class("degenerate", lambda v: v[0] == v[1],
+              reason="both endpoints are independent rationals over a wide range, so this "
+                     "stream never draws them equal; the point-interval reciprocal and sign "
+                     "paths are therefore unexercised"),
+    ),
+)
+
+REFINEMENTS = (INTEGER, FRACTION, INTERVAL)
+
+
+def limbs_of(value: int) -> list[int]:
+    """The base-BASE limbs of a magnitude, least significant first."""
+    magnitude, limbs = abs(value), []
+    while magnitude:
+        magnitude, limb = divmod(magnitude, BASE)
+        limbs.append(limb)
+    return limbs or [0]
+
+
+def drawn(i_cases: int = I_CASES) -> tuple[list[int], list[Fraction], list[tuple[Fraction, Fraction]]]:
+    """The operands the transcript of `expected_lines` is built from, in order."""
+    rng = Xorshift64Star(SEED)
+    integers = [v for _ in range(Z_CASES) for v in (random_int(rng), random_int(rng))]
+    fractions = [v for _ in range(Q_CASES) for v in (random_fraction(rng), random_fraction(rng))]
+    intervals = [v for _ in range(i_cases) for v in (random_interval(rng), random_interval(rng))]
+    return integers, fractions, intervals
+
+
+def declared(i_cases: int = I_CASES) -> tuple[Refinement, ...]:
+    """The refinements this layer set actually draws from. `finite_exact` ships
+    the Z and Q layers and prints no interval case, so there is no interval
+    corpus to judge and INTERVAL is not asserted against an empty one."""
+    return REFINEMENTS if i_cases else REFINEMENTS[:2]
+
+
+def distribution_problems(i_cases: int = I_CASES) -> tuple[str, ...]:
+    """Every way the realized corpus departs from the declarations above."""
+    return audit_all(zip(declared(i_cases), drawn(i_cases)))
 
 
 # --- canonical encodings -----------------------------------------------------
@@ -195,21 +297,49 @@ def run_probe() -> list[str] | None:
     return [line for line in result.stdout.splitlines() if line.strip()]
 
 
-def parse_args(argv: list[str]) -> tuple[int, str | None]:
-    """Return ``(interval_case_count, transcript_path)``."""
+def parse_args(argv: list[str]) -> tuple[int, str | None, bool]:
+    """Return ``(interval_case_count, transcript_path, distribution_only)``."""
     args = list(argv[1:])
     layers = "zqi"
     if args[:1] == ["--layers"]:
         layers = args[1] if len(args) > 1 else ""
         args = args[2:]
-    if layers not in LAYERS or len(args) > 1:
+    distribution_only = args[:1] == ["--distribution"]
+    if distribution_only:
+        args = args[1:]
+    if layers not in LAYERS or len(args) > 1 or (distribution_only and args):
         raise SystemExit(__doc__)
     i_cases = I_CASES if LAYERS[layers] is None else LAYERS[layers]
-    return i_cases, (args[0] if args else None)
+    return i_cases, (args[0] if args else None), distribution_only
+
+
+def report_distribution(i_cases: int) -> int:
+    """The declarations of `REFINEMENTS` against the corpus this stream draws."""
+    problems = distribution_problems(i_cases)
+    if problems:
+        print("The generators no longer match their declared refinement:\n")
+        print("\n".join(f"  {p}" for p in problems))
+        return 1
+    for refinement in declared(i_cases):
+        print(f"{refinement.name}: reaches {', '.join(refinement.reached())}")
+        for cls in refinement.classes:
+            if not cls.required:
+                print(f"  misses {cls.name}: {cls.reason}")
+    return 0
 
 
 def main(argv: list[str]) -> int:
-    i_cases, transcript = parse_args(argv)
+    i_cases, transcript, distribution_only = parse_args(argv)
+    if distribution_only:
+        return report_distribution(i_cases)
+    # A differential run is only as strong as the corpus it draws, so the
+    # declaration is checked before the comparison it qualifies.
+    problems = distribution_problems(i_cases)
+    if problems:
+        print("The generators no longer match their declared refinement:\n")
+        print("\n".join(f"  {p}" for p in problems))
+        print("\nSee docs/generator-refinement-spec.md; update the declaration or the generator.")
+        return 1
     if transcript is not None:
         actual = [line for line in Path(transcript).read_text(encoding="utf-8").splitlines() if line.strip()]
     else:
@@ -223,6 +353,8 @@ def main(argv: list[str]) -> int:
         print("\n".join(errors))
         return 1
     print(f"OK: property probe agrees with the oracle on {Z_CASES} integer, {Q_CASES} rational, and {i_cases} interval cases.")
+    missed = [f"{r.name}/{c.name}" for r in declared(i_cases) for c in r.classes if not c.required]
+    print(f"OK: the corpus meets its declared refinement; classes it is declared to miss: {', '.join(missed)}.")
     return 0
 
 

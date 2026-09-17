@@ -22,11 +22,69 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "tools"))
 
 import madic_oracle as oracle  # noqa: E402
+from refinement import Class, Refinement  # noqa: E402
 
 CANONICAL = [[0, 1, 2], [1, 1, 1], [0, 1, 0]]   # det 2, the standing regression
 UNIMODULAR = [[1, 1, 0], [0, 1, 1], [1, 0, 0]]  # det 1, the unit branch
 TWO_BY_TWO = [[2, 0], [0, 2]]                   # Z/2 x Z/2, smallest non-cyclic
 COPRIME_DIAGONAL = [[2, 0], [0, 3]]             # Z/6, cyclic despite two factors
+SINGULAR = [[1, 2], [2, 4]]                     # det 0, no filtration of finite index
+WRAP = 1 << 63                                  # where Int subtraction used to wrap
+
+
+# --- phi_G: the corpus this file draws, declared -----------------------------------
+#
+# `docs/generator-refinement-spec.md`. Both defects this oracle has caught were
+# hidden by the corpus rather than by the model: the 64-bit wrap in the Mojo
+# carrier survived 1200 differential checks because every coordinate generated
+# lay in [-9, 9], and a singular lattice survived level zero because no matrix
+# in the corpus was singular. Neither gap was visible, because neither corpus
+# said what it contained. These declarations say it, and `test_the_corpus_meets
+# _its_declared_refinement` refuses a corpus that stops meeting them.
+
+COORDINATE = Refinement(
+    "madic coordinate",
+    "an integer coordinate of a lattice point",
+    lambda v: isinstance(v, int),
+    (
+        Class("small", lambda v: abs(v) <= 8),
+        Class("negative", lambda v: v < 0),
+        Class("zero", lambda v: v == 0),
+        Class("beyond 64 bits", lambda v: abs(v) >= WRAP),
+    ),
+)
+
+LATTICE = Refinement(
+    "madic lattice",
+    f"a square integer matrix of dimension at most {oracle.MAX_DIMENSION}",
+    lambda m: bool(m) and all(len(row) == len(m) for row in m) and len(m) <= oracle.MAX_DIMENSION,
+    (
+        Class("unimodular", lambda m: abs(oracle.determinant(m)) == 1),
+        Class("proper non-unit", lambda m: abs(oracle.determinant(m)) > 1),
+        Class("singular", lambda m: oracle.determinant(m) == 0),
+        Class("dimension one", lambda m: len(m) == 1),
+    ),
+)
+
+
+def coordinates(draws: int = 300, seed: int = 17) -> list[int]:
+    """Lattice coordinates, drawn so the corpus reaches the wrap boundary rather
+    than stopping short of it. One draw in six is placed within a small window of
+    plus or minus 2^63, because that is where the defect this corpus missed
+    lived, and nothing smaller would have found it."""
+    rng = random.Random(seed)
+    drawn = []
+    for index in range(draws):
+        if index % 6 == 0:
+            drawn.append(rng.choice((1, -1)) * (WRAP + rng.randint(-4, 4)))
+        else:
+            drawn.append(rng.randint(-8, 8))
+    return drawn
+
+
+def lattices() -> list[list[list[int]]]:
+    """Every matrix this file reasons about, singular ones included."""
+    return [CANONICAL, UNIMODULAR, TWO_BY_TWO, COPRIME_DIAGONAL, SINGULAR, [[3]]]
 
 
 # --- the values the Mojo regressions pin as well ---------------------------------
@@ -98,14 +156,33 @@ def test_the_lattice_columns_are_members_at_their_own_level():
             assert oracle.contains(CANONICAL, level, [lattice[i][column] for i in range(3)])
 
 
+def test_the_corpus_meets_its_declared_refinement():
+    """The declaration above, checked. It is two-sided: a class declared reached
+    and never drawn fails, and so would a class declared missed and then drawn."""
+    assert COORDINATE.audit(coordinates()) == ()
+    assert LATTICE.audit(lattices()) == ()
+
+
+def test_a_corpus_that_stops_short_of_the_wrap_is_refused():
+    """The negative control, and it is the corpus that hid the defect: the run
+    that missed the 64-bit wrap drew every coordinate from a small window, and
+    the declaration now names exactly that."""
+    narrow = [v for v in coordinates() if abs(v) <= 8]
+    problems = COORDINATE.audit(narrow)
+    assert problems and "beyond 64 bits" in problems[0]
+    assert LATTICE.audit([m for m in lattices() if oracle.determinant(m) != 0]) != ()
+
+
 def test_refinement_only_ever_separates_more():
     """Membership is monotone in the level: `M^(k+1) Z^n` is inside `M^k Z^n`, so
-    a pair separated at level `k` stays separated at every deeper level."""
-    random.seed(17)
+    a pair separated at level `k` stays separated at every deeper level.
+
+    Drawn from `coordinates()`, so the pairs reach across the wrap boundary as
+    well as around the origin."""
+    drawn = coordinates(draws=1800)
     separated_deeper = 0
-    for _ in range(300):
-        a = [random.randint(-8, 8) for _ in range(3)]
-        b = [random.randint(-8, 8) for _ in range(3)]
+    for start in range(0, len(drawn) - 5, 6):
+        a, b = drawn[start:start + 3], drawn[start + 3:start + 6]
         for level in range(1, 5):
             if oracle.separated(CANONICAL, level, a, b):
                 assert oracle.separated(CANONICAL, level + 1, a, b)

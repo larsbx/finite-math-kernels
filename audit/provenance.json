@@ -9,7 +9,7 @@
       "relation": "authored"
     },
     "README.md": {
-      "blob": "8dca11953b65e4657d1e22f714dd0ef4e837786e",
+      "blob": "1b11cd7da19100db36800754b24a0868974d3b56",
       "relation": "authored"
     },
     "audit/CONSOLIDATION_PROVENANCE.md": {
@@ -146,6 +146,10 @@
       "source": "finite_exact",
       "source_blob": "a850a73bca82ffc0de10d02380f6040e04fa9880",
       "source_path": "docs/exact-arithmetic-public-boundary.md"
+    },
+    "docs/generator-refinement-spec.md": {
+      "blob": "f37ccfa0a012ac350833674728028ce0fff53b76",
+      "relation": "authored"
     },
     "docs/ledger-generation-spec.md": {
       "blob": "fae0dbc4106170e86e84fb21e679ead8ce70d895",
@@ -325,7 +329,7 @@
       "relation": "generated"
     },
     "pixi.toml": {
-      "blob": "eb0bc4fa460bc5104a7eaec375c4077ff36706cf",
+      "blob": "c469f26a9907c19ef791641a3170931641b8afc2",
       "relation": "authored"
     },
     "proof_records/ProofArchitecture.tla": {
@@ -527,7 +531,7 @@
       "source_path": "tests/test_finite_exact.mojo"
     },
     "tests/finite_exact/test_property_oracle.py": {
-      "blob": "32b88d153299403c62b8f0efe54e4552671f2a43",
+      "blob": "cb5d76b01e0ad4455f380868de36c2b4e066d65f",
       "relation": "modified",
       "source": "finite_exact",
       "source_blob": "d0f1039983870f2fb6e62fd7bdfe518594cc80a2",
@@ -552,7 +556,7 @@
       "relation": "authored"
     },
     "tests/finite_linear_algebra/test_madic_oracle.py": {
-      "blob": "1718aba5db75905a46909da63c59f4960cfcff6e",
+      "blob": "a4b96dbc47382886af3360cf3b9812858d6aa906",
       "relation": "authored"
     },
     "tests/interval/test_interval_q.mojo": {
@@ -610,6 +614,10 @@
       "blob": "0d267a68d3c523395b514e41f123fa7afd845a93",
       "relation": "authored"
     },
+    "tests/refinement/test_refinement.py": {
+      "blob": "2b4e05efd1664c7d964f3927513031d53e43473c",
+      "relation": "authored"
+    },
     "tests/substitution_dynamics/test_substitution_dynamics.mojo": {
       "blob": "e7761a4b496ac948ab94f5070af80ad4f5f30a70",
       "relation": "copy",
@@ -626,7 +634,7 @@
       "relation": "authored"
     },
     "tools/check_references.py": {
-      "blob": "cb0f93d9edfa21d1640d130a5aa9b1ca60529509",
+      "blob": "36a9e37f7917a63b84057436fa54075ec92b534f",
       "relation": "authored"
     },
     "tools/madic_oracle.py": {
@@ -645,7 +653,7 @@
       "source_path": "tools/make_vectors.py"
     },
     "tools/property_oracle.py": {
-      "blob": "bba1f446b0ccdc8c3520af7296a5fa458a5f9cef",
+      "blob": "d6eac693714186d1176d78bdf34f0e74feb004d2",
       "relation": "modified",
       "source": "finite_exact",
       "source_blob": "fd1aaef547d8ed6c659c98785cf41865ec859fcf",
@@ -653,6 +661,10 @@
     },
     "tools/provenance.py": {
       "blob": "f16ba536b9a0631195b18ef6f06a893c1b801944",
+      "relation": "authored"
+    },
+    "tools/refinement.py": {
+      "blob": "70abd87fab44286f548e95449fca8773e0aba7b0",
       "relation": "authored"
     },
     "tools/replay_mojo.py": {
