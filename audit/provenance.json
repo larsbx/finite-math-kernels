@@ -156,7 +156,7 @@
       "relation": "authored"
     },
     "docs/proof-records-specification.md": {
-      "blob": "cb610e0492493634527f429ac0702fea761c193d",
+      "blob": "077428a1ce9f7d94171fa6900fe7ce3b1cdca2a9",
       "relation": "modified",
       "source": "finite_proof_records",
       "source_blob": "145c282052309b9fdbcc7baeef4bbeadc4963875",
@@ -358,7 +358,7 @@
       "source_path": "finite_proof_records/records.mojo"
     },
     "proof_records/records.py": {
-      "blob": "da1c7b00aba5f1bbd3d1d73c4d13413ebf4b3518",
+      "blob": "802ab06fcdf0e09ec652283acce7fe72701f58e4",
       "relation": "modified",
       "source": "finite_proof_records",
       "source_blob": "04c2650793e8c7a0d87eb360b845be5750b149a7",
@@ -581,7 +581,7 @@
       "source_path": "tests/test_mojo_replay.py"
     },
     "tests/proof_records/test_records.py": {
-      "blob": "352e58008952c49b80f3785d8eaebf13beb1711d",
+      "blob": "bda486691ec0f2d01cd4b0e76476e74ff6f35d69",
       "relation": "modified",
       "source": "finite_proof_records",
       "source_blob": "cb619cb75510b50cb9a7adcd2179af86217502c6",

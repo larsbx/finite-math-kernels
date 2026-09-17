@@ -133,7 +133,8 @@ def validate(record: Record) -> Record:
 
     Fail closed, in the order of docs/proof-records-specification.md
     section 3: unknown kind; rejected without reason; empty statement or
-    scope; duplicate evidence key; missing required evidence; malformed
+    scope; duplicate evidence key; required evidence absent or empty (a
+    present key carrying no value cites nothing); malformed
     dependency edges; imported theorem with unchecked hypotheses; repository
     theorem without a reviewed proof; an identifier that is not the digest
     of the record's preimage.
@@ -141,13 +142,14 @@ def validate(record: Record) -> Record:
     if not isinstance(record.kind, Kind):
         return rejected(record, "unknown record kind")
     if record.kind is Kind.REJECTED:
-        return record if record.field("reason") else rejected(record, "rejected without reason")
+        return record if (record.field("reason") or "").strip() else rejected(record, "rejected without reason")
     if not record.statement or not record.scope:
         return rejected(record, "empty statement or scope")
     keys = [k for k, _ in record.evidence]
     if len(set(keys)) != len(keys):
         return rejected(record, "duplicate evidence key")
-    missing = sorted(REQUIRED_EVIDENCE[record.kind] - set(keys))
+    supplied = {k for k, v in record.evidence if v.strip()}
+    missing = sorted(REQUIRED_EVIDENCE[record.kind] - supplied)
     if missing:
         return rejected(record, "missing evidence: " + ", ".join(missing))
     edge_reason = _edge_rejection(record)

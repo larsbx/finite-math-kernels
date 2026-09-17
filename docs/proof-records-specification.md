@@ -65,7 +65,7 @@ Required evidence keys:
 | `rejected without reason` | a `rejected` record with no `reason` |
 | `empty statement or scope` | |
 | `duplicate evidence key` | |
-| `missing evidence: <keys>` | required keys absent, sorted |
+| `missing evidence: <keys>` | required keys absent, or present with an empty value, sorted |
 | `duplicate or self dependency` | two edges name one record, or an edge names the record itself |
 | `unknown scope relation: <relation>` | neither `same` nor `scope=<literal>` |
 | `unknown required outcome: <outcome>` | neither `accepted` nor `bounded` |
