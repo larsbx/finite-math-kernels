@@ -51,7 +51,10 @@ def test_imported_packages_are_copies_or_declared_modifications():
     assert {p for p, e in files.items() if e["relation"] == "facade"} == FACADES
     copies = {p for p, e in files.items() if e["relation"] == "copy"}
     assert {"finite_exact/bigint_z.mojo", "finite_exact/rat_q.mojo", "finite_exact/closed_q.mojo", "finite_linear_algebra/qlinalg.mojo",
-            "substitution_dynamics/words.mojo", "audit/claim_governance/runner.py"} <= copies
+            "substitution_dynamics/words.mojo", "audit/claim_governance/findings.py"} <= copies
+    # The coverage check is new here, so the two files that register and configure it have diverged from the retired source repository.
+    assert {files[p]["relation"] for p in ("audit/claim_governance/runner.py", "audit/claim_governance/policy.py")} == {"modified"}
+    assert files["audit/claim_governance/checks/coverage.py"]["relation"] == "authored"
     assert files["fixtures/vectors.json"]["relation"] == "generated"
     assert "audit/provenance.json" not in files
     assert any("must not describe itself" in e for e in provenance.check({**manifest(), "files": {**files, "audit/provenance.json": {"relation": "generated", "blob": "0" * 40, "generator": "x"}}}, provenance.current_blobs()))

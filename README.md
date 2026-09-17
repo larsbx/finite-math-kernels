@@ -25,6 +25,7 @@ substitution_dynamics/
   coincidence.mojo
 proof_records/
   ProofArchitecture.tla
+  graph.py
 audit/
   claim_governance/
 ```
@@ -62,8 +63,15 @@ not part of this repository.
   `proof_records/ProofArchitecture.tla`, the `[[claim]]` entries, and the
   Markdown index all say what the records say, and the generator refuses a
   ledger it cannot render faithfully. It promotes nothing.
+- The typed relationship graph (`docs/typed-relationship-graph-spec.md`) is
+  the same records read as a graph: it types the relationships the ledger
+  already records and infers none, and every edge is declared rather than
+  scored, so importing it into an LLM-asserted graph cannot launder a guess
+  into a verified relationship.
 - Claim-governance checks enforce only a consumer-supplied policy; the
-  monorepo does not encode NLAP or PSC theorem status as library truth.
+  monorepo does not encode NLAP or PSC theorem status as library truth. The
+  `coverage` check reports which claims no test guards; it never decides that
+  a test establishes one.
 
 ## Verification
 

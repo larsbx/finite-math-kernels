@@ -50,6 +50,7 @@ def example() -> dict:
         "module": "Example",
         "tla_dir": "tla",
         "index_path": "ledger-index.md",
+        "graph_path": "relationship-graph.json",
         "assumption_sets": {"GaloisAssumed": ["Galois"]},
         "status_classes": {Kind.PENDING.value: "open-frontier"},
         "status_labels": {"proved": "theorem", "open-frontier": "open"},

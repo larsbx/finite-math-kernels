@@ -33,6 +33,7 @@ def ledger(**changes) -> gl.Ledger:
         assumption_sets={k: tuple(v) for k, v in data["assumption_sets"].items()},
         status_classes={**gl.DEFAULT_STATUS_CLASSES, **data["status_classes"]},
         status_labels=data["status_labels"], tla_dir=data["tla_dir"], index_path=data["index_path"], source="example.json",
+        graph_path=data.get("graph_path", ""),
         aliases={k: tuple(v) for k, v in data["aliases"].items()}, surfaces={k: tuple(v) for k, v in data["surfaces"].items()},
     )
 
@@ -120,7 +121,8 @@ def test_output_paths_stay_inside_the_root_and_never_collide():
     assert "index_path 'tla/Example.tla' collides with a generated TLA+ file" in refusal(ledger(index_path="tla/Example.tla"))
     assert "index_path 'tla//MCExampleOpen.cfg' collides" in refusal(ledger(index_path="tla//MCExampleOpen.cfg"))
     assert gl.output_paths(ledger()) == ("tla/Example.tla", "tla/MCExampleOpen.tla", "tla/MCExampleOpen.cfg", "tla/MCExampleImports.tla",
-                                         "tla/MCExampleImports.cfg", "tla/MCExampleGaloisAssumed.tla", "tla/MCExampleGaloisAssumed.cfg", "ledger-index.md")
+                                         "tla/MCExampleImports.cfg", "tla/MCExampleGaloisAssumed.tla", "tla/MCExampleGaloisAssumed.cfg", "ledger-index.md",
+                                         "relationship-graph.json")
 
 
 def tagged(record, *tags):

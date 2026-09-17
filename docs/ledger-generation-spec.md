@@ -16,6 +16,8 @@ repository       free text, printed in headers
 module           TLA+ module name; default "Ledger"
 tla_dir          directory of the generated TLA+ files, relative to the consumer root; default "tla"
 index_path       path of the generated Markdown index; default "docs/ledger-index.md"
+graph_path       path of the generated typed relationship graph (docs/typed-relationship-graph-spec.md),
+                 relative to the consumer root; omitted or empty means no graph is generated
 records          object: name -> proof record (docs/proof-records-specification.md, section 2, in the
                  JSON shape of fixtures/vectors.json: depends_on as 5-tuples, evidence as pairs)
 assumption_sets  object: name -> list of record names; each becomes a TLA+ definition a consumer model may
@@ -36,7 +38,7 @@ Two tags are interpreted. `withdrawn` marks a withdrawn claim; it is allowed onl
 
 ### 2.1 Fail closed
 
-The ledger is refused, with every reason listed, when: the module or a record name is not an identifier; two names share an identifier; an assumption set has an invalid or reserved name (`ResultSet`, `RequiresDef`, `ProvedDef`, `ImportedDef`, `BoundedDef`, `WithdrawnDef`, `NoAssumptions`, `ImportsAssumed`), collides with a record name, or names an unknown record; a record validates as `rejected` (the reason is reported); a record depends on an unknown identifier; a record tagged `withdrawn` is not pending; a record carries more than one `status:` tag; `tla_dir` or `index_path` is absolute, empty, or contains `..` (every surface is written under the output root); `index_path` names one of the generated TLA+ files; a result that is assumed by any model (`ImportsAssumed`, or a declared assumption set) is withdrawn or requires a withdrawn result. The last rule keeps the Python fixpoint and the state machine in agreement: `ProofArchitecture` establishes `Assumed` in its initial state, where `NoWithdrawnDependency` would already fail for such a result. A refused ledger renders nothing (exit 2).
+The ledger is refused, with every reason listed, when: the module or a record name is not an identifier; two names share an identifier; an assumption set has an invalid or reserved name (`ResultSet`, `RequiresDef`, `ProvedDef`, `ImportedDef`, `BoundedDef`, `WithdrawnDef`, `NoAssumptions`, `ImportsAssumed`), collides with a record name, or names an unknown record; a record validates as `rejected` (the reason is reported); a record depends on an unknown identifier; a record tagged `withdrawn` is not pending; a record carries more than one `status:` tag; `tla_dir`, `index_path`, or a declared `graph_path` is absolute, empty, or contains `..` (every surface is written under the output root); `index_path` or `graph_path` names one of the generated TLA+ files, or the two name one file; a result that is assumed by any model (`ImportsAssumed`, or a declared assumption set) is withdrawn or requires a withdrawn result. The last rule keeps the Python fixpoint and the state machine in agreement: `ProofArchitecture` establishes `Assumed` in its initial state, where `NoWithdrawnDependency` would already fail for such a result. A refused ledger renders nothing (exit 2).
 
 ### 2.2 Partition of the results
 
@@ -78,13 +80,17 @@ One `[[claim]]` per result, `name` the result name, `status` its class, `aliases
 
 A Markdown table with one row per result: name, status label, kind, scope, statement, dependencies (as code spans, so a dependency cell never reads as a row anchor), and the proof-records closure of the record: `complete`, or the missing links by name and reason.
 
+### 3.5 The typed relationship graph `<graph_path>`, when declared
+
+The same ledger read as a typed graph: `implicative` edges for dependencies, `synonymous` for aliases, `part-whole` for assumption-set membership, and `contradictory` where a live result requires a withdrawn one, each node and edge carrying the provenance its record determines and the leaks it does not carry. `docs/typed-relationship-graph-spec.md` is its specification; a graph that breaks its contract is refused (exit 2) and nothing is written. Without `graph_path` the surface does not exist and the generator's output is unchanged.
+
 ## 4. Command line and currency
 
 `generate_ledgers.py LEDGER [--out ROOT] [--claims POLICY] [--check]` writes the surfaces under `ROOT` (exit 0), or with `--check` compares them with the files on disk and exits 1 naming every stale file. A consumer runs the check in CI so that generated surfaces are current and never hand-edited. Rendering is a pure function of the ledger: running the generator twice changes nothing. `pixi run ledgers` regenerates the committed example.
 
 ## 5. Conformance tests
 
-`tests/proof_records/test_generate_ledgers.py` checks, over the example ledger and variants of it: the committed example is current; the partition and statuses of section 2; the fixpoint of section 2.4 including the exclusion of assumed withdrawn results; the rendering of each surface; every refusal of section 2.1 by name; the splice and the policy refusal of section 3.3; the claim-governance audit of the example directory passes; the command line's exit codes. When the environment variable `TLA_TOOLS` names a `tla2tools.jar`, the tests also run TLC on both generated models of the example and on a deliberately wrong configuration, which must report the violated invariant. CI does not carry the jar, so that part is skipped there and run locally.
+`tests/proof_records/test_generate_ledgers.py` checks, over the example ledger and variants of it: the committed example is current; the partition and statuses of section 2; the fixpoint of section 2.4 including the exclusion of assumed withdrawn results; the rendering of each surface; every refusal of section 2.1 by name; the splice and the policy refusal of section 3.3; the claim-governance audit of the example directory passes; the command line's exit codes. `tests/proof_records/test_graph.py` covers the graph surface against its own specification. When the environment variable `TLA_TOOLS` names a `tla2tools.jar`, the tests also run TLC on both generated models of the example and on a deliberately wrong configuration, which must report the violated invariant. CI does not carry the jar, so that part is skipped there and run locally.
 
 ## 6. Consumer binding
 
