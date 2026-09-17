@@ -54,6 +54,7 @@ EXTERNAL: Mapping[str, str] = {
     "src/checked_ray_address.mojo": NLAP,
     "docs/C1_residual_directive_carrier.md": NLAP,
     "docs/cross-pollination-round-two-2026-09-16.md": f"{NLAP} and {PSC}",
+    "docs/cross-pollination-round-three-2026-09-17.md": PSC,
     "docs/release-provenance.md": "larsbx/sprucegoose at the commit named in docs/evidence-vocabulary-map.md",
     "tdd_ledger.zig": "larsbx/crypto-composer at the commit named in docs/evidence-vocabulary-map.md",
     "test/harness.zig": "larsbx/crypto-composer at the commit named in docs/evidence-vocabulary-map.md",

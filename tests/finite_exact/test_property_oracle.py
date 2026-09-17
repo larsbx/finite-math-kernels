@@ -67,11 +67,18 @@ def test_oracle_rejects_a_corrupted_transcript():
 
 
 def test_layer_flag_selects_the_interval_case_count():
-    assert oracle.parse_args(["oracle", "--layers", "zq"]) == (0, None)
-    assert oracle.parse_args(["oracle", "--layers", "zqi", "t.txt"]) == (oracle.I_CASES, "t.txt")
-    assert oracle.parse_args(["oracle"]) == (oracle.I_CASES, None)
+    assert oracle.parse_args(["oracle", "--layers", "zq"]) == (0, None, False)
+    assert oracle.parse_args(["oracle", "--layers", "zqi", "t.txt"]) == (oracle.I_CASES, "t.txt", False)
+    assert oracle.parse_args(["oracle"]) == (oracle.I_CASES, None, False)
     with pytest.raises(SystemExit):
         oracle.parse_args(["oracle", "--layers", "q"])
+
+
+def test_the_distribution_flag_reports_phi_G_alone():
+    assert oracle.parse_args(["oracle", "--layers", "zq", "--distribution"]) == (0, None, True)
+    assert oracle.parse_args(["oracle", "--distribution"]) == (oracle.I_CASES, None, True)
+    with pytest.raises(SystemExit):
+        oracle.parse_args(["oracle", "--distribution", "t.txt"])
 
 
 @pytest.mark.skipif(shutil.which("mojo") is None, reason="mojo binary not on PATH")
