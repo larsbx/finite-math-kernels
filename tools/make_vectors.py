@@ -13,6 +13,7 @@ constants the import-time self-test checks. Usage: make_vectors.py [--check]
 from __future__ import annotations
 
 import json
+import os
 import sys
 from dataclasses import replace
 from pathlib import Path
@@ -20,8 +21,20 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from proof_records.records import (BOUNDED, Edge, Kind, Record, close, digest, edge, identified, identity, no_policy,  # noqa: E402
-                                   preimage_bytes, tag_policy, validate)
+# This tool writes proof_records/known_answers.py, so it is the one importer that
+# cannot be held to the answers already committed there: an intended codec change
+# would otherwise fail the import-time gate before the tool that repairs it could
+# run. The door is opened for this import only and closed again immediately.
+# The name is spelt out rather than imported, because importing it would run the
+# gate it disables; tests/proof_records/test_self_test.py holds the two together.
+REGENERATING = "PROOF_RECORDS_REGENERATING"
+
+os.environ[REGENERATING] = "1"
+try:
+    from proof_records.records import (BOUNDED, Edge, Kind, Record, close, digest, edge, identified, identity, no_policy,  # noqa: E402
+                                       preimage_bytes, tag_policy, validate)
+finally:
+    os.environ.pop(REGENERATING, None)
 
 FIXTURE = ROOT / "fixtures" / "vectors.json"
 KNOWN = ROOT / "proof_records" / "known_answers.py"

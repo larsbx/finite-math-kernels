@@ -160,7 +160,7 @@
       "relation": "authored"
     },
     "docs/proof-records-specification.md": {
-      "blob": "fb77f622f51f7704dbf092c450b755c1052f0073",
+      "blob": "75f150cc85054b9c0a71af458ca8aa22ebab5493",
       "relation": "modified",
       "source": "finite_proof_records",
       "source_blob": "145c282052309b9fdbcc7baeef4bbeadc4963875",
@@ -348,7 +348,7 @@
       "source_path": "finite_proof_records/__init__.mojo"
     },
     "proof_records/__init__.py": {
-      "blob": "65d8a5a58023bc27b987df9a5b68790acc753fe9",
+      "blob": "dd5b20668a0aed80b0e921c3dcf5d8950c7f0ca7",
       "relation": "modified",
       "source": "finite_proof_records",
       "source_blob": "d33f5a642cb92373432a521c805aeb6c7b248484",
@@ -381,7 +381,7 @@
       "source_path": "finite_proof_records/records.py"
     },
     "proof_records/self_test.py": {
-      "blob": "3b2e8353cbf049f92d36aa283819c820ece30f37",
+      "blob": "8c2612c24cf950d81dcef43c759f11be0fec1f5d",
       "relation": "authored"
     },
     "proof_records/sha256.mojo": {
@@ -612,7 +612,7 @@
       "source_path": "tests/test_records.py"
     },
     "tests/proof_records/test_self_test.py": {
-      "blob": "f5a9c8a1fe9fb186fa98bdf236e6f8efaaea8b05",
+      "blob": "81e4f878ee5a3258e8ab3fc650bffcd652b258ed",
       "relation": "authored"
     },
     "tests/proof_records/test_vectors.py": {
@@ -662,7 +662,7 @@
       "relation": "authored"
     },
     "tools/make_vectors.py": {
-      "blob": "f21c0d37ff57248d09fa7bb1aa9928a43c5283d3",
+      "blob": "5fb11d8a6ad482ce7ab2b37fdb1aa832bca75efa",
       "relation": "modified",
       "source": "finite_proof_records",
       "source_blob": "dc86359eff444feb288cb63e35dad6b5849f9869",

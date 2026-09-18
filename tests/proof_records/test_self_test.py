@@ -9,6 +9,8 @@ env.
 from __future__ import annotations
 
 import hashlib
+import os
+import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -48,6 +50,15 @@ def test_each_known_answer_is_load_bearing(name):
     assert len(found) == 1, found
     with pytest.raises(SelfTestError, match="refuses to load"):
         self_test.verify()
+
+
+def test_the_digest_check_calls_the_exported_function(monkeypatch):
+    """`digest` is checked by calling it, not by recomputing SHA-256 over
+    `canonical_bytes`. A `digest` that alone had moved would otherwise pass the
+    gate and hand a consumer the wrong value."""
+    monkeypatch.setattr(self_test, "digest", lambda record: "sha256:" + "0" * 64)
+    found = self_test.problems()
+    assert found == ("digest no longer produces the committed digest",)
 
 
 def test_a_broken_hash_is_named_as_a_broken_hash(monkeypatch):
@@ -118,3 +129,50 @@ def test_the_generator_check_covers_both_outputs():
     assert done.returncode == 0, done.stdout
     assert "fixtures/vectors.json is up to date" in done.stdout
     assert "proof_records/known_answers.py is up to date" in done.stdout
+
+
+# --- the generator can still run when the answers it replaces are stale ------------
+
+
+def _transplant(tmp_path):
+    """A standalone copy of the package and its generator, so a corrupted
+    `known_answers.py` can be repaired without touching the checkout."""
+    shutil.copytree(ROOT / "proof_records", tmp_path / "proof_records", ignore=shutil.ignore_patterns("__pycache__"))
+    (tmp_path / "tools").mkdir()
+    shutil.copy(ROOT / "tools" / "make_vectors.py", tmp_path / "tools" / "make_vectors.py")
+    known_py = tmp_path / "proof_records" / "known_answers.py"
+    known_py.write_text(known_py.read_text(encoding="utf-8").replace(known.IDENTITY, "sha256:" + "0" * 64), encoding="utf-8")
+    return known_py
+
+
+def test_the_door_is_named_the_same_on_both_sides():
+    """The generator spells the variable out rather than importing it, since
+    importing it would run the gate it opens. Drift between the two would
+    silently restore the deadlock."""
+    assert mv.REGENERATING == self_test.REGENERATING == "PROOF_RECORDS_REGENERATING"
+
+
+def test_stale_answers_stop_a_consumer(tmp_path):
+    """The premise of the test below: with the answers corrupted, an ordinary
+    import of the copy fails."""
+    _transplant(tmp_path)
+    done = subprocess.run([sys.executable, "-c", "import proof_records"], capture_output=True, text=True, cwd=tmp_path)
+    assert done.returncode != 0 and "refuses to load" in done.stderr
+
+
+def test_stale_answers_do_not_stop_the_generator(tmp_path):
+    """An intended codec change makes the committed answers wrong, and the tool
+    that rewrites them must still run. Without the door the import gate would
+    fail first and the repair would be unreachable."""
+    known_py = _transplant(tmp_path)
+    done = subprocess.run([sys.executable, str(tmp_path / "tools" / "make_vectors.py")], capture_output=True, text=True, cwd=tmp_path)
+    assert done.returncode == 0, done.stderr
+    assert known_py.read_text(encoding="utf-8") == (ROOT / "proof_records" / "known_answers.py").read_text(encoding="utf-8")
+
+
+def test_skipping_the_gate_is_announced(tmp_path):
+    """A check that can be turned off silently is not a check."""
+    done = subprocess.run([sys.executable, "-c", "import proof_records"], capture_output=True, text=True,
+                          cwd=tmp_path, env={**os.environ, self_test.REGENERATING: "1", "PYTHONPATH": str(ROOT)})
+    assert done.returncode == 0, done.stderr
+    assert "the known-answer gate did not run" in done.stderr
