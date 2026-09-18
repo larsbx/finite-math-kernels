@@ -19,10 +19,11 @@ from pathlib import Path
 import pytest
 
 ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "tools"))
 
 import madic_oracle as oracle  # noqa: E402
-from refinement import Class, Refinement  # noqa: E402
+from oracle_refinement import Class, Refinement  # noqa: E402
 
 CANONICAL = [[0, 1, 2], [1, 1, 1], [0, 1, 0]]   # det 2, the standing regression
 UNIMODULAR = [[1, 1, 0], [0, 1, 1], [1, 0, 0]]  # det 1, the unit branch

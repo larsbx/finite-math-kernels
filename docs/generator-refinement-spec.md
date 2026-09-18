@@ -1,6 +1,6 @@
 # The input distribution of a generator: specification
 
-**Status:** specification of `tools/refinement.py`, round-three item R9 of `docs/cross-pollination-round-three-2026-09-17.md` (transfer C1, the codomain refinement `φ_G` that `larsbx/meta_test` requires of every generator). It states no mathematics. It says what a differential or property oracle draws from, so that the strength of a comparison is a declared object rather than an accident of how the test was written.
+**Status:** specification of the `oracle_refinement` package, round-three item R9 of `docs/cross-pollination-round-three-2026-09-17.md` (transfer C1, the codomain refinement `φ_G` that `larsbx/meta_test` requires of every generator). It states no mathematics. It says what a differential or property oracle draws from, so that the strength of a comparison is a declared object rather than an accident of how the test was written.
 
 ## 0. Why a corpus needs a declaration
 
@@ -45,7 +45,7 @@ A class is a region **of the codomain**, so class predicates are evaluated only 
 
 ## 3. Declaring a gap is not dismissing it
 
-Each missed class states the branch it leaves unexercised, and `tests/refinement/test_refinement.py` requires the reason to be substantive. The declarations this repository ships, for the exact-arithmetic property probe, record three:
+Each missed class states the branch it leaves unexercised, and `tests/oracle_refinement/test_refinement.py` requires the reason to be substantive. The declarations this repository ships, for the exact-arithmetic property probe, record three:
 
 | Generator | Missed | What goes untested |
 | --- | --- | --- |
@@ -57,7 +57,13 @@ Each missed class states the branch it leaves unexercised, and `tests/refinement
 
 These are not defects. They are the parts of the grammar the property probe does not reach, written down, so that the next reader sees a stated boundary rather than a green result. Closing them means changing the generator in `tools/property_oracle.py` **and** `tests/finite_exact/property_probe.mojo` call for call, which changes every line of the transcript and the copy `larsbx/interval_q` vendors; that is a separate change, not a side effect of declaring the gap.
 
-## 4. Where the declarations live
+## 4. A vendorable package, and why it is not called `refinement`
+
+`oracle_refinement` is a top-level package beside `proof_records` and `finite_exact`, so a consumer vendors it byte for byte the way it vendors those. It began in `tools/`, where no consumer could reach it: a facility that only the repository that wrote it can run is a rule remembered rather than mechanized, which is the distinction section 0 is about.
+
+The name says `oracle_` because **refinement already means something else in the repositories that will vendor this**. `finite-mandlebrot-research` has a carrier-refinement order, refinement monotonicity of the separated-pair density, and a regression literally called `test_refinement_only_ever_separates_more`; `proof_records` has none of that but the consumers do. A vendored module called `refinement` sitting in `tools/` next to that vocabulary would read as the mathematical notion at every call site. `φ_G` refines the codomain of a generator, and the generator is an oracle's, so the package says so.
+
+## 5. Where the declarations live
 
 Beside the generator, not beside the model: the corpus is what is being described.
 
@@ -68,11 +74,11 @@ Beside the generator, not beside the model: the corpus is what is being describe
 
 The layer split is part of the declaration: `finite_exact` prints no interval case, so `INTERVAL` has no corpus to judge and is not asserted against an empty one; `larsbx/interval_q` runs the layer and it is.
 
-## 5. Fail closed
+## 6. Fail closed
 
 `property_oracle.py` checks the declaration **before** the comparison it qualifies, and exits 1 when the corpus has departed from it, because a differential result carries no more weight than the corpus behind it. `--distribution` reports `φ_G` alone, which needs no `mojo` on the path.
 
-## 6. Non-claims
+## 7. Non-claims
 
 - A declaration is a statement about a corpus, not about the implementation under test. A corpus that meets every declared class is not thereby adequate; it is adequate in the ways somebody thought to declare.
 - `meta_test` is a normative specification whose implementation is not authorized and whose S0 is blocked. Nothing here runs any part of it, and `φ_G` is used as a requirement borrowed from a document, not as a tool imported from a working system.

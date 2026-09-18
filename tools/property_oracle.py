@@ -41,11 +41,11 @@ from dataclasses import dataclass, field
 from fractions import Fraction
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-
-from refinement import Class, Refinement, audit_all  # noqa: E402
-
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+
+from oracle_refinement import Class, Refinement, audit_all  # noqa: E402
+
 PROBE = ROOT / "tests" / "finite_exact" / "property_probe.mojo"
 LAYERS = {"zq": 0, "zqi": None}  # interval case count override per layer set
 

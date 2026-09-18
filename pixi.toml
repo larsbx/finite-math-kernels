@@ -27,7 +27,7 @@ test-python = "python -m pytest -q tests/finite_exact tests/proof_records tests/
 test-audit = "PYTHONPATH=audit python -m pytest -q tests/audit"
 test-provenance = "python -m pytest -q tests/provenance"
 test-references = "python -m pytest -q tests/references"
-test-refinement = "python -m pytest -q tests/refinement"
+test-refinement = "python -m pytest -q tests/oracle_refinement"
 distribution = "python tools/property_oracle.py --layers zq --distribution"
 references = "python tools/check_references.py"
 test = { depends-on = ["test-finite-exact", "test-interval", "test-linear-algebra", "test-madic", "test-madic-oracle", "test-substitution", "test-tuning", "test-facades", "test-proof-records", "test-python", "test-audit", "test-provenance", "test-references", "test-refinement", "property"] }
