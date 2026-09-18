@@ -12,10 +12,11 @@ from fractions import Fraction
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "tools"))
 
 import property_oracle as po  # noqa: E402
-from refinement import Class, Refinement, audit_all  # noqa: E402
+from oracle_refinement import Class, Refinement, audit_all  # noqa: E402
 
 INTEGERS = Refinement(
     "draw",

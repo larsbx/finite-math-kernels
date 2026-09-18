@@ -68,7 +68,7 @@ not part of this repository.
   already records and infers none, and every edge is declared rather than
   scored, so importing it into an LLM-asserted graph cannot launder a guess
   into a verified relationship.
-- Generator refinements (`docs/generator-refinement-spec.md`) declare what each
+- Generator refinements (`oracle_refinement`, `docs/generator-refinement-spec.md`) declare what each
   differential oracle draws from, because a comparison is only as strong as its
   corpus: this repository lost a 64-bit wrap and a singular lattice to a corpus
   that was silent rather than wrong. A class declared reached and never drawn
