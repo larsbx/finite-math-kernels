@@ -6,7 +6,8 @@ kinds, identities, digests, and closure. Ledger keys are record identifiers
 (digests of the preimage), so the fixture also carries a label map for
 readers. The Mojo implementation replays this file;
 tests/proof_records/test_vectors.py fails if the committed file differs
-from the regeneration. Usage: make_vectors.py [--check]
+from the regeneration. It also writes proof_records/known_answers.py, the
+constants the import-time self-test checks. Usage: make_vectors.py [--check]
 """
 
 from __future__ import annotations
@@ -20,9 +21,10 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from proof_records.records import (BOUNDED, Edge, Kind, Record, close, digest, edge, identified, identity, no_policy,  # noqa: E402
-                                   tag_policy, validate)
+                                   preimage_bytes, tag_policy, validate)
 
 FIXTURE = ROOT / "fixtures" / "vectors.json"
+KNOWN = ROOT / "proof_records" / "known_answers.py"
 
 POLICIES = {
     "none": no_policy,
@@ -147,16 +149,71 @@ def render() -> str:
     return json.dumps(vectors(), indent=2, sort_keys=True) + "\n"
 
 
+def pinned_key() -> str:
+    """The record the boot gate pins: the lexicographically first ledger entry
+    stored under its own identifier, so the choice is a rule rather than a
+    preference and it is never one of the deliberately malformed specimens."""
+    return min(key for key, record in LEDGER.items() if key == record.id)
+
+
+def render_known_answers() -> str:
+    """`proof_records/known_answers.py`, the constants the import-time self-test
+    checks. Generated from the same reference ledger as the fixture, so the two
+    cannot disagree, and committed, so a codec change is a diff somebody
+    accepts rather than a self-test that agrees with itself."""
+    record = LEDGER[pinned_key()]
+    lines = [
+        '"""The known answers of the import-time self-test. Generated; do not edit.',
+        "",
+        "Written by tools/make_vectors.py from the reference ledger that also produces",
+        "fixtures/vectors.json. `make_vectors.py --check` fails when a regeneration",
+        "differs from the committed file, which is what keeps these from being",
+        "constants the code agrees with by construction.",
+        '"""',
+        "",
+        "from __future__ import annotations",
+        "",
+        "from proof_records.records import Edge, Kind",
+        "",
+        f"RECORD_ID = {record.id!r}",
+        f"RECORD_KIND = Kind({record.kind.value!r})",
+        f"RECORD_STATEMENT = {record.statement!r}",
+        f"RECORD_SCOPE = {record.scope!r}",
+    ]
+    edges = [f"    Edge({e.record_id!r}, {e.expected_claim!r}, {e.use_site!r}, {e.scope_relation!r}, {e.required_outcome!r}),"
+             for e in record.depends_on]
+    lines += ["RECORD_DEPENDS_ON = ()"] if not edges else ["RECORD_DEPENDS_ON = (", *edges, ")"]
+    lines += [
+        f"RECORD_EVIDENCE = {tuple(record.evidence)!r}",
+        f"RECORD_TAGS = {tuple(sorted(record.tags))!r}",
+        "",
+        f"PREIMAGE_HEX = {preimage_bytes(record).hex()!r}",
+        f"IDENTITY = {identity(record)!r}",
+        f"DIGEST = {digest(record)!r}",
+        "",
+    ]
+    return "\n".join(lines)
+
+
+OUTPUTS = ((lambda: FIXTURE, render), (lambda: KNOWN, render_known_answers))
+
+
 def main(argv: list[str]) -> int:
-    text = render()
-    if argv[1:] == ["--check"]:
-        current = FIXTURE.read_text(encoding="utf-8") if FIXTURE.exists() else ""
-        print("fixtures/vectors.json is up to date" if current == text else "fixtures/vectors.json differs from the reference model")
-        return 0 if current == text else 1
-    FIXTURE.parent.mkdir(exist_ok=True)
-    FIXTURE.write_text(text, encoding="utf-8")
-    print(f"wrote {FIXTURE.relative_to(ROOT)}")
-    return 0
+    checking = argv[1:] == ["--check"]
+    stale = []
+    for path_of, render_one in OUTPUTS:
+        path, text = path_of(), render_one()
+        name = path.relative_to(ROOT)
+        if checking:
+            current = path.read_text(encoding="utf-8") if path.exists() else ""
+            print(f"{name} is up to date" if current == text else f"{name} differs from the reference model")
+            if current != text:
+                stale.append(str(name))
+            continue
+        path.parent.mkdir(exist_ok=True)
+        path.write_text(text, encoding="utf-8")
+        print(f"wrote {name}")
+    return 1 if stale else 0
 
 
 if __name__ == "__main__":
