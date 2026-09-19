@@ -31,16 +31,32 @@ def test_update_is_idempotent_on_a_current_tree():
     assert provenance.render(provenance.update(m, provenance.current_blobs())) == provenance.render(m)
 
 
+#: Every pinned source, its repository, and the subtree each import came from.
+#: The first six are single-package extractions, where the package and the
+#: repository share a name. The seventh is not an extraction at all: it is a
+#: consumer of this monorepo, and two packages that grew there were lifted
+#: back here, so its imports come from that repository's `src` and `tools`.
+SOURCES = {
+    "finite_exact": ("larsbx/finite_exact", ("finite_exact",)),
+    "interval_q": ("larsbx/interval_q", ("interval_q",)),
+    "finite_linear_algebra": ("larsbx/finite_linear_algebra", ("finite_linear_algebra",)),
+    "substitution_dynamics": ("larsbx/substitution_dynamics", ("substitution_dynamics",)),
+    "finite_proof_records": ("larsbx/finite_proof_records", ("finite_proof_records",)),
+    "claim_governance_tools": ("larsbx/claim_governance_tools", ("claim_governance",)),
+    "finite_mandelbrot_research": ("larsbx/finite-mandelbrot-research", ("src", "tools")),
+}
+
+
 def test_every_source_pins_a_commit_and_its_subtrees():
     sources = manifest()["sources"]
-    assert set(sources) == {"finite_exact", "interval_q", "finite_linear_algebra", "substitution_dynamics", "finite_proof_records",
-                            "claim_governance_tools"}
+    assert set(sources) == set(SOURCES)
     for name, source in sources.items():
-        assert source["repository"] == f"larsbx/{name}"
+        repository, required = SOURCES[name]
+        assert source["repository"] == repository
         assert len(source["commit"]) == 40 and all(c in "0123456789abcdef" for c in source["commit"])
         assert all(len(tree) == 40 for tree in source["subtrees"].values())
-        package = "claim_governance" if name == "claim_governance_tools" else name
-        assert package in source["subtrees"], (name, source["subtrees"])
+        for subtree in required:
+            assert subtree in source["subtrees"], (name, source["subtrees"])
 
 
 def test_imported_packages_are_copies_or_declared_modifications():

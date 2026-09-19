@@ -23,9 +23,16 @@ substitution_dynamics/
   tuning.mojo
   sadic.mojo
   coincidence.mojo
+quadratic_orbit/
+  orbit.mojo
+  collision.mojo
+mojo_smoke/
+  report.mojo
 proof_records/
   ProofArchitecture.tla
   graph.py
+vendoring/
+  check_vendored_sync.py
 audit/
   claim_governance/
 ```
@@ -53,6 +60,22 @@ not part of this repository.
   conclusion (Dekking) and the kneading interpretation of tuning are the
   consumer's imported theorems. The parity twist is the real-line
   convention; the continuation twist is the general rule.
+- The quadratic orbit is seeded. Both planes of the family iterate
+  `z -> z^2 + c`; the parameter plane varies `c` from the critical seed and
+  the dynamical plane varies the seed at fixed `c`, so the seed is an argument
+  and neither plane is the library's default. Terms are enclosures: separation
+  of two terms is a fact about the boxes, and overlap is never equality.
+- The collision partition (`quadratic_orbit/collision.mojo`) is finite
+  combinatorics on indices. It says which pairs an `(ell, period)` type
+  intends to collide, knows nothing about any parameter, and proves nothing
+  about any orbit; an invalid type intends nothing rather than something
+  arbitrary.
+- The vendoring checker (`vendoring/`) reports drift between a consumer's
+  copies and its pins. It decides nothing about the code it checks, and it
+  searches upward for the manifest so that how deep a consumer puts it does
+  not matter.
+- `mojo_smoke` is test scaffolding: it reports the verdicts it is handed and
+  certifies nothing.
 - Proof-record acceptance policy belongs to the consumer.
 - The evidence-vocabulary map (`docs/evidence-vocabulary-map.md`) only preserves
   or lowers authority: a non-transferable exercise never becomes a theorem, an

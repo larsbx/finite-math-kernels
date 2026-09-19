@@ -9,11 +9,11 @@
       "relation": "authored"
     },
     "README.md": {
-      "blob": "ed76c33fe5aa2dd2fc45d9e614d8c176db9a8849",
+      "blob": "139068f9d1a0a40bdb0f5d6a58d4960ffae242d9",
       "relation": "authored"
     },
     "audit/CONSOLIDATION_PROVENANCE.md": {
-      "blob": "7096551f7a30863e8784b23a05d5fe43791c6696",
+      "blob": "c9a99fb3ad34ddbcd0c29c674a911877ce6d32f0",
       "relation": "authored"
     },
     "audit/POST_CONSOLIDATION_AUDIT_2026-09-15.md": {
@@ -328,12 +328,23 @@
       "generator": "tools/make_vectors.py",
       "relation": "generated"
     },
+    "mojo_smoke/__init__.mojo": {
+      "blob": "13369a2826e91ace2d1666174a2e05af9acb96df",
+      "relation": "authored"
+    },
+    "mojo_smoke/report.mojo": {
+      "blob": "49dbb4f0e575610a83eee3ed4c1353a6b548d8a6",
+      "relation": "modified",
+      "source": "finite_mandelbrot_research",
+      "source_blob": "109366c79047316ce1d4e7746ecc801c416ef5e0",
+      "source_path": "src/smoke_report.mojo"
+    },
     "oracle_refinement/__init__.py": {
       "blob": "70abd87fab44286f548e95449fca8773e0aba7b0",
       "relation": "authored"
     },
     "pixi.toml": {
-      "blob": "cc904ebfed08d36becbf43f392cc315ab5ec1bcb",
+      "blob": "b2b0669c38037b33d269f37a1caa39fc5e740505",
       "relation": "authored"
     },
     "proof_records/ProofArchitecture.tla": {
@@ -391,6 +402,24 @@
     "proof_records/vocabularies.py": {
       "blob": "8b68b61b91d2d45c3394bae801368378c384f137",
       "relation": "authored"
+    },
+    "quadratic_orbit/__init__.mojo": {
+      "blob": "0332cbc21cd95daedccfaa50c5ad29108b48fefd",
+      "relation": "authored"
+    },
+    "quadratic_orbit/collision.mojo": {
+      "blob": "731eba99952c6dc8f2fc5ab71f077f393038b542",
+      "relation": "modified",
+      "source": "finite_mandelbrot_research",
+      "source_blob": "53544fff8ade511fc7ffd4f7bb1de879a7bede1e",
+      "source_path": "src/interval_orbit.mojo"
+    },
+    "quadratic_orbit/orbit.mojo": {
+      "blob": "04f462c7735de243efc1217bd55522210fba4311",
+      "relation": "modified",
+      "source": "finite_mandelbrot_research",
+      "source_blob": "53544fff8ade511fc7ffd4f7bb1de879a7bede1e",
+      "source_path": "src/interval_orbit.mojo"
     },
     "substitution_dynamics/__init__.mojo": {
       "blob": "76f83f038f0df80fc776202b5a5d52f8c18677e4",
@@ -578,6 +607,10 @@
       "source_blob": "0ee6e90f0e5c2f13faee3fe2c63b97aa9653f166",
       "source_path": "tests/test_interval_q.mojo"
     },
+    "tests/mojo_smoke/test_report.mojo": {
+      "blob": "5b6d877c6645bf90ae9a350b2bbee29518c06684",
+      "relation": "authored"
+    },
     "tests/oracle_refinement/test_refinement.py": {
       "blob": "c0307c2cae0dcdd04197aca93ec4a7f5bf5a11c6",
       "relation": "authored"
@@ -627,7 +660,11 @@
       "relation": "authored"
     },
     "tests/provenance/test_provenance.py": {
-      "blob": "5f6eb510830526233da5228f54b001fbeed78729",
+      "blob": "63f5cece82fd86898811b03b94b00ea2624811b0",
+      "relation": "authored"
+    },
+    "tests/quadratic_orbit/test_quadratic_orbit.mojo": {
+      "blob": "d919b9e0f69314fe34e33fb5ebf8f363efb9b544",
       "relation": "authored"
     },
     "tests/references/test_references.py": {
@@ -649,8 +686,12 @@
       "blob": "7d5cf3e7cd1f67618205d7cbcded87b3472f3015",
       "relation": "authored"
     },
+    "tests/vendoring/test_check_vendored_sync.py": {
+      "blob": "670312c96ff8ad55ffb2dfbb307370e5a7fb5bec",
+      "relation": "authored"
+    },
     "tools/check_references.py": {
-      "blob": "0449c88bee704b5225ee73e2577ccd66113bc156",
+      "blob": "915fcb2262f0abc3a53c3b6b0ca54d7a73230c7d",
       "relation": "authored"
     },
     "tools/madic_oracle.py": {
@@ -689,6 +730,17 @@
     "tools/tuning_reference.py": {
       "blob": "1bd2d18fced0df5989b49e507f0eb5bdbc6b0651",
       "relation": "authored"
+    },
+    "vendoring/__init__.py": {
+      "blob": "6054f0efff1b5418185fed776d1c76421df844f6",
+      "relation": "authored"
+    },
+    "vendoring/check_vendored_sync.py": {
+      "blob": "e75d881039f62db504710f5b252d9debabbcc2f0",
+      "relation": "modified",
+      "source": "finite_mandelbrot_research",
+      "source_blob": "76ddda76a2cc3dea8221ac8b8192fe3d7e4f14c4",
+      "source_path": "tools/check_vendored_sync.py"
     }
   },
   "format": "finite-math-kernels provenance 1",
@@ -726,6 +778,15 @@
         "finite_linear_algebra": "95b609b37631eed0c5e96bb3285fb2c8354294c5",
         "tests": "26ce97ca3c985db05b7d28109ff17cbf3f72a554",
         "tools": "b756e2542168eb64f587737640a877835f37a62e"
+      }
+    },
+    "finite_mandelbrot_research": {
+      "branch": "main",
+      "commit": "cea36ccba8a2a4d5e3c08ecce05c95f6c2bbb351",
+      "repository": "larsbx/finite-mandelbrot-research",
+      "subtrees": {
+        "src": "58daaf3a6295d0f3076c3c976d6b43b06191253b",
+        "tools": "ce44d6ed7ed9d66b39594c334884bf42a159f604"
       }
     },
     "finite_proof_records": {
