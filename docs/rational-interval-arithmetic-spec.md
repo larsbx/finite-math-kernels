@@ -225,7 +225,7 @@ Known consumers and their binding tables:
 | --- | --- | --- |
 | `larsbx/interval_q` | `README.md` | `finite_exact/` at the repository root |
 | `larsbx/finite_linear_algebra` | `README.md` | `finite_exact/` at the repository root |
-| `larsbx/finite-mandlebrot-research` | `docs/rational-interval-arithmetic-spec.md` (sections 6 and 7 only) | `src/finite_exact/`, `src/interval_q/` |
+| `larsbx/finite-mandlebrot-research` | `docs/exact-arithmetic-binding.md` | `src/finite_exact/` |
 | `larsbx/pisot-substitution-conjecture-research` | `docs/exact-arithmetic-binding.md` | `mojo/finite_exact/`, `mojo/interval_q/` |
 | `larsbx/finite-julia-set-research` | `docs/exact-arithmetic-binding.md` | `src/finite_exact/` |
 
