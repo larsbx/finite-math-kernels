@@ -32,19 +32,19 @@ from __future__ import annotations
 
 import hashlib
 import json
-import os
-import subprocess
 import sys
 from collections.abc import Mapping
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+
+from references.check_references import tracked_files as listing  # noqa: E402
 MANIFEST = ROOT / "audit" / "provenance.json"
 MANIFEST_PATH = "audit/provenance.json"  # the one tracked file the manifest cannot describe: itself
 FORMAT = "finite-math-kernels provenance 1"
 RELATIONS = frozenset({"copy", "modified", "facade", "authored", "generated"})
 IMPORTED = frozenset({"copy", "modified"})
-EXCLUDED_DIRS = frozenset({".git", ".pixi", "__pycache__", ".pytest_cache"})
 
 
 def blob_id(data: bytes) -> str:
@@ -52,16 +52,12 @@ def blob_id(data: bytes) -> str:
 
 
 def tracked_files(root: Path = ROOT) -> list[str]:
-    """Paths git tracks, or every file under ``root`` outside build directories."""
-    try:
-        out = subprocess.run(["git", "ls-files", "-z"], cwd=root, capture_output=True, check=True).stdout
-        return sorted(p for p in out.decode("utf-8").split("\0") if p)
-    except (OSError, subprocess.CalledProcessError):
-        paths = []
-        for base, dirs, files in os.walk(root):
-            dirs[:] = [d for d in dirs if d not in EXCLUDED_DIRS]
-            paths += [str((Path(base) / f).relative_to(root)) for f in files if not f.endswith(".pyc")]
-        return sorted(paths)
+    """Paths git tracks, or every file under ``root`` outside build directories.
+
+    One listing, in `references/check_references.py`, so the file set this
+    manifest describes and the file set the reference check reads cannot
+    diverge."""
+    return listing(root)
 
 
 def current_blobs(root: Path = ROOT) -> dict[str, str]:

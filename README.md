@@ -31,6 +31,8 @@ mojo_smoke/
 proof_records/
   ProofArchitecture.tla
   graph.py
+references/
+  check_references.py
 vendoring/
   check_vendored_sync.py
 audit/
@@ -70,6 +72,13 @@ not part of this repository.
   intends to collide, knows nothing about any parameter, and proves nothing
   about any orbit; an invalid type intends nothing rather than something
   arbitrary.
+- The reference checker (`references/`) reports paths and pixi tasks a tree
+  mentions that resolve to nothing. What counts as resolving is the
+  consumer's `Policy`: which files to read, which paths to skip, and which
+  references live in another repository and are attested by a sentence rather
+  than resolved. The package supplies the one file listing this repository
+  uses, so the provenance manifest and the reference check cannot describe
+  different trees.
 - The vendoring checker (`vendoring/`) reports drift between a consumer's
   copies and its pins. It decides nothing about the code it checks, and it
   searches upward for the manifest so that how deep a consumer puts it does
