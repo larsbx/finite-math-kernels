@@ -48,6 +48,12 @@ EXTERNAL: Mapping[str, str] = {
     "docs/library-extraction-candidates-2026-09-14.md": NLAP,
     "docs/finite-proof-records-spec.md": NLAP,
     "src/mojo_theorem_kernel.mojo": NLAP,
+    "src/interval_orbit.mojo": NLAP,
+    "src/smoke_report.mojo": NLAP,
+    "tools/check_vendored_sync.py": NLAP,
+    # The manifest the vendoring checker reads lives in whichever repository
+    # vendors these packages, never here: this monorepo is the upstream.
+    "vendored.toml": "each consumer repository that vendors packages from this monorepo",
     "src/C1_theorem_tag_import_ledger.mojo": NLAP,
     "src/C1_theorem_tag_assumption_payloads.mojo": NLAP,
     "src/C1_final_proof_block_ledger.mojo": NLAP,
