@@ -29,12 +29,16 @@ TASK_DEFINITION = re.compile(r"^([A-Za-z0-9_-]+) = ", re.M)
 class Policy:
     """What a consumer decides about its own references.
 
-    `external` is the one that carries meaning: each entry attests which other
-    repository a path lives in. An entry is a claim a reader can check, which
-    is why the map takes a sentence rather than a bare `True`.
+    `external` and `external_tasks` are the ones that carry meaning: each
+    entry attests which other repository a path or a pixi task lives in. An
+    entry is a claim a reader can check, which is why both maps take a
+    sentence rather than a bare `True`. A consumer that mirrors an upstream
+    document needs them: the document names upstream's files and upstream's
+    tasks, and neither is a defect here.
     """
 
     external: Mapping[str, str] = field(default_factory=dict)
+    external_tasks: Mapping[str, str] = field(default_factory=dict)
     skipped_prefixes: tuple[str, ...] = ()
     suffixes: tuple[str, ...] = CHECKED_SUFFIXES
     executables: frozenset[str] = frozenset({"mojo", "python"})
@@ -76,7 +80,7 @@ def check(files: Mapping[str, str], tracked: Iterable[str], tasks: Iterable[str]
                 continue
             errors.append(f"{path}: path `{token}` is not a tracked file, a unique basename, or a listed external reference")
         for task in task_tokens(text):
-            if task not in known_tasks:
+            if task not in known_tasks and task not in policy.external_tasks:
                 errors.append(f"{path}: task `pixi run {task}` is not defined in pixi.toml")
     return errors
 

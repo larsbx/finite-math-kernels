@@ -39,6 +39,7 @@ def test_the_manifest_and_the_checker_read_one_file_listing():
 
 def test_external_references_attest_a_repository():
     assert all(value for value in POLICY.external.values())
+    assert all(value for value in POLICY.external_tasks.values())
     assert not any(token in tracked_files(ROOT) for token in POLICY.external)
 
 
@@ -69,6 +70,14 @@ def test_audit_records_and_unchecked_suffixes_are_skipped():
 
 def test_executables_are_not_tasks():
     assert check({"README.md": "`pixi run mojo run -I . x.mojo` and `pixi run python tools/x.py`"}, TRACKED, TASKS, BARE) == []
+
+
+def test_an_attested_task_lives_in_another_repository():
+    """A mirrored document names upstream's tasks; that is not a defect here."""
+    files = {"docs/spec.md": "`pixi run property` and `pixi run gone`"}
+    attested = Policy(external_tasks={"property": "upstream"}, skipped_prefixes=POLICY.skipped_prefixes)
+    assert check(files, TRACKED, TASKS, attested) == [
+        "docs/spec.md: task `pixi run gone` is not defined in pixi.toml"]
 
 
 def test_a_policy_carries_its_own_executables_and_suffixes():
