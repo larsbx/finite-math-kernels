@@ -227,6 +227,7 @@ Known consumers and their binding tables:
 | `larsbx/finite_linear_algebra` | `README.md` | `finite_exact/` at the repository root |
 | `larsbx/finite-mandlebrot-research` | `docs/rational-interval-arithmetic-spec.md` (sections 6 and 7 only) | `src/finite_exact/`, `src/interval_q/` |
 | `larsbx/pisot-substitution-conjecture-research` | `docs/exact-arithmetic-binding.md` | `mojo/finite_exact/`, `mojo/interval_q/` |
+| `larsbx/finite-julia-set-research` | `docs/exact-arithmetic-binding.md` | `src/finite_exact/` |
 
 Promotion of a DEMO row to CONFORMS requires that the consumer's certificate-acceptance gate, not this package, be satisfied; `Q.accepted()` says only that a value is a well-formed rational.
 
