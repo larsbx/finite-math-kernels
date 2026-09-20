@@ -61,6 +61,7 @@ EXTERNAL: dict[str, str] = {
     "docs/ledger-index.md": "the consumer repository (docs/ledger-generation-spec.md, section 3.4)",
     "interval_q/closed_q.mojo": "larsbx/interval_q at the commit pinned in audit/provenance.json",
     "docs/enclosure-width-lemma.md": "larsbx/finite-julia-set-research, which supplies the step factor K of section 2.5",
+    "docs/taylor-models.md": "larsbx/finite-julia-set-research, which built and measured the models of section 2.5",
 }
 
 POLICY = Policy(external=EXTERNAL, skipped_prefixes=SKIPPED_PREFIXES)
