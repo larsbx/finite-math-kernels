@@ -2,6 +2,8 @@
 #
 # Rational angles modulo one under doubling, exactly.
 #
+# Specification: docs/rational-interval-arithmetic-spec.md, section 1.
+#
 # The backend is checked fixed width, which specification section 1 admits as
 # long as it fails closed: an angle whose denominator would overflow doubling
 # is rejected rather than wrapped, and a rejected angle stays rejected.
