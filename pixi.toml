@@ -22,6 +22,7 @@ test-substitution = "mojo run -I . tests/substitution_dynamics/test_substitution
 test-tuning = "mojo run -I . tests/substitution_dynamics/test_tuning.mojo"
 test-facades = "mojo run -I . tests/facades/test_stable_facades.mojo"
 test-quadratic-orbit = "mojo run -I . tests/quadratic_orbit/test_quadratic_orbit.mojo"
+test-projective = "mojo run -I . tests/projective/test_projective.mojo"
 test-mojo-smoke = "mojo run -I . tests/mojo_smoke/test_report.mojo"
 test-vendoring = "python -m pytest -q tests/vendoring"
 test-proof-records = "python -m pytest -q tests/proof_records"
@@ -33,4 +34,4 @@ test-references = "python -m pytest -q tests/references"
 test-refinement = "python -m pytest -q tests/oracle_refinement"
 distribution = "python tools/property_oracle.py --layers zq --distribution"
 references = "python tools/check_references.py"
-test = { depends-on = ["test-finite-exact", "test-interval", "test-linear-algebra", "test-madic", "test-madic-oracle", "test-substitution", "test-tuning", "test-facades", "test-quadratic-orbit", "test-mojo-smoke", "test-vendoring", "test-proof-records", "test-python", "test-audit", "test-provenance", "test-references", "test-refinement", "property"] }
+test = { depends-on = ["test-finite-exact", "test-interval", "test-linear-algebra", "test-madic", "test-madic-oracle", "test-substitution", "test-tuning", "test-facades", "test-quadratic-orbit", "test-projective", "test-mojo-smoke", "test-vendoring", "test-proof-records", "test-python", "test-audit", "test-provenance", "test-references", "test-refinement", "property"] }

@@ -26,6 +26,9 @@ substitution_dynamics/
 quadratic_orbit/
   orbit.mojo
   collision.mojo
+projective/
+  homogeneous.mojo
+  chart.mojo
 mojo_smoke/
   report.mojo
 proof_records/
@@ -67,6 +70,16 @@ not part of this repository.
   the dynamical plane varies the seed at fixed `c`, so the seed is an argument
   and neither plane is the library's default. Terms are enclosures: separation
   of two terms is a fact about the boxes, and overlap is never equality.
+- The projective package (`projective/`) is the quadratic map on the
+  projective line over the complex numbers, where it is a morphism of degree
+  two with no base point and infinity is a fixed class of the algebra rather
+  than a limit. That is not the completion in which the plane gains an ideal
+  line carrying the circular points; the quadrance form degenerates there and
+  this map is not a morphism of it, so a consumer that conflates the two is
+  wrong whatever it proves. A homogeneous pair is not an ideal point: it is
+  two coordinate records modulo scaling, and reading one as a value needs a
+  chart. Each chart is a division, so it has a domain, and a box whose
+  quadrance could vanish leaves the chart rather than being evaluated.
 - The collision partition (`quadratic_orbit/collision.mojo`) is finite
   combinatorics on indices. It says which pairs an `(ell, period)` type
   intends to collide, knows nothing about any parameter, and proves nothing

@@ -9,7 +9,7 @@
       "relation": "authored"
     },
     "README.md": {
-      "blob": "fe15e37f326d4f68c32e9ed8ccf0b6076457fa05",
+      "blob": "8c94b0746beede6ccb2738e6551180f7ac5e6837",
       "relation": "authored"
     },
     "audit/CONSOLIDATION_PROVENANCE.md": {
@@ -344,7 +344,19 @@
       "relation": "authored"
     },
     "pixi.toml": {
-      "blob": "b2b0669c38037b33d269f37a1caa39fc5e740505",
+      "blob": "9d37afab6177f257d07213f060e88457a99d31be",
+      "relation": "authored"
+    },
+    "projective/__init__.mojo": {
+      "blob": "75c6dc4462ff4b9e588b95ec4f93e025e7359bb7",
+      "relation": "authored"
+    },
+    "projective/chart.mojo": {
+      "blob": "1c9709bd225b6d7316f104bf1769aab447b3033c",
+      "relation": "authored"
+    },
+    "projective/homogeneous.mojo": {
+      "blob": "b9cd33edb7224dbfd477dc80225bb74ba207f6c9",
       "relation": "authored"
     },
     "proof_records/ProofArchitecture.tla": {
@@ -621,6 +633,10 @@
     },
     "tests/oracle_refinement/test_refinement.py": {
       "blob": "c0307c2cae0dcdd04197aca93ec4a7f5bf5a11c6",
+      "relation": "authored"
+    },
+    "tests/projective/test_projective.mojo": {
+      "blob": "e6ccedb5ba65fb777e0debf6915b9a542521e1c8",
       "relation": "authored"
     },
     "tests/proof_records/replay_vectors.mojo": {
