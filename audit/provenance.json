@@ -9,7 +9,15 @@
       "relation": "authored"
     },
     "README.md": {
-      "blob": "f3646e506ce99988f440a9d207819e461ae95719",
+      "blob": "2b8d74a2549ad47ce4ceffd9e8cef5d1976bb2e3",
+      "relation": "authored"
+    },
+    "angle_doubling/__init__.mojo": {
+      "blob": "260ded1601f157daa44ad909b8352f2fb9298a66",
+      "relation": "authored"
+    },
+    "angle_doubling/angle.mojo": {
+      "blob": "f6773b9d33bd026017643292587d7e7ae8ed989a",
       "relation": "authored"
     },
     "audit/CONSOLIDATION_PROVENANCE.md": {
@@ -352,7 +360,7 @@
       "relation": "authored"
     },
     "pixi.toml": {
-      "blob": "83b51ff930a85d756f9ae7a478aaddd1426f7951",
+      "blob": "5e21918fe04f8d43cfe7b3c41faa467d0a35dd7a",
       "relation": "authored"
     },
     "projective/__init__.mojo": {
@@ -509,6 +517,10 @@
     },
     "tests/__init__.py": {
       "blob": "aecf15d997057942d02ecfbe9d6530da0b6bb7aa",
+      "relation": "authored"
+    },
+    "tests/angle_doubling/test_angle_doubling.mojo": {
+      "blob": "98bb156b72f2966a6e4da2817944d77504398f7f",
       "relation": "authored"
     },
     "tests/audit/__init__.py": {

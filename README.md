@@ -27,6 +27,8 @@ quadratic_orbit/
   orbit.mojo
   collision.mojo
   preperiodic.mojo
+angle_doubling/
+  angle.mojo
 projective/
   homogeneous.mojo
   chart.mojo
@@ -81,6 +83,14 @@ not part of this repository.
   two coordinate records modulo scaling, and reading one as a value needs a
   chart. Each chart is a division, so it has a domain, and a box whose
   quadrance could vanish leaves the chart rather than being evaluated.
+- Angle doubling (`angle_doubling/`) is finite combinatorics on `Q/Z`, not
+  geometry. No angle here is derived from a locus and no locus from an angle,
+  and the package does not know what a ray is. Its two facts are closed forms
+  rather than searches: a rational angle's preperiod under `t -> 2t` is the
+  exponent of two in its denominator, and its period is the multiplicative
+  order of two modulo the odd part. What a consumer does with the
+  correspondence between an angle's type and a dynamical point's type is the
+  consumer's import to name and gate.
 - The preperiodic certificates (`quadratic_orbit/preperiodic.mojo`) are about
   boxes. `R^c_{l,k}(z) = f^{l+k}(z) - f^l(z)` is evaluated along the orbit and
   its derivative by the chain rule, so no polynomial is ever formed and no
