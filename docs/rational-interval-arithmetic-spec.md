@@ -95,7 +95,7 @@ I_E := { [a, b] : a, b ∈ E,  a ≤ b }.
 
 Two endpoint sets are relevant.
 
-- **`E = F` with directed rounding.** Lower endpoints are computed rounding toward `−∞`, upper endpoints toward `+∞`. Every result contains the true result. Requires rounding-mode control on the hardware; fast.
+- **`E = F` with directed rounding.** Lower endpoints are computed rounding toward `−∞`, upper endpoints toward `+∞`. Every result contains the true result. This does **not** require rounding-mode control on the hardware: a dyadic rational with a bounded numerator is the same idea done exactly, and the direction is a floor or a ceiling over `Z`, decided rather than configured. It is implemented that way in `larsbx/finite-julia-set-research` (`docs/scaled-boxes.md`), where the endpoint carries a **separated binary exponent**. That is what the mode is for in an exact setting: an escaping orbit reaches magnitude `2^(2^n)`, so writing the value in one piece costs `2^n` bits whatever the arithmetic does, and the measured effect of separating the exponent was to take an external-angle computation from 9 digits to 117 at the same starting box. Exactness and affordability are different axes, and this is the one that buys depth.
 - **`E = Q` (rational endpoints).** Endpoint arithmetic is exact (section 1), so no rounding mode is needed and the enclosures are the tightest the formulas allow. This is the mode both repositories use; `E = F` is stated for completeness and is **not** admitted in certificate paths.
 
 Invariant **J1:** `a ≤ b` at construction. Reversed endpoints must raise, not swap.

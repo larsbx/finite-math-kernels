@@ -183,7 +183,7 @@
       "relation": "authored"
     },
     "docs/rational-interval-arithmetic-spec.md": {
-      "blob": "1688b7df797127a920d710a61edd706e1ff3358a",
+      "blob": "f70778d7ef00386f768bb6adff33af244d73a092",
       "relation": "modified",
       "source": "finite_exact",
       "source_blob": "86478aa8777903f6c605d4bcfd7d899ac51a74fa",
@@ -747,7 +747,7 @@
       "relation": "authored"
     },
     "tools/check_references.py": {
-      "blob": "eb510a2c93709aec71aaaea76461a490044f93c1",
+      "blob": "e60171ad9f566ab1ca205c5f8a3065fefe75f277",
       "relation": "authored"
     },
     "tools/madic_oracle.py": {

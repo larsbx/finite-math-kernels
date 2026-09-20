@@ -62,6 +62,7 @@ EXTERNAL: dict[str, str] = {
     "interval_q/closed_q.mojo": "larsbx/interval_q at the commit pinned in audit/provenance.json",
     "docs/enclosure-width-lemma.md": "larsbx/finite-julia-set-research, which supplies the step factor K of section 2.5",
     "docs/taylor-models.md": "larsbx/finite-julia-set-research, which built and measured the models of section 2.5",
+    "docs/scaled-boxes.md": "larsbx/finite-julia-set-research, which implemented the E = F endpoints of section 2.1",
 }
 
 POLICY = Policy(external=EXTERNAL, skipped_prefixes=SKIPPED_PREFIXES)
