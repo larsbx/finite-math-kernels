@@ -13,6 +13,7 @@ finite_linear_algebra/
   matrix.mojo
   matrix3.mojo
   rational_elimination.mojo
+  qpoly.mojo
   tensor3.mojo
 substitution_dynamics/
   words.mojo
@@ -59,7 +60,20 @@ not part of this repository.
 - Closed intervals are conservative filters. Unknown containment or sign is
   never promoted to equality or certificate acceptance.
 - Linear algebra computes exact finite-dimensional facts and makes no spectral
-  or conjectural theorem claims.
+  or conjectural theorem claims. The characteristic polynomial is available in
+  any dimension (`qlinalg`) beside the `3x3` closed form (`mat3`), and the two
+  are checked against each other.
+- Exact polynomials over `Q` (`finite_linear_algebra/qpoly.mojo`,
+  `docs/exact-polynomial-root-isolation-spec.md`) compute division, the
+  greatest common divisor, the squarefree part, a rational root bound, the
+  Sturm chain, and a difference of sign-variation counts. That difference is a
+  finite fact; **Sturm's theorem** is what reads it as a number of roots, and
+  it is the consumer's import to name and gate. A root is never named: an
+  isolating bracket is two rationals, and it carries a sign change of the
+  squarefree part, so a consumer that declines the import still has a root
+  between them by the intermediate value theorem. Whether an isolated root is
+  a Perron root is Perron-Frobenius, and whether it is a Pisot number needs
+  the other roots of its minimal polynomial; neither is computed here.
 - A capped balanced-pair automaton is inconclusive, never a proof or
   counterexample.
 - Tuning patterns, directive prefixes, and column coincidence are finite

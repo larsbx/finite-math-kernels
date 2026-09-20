@@ -9,7 +9,7 @@
       "relation": "authored"
     },
     "README.md": {
-      "blob": "2b8d74a2549ad47ce4ceffd9e8cef5d1976bb2e3",
+      "blob": "f0fbb348b2f621ed02c875bb4b13892b5bbf7635",
       "relation": "authored"
     },
     "angle_doubling/__init__.mojo": {
@@ -159,6 +159,10 @@
       "source_blob": "a850a73bca82ffc0de10d02380f6040e04fa9880",
       "source_path": "docs/exact-arithmetic-public-boundary.md"
     },
+    "docs/exact-polynomial-root-isolation-spec.md": {
+      "blob": "1b67377d63ec1f89f93f06707ae51725a7141580",
+      "relation": "authored"
+    },
     "docs/generator-refinement-spec.md": {
       "blob": "95ba346ceab3e7eeaa33f01a449952770e77400c",
       "relation": "authored"
@@ -238,8 +242,8 @@
       "relation": "facade"
     },
     "finite_linear_algebra/__init__.mojo": {
-      "blob": "5cefbb9810a7919dfd37a6cf4360d60e87e7b12e",
-      "relation": "copy",
+      "blob": "1c8ae9722474e2d7619008a2b64fc6a170ffde22",
+      "relation": "modified",
       "source": "finite_linear_algebra",
       "source_blob": "5cefbb9810a7919dfd37a6cf4360d60e87e7b12e",
       "source_path": "finite_linear_algebra/__init__.mojo"
@@ -269,6 +273,10 @@
       "source": "finite_linear_algebra",
       "source_blob": "c4282515cabd0b1725df735f6d8820fc55f49d8d",
       "source_path": "finite_linear_algebra/qlinalg.mojo"
+    },
+    "finite_linear_algebra/qpoly.mojo": {
+      "blob": "e7f3237f9ae479f24ee98acf4a783c8748348ddd",
+      "relation": "authored"
     },
     "finite_linear_algebra/rational_elimination.mojo": {
       "blob": "de5ced5965b42f088ea473ca32f0b48db54a6d1e",
@@ -360,7 +368,7 @@
       "relation": "authored"
     },
     "pixi.toml": {
-      "blob": "5e21918fe04f8d43cfe7b3c41faa467d0a35dd7a",
+      "blob": "60cabde2da60fa460ce6205949a1d9a80791fe7e",
       "relation": "authored"
     },
     "projective/__init__.mojo": {
@@ -644,6 +652,14 @@
       "blob": "57ddd7a95283ebd46829d2999914f7f4d768da95",
       "relation": "authored"
     },
+    "tests/finite_linear_algebra/test_qpoly.mojo": {
+      "blob": "f6b37e4f853134a2c08cfb6649b746275ca82d5d",
+      "relation": "authored"
+    },
+    "tests/finite_linear_algebra/test_qpoly_reference.py": {
+      "blob": "d8e8f4bf5f95f6032c787c799c21b074478acdf1",
+      "relation": "authored"
+    },
     "tests/governance/__init__.py": {
       "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
       "relation": "authored"
@@ -747,7 +763,7 @@
       "relation": "authored"
     },
     "tools/check_references.py": {
-      "blob": "e60171ad9f566ab1ca205c5f8a3065fefe75f277",
+      "blob": "c3235d9f4191f1026c00c62c156a8ef9ae6ba812",
       "relation": "authored"
     },
     "tools/madic_oracle.py": {
@@ -774,6 +790,10 @@
     },
     "tools/provenance.py": {
       "blob": "cb9fb8e865fbaa207c64ce14de87758a4e2986de",
+      "relation": "authored"
+    },
+    "tools/qpoly_reference.py": {
+      "blob": "27e4fece7703d06a41aa30630e86ca49c8d4e570",
       "relation": "authored"
     },
     "tools/replay_mojo.py": {

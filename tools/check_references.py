@@ -63,6 +63,7 @@ EXTERNAL: dict[str, str] = {
     "docs/enclosure-width-lemma.md": "larsbx/finite-julia-set-research, which supplies the step factor K of section 2.5",
     "docs/taylor-models.md": "larsbx/finite-julia-set-research, which built and measured the models of section 2.5",
     "docs/scaled-boxes.md": "larsbx/finite-julia-set-research, which implemented the E = F endpoints of section 2.1",
+    "docs/tiling-connections-2026-09-20.md": "larsbx/finite-julia-set-research, whose item 2 asked for the general-size characteristic polynomial and the root isolation of docs/exact-polynomial-root-isolation-spec.md",
 }
 
 POLICY = Policy(external=EXTERNAL, skipped_prefixes=SKIPPED_PREFIXES)
