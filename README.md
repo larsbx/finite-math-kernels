@@ -26,6 +26,7 @@ substitution_dynamics/
 quadratic_orbit/
   orbit.mojo
   collision.mojo
+  preperiodic.mojo
 projective/
   homogeneous.mojo
   chart.mojo
@@ -80,6 +81,15 @@ not part of this repository.
   two coordinate records modulo scaling, and reading one as a value needs a
   chart. Each chart is a division, so it has a domain, and a box whose
   quadrance could vanish leaves the chart rather than being evaluated.
+- The preperiodic certificates (`quadratic_orbit/preperiodic.mojo`) are about
+  boxes. `R^c_{l,k}(z) = f^{l+k}(z) - f^l(z)` is evaluated along the orbit and
+  its derivative by the chain rule, so no polynomial is ever formed and no
+  squarefree decomposition is needed; what a squarefree part would buy is a
+  simple root, and a derivative enclosure that misses zero is that, checked.
+  Exclusion (`0` not in the residual's enclosure) is a proof about every point
+  of the box. Isolation returns the *hypothesis* of the Krawczyk-Moore
+  theorem, strict inclusion of the operator's image, and never its conclusion:
+  the theorem is the consumer's import to name and gate.
 - The collision partition (`quadratic_orbit/collision.mojo`) is finite
   combinatorics on indices. It says which pairs an `(ell, period)` type
   intends to collide, knows nothing about any parameter, and proves nothing

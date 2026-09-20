@@ -10,6 +10,15 @@ consumers use, and the collision partition is checked to be a partition.
 from finite_exact.closed_interval import ComplexIQ, IQ
 from finite_exact.rat_q import Q
 from quadratic_orbit.collision import forbidden_count, intended_count, intended_pair, pair_count
+from quadratic_orbit.preperiodic import (
+    excludes_preperiodic_point,
+    isolates_preperiodic_point,
+    orbit_derivative,
+    preperiodic_residual,
+    preperiodic_residual_derivative,
+    preperiodic_smoke,
+    singleton_reciprocal,
+)
 from quadratic_orbit.orbit import (
     collision_interval,
     complex_excludes_zero,
@@ -143,6 +152,47 @@ def test_intended_pairs_are_the_preperiodic_ones() -> Bool:
     )
 
 
+
+def test_the_residual_is_the_difference_of_two_orbit_terms() -> Bool:
+    # R^c_{l,k}(z) = f^{l+k}(z) - f^l(z), and at a genuine preperiodic point
+    # it is exactly zero. At c = -2 the point z = 2 is fixed.
+    var c = point(-2, 1, 0, 1)
+    var fixed = point(2, 1, 0, 1)
+    var residual = preperiodic_residual(fixed, c, 0, 1)
+    if not (residual.re.lo.eq(Q.zero()) and residual.im.hi.eq(Q.zero())):
+        return False
+    # The chain rule against a hand value: f(z) = z^2 - 2 has f'(2) = 4.
+    var derivative = orbit_derivative(fixed, c, 1)
+    if not derivative.re.lo.eq(Q(4, 1)):
+        return False
+    # Two steps: f'(f(2)) f'(2) = 4 * 4.
+    if not orbit_derivative(fixed, c, 2).re.lo.eq(Q(16, 1)):
+        return False
+    # R'_{0,1} = f' - 1.
+    return preperiodic_residual_derivative(fixed, c, 0, 1).re.lo.eq(Q(3, 1))
+
+
+def test_refusals_are_values() -> Bool:
+    var c = point(0, 1, 0, 1)
+    var z = point(1, 1, 0, 1)
+    return (
+        not preperiodic_residual(z, c, -1, 1).accepted() and
+        not preperiodic_residual(z, c, 0, 0).accepted() and
+        not singleton_reciprocal(point(0, 1, 0, 1)).accepted() and
+        not singleton_reciprocal(ComplexIQ(IQ(Q(1, 2), Q(3, 2)), IQ(Q.zero(), Q.zero()))).accepted() and
+        singleton_reciprocal(point(0, 1, 2, 1)).im.lo.eq(Q(-1, 2))
+    )
+
+
+def test_the_two_certificates_disagree_only_where_they_must() -> Bool:
+    # A box cannot both exclude a point and isolate one.
+    var c = point(0, 1, 0, 1)
+    var around_one = ComplexIQ(IQ(Q(7, 8), Q(9, 8)), IQ(Q(-1, 8), Q(1, 8)))
+    var isolated = isolates_preperiodic_point(around_one, c, 0, 1)
+    var excluded = excludes_preperiodic_point(around_one, c, 0, 1)
+    return isolated and not excluded.value and preperiodic_smoke()
+
+
 def main() raises:
     if not test_seed_is_the_zeroth_term():
         raise Error("orbit_term at zero steps is not the seed")
@@ -164,4 +214,10 @@ def main() raises:
         raise Error("an invalid orbit type intends something")
     if not test_intended_pairs_are_the_preperiodic_ones():
         raise Error("the intended pairs of type (2, 2) are wrong")
+    if not test_the_residual_is_the_difference_of_two_orbit_terms():
+        raise Error("the preperiodic residual or its derivative is wrong")
+    if not test_refusals_are_values():
+        raise Error("a preperiodic refusal aborted or was accepted")
+    if not test_the_two_certificates_disagree_only_where_they_must():
+        raise Error("exclusion and isolation are inconsistent")
     print("quadratic_orbit laws passed.")

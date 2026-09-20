@@ -9,7 +9,7 @@
       "relation": "authored"
     },
     "README.md": {
-      "blob": "d848d1e1b48c1159ced49ec257ca3bc343f3f282",
+      "blob": "f3646e506ce99988f440a9d207819e461ae95719",
       "relation": "authored"
     },
     "audit/CONSOLIDATION_PROVENANCE.md": {
@@ -441,6 +441,10 @@
       "source_blob": "53544fff8ade511fc7ffd4f7bb1de879a7bede1e",
       "source_path": "src/interval_orbit.mojo"
     },
+    "quadratic_orbit/preperiodic.mojo": {
+      "blob": "dc72cbf6a77627b9dc16a4210fb7813c647258bc",
+      "relation": "authored"
+    },
     "references/__init__.py": {
       "blob": "b16f3b005f4b62492febf49317fb4dcfe96d96c7",
       "relation": "authored"
@@ -704,7 +708,7 @@
       "relation": "authored"
     },
     "tests/quadratic_orbit/test_quadratic_orbit.mojo": {
-      "blob": "d919b9e0f69314fe34e33fb5ebf8f363efb9b544",
+      "blob": "5eaebdb9e95ec1f4a6e7cbdf1615d46cb297ccb2",
       "relation": "authored"
     },
     "tests/references/test_references.py": {
