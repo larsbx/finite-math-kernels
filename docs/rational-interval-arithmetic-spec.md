@@ -121,7 +121,7 @@ For every operation `∘` above and every `x ∈ X`, `y ∈ Y` in `I_E`,
 x ∘ y ∈ X ∘ Y.
 ```
 
-By induction, for any expression `f` built from `+ − × ÷` and constants, the **natural interval extension** `f_I` satisfies `f(x) ∈ f_I(X)` whenever `x ∈ X`. This is the only theorem the layer provides, and it is the whole point: rounding error becomes a **certified width** `b − a` rather than an unobservable `δ`. Transcendental and algebraic functions outside `ℚ` are admitted here through any enclosure `g_I` with `g(x) ∈ g_I(X)`, for example a rational bracket of a Perron root obtained by exact sign changes at rational points.
+By induction, for any expression `f` built from `+ − × ÷` and constants, the **natural interval extension** `f_I` satisfies `f(x) ∈ f_I(X)` whenever `x ∈ X`. This is the layer's central theorem, and it is the whole point: rounding error becomes a **certified width** `b − a` rather than an unobservable `δ`. Transcendental and algebraic functions outside `ℚ` are admitted here through any enclosure `g_I` with `g(x) ∈ g_I(X)`, for example a rational bracket of a Perron root obtained by exact sign changes at rational points. What it does **not** say is how far the enclosure and the point drift apart under iteration; section 2.5 bounds that.
 
 ### 2.4 Decision semantics
 
@@ -144,7 +144,14 @@ An interval never returns equality, and `0` from `sign_I` must never be consumed
 ### 2.5 Costs
 
 - **Dependency problem.** Occurrences of the same variable are treated as independent. `X − X = [a−b, b−a] ≠ [0,0]` and `X × X ⊋ X²` when `0 ∈ X`. Only **subdistributivity** holds: `X(Y + Z) ⊆ XY + XZ`. Widths therefore inflate along long computations and through iterated maps (the wrapping effect). The natural extension of the same polynomial in Horner form and in expanded form gives different, both valid, enclosures; Horner is generally tighter and is the required form here.
-- **Mitigations.** Bisection of `X` (width shrinks linearly in the number of pieces, cost grows the same way); centred forms and mean-value forms; affine or Taylor-model arithmetic, which tracks first-order correlations and cancels `X − X` exactly. Affine and Taylor models are out of scope for both repositories at present; bisection and Horner are in scope.
+- **Refinement.** The inflation is bounded per step, and that is what makes bisection a decision procedure rather than a hope. Suppose `rad(F(X)) ≤ K · rad(X)` for every enclosure confined to a region `R`, with `K ≥ 1` rational. Then while the iterates stay in `R`,
+
+  ```text
+  rad(F^n(X)) ≤ K^n · rad(X),   and   |w − f^n(x)| ≤ 2 K^n · rad(X)   for w ∈ F^n(X), x ∈ X
+  ```
+
+  both in the sup norm. So a certificate that holds at a point with margin `δ` holds on the whole enclosure once `rad(X) < δ / (2 K^n)`, which bisection reaches in `⌈log2(2 K^n · rad(X) / δ)⌉ levels`. `K` is the caller's, because it depends on the map; nothing else here does. `finite_exact/enclosure_width.mojo` computes each quantity exactly, and a consumer supplies `K`: for `z ↦ z² + c` on a box of coordinate bound `M` it is `6M` (`docs/enclosure-width-lemma.md` in `larsbx/finite-julia-set-research`).
+- **Mitigations.** Centred forms and mean-value forms; affine or Taylor-model arithmetic, which tracks first-order correlations and cancels `X − X` exactly. Affine and Taylor models are out of scope for both repositories at present; bisection and Horner are in scope.
 - **No exact answer.** The layer proves enclosure, never value. Equality is only ever refuted.
 
 ### 2.6 Best fit

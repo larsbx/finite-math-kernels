@@ -7,6 +7,7 @@ docs/rational-interval-arithmetic-spec.md section 1.3.
 """
 
 from finite_exact.bigint_z import bigint_z_phase_one_smoke, bigint_z_phase_two_smoke, bigint_z_phase_three_smoke, bigz_long_division_smoke
+from finite_exact.enclosure_width import enclosure_width_smoke
 from finite_exact.rat_q import Q, bigq_storage_smoke, demo_q_normalization, demo_q_order, q_cancellation_smoke
 
 
@@ -47,4 +48,6 @@ def main() raises:
         raise Error("Q field laws failed")
     if not test_rejection_is_explicit_and_sticky():
         raise Error("Q rejection semantics failed")
+    if not enclosure_width_smoke():
+        raise Error("enclosure width bounds failed")
     print("finite_exact smoke and law checks passed.")

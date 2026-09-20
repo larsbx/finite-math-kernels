@@ -175,7 +175,7 @@
       "relation": "authored"
     },
     "docs/rational-interval-arithmetic-spec.md": {
-      "blob": "a6425aa9861c6ff28f8cf19450a32b170b07986e",
+      "blob": "46ca2c9cc450e3b3b2134c99355c53e543b07115",
       "relation": "modified",
       "source": "finite_exact",
       "source_blob": "86478aa8777903f6c605d4bcfd7d899ac51a74fa",
@@ -213,6 +213,10 @@
       "source": "interval_q",
       "source_blob": "d622ed1eee2881e01705ec09f60bacf6b35c26ea",
       "source_path": "interval_q/closed_q.mojo"
+    },
+    "finite_exact/enclosure_width.mojo": {
+      "blob": "72766a8f53de932d0c84fa7499ad0de83449e6f0",
+      "relation": "authored"
     },
     "finite_exact/rat_q.mojo": {
       "blob": "ab297da7f6192f0c7e88b3c06dfdea177f50e668",
@@ -589,7 +593,7 @@
       "source_path": "tests/property_probe.mojo"
     },
     "tests/finite_exact/test_finite_exact.mojo": {
-      "blob": "61a81ba48fc8e9418c310298ab115b50a37072ff",
+      "blob": "089894dc7c95cefbbce8df947652bb75ec1c8144",
       "relation": "modified",
       "source": "finite_exact",
       "source_blob": "faa1a65bf55875a1097cd8ef7a9ad9eb89212955",
@@ -727,7 +731,7 @@
       "relation": "authored"
     },
     "tools/check_references.py": {
-      "blob": "8c502b7ab16ee9457418242155ca09f090326cbe",
+      "blob": "090577f7ea663fef2164338aee4605d3cb81c7eb",
       "relation": "authored"
     },
     "tools/madic_oracle.py": {
