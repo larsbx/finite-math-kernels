@@ -109,6 +109,7 @@ Invariant **J1:** `a ≤ b` at construction. Reversed endpoints must raise, not 
 1/[c,d]       = [1/d, 1/c]           only if 0 ∉ [c,d]; otherwise raise
 [a,b] ÷ [c,d] = [a,b] × (1/[c,d])
 [a,b]²        = [0, max(a², b²)]     if 0 ∈ [a,b];  else [a,b] × [a,b]
+(X + iY)²     = (X² − Y², 2XY)        each coordinate square by the line above
 ```
 
 Under `E = F` each endpoint formula is evaluated with the outward rounding stated in 2.1; under `E = Q` it is evaluated exactly.

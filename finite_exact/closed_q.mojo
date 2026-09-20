@@ -150,7 +150,18 @@ struct ComplexIQ(Copyable):
         return ComplexIQ(real_part, imag_part)
 
     def square(self) -> ComplexIQ:
-        return self.mul(self)
+        """`(X + iY)^2 = (X^2 - Y^2, 2 X Y)`, with the sharp coordinate square.
+
+        Not `self.mul(self)`. The expanded product treats the two occurrences
+        of each coordinate as independent, so `X * X` is wider than `X^2`
+        whenever `0` is in `X` -- the dependency problem of specification
+        section 2.5, which `IQ.square` already avoids and which the complex
+        square was not using. The imaginary part has no repeated occurrence
+        and is the same either way.
+        """
+        var real_part = self.re.square().sub(self.im.square())
+        var cross = self.re.mul(self.im)
+        return ComplexIQ(real_part, cross.add(cross))
 
     def quadrance(self) -> IQ:
         return self.re.square().add(self.im.square())

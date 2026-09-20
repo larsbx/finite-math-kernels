@@ -175,7 +175,7 @@
       "relation": "authored"
     },
     "docs/rational-interval-arithmetic-spec.md": {
-      "blob": "46ca2c9cc450e3b3b2134c99355c53e543b07115",
+      "blob": "179e2532c4d1676e26a88579375d43ba073b1be2",
       "relation": "modified",
       "source": "finite_exact",
       "source_blob": "86478aa8777903f6c605d4bcfd7d899ac51a74fa",
@@ -208,8 +208,8 @@
       "relation": "facade"
     },
     "finite_exact/closed_q.mojo": {
-      "blob": "d622ed1eee2881e01705ec09f60bacf6b35c26ea",
-      "relation": "copy",
+      "blob": "28c07e6a893ee5ea9962da4eee9c6093a097c0f9",
+      "relation": "modified",
       "source": "interval_q",
       "source_blob": "d622ed1eee2881e01705ec09f60bacf6b35c26ea",
       "source_path": "interval_q/closed_q.mojo"
@@ -637,7 +637,7 @@
       "relation": "authored"
     },
     "tests/interval/test_interval_q.mojo": {
-      "blob": "b47dd49ac71dd6fb17ed69a06b1e0428e300e563",
+      "blob": "7763960a77ac22ba820d750bd3d02e46f8c3e170",
       "relation": "modified",
       "source": "interval_q",
       "source_blob": "0ee6e90f0e5c2f13faee3fe2c63b97aa9653f166",
@@ -700,7 +700,7 @@
       "relation": "authored"
     },
     "tests/provenance/test_provenance.py": {
-      "blob": "63f5cece82fd86898811b03b94b00ea2624811b0",
+      "blob": "2dd3d5e07306434c81b4b3f105d846b790b2cdad",
       "relation": "authored"
     },
     "tests/quadratic_orbit/test_quadratic_orbit.mojo": {

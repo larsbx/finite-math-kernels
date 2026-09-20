@@ -66,8 +66,11 @@ def test_imported_packages_are_copies_or_declared_modifications():
             assert entry["relation"] in {"copy", "modified", "facade", "authored"}, path
     assert {p for p, e in files.items() if e["relation"] == "facade"} == FACADES
     copies = {p for p, e in files.items() if e["relation"] == "copy"}
-    assert {"finite_exact/bigint_z.mojo", "finite_exact/rat_q.mojo", "finite_exact/closed_q.mojo", "finite_linear_algebra/qlinalg.mojo",
+    assert {"finite_exact/bigint_z.mojo", "finite_exact/rat_q.mojo", "finite_linear_algebra/qlinalg.mojo",
             "substitution_dynamics/words.mojo", "audit/claim_governance/findings.py"} <= copies
+    # The complex square was sharpened to the coordinate-square form of
+    # specification section 2.5, which the source repository did not carry.
+    assert files["finite_exact/closed_q.mojo"]["relation"] == "modified"
     # The coverage check is new here, so the two files that register and configure it have diverged from the retired source repository.
     assert {files[p]["relation"] for p in ("audit/claim_governance/runner.py", "audit/claim_governance/policy.py")} == {"modified"}
     assert files["audit/claim_governance/checks/coverage.py"]["relation"] == "authored"

@@ -27,6 +27,22 @@ def test_interval_enclosure_laws() -> Bool:
     )
 
 
+def test_the_complex_square_uses_the_sharp_coordinate_square() -> Bool:
+    # Spec section 2.5: the expanded product treats repeated occurrences as
+    # independent, so the complex square must not be `mul(self)`. On a box
+    # straddling zero in the imaginary coordinate the difference is real, and
+    # it is what decides whether an invariant box is seen to be invariant.
+    var box = ComplexIQ(IQ(Q(1, 4), Q(1, 2)), IQ(Q(-1, 4), Q(1, 4)))
+    var sharp = box.square()
+    var expanded = box.mul(box)
+    return (
+        sharp.re.lo.eq(Q(0, 1)) and sharp.re.hi.eq(Q(1, 4)) and
+        sharp.im.lo.eq(Q(-1, 4)) and sharp.im.hi.eq(Q(1, 4)) and
+        sharp.subset_of(expanded).value and not expanded.subset_of(sharp).value and
+        ComplexIQ.singleton(Q(2, 1), Q(3, 1)).square().re.lo.eq(Q(-5, 1))
+    )
+
+
 def test_three_valued_sign_and_fail_closed_reciprocal() -> Bool:
     # Spec section 2.4 and public boundary items 3 and 4: a zero-containing
     # interval has sign 0 (unknown) and no reciprocal; reversed endpoints and
@@ -53,6 +69,8 @@ def main() raises:
         raise Error("IQ smoke failed")
     if not test_interval_enclosure_laws():
         raise Error("IQ enclosure laws failed")
+    if not test_the_complex_square_uses_the_sharp_coordinate_square():
+        raise Error("complex square is not the sharp form")
     if not test_three_valued_sign_and_fail_closed_reciprocal():
         raise Error("IQ sign and rejection semantics failed")
     print("interval_q smoke and law checks passed.")
