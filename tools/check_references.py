@@ -58,7 +58,6 @@ EXTERNAL: dict[str, str] = {
     "mojo/psc/finite_cokernel_address.mojo": PSC,
     "docs/padic-representation-literature-gate-2026-09-16.md": PSC,
     "tests/test_substitution_dynamics_oracle.py": PSC,
-    "claim_governance.toml": "the consumer repository root (audit/docs/policy-format.md)",
     "docs/ledger-index.md": "the consumer repository (docs/ledger-generation-spec.md, section 3.4)",
     "interval_q/closed_q.mojo": "larsbx/interval_q at the commit pinned in audit/provenance.json",
 }

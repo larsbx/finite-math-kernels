@@ -98,6 +98,13 @@ not part of this repository.
   not matter.
 - `mojo_smoke` is test scaffolding: it reports the verdicts it is handed and
   certifies nothing.
+- The claim-governance package (`audit/claim_governance`) reads a consumer's
+  `claim_governance.toml` and reports findings against it. This repository is
+  one of those consumers: `claim_governance.toml` at the root restates the
+  boundaries above as rules, and `pixi run governance` checks them. A rule
+  that matched nothing would be a gate in name only, so
+  `tests/governance/test_self_policy.py` also checks that each shipped rule
+  still fires on a tree that breaks it.
 - Proof-record acceptance policy belongs to the consumer.
 - The evidence-vocabulary map (`docs/evidence-vocabulary-map.md`) only preserves
   or lowers authority: a non-transferable exercise never becomes a theorem, an

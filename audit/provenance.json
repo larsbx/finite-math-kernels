@@ -9,7 +9,7 @@
       "relation": "authored"
     },
     "README.md": {
-      "blob": "8c94b0746beede6ccb2738e6551180f7ac5e6837",
+      "blob": "d848d1e1b48c1159ced49ec257ca3bc343f3f282",
       "relation": "authored"
     },
     "audit/CONSOLIDATION_PROVENANCE.md": {
@@ -128,6 +128,10 @@
       "source": "claim_governance_tools",
       "source_blob": "1aabe8474bbdd10bea1f268e70448265387c1c33",
       "source_path": "docs/policy-format.md"
+    },
+    "claim_governance.toml": {
+      "blob": "61fe6d9e1a8eaabfdebcabf939d64705726344f2",
+      "relation": "authored"
     },
     "docs/canonical-encoding.md": {
       "blob": "f21baa96832c6051021d3fecec0bee9aff03c926",
@@ -344,7 +348,7 @@
       "relation": "authored"
     },
     "pixi.toml": {
-      "blob": "9d37afab6177f257d07213f060e88457a99d31be",
+      "blob": "83b51ff930a85d756f9ae7a478aaddd1426f7951",
       "relation": "authored"
     },
     "projective/__init__.mojo": {
@@ -620,6 +624,14 @@
       "blob": "57ddd7a95283ebd46829d2999914f7f4d768da95",
       "relation": "authored"
     },
+    "tests/governance/__init__.py": {
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "relation": "authored"
+    },
+    "tests/governance/test_self_policy.py": {
+      "blob": "14f962d00997d08601b0a70d7a7acf8fbb28d91e",
+      "relation": "authored"
+    },
     "tests/interval/test_interval_q.mojo": {
       "blob": "b47dd49ac71dd6fb17ed69a06b1e0428e300e563",
       "relation": "modified",
@@ -715,7 +727,7 @@
       "relation": "authored"
     },
     "tools/check_references.py": {
-      "blob": "b8ca89871e194900e9ca2c1299c3dbd09d4ed1a6",
+      "blob": "8c502b7ab16ee9457418242155ca09f090326cbe",
       "relation": "authored"
     },
     "tools/madic_oracle.py": {

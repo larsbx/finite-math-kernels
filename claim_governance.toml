@@ -1,0 +1,95 @@
+# Claim-governance policy for larsbx/finite-math-kernels.
+#
+# This repository ships the engine (`audit/claim_governance`) and the format
+# it reads (`audit/docs/policy-format.md`), and until now ran neither on
+# itself: the consumers had policy files and the publisher did not. This is
+# that file.
+#
+# What it encodes is the "Boundaries" section of README.md, which is where
+# this repository already says what each package may and may not claim. The
+# rules restate those sentences as machine-checkable ones. They state no
+# mathematics.
+#
+# Run: pixi run governance
+
+[repository]
+name = "larsbx/finite-math-kernels"
+
+# The kernels, their specifications, and the Python surfaces that generate or
+# check them. The engine's own package and documentation are not scanned:
+# they quote the vocabulary the rules forbid, and a rule that had to exempt
+# its own definition would be checking nothing.
+[scan]
+prose = ["README.md", "docs/**/*.md"]
+source = [
+  "finite_exact/**/*.mojo",
+  "finite_linear_algebra/**/*.mojo",
+  "quadratic_orbit/**/*.mojo",
+  "projective/**/*.mojo",
+  "substitution_dynamics/**/*.mojo",
+  "mojo_smoke/**/*.mojo",
+  "oracle_refinement/**/*.py",
+  "proof_records/**/*.py",
+  "references/**/*.py",
+  "vendoring/**/*.py",
+  "tools/**/*.py",
+]
+exclude = ["**/__pycache__/**"]
+
+# ---------------------------------------------------------------------------
+# The exact layer has no analytic primitives and no floating point. README.md:
+# "BigZ and Q are exact and unbounded". Neither rule fires today; both are
+# here so that the day one would, it does.
+# ---------------------------------------------------------------------------
+[[numerics.rule]]
+name = "no-transcendental"
+pattern = '\b(?:sin|cos|tan|asin|acos|atan|atan2|exp|log|log2|log10|sqrt|cbrt|pow)\s*\('
+paths = ["**/*.mojo"]
+message = "analytic primitive in the exact layer; the kernels are rational arithmetic"
+
+[[numerics.rule]]
+name = "no-floating-point"
+pattern = '\b(?:Float16|Float32|Float64|BFloat16|SIMD\[DType\.float)'
+paths = ["**/*.mojo"]
+message = "floating point in the exact layer; BigZ and Q are exact and unbounded"
+
+# ---------------------------------------------------------------------------
+# Rank 2 has coordinate records, polynomial maps, and quadrance scalars. It
+# has no circle, and the projective package is where that boundary is easiest
+# to cross: README.md says the completion carrying the circular points is
+# *not* the one this map is a morphism of. Naming the circular points is
+# allowed -- it is the standard term for the two ideal elements -- so the
+# pattern bans the constructions, not the citation.
+# ---------------------------------------------------------------------------
+[[numerics.rule]]
+name = "rank2-loci"
+pattern = 'unit circle|circle object|circle primitive|disk object|disc object|arc object|polar angle|circumference'
+paths = ["README.md", "docs/**/*.md", "**/*.mojo", "tools/**/*.py"]
+message = "rank-2 locus construction; the plane has quadrance, not a circle"
+negating_context = ["not ", "no ", "never", "without ", "must not", "cannot", "rejects", "forbidden"]
+radius = 140
+
+# ---------------------------------------------------------------------------
+# A kernel that says two structures are the same has left its own boundary.
+# The phrases are the ones a claim gets overstated with; a file that carries a
+# full terminology declaration, or that denies the phrase nearby, is exempt.
+# ---------------------------------------------------------------------------
+[terminology]
+declaration_marker = "Terminology declaration:"
+declaration_fields = ["Terminology declaration:", "Genealogy:", "Bridge claim:", "Known leaks:", "Use discipline:"]
+risky_phrases = ["obvious isomorphism", "canonical analogy", "essentially the same", "proof by analogy", "nothing but", "corresponds exactly"]
+negating_context = ["not ", "no ", "without ", "unless ", "forbidden", "reject", "must not", "cannot", "does not", "is not"]
+allow = []
+
+# ---------------------------------------------------------------------------
+# A statement needs a status. The specifications here state none today -- they
+# describe formats and boundaries, not theorems -- so this rule reports
+# nothing and exists for the day one of them does.
+# ---------------------------------------------------------------------------
+[claims]
+paths = ["README.md", "docs/**/*.md"]
+statement_kinds = ["Theorem", "Proposition", "Lemma", "Corollary", "Conjecture"]
+window_lines = 6
+file_status_marker = "Status:"
+file_status_lines = 10
+allow = []
