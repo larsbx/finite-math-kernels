@@ -8,7 +8,7 @@ ci_wiring = false
 
 [authority]
 primary_languages = ["Mojo"]
-supporting_languages = ["Lean", "Haskell", "Python"]
+supporting_languages = ["Lean", "Haskell", "Python", "Julia"]
 canonical_status = "existing-authority-preserved"
 
 [roles]
@@ -23,3 +23,11 @@ unknown_critical_fields = "reject"
 schema_mismatch = "reject"
 authority_mismatch = "reject"
 normalization_mismatch = "reject"
+
+[julia]
+role = "supporting-research-engine"
+oracle_path = "oracles/julia"
+spike_path = "spikes/julia"
+acceptance_authority = false
+proof_authority = false
+promotion_requires = "canonical boundary vectors and authoritative checker replay"
