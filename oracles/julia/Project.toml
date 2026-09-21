@@ -1,0 +1,7 @@
+name = "EstateJuliaOracle"
+uuid = "534a4c20-6f72-6163-6c65-000000000001"
+authors = ["larsbx"]
+version = "0.1.0"
+
+[compat]
+julia = "1.11"
