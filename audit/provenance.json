@@ -13,7 +13,7 @@
       "relation": "authored"
     },
     "README.md": {
-      "blob": "139068f9d1a0a40bdb0f5d6a58d4960ffae242d9",
+      "blob": "e03d0c83cd8b7d6961e4b326b6e1533757aaaaa4",
       "relation": "authored"
     },
     "audit/CONSOLIDATION_PROVENANCE.md": {
@@ -150,11 +150,11 @@
       "relation": "authored"
     },
     "benchmarks/frontier/ff_orbit_census/implementations.toml": {
-      "blob": "79be6baf1abf3bc06c47ce74c03786a1eab84fef",
+      "blob": "623966f5fb511cd6a904f96b142cb5503bf9fe06",
       "relation": "authored"
     },
     "benchmarks/frontier/ff_orbit_census/mojo/census.mojo": {
-      "blob": "14385dc84064d2601eb3f66137e66b4ed6a870d9",
+      "blob": "4f0dfe766294cfa7df80488b7abefe720499c718",
       "relation": "authored"
     },
     "benchmarks/frontier/ff_orbit_census/reference.py": {
@@ -174,7 +174,7 @@
       "relation": "authored"
     },
     "benchmarks/frontier/harness.py": {
-      "blob": "5942d08ef48b58f5c3a69b33ac89faa314e77caf",
+      "blob": "4e24fb53268e92d82de4d8607143aa74f626a7c4",
       "relation": "authored"
     },
     "contracts/typed-proof-graph-normalization-v1.json": {
@@ -204,7 +204,7 @@
       "source_path": "docs/exact-arithmetic-public-boundary.md"
     },
     "docs/frontier-math-compute-candidates.md": {
-      "blob": "e87587df8439633d25acff1dc0f5155df820c736",
+      "blob": "d6ce46190c9431dd7766ed3d441f7aff6e43adb9",
       "relation": "authored"
     },
     "docs/generator-refinement-spec.md": {
@@ -431,8 +431,16 @@
       "blob": "70abd87fab44286f548e95449fca8773e0aba7b0",
       "relation": "authored"
     },
+    "parallel_fold/__init__.mojo": {
+      "blob": "4d7584a7df3c00eaf006b07805c6a162ddd9e701",
+      "relation": "authored"
+    },
+    "parallel_fold/map_fold.mojo": {
+      "blob": "a9a5800d9b6a0e8b8477bb94072452c2fca34dd6",
+      "relation": "authored"
+    },
     "pixi.toml": {
-      "blob": "f830dac373a442c01ef3d3ce5e26d23e6158629a",
+      "blob": "e2e97a91d6bfd203d09153e39029fdd34c00b322",
       "relation": "authored"
     },
     "proof_records/ProofArchitecture.tla": {
@@ -701,7 +709,7 @@
       "relation": "authored"
     },
     "tests/frontier/test_harness.py": {
-      "blob": "e83145f8d05563a76afe30167908a952437f10ec",
+      "blob": "e718471be4426683af229405e5bdf6fc2d51a23f",
       "relation": "authored"
     },
     "tests/interval/test_interval_q.mojo": {
@@ -717,6 +725,10 @@
     },
     "tests/oracle_refinement/test_refinement.py": {
       "blob": "c0307c2cae0dcdd04197aca93ec4a7f5bf5a11c6",
+      "relation": "authored"
+    },
+    "tests/parallel_fold/test_map_fold.mojo": {
+      "blob": "d6b5e903542ff99f871d3953acbf128b4376ba04",
       "relation": "authored"
     },
     "tests/proof_records/replay_vectors.mojo": {

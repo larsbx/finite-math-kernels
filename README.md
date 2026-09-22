@@ -28,6 +28,8 @@ quadratic_orbit/
   collision.mojo
 mojo_smoke/
   report.mojo
+parallel_fold/
+  map_fold.mojo
 proof_records/
   ProofArchitecture.tla
   graph.py
@@ -76,6 +78,11 @@ not part of this repository.
   not matter.
 - `mojo_smoke` is test scaffolding: it reports the verdicts it is handed and
   certifies nothing.
+- `parallel_fold` evaluates a map-fold over an index range on worker threads
+  and folds the chunks in index order, so an associative `combine` returns the
+  sequential fold at every worker count; it relies on associativity alone,
+  never commutativity. It is the one package that needs MAX
+  (`max.algorithm.parallelize`, from `max-core`) and it certifies nothing.
 - Proof-record acceptance policy belongs to the consumer.
 - The evidence-vocabulary map (`docs/evidence-vocabulary-map.md`) only preserves
   or lowers authority: a non-transferable exercise never becomes a theorem, an

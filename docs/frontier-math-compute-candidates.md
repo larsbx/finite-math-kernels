@@ -167,13 +167,14 @@ path. `benchmarks/frontier/harness.py` builds, runs, replays and records
 (`pixi run bench-frontier`; tests in `pixi run test-frontier`). The Lane A
 contract is `benchmarks/frontier/ff_orbit_census/CONTRACT.md`: a census of
 reduced Apollonian words over `F_p`, replayed by the spec oracle
-`benchmarks/frontier/ff_orbit_census/reference.py`. Mojo (`cpu_single`) and
-Rust (`cpu_single`, `cpu_all`) emit byte-identical records on every shipped
+`benchmarks/frontier/ff_orbit_census/reference.py`. Mojo and Rust
+(`cpu_single`, `cpu_all`) emit byte-identical records on every shipped
 corpus, and so does Bend 2 (`cpu_single` and `cpu_all`, via its runtime's
 `--threads`). Every kernel reduces residues by conditional subtraction, the
 only reduction Bend can afford, so the lanes compare languages rather than
-modular-reduction strategies. Mojo `cpu_all` is recorded as unsupported
-because the pinned nightly's std exposes no CPU task runtime. Julia is
+modular-reduction strategies. Mojo `cpu_all` runs on MAX's task runtime
+through `parallel_fold`, whose in-order fold keeps the record identical at
+every thread count; the Mojo std itself has no CPU task runtime. Julia is
 recorded as not implemented, and GPU lanes as having no runner. On the first
 container run the Rust baseline was the slowest single-thread kernel, so it
 needs a tuning pass before any speedup against it is claimed.

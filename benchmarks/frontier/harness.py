@@ -72,7 +72,7 @@ def load_registry(cid: str) -> dict[str, dict]:
 
 
 def expand(argv: list[str], cid: str, build_dir: Path, threads: int | None = None) -> list[str]:
-    return [a.format(dir=FRONTIER / cid, build=build_dir, threads=threads) for a in argv]
+    return [a.format(dir=FRONTIER / cid, root=ROOT, build=build_dir, threads=threads) for a in argv]
 
 
 def command_output(argv: list[str]) -> str | None:
