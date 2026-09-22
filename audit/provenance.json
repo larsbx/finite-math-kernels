@@ -129,6 +129,10 @@
       "source_blob": "1aabe8474bbdd10bea1f268e70448265387c1c33",
       "source_path": "docs/policy-format.md"
     },
+    "contracts/typed-proof-graph-normalization-v1.json": {
+      "blob": "ea15d8ea0c99e632dde785dc6647c89c44629a2c",
+      "relation": "authored"
+    },
     "docs/canonical-encoding.md": {
       "blob": "f21baa96832c6051021d3fecec0bee9aff03c926",
       "relation": "modified",
@@ -179,6 +183,10 @@
     },
     "docs/tuning-substitutions-spec.md": {
       "blob": "0b1ca62bbd7e86fafb3fe2a4d4fae4ca7dadcdf7",
+      "relation": "authored"
+    },
+    "docs/typed-proof-graph-normative-contract.md": {
+      "blob": "e164bcf877bfa83a1b7eba77e461b946928d191c",
       "relation": "authored"
     },
     "docs/typed-relationship-graph-spec.md": {
@@ -321,6 +329,18 @@
     },
     "fixtures/ledger/tla/MCExampleOpen.tla": {
       "blob": "3464b5ac0cdabf311fbd07d98d79fd1867d76c37",
+      "relation": "authored"
+    },
+    "fixtures/oracle/typed-proof-graph-minimal-v1.expected.json": {
+      "blob": "cf99268cd4330a3c3c9eb08314e45539fefd09f2",
+      "relation": "authored"
+    },
+    "fixtures/oracle/typed-proof-graph-minimal-v1.input.json": {
+      "blob": "bae78ff68a290fbace151c2f759fec22402e73e9",
+      "relation": "authored"
+    },
+    "fixtures/oracle/typed-proof-graph-normalization-v1.json": {
+      "blob": "bd87340c013556c67a738896e76b1d04384ff20d",
       "relation": "authored"
     },
     "fixtures/vectors.json": {
@@ -630,6 +650,10 @@
       "blob": "864afcbca7f4fd2d20eeb0dab64979ff57a2dd23",
       "relation": "authored"
     },
+    "tests/proof_records/test_graph_contract.py": {
+      "blob": "01c8ae5312fbae42c3e12f9ea1916957871eed34",
+      "relation": "authored"
+    },
     "tests/proof_records/test_mojo_replay.py": {
       "blob": "4c5331e32c060f764f76edc8bc6644ec9b633646",
       "relation": "modified",
@@ -696,6 +720,10 @@
     },
     "tools/madic_oracle.py": {
       "blob": "25ec820a10f2d9235b486ab568f95a4c4865c1bc",
+      "relation": "authored"
+    },
+    "tools/make_graph_contract_vector.py": {
+      "blob": "8b867b06f2797428d7d5ce1142e2fb49b19fd27b",
       "relation": "authored"
     },
     "tools/make_ledger_example.py": {
