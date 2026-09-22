@@ -154,7 +154,7 @@
       "relation": "authored"
     },
     "benchmarks/frontier/ff_orbit_census/mojo/census.mojo": {
-      "blob": "14385dc84064d2601eb3f66137e66b4ed6a870d9",
+      "blob": "a7ccc3b3b91e25065f73f5e62524bfdc198ffc69",
       "relation": "authored"
     },
     "benchmarks/frontier/ff_orbit_census/reference.py": {
@@ -204,7 +204,7 @@
       "source_path": "docs/exact-arithmetic-public-boundary.md"
     },
     "docs/frontier-math-compute-candidates.md": {
-      "blob": "e87587df8439633d25acff1dc0f5155df820c736",
+      "blob": "1e63d94194824db9bb0aae04cc1d7431e66dfbfa",
       "relation": "authored"
     },
     "docs/generator-refinement-spec.md": {
@@ -701,7 +701,7 @@
       "relation": "authored"
     },
     "tests/frontier/test_harness.py": {
-      "blob": "e83145f8d05563a76afe30167908a952437f10ec",
+      "blob": "e718471be4426683af229405e5bdf6fc2d51a23f",
       "relation": "authored"
     },
     "tests/interval/test_interval_q.mojo": {

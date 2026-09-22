@@ -2,13 +2,13 @@
 #
 # The same prefix-sharing depth-first walk as the Rust baseline: the word tree
 # is cut at a fixed depth into independent subtrees, each reduced to a partial
-# record, and the partials are merged.
+# record in its own slot, and the slots are merged in task order.
 #
 # Usage: census <p> <length> <s0> <s1> <s2> <s3> <stride> <threads>
-# Only threads = 1 is supported: the pinned nightly's std exposes no
-# `parallelize` (or other CPU task runtime), so the cpu_all lane reports
-# unsupported rather than silently running serially.
+# threads = 1 walks the subtrees in a plain loop; otherwise MAX's CPU runtime
+# (`max.algorithm.parallelize`) spreads them over that many workers.
 
+from max.algorithm import parallelize
 from std.sys import argv, stderr
 from std.time import perf_counter_ns
 
@@ -126,11 +126,23 @@ struct Census(Copyable):
         return rec^
 
 
-def run(c: Census) -> Partial:
+def run(c: Census, threads: Int) -> Partial:
     var cut = min(CUT, c.length)
+    var tasks = 4 * 3 ** (cut - 1)
+    var parts = List[Partial](length=tasks, fill=Partial.empty())
+    var slots = parts.unsafe_ptr()
+
+    def task(t: Int) {slots, c, cut}:
+        slots[unsafe_offset=t] = c.subtree(cut, UInt64(t))
+
+    if threads == 1:
+        for t in range(tasks):
+            task(t)
+    else:
+        parallelize(task, tasks, threads)
     var rec = Partial.empty()
-    for t in range(4 * 3 ** (cut - 1)):
-        rec.absorb(c.subtree(cut, UInt64(t)))
+    for t in range(tasks):
+        rec.absorb(parts[t])
     return rec^
 
 
@@ -162,14 +174,14 @@ def main() raises:
     var threads = atol(args[8])
     if not (p > 2 and p < (UInt64(1) << 32) and p % 2 == 1 and length >= 1 and stride >= 1):
         raise Error("arguments outside the contract")
-    if threads != 1:
-        raise Error("unsupported: no CPU task runtime in this Mojo std")
+    if threads < 1:
+        raise Error("arguments outside the contract")
     var seed = SIMD[DType.uint32, 4](0)
     for k in range(4):
         seed[k] = UInt32(UInt64(atol(args[3 + k])) % p)
     var c = Census(p, length, seed, stride)
     var start = perf_counter_ns()
-    var rec = run(c)
+    var rec = run(c, threads)
     var ns = perf_counter_ns() - start
     print(render(c, rec), end="")
     print("kernel_ns", ns, file=stderr)

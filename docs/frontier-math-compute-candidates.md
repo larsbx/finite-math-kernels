@@ -172,8 +172,10 @@ Rust (`cpu_single`, `cpu_all`) emit byte-identical records on every shipped
 corpus, and so does Bend 2 (`cpu_single` and `cpu_all`, via its runtime's
 `--threads`). Every kernel reduces residues by conditional subtraction, the
 only reduction Bend can afford, so the lanes compare languages rather than
-modular-reduction strategies. Mojo `cpu_all` is recorded as unsupported
-because the pinned nightly's std exposes no CPU task runtime. Julia is
+modular-reduction strategies. Mojo's `cpu_all` lane uses MAX's CPU runtime
+(`max.algorithm.parallelize`): in the pinned nightly the task runtime moved
+out of `std.algorithm` into the `max` package, and it takes the work function
+as a closure value with an explicit capture list. Julia is
 recorded as not implemented, and GPU lanes as having no runner. On the first
 container run the Rust baseline was the slowest single-thread kernel, so it
 needs a tuning pass before any speedup against it is claimed.
