@@ -31,7 +31,9 @@ defmodule Frontier.PortKernel do
   end
 
   @doc """
-  The Bend challenger: `bend run-c census.bend P C CAP LO HI`. It proposes; it cannot replay.
+  The Bend 1 challenger: `bend --hvm-bin HVM run-c census.bend P C CAP LO HI`.
+  It proposes; it cannot replay. Both binaries are explicit paths: `bend` on
+  PATH is the Bend 2 of the Lane A harness, a different language.
 
   Each run gets its own working directory: `bend run-c` writes its compiled
   program to a fixed `.out.hvm` in the current directory, so concurrent runs
@@ -39,15 +41,16 @@ defmodule Frontier.PortKernel do
   check in `Frontier.Protocol` rejects such an answer; the scratch directory
   prevents it.
   """
-  @spec bend(Path.t(), Path.t()) :: kernel
-  def bend(bend, source) do
+  @spec bend(Path.t(), Path.t(), Path.t()) :: kernel
+  def bend(bend, hvm, source) do
     source = Path.expand(source)
 
     %{
       name: :bend,
       domain: &Contract.bend_domain/1,
       census: fn block ->
-        in_scratch_dir(&run(bend, ["run-c", source | block_args(block)], cd: &1)) |> bend_census()
+        in_scratch_dir(&run(bend, ["--hvm-bin", hvm, "run-c", source | block_args(block)], cd: &1))
+        |> bend_census()
       end,
       replay: fn _ -> {:infra, :not_an_authority} end
     }

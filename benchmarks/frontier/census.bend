@@ -1,6 +1,6 @@
 # census.bend: the Bend challenger for contract orbit-census-v1.
 #
-#   bend run-c census.bend P C CAP LO HI
+#   bend --hvm-bin HVM run-c census.bend P C CAP LO HI      (Bend 1: bend-lang 0.2.38)
 #
 # prints one canonical record line (docs/polyglot-orbit-census-design.md,
 # section 3.4). It is non-authoritative: the orchestrator hands every line to

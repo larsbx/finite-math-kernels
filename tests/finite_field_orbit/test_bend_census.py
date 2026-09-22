@@ -1,14 +1,15 @@
 """The Bend challenger against the golden vectors, and the measured reasons for its domain.
 
-Runs in the polyglot environment (`pixi run test-orbit-bend`).
-`bend` and `hvm` must be on PATH; a missing toolchain fails the gate, it does
-not skip. Each run gets its own working directory, because `bend run-c`
+Runs in the polyglot environment (`pixi run test-orbit-bend`). This lane is
+Bend 1 (`bend-lang` 0.2.38 on HVM2), addressed by FRONTIER_BEND1 and
+FRONTIER_HVM1 rather than by `bend` on PATH, which belongs to the Bend 2 of the
+Lane A harness. A missing toolchain fails the gate, it does not skip. Each run gets its own working directory, because `bend run-c`
 writes a fixed `.out.hvm` into the current one.
 """
 
 from __future__ import annotations
 
-import shutil
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -25,10 +26,15 @@ VECTORS = ROOT / "fixtures" / "orbit_census_v1.txt"
 BEND_MAX_P = 4093
 
 
+def bend1() -> list[str]:
+    paths = [os.environ.get(name, "") for name in ("FRONTIER_BEND1", "FRONTIER_HVM1")]
+    assert all(p and Path(p).is_file() for p in paths), "set FRONTIER_BEND1 and FRONTIER_HVM1 to the Bend 1 binaries"
+    return [paths[0], "--hvm-bin", paths[1], "run-c", str(SOURCE)]
+
+
 def bend(tmp_path: Path, *args: int) -> str:
     """The record line Bend prints; anything else in its output fails the test."""
-    assert shutil.which("bend") and shutil.which("hvm"), "bend and hvm must be on PATH"
-    out = subprocess.run(["bend", "run-c", str(SOURCE), *map(str, args)], cwd=tmp_path,
+    out = subprocess.run([*bend1(), *map(str, args)], cwd=tmp_path,
                          capture_output=True, text=True, timeout=600, check=True).stdout
     line, result, tail = out.split("\n")
     assert result.startswith("Result: ") and tail == "", out
@@ -59,6 +65,6 @@ def test_outside_its_domain_bend_is_silently_wrong(tmp_path):
 
 def test_arguments_of_2_to_the_24_are_refused_by_the_cli(tmp_path):
     """Arguments do not wrap (the CLI exits 2); only arithmetic does. The orchestrator refuses first anyway."""
-    result = subprocess.run(["bend", "run-c", str(SOURCE), str(2**24 + 7), "3", "7", "0", "7"], cwd=tmp_path,
+    result = subprocess.run([*bend1(), str(2**24 + 7), "3", "7", "0", "7"], cwd=tmp_path,
                             capture_output=True, text=True, timeout=600, check=False)
     assert result.returncode != 0 and "outside of range for U24" in result.stderr + result.stdout

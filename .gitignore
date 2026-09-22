@@ -4,4 +4,7 @@ __pycache__/
 *.pyc
 
 pixi.lock
+benchmarks/frontier/.build/
+benchmarks/frontier/results/
+benchmarks/frontier/ff_orbit_census/rust/target/
 .build/

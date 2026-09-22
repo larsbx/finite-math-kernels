@@ -5,7 +5,7 @@ authority = "performance_evidence_only"
 id = "ff_orbit_census"
 rank = 1
 owner_repo = "larsbx/giant-fibers-finite-fields-thin-groups"
-contract = "orbit-census-v1"  # docs/polyglot-orbit-census-design.md; the Bend lane is u24 (p <= 4093)
+contract = "u32-prime-field-orbit-v1"
 implementations = ["mojo", "bend", "julia", "rust"]
 lanes = ["cpu_single", "cpu_all", "gpu_one"]
 certificate = "canonical orbit digest plus sampled trajectories"

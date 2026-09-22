@@ -1,7 +1,8 @@
 defmodule Frontier.PortIntegrationTest do
   @moduledoc """
-  The real kernels behind Ports. Requires `FRONTIER_MOJO_BIN`, `bend` on PATH
-  and `FRONTIER_BEND_SOURCE` (set by `pixi run test-orchestrator`).
+  The real kernels behind Ports. Requires `FRONTIER_MOJO_BIN` and
+  `FRONTIER_BEND_SOURCE` (set by `pixi run test-orchestrator`) and the Bend 1
+  binaries `FRONTIER_BEND1` and `FRONTIER_HVM1`.
   A missing toolchain fails; it does not skip.
   """
   use ExUnit.Case, async: true
@@ -11,9 +12,10 @@ defmodule Frontier.PortIntegrationTest do
   setup_all do
     mojo = System.get_env("FRONTIER_MOJO_BIN") || flunk("FRONTIER_MOJO_BIN is not set")
     source = System.get_env("FRONTIER_BEND_SOURCE") || flunk("FRONTIER_BEND_SOURCE is not set")
-    assert File.exists?(mojo) and File.exists?(source)
-    assert System.find_executable("bend"), "bend is not on PATH"
-    %{mojo: PortKernel.mojo(mojo), bend: PortKernel.bend("bend", source)}
+    bend = System.get_env("FRONTIER_BEND1") || flunk("FRONTIER_BEND1 is not set")
+    hvm = System.get_env("FRONTIER_HVM1") || flunk("FRONTIER_HVM1 is not set")
+    assert Enum.all?([mojo, source, bend, hvm], &File.exists?/1)
+    %{mojo: PortKernel.mojo(mojo), bend: PortKernel.bend(bend, hvm, source)}
   end
 
   test "Mojo answers every census vector and accepts it on replay", %{mojo: mojo} do

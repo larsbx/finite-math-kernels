@@ -1,11 +1,11 @@
 {
   "files": {
     ".github/workflows/ci.yml": {
-      "blob": "7d37c5c707e8fc342004ae773da933721665ca3f",
+      "blob": "9a85d0c2b56c562a0d66c3af6aee409d9d4408c0",
       "relation": "authored"
     },
     ".github/workflows/frontier-polyglot.yml": {
-      "blob": "4f92e21dd345ab427caddcb014c2c552475a73fa",
+      "blob": "e2bbaea57126df4e5b81ba29856d680f9718c371",
       "relation": "authored"
     },
     ".github/workflows/julia-oracle.yml": {
@@ -13,11 +13,11 @@
       "relation": "authored"
     },
     ".gitignore": {
-      "blob": "6c816973778abaade603e6cd13730ef0be2f6916",
+      "blob": "54b2cbb916777d47ed4479af6dad9d7505a0cfa3",
       "relation": "authored"
     },
     "README.md": {
-      "blob": "2c3e998381f8cb362a82485b6f953e428a00bc72",
+      "blob": "5c07ba553c53a0d3d9ce23088718db19da2a4402",
       "relation": "authored"
     },
     "audit/CONSOLIDATION_PROVENANCE.md": {
@@ -146,15 +146,55 @@
       "relation": "authored"
     },
     "benchmarks/frontier/candidates.toml": {
-      "blob": "36f7fa6e807914ed3aea4c7bb69bb7bff57b68db",
+      "blob": "bfca49b1bd72b7fa97fde817df9fa4121070bfca",
       "relation": "authored"
     },
     "benchmarks/frontier/census.bend": {
-      "blob": "23ea9cb4e4f54fecb9a18b5b1e880f005ede38c6",
+      "blob": "8b7c19d9201f7ae2def355a6d109757dd835b8f9",
       "relation": "authored"
     },
     "benchmarks/frontier/census_cli.mojo": {
       "blob": "d99a415317937bd911e56ca20a5768c159894be7",
+      "relation": "authored"
+    },
+    "benchmarks/frontier/ff_orbit_census/CONTRACT.md": {
+      "blob": "f6685a335931b4913c514f4a6818a8363c592286",
+      "relation": "authored"
+    },
+    "benchmarks/frontier/ff_orbit_census/bend/census.bend": {
+      "blob": "a2580eb9758dba628681cb55f67edb9cd25a52f9",
+      "relation": "authored"
+    },
+    "benchmarks/frontier/ff_orbit_census/corpora.toml": {
+      "blob": "31aa6c884ee4f37ac03fec34ebe566c6eba0c5c1",
+      "relation": "authored"
+    },
+    "benchmarks/frontier/ff_orbit_census/implementations.toml": {
+      "blob": "623966f5fb511cd6a904f96b142cb5503bf9fe06",
+      "relation": "authored"
+    },
+    "benchmarks/frontier/ff_orbit_census/mojo/census.mojo": {
+      "blob": "4f0dfe766294cfa7df80488b7abefe720499c718",
+      "relation": "authored"
+    },
+    "benchmarks/frontier/ff_orbit_census/reference.py": {
+      "blob": "f836ad31a9bc76983800a6e62d6cee8d478ed752",
+      "relation": "authored"
+    },
+    "benchmarks/frontier/ff_orbit_census/rust/Cargo.lock": {
+      "blob": "ba55b7bb6a8a7abb92319b5d7e8d4d895baf68bd",
+      "relation": "authored"
+    },
+    "benchmarks/frontier/ff_orbit_census/rust/Cargo.toml": {
+      "blob": "d8efbb21a064299315d19a077bcd885051eb2fb4",
+      "relation": "authored"
+    },
+    "benchmarks/frontier/ff_orbit_census/rust/src/main.rs": {
+      "blob": "b29f169c591f254a01763347af3413c5a69a5127",
+      "relation": "authored"
+    },
+    "benchmarks/frontier/harness.py": {
+      "blob": "4e24fb53268e92d82de4d8607143aa74f626a7c4",
       "relation": "authored"
     },
     "benchmarks/frontier/orchestrator/.formatter.exs": {
@@ -178,7 +218,7 @@
       "relation": "authored"
     },
     "benchmarks/frontier/orchestrator/lib/frontier/port_kernel.ex": {
-      "blob": "7aabc32a791be445e961c759fdbd5141b1b1c65c",
+      "blob": "f2485dd5c0ad5877f027c684b6cc7aa2514fee01",
       "relation": "authored"
     },
     "benchmarks/frontier/orchestrator/lib/frontier/protocol.ex": {
@@ -198,7 +238,7 @@
       "relation": "authored"
     },
     "benchmarks/frontier/orchestrator/test/port_integration_test.exs": {
-      "blob": "b3ad2cc08b8f671d5eb2e37439fcbf6edff52bea",
+      "blob": "b95bf560837779bcd5c54d4b6b98ba9f068a4094",
       "relation": "authored"
     },
     "benchmarks/frontier/orchestrator/test/protocol_test.exs": {
@@ -240,7 +280,7 @@
       "source_path": "docs/exact-arithmetic-public-boundary.md"
     },
     "docs/frontier-math-compute-candidates.md": {
-      "blob": "6134d9e14246dd25a102915b344248e40339b59e",
+      "blob": "57529094eba1b96fbc1d9581e895605ce43a0cdf",
       "relation": "authored"
     },
     "docs/generator-refinement-spec.md": {
@@ -264,7 +304,7 @@
       "relation": "authored"
     },
     "docs/polyglot-orbit-census-design.md": {
-      "blob": "4f0f1388f02a6a33787e75795903517738c6bfba",
+      "blob": "ab121b6a0193bb9c554e386645ef668d64f262a8",
       "relation": "authored"
     },
     "docs/proof-records-specification.md": {
@@ -484,8 +524,16 @@
       "blob": "70abd87fab44286f548e95449fca8773e0aba7b0",
       "relation": "authored"
     },
+    "parallel_fold/__init__.mojo": {
+      "blob": "4d7584a7df3c00eaf006b07805c6a162ddd9e701",
+      "relation": "authored"
+    },
+    "parallel_fold/map_fold.mojo": {
+      "blob": "a9a5800d9b6a0e8b8477bb94072452c2fca34dd6",
+      "relation": "authored"
+    },
     "pixi.toml": {
-      "blob": "d17f2323bedee7db8b400391b44037f7ac4d0f06",
+      "blob": "2d05042d78d3fcbdcda8d9e52467b4a394470082",
       "relation": "authored"
     },
     "proof_records/ProofArchitecture.tla": {
@@ -735,7 +783,7 @@
       "source_path": "tests/test_public_boundary.py"
     },
     "tests/finite_field_orbit/test_bend_census.py": {
-      "blob": "dc5bf70efad5da51eda85734acf7c2954493fb89",
+      "blob": "bc3d335005497908e46fc02be6fa4041909d168e",
       "relation": "authored"
     },
     "tests/finite_field_orbit/test_choreography.py": {
@@ -765,6 +813,14 @@
       "blob": "57ddd7a95283ebd46829d2999914f7f4d768da95",
       "relation": "authored"
     },
+    "tests/frontier/test_ff_orbit_census.py": {
+      "blob": "91f2308641bfab486d11debfcd18c76e9d8ff790",
+      "relation": "authored"
+    },
+    "tests/frontier/test_harness.py": {
+      "blob": "e718471be4426683af229405e5bdf6fc2d51a23f",
+      "relation": "authored"
+    },
     "tests/interval/test_interval_q.mojo": {
       "blob": "b47dd49ac71dd6fb17ed69a06b1e0428e300e563",
       "relation": "modified",
@@ -778,6 +834,10 @@
     },
     "tests/oracle_refinement/test_refinement.py": {
       "blob": "c0307c2cae0dcdd04197aca93ec4a7f5bf5a11c6",
+      "relation": "authored"
+    },
+    "tests/parallel_fold/test_map_fold.mojo": {
+      "blob": "d6b5e903542ff99f871d3953acbf128b4376ba04",
       "relation": "authored"
     },
     "tests/proof_records/replay_vectors.mojo": {

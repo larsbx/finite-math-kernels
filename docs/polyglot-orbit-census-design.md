@@ -1,7 +1,8 @@
 # Polyglot orbit census: Elixir, Bend, Mojo, and choreographies
 
-Status: design and first executable slice (Slice 1, CPU correctness path, of
-`docs/frontier-math-compute-candidates.md`)  
+Status: design and executable protocol lane beside Slice 1 of
+`docs/frontier-math-compute-candidates.md` (whose Lane A contract is
+`benchmarks/frontier/ff_orbit_census/CONTRACT.md`)  
 Authority: performance and conformance evidence only; the Mojo replay
 predicate is the only acceptance authority, and it accepts finite facts about
 finite fields, never theorems
@@ -132,15 +133,17 @@ A supervisor must never turn a rejection into an acceptance by retrying.
 | Implementation | Domain | Measured reason |
 |---|---|---|
 | Mojo kernel | `p < 2^24` | visited table of `p` words per worker |
-| Bend challenger | `p <= 4093`, `cap < 2^24` | HVM2 arithmetic is `u24` and wraps silently (`4097 * 4097` evaluates to `8193`). `(p-1)^2 < 2^24` forces `p <= 4097`, and 4093 is the largest prime at or below that. Sums stay below `p^2 < 2^24`. The CLI refuses arguments of `2^24` or more (exit status 2), so only products wrap; a block with `p = 4099` returns a well-formed, wrong record |
+| Bend challenger (Bend 1: `bend-lang` 0.2.38, HVM2) | `p <= 4093`, `cap < 2^24` | HVM2 arithmetic is `u24` and wraps silently (`4097 * 4097` evaluates to `8193`). `(p-1)^2 < 2^24` forces `p <= 4097`, and 4093 is the largest prime at or below that. Sums stay below `p^2 < 2^24`. The CLI refuses arguments of `2^24` or more (exit status 2), so only products wrap; a block with `p = 4099` returns a well-formed, wrong record |
 | Python reference | contract domain | unbounded integers |
 
 A request outside a domain is answered `unsupported` *before* dispatch. The
 Bend lane in particular can never be allowed to wrap.
 
-The Frontier charter describes the first lane as U32. That is true of the
-contract but not of the Bend lane. This slice records the narrower domain as
-a measured fact and does not relax the contract to fit it.
+The contract is U32, but this Bend lane is not. It records the narrower
+domain as a measured fact and does not relax the contract to fit it. Bend 2,
+which the Lane A harness uses, has native `U32` with software division, so a
+Bend 2 port of `benchmarks/frontier/census.bend` should lift the domain to the
+contract's (deferred, section 10).
 
 ## 4. The authority: replay predicate
 
@@ -229,7 +232,7 @@ verdict, and unbounded retry.
 |---|---|---|
 | reference laws, vector drift | `pixi run test-orbit-reference` | default |
 | Mojo kernel against the vectors, replay rejects each tampered vector | `pixi run test-orbit-census` | default |
-| Bend census against the vectors, domain refusal | `pixi run test-orbit-bend` | polyglot (needs `bend`, `hvm`) |
+| Bend census against the vectors, domain refusal | `pixi run test-orbit-bend` | polyglot (needs `FRONTIER_BEND1`, `FRONTIER_HVM1`) |
 | orchestrator properties and Mojo/Bend Port integration | `pixi run test-orchestrator` | polyglot |
 | choreography model check, mutants caught | `pixi run test-choreography` | polyglot (needs `TLA_TOOLS`) |
 
@@ -257,6 +260,10 @@ These are observations from one Linux x86-64 container, not benchmarks:
   concurrent end-to-end run had one Bend process print another block's
   record. The echo check rejected it (`rejected:echo`) and it was never
   accepted. The Bend adapter now gives each run its own scratch directory.
+- **Two Bends, one name.** The Lane A harness calls `bend` expecting Bend 2.
+  With this lane's Bend 1 installed as `bend`, the harness's Bend build
+  failed. This lane therefore installs Bend 1 under its own root and calls it
+  by explicit path (`FRONTIER_BEND1`, with `--hvm-bin FRONTIER_HVM1`).
 - **`bend` exits 0 on compile errors.** The adapter therefore decides by the
   exact shape of stdout (`<record>`, then `Result: ...`), never by exit
   status alone.
@@ -275,6 +282,10 @@ still gate the kernel.
 
 ## 10. Deferred
 
+- A Bend 2 port of the challenger, which removes the u24 domain and the
+  second Bend toolchain; the harness already installs Bend 2 in CI.
+- Running this contract through `benchmarks/frontier/harness.py` for timing,
+  once it has a Bend 2 challenger.
 - GPU lanes (`bend run-cu`, Mojo GPU): wait for an identified runner.
 - The Julia oracle lane and the Rust baseline for Slice 1's throughput table.
 - Timing capture (`benchmarks/frontier/candidates.toml` result requirements):
