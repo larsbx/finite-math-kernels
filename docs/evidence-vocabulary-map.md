@@ -56,3 +56,10 @@ The gap is the point: the research repositories have theorem kinds the release a
 ## 5. Consumer obligations, not done here
 
 This package supplies the map and its checks. The other two ends are separate changes in their own repositories: sprucegoose emitting release receipts as records through this table, and crypto-composer consuming the closure validator for its constraint findings. Neither is in this repository's scope, and neither is claimed by this document.
+
+## 6. Dep–Proof consumer boundary
+
+The planned `larsbx/crypto-composer` Dep–Proof subsystem uses this vocabulary and the `proof_records` closure machinery as a generic evidence substrate. It does not move cryptographic proposition semantics or proof checking into this repository.
+
+See `docs/dep-proof-consumer-boundary.md` for the ownership boundary and the required non-implication between a complete proof-record closure and `Proof(Sat(S,D))`.
+
