@@ -167,6 +167,10 @@
       "blob": "95ba346ceab3e7eeaa33f01a449952770e77400c",
       "relation": "authored"
     },
+    "docs/julia-oracle-bigint-boundary.md": {
+      "blob": "07922484c3709fb96400d16ba4fa0631dab34f55",
+      "relation": "authored"
+    },
     "docs/julia-oracle-migration.md": {
       "blob": "0cb232bbf75ee4499f65f24c625f4ffe9609732f",
       "relation": "authored"
@@ -601,6 +605,10 @@
       "blob": "35bf8dcf9403f339848bfb0b48b8c9ad89af4598",
       "relation": "authored"
     },
+    "tests/finite_exact/julia_oracle_vectors.mojo": {
+      "blob": "ea4cf5a65c65a8149e200135b9a3c292cad378ce",
+      "relation": "authored"
+    },
     "tests/finite_exact/property_probe.mojo": {
       "blob": "06beb73c786d304237e2337212b729aa7d2f5edc",
       "relation": "copy",
@@ -614,6 +622,10 @@
       "source": "finite_exact",
       "source_blob": "faa1a65bf55875a1097cd8ef7a9ad9eb89212955",
       "source_path": "tests/test_finite_exact.mojo"
+    },
+    "tests/finite_exact/test_julia_oracle_vectors.py": {
+      "blob": "743d2e54f363347e906f98def2c6ce8f45f75624",
+      "relation": "authored"
     },
     "tests/finite_exact/test_property_oracle.py": {
       "blob": "cb5d76b01e0ad4455f380868de36c2b4e066d65f",
