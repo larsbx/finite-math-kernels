@@ -1,0 +1,21 @@
+# How the harness builds and runs each implementation of u32-prime-field-orbit-v1.
+# Placeholders: {dir} this directory, {build} the untracked build directory.
+# Every kernel takes `<p> <length> <s0> <s1> <s2> <s3> <stride> <threads>` and
+# prints the canonical record on stdout and `kernel_ns <n>` on stderr.
+# An implementation with a `status` is reported with that status and never run.
+
+[mojo]
+build = ["mojo", "build", "-O3", "{dir}/mojo/census.mojo", "-o", "{build}/census-mojo"]
+run = ["{build}/census-mojo"]
+version = ["mojo", "--version"]
+
+[rust]
+build = ["cargo", "build", "--release", "--quiet", "--manifest-path", "{dir}/rust/Cargo.toml", "--target-dir", "{build}/rust"]
+run = ["{build}/rust/release/census"]
+version = ["rustc", "--version"]
+
+[julia]
+status = "not_implemented"
+
+[bend]
+status = "not_implemented"

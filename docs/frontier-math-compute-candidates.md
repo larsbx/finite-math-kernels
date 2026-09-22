@@ -160,6 +160,17 @@ A language is promoted for a workload only after:
 
 ## Implementation sequence
 
+Status (2026-09-22): Slice 0 is in place and Slice 1 has its CPU correctness
+path. `benchmarks/frontier/harness.py` builds, runs, replays and records
+(`pixi run bench-frontier`; tests in `pixi run test-frontier`). The Lane A
+contract is `benchmarks/frontier/ff_orbit_census/CONTRACT.md`: a census of
+reduced Apollonian words over `F_p`, replayed by the spec oracle
+`benchmarks/frontier/ff_orbit_census/reference.py`. Mojo (`cpu_single`) and
+Rust (`cpu_single`, `cpu_all`) emit byte-identical records on every shipped
+corpus. Mojo `cpu_all` is recorded as unsupported because the pinned nightly's
+std exposes no CPU task runtime. Julia and Bend are recorded as not
+implemented, and GPU lanes as having no runner.
+
 ### Slice 0 — harness and contracts
 
 Create `benchmarks/frontier/` with a machine-readable manifest, JSON Lines
