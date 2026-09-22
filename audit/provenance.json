@@ -4,6 +4,10 @@
       "blob": "7d37c5c707e8fc342004ae773da933721665ca3f",
       "relation": "authored"
     },
+    ".github/workflows/julia-oracle.yml": {
+      "blob": "2910ab5d2bc023f8f5c0fe0bd1841ff5c8742b2a",
+      "relation": "authored"
+    },
     ".gitignore": {
       "blob": "8bbfa5132285876eaf10554279b346901dc629c2",
       "relation": "authored"
@@ -134,7 +138,7 @@
       "relation": "authored"
     },
     "docs/canonical-encoding.md": {
-      "blob": "f21baa96832c6051021d3fecec0bee9aff03c926",
+      "blob": "f50fe2be2ce972d8706938d5a7fb83d2be99d45d",
       "relation": "modified",
       "source": "finite_exact",
       "source_blob": "0e3f8f4b3dedc597d7a779a1f2f216f7fc5e8700",
@@ -165,6 +169,10 @@
     },
     "docs/julia-oracle-bigint-boundary.md": {
       "blob": "07922484c3709fb96400d16ba4fa0631dab34f55",
+      "relation": "authored"
+    },
+    "docs/julia-oracle-migration.md": {
+      "blob": "0cb232bbf75ee4499f65f24c625f4ffe9609732f",
       "relation": "authored"
     },
     "docs/ledger-generation-spec.md": {

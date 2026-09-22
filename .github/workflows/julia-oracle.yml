@@ -1,0 +1,41 @@
+name: Julia oracle parallel gate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  zq-transcript:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out domain repository
+        uses: actions/checkout@v4
+        with:
+          path: finite-math-kernels
+
+      - name: Check out pinned Julia oracle
+        uses: actions/checkout@v4
+        with:
+          repository: larsbx/julia-oracle-lab
+          ref: d694949a5076cb7ffbd663baac4f536d3afa065e
+          path: julia-oracle-lab
+
+      - uses: prefix-dev/setup-pixi@v0.9.1
+        with:
+          manifest-path: finite-math-kernels/pixi.toml
+
+      - uses: julia-actions/setup-julia@v2
+        with:
+          version: '1.11'
+
+      - name: Generate the authoritative Mojo transcript
+        working-directory: finite-math-kernels
+        run: pixi run mojo run -I . tests/finite_exact/property_probe.mojo > zq-transcript.txt
+
+      - name: Preserve the existing Python differential path
+        working-directory: finite-math-kernels
+        run: pixi run python tools/property_oracle.py --layers zq zq-transcript.txt
+
+      - name: Require independent Julia agreement
+        run: julia --project=julia-oracle-lab julia-oracle-lab/bin/exact_arithmetic_oracle.jl finite-math-kernels/zq-transcript.txt

@@ -1,6 +1,30 @@
 # Canonical encoding of integers and rationals
 
-Status: byte-level contract of `bigz_canonical_bytes` and `q_canonical_bytes`. It fixes one encoding per value so that consumers can hash, compare, and replay exact data without parsing decimal text. It is the only channel trusted between the Mojo probe and the Python oracle (`tools/property_oracle.py`). Composite record schemas (certificates, boxes, ray addresses) are consumer matters; `larsbx/finite-mandlebrot-research` keeps its own in `docs/canonical-serialization.md`. A proof record's own preimage is fixed by section 4 of `docs/proof-records-specification.md`, and `docs/evidence-vocabulary-map.md` states how a receipt from another program's ledger becomes such a record: the external receipt's identity travels as evidence, never as the record identifier, so exactly one encoding is authoritative per record.
+Status: byte-level contract of `bigz_canonical_bytes` and
+`q_canonical_bytes`. It fixes one encoding per value so consumers can hash,
+compare, and replay exact data without parsing decimal text.
+
+The canonical Mojo probe is checked independently by two non-authoritative
+oracles during the migration:
+
+- `tools/property_oracle.py`, using Python `int` and
+  `fractions.Fraction`;
+- `finite-exact.zq.property-transcript` from the pinned
+  `larsbx/julia-oracle-lab` revision, using Julia `BigInt` and
+  `Rational{BigInt}`.
+
+The trusted channel is the canonical byte transcript. Neither oracle receives
+acceptance authority, and neither oracle parses the transcript back into Mojo
+values. See `docs/julia-oracle-migration.md`.
+
+Composite record schemas (certificates, boxes, ray addresses) are consumer
+matters; `larsbx/finite-mandlebrot-research` keeps its own in
+`docs/canonical-serialization.md`. A proof record's own preimage is fixed by
+section 4 of `docs/proof-records-specification.md`, and
+`docs/evidence-vocabulary-map.md` states how a receipt from another program's
+ledger becomes such a record: the external receipt's identity travels as
+evidence, never as the record identifier, so exactly one encoding is
+authoritative per record.
 
 ## Integer
 
@@ -8,7 +32,10 @@ Status: byte-level contract of `bigz_canonical_bytes` and `q_canonical_bytes`. I
 Z(sign, byte_len, big_endian_magnitude)
 ```
 
-One sign byte (`0` zero, `1` positive, `2` negative), then an unsigned 8-byte big-endian `byte_len`, then exactly that many magnitude bytes. Zero has an empty magnitude. A nonzero magnitude is the minimal big-endian magnitude with no leading zero byte.
+One sign byte (`0` zero, `1` positive, `2` negative), then an unsigned
+8-byte big-endian `byte_len`, then exactly that many magnitude bytes. Zero has
+an empty magnitude. A nonzero magnitude is the minimal big-endian magnitude
+with no leading zero byte.
 
 Golden vectors (hexadecimal):
 
@@ -18,7 +45,9 @@ Golden vectors (hexadecimal):
 -1000000001 -> 02 0000000000000004 3b9aca01
 ```
 
-`bigz_is_canonical` decides whether a `BigZ` is in the form that encodes; a non-canonical value has no encoding and `bigz_canonical_bytes` reports it as rejected.
+`bigz_is_canonical` decides whether a `BigZ` is in the form that encodes; a
+non-canonical value has no encoding and `bigz_canonical_bytes` reports it as
+rejected.
 
 ## Rational
 
@@ -26,10 +55,15 @@ Golden vectors (hexadecimal):
 Q(num: Z, den: Z)
 ```
 
-The concatenation of the numerator and denominator encodings. The denominator is strictly positive and the pair is gcd-normalized, so there is exactly one encoding for each rational. A rejected rational has no encoding.
+The concatenation of the numerator and denominator encodings. The denominator
+is strictly positive and the pair is gcd-normalized, so there is exactly one
+encoding for each rational. A rejected rational has no encoding.
 
 ## Properties
 
-- Injective and total on accepted values: equal values have equal bytes, distinct values have distinct bytes.
-- Independent of the limb representation: the encoding is the mathematical value, not the storage.
-- Rejected values do not encode. A consumer that needs to serialize a failure serializes its own status record, never a placeholder integer.
+- Injective and total on accepted values: equal values have equal bytes,
+  distinct values have distinct bytes.
+- Independent of the limb representation: the encoding is the mathematical
+  value, not the storage.
+- Rejected values do not encode. A consumer that needs to serialize a failure
+  serializes its own status record, never a placeholder integer.
