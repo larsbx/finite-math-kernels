@@ -172,6 +172,11 @@ Implement a U32 prime-field recurrence in Mojo, Bend, Julia, and Rust. Use
 fixed seed blocks and deterministic tree partitioning. Emit aggregate digests
 plus a configurable witness sample.
 
+The CPU correctness path is implemented as contract `orbit-census-v1`
+(`docs/polyglot-orbit-census-design.md`): a Mojo kernel and replay authority,
+a Bend challenger, and an Elixir orchestrator. The contract is U32, but the
+Bend lane is measured to be u24 (`p <= 4093`). Julia and Rust remain open.
+
 ### Slice 2 — batched NTT
 
 Implement scalar and optimized Mojo variants, Julia oracle vectors, and the

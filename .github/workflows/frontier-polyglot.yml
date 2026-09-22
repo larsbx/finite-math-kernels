@@ -1,0 +1,37 @@
+name: Frontier polyglot
+
+# The polyglot lane of docs/polyglot-orbit-census-design.md: the Bend
+# challenger against the golden vectors, the Elixir orchestrator with real
+# Mojo and Bend Ports, and the TLA+ choreography with its mutants. Separate
+# from CI so the authoritative gates keep their own toolchain. Every gate
+# fails, never skips, when a toolchain is missing.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  polyglot:
+    runs-on: ubuntu-latest
+    env:
+      TLA_TOOLS: ${{ github.workspace }}/.build/tla2tools.jar
+    steps:
+      - uses: actions/checkout@v4
+      - uses: prefix-dev/setup-pixi@v0.9.1
+        with:
+          environments: polyglot
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/bin/bend
+            ~/.cargo/bin/hvm
+          key: ${{ runner.os }}-bend-lang-0.2.38-hvm-2.0.22
+      - name: Install Bend and HVM (pinned)
+        run: command -v bend || cargo install --locked hvm@2.0.22 bend-lang@0.2.38
+      - name: Fetch TLC (pinned release, checksummed)
+        run: |
+          mkdir -p .build
+          curl -fsSL -o "$TLA_TOOLS" https://github.com/tlaplus/tlaplus/releases/download/v1.7.4/tla2tools.jar
+          echo "936a262061c914694dfd669a543be24573c45d5aa0ff20a8b96b23d01e050e88  $TLA_TOOLS" | sha256sum -c
+      - run: pixi run test-polyglot

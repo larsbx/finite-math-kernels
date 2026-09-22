@@ -26,6 +26,8 @@ substitution_dynamics/
 quadratic_orbit/
   orbit.mojo
   collision.mojo
+finite_field_orbit/
+  census.mojo
 mojo_smoke/
   report.mojo
 proof_records/
@@ -70,6 +72,12 @@ not part of this repository.
   intends to collide, knows nothing about any parameter, and proves nothing
   about any orbit; an invalid type intends nothing rather than something
   arbitrary.
+- The finite-field orbit census (`finite_field_orbit/census.mojo`,
+  `docs/polyglot-orbit-census-design.md`) computes exact tails and periods of
+  `x -> x^2 + c` over `F_p` for a block of seeds, up to a cap. Cap reached is
+  inconclusive, never a fact about the orbit. Its replay predicate is the only
+  authority for records proposed by the Bend challenger, and the Elixir
+  orchestrator only schedules; neither decides anything.
 - The vendoring checker (`vendoring/`) reports drift between a consumer's
   copies and its pins. It decides nothing about the code it checks, and it
   searches upward for the manifest so that how deep a consumer puts it does
