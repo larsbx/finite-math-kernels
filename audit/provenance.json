@@ -431,8 +431,16 @@
       "blob": "70abd87fab44286f548e95449fca8773e0aba7b0",
       "relation": "authored"
     },
+    "parallel_fold/__init__.mojo": {
+      "blob": "4d7584a7df3c00eaf006b07805c6a162ddd9e701",
+      "relation": "authored"
+    },
+    "parallel_fold/map_fold.mojo": {
+      "blob": "a9a5800d9b6a0e8b8477bb94072452c2fca34dd6",
+      "relation": "authored"
+    },
     "pixi.toml": {
-      "blob": "7668a8a7c8c2b641ec84e203642e7c2bc68c19c7",
+      "blob": "d1fceabe9e0b9250135db155dd0878e9d402765d",
       "relation": "authored"
     },
     "proof_records/ProofArchitecture.tla": {
@@ -717,6 +725,10 @@
     },
     "tests/oracle_refinement/test_refinement.py": {
       "blob": "c0307c2cae0dcdd04197aca93ec4a7f5bf5a11c6",
+      "relation": "authored"
+    },
+    "tests/parallel_fold/test_map_fold.mojo": {
+      "blob": "d6b5e903542ff99f871d3953acbf128b4376ba04",
       "relation": "authored"
     },
     "tests/proof_records/replay_vectors.mojo": {

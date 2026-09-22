@@ -98,6 +98,6 @@ def test_every_installed_kernel_agrees_with_the_oracle_on_the_regression_corpus(
     lanes = ["cpu_single", "cpu_all"]
     rows = harness.run_candidate("ff_orbit_census", "regress", registry, lanes=lanes, repeats=1, build_dir=tmp_path)
     status = {(r["implementation"], r["lane"]): r["status"] for r in rows}
-    assert status == {(n, lane): "unsupported" if (n, lane) == ("mojo", "cpu_all") else "ok" for n in registry for lane in lanes}
+    assert status == {(n, lane): "ok" for n in registry for lane in lanes}
     assert harness.compare(rows) == []
     assert all(r["replay_verdict"] == "accepted (full)" for r in rows if r["status"] == "ok")

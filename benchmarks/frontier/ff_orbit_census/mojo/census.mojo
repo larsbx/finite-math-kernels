@@ -5,12 +5,14 @@
 # record, and the partials are merged.
 #
 # Usage: census <p> <length> <s0> <s1> <s2> <s3> <stride> <threads>
-# Only threads = 1 is supported: the pinned nightly's std exposes no
-# `parallelize` (or other CPU task runtime), so the cpu_all lane reports
-# unsupported rather than silently running serially.
+# The subtrees are spread over `threads` workers by `parallel_fold`, whose
+# in-order fold makes the record identical at every thread count. The task
+# runtime is MAX's (`max.algorithm.parallelize`); the Mojo std has none.
 
 from std.sys import argv, stderr
 from std.time import perf_counter_ns
+
+from parallel_fold.map_fold import parallel_map_fold
 
 comptime H0 = UInt32(0x9E3779B9)
 comptime CUT = 6
@@ -126,12 +128,19 @@ struct Census(Copyable):
         return rec^
 
 
-def run(c: Census) -> Partial:
+def merge(a: Partial, b: Partial) -> Partial:
+    var out = a
+    out.absorb(b)
+    return out
+
+
+def run(c: Census, threads: Int) raises -> Partial:
     var cut = min(CUT, c.length)
-    var rec = Partial.empty()
-    for t in range(4 * 3 ** (cut - 1)):
-        rec.absorb(c.subtree(cut, UInt64(t)))
-    return rec^
+
+    def subtree(t: Int) {c, var cut} -> Partial:
+        return c.subtree(cut, UInt64(t))
+
+    return parallel_map_fold(subtree, merge, Partial.empty(), 4 * 3 ** (cut - 1), threads)
 
 
 def render(c: Census, rec: Partial) -> String:
@@ -160,16 +169,14 @@ def main() raises:
     var length = atol(args[2])
     var stride = UInt64(atol(args[7]))
     var threads = atol(args[8])
-    if not (p > 2 and p < (UInt64(1) << 32) and p % 2 == 1 and length >= 1 and stride >= 1):
+    if not (p > 2 and p < (UInt64(1) << 32) and p % 2 == 1 and length >= 1 and stride >= 1 and threads >= 1):
         raise Error("arguments outside the contract")
-    if threads != 1:
-        raise Error("unsupported: no CPU task runtime in this Mojo std")
     var seed = SIMD[DType.uint32, 4](0)
     for k in range(4):
         seed[k] = UInt32(UInt64(atol(args[3 + k])) % p)
     var c = Census(p, length, seed, stride)
     var start = perf_counter_ns()
-    var rec = run(c)
+    var rec = run(c, threads)
     var ns = perf_counter_ns() - start
     print(render(c, rec), end="")
     print("kernel_ns", ns, file=stderr)
