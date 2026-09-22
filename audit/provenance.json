@@ -144,8 +144,12 @@
       "source_blob": "0e3f8f4b3dedc597d7a779a1f2f216f7fc5e8700",
       "source_path": "docs/canonical-encoding.md"
     },
+    "docs/dep-proof-consumer-boundary.md": {
+      "blob": "1e71928a598be077049f1974f13afd475b77074a",
+      "relation": "authored"
+    },
     "docs/evidence-vocabulary-map.md": {
-      "blob": "1182b5b0c6a165a0763acd39df53f82ffb9f054b",
+      "blob": "b920216575d9d57e8f5e5c43c93d1b3ff2bb748f",
       "relation": "authored"
     },
     "docs/exact-arithmetic-public-boundary.md": {
