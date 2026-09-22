@@ -16,10 +16,12 @@ endpoints to a small deterministic record.
 ## Arithmetic
 
 - `p` is an odd prime with `p < 2^32`; every residue is a `u32` in `[0, p)`.
-- Intermediates are `u64`. No signed or floating arithmetic appears.
+- No signed or floating arithmetic appears.
 - Generator `S_i` (`i` in `0..3`) replaces coordinate `i` of `v = (v0, v1, v2, v3)`
-  by `(2 * (sum_{j != i} v_j) - v_i) mod p`, computed as
-  `(2 * s + 2 * p - v_i) mod p` with `s = (sum_{j != i} v_j) mod p` (no underflow).
+  by `(2 * (sum_{j != i} v_j) - v_i) mod p`. Only the residue is specified. The
+  reference computes `(2 * s + 2 * p - v_i) mod p` with `s = (sum_{j != i} v_j) mod p`
+  in unbounded integers. The kernels reach the same residue by conditional
+  subtraction, which needs no division and, in Bend, no type wider than `u32`.
 - Each `S_i` is an involution and preserves `Q(v) = (sum v)^2 - 2 * sum v^2`
   mod p; replay checks `Q(endpoint) = Q(seed)`.
 

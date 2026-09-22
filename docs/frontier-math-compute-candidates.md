@@ -54,9 +54,11 @@ without relaxing semantics:
 5. Compare throughput, energy, memory, compile latency, and engineering effort.
 
 Bend should not be asked to emulate arbitrary-precision arithmetic in the first
-round. Its own current limitations document Nat/U32/F32, affine arrays, balanced
-parallel calls, one GPU, experimental shared atomics, and no profiler or test
-framework. That makes a fixed-prime, leaf-independent census the honest test.
+round. Bend 2 (2.0.25, measured here) has `Nat`, `U32` and `F32` and nothing
+wider: `U32` add, mul, xor and shifts are native and wrapping, but `U32.div`
+and `U32.mod` are bit-serial library code. Parallelism is a balanced binary
+fork-join (`a b = f(x) g(y)`) over affine values, and the runtime takes
+`--threads`. That makes a fixed-prime, leaf-independent census the honest test.
 It also means a Bend win is evidence for the outer search scheduler, not a
 reason to move canonical exact arithmetic out of Mojo.
 
@@ -167,9 +169,14 @@ contract is `benchmarks/frontier/ff_orbit_census/CONTRACT.md`: a census of
 reduced Apollonian words over `F_p`, replayed by the spec oracle
 `benchmarks/frontier/ff_orbit_census/reference.py`. Mojo (`cpu_single`) and
 Rust (`cpu_single`, `cpu_all`) emit byte-identical records on every shipped
-corpus. Mojo `cpu_all` is recorded as unsupported because the pinned nightly's
-std exposes no CPU task runtime. Julia and Bend are recorded as not
-implemented, and GPU lanes as having no runner.
+corpus, and so does Bend 2 (`cpu_single` and `cpu_all`, via its runtime's
+`--threads`). Every kernel reduces residues by conditional subtraction, the
+only reduction Bend can afford, so the lanes compare languages rather than
+modular-reduction strategies. Mojo `cpu_all` is recorded as unsupported
+because the pinned nightly's std exposes no CPU task runtime. Julia is
+recorded as not implemented, and GPU lanes as having no runner. On the first
+container run the Rust baseline was the slowest single-thread kernel, so it
+needs a tuning pass before any speedup against it is claimed.
 
 ### Slice 0 — harness and contracts
 
@@ -207,9 +214,10 @@ alone.
 - Mojo documentation and releases must be pinned with each result; the current
   repo already pins a Modular nightly, so comparisons across nightlies are not
   silently pooled.
-- Bend's project describes divide-and-conquer GPU execution and also lists its
-  young compiler, limited number types, affine arrays, balanced-call
-  requirement, and tooling gaps. The benchmark treats all of these as measured
+- Bend 2 (github.com/bendlang/bend) compiles one C file for CPU and GPU,
+  schedules a contention-free binary fork-join, and has only 32-bit machine
+  numbers, with software division. Its `IO.now` ticks in milliseconds, so Bend
+  kernel times are ms-quantized. The benchmark treats all of these as measured
   facts, not as reasons to exclude it.
 - Julia provides mature numerical experimentation, SIMD-aware code, parallel
   computing, and GPU packages; it is both a serious performance contender and

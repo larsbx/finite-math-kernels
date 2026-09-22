@@ -138,7 +138,11 @@
       "relation": "authored"
     },
     "benchmarks/frontier/ff_orbit_census/CONTRACT.md": {
-      "blob": "48b0c2e88c1b5da67187d6a666663cea792d29c4",
+      "blob": "f6685a335931b4913c514f4a6818a8363c592286",
+      "relation": "authored"
+    },
+    "benchmarks/frontier/ff_orbit_census/bend/census.bend": {
+      "blob": "a2580eb9758dba628681cb55f67edb9cd25a52f9",
       "relation": "authored"
     },
     "benchmarks/frontier/ff_orbit_census/corpora.toml": {
@@ -146,11 +150,11 @@
       "relation": "authored"
     },
     "benchmarks/frontier/ff_orbit_census/implementations.toml": {
-      "blob": "0832af5b849f51637c75d25b4c1ac67d159bfcff",
+      "blob": "79be6baf1abf3bc06c47ce74c03786a1eab84fef",
       "relation": "authored"
     },
     "benchmarks/frontier/ff_orbit_census/mojo/census.mojo": {
-      "blob": "95970762eb722b5ce8aa814ba88f04002b3bc790",
+      "blob": "14385dc84064d2601eb3f66137e66b4ed6a870d9",
       "relation": "authored"
     },
     "benchmarks/frontier/ff_orbit_census/reference.py": {
@@ -166,11 +170,11 @@
       "relation": "authored"
     },
     "benchmarks/frontier/ff_orbit_census/rust/src/main.rs": {
-      "blob": "071e28ed4c8ce14e85ab0a5b38b8002d89670e8b",
+      "blob": "b29f169c591f254a01763347af3413c5a69a5127",
       "relation": "authored"
     },
     "benchmarks/frontier/harness.py": {
-      "blob": "c07cb5a597c1c82b37a5574125f8567ec93ea003",
+      "blob": "5942d08ef48b58f5c3a69b33ac89faa314e77caf",
       "relation": "authored"
     },
     "contracts/typed-proof-graph-normalization-v1.json": {
@@ -200,7 +204,7 @@
       "source_path": "docs/exact-arithmetic-public-boundary.md"
     },
     "docs/frontier-math-compute-candidates.md": {
-      "blob": "e1e3d3bfa441b85df98b15cc7f1a28da9219701f",
+      "blob": "e87587df8439633d25acff1dc0f5155df820c736",
       "relation": "authored"
     },
     "docs/generator-refinement-spec.md": {
@@ -697,7 +701,7 @@
       "relation": "authored"
     },
     "tests/frontier/test_harness.py": {
-      "blob": "f25e187fbb3bbe83d1bf079b58bac269394a4896",
+      "blob": "df006e39ff0f3d87ebafa4983560ffcd4f28af70",
       "relation": "authored"
     },
     "tests/interval/test_interval_q.mojo": {

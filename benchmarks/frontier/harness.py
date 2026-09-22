@@ -41,6 +41,7 @@ RESULTS = FRONTIER / "results"
 FULL_REPLAY_WORK = 100_000
 TIMEOUT_S = 600
 RAN = frozenset({"ok", "replay_rejected", "nondeterministic"})
+SELF_NAME = Path("/proc/self/comm").read_text().strip() if Path("/proc/self/comm").exists() else ""
 
 
 class ContractMismatch(ValueError):
@@ -70,8 +71,8 @@ def load_registry(cid: str) -> dict[str, dict]:
     return {name: table[name] for name in candidate(cid)["implementations"] if name in table}
 
 
-def expand(argv: list[str], cid: str, build_dir: Path) -> list[str]:
-    return [a.format(dir=FRONTIER / cid, build=build_dir) for a in argv]
+def expand(argv: list[str], cid: str, build_dir: Path, threads: int | None = None) -> list[str]:
+    return [a.format(dir=FRONTIER / cid, build=build_dir, threads=threads) for a in argv]
 
 
 def command_output(argv: list[str]) -> str | None:
@@ -92,17 +93,35 @@ def environment() -> dict:
     }
 
 
+def image_peak_kib(pid: int) -> int | None:
+    """The child's own peak RSS (``VmHWM``), once it has exec'd away from this interpreter.
+
+    ``ru_maxrss`` from ``wait4`` is no substitute: Linux carries the forking
+    parent's high-water mark across ``exec``, so every child would report at
+    least this harness's own footprint.
+    """
+    try:
+        fields = dict(line.split(":", 1) for line in Path(f"/proc/{pid}/status").read_text().splitlines() if ":" in line)
+    except OSError:
+        return None
+    if fields.get("Name", "").strip() == SELF_NAME or "VmHWM" not in fields:
+        return None
+    return int(fields["VmHWM"].split()[0])
+
+
 def timed(argv: list[str], timeout: float = TIMEOUT_S) -> dict:
-    """Run once; wall time, exit status, output, and this child's own peak RSS (``wait4``)."""
+    """Run once; wall time, exit status, output, and the child's peak RSS."""
     with tempfile.TemporaryFile() as out, tempfile.TemporaryFile() as err:
         start = time.perf_counter_ns()
         proc = subprocess.Popen(argv, stdout=out, stderr=err)
         deadline = time.monotonic() + timeout
+        peak = None
         while (reaped := os.wait4(proc.pid, os.WNOHANG))[0] == 0:
             if time.monotonic() > deadline:
                 proc.kill()
                 os.wait4(proc.pid, 0)
                 return {"timeout": True}
+            peak = image_peak_kib(proc.pid) or peak
             time.sleep(0.0005)
         wall = time.perf_counter_ns() - start
         proc.returncode = os.waitstatus_to_exitcode(reaped[1])
@@ -110,8 +129,10 @@ def timed(argv: list[str], timeout: float = TIMEOUT_S) -> dict:
         err.seek(0)
         stdout, stderr = out.read(), err.read()
     kernel = re.search(rb"kernel_ns (\d+)", stderr)
+    memory = {"max_rss_kib": peak, "method": "VmHWM, polled"} if peak else \
+             {"max_rss_kib": reaped[2].ru_maxrss, "method": "rusage, includes the launcher's footprint"}
     return {"timeout": False, "code": proc.returncode, "out": stdout, "err": stderr.decode(errors="replace"),
-            "wall_ns": wall, "kernel_ns": int(kernel.group(1)) if kernel else None, "max_rss_kib": reaped[2].ru_maxrss}
+            "wall_ns": wall, "kernel_ns": int(kernel.group(1)) if kernel else None, "memory": memory}
 
 
 def build(impl: dict, cid: str, build_dir: Path) -> dict:
@@ -148,7 +169,7 @@ def base_row(cid: str, corpus_name: str, corpus, name: str, lane: str, env: dict
 def measure(row: dict, impl: dict, cid: str, corpus, threads: int, repeats: int, build_dir: Path) -> dict:
     """Fill ``row`` from one warmup and ``repeats`` warm runs of a built implementation."""
     ref = oracle(cid)
-    argv = expand(impl["run"], cid, build_dir) + corpus.args() + [str(threads)]
+    argv = expand(impl["run"], cid, build_dir, threads) + corpus.args() + [str(threads)]
     runs = [timed(argv) for _ in range(repeats + 1)]
     if any(r["timeout"] for r in runs):
         return row | {"status": "timeout", "note": f"exceeded {TIMEOUT_S}s"}
@@ -170,7 +191,7 @@ def measure(row: dict, impl: dict, cid: str, corpus, threads: int, repeats: int,
         "warm_wall_time_distribution": {"warmup_runs": 1, "wall_ns": [r["wall_ns"] for r in warm], "kernel_ns": kernel,
                                         "wall": distribution([r["wall_ns"] for r in warm]), "kernel": distribution(kernel)},
         "throughput": {"work_units": corpus.work, "per_second_median_kernel": corpus.work / median_kernel * 1e9 if median_kernel else None},
-        "peak_memory": {"max_rss_kib": max(r["max_rss_kib"] for r in runs)},
+        "peak_memory": max((r["memory"] for r in runs), key=lambda m: (m["method"].startswith("VmHWM"), m["max_rss_kib"])),
         "output_digest": hashlib.sha256(text).hexdigest(),
         "replay_verdict": ("rejected: " + errors[0]) if errors else f"accepted ({'full' if full else 'sampled'})",
     }

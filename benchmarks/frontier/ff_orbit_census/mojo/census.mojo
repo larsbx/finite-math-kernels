@@ -32,17 +32,16 @@ struct Vec4(Copyable, ImplicitlyCopyable):
 
 
 @fieldwise_init
-struct Partial(Copyable, Movable):
+struct Partial(Copyable, ImplicitlyCopyable):
     var words: UInt64
     var zero_hits: SIMD[DType.uint64, 4]
     var first_zero: UInt64  # UInt64.MAX when none
     var hash_sum: UInt32
     var hash_xor: UInt32
-    var samples: List[UInt64]  # flattened (w, e0, e1, e2, e3)
 
     @staticmethod
     def empty() -> Partial:
-        return Partial(0, SIMD[DType.uint64, 4](0), UInt64.MAX, 0, 0, List[UInt64]())
+        return Partial(0, SIMD[DType.uint64, 4](0), UInt64.MAX, 0, 0)
 
     def absorb(mut self, o: Partial):
         self.words += o.words
@@ -50,7 +49,6 @@ struct Partial(Copyable, Movable):
         self.first_zero = min(self.first_zero, o.first_zero)
         self.hash_sum += o.hash_sum
         self.hash_xor ^= o.hash_xor
-        self.samples.extend(o.samples.copy())
 
 
 struct Census(Copyable):
@@ -72,12 +70,19 @@ struct Census(Copyable):
             w = UInt64(4) if k == 0 else w * 3
 
     @always_inline
+    def fold(self, x: UInt64) -> UInt64:
+        """`x mod p` for `x < 2p`, by one conditional subtraction."""
+        return x - self.p if x >= self.p else x
+
+    @always_inline
     def step(self, v: SIMD[DType.uint32, 4], i: Int) -> SIMD[DType.uint32, 4]:
+        """`(2 * s - v_i) mod p` without division: every operand stays below `4p < 2^34`."""
         var wide = v.cast[DType.uint64]()
         var vi = wide[i]
-        var s = (wide.reduce_add() - vi) % self.p
+        var s = self.fold(self.fold(wide.reduce_add() - vi))
+        var d = self.fold(2 * s)
         var out = v
-        out[i] = UInt32((2 * s + 2 * self.p - vi) % self.p)
+        out[i] = UInt32(self.fold(d + self.p - vi))
         return out
 
     def leaf(self, mut rec: Partial, w: UInt64, e: SIMD[DType.uint32, 4]):
@@ -91,10 +96,19 @@ struct Census(Copyable):
             rec.first_zero = w
         rec.hash_sum += h
         rec.hash_xor ^= h
-        if w % self.stride == 0:
-            rec.samples.append(w)
-            for k in range(4):
-                rec.samples.append(UInt64(e[k]))
+
+    def descend(self, n: Int, w: UInt64, mut last: Int) -> SIMD[DType.uint32, 4]:
+        """The first `n` letters of word `w` (the contract's word indexing) applied
+        to the seed; `last` receives the last letter."""
+        last = Int(w % 4)
+        var v = self.step(self.seed, last)
+        var q = w // 4
+        for _ in range(1, n):
+            var r = Int(q % 3)
+            q //= 3
+            last = r + Int(r >= last)
+            v = self.step(v, last)
+        return v
 
     def walk(self, mut rec: Partial, depth: Int, last: Int, w: UInt64, v: SIMD[DType.uint32, 4]):
         if depth == self.length:
@@ -105,14 +119,8 @@ struct Census(Copyable):
             self.walk(rec, depth + 1, letter, w + UInt64(r) * self.weight[depth], self.step(v, letter))
 
     def subtree(self, cut: Int, t: UInt64) -> Partial:
-        var last = Int(t % 4)
-        var v = self.step(self.seed, last)
-        var q = t // 4
-        for _ in range(1, cut):
-            var r = Int(q % 3)
-            q //= 3
-            last = r + Int(r >= last)
-            v = self.step(v, last)
+        var last = 0
+        var v = self.descend(cut, t, last)
         var rec = Partial.empty()
         self.walk(rec, cut, last, t, v)
         return rec^
@@ -133,19 +141,13 @@ def render(c: Census, rec: Partial) -> String:
         out += " " + String(rec.zero_hits[k])
     out += "\nfirst_zero " + (String("none") if rec.first_zero == UInt64.MAX else String(rec.first_zero))
     out += "\nhash_sum " + String(rec.hash_sum) + "\nhash_xor " + String(rec.hash_xor) + "\n"
-    # Subtrees partition by low index digits, so samples arrive unordered: sort the indices.
-    var order = List[Int]()
-    for i in range(len(rec.samples) // 5):
-        order.append(i)
-    for i in range(1, len(order)):
-        var j = i
-        while j > 0 and rec.samples[5 * order[j - 1]] > rec.samples[5 * order[j]]:
-            order.swap_elements(j - 1, j)
-            j -= 1
-    for i in order:
-        out += "sample"
-        for k in range(5):
-            out += " " + String(rec.samples[5 * i + k])
+    # Samples are recomputed from their indices rather than tested for at every leaf.
+    var last = 0
+    for w in range(0, Int(rec.words), Int(c.stride)):
+        var e = c.descend(c.length, UInt64(w), last)
+        out += "sample " + String(w)
+        for k in range(4):
+            out += " " + String(e[k])
         out += "\n"
     return out
 

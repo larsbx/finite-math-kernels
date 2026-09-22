@@ -1,5 +1,6 @@
 # How the harness builds and runs each implementation of u32-prime-field-orbit-v1.
-# Placeholders: {dir} this directory, {build} the untracked build directory.
+# Placeholders: {dir} this directory, {build} the untracked build directory,
+# {threads} the lane's thread count (for runtimes that take it as an option).
 # Every kernel takes `<p> <length> <s0> <s1> <s2> <s3> <stride> <threads>` and
 # prints the canonical record on stdout and `kernel_ns <n>` on stderr.
 # An implementation with a `status` is reported with that status and never run.
@@ -17,5 +18,9 @@ version = ["rustc", "--version"]
 [julia]
 status = "not_implemented"
 
+# Bend 2 (github.com/bendlang/bend). The runtime owns `--threads`; `--` ends
+# its options. IO.now() ticks in milliseconds, so kernel_ns is ms-quantized.
 [bend]
-status = "not_implemented"
+build = ["bend", "{dir}/bend/census.bend", "-o", "{build}/census-bend"]
+run = ["{build}/census-bend", "--threads", "{threads}", "--"]
+version = ["bend", "version"]

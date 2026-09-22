@@ -63,12 +63,21 @@ def test_gpu_lane_without_a_runner_is_a_row_not_an_omission(tmp_path):
     assert [r["status"] for r in rows] == ["no_runner"]
 
 
-@pytest.mark.skipif(not (shutil.which("cargo") and shutil.which("mojo")), reason="needs cargo and mojo on PATH")
-def test_rust_and_mojo_agree_with_the_oracle_on_the_regression_corpus(tmp_path):
-    rows = harness.run_candidate("ff_orbit_census", "regress", harness.load_registry("ff_orbit_census"), lanes=["cpu_single", "cpu_all"], repeats=1, build_dir=tmp_path)
+TOOLCHAINS = {"mojo": "mojo", "rust": "cargo", "bend": "bend"}
+
+
+def test_julia_is_registered_as_not_implemented_rather_than_omitted():
+    assert harness.load_registry("ff_orbit_census")["julia"] == {"status": "not_implemented"}
+
+
+def test_every_installed_kernel_agrees_with_the_oracle_on_the_regression_corpus(tmp_path):
+    registry = {name: impl for name, impl in harness.load_registry("ff_orbit_census").items()
+                if name in TOOLCHAINS and shutil.which(TOOLCHAINS[name])}
+    if not registry:
+        pytest.skip("no kernel toolchain on PATH")
+    lanes = ["cpu_single", "cpu_all"]
+    rows = harness.run_candidate("ff_orbit_census", "regress", registry, lanes=lanes, repeats=1, build_dir=tmp_path)
     status = {(r["implementation"], r["lane"]): r["status"] for r in rows}
-    assert status == {("mojo", "cpu_single"): "ok", ("mojo", "cpu_all"): "unsupported", ("rust", "cpu_single"): "ok",
-                      ("rust", "cpu_all"): "ok", ("julia", "cpu_single"): "not_implemented", ("julia", "cpu_all"): "not_implemented",
-                      ("bend", "cpu_single"): "not_implemented", ("bend", "cpu_all"): "not_implemented"}
+    assert status == {(n, lane): "unsupported" if (n, lane) == ("mojo", "cpu_all") else "ok" for n in registry for lane in lanes}
     assert harness.compare(rows) == []
     assert all(r["replay_verdict"] == "accepted (full)" for r in rows if r["status"] == "ok")
