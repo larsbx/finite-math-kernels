@@ -741,6 +741,14 @@
       "source": "finite_mandelbrot_research",
       "source_blob": "76ddda76a2cc3dea8221ac8b8192fe3d7e4f14c4",
       "source_path": "tools/check_vendored_sync.py"
+    },
+    "benchmarks/frontier/candidates.toml": {
+      "blob": "bfca49b1bd72b7fa97fde817df9fa4121070bfca",
+      "relation": "authored"
+    },
+    "docs/frontier-math-compute-candidates.md": {
+      "blob": "7d3665bb2eb56f9012add211e24c22e0e066c6c0",
+      "relation": "authored"
     }
   },
   "format": "finite-math-kernels provenance 1",
