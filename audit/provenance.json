@@ -307,6 +307,10 @@
       "blob": "7abef6e04b544a22b335edff94a529733a4671ec",
       "relation": "authored"
     },
+    "fixtures/ledger/proof-graph-normalization-v1.json": {
+      "blob": "42099396d382cdfd7fac8f807b4e32cd8fb3e679",
+      "relation": "authored"
+    },
     "fixtures/ledger/relationship-graph.json": {
       "blob": "d1e910f4e768e2372bb9df6bc28058c8ee0904be",
       "relation": "authored"
@@ -728,6 +732,10 @@
     },
     "tests/substitution_dynamics/test_tuning.mojo": {
       "blob": "30c80c136eff653ff9dc87a92788960e7068c20a",
+      "relation": "authored"
+    },
+    "tests/test_proof_graph_normalization_vectors.py": {
+      "blob": "efa0852ff67dad45805b849d16c32590a041217d",
       "relation": "authored"
     },
     "tests/vendoring/test_check_vendored_sync.py": {
