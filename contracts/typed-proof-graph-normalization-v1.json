@@ -1,0 +1,58 @@
+{
+  "contract_id": "finite-proof-graph.normalization",
+  "contract_version": "1.0.0",
+  "status": "approved",
+  "owner": "larsbx/finite-math-kernels",
+  "authority_mode": "normative_semantic",
+  "authority_scope": "typed-proof-record-graph-v1",
+  "source": {
+    "repository": "larsbx/finite-math-kernels",
+    "commit": "cdb40f1166d9095f835f23520c04604ed08432b6",
+    "paths": [
+      "proof_records/graph.py",
+      "proof_records/records.py",
+      "docs/typed-relationship-graph-spec.md"
+    ],
+    "license_status": "repository-owned source; no third-party code is transferred"
+  },
+  "authoritative_questions": [
+    "contract_interpretation",
+    "normal_form",
+    "composition_preservation"
+  ],
+  "excluded_questions": [
+    "observational_equivalence",
+    "mathematical_proof",
+    "certificate_acceptance",
+    "effect_authorization",
+    "persisted_state"
+  ],
+  "preconditions": [
+    "input format is finite typed relationship graph 1",
+    "node identifiers are unique",
+    "edge endpoints name nodes",
+    "edge types and provenance classes are declared by the input vocabulary",
+    "certainty is exactly 1",
+    "theorem-backed implicative, synonymous, and part-whole edges name backing source evidence"
+  ],
+  "normal_form": {
+    "generated_field": "discarded as non-semantic provenance text",
+    "nodes": "sorted by kind group (claim, alias, assumption_set), then identifier",
+    "edges": "sorted by declared edge-type order, source, target, and use_site",
+    "object_encoding": "canonical JSON with recursively lexicographic object keys"
+  },
+  "disagreement": "fail_closed",
+  "vectors": [
+    {
+      "id": "minimal-composition-v1",
+      "input": "fixtures/oracle/typed-proof-graph-minimal-v1.input.json",
+      "expected": "fixtures/oracle/typed-proof-graph-minimal-v1.expected.json"
+    },
+    {
+      "id": "relationship-graph-example-v1",
+      "input": "fixtures/ledger/relationship-graph.json",
+      "input_sha256": "4bb07fc598f1f0456cec9352fe94daf7273d4eee0fe1fb8935ee26a5bc2e6460",
+      "expected": "fixtures/oracle/typed-proof-graph-normalization-v1.json"
+    }
+  ]
+}
