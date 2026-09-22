@@ -1,0 +1,60 @@
+{
+  "contract_id": "finite-proof-graph-normalization",
+  "contract_version": 1,
+  "owner": "finite-math-kernels proof-record replay",
+  "authority": {
+    "includes": [
+      "contract_interpretation",
+      "normal_form",
+      "composition_preservation"
+    ],
+    "excludes": [
+      "mathematical_proof",
+      "certificate_acceptance",
+      "effect_authorization",
+      "persisted_state"
+    ]
+  },
+  "normalization": {
+    "node_key": ["id", "kind"],
+    "edge_key": ["type", "source", "target", "provenance", "use_site"],
+    "duplicate_policy": "reject_conflicting_exact_keys",
+    "payload_policy": "preserve_provenance_scope_source_and_leaks"
+  },
+  "vectors": [
+    {
+      "id": "unordered-independent-records",
+      "input_node_ids": ["Lemma", "Census", "Proof"],
+      "expected_node_ids": ["Census", "Lemma", "Proof"],
+      "input_edges": [
+        ["implicative", "Proof", "Theorem", "theorem-backed", "theorem/proof"],
+        ["implicative", "Census", "Lemma", "theorem-backed", "lemma/census"]
+      ],
+      "expected_edges": [
+        ["implicative", "Census", "Lemma", "theorem-backed", "lemma/census"],
+        ["implicative", "Proof", "Theorem", "theorem-backed", "theorem/proof"]
+      ]
+    },
+    {
+      "id": "provenance-is-semantic",
+      "input_edges": [
+        ["implicative", "Galois", "Conditional", "open", "conditional/galois"],
+        ["implicative", "Galois", "Conditional", "theorem-backed", "conditional/galois"]
+      ],
+      "expected_edges": [
+        ["implicative", "Galois", "Conditional", "open", "conditional/galois"],
+        ["implicative", "Galois", "Conditional", "theorem-backed", "conditional/galois"]
+      ]
+    },
+    {
+      "id": "exact-duplicate-collapses",
+      "input_edges": [
+        ["synonymous", "PIP census", "Census", "theorem-backed", "aliases"],
+        ["synonymous", "PIP census", "Census", "theorem-backed", "aliases"]
+      ],
+      "expected_edges": [
+        ["synonymous", "PIP census", "Census", "theorem-backed", "aliases"]
+      ]
+    }
+  ]
+}
