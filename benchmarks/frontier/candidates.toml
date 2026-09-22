@@ -1,0 +1,60 @@
+schema_version = 1
+authority = "performance_evidence_only"
+
+[[candidate]]
+id = "ff_orbit_census"
+rank = 1
+owner_repo = "larsbx/giant-fibers-finite-fields-thin-groups"
+contract = "u32-prime-field-orbit-v1"
+implementations = ["mojo", "bend", "julia", "rust"]
+lanes = ["cpu_single", "cpu_all", "gpu_one"]
+certificate = "canonical orbit digest plus sampled trajectories"
+priority = "implement-first"
+
+[[candidate]]
+id = "batched_negacyclic_ntt"
+rank = 2
+owner_repo = "larsbx/falcon-ntt-ftt"
+contract = "pinned-modulus-root-layout-v1"
+implementations = ["mojo", "julia", "rust", "bend_if_representable"]
+lanes = ["scalar", "simd", "gpu_one"]
+certificate = "canonical vectors replayed by naive convolution"
+priority = "mojo-first"
+
+[[candidate]]
+id = "pisot_bpa_scc_census"
+rank = 3
+owner_repo = "larsbx/pisot-substitution-conjecture-research"
+contract = "capped-three-valued-bpa-v1"
+implementations = ["mojo", "julia", "rust", "bend_outer_shards"]
+lanes = ["independent_substitutions", "skewed_graph"]
+certificate = "canonical SCC and producer witness records"
+priority = "estate-native"
+
+[[candidate]]
+id = "quadratic_orbit_screen"
+rank = 4
+owner_repo = "larsbx/finite-mandelbrot-research"
+contract = "seeded-z2-plus-c-filter-v1"
+implementations = ["mojo", "julia", "rust", "bend_outer_shards"]
+lanes = ["modular_filter", "exact_replay"]
+certificate = "orbit-type and incidence witness"
+priority = "after-harness"
+
+[result_requirements]
+required = [
+  "repository_revision",
+  "compiler_versions",
+  "hardware",
+  "semantic_contract",
+  "corpus_sha256",
+  "cold_compile_time",
+  "warm_wall_time_distribution",
+  "throughput",
+  "peak_memory",
+  "transfer_time",
+  "output_digest",
+  "replay_verdict"
+]
+forbid_speedup_denominator = "python_only"
+cap_outcome = "inconclusive"
