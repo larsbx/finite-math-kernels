@@ -4,7 +4,11 @@ channels = ["https://conda.modular.com/max-nightly/", "conda-forge"]
 platforms = ["linux-64"]
 
 [dependencies]
-modular = ">=26.6.0.dev2026090805,<27"
+# The Mojo toolchain plus MAX's Mojo libraries (max.algorithm, max.gpu,
+# max.runtime), and nothing else: the `modular` metapackage would add the
+# MAX Python graph/serving stack, which no code here imports.
+mojo = ">=1.1.0.dev2026090805,<2"
+max-core = ">=26.6.0.dev2026090805,<27"
 python = ">=3.11"
 pytest = "*"
 
