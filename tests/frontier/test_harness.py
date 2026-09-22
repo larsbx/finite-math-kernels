@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import os
 import shutil
 import sys
 from pathlib import Path
@@ -66,13 +67,32 @@ def test_gpu_lane_without_a_runner_is_a_row_not_an_omission(tmp_path):
 TOOLCHAINS = {"mojo": "mojo", "rust": "cargo", "bend": "bend"}
 
 
+def installed(env: dict[str, str] | None = None) -> set[str]:
+    """Kernels whose toolchain is on PATH; fails if one that FRONTIER_REQUIRE names is not."""
+    env = os.environ if env is None else env
+    have = {name for name, tool in TOOLCHAINS.items() if shutil.which(tool)}
+    required = {name for name in env.get("FRONTIER_REQUIRE", "").split(",") if name}
+    assert required <= set(TOOLCHAINS), f"FRONTIER_REQUIRE names unknown kernels: {sorted(required - set(TOOLCHAINS))}"
+    assert required <= have, f"required kernel toolchains missing: {sorted(required - have)}"
+    return have
+
+
+def test_a_required_toolchain_that_is_missing_fails_rather_than_skips(monkeypatch):
+    monkeypatch.setattr(shutil, "which", lambda tool: None if tool == "bend" else "/bin/" + tool)
+    assert installed({}) == {"mojo", "rust"}
+    with pytest.raises(AssertionError, match=r"missing: \['bend'\]"):
+        installed({"FRONTIER_REQUIRE": "rust,bend"})
+    with pytest.raises(AssertionError, match="unknown kernels"):
+        installed({"FRONTIER_REQUIRE": "fortran"})
+
+
 def test_julia_is_registered_as_not_implemented_rather_than_omitted():
     assert harness.load_registry("ff_orbit_census")["julia"] == {"status": "not_implemented"}
 
 
 def test_every_installed_kernel_agrees_with_the_oracle_on_the_regression_corpus(tmp_path):
-    registry = {name: impl for name, impl in harness.load_registry("ff_orbit_census").items()
-                if name in TOOLCHAINS and shutil.which(TOOLCHAINS[name])}
+    have = installed()
+    registry = {name: impl for name, impl in harness.load_registry("ff_orbit_census").items() if name in have}
     if not registry:
         pytest.skip("no kernel toolchain on PATH")
     lanes = ["cpu_single", "cpu_all"]
