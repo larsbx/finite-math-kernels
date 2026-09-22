@@ -106,7 +106,13 @@ orbit-census-v1 p c cap lo hi n resolved sum_mu sum_lambda periodic has_w w_seed
 ```
 
 Fields are unsigned decimal numbers with no sign and no leading zeros (`0` is
-the only representation of zero), separated by single spaces. The block is
+the only representation of zero), separated by single spaces. `sum_mu` and
+`sum_lambda` are below `2^64`; every other field is below `2^32`. The sums need
+the wider range: `mu + lambda <= p` for each seed and `n <= p`, so each sum is
+at most `p (p - 1) < 2^64`. That bound is reached in practice. The full-field
+block `(94379, 0, 94379, 0, 94379)` has `sum_lambda = 4453414691 >= 2^32`,
+and under a uniform `2^32` bound every decoder refused that valid record as
+`malformed:sum_lambda`. The block is
 echoed so that a receiver can reject an answer to a question it did not ask.
 The run digest is SHA-256 over the concatenation of the record lines, each
 terminated by `\n`, in block order. The encoding is injective and the
@@ -132,7 +138,7 @@ A supervisor must never turn a rejection into an acceptance by retrying.
 
 | Implementation | Domain | Measured reason |
 |---|---|---|
-| Mojo kernel | `p < 2^24` | visited table of `p` words per worker |
+| Mojo kernel | `p < 2^24`; sums below `2^63` | visited table of `p` words per worker; a sum in `[2^63, 2^64)` does not fit an `Int` and decodes as `unsupported:<field>`. No record in the domain is refused, since there `p < 2^24` bounds the sums below `2^48` |
 | Bend challenger (Bend 1: `bend-lang` 0.2.38, HVM2) | `p <= 4093`, `cap < 2^24` | HVM2 arithmetic is `u24` and wraps silently (`4097 * 4097` evaluates to `8193`). `(p-1)^2 < 2^24` forces `p <= 4097`, and 4093 is the largest prime at or below that. Sums stay below `p^2 < 2^24`. The CLI refuses arguments of `2^24` or more (exit status 2), so only products wrap; a block with `p = 4099` returns a well-formed, wrong record |
 | Python reference | contract domain | unbounded integers |
 
@@ -260,6 +266,14 @@ These are observations from one Linux x86-64 container, not benchmarks:
   concurrent end-to-end run had one Bend process print another block's
   record. The echo check rejected it (`rejected:echo`) and it was never
   accepted. The Bend adapter now gives each run its own scratch directory.
+- **Aggregate sums outgrow 32 bits.** The first contract put every field
+  below `2^32`, and the golden vectors never left that range. A full-field
+  block with `p = 94379` produced `sum_lambda = 4453414691`, which the census
+  emitted and every decoder then refused (section 3.4). The vectors now carry
+  that record (kind `wide`) and forged sums at `2^32` and `2^63 - 1`. The
+  polyglot gate replays the record end to end: any honest record with a sum of
+  `2^32` or more costs at least `2^32` steps, about a minute each for census
+  and replay here, so it is not a default gate.
 - **Two Bends, one name.** The Lane A harness calls `bend` expecting Bend 2.
   With this lane's Bend 1 installed as `bend`, the harness's Bend build
   failed. This lane therefore installs Bend 1 under its own root and calls it

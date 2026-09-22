@@ -49,6 +49,10 @@ def check_vectors() raises -> Int:
             for part in cols[2].split(" "):
                 v.append(Int(String(part)))
             expect("request " + cols[2], request_verdict(Block(v[0], v[1], v[2], v[3], v[4])), "malformed:" + cols[1])
+        elif cols[0] == "wide":
+            var d = decode(cols[1])
+            expect("decode wide " + cols[1], d.reason, "")
+            expect("wide round trip", encode(d.block, d.agg), cols[1])
         elif cols[0] == "decode-malformed":
             expect("decode '" + cols[2] + "'", decode(cols[2]).reason, "malformed:" + cols[1])
             expect("replay '" + cols[2] + "'", replay(cols[2]), "malformed:" + cols[1])
@@ -63,6 +67,16 @@ def test_declared_domain_is_refused_as_unsupported() raises:
     expect("p = 2^24 + 43", request_verdict(Block(16777259, 0, 5, 0, 5)), "unsupported:p")
     expect("replay above 2^24", replay("orbit-census-v1 4294967291 0 1 0 0 0 0 0 0 0 0 0 0 0"), "unsupported:p")
     expect("largest supported prime", request_verdict(Block(16777213, 0, 5, 0, 5)), "")
+
+
+def test_sums_beyond_int64_are_unsupported_not_malformed() raises:
+    """Sums range to 2^64 in the contract; this kernel's Int holds sums below 2^63.
+
+    No record inside the declared domain (p < 2^24, so sums < 2^48) is refused.
+    """
+    expect("2^63", replay("orbit-census-v1 7 3 7 0 7 7 7 9223372036854775808 21 3 1 1 2 3"), "unsupported:sum_mu")
+    expect("2^64 - 1", replay("orbit-census-v1 7 3 7 0 7 7 7 6 18446744073709551615 3 1 1 2 3"), "unsupported:sum_lambda")
+    expect("2^63 - 1", replay("orbit-census-v1 7 3 7 0 7 7 7 9223372036854775807 21 3 1 1 2 3"), "mismatch:sum_mu")
 
 
 def test_witness_replay_is_independent() raises:
@@ -94,6 +108,7 @@ def main() raises:
     if checked < 50:
         raise Error("only " + String(checked) + " vectors checked")
     test_declared_domain_is_refused_as_unsupported()
+    test_sums_beyond_int64_are_unsupported_not_malformed()
     test_witness_replay_is_independent()
     test_merge_is_partition_invariant()
     print("finite_field_orbit laws passed on", checked, "vectors.")

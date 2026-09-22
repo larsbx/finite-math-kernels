@@ -8,7 +8,10 @@ defmodule Frontier.Record do
   """
 
   @tag "orbit-census-v1"
+  # Sums are at most p (p - 1) < 2^64 (section 3.4); every other field is below 2^32.
   @bound 4_294_967_296
+  @wide_bound 18_446_744_073_709_551_616
+  @wide_fields [:sum_mu, :sum_lambda]
   @block_fields [:p, :c, :cap, :lo, :hi]
   @agg_fields [:n, :resolved, :sum_mu, :sum_lambda, :periodic, :has_w, :w_seed, :w_mu, :w_lambda]
 
@@ -38,7 +41,7 @@ defmodule Frontier.Record do
   end
 
   defp parse_all(pairs) do
-    parsed = Enum.map(pairs, fn {name, token} -> {name, canonical_integer(token)} end)
+    parsed = Enum.map(pairs, fn {name, token} -> {name, canonical_integer(token, bound(name))} end)
 
     case Enum.find(parsed, &match?({_, :error}, &1)) do
       nil -> {:ok, Enum.map(parsed, fn {_, {:ok, n}} -> n end)}
@@ -46,15 +49,19 @@ defmodule Frontier.Record do
     end
   end
 
-  defp canonical_integer("0"), do: {:ok, 0}
+  defp bound(name) when name in @wide_fields, do: @wide_bound
+  defp bound(_name), do: @bound
 
-  defp canonical_integer(<<first, _::binary>> = token) when first in ?1..?9 and byte_size(token) <= 10 do
-    if token =~ ~r/\A[0-9]+\z/ and String.to_integer(token) < @bound,
+  defp canonical_integer("0", _bound), do: {:ok, 0}
+
+  defp canonical_integer(<<first, _::binary>> = token, bound)
+       when first in ?1..?9 and byte_size(token) <= 20 do
+    if token =~ ~r/\A[0-9]+\z/ and String.to_integer(token) < bound,
       do: {:ok, String.to_integer(token)},
       else: :error
   end
 
-  defp canonical_integer(_), do: :error
+  defp canonical_integer(_token, _bound), do: :error
 
   @spec encode(t) :: binary
   def encode(%__MODULE__{block: block, agg: agg}) do

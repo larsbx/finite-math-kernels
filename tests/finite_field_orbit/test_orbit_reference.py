@@ -111,6 +111,16 @@ def test_malformed_requests_and_lines_are_refused_by_field():
             decode(line)
 
 
+def test_sums_range_to_2_to_the_64():
+    """Sums are at most p (p - 1) < 2^64; every other field stays below 2^32."""
+    (line,) = (row[0] for row in vector_cases("wide"))
+    b, a = decode(line)
+    assert encode(b, a) == line and a.sum_lambda >= 2**32
+    assert a.sum_mu + a.sum_lambda <= b.p * (b.p - 1)
+    reasons = {reason for reason, line in vector_cases("tampered") if max(decode(line)[1].sum_mu, decode(line)[1].sum_lambda) >= 2**32}
+    assert reasons == {"mismatch:sum_mu", "mismatch:sum_lambda"}
+
+
 def test_tamper_changes_exactly_one_field():
     a = census(Block(7, 3, 7, 0, 7))
     assert all(sum(x != y for x, y in zip(vars(tamper(a, f)).values(), vars(a).values())) == 1 for f in FIELDS)

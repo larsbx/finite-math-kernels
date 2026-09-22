@@ -18,6 +18,9 @@ from typing import NamedTuple
 
 TAG = "orbit-census-v1"
 BOUND = 2**32
+#: Sums are at most p (p - 1) < 2^64 (section 3.4); every other field is below 2^32.
+WIDE_FIELDS = frozenset({"sum_mu", "sum_lambda"})
+WIDE_BOUND = 2**64
 FIELDS = ("n", "resolved", "sum_mu", "sum_lambda", "periodic", "has_w", "w_seed", "w_mu", "w_lambda")
 BLOCK_FIELDS = ("p", "c", "cap", "lo", "hi")
 
@@ -120,7 +123,8 @@ def decode(line: str) -> tuple[Block, Agg]:
         raise ValueError("malformed:arity")
     names = BLOCK_FIELDS + FIELDS
     for name, t in zip(names, tokens[1:]):
-        if not (t.isascii() and t.isdigit()) or (len(t) > 1 and t[0] == "0") or int(t) >= BOUND:
+        bound = WIDE_BOUND if name in WIDE_FIELDS else BOUND
+        if not (t.isascii() and t.isdigit()) or (len(t) > 1 and t[0] == "0") or int(t) >= bound:
             raise ValueError(f"malformed:{name}")
     values = [int(t) for t in tokens[1:]]
     return Block(*values[:5]), Agg(*values[5:])

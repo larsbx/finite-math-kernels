@@ -11,6 +11,19 @@ defmodule Frontier.RecordTest do
     end
   end
 
+  test "sums range to 2^64: the wide record and forged wide sums decode and re-encode" do
+    wide = for [line] <- Vectors.cases("wide"), do: line
+    forged = for [_, line] <- Vectors.cases("tampered"), do: line
+
+    for line <- wide ++ forged do
+      assert {:ok, record} = Record.decode(line)
+      assert Record.encode(record) == line
+    end
+
+    assert Enum.any?(wide, &(elem(Record.decode(&1), 1).agg.sum_lambda >= 2 ** 32))
+    assert Record.decode("orbit-census-v1 7 3 7 0 7 7 7 6 18446744073709551615 3 1 1 2 3") |> elem(0) == :ok
+  end
+
   test "every malformed line is refused with the reference's field" do
     for [field, line] <- Vectors.cases("decode-malformed") do
       assert Record.decode(line) == {:malformed, field}, inspect(line)

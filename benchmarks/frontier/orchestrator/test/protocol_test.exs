@@ -105,6 +105,13 @@ defmodule Frontier.ProtocolTest do
     assert Protocol.verdict(s) == {:unsupported, "p"}
   end
 
+  test "a record with a sum of 2^32 or more goes to replay, not to malformed" do
+    [[line]] = Vectors.cases("wide")
+    block = Vectors.block_of(line)
+    {s, _} = Protocol.new(block, 3, :ok)
+    assert Protocol.step(s, {:proposal, line}) == {%{s | phase: {:replaying, line}}, [{:replay, line}]}
+  end
+
   test "an answer to a different question is rejected, not replayed" do
     {s, _} = Protocol.new(@block, 3, :ok)
     assert {s, []} = Protocol.step(s, {:proposal, "orbit-census-v1 7 3 6 0 7 7 7 6 21 3 1 1 2 3"})

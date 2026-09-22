@@ -11,6 +11,11 @@ One tab-separated case per line; a record keeps its own single spaces:
     tampered          <reason>  <record>  replay must answer <reason>
     request-malformed <field>   <p c cap lo hi>
     decode-malformed  <field>   <line>
+    wide              <record>            decodes and re-encodes to itself
+
+A ``wide`` record has a sum of 2^32 or more. Any such record costs at least
+2^32 steps to recompute, so its truth is checked by the slow polyglot gate
+(the Mojo kernel replays it), not by this generator.
 """
 
 from __future__ import annotations
@@ -46,6 +51,14 @@ MALFORMED_REQUESTS = (
     ("lo", Block(7, 0, 7, 5, 4)), ("hi", Block(7, 0, 7, 0, 8)),
 )
 
+#: The first report of the 2^32 overflow: a full-field block in the Mojo domain
+#: whose sum_lambda needs the widened range (4453414691 >= 2^32).
+WIDE = ("orbit-census-v1 94379 0 94379 0 94379 94379 94379 47189 4453414691 47190 1 2 1 47188",)
+
+#: Forged sums at and around the widened range: a value of 2^32 or more must
+#: reach replay (a mismatch), not stop at decoding.
+FORGED_SUMS = (("sum_mu", 2**32), ("sum_lambda", 2**63 - 1))
+
 OK = "orbit-census-v1 7 3 7 0 7"
 MALFORMED_LINES = (
     ("arity", ""), ("arity", "orbit-census-v2 7 3 7 0 7 7 7 0 0 0 0 0 0 0"), ("arity", OK),
@@ -54,6 +67,10 @@ MALFORMED_LINES = (
     ("cap", "orbit-census-v1 7 3 4294967296 0 7 7 7 0 0 0 0 0 0 0"),
     ("n", "orbit-census-v1 7 3 7 0 7 -7 7 0 0 0 0 0 0 0"), ("w_lambda", "orbit-census-v1 7 3 7 0 7 7 7 0 0 0 0 0 0 x"),
     ("sum_mu", "orbit-census-v1 7 3 7 0 7 7 7 \u0661 0 0 0 0 0 0"),
+    ("sum_lambda", f"orbit-census-v1 7 3 7 0 7 7 7 6 {2**64} 3 1 1 2 3"),
+    ("sum_mu", f"orbit-census-v1 7 3 7 0 7 7 7 {10**20} 21 3 1 1 2 3"),
+    ("n", f"orbit-census-v1 7 3 7 0 7 {2**32} 7 6 21 3 1 1 2 3"),
+    ("w_lambda", f"orbit-census-v1 7 3 7 0 7 7 7 6 21 3 1 1 2 {2**32}"),
 )
 
 
@@ -65,8 +82,13 @@ def cases() -> list[str]:
         for field in FIELDS:
             forged = tamper(a, field)
             out.append(f"tampered\t{replay_verdict(b, forged)}\t{encode(b, forged)}")
+    b, a = records[BLOCKS.index(TAMPERED[0])]
+    for field, value in FORGED_SUMS:
+        forged = tamper(a, field, value - getattr(a, field))
+        out.append(f"tampered\t{replay_verdict(b, forged)}\t{encode(b, forged)}")
     out += [f"request-malformed\t{field}\t{' '.join(map(str, b))}" for field, b in MALFORMED_REQUESTS]
     out += [f"decode-malformed\t{field}\t{line}" for field, line in MALFORMED_LINES]
+    out += [f"wide\t{line}" for line in WIDE]
     return out
 
 

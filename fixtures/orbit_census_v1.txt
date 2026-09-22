@@ -39,6 +39,8 @@ tampered	mismatch:has_w	orbit-census-v1 101 7 101 0 101 101 101 957 287 9 2 22 2
 tampered	mismatch:w_seed	orbit-census-v1 101 7 101 0 101 101 101 957 287 9 1 23 21 2
 tampered	mismatch:w_mu	orbit-census-v1 101 7 101 0 101 101 101 957 287 9 1 22 22 2
 tampered	mismatch:w_lambda	orbit-census-v1 101 7 101 0 101 101 101 957 287 9 1 22 21 3
+tampered	mismatch:sum_mu	orbit-census-v1 7 3 7 0 7 7 7 4294967296 21 3 1 1 2 3
+tampered	mismatch:sum_lambda	orbit-census-v1 7 3 7 0 7 7 7 6 9223372036854775807 3 1 1 2 3
 request-malformed	p	1 0 1 0 1
 request-malformed	p	9 0 9 0 9
 request-malformed	p	4294967311 0 1 0 1
@@ -57,3 +59,8 @@ decode-malformed	cap	orbit-census-v1 7 3 4294967296 0 7 7 7 0 0 0 0 0 0 0
 decode-malformed	n	orbit-census-v1 7 3 7 0 7 -7 7 0 0 0 0 0 0 0
 decode-malformed	w_lambda	orbit-census-v1 7 3 7 0 7 7 7 0 0 0 0 0 0 x
 decode-malformed	sum_mu	orbit-census-v1 7 3 7 0 7 7 7 ١ 0 0 0 0 0 0
+decode-malformed	sum_lambda	orbit-census-v1 7 3 7 0 7 7 7 6 18446744073709551616 3 1 1 2 3
+decode-malformed	sum_mu	orbit-census-v1 7 3 7 0 7 7 7 100000000000000000000 21 3 1 1 2 3
+decode-malformed	n	orbit-census-v1 7 3 7 0 7 4294967296 7 6 21 3 1 1 2 3
+decode-malformed	w_lambda	orbit-census-v1 7 3 7 0 7 7 7 6 21 3 1 1 2 4294967296
+wide	orbit-census-v1 94379 0 94379 0 94379 94379 94379 47189 4453414691 47190 1 2 1 47188

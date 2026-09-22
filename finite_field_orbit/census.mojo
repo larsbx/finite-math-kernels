@@ -12,7 +12,7 @@
 
 comptime TAG = "orbit-census-v1"
 comptime ARITY = 15
-comptime CONTRACT_BOUND = 4294967296  # 2^32: every field of the contract
+comptime CONTRACT_BOUND = 4294967296  # 2^32: every field but the sums, which range to 2^64
 comptime TABLE_BOUND = 16777216  # 2^24: this kernel's declared domain for p
 
 
@@ -190,23 +190,42 @@ struct Decoded(Movable):
         self.agg = agg^
 
 
-def parse_canonical(token: String) -> Int:
-    """The value of an unsigned decimal with no leading zero below 2^32, else -1."""
+comptime MALFORMED = -1
+comptime UNREPRESENTABLE = -2  # a valid wide value at or above 2^63, beyond Int
+
+
+def parse_canonical(token: String, wide: Bool = False) -> Int:
+    """An unsigned decimal with no leading zero, below 2^32 (or 2^64 when `wide`).
+
+    Returns the value, `MALFORMED`, or `UNREPRESENTABLE` for a wide value in
+    `[2^63, 2^64)`: valid in the contract, but not an `Int`. Such a sum cannot
+    belong to a block inside this kernel's domain, where sums stay below 2^48.
+    """
     var bytes = token.as_bytes()
     var n = len(bytes)
-    if n == 0 or n > 10 or (n > 1 and Int(bytes[0]) == ord("0")):
-        return -1
-    var value = 0
+    if n == 0 or n > (20 if wide else 10) or (n > 1 and Int(bytes[0]) == ord("0")):
+        return MALFORMED
+    var value: UInt64 = 0
     for i in range(n):
         var digit = Int(bytes[i]) - ord("0")
         if digit < 0 or digit > 9:
-            return -1
-        value = value * 10 + digit
-    return value if value < CONTRACT_BOUND else -1
+            return MALFORMED
+        if value > (UInt64.MAX - UInt64(digit)) // 10:
+            return MALFORMED  # 2^64 or more
+        value = value * 10 + UInt64(digit)
+    if not wide and value >= UInt64(CONTRACT_BOUND):
+        return MALFORMED
+    if value > UInt64(Int.MAX):
+        return UNREPRESENTABLE
+    return Int(value)
 
 
 def decode(line: String) -> Decoded:
-    """Total inverse of `encode`: every other string is `malformed:<field>`."""
+    """Total inverse of `encode`: every other string is `malformed:<field>`.
+
+    The one exception is a sum in `[2^63, 2^64)`: a valid record this kernel
+    cannot hold, answered `unsupported:<field>` (section 3.6).
+    """
     var tokens = List[String]()
     for part in line.split(" "):
         tokens.append(String(part))
@@ -215,9 +234,12 @@ def decode(line: String) -> Decoded:
     var names = field_names()
     var v = List[Int]()
     for i in range(1, ARITY):
-        var value = parse_canonical(tokens[i])
-        if value < 0:
-            return Decoded("malformed:" + names[i - 1], Block(0, 0, 0, 0, 0), Agg())
+        var name = names[i - 1]
+        var value = parse_canonical(tokens[i], wide=name == "sum_mu" or name == "sum_lambda")
+        if value == MALFORMED:
+            return Decoded("malformed:" + name, Block(0, 0, 0, 0, 0), Agg())
+        if value == UNREPRESENTABLE:
+            return Decoded("unsupported:" + name, Block(0, 0, 0, 0, 0), Agg())
         v.append(value)
     return Decoded("", Block(v[0], v[1], v[2], v[3], v[4]), Agg(v[5], v[6], v[7], v[8], v[9], v[10], v[11], v[12], v[13]))
 

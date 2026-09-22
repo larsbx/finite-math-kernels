@@ -20,7 +20,7 @@ def answer_census(args: List[String]) raises -> String:
     var v = List[Int]()
     for i in range(5):
         var value = parse_canonical(args[i])
-        if value < 0:
+        if value < 0:  # request fields are narrow, so never UNREPRESENTABLE
             return "malformed:" + names[i]
         v.append(value)
     var b = Block(v[0], v[1], v[2], v[3], v[4])

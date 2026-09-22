@@ -19,14 +19,14 @@ defmodule Frontier.PortKernel do
           replay: (binary -> :accepted | {:rejected, binary} | {:infra, term})
         }
 
-  @doc "The Mojo kernel: challenger and authority, `census_cli` from `benchmarks/frontier/census_cli.mojo`."
-  @spec mojo(Path.t()) :: kernel
-  def mojo(bin) do
+  @doc "The Mojo kernel: challenger and authority, `census_cli` from `benchmarks/frontier/census_cli.mojo`; `opts` go to `run/3`."
+  @spec mojo(Path.t(), keyword) :: kernel
+  def mojo(bin, opts \\ []) do
     %{
       name: :mojo,
       domain: &Contract.mojo_domain/1,
-      census: &(bin |> run(["census" | block_args(&1)]) |> mojo_census()),
-      replay: &(bin |> run(["replay", &1]) |> mojo_replay())
+      census: &(bin |> run(["census" | block_args(&1)], opts) |> mojo_census()),
+      replay: &(bin |> run(["replay", &1], opts) |> mojo_replay())
     }
   end
 
