@@ -3,11 +3,14 @@
 Runs in the polyglot environment (`pixi run test-orbit-bend`), which builds
 `benchmarks/frontier/census.bend` with the Bend 2 `bend` on PATH and names the
 binary FRONTIER_BEND_BIN. A missing binary fails the gate; it does not skip.
+The sums check builds `tests/finite_field_orbit/census_sums.bend` with that
+same `bend`.
 """
 
 from __future__ import annotations
 
 import os
+import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -20,7 +23,7 @@ sys.path.insert(0, str(ROOT / "tools"))
 from orbit_census_reference import decode  # noqa: E402
 
 VECTORS = ROOT / "fixtures" / "orbit_census_v1.txt"
-DOMAIN_P = 2**16  # section 3.6: Bend 2 answers p < 2^16
+DOMAIN_P = 2**24  # section 3.6: Bend 2 answers p < 2^24, the Mojo kernel's domain
 
 
 def bend(*args: object, threads: int = 4) -> str:
@@ -48,13 +51,27 @@ def test_bend_reproduces_every_vector_in_its_domain(line):
     assert bend(*decode(line)[0]) == line
 
 
-def test_the_domain_edge_is_covered():
-    assert any(decode(line)[0][::4] == (65521, 65521) for line in census_lines())  # p and hi
+def test_both_multiply_paths_and_the_domain_edge_are_covered():
+    blocks = [decode(line)[0] for line in census_lines()]
+    assert any(b.p == 65521 and b.hi == 65521 for b in blocks)  # native squares only
+    assert any(b.p == 2**24 - 3 and b.hi == b.p for b in blocks)  # 24-bit multiply, seeds near p - 1
+    assert any(b.lo < 2**16 < b.hi for b in blocks)  # the switch between the two
 
 
-@pytest.mark.parametrize("line", [line for line in census_lines() if decode(line)[0].p >= DOMAIN_P])
-def test_bend_refuses_what_it_cannot_hold(line):
-    assert bend(*decode(line)[0]) == "unsupported:p"
+def test_bend_refuses_the_first_prime_past_its_domain():
+    assert bend(2**24 + 43, 0, 5, 0, 5) == "unsupported:p"
+
+
+def test_sums_past_2_to_the_32_render_exactly(tmp_path):
+    """The Nat sums and their rendering, driven directly up to the domain bound p^2."""
+    assert shutil.which("bend"), "the Bend 2 `bend` must be on PATH"
+    binary = tmp_path / "census-sums"
+    subprocess.run(["bend", str(ROOT / "tests" / "finite_field_orbit" / "census_sums.bend"), "-o", str(binary)],
+                   check=True, timeout=600)
+    out = subprocess.run([str(binary)], capture_output=True, text=True, timeout=60, check=True).stdout
+    p = 2**24 - 3
+    head = f"orbit-census-v1 {p} 0 {p} 0 2 2 2"
+    assert out.splitlines() == [f"{head} {2**32} {2**32} 0 1 0 0 1", f"{head} {p * p} {p * p} 0 1 0 0 1"]
 
 
 @pytest.mark.parametrize(("field", "request_"), cases("request-malformed"))

@@ -154,7 +154,7 @@
       "relation": "authored"
     },
     "benchmarks/frontier/census.bend": {
-      "blob": "3de3ae6407e8af3745d904f9d8cd60f5249dde95",
+      "blob": "85875bb5c930b57ad6dc7ef83b0299da71febf75",
       "relation": "authored"
     },
     "benchmarks/frontier/census_cli.mojo": {
@@ -218,7 +218,7 @@
       "relation": "authored"
     },
     "benchmarks/frontier/orchestrator/lib/frontier/contract.ex": {
-      "blob": "c27430772e2ed17e120532151867dfb66e2b63bd",
+      "blob": "6636a76d2570058c9a508c5a4cc475ebbe0cd9bb",
       "relation": "authored"
     },
     "benchmarks/frontier/orchestrator/lib/frontier/port_kernel.ex": {
@@ -238,7 +238,7 @@
       "relation": "authored"
     },
     "benchmarks/frontier/orchestrator/test/census_test.exs": {
-      "blob": "84d4f5977a59aa0afde7f2aa884e20ba06b1d0d1",
+      "blob": "2a58ac4316f1fc72818b7b699073b9e43a95d334",
       "relation": "authored"
     },
     "benchmarks/frontier/orchestrator/test/port_integration_test.exs": {
@@ -250,7 +250,7 @@
       "relation": "authored"
     },
     "benchmarks/frontier/orchestrator/test/record_test.exs": {
-      "blob": "14608d60971318da990d32bae4c70dd5f9dc559e",
+      "blob": "7d0b49491cae44c223fba6d4ef4f844f5a94ccbf",
       "relation": "authored"
     },
     "benchmarks/frontier/orchestrator/test/test_helper.exs": {
@@ -284,7 +284,7 @@
       "source_path": "docs/exact-arithmetic-public-boundary.md"
     },
     "docs/frontier-math-compute-candidates.md": {
-      "blob": "7d360970c84d1d643a71966beefb26a7d090124c",
+      "blob": "6468b51f7e21c8aac1e103f1b9bcacaca3a8b472",
       "relation": "authored"
     },
     "docs/generator-refinement-spec.md": {
@@ -308,7 +308,7 @@
       "relation": "authored"
     },
     "docs/polyglot-orbit-census-design.md": {
-      "blob": "3c5732cc3c453a3437957d15b95c70b22870f83b",
+      "blob": "881ef8109af7c4e5df544a68d90182d8a7105e92",
       "relation": "authored"
     },
     "docs/proof-records-specification.md": {
@@ -504,7 +504,7 @@
       "relation": "authored"
     },
     "fixtures/orbit_census_v1.txt": {
-      "blob": "1a14cf935391893f777bb413c0795216c0b4b9cb",
+      "blob": "a4aeeeb91ce824afdd16e3600ca561d145fef6ae",
       "generator": "tools/make_orbit_vectors.py",
       "relation": "generated"
     },
@@ -786,8 +786,12 @@
       "source_blob": "104f44c18f72b320f5c1a5357b51fd1a6ed0ce33",
       "source_path": "tests/test_public_boundary.py"
     },
+    "tests/finite_field_orbit/census_sums.bend": {
+      "blob": "089973314d4e263be06c06221ebdb25953d83466",
+      "relation": "authored"
+    },
     "tests/finite_field_orbit/test_bend_census.py": {
-      "blob": "2ae0d32b4d80032ed1ba2f175728b2edfad54a89",
+      "blob": "6a3635a2f6396c77f8967173a894a7e066ae6791",
       "relation": "authored"
     },
     "tests/finite_field_orbit/test_choreography.py": {
@@ -799,7 +803,7 @@
       "relation": "authored"
     },
     "tests/finite_field_orbit/test_orbit_reference.py": {
-      "blob": "30efe736bcfcc0f7e33ba4f1546cea8fbba29d29",
+      "blob": "9a957feddca6c3aad173d89230c4a7f2e809bc22",
       "relation": "authored"
     },
     "tests/finite_linear_algebra/test_finite_linear_algebra.mojo": {
@@ -944,7 +948,7 @@
       "relation": "authored"
     },
     "tools/make_orbit_vectors.py": {
-      "blob": "f3ec0df8e59efa300c16085d5b9d864b71a56ad8",
+      "blob": "191724a2d74659c49b66a49cad6c1c1704883962",
       "relation": "authored"
     },
     "tools/make_vectors.py": {

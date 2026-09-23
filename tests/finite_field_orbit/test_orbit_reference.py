@@ -92,7 +92,7 @@ def test_census_vectors_round_trip_and_replay():
         assert encode(b, a) == line
         assert census(b) == a
         assert replay_verdict(b, a) == "accepted"
-        assert max(a.sum_mu, a.sum_lambda) < 2**32 or b.p >= 2**16  # Bend 2's U32 fields suffice in its domain
+        assert a.sum_mu + a.sum_lambda <= a.n * b.p  # so below 2^48 in the kernels' p < 2^24
 
 
 def test_tampered_vectors_name_the_first_differing_field():

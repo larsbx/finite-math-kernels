@@ -8,9 +8,13 @@
 # does. It is non-authoritative: the orchestrator hands every record to the
 # Mojo replay predicate, and only that predicate accepts.
 #
-# Declared domain (section 3.6): p < 2^16. Bend 2 has no type wider than U32,
-# and with p <= 65521 both x^2 + c <= p (p - 1) < 2^32 and every sum
-# <= p^2 < 2^32 are exact in U32.
+# Declared domain (section 3.6): p < 2^24, the Mojo kernel's. Bend 2 has no
+# integer wider than U32. For x < 2^16, x^2 < 2^32 is exact; above that,
+# x^2 mod p is double-and-add over the 24 bits of x, reducing each sum
+# a + b < 2^25 by one conditional subtraction (no division). The sums are
+# Nat: each is at most n p <= p^2 <= (2^24 - 3)^2, below 2^48 - 1, the largest
+# immediate Nat. The runtime aborts on a Nat past that rather than wrapping,
+# so an overflow cannot become a wrong record.
 #
 # Each seed runs Brent's cycle detection, which needs no memory. Its result is
 # the contract's by definition: j = mu + lambda is the first repeat index,
@@ -29,20 +33,43 @@ type Blk is Data:
   Blk{p: U32, c: U32, cap: U32}
 
 type Agg is Data:
-  Agg{n: U32, resolved: U32, sum_mu: U32, sum_lambda: U32, periodic: U32,
+  Agg{n: U32, resolved: U32, sum_mu: Nat, sum_lambda: Nat, periodic: U32,
       has_w: U32, w_seed: U32, w_mu: U32, w_lambda: U32, fault: U32}
 
 def none() -> U32:
   4294967295
 
 def empty() -> Agg:
-  Agg{0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+  Agg{0, 0, 0n, 0n, 0, 0, 0, 0, 0, 0}
 
-# f(x) = (x^2 + c) mod p, exact in U32 because p (p - 1) < 2^32
+# a + b mod p for residues a, b < p < 2^24: the sum is below 2^25
+def madd(+p: U32, +a: U32, +b: U32) -> U32:
+  +t = (a + b : U32)
+  Bool.pick(U32, U32.is_ge(t, p), (t - p : U32), t)
+
+# a * b mod p: double-and-add over bits n - 1 .. 0 of b, high bit first
+def mulmod(+n: Nat, +p: U32, +a: U32, +b: U32, +r: U32) -> U32:
+  match n:
+    case 0n:
+      r
+    case 1n+k:
+      +d = madd(p, r, r)
+      mulmod(k, p, a, b, Bool.pick(U32, U32.is_eq(U32.and(U32.shrn(b, k), 1), 1), madd(p, d, a), d))
+
+# x^2 mod p. Below 2^16, x^2 < 2^32 is exact in U32 for any p, and one
+# (software) division is cheaper than 24 doublings; above, double-and-add.
+def square(+p: U32, +x: U32, small: Bool) -> U32:
+  match small:
+    case True{}:
+      U32.mod((x * x : U32), p)
+    case False{}:
+      mulmod(24n, p, x, x, 0)
+
+# f(x) = (x^2 + c) mod p
 def f(+b: Blk, +x: U32) -> U32:
   match b:
     case Blk{p, c, cap}:
-      U32.mod((x * x + c : U32), p)
+      madd(p, square(p, x, U32.is_lt(x, 65536)), c)
 
 # f applied n times
 def advance(n: Nat, +b: Blk, +x: U32) -> U32:
@@ -89,7 +116,7 @@ def leaf.of(+b: Blk, +seed: U32, +mu: U32, +lam: U32) -> Agg:
       +bad = U32.is_eq(mu, none()) || U32.is_eq(lam, none())
       +ok = Bool.not(bad) && U32.is_le((mu + lam : U32), cap)
       +r = Bool.to_u32(ok)
-      Agg{1, r, Bool.pick(U32, ok, mu, 0), Bool.pick(U32, ok, lam, 0), Bool.to_u32(ok && U32.is_eq(mu, 0)),
+      Agg{1, r, U32.to_nat(Bool.pick(U32, ok, mu, 0)), U32.to_nat(Bool.pick(U32, ok, lam, 0)), Bool.to_u32(ok && U32.is_eq(mu, 0)),
           r, Bool.pick(U32, ok, seed, 0), Bool.pick(U32, ok, mu, 0), Bool.pick(U32, ok, lam, 0), Bool.to_u32(bad)}
 
 def leaf.mu(+b: Blk, +seed: U32, +lam: U32) -> Agg:
@@ -109,7 +136,7 @@ def merge(x: Agg, y: Agg) -> Agg:
   match x y:
     case Agg{n, r, sm, sl, pe, +hw, +ws, +wm, +wl, fa} Agg{n2, r2, sm2, sl2, pe2, +hw2, +ws2, +wm2, +wl2, fa2}:
       +a = first(hw, (wm + wl : U32), ws, hw2, (wm2 + wl2 : U32), ws2)
-      Agg{(n + n2 : U32), (r + r2 : U32), (sm + sm2 : U32), (sl + sl2 : U32), (pe + pe2 : U32),
+      Agg{(n + n2 : U32), (r + r2 : U32), Nat.add(sm, sm2), Nat.add(sl, sl2), (pe + pe2 : U32),
           Bool.pick(U32, a, hw, hw2), Bool.pick(U32, a, ws, ws2), Bool.pick(U32, a, wm, wm2),
           Bool.pick(U32, a, wl, wl2), U32.or(fa, fa2)}
 
@@ -143,7 +170,8 @@ def render(+b: Blk, +lo: U32, +hi: U32, x: Agg) -> String:
   match b x:
     case Blk{p, c, cap} Agg{n, r, sm, sl, pe, hw, ws, wm, wl, +fa}:
       Bool.pick(String, U32.is_ne(fa, 0), "",
-        "orbit-census-v1 " ++ String.join(shows([p, c, cap, lo, hi, n, r, sm, sl, pe, hw, ws, wm, wl]), " ") ++ "\n")
+        "orbit-census-v1 " ++ String.join(List.append(&2, String, shows([p, c, cap, lo, hi, n, r]),
+          Nat.show(sm) <> Nat.show(sl) <> shows([pe, hw, ws, wm, wl])), " ") ++ "\n")
 
 # trial division by d = 2 .. 65535, enough for every p < 2^32 (65535^2 < 2^32);
 # `past` is d^2 > p, `hit` is d | p
@@ -168,7 +196,7 @@ def refusal(+p: U32, +c: U32, +lo: U32, +hi: U32) -> String:
   Bool.pick(String, U32.is_ge(c, p), "malformed:c",
   Bool.pick(String, U32.is_gt(lo, hi), "malformed:lo",
   Bool.pick(String, U32.is_gt(hi, p), "malformed:hi",
-  Bool.pick(String, U32.is_ge(p, 65536), "unsupported:p", "")))))
+  Bool.pick(String, U32.is_ge(p, 16777216), "unsupported:p", "")))))
 
 def canonical.if(+s: String, m: Maybe<&2, U32>) -> Maybe<&2, U32>:
   match m:
