@@ -154,7 +154,7 @@
       "relation": "authored"
     },
     "benchmarks/frontier/census.bend": {
-      "blob": "4598db85982b335bf46645e421a1dea27931e87c",
+      "blob": "85875bb5c930b57ad6dc7ef83b0299da71febf75",
       "relation": "authored"
     },
     "benchmarks/frontier/census_cli.mojo": {

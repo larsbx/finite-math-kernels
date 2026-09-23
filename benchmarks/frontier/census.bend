@@ -11,9 +11,10 @@
 # Declared domain (section 3.6): p < 2^24, the Mojo kernel's. Bend 2 has no
 # integer wider than U32. For x < 2^16, x^2 < 2^32 is exact; above that,
 # x^2 mod p is double-and-add over the 24 bits of x, reducing each sum
-# a + b < 2^25 by one conditional subtraction (no division). The sums are Nat: each is at most n p <= p^2 <= (2^24 - 3)^2,
-# below 2^48 - 1, the largest immediate Nat. The runtime aborts on a Nat past
-# that rather than wrapping, so an overflow cannot become a wrong record.
+# a + b < 2^25 by one conditional subtraction (no division). The sums are
+# Nat: each is at most n p <= p^2 <= (2^24 - 3)^2, below 2^48 - 1, the largest
+# immediate Nat. The runtime aborts on a Nat past that rather than wrapping,
+# so an overflow cannot become a wrong record.
 #
 # Each seed runs Brent's cycle detection, which needs no memory. Its result is
 # the contract's by definition: j = mu + lambda is the first repeat index,
