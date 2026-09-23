@@ -191,6 +191,12 @@ Implement a U32 prime-field recurrence in Mojo, Bend, Julia, and Rust. Use
 fixed seed blocks and deterministic tree partitioning. Emit aggregate digests
 plus a configurable witness sample.
 
+A companion contract, `orbit-census-v1` (`docs/polyglot-orbit-census-design.md`),
+takes the rho census of `x^2 + c` through the same Mojo-decides discipline
+with an Elixir orchestrator and a model-checked choreography. It is a protocol
+lane, not a second Lane A: its challenger is Bend 1 (`bend-lang` 0.2.38 on
+HVM2, u24), pinned separately from the Bend 2 of the harness.
+
 ### Slice 2 — batched NTT
 
 Implement scalar and optimized Mojo variants, Julia oracle vectors, and the
