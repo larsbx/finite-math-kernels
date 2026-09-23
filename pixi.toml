@@ -43,10 +43,9 @@ test = { depends-on = ["test-finite-exact", "test-interval", "test-linear-algebr
 
 # The polyglot lane of docs/polyglot-orbit-census-design.md. Separate from the
 # default environment so the authoritative gates above neither gain nor lose a
-# dependency. Bend 1 and HVM come from cargo under their own root, named by
-# FRONTIER_BEND1 and FRONTIER_HVM1 (see .github/workflows/frontier-polyglot.yml),
-# because `bend` on PATH is the Bend 2 of the Lane A harness; TLC comes from
-# TLA_TOOLS. The gates fail, never skip, when any of them is missing.
+# dependency. The Bend 2 challenger builds with the same pinned `bend` the Lane A
+# harness uses (.github/actions/install-bend), and TLC comes from TLA_TOOLS. The
+# gates fail, never skip, when either is missing.
 [feature.polyglot.dependencies]
 elixir = ">=1.18"
 openjdk = ">=17"
@@ -56,8 +55,9 @@ ELIXIR_ERL_OPTIONS = "+fnu"
 
 [feature.polyglot.tasks]
 build-census = "mkdir -p .build && mojo build -I . benchmarks/frontier/census_cli.mojo -o .build/census_cli"
-test-orbit-bend = "python -m pytest -q tests/finite_field_orbit/test_bend_census.py"
-test-orchestrator = { cmd = "FRONTIER_MOJO_BIN=$PIXI_PROJECT_ROOT/.build/census_cli FRONTIER_BEND_SOURCE=$PIXI_PROJECT_ROOT/benchmarks/frontier/census.bend mix test --warnings-as-errors", cwd = "benchmarks/frontier/orchestrator", depends-on = ["build-census"] }
+build-census-bend = "mkdir -p .build && bend benchmarks/frontier/census.bend -o .build/census-bend2"
+test-orbit-bend = { cmd = "FRONTIER_BEND_BIN=$PIXI_PROJECT_ROOT/.build/census-bend2 python -m pytest -q tests/finite_field_orbit/test_bend_census.py", depends-on = ["build-census-bend"] }
+test-orchestrator = { cmd = "FRONTIER_MOJO_BIN=$PIXI_PROJECT_ROOT/.build/census_cli FRONTIER_BEND_BIN=$PIXI_PROJECT_ROOT/.build/census-bend2 mix test --warnings-as-errors", cwd = "benchmarks/frontier/orchestrator", depends-on = ["build-census", "build-census-bend"] }
 test-choreography = "python -m pytest -q tests/finite_field_orbit/test_choreography.py"
 test-polyglot = { depends-on = ["test-orbit-bend", "test-orchestrator", "test-choreography"] }
 

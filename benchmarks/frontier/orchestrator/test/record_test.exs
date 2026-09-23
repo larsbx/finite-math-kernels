@@ -37,12 +37,12 @@ defmodule Frontier.RecordTest do
     end
   end
 
-  test "declared domains: Mojo below 2^24, Bend at most 4093" do
+  test "declared domains: Mojo below 2^24, Bend 2 below 2^16" do
     assert Contract.mojo_domain({16_777_213, 0, 1, 0, 0}) == :ok
     assert Contract.mojo_domain({16_777_259, 0, 1, 0, 0}) == {:unsupported, "p"}
-    assert Contract.bend_domain({4093, 0, 4093, 0, 4093}) == :ok
-    assert Contract.bend_domain({4099, 0, 1, 0, 0}) == {:unsupported, "p"}
-    assert Contract.bend_domain({7, 0, 16_777_216, 0, 7}) == {:unsupported, "cap"}
+    assert Contract.bend_domain({65_521, 0, 65_521, 0, 65_521}) == :ok
+    assert Contract.bend_domain({65_537, 0, 1, 0, 0}) == {:unsupported, "p"}
+    assert Contract.bend_domain({7, 0, 4_294_967_295, 0, 7}) == :ok
   end
 
   # A witness is a function of its seed, as in real data: the seed determines

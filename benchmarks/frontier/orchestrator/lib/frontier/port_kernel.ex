@@ -25,52 +25,33 @@ defmodule Frontier.PortKernel do
     %{
       name: :mojo,
       domain: &Contract.mojo_domain/1,
-      census: &(bin |> run(["census" | block_args(&1)], opts) |> mojo_census()),
+      census: &(bin |> run(["census" | block_args(&1)], opts) |> census_reply()),
       replay: &(bin |> run(["replay", &1], opts) |> mojo_replay())
     }
   end
 
   @doc """
-  The Bend 1 challenger: `bend --hvm-bin HVM run-c census.bend P C CAP LO HI`.
-  It proposes; it cannot replay. Both binaries are explicit paths: `bend` on
-  PATH is the Bend 2 of the Lane A harness, a different language.
-
-  Each run gets its own working directory: `bend run-c` writes its compiled
-  program to a fixed `.out.hvm` in the current directory, so concurrent runs
-  in one directory race and one run can print another's answer. The echo
-  check in `Frontier.Protocol` rejects such an answer; the scratch directory
-  prevents it.
+  The Bend 2 challenger: the binary built from `benchmarks/frontier/census.bend`,
+  run as `census-bend2 --threads T -- P C CAP LO HI`. It answers in the Mojo
+  census grammar and proposes only; it cannot replay.
   """
-  @spec bend(Path.t(), Path.t(), Path.t()) :: kernel
-  def bend(bend, hvm, source) do
-    source = Path.expand(source)
+  @spec bend(Path.t(), keyword) :: kernel
+  def bend(bin, opts \\ []) do
+    threads = opts |> Keyword.get(:threads, 1) |> Integer.to_string()
 
     %{
       name: :bend,
       domain: &Contract.bend_domain/1,
-      census: fn block ->
-        in_scratch_dir(&run(bend, ["--hvm-bin", hvm, "run-c", source | block_args(block)], cd: &1))
-        |> bend_census()
-      end,
+      census: &(bin |> run(["--threads", threads, "--" | block_args(&1)], opts) |> census_reply()),
       replay: fn _ -> {:infra, :not_an_authority} end
     }
-  end
-
-  defp in_scratch_dir(fun) do
-    dir = Path.join(System.tmp_dir!(), "frontier-bend-#{System.unique_integer([:positive])}")
-    File.mkdir_p!(dir)
-
-    try do
-      fun.(dir)
-    after
-      File.rm_rf!(dir)
-    end
   end
 
   defp block_args(block), do: block |> Tuple.to_list() |> Enum.map(&Integer.to_string/1)
 
   @doc false
-  def mojo_census({:ok, out}) do
+  # One line: a record, or a refusal. Shared by every census kernel.
+  def census_reply({:ok, out}) do
     case one_line(out) do
       {:ok, "orbit-census-v1 " <> _ = line} -> {:ok, line}
       {:ok, "malformed:" <> _ = r} -> {:refused, r}
@@ -79,7 +60,7 @@ defmodule Frontier.PortKernel do
     end
   end
 
-  def mojo_census(infra), do: infra
+  def census_reply(infra), do: infra
 
   @doc false
   def mojo_replay({:ok, out}) do
@@ -101,16 +82,6 @@ defmodule Frontier.PortKernel do
   end
 
   def mojo_replay(infra), do: infra
-
-  @doc false
-  def bend_census({:ok, out}) do
-    case String.split(out, "\n") do
-      ["orbit-census-v1 " <> _ = line, "Result: " <> _, ""] -> {:ok, line}
-      _ -> {:infra, {:garbled, out}}
-    end
-  end
-
-  def bend_census(infra), do: infra
 
   defp one_line(out) do
     case String.split(out, "\n") do

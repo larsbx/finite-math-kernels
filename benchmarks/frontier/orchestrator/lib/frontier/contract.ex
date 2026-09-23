@@ -2,8 +2,8 @@ defmodule Frontier.Contract do
   @moduledoc """
   Well-formedness of a block (design section 3.1) and the declared domains of
   section 3.6. The orchestrator refuses before dispatch, so no request outside
-  a domain reaches a kernel. That matters most for Bend, whose u24 numbers
-  wrap silently.
+  a domain reaches a kernel. That matters most for Bend, whose U32 arithmetic
+  wraps silently.
   """
 
   @bound 4_294_967_296
@@ -34,14 +34,9 @@ defmodule Frontier.Contract do
   def mojo_domain({p, _, _, _, _}) when p < 16_777_216, do: :ok
   def mojo_domain(_), do: {:unsupported, "p"}
 
-  @doc "Bend challenger: u24 arithmetic, so `(p - 1)^2 < 2^24` and `cap < 2^24`."
-  def bend_domain({p, _, cap, _, _}) do
-    cond do
-      p > 4093 -> {:unsupported, "p"}
-      cap >= 16_777_216 -> {:unsupported, "cap"}
-      true -> :ok
-    end
-  end
+  @doc "Bend 2 challenger: nothing wider than U32, so `p (p - 1) < 2^32`, hence `p < 2^16`."
+  def bend_domain({p, _, _, _, _}) when p < 65_536, do: :ok
+  def bend_domain(_), do: {:unsupported, "p"}
 
   @spec prime?(integer) :: boolean
   def prime?(p) when p < 2, do: false
