@@ -4,7 +4,7 @@ defmodule Frontier.CensusTest do
 
   alias Frontier.{Census, Contract, Record, Vectors}
 
-  @lines Vectors.census_lines() |> Enum.filter(&(elem(Vectors.block_of(&1), 0) < 65_536))
+  @lines Vectors.census_lines() |> Enum.filter(&(Contract.bend_domain(Vectors.block_of(&1)) == :ok))
   @by_block Map.new(@lines, &{Vectors.block_of(&1), &1})
   @first Vectors.block_of(hd(@lines))
 
@@ -68,7 +68,7 @@ defmodule Frontier.CensusTest do
 
   test "out-of-domain blocks never reach the challenger" do
     tripwire = honest(%{census: fn b -> flunk("dispatched #{inspect(b)}") end})
-    %{ledger: ledger} = Census.run([{65_537, 0, 1, 0, 0}, {7, 7, 7, 0, 7}], tripwire, honest())
+    %{ledger: ledger} = Census.run([{16_777_259, 0, 1, 0, 0}, {7, 7, 7, 0, 7}], tripwire, honest())
     assert Enum.map(ledger, &elem(&1, 1)) == [{:unsupported, "p"}, {:malformed, "c"}]
   end
 end
