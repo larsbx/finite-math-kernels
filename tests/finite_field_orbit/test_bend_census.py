@@ -1,10 +1,8 @@
-"""The Bend challenger against the golden vectors, and the measured reasons for its domain.
+"""The Bend 2 challenger against the golden vectors, its refusals, and its determinism.
 
-Runs in the polyglot environment (`pixi run test-orbit-bend`). This lane is
-Bend 1 (`bend-lang` 0.2.38 on HVM2), addressed by FRONTIER_BEND1 and
-FRONTIER_HVM1 rather than by `bend` on PATH, which belongs to the Bend 2 of the
-Lane A harness. A missing toolchain fails the gate, it does not skip. Each run gets its own working directory, because `bend run-c`
-writes a fixed `.out.hvm` into the current one.
+Runs in the polyglot environment (`pixi run test-orbit-bend`), which builds
+`benchmarks/frontier/census.bend` with the Bend 2 `bend` on PATH and names the
+binary FRONTIER_BEND_BIN. A missing binary fails the gate; it does not skip.
 """
 
 from __future__ import annotations
@@ -19,52 +17,60 @@ import pytest
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "tools"))
 
-from orbit_census_reference import Block, census, decode, encode  # noqa: E402
+from orbit_census_reference import decode  # noqa: E402
 
-SOURCE = ROOT / "benchmarks" / "frontier" / "census.bend"
 VECTORS = ROOT / "fixtures" / "orbit_census_v1.txt"
-BEND_MAX_P = 4093
+DOMAIN_P = 2**16  # section 3.6: Bend 2 answers p < 2^16
 
 
-def bend1() -> list[str]:
-    paths = [os.environ.get(name, "") for name in ("FRONTIER_BEND1", "FRONTIER_HVM1")]
-    assert all(p and Path(p).is_file() for p in paths), "set FRONTIER_BEND1 and FRONTIER_HVM1 to the Bend 1 binaries"
-    return [paths[0], "--hvm-bin", paths[1], "run-c", str(SOURCE)]
-
-
-def bend(tmp_path: Path, *args: int) -> str:
-    """The record line Bend prints; anything else in its output fails the test."""
-    out = subprocess.run([*bend1(), *map(str, args)], cwd=tmp_path,
+def bend(*args: object, threads: int = 4) -> str:
+    """Bend's one line of output; any other shape, or a non-zero exit, fails the test."""
+    binary = os.environ.get("FRONTIER_BEND_BIN", "")
+    assert binary and Path(binary).is_file(), "set FRONTIER_BEND_BIN to the built Bend 2 challenger"
+    out = subprocess.run([binary, "--threads", str(threads), "--", *map(str, args)],
                          capture_output=True, text=True, timeout=600, check=True).stdout
-    line, result, tail = out.split("\n")
-    assert result.startswith("Result: ") and tail == "", out
+    line, tail = out.split("\n")
+    assert tail == "", out
     return line
 
 
-def bend_domain_vectors() -> list[str]:
-    lines = [row.split("\t")[1] for row in VECTORS.read_text(encoding="utf-8").splitlines() if row.startswith("census\t")]
-    return [line for line in lines if decode(line)[0].p <= BEND_MAX_P]
+def cases(kind: str) -> list[list[str]]:
+    rows = [row.split("\t") for row in VECTORS.read_text(encoding="utf-8").splitlines() if not row.startswith("#")]
+    return [row[1:] for row in rows if row[0] == kind]
 
 
-@pytest.mark.parametrize("line", bend_domain_vectors())
-def test_bend_reproduces_every_vector_in_its_domain(tmp_path, line):
-    assert bend(tmp_path, *decode(line)[0]) == line
+def census_lines() -> list[str]:
+    return [line for (line,) in cases("census")]
 
 
-def test_bend_domain_covers_the_largest_prime_it_allows():
-    assert any(decode(line)[0].p == BEND_MAX_P and decode(line)[0].hi == BEND_MAX_P for line in bend_domain_vectors())
+@pytest.mark.parametrize("line", [line for line in census_lines() if decode(line)[0].p < DOMAIN_P])
+def test_bend_reproduces_every_vector_in_its_domain(line):
+    assert bend(*decode(line)[0]) == line
 
 
-def test_outside_its_domain_bend_is_silently_wrong(tmp_path):
-    """Measured fact behind section 3.6: squares of seeds >= 4096 wrap mod 2^24."""
-    b = Block(4099, 0, 4099, 4096, 4099)
-    got = bend(tmp_path, *b)
-    assert got != encode(b, census(b))
-    assert got.split(" ")[1:6] == [str(v) for v in b]  # the echo is intact; only the answer is wrong
+def test_the_domain_edge_is_covered():
+    assert any(decode(line)[0][::4] == (65521, 65521) for line in census_lines())  # p and hi
 
 
-def test_arguments_of_2_to_the_24_are_refused_by_the_cli(tmp_path):
-    """Arguments do not wrap (the CLI exits 2); only arithmetic does. The orchestrator refuses first anyway."""
-    result = subprocess.run([*bend1(), str(2**24 + 7), "3", "7", "0", "7"], cwd=tmp_path,
-                            capture_output=True, text=True, timeout=600, check=False)
-    assert result.returncode != 0 and "outside of range for U24" in result.stderr + result.stdout
+@pytest.mark.parametrize("line", [line for line in census_lines() if decode(line)[0].p >= DOMAIN_P])
+def test_bend_refuses_what_it_cannot_hold(line):
+    assert bend(*decode(line)[0]) == "unsupported:p"
+
+
+@pytest.mark.parametrize(("field", "request_"), cases("request-malformed"))
+def test_bend_refuses_malformed_requests_as_the_contract_orders_them(field, request_):
+    assert bend(*request_.split(" ")) == f"malformed:{field}"
+
+
+@pytest.mark.parametrize(("args", "reason"), [
+    (("07", 3, 7, 0, 7), "malformed:p"), ((7, "+3", 7, 0, 7), "malformed:c"),
+    ((7, 3, 2**32, 0, 7), "malformed:cap"), ((7, 3, 7, 0), "malformed:arity"),
+    ((7, 3, 7, 0, 7, 7), "malformed:arity"), ((7, 3, 7, "x", 7), "malformed:lo"),
+])
+def test_arguments_must_be_canonical_decimals(args, reason):
+    assert bend(*args) == reason
+
+
+@pytest.mark.parametrize("line", [line for line in census_lines() if decode(line)[0].p < DOMAIN_P][-4:])
+def test_the_record_is_the_same_at_every_thread_count(line):
+    assert {bend(*decode(line)[0], threads=t) for t in (1, 2, 8)} == {line}

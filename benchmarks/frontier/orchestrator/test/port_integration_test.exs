@@ -1,21 +1,18 @@
 defmodule Frontier.PortIntegrationTest do
   @moduledoc """
   The real kernels behind Ports. Requires `FRONTIER_MOJO_BIN` and
-  `FRONTIER_BEND_SOURCE` (set by `pixi run test-orchestrator`) and the Bend 1
-  binaries `FRONTIER_BEND1` and `FRONTIER_HVM1`.
-  A missing toolchain fails; it does not skip.
+  `FRONTIER_BEND_BIN`, both set by `pixi run test-orchestrator`, which builds
+  them. A missing binary fails; it does not skip.
   """
   use ExUnit.Case, async: true
 
-  alias Frontier.{Census, PortKernel, Record, Vectors}
+  alias Frontier.{Census, Contract, PortKernel, Record, Vectors}
 
   setup_all do
     mojo = System.get_env("FRONTIER_MOJO_BIN") || flunk("FRONTIER_MOJO_BIN is not set")
-    source = System.get_env("FRONTIER_BEND_SOURCE") || flunk("FRONTIER_BEND_SOURCE is not set")
-    bend = System.get_env("FRONTIER_BEND1") || flunk("FRONTIER_BEND1 is not set")
-    hvm = System.get_env("FRONTIER_HVM1") || flunk("FRONTIER_HVM1 is not set")
-    assert Enum.all?([mojo, source, bend, hvm], &File.exists?/1)
-    %{mojo: PortKernel.mojo(mojo), bend: PortKernel.bend(bend, hvm, source)}
+    bend = System.get_env("FRONTIER_BEND_BIN") || flunk("FRONTIER_BEND_BIN is not set")
+    assert File.exists?(mojo) and File.exists?(bend)
+    %{mojo: PortKernel.mojo(mojo), bend: PortKernel.bend(bend, threads: 2)}
   end
 
   test "Mojo answers every census vector and accepts it on replay", %{mojo: mojo} do
@@ -29,8 +26,8 @@ defmodule Frontier.PortIntegrationTest do
     for [reason, line] <- Vectors.cases("tampered"), do: assert(mojo.replay.(line) == {:rejected, reason})
   end
 
-  test "Bend proposes, Mojo decides: small blocks end to end", %{mojo: mojo, bend: bend} do
-    lines = Vectors.census_lines() |> Enum.filter(&(elem(Vectors.block_of(&1), 0) <= 1009))
+  test "Bend proposes, Mojo decides: every vector in Bend's domain, end to end", %{mojo: mojo, bend: bend} do
+    lines = Vectors.census_lines() |> Enum.filter(&(Contract.bend_domain(Vectors.block_of(&1)) == :ok))
     blocks = Enum.map(lines, &Vectors.block_of/1)
     %{ledger: ledger, digest: digest} = Census.run(blocks, bend, mojo, max_concurrency: 2)
     assert Enum.map(ledger, &elem(&1, 1)) == Enum.map(lines, &{:accepted, &1})
@@ -51,7 +48,7 @@ defmodule Frontier.PortIntegrationTest do
   test "a garbled kernel is an infrastructure fault, and exhausts rather than decides", %{mojo: mojo} do
     broken = %{mojo | census: fn _ -> PortKernel.run("false", []) end}
     assert Census.drive({7, 3, 7, 0, 7}, 2, broken.domain, broken, mojo) == :exhausted
-    assert PortKernel.bend_census({:ok, "Errors:\n  Unbound variable\n"}) |> elem(0) == :infra
+    assert PortKernel.census_reply({:ok, "Errors:\n  Unbound variable\n"}) |> elem(0) == :infra
     assert PortKernel.mojo_replay({:ok, "accepted\naccepted\n"}) |> elem(0) == :infra
   end
 end

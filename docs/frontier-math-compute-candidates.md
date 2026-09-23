@@ -194,8 +194,8 @@ plus a configurable witness sample.
 A companion contract, `orbit-census-v1` (`docs/polyglot-orbit-census-design.md`),
 takes the rho census of `x^2 + c` through the same Mojo-decides discipline
 with an Elixir orchestrator and a model-checked choreography. It is a protocol
-lane, not a second Lane A: its challenger is Bend 1 (`bend-lang` 0.2.38 on
-HVM2, u24), pinned separately from the Bend 2 of the harness.
+lane, not a second Lane A. Its challenger is Bend 2, the same pinned build as
+the harness, with the declared domain `p < 2^16`.
 
 ### Slice 2 — batched NTT
 

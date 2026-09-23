@@ -1,87 +1,237 @@
-# census.bend: the Bend challenger for contract orbit-census-v1.
+# census.bend: the Bend 2 challenger for contract orbit-census-v1.
 #
-#   bend --hvm-bin HVM run-c census.bend P C CAP LO HI      (Bend 1: bend-lang 0.2.38)
+#   bend census.bend -o census-bend2
+#   census-bend2 --threads T -- P C CAP LO HI
 #
-# prints one canonical record line (docs/polyglot-orbit-census-design.md,
-# section 3.4). It is non-authoritative: the orchestrator hands every line to
-# the Mojo replay predicate, and only that predicate accepts.
+# prints one line: the canonical record (docs/polyglot-orbit-census-design.md,
+# section 3.4), or `malformed:<field>` / `unsupported:<field>` as the Mojo CLI
+# does. It is non-authoritative: the orchestrator hands every record to the
+# Mojo replay predicate, and only that predicate accepts.
 #
-# Declared domain (section 3.6): p <= 4093. HVM2 arithmetic is u24 and wraps
-# silently, so (p - 1)^2 must stay below 2^24; the CLI refuses arguments of
-# 2^24 or more, but a product that overflows gives a wrong answer with no
-# error. The orchestrator refuses out-of-domain blocks before dispatch and
-# rejects any line whose echoed block differs from the request.
+# Declared domain (section 3.6): p < 2^16. Bend 2 has no type wider than U32,
+# and with p <= 65521 both x^2 + c <= p (p - 1) < 2^32 and every sum
+# <= p^2 < 2^32 are exact in U32.
 #
-# The census splits the seed range in half and recurses on both halves; HVM2
-# evaluates the two calls in parallel without any explicit thread.
+# Each seed runs Brent's cycle detection, which needs no memory. Its result is
+# the contract's by definition: j = mu + lambda is the first repeat index,
+# however it was found, and the seed is resolved iff j <= cap. Termination is
+# by Nat fuel. Brent's hare meets the tortoise by position 2^k - 1 + lambda,
+# where 2^k is the first power of two with 2^k >= max(mu + 1, lambda); that is
+# below 3 (mu + lambda) + 2 <= 3p + 2. The second phase takes at most
+# lambda + mu <= p steps. The fuel covers both, so running out is unreachable.
+# If it happens anyway, the program exits with status 3 and no record.
+#
+# Seeds split in half down a balanced fork-join tree (`a b = f(x) g(y)`), and
+# the partial aggregates merge back up it.
+import Base
 
-type Agg:
-  Agg { n, resolved, sum_mu, sum_lambda, periodic, has_w, w_seed, w_mu, w_lambda }
+type Blk is Data:
+  Blk{p: U32, c: U32, cap: U32}
 
-# Seed `seed` at index j with value x: resolved iff the first repeat index j <= cap.
-def rho(p, c, cap, seed, seen, x, j):
-  (got, seen) = Map/get_check(seen, x)
-  match got:
-    case Maybe/Some:
-      mu = got.value - 1
-      return Agg/Agg(1, 1, mu, j - mu, mu == 0, 1, seed, mu, j - mu)
-    case Maybe/None:
-      if j == cap:
-        return Agg/Agg(1, 0, 0, 0, 0, 0, 0, 0, 0)
-      else:
-        return rho(p, c, cap, seed, Map/set(seen, x, j + 1), (x * x % p + c) % p, j + 1)
+type Agg is Data:
+  Agg{n: U32, resolved: U32, sum_mu: U32, sum_lambda: U32, periodic: U32,
+      has_w: U32, w_seed: U32, w_mu: U32, w_lambda: U32, fault: U32}
 
-# Is a's witness at least as good as b's: longer rho, then smaller seed.
-def witness_first(a_has, a_len, a_seed, b_has, b_len, b_seed):
-  if b_has == 0:
-    return 1
-  elif a_has == 0:
-    return 0
-  else:
-    return (a_len > b_len) | ((a_len == b_len) & (a_seed <= b_seed))
+def none() -> U32:
+  4294967295
 
-def merge(a, b):
-  open Agg: a
-  open Agg: b
-  if witness_first(a.has_w, a.w_mu + a.w_lambda, a.w_seed, b.has_w, b.w_mu + b.w_lambda, b.w_seed):
-    w = (a.has_w, a.w_seed, a.w_mu, a.w_lambda)
-  else:
-    w = (b.has_w, b.w_seed, b.w_mu, b.w_lambda)
-  (has_w, w_seed, w_mu, w_lambda) = w
-  return Agg/Agg(a.n + b.n, a.resolved + b.resolved, a.sum_mu + b.sum_mu, a.sum_lambda + b.sum_lambda,
-                 a.periodic + b.periodic, has_w, w_seed, w_mu, w_lambda)
+def empty() -> Agg:
+  Agg{0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
 
-def census(p, c, cap, lo, hi):
-  n = hi - lo
-  if n == 0:
-    return Agg/Agg(0, 0, 0, 0, 0, 0, 0, 0, 0)
-  elif n == 1:
-    return rho(p, c, cap, lo, Map/empty, lo, 0)
-  else:
-    mid = lo + n / 2
-    return merge(census(p, c, cap, lo, mid), census(p, c, cap, mid, hi))
+# f(x) = (x^2 + c) mod p, exact in U32 because p (p - 1) < 2^32
+def f(+b: Blk, +x: U32) -> U32:
+  match b:
+    case Blk{p, c, cap}:
+      U32.mod((x * x + c : U32), p)
 
-def append(a, b):
-  match a:
-    case String/Nil:
-      return b
-    case String/Cons:
-      return String/Cons(a.head, append(a.tail, b))
+# f applied n times
+def advance(n: Nat, +b: Blk, +x: U32) -> U32:
+  match n:
+    case 0n:
+      x
+    case 1n+k:
+      advance(k, b, f(b, x))
 
-# Decimal fields separated by single spaces: the canonical encoding.
-def join(xs):
+# Brent, phase 1: lambda, or none() if the fuel runs out
+def brent(fuel: Nat, +b: Blk, +tort: U32, +hare: U32, +power: U32, +lam: U32, met: Bool) -> U32:
+  match fuel met:
+    case 0n _:
+      none()
+    case 1n+k True{}:
+      lam
+    case 1n+k False{}:
+      +reset = U32.is_eq(power, lam)
+      +t = Bool.pick(U32, reset, hare, tort)
+      +h = f(b, hare)
+      +l = (Bool.pick(U32, reset, 0, lam) + 1 : U32)
+      brent(k, b, t, h, Bool.pick(U32, reset, (power * 2 : U32), power), l, U32.is_eq(t, h))
+
+# Brent, phase 2: mu, walking two pointers lambda apart until they meet
+def meet(fuel: Nat, +b: Blk, +t: U32, +h: U32, +mu: U32, met: Bool) -> U32:
+  match fuel met:
+    case 0n _:
+      none()
+    case 1n+k True{}:
+      mu
+    case 1n+k False{}:
+      +t2 = f(b, t)
+      +h2 = f(b, h)
+      meet(k, b, t2, h2, (mu + 1 : U32), U32.is_eq(t2, h2))
+
+def fuel(+b: Blk, +k: U32) -> Nat:
+  match b:
+    case Blk{p, c, cap}:
+      U32.to_nat((k * p + 3 : U32))
+
+def leaf.of(+b: Blk, +seed: U32, +mu: U32, +lam: U32) -> Agg:
+  match b:
+    case Blk{p, c, cap}:
+      +bad = U32.is_eq(mu, none()) || U32.is_eq(lam, none())
+      +ok = Bool.not(bad) && U32.is_le((mu + lam : U32), cap)
+      +r = Bool.to_u32(ok)
+      Agg{1, r, Bool.pick(U32, ok, mu, 0), Bool.pick(U32, ok, lam, 0), Bool.to_u32(ok && U32.is_eq(mu, 0)),
+          r, Bool.pick(U32, ok, seed, 0), Bool.pick(U32, ok, mu, 0), Bool.pick(U32, ok, lam, 0), Bool.to_u32(bad)}
+
+def leaf.mu(+b: Blk, +seed: U32, +lam: U32) -> Agg:
+  +h = advance(U32.to_nat(lam), b, seed)
+  leaf.of(b, seed, meet(fuel(b, 1), b, seed, h, 0, U32.is_eq(seed, h)), lam)
+
+def leaf(+b: Blk, +seed: U32) -> Agg:
+  +h = f(b, seed)
+  +lam = brent(fuel(b, 3), b, seed, h, 1, 1, U32.is_eq(seed, h))
+  leaf.mu(b, seed, Bool.pick(U32, U32.is_eq(lam, none()), 0, lam))
+
+# is (la, sa) at least as good a witness as (lb, sb): longer rho, then smaller seed
+def first(+ha: U32, +la: U32, +sa: U32, +hb: U32, +lb: U32, +sb: U32) -> Bool:
+  U32.is_eq(hb, 0) || (U32.is_ne(ha, 0) && (U32.is_gt(la, lb) || (U32.is_eq(la, lb) && U32.is_le(sa, sb))))
+
+def merge(x: Agg, y: Agg) -> Agg:
+  match x y:
+    case Agg{n, r, sm, sl, pe, +hw, +ws, +wm, +wl, fa} Agg{n2, r2, sm2, sl2, pe2, +hw2, +ws2, +wm2, +wl2, fa2}:
+      +a = first(hw, (wm + wl : U32), ws, hw2, (wm2 + wl2 : U32), ws2)
+      Agg{(n + n2 : U32), (r + r2 : U32), (sm + sm2 : U32), (sl + sl2 : U32), (pe + pe2 : U32),
+          Bool.pick(U32, a, hw, hw2), Bool.pick(U32, a, ws, ws2), Bool.pick(U32, a, wm, wm2),
+          Bool.pick(U32, a, wl, wl2), U32.or(fa, fa2)}
+
+# seeds s .. s + n - 1, one after another
+def seq(n: Nat, +b: Blk, +s: U32, acc: Agg) -> Agg:
+  match n:
+    case 0n:
+      acc
+    case 1n+k:
+      seq(k, b, (s + 1 : U32), merge(acc, leaf(b, s)))
+
+# seeds lo .. hi - 1, halved d times into balanced parallel calls
+def census(+d: Nat, +b: Blk, +lo: U32, +hi: U32) -> Agg:
+  match d:
+    case 0n:
+      seq(U32.to_nat((hi - lo : U32)), b, lo, empty())
+    case 1n+k:
+      +mid = (lo + ((hi - lo : U32) >> 1n) : U32)
+      a z = census(k, b, lo, mid) census(k, b, mid, hi)
+      merge(a, z)
+
+def shows(xs: List<&2, U32>) -> List<&2, String>:
   match xs:
-    case List/Nil:
-      return ""
-    case List/Cons:
-      match rest = xs.tail:
-        case List/Nil:
-          return u24/to_string(xs.head)
-        case List/Cons:
-          return append(u24/to_string(xs.head), String/Cons(' ', join(rest)))
+    case Nil{}:
+      []
+    case Con{h, t}:
+      U32.show(h) <> shows(t)
 
-def main(p, c, cap, lo, hi):
-  a = census(p, c, cap, lo, hi)
-  open Agg: a
-  fields = [p, c, cap, lo, hi, a.n, a.resolved, a.sum_mu, a.sum_lambda, a.periodic, a.has_w, a.w_seed, a.w_mu, a.w_lambda]
-  return IO/print(append("orbit-census-v1 ", append(join(fields), "\n")))
+# the record line, or "" when a seed ran out of fuel (unreachable; see above)
+def render(+b: Blk, +lo: U32, +hi: U32, x: Agg) -> String:
+  match b x:
+    case Blk{p, c, cap} Agg{n, r, sm, sl, pe, hw, ws, wm, wl, +fa}:
+      Bool.pick(String, U32.is_ne(fa, 0), "",
+        "orbit-census-v1 " ++ String.join(shows([p, c, cap, lo, hi, n, r, sm, sl, pe, hw, ws, wm, wl]), " ") ++ "\n")
+
+# trial division by d = 2 .. 65535, enough for every p < 2^32 (65535^2 < 2^32);
+# `past` is d^2 > p, `hit` is d | p
+def prime.go(n: Nat, +p: U32, +d: U32, past: Bool, hit: Bool) -> Bool:
+  match n past hit:
+    case 0n _ _:
+      True{}
+    case 1n+k True{} _:
+      True{}
+    case 1n+k False{} True{}:
+      False{}
+    case 1n+k False{} False{}:
+      +e = (d + 1 : U32)
+      prime.go(k, p, e, U32.is_gt((e * e : U32), p), U32.is_eq(U32.mod(p, e), 0))
+
+def prime(+p: U32) -> Bool:
+  U32.is_ge(p, 2) && prime.go(65534n, p, 2, U32.is_gt(4, p), U32.is_eq(U32.mod(p, 2), 0))
+
+# the first refusal in the contract's order (section 3.1, then this domain), or ""
+def refusal(+p: U32, +c: U32, +lo: U32, +hi: U32) -> String:
+  Bool.pick(String, Bool.not(prime(p)), "malformed:p",
+  Bool.pick(String, U32.is_ge(c, p), "malformed:c",
+  Bool.pick(String, U32.is_gt(lo, hi), "malformed:lo",
+  Bool.pick(String, U32.is_gt(hi, p), "malformed:hi",
+  Bool.pick(String, U32.is_ge(p, 65536), "unsupported:p", "")))))
+
+def canonical.if(+s: String, m: Maybe<&2, U32>) -> Maybe<&2, U32>:
+  match m:
+    case None{}:
+      None{}
+    case Some{+v}:
+      Bool.pick(Maybe<&2, U32>, String.eq(U32.show(v), s), Some{v}, None{})
+
+# a canonical unsigned decimal below 2^32: it must print back as itself
+def canonical(t: String) -> Maybe<&2, U32>:
+  +s = t
+  canonical.if(s, U32.read(s))
+
+def names() -> List<&2, String>:
+  ["p", "c", "cap", "lo", "hi"]
+
+def parse.if(m: Maybe<&2, U32>, +name: String, rest: Result<&2, &2, String, List<&2, U32>>) -> Result<&2, &2, String, List<&2, U32>>:
+  match m rest:
+    case None{} _:
+      Fail{name}
+    case Some{v} Done{vs}:
+      Done{v <> vs}
+    case Some{v} Fail{e}:
+      Fail{e}
+
+# the arguments as numbers, or the first field that is not a canonical decimal
+def parse(xs: List<String>, ns: List<&2, String>) -> Result<&2, &2, String, List<&2, U32>>:
+  match xs ns:
+    case Nil{} Nil{}:
+      Done{[]}
+    case Con{h, t} Con{+name, u}:
+      parse.if(canonical(h), name, parse(t, u))
+    case _ _:
+      Fail{"arity"}
+
+def answer.if(+p: U32, +c: U32, +cap: U32, +lo: U32, +hi: U32, why: String, ok: Bool) -> String:
+  match ok:
+    case True{}:
+      render(Blk{p, c, cap}, lo, hi, census(10n, Blk{p, c, cap}, lo, hi))
+    case False{}:
+      why ++ "\n"
+
+def answer(+p: U32, +c: U32, +cap: U32, +lo: U32, +hi: U32, +why: String) -> String:
+  answer.if(p, c, cap, lo, hi, why, String.eq(why, ""))
+
+def reply(r: Result<&2, &2, String, List<&2, U32>>) -> String:
+  match r:
+    case Fail{e}:
+      "malformed:" ++ e ++ "\n"
+    case Done{[+p, +c, +cap, +lo, +hi]}:
+      answer(p, c, cap, lo, hi, refusal(p, c, lo, hi))
+    case Done{_}:
+      "malformed:arity\n"
+
+def emit(+out: String, fault: Bool) -> IO(Unit):
+  match fault:
+    case True{}:
+      IO.die(Unit, 3, "fuel exhausted: no record")
+    case False{}:
+      IO.write(out)
+
+def main() -> IO(Unit):
+  do IO<Unit>:
+    args : List<String> <- IO.args()
+    +out : String = reply(parse(args, names()))
+    emit(out, String.eq(out, ""))
