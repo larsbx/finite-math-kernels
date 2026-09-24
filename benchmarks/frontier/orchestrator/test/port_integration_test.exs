@@ -6,7 +6,7 @@ defmodule Frontier.PortIntegrationTest do
   """
   use ExUnit.Case, async: true
 
-  alias Frontier.{Census, Contract, PortKernel, Record, Vectors}
+  alias Frontier.{Census, PortKernel, Record, Vectors}
 
   setup_all do
     mojo = System.get_env("FRONTIER_MOJO_BIN") || flunk("FRONTIER_MOJO_BIN is not set")
@@ -26,8 +26,8 @@ defmodule Frontier.PortIntegrationTest do
     for [reason, line] <- Vectors.cases("tampered"), do: assert(mojo.replay.(line) == {:rejected, reason})
   end
 
-  test "Bend proposes, Mojo decides: every vector in Bend's domain, end to end", %{mojo: mojo, bend: bend} do
-    lines = Vectors.census_lines() |> Enum.filter(&(Contract.bend_domain(Vectors.block_of(&1)) == :ok))
+  test "Bend proposes, Mojo decides: every census vector, end to end", %{mojo: mojo, bend: bend} do
+    lines = Vectors.census_lines()
     blocks = Enum.map(lines, &Vectors.block_of/1)
     %{ledger: ledger, digest: digest} = Census.run(blocks, bend, mojo, max_concurrency: 2)
     assert Enum.map(ledger, &elem(&1, 1)) == Enum.map(lines, &{:accepted, &1})

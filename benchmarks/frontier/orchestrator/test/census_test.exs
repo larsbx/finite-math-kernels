@@ -66,9 +66,10 @@ defmodule Frontier.CensusTest do
     %{ledger: [{_, :exhausted}], digest: nil} = Census.run([@first], crasher, honest())
   end
 
-  test "out-of-domain blocks never reach the challenger" do
-    tripwire = honest(%{census: fn b -> flunk("dispatched #{inspect(b)}") end})
-    %{ledger: ledger} = Census.run([{16_777_259, 0, 1, 0, 0}, {7, 7, 7, 0, 7}], tripwire, honest())
+  test "out-of-domain and malformed blocks never reach the challenger" do
+    narrow = fn {p, _, _, _, _} -> if p < 100, do: :ok, else: {:unsupported, "p"} end
+    tripwire = honest(%{domain: narrow, census: fn b -> flunk("dispatched #{inspect(b)}") end})
+    %{ledger: ledger} = Census.run([{101, 0, 1, 0, 0}, {7, 7, 7, 0, 7}], tripwire, honest())
     assert Enum.map(ledger, &elem(&1, 1)) == [{:unsupported, "p"}, {:malformed, "c"}]
   end
 end

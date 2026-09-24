@@ -4,24 +4,25 @@
 #   census-bend2 --threads T -- P C CAP LO HI
 #
 # prints one line: the canonical record (docs/polyglot-orbit-census-design.md,
-# section 3.4), or `malformed:<field>` / `unsupported:<field>` as the Mojo CLI
-# does. It is non-authoritative: the orchestrator hands every record to the
+# section 3.4), or `malformed:<field>` as the Mojo CLI does. It is non-authoritative: the orchestrator hands every record to the
 # Mojo replay predicate, and only that predicate accepts.
 #
-# Declared domain (section 3.6): p < 2^24, the Mojo kernel's. Bend 2 has no
-# integer wider than U32. For x < 2^16, x^2 < 2^32 is exact; above that,
-# x^2 mod p is double-and-add over the 24 bits of x, reducing each sum
-# a + b < 2^25 by one conditional subtraction (no division). The sums are
-# Nat: each is at most n p <= p^2 <= (2^24 - 3)^2, below 2^48 - 1, the largest
-# immediate Nat. The runtime aborts on a Nat past that rather than wrapping,
-# so an overflow cannot become a wrong record.
+# Domain (section 3.6): the whole contract, p < 2^32. Bend 2 has no integer
+# wider than U32. For x < 2^16, x^2 < 2^32 is exact; above that, x^2 mod p is
+# double-and-add over the 32 bits of x. Each a + b of residues is reduced by
+# one conditional subtraction; the wrapped sum overflowed exactly when it is
+# smaller than a, and then the true sum exceeds p. No division is needed.
+# A sum reaches p^2 < 2^64, past the 2^48 - 1 of an immediate Nat, so the
+# sums are two U32 halves with carry.
 #
 # Each seed runs Brent's cycle detection, which needs no memory. Its result is
 # the contract's by definition: j = mu + lambda is the first repeat index,
 # however it was found, and the seed is resolved iff j <= cap. Termination is
 # by Nat fuel. Brent's hare meets the tortoise by position 2^k - 1 + lambda,
 # where 2^k is the first power of two with 2^k >= max(mu + 1, lambda); that is
-# below 3 (mu + lambda) + 2 <= 3p + 2. The second phase takes at most
+# below 3 (mu + lambda) + 2 <= 3p + 2. The power never passes 2^31, so it
+# cannot wrap: f is 2-to-1, every term after the seed lies in an image of
+# (p + 1) / 2 values, and so mu + lambda <= (p + 3) / 2 < 2^31. The second phase takes at most
 # lambda + mu <= p steps. The fuel covers both, so running out is unreachable.
 # If it happens anyway, the program exits with status 3 and no record.
 #
@@ -32,20 +33,68 @@ import Base
 type Blk is Data:
   Blk{p: U32, c: U32, cap: U32}
 
+# hi * 2^32 + lo
+type U64 is Data:
+  U64{hi: U32, lo: U32}
+
 type Agg is Data:
-  Agg{n: U32, resolved: U32, sum_mu: Nat, sum_lambda: Nat, periodic: U32,
+  Agg{n: U32, resolved: U32, sum_mu: U64, sum_lambda: U64, periodic: U32,
       has_w: U32, w_seed: U32, w_mu: U32, w_lambda: U32, fault: U32}
 
 def none() -> U32:
   4294967295
 
 def empty() -> Agg:
-  Agg{0, 0, 0n, 0n, 0, 0, 0, 0, 0, 0}
+  Agg{0, 0, U64{0, 0}, U64{0, 0}, 0, 0, 0, 0, 0, 0}
 
-# a + b mod p for residues a, b < p < 2^24: the sum is below 2^25
+def add64(x: U64, y: U64) -> U64:
+  match x y:
+    case U64{h, +l} U64{h2, l2}:
+      +s = (l + l2 : U32)
+      U64{(h + h2 + Bool.to_u32(U32.is_lt(s, l)) : U32), s}
+
+# x = hi 2^32 + lo divided by 10: long division over its 16-bit digits d3..d0,
+# every partial dividend below 10 * 2^16. `quot10` is the quotient and `rem10`
+# the remainder.
+def quot10(x: U64) -> U64:
+  match x:
+    case U64{+hi, +lo}:
+      +d3 = U32.shrn(hi, 16n)
+      +t2 = ((d3 % 10 : U32) * 65536 + U32.and(hi, 65535) : U32)
+      +t1 = ((t2 % 10 : U32) * 65536 + U32.shrn(lo, 16n) : U32)
+      +t0 = ((t1 % 10 : U32) * 65536 + U32.and(lo, 65535) : U32)
+      U64{U32.or(U32.shln((d3 / 10 : U32), 16n), (t2 / 10 : U32)), U32.or(U32.shln((t1 / 10 : U32), 16n), (t0 / 10 : U32))}
+
+def rem10(x: U64) -> U32:
+  match x:
+    case U64{hi, lo}:
+      # 2^32 = 6 (mod 10), so x = 6 hi + lo (mod 10); both terms reduce first
+      (((hi % 10 : U32) * 6 + (lo % 10 : U32)) % 10 : U32)
+
+def zero64(x: U64) -> Bool:
+  match x:
+    case U64{hi, lo}:
+      U32.is_eq(U32.or(hi, lo), 0)
+
+# the decimal digits of x, least significant first onto acc; done says x is
+# zero. 20 digits hold 2^64.
+def show64.go(n: Nat, +x: U64, acc: String, done: Bool) -> String:
+  match n done:
+    case _ True{}:
+      acc
+    case 0n False{}:
+      acc
+    case 1n+k False{}:
+      +q = quot10(x)
+      show64.go(k, q, U32.show(rem10(x)) ++ acc, zero64(q))
+
+def show64(+x: U64) -> String:
+  show64.go(20n, x, "", False{})
+
+# a + b mod p for residues a, b < p < 2^32
 def madd(+p: U32, +a: U32, +b: U32) -> U32:
   +t = (a + b : U32)
-  Bool.pick(U32, U32.is_ge(t, p), (t - p : U32), t)
+  Bool.pick(U32, U32.is_lt(t, a) || U32.is_ge(t, p), (t - p : U32), t)
 
 # a * b mod p: double-and-add over bits n - 1 .. 0 of b, high bit first
 def mulmod(+n: Nat, +p: U32, +a: U32, +b: U32, +r: U32) -> U32:
@@ -57,13 +106,13 @@ def mulmod(+n: Nat, +p: U32, +a: U32, +b: U32, +r: U32) -> U32:
       mulmod(k, p, a, b, Bool.pick(U32, U32.is_eq(U32.and(U32.shrn(b, k), 1), 1), madd(p, d, a), d))
 
 # x^2 mod p. Below 2^16, x^2 < 2^32 is exact in U32 for any p, and one
-# (software) division is cheaper than 24 doublings; above, double-and-add.
+# (software) division is cheaper than 32 doublings; above, double-and-add.
 def square(+p: U32, +x: U32, small: Bool) -> U32:
   match small:
     case True{}:
       U32.mod((x * x : U32), p)
     case False{}:
-      mulmod(24n, p, x, x, 0)
+      mulmod(32n, p, x, x, 0)
 
 # f(x) = (x^2 + c) mod p
 def f(+b: Blk, +x: U32) -> U32:
@@ -108,7 +157,7 @@ def meet(fuel: Nat, +b: Blk, +t: U32, +h: U32, +mu: U32, met: Bool) -> U32:
 def fuel(+b: Blk, +k: U32) -> Nat:
   match b:
     case Blk{p, c, cap}:
-      U32.to_nat((k * p + 3 : U32))
+      Nat.add(Nat.mul(U32.to_nat(p), U32.to_nat(k)), 3n)
 
 def leaf.of(+b: Blk, +seed: U32, +mu: U32, +lam: U32) -> Agg:
   match b:
@@ -116,7 +165,7 @@ def leaf.of(+b: Blk, +seed: U32, +mu: U32, +lam: U32) -> Agg:
       +bad = U32.is_eq(mu, none()) || U32.is_eq(lam, none())
       +ok = Bool.not(bad) && U32.is_le((mu + lam : U32), cap)
       +r = Bool.to_u32(ok)
-      Agg{1, r, U32.to_nat(Bool.pick(U32, ok, mu, 0)), U32.to_nat(Bool.pick(U32, ok, lam, 0)), Bool.to_u32(ok && U32.is_eq(mu, 0)),
+      Agg{1, r, U64{0, Bool.pick(U32, ok, mu, 0)}, U64{0, Bool.pick(U32, ok, lam, 0)}, Bool.to_u32(ok && U32.is_eq(mu, 0)),
           r, Bool.pick(U32, ok, seed, 0), Bool.pick(U32, ok, mu, 0), Bool.pick(U32, ok, lam, 0), Bool.to_u32(bad)}
 
 def leaf.mu(+b: Blk, +seed: U32, +lam: U32) -> Agg:
@@ -136,7 +185,7 @@ def merge(x: Agg, y: Agg) -> Agg:
   match x y:
     case Agg{n, r, sm, sl, pe, +hw, +ws, +wm, +wl, fa} Agg{n2, r2, sm2, sl2, pe2, +hw2, +ws2, +wm2, +wl2, fa2}:
       +a = first(hw, (wm + wl : U32), ws, hw2, (wm2 + wl2 : U32), ws2)
-      Agg{(n + n2 : U32), (r + r2 : U32), Nat.add(sm, sm2), Nat.add(sl, sl2), (pe + pe2 : U32),
+      Agg{(n + n2 : U32), (r + r2 : U32), add64(sm, sm2), add64(sl, sl2), (pe + pe2 : U32),
           Bool.pick(U32, a, hw, hw2), Bool.pick(U32, a, ws, ws2), Bool.pick(U32, a, wm, wm2),
           Bool.pick(U32, a, wl, wl2), U32.or(fa, fa2)}
 
@@ -171,7 +220,7 @@ def render(+b: Blk, +lo: U32, +hi: U32, x: Agg) -> String:
     case Blk{p, c, cap} Agg{n, r, sm, sl, pe, hw, ws, wm, wl, +fa}:
       Bool.pick(String, U32.is_ne(fa, 0), "",
         "orbit-census-v1 " ++ String.join(List.append(&2, String, shows([p, c, cap, lo, hi, n, r]),
-          Nat.show(sm) <> Nat.show(sl) <> shows([pe, hw, ws, wm, wl])), " ") ++ "\n")
+          show64(sm) <> show64(sl) <> shows([pe, hw, ws, wm, wl])), " ") ++ "\n")
 
 # trial division by d = 2 .. 65535, enough for every p < 2^32 (65535^2 < 2^32);
 # `past` is d^2 > p, `hit` is d | p
@@ -190,13 +239,12 @@ def prime.go(n: Nat, +p: U32, +d: U32, past: Bool, hit: Bool) -> Bool:
 def prime(+p: U32) -> Bool:
   U32.is_ge(p, 2) && prime.go(65534n, p, 2, U32.is_gt(4, p), U32.is_eq(U32.mod(p, 2), 0))
 
-# the first refusal in the contract's order (section 3.1, then this domain), or ""
+# the first refusal in the contract's order (section 3.1), or ""
 def refusal(+p: U32, +c: U32, +lo: U32, +hi: U32) -> String:
   Bool.pick(String, Bool.not(prime(p)), "malformed:p",
   Bool.pick(String, U32.is_ge(c, p), "malformed:c",
   Bool.pick(String, U32.is_gt(lo, hi), "malformed:lo",
-  Bool.pick(String, U32.is_gt(hi, p), "malformed:hi",
-  Bool.pick(String, U32.is_ge(p, 16777216), "unsupported:p", "")))))
+  Bool.pick(String, U32.is_gt(hi, p), "malformed:hi", ""))))
 
 def canonical.if(+s: String, m: Maybe<&2, U32>) -> Maybe<&2, U32>:
   match m:

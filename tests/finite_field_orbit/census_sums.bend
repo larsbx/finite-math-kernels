@@ -2,18 +2,20 @@
 #
 # An honest record with a sum of 2^32 or more costs at least 2^32 steps, so
 # the census gate cannot reach one cheaply. This drives the challenger's
-# `merge` and `render` directly with sums that cross 2^32 and reach the
-# domain's bound p^2 for p = 2^24 - 3, and prints the rendered lines; the test
-# compares them with the reference's arithmetic.
+# `merge` and `render` directly: a carry out of the low half (2^32), the
+# domain's bound p^2 for p = 2^32 - 5, and 2^64 - 1, the largest two-half
+# value. The test compares the lines with Python's integers.
 import Base
 import ../../benchmarks/frontier/census.bend as C
 
-def agg(+s: Nat, +l: Nat) -> C.Agg:
+def agg(+s: C.U64, +l: C.U64) -> C.Agg:
   C.Agg{1, 1, s, l, 0, 1, 0, 0, 1, 0}
+
+def line(x: C.Agg, y: C.Agg) -> String:
+  C.render(C.Blk{4294967291, 0, 4294967291}, 0, 2, C.merge(x, y))
 
 def main() -> IO(Unit):
   do IO<Unit>:
-    +big : Nat = U32.to_nat(4294967295)
-    +p : Nat = U32.to_nat(16777213)
-    IO.write(C.render(C.Blk{16777213, 0, 16777213}, 0, 2, C.merge(agg(big, 1n), agg(1n, big))))
-    IO.write(C.render(C.Blk{16777213, 0, 16777213}, 0, 2, C.merge(agg(Nat.mul(p, p), 0n), agg(0n, Nat.mul(p, p)))))
+    IO.write(line(agg(C.U64{0, 4294967295}, C.U64{0, 1}), agg(C.U64{0, 1}, C.U64{0, 4294967295})))
+    IO.write(line(agg(C.U64{4294967286, 0}, C.U64{0, 0}), agg(C.U64{0, 25}, C.U64{4294967286, 25})))
+    IO.write(line(agg(C.U64{4294967295, 4294967294}, C.U64{0, 0}), agg(C.U64{0, 1}, C.U64{0, 0})))

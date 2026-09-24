@@ -6,14 +6,18 @@
 # predicate that is the contract's only acceptance authority.
 #
 # The census is a pure fold over owned accumulators. The one mutable object,
-# the visited table, is uniquely owned by one census call and never escapes.
+# the visited set, is uniquely owned by one census call and never escapes.
 # That is the Perceus reading of in-place update: no observer can tell it
-# from rebuilding the table for every seed.
+# from rebuilding the set for every seed.
+#
+# The kernel answers the whole contract domain, p < 2^32. x^2 + c then reaches
+# 2^64 - 12 * 2^32, past Int, so a step is computed in UInt64; a sum reaches
+# p^2 < 2^64, so the sums are UInt64 too.
 
 comptime TAG = "orbit-census-v1"
 comptime ARITY = 15
 comptime CONTRACT_BOUND = 4294967296  # 2^32: every field but the sums, which range to 2^64
-comptime TABLE_BOUND = 16777216  # 2^24: this kernel's declared domain for p
+comptime TABLE_BOUND = 16777216  # 2^24: below it the visited set is a table of p words
 
 
 struct Block(Copyable, Movable):
@@ -32,17 +36,14 @@ struct Block(Copyable, Movable):
         self.lo = lo
         self.hi = hi
 
-    def values(self) -> List[Int]:
-        return [self.p, self.c, self.cap, self.lo, self.hi]
-
 
 struct Agg(Copyable, Movable):
     """The canonical aggregate of section 3.3; `Agg()` is the monoid identity."""
 
     var n: Int
     var resolved: Int
-    var sum_mu: Int
-    var sum_lambda: Int
+    var sum_mu: UInt64
+    var sum_lambda: UInt64
     var periodic: Int
     var has_w: Int
     var w_seed: Int
@@ -53,7 +54,7 @@ struct Agg(Copyable, Movable):
         self = Agg(0, 0, 0, 0, 0, 0, 0, 0, 0)
 
     def __init__(
-        out self, n: Int, resolved: Int, sum_mu: Int, sum_lambda: Int, periodic: Int,
+        out self, n: Int, resolved: Int, sum_mu: UInt64, sum_lambda: UInt64, periodic: Int,
         has_w: Int, w_seed: Int, w_mu: Int, w_lambda: Int,
     ):
         self.n = n
@@ -66,14 +67,18 @@ struct Agg(Copyable, Movable):
         self.w_mu = w_mu
         self.w_lambda = w_lambda
 
-    def values(self) -> List[Int]:
-        return [self.n, self.resolved, self.sum_mu, self.sum_lambda, self.periodic,
-                self.has_w, self.w_seed, self.w_mu, self.w_lambda]
-
 
 def field_names() -> List[String]:
     return ["p", "c", "cap", "lo", "hi", "n", "resolved", "sum_mu", "sum_lambda", "periodic",
             "has_w", "w_seed", "w_mu", "w_lambda"]
+
+
+def fields(b: Block, a: Agg) -> List[String]:
+    """The fourteen canonical decimals of a record, in field order. Two records are
+    equal iff their fields are, so replay compares these and encode joins them."""
+    return [String(b.p), String(b.c), String(b.cap), String(b.lo), String(b.hi),
+            String(a.n), String(a.resolved), String(a.sum_mu), String(a.sum_lambda), String(a.periodic),
+            String(a.has_w), String(a.w_seed), String(a.w_mu), String(a.w_lambda)]
 
 
 def witness_first(a: Agg, b: Agg) -> Bool:
@@ -94,6 +99,12 @@ def merge(a: Agg, b: Agg) -> Agg:
                a.periodic + b.periodic, w.has_w, w.w_seed, w.w_mu, w.w_lambda)
 
 
+def step(x: Int, c: Int, p: Int) -> Int:
+    """`(x^2 + c) mod p` for residues `x, c < p < 2^32`: exact in UInt64."""
+    var y = UInt64(x)
+    return Int((y * y + UInt64(c)) % UInt64(p))
+
+
 def is_prime(p: Int) -> Bool:
     if p < 2:
         return False
@@ -106,7 +117,7 @@ def is_prime(p: Int) -> Bool:
 
 
 def request_verdict(b: Block) -> String:
-    """`""` when the kernel will answer `b`; else `malformed:<field>` or `unsupported:<field>`."""
+    """`""` when the block is well-formed (section 3.1), else `malformed:<field>`."""
     if b.p >= CONTRACT_BOUND or not is_prime(b.p):
         return "malformed:p"
     if b.c < 0 or b.c >= b.p:
@@ -117,20 +128,44 @@ def request_verdict(b: Block) -> String:
         return "malformed:lo"
     if b.hi > b.p:
         return "malformed:hi"
-    if b.p >= TABLE_BOUND:
-        return "unsupported:p"
     return ""
 
 
 struct Visited(Movable):
-    """First-seen index plus one for every value touched by the current seed; zero elsewhere."""
+    """First-seen index plus one of every value the current seed has touched.
 
-    var first: List[UInt32]
+    A table of `p` words when `p < 2^24`; above that the table would reach
+    16 GB, so the values go in a hash map sized by the trajectory instead.
+    """
+
+    var dense: Bool
+    var table: List[UInt32]
     var trail: List[Int]
+    var hashed: Dict[Int, Int]
 
     def __init__(out self, p: Int):
-        self.first = List[UInt32](length=p, fill=0)
+        self.dense = p < TABLE_BOUND
+        self.table = List[UInt32](length=p if self.dense else 0, fill=0)
         self.trail = List[Int]()
+        self.hashed = Dict[Int, Int]()
+
+    def seen(self, x: Int) -> Int:
+        if self.dense:
+            return Int(self.table[x])
+        return self.hashed.get(x, 0)
+
+    def mark(mut self, x: Int, j: Int):
+        if self.dense:
+            self.table[x] = UInt32(j + 1)
+            self.trail.append(x)
+        else:
+            self.hashed[x] = j + 1
+
+    def clear(mut self):
+        for v in self.trail:
+            self.table[v] = 0
+        self.trail.clear()
+        self.hashed = Dict[Int, Int]()
 
     def leaf(mut self, b: Block, seed: Int) -> Agg:
         """The census of the single seed: resolved iff the first repeat index `j <= cap`."""
@@ -138,26 +173,23 @@ struct Visited(Movable):
         var j = 0
         var result = Agg(1, 0, 0, 0, 0, 0, 0, 0, 0)
         while True:
-            var seen = Int(self.first[x])
+            var seen = self.seen(x)
             if seen > 0:
                 var mu = seen - 1
                 var lam = j - mu
-                result = Agg(1, 1, mu, lam, 1 if mu == 0 else 0, 1, seed, mu, lam)
+                result = Agg(1, 1, UInt64(mu), UInt64(lam), 1 if mu == 0 else 0, 1, seed, mu, lam)
                 break
             if j == b.cap:
                 break
-            self.first[x] = UInt32(j + 1)
-            self.trail.append(x)
-            x = (x * x + b.c) % b.p
+            self.mark(x, j)
+            x = step(x, b.c, b.p)
             j += 1
-        for v in self.trail:
-            self.first[v] = 0
-        self.trail.clear()
+        self.clear()
         return result^
 
 
 def census(b: Block) raises -> Agg:
-    """Exact census of a block this kernel supports; anything else raises its verdict."""
+    """Exact census of a well-formed block; a malformed one raises its verdict."""
     var refusal = request_verdict(b)
     if refusal.byte_length() > 0:
         raise Error(refusal)
@@ -169,12 +201,7 @@ def census(b: Block) raises -> Agg:
 
 
 def encode(b: Block, a: Agg) -> String:
-    var parts: List[String] = [String(TAG)]
-    for v in b.values():
-        parts.append(String(v))
-    for v in a.values():
-        parts.append(String(v))
-    return String(" ").join(parts)
+    return String(TAG) + " " + String(" ").join(fields(b, a))
 
 
 struct Decoded(Movable):
@@ -190,58 +217,45 @@ struct Decoded(Movable):
         self.agg = agg^
 
 
-comptime MALFORMED = -1
-comptime UNREPRESENTABLE = -2  # a valid wide value at or above 2^63, beyond Int
-
-
-def parse_canonical(token: String, wide: Bool = False) -> Int:
-    """An unsigned decimal with no leading zero, below 2^32 (or 2^64 when `wide`).
-
-    Returns the value, `MALFORMED`, or `UNREPRESENTABLE` for a wide value in
-    `[2^63, 2^64)`: valid in the contract, but not an `Int`. Such a sum cannot
-    belong to a block inside this kernel's domain, where sums stay below 2^48.
-    """
+def parse_canonical(token: String, wide: Bool = False) -> Optional[UInt64]:
+    """An unsigned decimal with no leading zero, below 2^32 (or 2^64 when `wide`)."""
     var bytes = token.as_bytes()
     var n = len(bytes)
     if n == 0 or n > (20 if wide else 10) or (n > 1 and Int(bytes[0]) == ord("0")):
-        return MALFORMED
+        return None
     var value: UInt64 = 0
     for i in range(n):
         var digit = Int(bytes[i]) - ord("0")
         if digit < 0 or digit > 9:
-            return MALFORMED
+            return None
         if value > (UInt64.MAX - UInt64(digit)) // 10:
-            return MALFORMED  # 2^64 or more
+            return None  # 2^64 or more
         value = value * 10 + UInt64(digit)
     if not wide and value >= UInt64(CONTRACT_BOUND):
-        return MALFORMED
-    if value > UInt64(Int.MAX):
-        return UNREPRESENTABLE
-    return Int(value)
+        return None
+    return value
 
 
 def decode(line: String) -> Decoded:
-    """Total inverse of `encode`: every other string is `malformed:<field>`.
-
-    The one exception is a sum in `[2^63, 2^64)`: a valid record this kernel
-    cannot hold, answered `unsupported:<field>` (section 3.6).
-    """
+    """Total inverse of `encode`: every other string is `malformed:<field>`."""
     var tokens = List[String]()
     for part in line.split(" "):
         tokens.append(String(part))
     if len(tokens) != ARITY or tokens[0] != TAG:
         return Decoded("malformed:arity", Block(0, 0, 0, 0, 0), Agg())
     var names = field_names()
-    var v = List[Int]()
+    var v = List[UInt64]()
     for i in range(1, ARITY):
         var name = names[i - 1]
         var value = parse_canonical(tokens[i], wide=name == "sum_mu" or name == "sum_lambda")
-        if value == MALFORMED:
+        if not value:
             return Decoded("malformed:" + name, Block(0, 0, 0, 0, 0), Agg())
-        if value == UNREPRESENTABLE:
-            return Decoded("unsupported:" + name, Block(0, 0, 0, 0, 0), Agg())
-        v.append(value)
-    return Decoded("", Block(v[0], v[1], v[2], v[3], v[4]), Agg(v[5], v[6], v[7], v[8], v[9], v[10], v[11], v[12], v[13]))
+        v.append(value.value())
+    return Decoded(
+        "",
+        Block(Int(v[0]), Int(v[1]), Int(v[2]), Int(v[3]), Int(v[4])),
+        Agg(Int(v[5]), Int(v[6]), v[7], v[8], Int(v[9]), Int(v[10]), Int(v[11]), Int(v[12]), Int(v[13])),
+    )
 
 
 def witness_verdict(b: Block, a: Agg) -> String:
@@ -259,7 +273,7 @@ def witness_verdict(b: Block, a: Agg) -> String:
         return "witness:distinct"  # pigeonhole: j + 1 terms in p values
     var xs: List[Int] = [a.w_seed]
     for _ in range(j):
-        xs.append((xs[len(xs) - 1] * xs[len(xs) - 1] + b.c) % b.p)
+        xs.append(step(xs[len(xs) - 1], b.c, b.p))
     if a.w_lambda < 1 or xs[j] != xs[a.w_mu]:
         return "witness:cycle"
     var prefix = xs[0:j]
@@ -279,12 +293,12 @@ def replay(line: String) -> String:
     if refusal.byte_length() > 0:
         return refusal
     try:
-        var claimed = d.agg.values()
-        var actual = census(d.block).values()
+        var claimed = fields(d.block, d.agg)
+        var actual = fields(d.block, census(d.block))
         var names = field_names()
-        for i in range(len(claimed)):
+        for i in range(5, ARITY - 1):
             if claimed[i] != actual[i]:
-                return "mismatch:" + names[i + 5]
+                return "mismatch:" + names[i]
     except e:
         return "infra:" + String(e)
     var w = witness_verdict(d.block, d.agg)
