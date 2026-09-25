@@ -14,9 +14,10 @@ class Address:
 
 
 def address(numerator: int, denominator: int) -> Address:
+    if numerator < 0:
+        raise ValueError("numerator must be nonnegative")
     if denominator <= 0:
         raise ValueError("denominator must be positive")
-    numerator %= denominator
     common = gcd(numerator, denominator)
     return Address(numerator // common, denominator // common)
 
@@ -26,11 +27,10 @@ def double_mod_one(value: Address) -> Address:
 
 
 def mod_inverse(value: Address) -> int:
-    if value.denominator == 1:
-        return 0
-    if value.numerator == 0:
-        raise ValueError("zero is not invertible modulo a nontrivial denominator")
-    return pow(value.numerator, -1, value.denominator)
+    residue = value.numerator % value.denominator
+    if residue == 0:
+        raise ValueError("zero residue is not invertible")
+    return pow(residue, -1, value.denominator)
 
 
 def signed_mod_inverse(value: Address) -> int:
