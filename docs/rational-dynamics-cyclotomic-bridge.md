@@ -16,7 +16,7 @@ The overlap should be extracted by mathematical object, not by domain name.
 
 ## 1. `rational_dynamics`
 
-The proposed package owns exact arithmetic on a reduced rational class
+**R1 implemented on this branch.** The package owns exact arithmetic on a reduced rational class
 `p/q`, with `q > 0` and `gcd(p,q)=1`. Its first contract is finite integer
 combinatorics only:
 
@@ -94,8 +94,7 @@ belongs to the consumer.
 
 The extraction should be staged:
 
-1. **R1 — rational combinatorics:** reduced fractions, modular inverse,
-   signed inverse, continued fractions, convergents, and Farey determinant.
+1. **R1 — rational combinatorics: IMPLEMENTED.** Reduced nonnegative fractions over unbounded BigZ, explicit doubling modulo one, modular inverse, signed inverse, continued fractions, convergents, and Farey determinant are executable and tested.
 2. **C1 — cyclotomic representation:** exact quotient arithmetic and
    canonical bytes, with independent property vectors.
 3. **C2 — Galois action:** exact `zeta -> zeta^a` replay and conjugation
