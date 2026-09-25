@@ -1,0 +1,62 @@
+{
+  "schema": "rational-dynamics-cyclotomic/v1",
+  "status": "scaffold",
+  "authority": "none",
+  "objects": {
+    "reduced_rational": {
+      "fields": ["numerator", "denominator"],
+      "invariants": ["denominator > 0", "gcd(numerator, denominator) = 1"]
+    },
+    "cyclotomic": {
+      "fields": ["conductor", "reduced_coefficients"],
+      "invariants": [
+        "conductor > 0",
+        "coefficients are exact rationals",
+        "degree < phi(conductor)",
+        "representative reduced modulo Phi_conductor"
+      ]
+    }
+  },
+  "operations": {
+    "rational_dynamics": [
+      "reduce",
+      "double_mod_one",
+      "mod_inverse",
+      "signed_mod_inverse",
+      "continued_fraction",
+      "convergents",
+      "farey_determinant"
+    ],
+    "cyclotomic_exact": [
+      "zeta",
+      "add",
+      "sub",
+      "mul",
+      "neg",
+      "exact_equal",
+      "automorphism",
+      "canonical_bytes"
+    ],
+    "quadratic_germ_future": [
+      "truncated_iterate",
+      "parabolic_factor",
+      "reciprocal_series_coefficient"
+    ]
+  },
+  "refusals": [
+    "zero or negative rational denominator",
+    "modular inverse when gcd(p,q) != 1",
+    "cyclotomic conductor <= 0",
+    "noncanonical or rejected rational coefficient",
+    "automorphism exponent not coprime to conductor",
+    "reciprocal-series request with noninvertible constant coefficient"
+  ],
+  "nonclaims": [
+    "ray landing",
+    "bulb diameter",
+    "component geometry",
+    "connectivity",
+    "local connectivity",
+    "certificate acceptance for any consumer"
+  ]
+}
