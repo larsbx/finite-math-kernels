@@ -16,12 +16,10 @@ from tools.rational_dynamics_reference import (
 
 def test_reference_vectors():
     assert address(7, 21) == address(1, 3)
-    assert address(-1, 3) == address(2, 3)
     assert double_mod_one(address(2, 3)) == address(1, 3)
     assert mod_inverse(address(2, 5)) == 3
     assert signed_mod_inverse(address(2, 5)) == -2
     assert signed_mod_inverse(address(1, 2)) == 1
-    assert mod_inverse(address(0, 1)) == 0
     assert continued_fraction(address(2, 5)) == (0, 2, 2)
     assert convergents(address(2, 5)) == (
         Fraction(0, 1),
@@ -33,11 +31,17 @@ def test_reference_vectors():
     assert not farey_adjacent(address(1, 3), address(3, 7))
 
 
-def test_reference_rejects_bad_denominator():
+def test_reference_rejects_out_of_domain_fraction_and_zero_residue_inverse():
+    with pytest.raises(ValueError):
+        address(-1, 3)
     with pytest.raises(ValueError):
         address(1, 0)
     with pytest.raises(ValueError):
         address(1, -3)
+    with pytest.raises(ValueError):
+        mod_inverse(address(0, 1))
+    with pytest.raises(ValueError):
+        mod_inverse(address(2, 1))
 
 
 def test_beyond_int64_reference_path():
