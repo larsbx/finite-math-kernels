@@ -994,6 +994,14 @@
       "source": "finite_mandelbrot_research",
       "source_blob": "76ddda76a2cc3dea8221ac8b8192fe3d7e4f14c4",
       "source_path": "tools/check_vendored_sync.py"
+    },
+    "docs/rational-dynamics-cyclotomic-bridge.md": {
+      "blob": "91068464520fc147916e0d12d0a0625c8432881a",
+      "relation": "authored"
+    },
+    "contracts/rational-dynamics-cyclotomic-v1.json": {
+      "blob": "00606b64319d1bf3b9e8977c2a2c104e0a790190",
+      "relation": "authored"
     }
   },
   "format": "finite-math-kernels provenance 1",
