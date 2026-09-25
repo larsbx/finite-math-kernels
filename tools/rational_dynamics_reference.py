@@ -23,7 +23,7 @@ def address(numerator: int, denominator: int) -> Address:
 
 
 def double_mod_one(value: Address) -> Address:
-    return address(2 * value.numerator, value.denominator)
+    return address((2 * value.numerator) % value.denominator, value.denominator)
 
 
 def mod_inverse(value: Address) -> int:
