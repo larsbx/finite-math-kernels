@@ -53,7 +53,7 @@ def test_doubling_is_explicitly_mod_one() raises:
     var two_thirds = double_mod_one(one_third)
     assert_true(fraction_equal(two_thirds, fraction_from_i64(2, 3)))
     assert_true(fraction_equal(double_mod_one(two_thirds), one_third))
-    assert_true(fraction_equal(double_mod_one(fraction_from_i64(3, 2)), fraction_from_i64(1, 2)))
+    assert_true(fraction_equal(double_mod_one(fraction_from_i64(3, 2)), fraction_from_i64(0, 1)))
 
 
 def test_modular_inverse_and_centered_representative() raises:
