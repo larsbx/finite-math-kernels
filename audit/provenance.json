@@ -537,7 +537,7 @@
       "relation": "authored"
     },
     "pixi.toml": {
-      "blob": "1648249dadd5d9c65b04002ccde3eacdbf012055",
+      "blob": "87923c8b70608557fb7bacc3e4dcb39e3f9e1057",
       "relation": "authored"
     },
     "proof_records/ProofArchitecture.tla": {
@@ -1000,7 +1000,7 @@
       "relation": "authored"
     },
     "contracts/rational-dynamics-cyclotomic-v1.json": {
-      "blob": "3deb72b61c01e721bd914163affe1ef3489d6b9f",
+      "blob": "e777a7d04d938426dfd601179e086caaaec15c94",
       "relation": "authored"
     },
     "rational_dynamics/__init__.mojo": {
@@ -1013,6 +1013,14 @@
     },
     "tests/rational_dynamics/test_rational_dynamics.mojo": {
       "blob": "354085c9964ee4b7e184c3c81e2c3251b6bee594",
+      "relation": "authored"
+    },
+    "tests/rational_dynamics/test_rational_dynamics_reference.py": {
+      "blob": "4a7c836bd8615a326de470856b694a6316dde074",
+      "relation": "authored"
+    },
+    "tools/rational_dynamics_reference.py": {
+      "blob": "a566a78635e6c25fccce4e3329da2a6e11c4bfaf",
       "relation": "authored"
     }
   },
