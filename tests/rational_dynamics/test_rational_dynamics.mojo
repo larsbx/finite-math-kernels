@@ -113,7 +113,10 @@ def test_farey_determinant_is_exact() raises:
     assert_true(is_int(determinant.value, -1))
     assert_true(farey_adjacent(left, right))
 
-    var apart = fraction_from_i64(3, 8)
+    var apart = fraction_from_i64(3, 7)
+    var apart_determinant = farey_determinant(left, apart)
+    assert_true(apart_determinant.accepted())
+    assert_true(is_int(apart_determinant.value, -2))
     assert_false(farey_adjacent(left, apart))
 
 
