@@ -209,7 +209,7 @@ def mod_inverse(value: ReducedFraction) -> ReducedFraction:
             return rejected_fraction()
         var next_t = bigz_sub(t, bigz_mul(division.quotient, new_t))
         t = new_t.copy()
-        new_t = next_t
+        new_t = next_t.copy()
         r = new_r.copy()
         new_r = division.remainder.copy()
 
