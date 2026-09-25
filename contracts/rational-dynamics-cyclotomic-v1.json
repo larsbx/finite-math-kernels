@@ -1,14 +1,23 @@
 {
   "schema": "rational-dynamics-cyclotomic/v1",
-  "status": "scaffold",
+  "status": "r1-implemented",
   "authority": "none",
   "objects": {
     "reduced_rational": {
-      "fields": ["numerator", "denominator"],
-      "invariants": ["denominator > 0", "gcd(numerator, denominator) = 1"]
+      "fields": [
+        "numerator",
+        "denominator"
+      ],
+      "invariants": [
+        "denominator > 0",
+        "gcd(numerator, denominator) = 1"
+      ]
     },
     "cyclotomic": {
-      "fields": ["conductor", "reduced_coefficients"],
+      "fields": [
+        "conductor",
+        "reduced_coefficients"
+      ],
       "invariants": [
         "conductor > 0",
         "coefficients are exact rationals",
@@ -58,5 +67,10 @@
     "connectivity",
     "local connectivity",
     "certificate acceptance for any consumer"
-  ]
+  ],
+  "implementation": {
+    "rational_dynamics": "rational_dynamics/rational.mojo",
+    "rational_dynamics_tests": "tests/rational_dynamics/test_rational_dynamics.mojo",
+    "cyclotomic_exact": "planned"
+  }
 }
