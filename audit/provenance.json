@@ -1020,7 +1020,11 @@
       "relation": "authored"
     },
     "tools/rational_dynamics_reference.py": {
-      "blob": "a566a78635e6c25fccce4e3329da2a6e11c4bfaf",
+      "blob": "8fc015487f3601598d6f4bf801f42348056a08dd",
+      "relation": "authored"
+    },
+    "tests/rational_dynamics/test_reference.py": {
+      "blob": "10b24789996c27f23fa287eb7be502ba48ebea08",
       "relation": "authored"
     }
   },
