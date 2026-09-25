@@ -9,6 +9,7 @@
         "denominator"
       ],
       "invariants": [
+        "numerator >= 0",
         "denominator > 0",
         "gcd(numerator, denominator) = 1"
       ]
@@ -53,8 +54,9 @@
     ]
   },
   "refusals": [
+    "negative rational numerator",
     "zero or negative rational denominator",
-    "modular inverse when gcd(p,q) != 1",
+    "modular inverse of the zero residue or any nonunit residue modulo q",
     "cyclotomic conductor <= 0",
     "noncanonical or rejected rational coefficient",
     "automorphism exponent not coprime to conductor",
@@ -71,6 +73,7 @@
   "implementation": {
     "rational_dynamics": "rational_dynamics/rational.mojo",
     "rational_dynamics_tests": "tests/rational_dynamics/test_rational_dynamics.mojo",
-    "cyclotomic_exact": "planned"
+    "cyclotomic_exact": "planned",
+    "rational_dynamics_reference": "tools/rational_dynamics_reference.py"
   }
 }
