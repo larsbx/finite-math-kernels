@@ -21,7 +21,7 @@
       "relation": "authored"
     },
     "README.md": {
-      "blob": "5c07ba553c53a0d3d9ce23088718db19da2a4402",
+      "blob": "9112ed44d207e75ea429fc3c6963e47ad05be20c",
       "relation": "authored"
     },
     "audit/CONSOLIDATION_PROVENANCE.md": {
@@ -537,7 +537,7 @@
       "relation": "authored"
     },
     "pixi.toml": {
-      "blob": "0ae776d1e4f000bc500a4d8642a4156603a0412e",
+      "blob": "1648249dadd5d9c65b04002ccde3eacdbf012055",
       "relation": "authored"
     },
     "proof_records/ProofArchitecture.tla": {
@@ -996,11 +996,23 @@
       "source_path": "tools/check_vendored_sync.py"
     },
     "docs/rational-dynamics-cyclotomic-bridge.md": {
-      "blob": "91068464520fc147916e0d12d0a0625c8432881a",
+      "blob": "af38f8488b2aa965debf118f158409495d3bd338",
       "relation": "authored"
     },
     "contracts/rational-dynamics-cyclotomic-v1.json": {
-      "blob": "00606b64319d1bf3b9e8977c2a2c104e0a790190",
+      "blob": "3deb72b61c01e721bd914163affe1ef3489d6b9f",
+      "relation": "authored"
+    },
+    "rational_dynamics/__init__.mojo": {
+      "blob": "02c525febbc75a3610b60d40a434da844bb8a322",
+      "relation": "authored"
+    },
+    "rational_dynamics/rational.mojo": {
+      "blob": "b4b90e5ef7921bb60ca300a643de459d76374b57",
+      "relation": "authored"
+    },
+    "tests/rational_dynamics/test_rational_dynamics.mojo": {
+      "blob": "bff1576cd9374355386a17c33f73a85ee2ee8996",
       "relation": "authored"
     }
   },
