@@ -104,10 +104,13 @@ The extraction should be staged:
 4. **C2 — Galois action: IMPLEMENTED on the quotient branch.** Exact
    `zeta -> zeta^a` for units `a mod q`, including conjugation and
    composition replay.
-5. **Q1 — quadratic germ jets:** truncated exact composition over a generic
-   exact coefficient ring.
-6. **Q2 — reciprocal-series coefficient:** fail closed when the required
-   constant coefficient is not invertible.
+5. **Q1 — quadratic germ jets: IMPLEMENTED on the germ branch.** Truncated
+   exact composition of `w -> lambda*w + w^2` over the cyclotomic quotient,
+   with an exact check of the `w^(q+1)` factor.
+6. **Q2 — reciprocal-series coefficient: IMPLEMENTED on the germ branch.**
+   Exact cyclotomic field inversion plus the finite recurrence for
+   `[w^q] 1/P(w)`; refuses if the required constant coefficient is not
+   invertible or the parabolic factorization is absent.
 7. **consumer adapters:** parameter-plane, dynamical-plane, and arithmetic-
    correction projects interpret those finite outputs under their own
    theorem/evidence policies.
