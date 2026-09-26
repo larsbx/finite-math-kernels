@@ -196,7 +196,12 @@ def validate_tooling_pin(
     repository = tooling.get("repository", "")
     path = tooling.get("path", "")
     revision = tooling.get("revision", "")
-    if not isinstance(repository, str) or not re.fullmatch(r"[^/\\s]+/[^/\\s]+", repository):
+    repository_parts = repository.split("/") if isinstance(repository, str) else []
+    if (
+        len(repository_parts) != 2
+        or not all(repository_parts)
+        or any(any(ch.isspace() for ch in part) for part in repository_parts)
+    ):
         fail("estate_tooling.repository must be OWNER/REPOSITORY")
     if not isinstance(path, str) or not path or path.startswith("/"):
         fail("estate_tooling.path must be a nonempty repository-relative path")
