@@ -21,7 +21,7 @@
       "relation": "authored"
     },
     "README.md": {
-      "blob": "44186940d674c778192f33fbcf7408bf2275a393",
+      "blob": "c5b5e415b64c427da662d1f14e6c3ecbb47b2af6",
       "relation": "authored"
     },
     "audit/CONSOLIDATION_PROVENANCE.md": {
@@ -516,6 +516,11 @@
       "generator": "tools/make_orbit_vectors.py",
       "relation": "generated"
     },
+    "fixtures/projective_limits_v1.txt": {
+      "blob": "bb94765530b4b402d1e748fad8c85b07b962dfc3",
+      "generator": "tools/make_projective_limits_vectors.py",
+      "relation": "generated"
+    },
     "fixtures/vectors.json": {
       "blob": "ac459b6280c847831c3f274831cfe1b8fed4bfe5",
       "generator": "tools/make_vectors.py",
@@ -545,7 +550,7 @@
       "relation": "authored"
     },
     "pixi.toml": {
-      "blob": "983bfdba502aa1e6c1f2ec46c0646ed20fcb0a9a",
+      "blob": "cd8687451060a77ddc5a46d8089b90db4f8062a3",
       "relation": "authored"
     },
     "projective_limits/__init__.mojo": {
@@ -880,6 +885,14 @@
       "blob": "86c45e3389064d95ffa31bc7eeadd62e51a6c9de",
       "relation": "authored"
     },
+    "tests/projective_limits/test_projective_limits_reference.py": {
+      "blob": "2e8f01a9107ae9d1c877a24a43f912d23bf4db75",
+      "relation": "authored"
+    },
+    "tests/projective_limits/test_reference_vectors.mojo": {
+      "blob": "81ee86c1ad521a0585751f35741eecd622fad5f3",
+      "relation": "authored"
+    },
     "tests/proof_records/replay_vectors.mojo": {
       "blob": "8df6f7c60a2b55c1cc7967b1e837f9bcde46be85",
       "relation": "modified",
@@ -995,6 +1008,10 @@
       "blob": "191724a2d74659c49b66a49cad6c1c1704883962",
       "relation": "authored"
     },
+    "tools/make_projective_limits_vectors.py": {
+      "blob": "7a822a9e92665f5ec9fa5fcaef19d4b6d2ffdba9",
+      "relation": "authored"
+    },
     "tools/make_vectors.py": {
       "blob": "5fb11d8a6ad482ce7ab2b37fdb1aa832bca75efa",
       "relation": "modified",
@@ -1004,6 +1021,10 @@
     },
     "tools/orbit_census_reference.py": {
       "blob": "4416b5cc9a75a9e3560e696dab38386c13b1f0ec",
+      "relation": "authored"
+    },
+    "tools/projective_limits_reference.py": {
+      "blob": "12f1ad8dd8e62ef595c60bec5258dec99d9d2562",
       "relation": "authored"
     },
     "tools/property_oracle.py": {
