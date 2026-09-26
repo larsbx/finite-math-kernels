@@ -21,7 +21,7 @@
       "relation": "authored"
     },
     "README.md": {
-      "blob": "1ded0e8741efc45610ce4a339f2800f57af476e0",
+      "blob": "1e2e34a9600b838b448c9c1e454c312e4abdea41",
       "relation": "authored"
     },
     "audit/CONSOLIDATION_PROVENANCE.md": {
@@ -537,7 +537,7 @@
       "relation": "authored"
     },
     "pixi.toml": {
-      "blob": "f7c0686bb4e06a1bb9479ad8fb7f1ee4d5f75284",
+      "blob": "0fbed0bcbfca0842fc72f334516a6698910da739",
       "relation": "authored"
     },
     "proof_records/ProofArchitecture.tla": {
@@ -996,11 +996,11 @@
       "source_path": "tools/check_vendored_sync.py"
     },
     "docs/rational-dynamics-cyclotomic-bridge.md": {
-      "blob": "19b3377933b4e6902d79f9cdf0c4c9289d304e65",
+      "blob": "d4c4e4526623faa043eb294a6fe540edc789f3a8",
       "relation": "authored"
     },
     "contracts/rational-dynamics-cyclotomic-v1.json": {
-      "blob": "700733fa818e9b2a890e3624ee67f085d7e939ea",
+      "blob": "83686dd488d31addd2687006887e5f9fc5a104e9",
       "relation": "authored"
     },
     "rational_dynamics/__init__.mojo": {
@@ -1048,19 +1048,35 @@
       "relation": "authored"
     },
     "finite_polynomial/cyclotomic_q.mojo": {
-      "blob": "ca1df6ed0cd3e5359b1653322b7d531918a8cd70",
+      "blob": "95d4b3c77842a80f51c1a7bf59120a165b6f7ce1",
       "relation": "authored"
     },
     "tests/finite_polynomial/test_cyclotomic_q.mojo": {
-      "blob": "72208ea1396a9d4557b64213992c2622115e4da8",
+      "blob": "730d67cfc24d2a774c717af7463430f637442d20",
       "relation": "authored"
     },
     "tools/cyclotomic_quotient_reference.py": {
-      "blob": "45482b79dc9aea6dcd59820907df673c7e7342bd",
+      "blob": "11e3407015751b3ad710c44720f3d7d7d4187ab1",
       "relation": "authored"
     },
     "tests/finite_polynomial/test_cyclotomic_quotient_reference.py": {
-      "blob": "19844bd1a37395df7ed6376ddc4f0cf12572cca1",
+      "blob": "f48b231ca0c6c86e4553a42ddbb70cb0887b5eb9",
+      "relation": "authored"
+    },
+    "finite_polynomial/quadratic_germ.mojo": {
+      "blob": "b594b69d2936110986e3c1d3f3f3936c12c52b5b",
+      "relation": "authored"
+    },
+    "tests/finite_polynomial/test_quadratic_germ.mojo": {
+      "blob": "802d745923f5b9a6581576e5ecab0ca6c715c3b8",
+      "relation": "authored"
+    },
+    "tools/quadratic_germ_reference.py": {
+      "blob": "e91dec0cc663e6a6242f58c1f1eb8d7de5eaa67a",
+      "relation": "authored"
+    },
+    "tests/finite_polynomial/test_quadratic_germ_reference.py": {
+      "blob": "6b276b5e3f5d0a2af2aa9bef05dcdfc88485a197",
       "relation": "authored"
     }
   },
