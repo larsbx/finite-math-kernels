@@ -173,8 +173,63 @@ def validate(data: dict, root: Path) -> None:
             fail("polyglot.manifest.toml must link to estate.toml")
 
 
-def audit(root: Path, manifest: str = "estate.toml") -> None:
-    validate(load(root, manifest), root)
+def validate_tooling_pin(
+    data: dict,
+    expected_repository: str | None = None,
+    expected_path: str | None = None,
+    expected_revision: str | None = None,
+) -> None:
+    expected = (expected_repository, expected_path, expected_revision)
+    if any(value is not None for value in expected) and not all(
+        value is not None for value in expected
+    ):
+        fail("tooling pin expectations must provide repository, path, and revision together")
+
+    tooling = data.get("estate_tooling")
+    if tooling is None:
+        if expected_repository is not None:
+            fail("estate_tooling table is required when using pinned shared tooling")
+        return
+    if not isinstance(tooling, dict):
+        fail("estate_tooling must be a table")
+
+    repository = tooling.get("repository", "")
+    path = tooling.get("path", "")
+    revision = tooling.get("revision", "")
+    if not isinstance(repository, str) or not re.fullmatch(r"[^/\\s]+/[^/\\s]+", repository):
+        fail("estate_tooling.repository must be OWNER/REPOSITORY")
+    if not isinstance(path, str) or not path or path.startswith("/"):
+        fail("estate_tooling.path must be a nonempty repository-relative path")
+    if not isinstance(revision, str) or not re.fullmatch(r"[0-9a-f]{40}", revision):
+        fail("estate_tooling.revision must be an immutable 40-hex commit SHA")
+
+    if expected_repository is not None and repository != expected_repository:
+        fail(
+            "estate_tooling.repository disagrees with executing shared audit: "
+            f"expected {expected_repository!r}"
+        )
+    if expected_path is not None and path != expected_path:
+        fail(
+            "estate_tooling.path disagrees with executing shared audit: "
+            f"expected {expected_path!r}"
+        )
+    if expected_revision is not None and revision != expected_revision:
+        fail(
+            "estate_tooling.revision disagrees with executing shared audit: "
+            f"expected {expected_revision!r}"
+        )
+
+
+def audit(
+    root: Path,
+    manifest: str = "estate.toml",
+    tooling_repository: str | None = None,
+    tooling_path: str | None = None,
+    tooling_revision: str | None = None,
+) -> None:
+    data = load(root, manifest)
+    validate(data, root)
+    validate_tooling_pin(data, tooling_repository, tooling_path, tooling_revision)
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -190,10 +245,28 @@ def main(argv: list[str] | None = None) -> int:
         default="estate.toml",
         help="manifest path relative to --root (default: estate.toml)",
     )
+    parser.add_argument(
+        "--tooling-repository",
+        help="expected shared tooling OWNER/REPOSITORY; requires path and revision",
+    )
+    parser.add_argument(
+        "--tooling-path",
+        help="expected shared tooling path; requires repository and revision",
+    )
+    parser.add_argument(
+        "--tooling-revision",
+        help="expected immutable 40-hex shared tooling commit SHA",
+    )
     args = parser.parse_args(argv)
     root = args.root.resolve()
     try:
-        audit(root, args.manifest)
+        audit(
+            root,
+            args.manifest,
+            args.tooling_repository,
+            args.tooling_path,
+            args.tooling_revision,
+        )
     except (AssertionError, tomllib.TOMLDecodeError) as exc:
         print(f"estate-layout audit failed: {exc}", file=sys.stderr)
         return 1
