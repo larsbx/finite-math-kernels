@@ -6,7 +6,7 @@ Run with `pixi run test-projective-limits`.
 from std.testing import assert_false, assert_true
 
 from finite_exact.bigint_z import BigZ, bigz_from_i64
-from finite_exact.rat_q import Q, q_from_bigz
+from finite_exact.rat_q import Q, q_from_bigz, q_rejected
 from projective_limits.line import (
     P1,
     chordal_distance_squared,
@@ -95,6 +95,18 @@ def test_infinity_maps_through_finite_image() raises:
     var f = ratmap(poly_i64([1, 2]), poly_i64([-1, 1]))
     assert_true(p1_is_infinity(rational_limit(f, at(1))))
     assert_true(p1_equal(rational_limit(f, p1_infinity()), at(2)))
+
+
+def test_rejected_coefficient_refuses_degree_rule() raises:
+    # A rejected leading coefficient has a zero-valued storage numerator, but
+    # must not be trimmed as a valid zero while deriving the degree.
+    var coeffs = List[Q]()
+    coeffs.append(q(1))
+    coeffs.append(q_rejected())
+    var malformed = Poly(coeffs)
+    var value = rational_limit(ratmap(malformed, poly_i64([1])), p1_infinity())
+    assert_false(malformed.accepted())
+    assert_false(value.accepted())
 
 
 # Section 3: the chordal metric, exactly squared.
@@ -241,6 +253,19 @@ def test_second_blow_up_along_a_parabola() raises:
     assert_true(p1_equal(along_parabola, at(1, 2)))
 
 
+def test_negative_monomial_exponent_rejects() raises:
+    # x^-1 is outside the polynomial domain and must not evaluate as x^0.
+    var invalid = poly2_monomial(-1, 0, q(1))
+    var denominator = poly2_monomial(0, 0, q(1))
+    var value = curve_limit(
+        invalid,
+        denominator,
+        poly_i64([0, 1]),
+        poly_i64([0, 1]),
+    )
+    assert_false(value.accepted())
+
+
 # Section 7: Moebius maps and continued fractions.
 
 
@@ -286,6 +311,8 @@ def main() raises:
     print("[PASS] test_degree_rule_at_infinity")
     test_infinity_maps_through_finite_image()
     print("[PASS] test_infinity_maps_through_finite_image")
+    test_rejected_coefficient_refuses_degree_rule()
+    print("[PASS] test_rejected_coefficient_refuses_degree_rule")
     test_chordal_distance_squared()
     print("[PASS] test_chordal_distance_squared")
     test_tangent_slope_smooth_vertical_and_cusp()
@@ -304,8 +331,10 @@ def main() raises:
     print("[PASS] test_path_dependence_witness_certifies_nonexistence")
     test_second_blow_up_along_a_parabola()
     print("[PASS] test_second_blow_up_along_a_parabola")
+    test_negative_monomial_exponent_rejects()
+    print("[PASS] test_negative_monomial_exponent_rejects")
     test_mobius_is_continuous_at_infinity()
     print("[PASS] test_mobius_is_continuous_at_infinity")
     test_convergents_are_the_orbit_of_infinity()
     print("[PASS] test_convergents_are_the_orbit_of_infinity")
-    print("16 projective_limits Mojo tests passed.")
+    print("18 projective_limits Mojo tests passed.")
