@@ -1036,7 +1036,7 @@
       "relation": "authored"
     },
     "tests/finite_polynomial/test_polynomial_z.mojo": {
-      "blob": "e5a5cf2eee61d0eff4abd5af04f1128ddfec914f",
+      "blob": "f7dd23788044851f6c9b8eb90e1dc847fb44f647",
       "relation": "authored"
     },
     "tools/cyclotomic_reference.py": {
