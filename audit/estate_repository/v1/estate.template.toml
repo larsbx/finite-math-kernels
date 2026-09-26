@@ -9,6 +9,11 @@ lifecycle = "active"
 default_branch = "main"
 layout_status = "transitional"
 
+[estate_tooling]
+repository = "larsbx/finite-math-kernels"
+path = "audit/estate_repository/v1"
+revision = "PINNED_40_HEX_COMMIT_SHA"
+
 [principles]
 ordering = ["authority", "domain", "language"]
 empty_silos = "forbidden"
