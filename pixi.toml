@@ -16,6 +16,7 @@ ledgers = "python tools/make_ledger_example.py"
 test-finite-exact = "mojo run -I . tests/finite_exact/test_finite_exact.mojo"
 test-interval = "mojo run -I . tests/interval/test_interval_q.mojo"
 test-linear-algebra = "mojo run -I . tests/finite_linear_algebra/test_finite_linear_algebra.mojo"
+test-finite-polynomial = "mojo run -I . tests/finite_polynomial/test_polynomial_z.mojo"
 test-madic = "mojo run -I . tests/finite_linear_algebra/test_madic_ball.mojo"
 test-madic-oracle = "python -m pytest -q tests/finite_linear_algebra/test_madic_oracle.py"
 test-substitution = "mojo run -I . tests/substitution_dynamics/test_substitution_dynamics.mojo"
@@ -31,7 +32,7 @@ test-parallel-fold = "mojo run -I . tests/parallel_fold/test_map_fold.mojo"
 test-vendoring = "python -m pytest -q tests/vendoring"
 test-proof-records = "python -m pytest -q tests/proof_records"
 vocabularies = "python -m pytest -q tests/proof_records/test_vocabularies.py"
-test-python = "python -m pytest -q tests/finite_exact tests/proof_records tests/substitution_dynamics tests/rational_dynamics"
+test-python = "python -m pytest -q tests/finite_exact tests/proof_records tests/substitution_dynamics tests/rational_dynamics tests/finite_polynomial"
 test-audit = "PYTHONPATH=audit python -m pytest -q tests/audit"
 test-provenance = "python -m pytest -q tests/provenance"
 test-references = "python -m pytest -q tests/references"
@@ -40,7 +41,7 @@ test-frontier = "python -m pytest -q tests/frontier"
 bench-frontier = "python benchmarks/frontier/harness.py run ff_orbit_census --corpus bench"
 distribution = "python tools/property_oracle.py --layers zq --distribution"
 references = "python tools/check_references.py"
-test = { depends-on = ["test-finite-exact", "test-interval", "test-linear-algebra", "test-madic", "test-madic-oracle", "test-substitution", "test-tuning", "test-facades", "test-quadratic-orbit", "test-rational-dynamics", "test-orbit-census", "test-orbit-reference", "test-mojo-smoke", "test-parallel-fold", "test-vendoring", "test-proof-records", "test-python", "test-audit", "test-provenance", "test-references", "test-refinement", "test-frontier", "property"] }
+test = { depends-on = ["test-finite-exact", "test-interval", "test-linear-algebra", "test-finite-polynomial", "test-madic", "test-madic-oracle", "test-substitution", "test-tuning", "test-facades", "test-quadratic-orbit", "test-rational-dynamics", "test-orbit-census", "test-orbit-reference", "test-mojo-smoke", "test-parallel-fold", "test-vendoring", "test-proof-records", "test-python", "test-audit", "test-provenance", "test-references", "test-refinement", "test-frontier", "property"] }
 
 # The polyglot lane of docs/polyglot-orbit-census-design.md. Separate from the
 # default environment so the authoritative gates above neither gain nor lose a
