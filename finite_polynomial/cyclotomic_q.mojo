@@ -22,6 +22,7 @@ from finite_exact.rat_q import (
     q_canonical_bytes,
     q_from_bigz,
 )
+from finite_linear_algebra.qlinalg import rref
 from finite_polynomial.polynomial_z import (
     PolyZ,
     cyclotomic_polynomial,
@@ -167,6 +168,15 @@ def cyclotomic_equal(left: CyclotomicQ, right: CyclotomicQ) -> Bool:
     return True
 
 
+def cyclotomic_is_zero(value: CyclotomicQ) -> Bool:
+    if value.rejected:
+        return False
+    for coefficient in value.coeffs:
+        if not _q_is_zero(coefficient):
+            return False
+    return True
+
+
 def cyclotomic_neg(value: CyclotomicQ) -> CyclotomicQ:
     if value.rejected:
         return rejected_cyclotomic()
@@ -220,6 +230,65 @@ def cyclotomic_mul(left: CyclotomicQ, right: CyclotomicQ) -> CyclotomicQ:
                 left.coeffs[i].mul(right.coeffs[j])
             )
     return cyclotomic_from_coeffs(left.conductor, coefficients)
+
+
+def cyclotomic_inverse(value: CyclotomicQ) -> CyclotomicQ:
+    """Exact multiplicative inverse by a rational multiplication matrix."""
+    if value.rejected or cyclotomic_is_zero(value):
+        return rejected_cyclotomic()
+
+    var degree = len(value.coeffs)
+    var matrix = List[List[Q]]()
+    for _ in range(degree):
+        var row = List[Q]()
+        for _ in range(degree + 1):
+            row.append(Q.zero())
+        matrix.append(row^)
+
+    var generator = zeta(value.conductor)
+    var basis_power = cyclotomic_one(value.conductor)
+    for column in range(degree):
+        var product = cyclotomic_mul(value, basis_power)
+        if product.rejected:
+            return rejected_cyclotomic()
+        for row in range(degree):
+            matrix[row][column] = product.coeffs[row].copy()
+        basis_power = cyclotomic_mul(basis_power, generator)
+        if basis_power.rejected:
+            return rejected_cyclotomic()
+
+    matrix[0][degree] = Q.one()
+    var reduced_result = rref(matrix)
+    ref reduced = reduced_result[0]
+    ref pivots = reduced_result[1]
+
+    if len(pivots) != degree:
+        return rejected_cyclotomic()
+    for index in range(degree):
+        if pivots[index] != index:
+            return rejected_cyclotomic()
+
+    var coefficients = List[Q]()
+    for index in range(degree):
+        coefficients.append(reduced[index][degree].copy())
+    var candidate = cyclotomic_from_coeffs(value.conductor, coefficients)
+    if candidate.rejected:
+        return candidate^
+    if not cyclotomic_equal(
+        cyclotomic_mul(value, candidate),
+        cyclotomic_one(value.conductor),
+    ):
+        return rejected_cyclotomic()
+    return candidate^
+
+
+def cyclotomic_div(left: CyclotomicQ, right: CyclotomicQ) -> CyclotomicQ:
+    if left.rejected or right.rejected or left.conductor != right.conductor:
+        return rejected_cyclotomic()
+    var inverse = cyclotomic_inverse(right)
+    if inverse.rejected:
+        return inverse^
+    return cyclotomic_mul(left, inverse)
 
 
 def cyclotomic_pow(value: CyclotomicQ, exponent: Int) -> CyclotomicQ:

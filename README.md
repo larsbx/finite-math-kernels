@@ -17,6 +17,7 @@ finite_linear_algebra/
 finite_polynomial/
   polynomial_z.mojo
   cyclotomic_q.mojo
+  quadratic_germ.mojo
 substitution_dynamics/
   words.mojo
   substitution.mojo
@@ -62,10 +63,12 @@ not part of this repository.
 - Linear algebra computes exact finite-dimensional facts and makes no spectral
   or conjectural theorem claims.
 - `finite_polynomial` provides dynamic unbounded `BigZ` polynomial
-  arithmetic, exact monic division, exact cyclotomic polynomials, and
-  canonical exact arithmetic in `Q[X]/(Phi_n)` with Galois actions
-  `zeta -> zeta^a`. It returns finite coefficient facts only and assigns no
-  dynamical meaning to roots, embeddings, or quotient classes.
+  arithmetic, exact monic division, exact cyclotomic polynomials, canonical
+  exact arithmetic in `Q[X]/(Phi_n)` with field inversion and Galois actions
+  `zeta -> zeta^a`, and finite jets of the quadratic germ
+  `w -> lambda*w + w^2`. The germ layer returns formal coefficients only;
+  it assigns no bulb geometry, landing, connectivity, or analytic embedding
+  to them.
 - A capped balanced-pair automaton is inconclusive, never a proof or
   counterexample.
 - Tuning patterns, directive prefixes, and column coincidence are finite

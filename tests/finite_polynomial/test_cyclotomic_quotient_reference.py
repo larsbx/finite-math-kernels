@@ -5,6 +5,8 @@ import pytest
 from tools.cyclotomic_quotient_reference import (
     add,
     automorphism,
+    div,
+    inverse,
     mul,
     one,
     power,
@@ -34,6 +36,14 @@ def test_rational_coefficients():
     value = reduce_coefficients(4, [Fraction(1, 2), Fraction(1, 3)])
     conjugate = reduce_coefficients(4, [Fraction(1, 2), Fraction(-1, 3)])
     assert mul(value, conjugate) == reduce_coefficients(4, [Fraction(13, 36)])
+
+
+def test_field_inverse():
+    value = reduce_coefficients(5, [2, -1, 3, 1])
+    assert mul(value, inverse(value)) == one(5)
+    assert div(value, value) == one(5)
+    with pytest.raises(ZeroDivisionError):
+        inverse(zero(5))
 
 
 def test_galois_composition_and_refusal():

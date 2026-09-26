@@ -1,6 +1,6 @@
 {
   "schema": "rational-dynamics-cyclotomic/v1",
-  "status": "c1-c2-implemented",
+  "status": "r1-c0-c1-c2-q1-q2-implemented",
   "authority": "none",
   "objects": {
     "reduced_rational": {
@@ -77,6 +77,10 @@
     "rational_dynamics_reference": "tools/rational_dynamics_reference.py",
     "finite_polynomial": "finite_polynomial/polynomial_z.mojo",
     "cyclotomic_exact_tests": "tests/finite_polynomial/test_cyclotomic_q.mojo",
-    "cyclotomic_exact_reference": "tools/cyclotomic_quotient_reference.py"
+    "cyclotomic_exact_reference": "tools/cyclotomic_quotient_reference.py",
+    "quadratic_germ": "finite_polynomial/quadratic_germ.mojo",
+    "quadratic_germ_tests": "tests/finite_polynomial/test_quadratic_germ.mojo",
+    "quadratic_germ_reference": "tools/quadratic_germ_reference.py",
+    "cyclotomic_field_inversion": "finite_polynomial/cyclotomic_q.mojo"
   }
 }
