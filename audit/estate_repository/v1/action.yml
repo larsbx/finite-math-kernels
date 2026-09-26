@@ -1,0 +1,8 @@
+name: Estate Repository v1 Audit
+description: Validate a consumer repository against Estate Repository Template v1
+runs:
+  using: composite
+  steps:
+    - name: Validate estate repository architecture
+      shell: bash
+      run: python3 "$GITHUB_ACTION_PATH/audit_estate_layout.py" --root "$GITHUB_WORKSPACE"
