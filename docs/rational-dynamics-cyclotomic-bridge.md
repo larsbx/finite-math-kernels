@@ -95,15 +95,18 @@ belongs to the consumer.
 The extraction should be staged:
 
 1. **R1 — rational combinatorics: IMPLEMENTED.** Reduced nonnegative fractions over unbounded BigZ, explicit doubling modulo one, modular inverse, signed inverse, continued fractions, convergents, and Farey determinant are executable and tested.
-2. **C1 — cyclotomic representation:** exact quotient arithmetic and
+2. **C0 — polynomial foundation: IMPLEMENTED on the stacked branch.** Dynamic
+   unbounded `BigZ[x]`, exact monic division, and exact `Phi_n` construction
+   by the divisor product identity, with independent replay.
+3. **C1 — cyclotomic representation:** exact quotient arithmetic and
    canonical bytes, with independent property vectors.
-3. **C2 — Galois action:** exact `zeta -> zeta^a` replay and conjugation
+4. **C2 — Galois action:** exact `zeta -> zeta^a` replay and conjugation
    vectors.
-4. **Q1 — quadratic germ jets:** truncated exact composition over a generic
+5. **Q1 — quadratic germ jets:** truncated exact composition over a generic
    exact coefficient ring.
-5. **Q2 — reciprocal-series coefficient:** fail closed when the required
+6. **Q2 — reciprocal-series coefficient:** fail closed when the required
    constant coefficient is not invertible.
-6. **consumer adapters:** parameter-plane, dynamical-plane, and arithmetic-
+7. **consumer adapters:** parameter-plane, dynamical-plane, and arithmetic-
    correction projects interpret those finite outputs under their own
    theorem/evidence policies.
 
