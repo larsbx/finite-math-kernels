@@ -1,0 +1,141 @@
+version = 1
+template = "estate-repository-v1"
+
+[repository]
+id = "larsbx/finite-math-kernels"
+kind = "library"
+lifecycle = "active"
+default_branch = "main"
+layout_status = "transitional"
+
+[principles]
+ordering = ["authority", "domain", "language"]
+empty_silos = "forbidden"
+cross_language_disagreement = "fail_closed"
+generated_surfaces = "derived_only"
+vendor_code = "non_local"
+experimental_code = "non_authoritative"
+
+[[plane]]
+id = "policy"
+target = "policy"
+authority = "governance"
+required = true
+current = ["estate.toml"]
+
+[[plane]]
+id = "kernel"
+target = "kernel"
+authority = "canonical_executable"
+required = true
+current = ["finite_exact", "finite_linear_algebra", "finite_field_orbit", "quadratic_orbit", "rational_dynamics", "substitution_dynamics", "parallel_fold", "mojo_smoke", "proof_records"]
+
+[[plane]]
+id = "proof"
+target = "proof"
+authority = "claim_state"
+required = true
+current = ["proof_records/ProofArchitecture.tla"]
+
+[[plane]]
+id = "reference"
+target = "reference"
+authority = "non_authoritative_reference"
+required = true
+current_globs = ["tools/*_reference.py"]
+
+[[plane]]
+id = "oracles"
+target = "oracles"
+authority = "non_authoritative_oracle"
+required = true
+current = ["tools/property_oracle.py", "tools/madic_oracle.py", "oracle_refinement"]
+
+[[plane]]
+id = "experiments"
+target = "experiments"
+authority = "non_authoritative_experiment"
+required = true
+current = ["benchmarks/frontier"]
+
+[[plane]]
+id = "schemas"
+target = "schemas"
+authority = "contract"
+required = true
+current = ["contracts"]
+
+[[plane]]
+id = "conformance"
+target = "conformance"
+authority = "evidence"
+required = true
+current = ["tests", "fixtures", "audit/provenance.json"]
+
+[[plane]]
+id = "tooling"
+target = "tools"
+authority = "repository_tooling"
+required = true
+current = ["vendoring", "audit/claim_governance", "tools/check_references.py", "tools/provenance.py", "tools/replay_mojo.py"]
+current_globs = ["tools/make_*.py"]
+
+[[plane]]
+id = "docs"
+target = "docs"
+authority = "exposition"
+required = true
+current = ["docs", "audit/docs", "audit/CONSOLIDATION_PROVENANCE.md", "audit/POST_CONSOLIDATION_AUDIT_2026-09-15.md"]
+
+[[language]]
+name = "Mojo"
+authority = "canonical"
+roles = ["kernel"]
+acceptance_authority = true
+
+[[language]]
+name = "Python"
+authority = "supporting"
+roles = ["reference", "oracle", "audit", "proof_records", "generation"]
+acceptance_authority = false
+
+[[language]]
+name = "Rust"
+authority = "supporting"
+roles = ["experiment"]
+acceptance_authority = false
+
+[[language]]
+name = "Bend"
+authority = "supporting"
+roles = ["experiment"]
+acceptance_authority = false
+
+[[language]]
+name = "Elixir"
+authority = "supporting"
+roles = ["experiment"]
+acceptance_authority = false
+
+[[language]]
+name = "TLA+"
+authority = "supporting"
+roles = ["formal_model"]
+acceptance_authority = false
+
+[migration]
+mode = "boundary_first"
+mass_move = false
+next = [
+  "group kernel packages under kernel by domain",
+  "move Python reference semantics out of tools into reference",
+  "move the frontier polyglot lane into experiments",
+]
+
+[governance]
+repository = "larsbx/estate-governance"
+revision = "bd0a9491488f54f28b4a3b9076051349092383bb"
+
+[governance.sha256]
+"docs/architecture/estate-repository-template-v1.md" = "b5eab7543c877484a159b47cbe36aa6255c51bd6ec5863dbb9fe13d9a2c06f6b"
+"tools/audit_estate_layout.py" = "f462c397dee8a596a2a7a8c40fd5ded2989652322186c568b712366294251003"
