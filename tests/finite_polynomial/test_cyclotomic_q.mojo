@@ -5,7 +5,9 @@ This is finite algebra only.  No numerical embedding of zeta_n is used.
 
 from std.testing import assert_false, assert_true
 
-from finite_exact.rat_q import Q
+from finite_exact.bigint_z import bigz_from_i64
+from finite_exact.rat_q import Q, q_from_bigz
+from finite_polynomial.polynomial_z import cyclotomic_polynomial
 from finite_polynomial.cyclotomic_q import (
     CyclotomicQ,
     cyclotomic_add,
@@ -60,6 +62,21 @@ def test_root_of_unity_identity() raises:
             cyclotomic_equal(
                 cyclotomic_pow(generator, conductor),
                 cyclotomic_one(conductor),
+            )
+        )
+
+
+def test_defining_cyclotomic_polynomial_is_zero() raises:
+    for conductor in range(1, 13):
+        var phi = cyclotomic_polynomial(conductor)
+        assert_true(phi.accepted())
+        var coefficients = List[Q]()
+        for coefficient in phi.coeffs:
+            coefficients.append(q_from_bigz(coefficient, bigz_from_i64(1)))
+        assert_true(
+            cyclotomic_equal(
+                cyclotomic_from_coeffs(conductor, coefficients),
+                cyclotomic_zero(conductor),
             )
         )
 
@@ -138,6 +155,8 @@ def main() raises:
     print("[PASS] test_small_conductors_reduce_exactly")
     test_root_of_unity_identity()
     print("[PASS] test_root_of_unity_identity")
+    test_defining_cyclotomic_polynomial_is_zero()
+    print("[PASS] test_defining_cyclotomic_polynomial_is_zero")
     test_high_degree_input_reduces_canonically()
     print("[PASS] test_high_degree_input_reduces_canonically")
     test_rational_coefficients_remain_exact()
@@ -148,4 +167,4 @@ def main() raises:
     print("[PASS] test_conductor_is_part_of_identity_and_encoding")
     test_invalid_conductor_and_rejected_coefficient_fail_closed()
     print("[PASS] test_invalid_conductor_and_rejected_coefficient_fail_closed")
-    print("7 cyclotomic quotient Mojo tests passed.")
+    print("8 cyclotomic quotient Mojo tests passed.")
