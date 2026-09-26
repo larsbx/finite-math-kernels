@@ -110,3 +110,57 @@ def automorphism(value: CQ, exponent: int) -> CQ:
         )
         p = mul(p, image)
     return out
+
+
+def inverse(value: CQ) -> CQ:
+    if all(coefficient == 0 for coefficient in value.coefficients):
+        raise ZeroDivisionError("zero has no inverse")
+
+    degree = len(value.coefficients)
+    matrix = [[Fraction(0) for _ in range(degree + 1)] for _ in range(degree)]
+
+    generator = zeta(value.conductor)
+    basis_power = one(value.conductor)
+    for column in range(degree):
+        product = mul(value, basis_power)
+        for row in range(degree):
+            matrix[row][column] = product.coefficients[row]
+        basis_power = mul(basis_power, generator)
+    matrix[0][degree] = 1
+
+    row = 0
+    for column in range(degree):
+        pivot = next((i for i in range(row, degree) if matrix[i][column]), None)
+        if pivot is None:
+            continue
+        matrix[row], matrix[pivot] = matrix[pivot], matrix[row]
+        pivot_value = matrix[row][column]
+        matrix[row] = [entry / pivot_value for entry in matrix[row]]
+        for i in range(degree):
+            if i == row or not matrix[i][column]:
+                continue
+            factor = matrix[i][column]
+            matrix[i] = [
+                matrix[i][j] - factor * matrix[row][j]
+                for j in range(degree + 1)
+            ]
+        row += 1
+
+    if row != degree:
+        raise ZeroDivisionError("element is not invertible")
+
+    solution = [Fraction(0)] * degree
+    for i in range(degree):
+        pivot = next(j for j in range(degree) if matrix[i][j] == 1)
+        solution[pivot] = matrix[i][degree]
+
+    result = reduce_coefficients(value.conductor, solution)
+    if mul(value, result) != one(value.conductor):
+        raise ArithmeticError("inverse replay failed")
+    return result
+
+
+def div(left: CQ, right: CQ) -> CQ:
+    if left.conductor != right.conductor:
+        raise ValueError("conductor mismatch")
+    return mul(left, inverse(right))
