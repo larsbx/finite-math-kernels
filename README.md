@@ -51,6 +51,13 @@ The implementation retains compatibility modules (`rat_q`, `closed_q`,
 filenames above. There is one in-tree `finite_exact`; vendored duplicates are
 not part of this repository.
 
+## Active research integrations
+
+- **Weighted cycle-gain kernel:** `docs/weighted-cycle-gain-research-scaffold.md`
+  defines a domain-neutral exact graph/cocycle module planned for PSC Tier 2.
+  The kernel will expose only finite graph/algebra facts; all Growth Bridge and
+  spectral meaning remains in the PSC consumer.
+
 ## Boundaries
 
 - `BigZ` and `Q` are exact and unbounded; malformed construction and invalid
