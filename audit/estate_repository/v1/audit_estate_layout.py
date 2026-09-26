@@ -138,7 +138,7 @@ def validate(data: dict, root: Path) -> None:
         names.add(name)
         if authority not in ALLOWED_LANGUAGE_AUTHORITIES:
             fail(f"language {name}: invalid authority {authority!r}")
-        if not isinstance(roles, list) or not all(isinstance(x, str) and x for x in roles):
+        if not isinstance(roles, list) or not roles or not all(isinstance(x, str) and x for x in roles):
             fail(f"language {name}: roles must be a nonempty string list")
         if authority == "canonical":
             canonical.append(language)
