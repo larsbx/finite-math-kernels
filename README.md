@@ -14,6 +14,8 @@ finite_linear_algebra/
   matrix3.mojo
   rational_elimination.mojo
   tensor3.mojo
+finite_polynomial/
+  polynomial_z.mojo
 substitution_dynamics/
   words.mojo
   substitution.mojo
@@ -58,6 +60,10 @@ not part of this repository.
   never promoted to equality or certificate acceptance.
 - Linear algebra computes exact finite-dimensional facts and makes no spectral
   or conjectural theorem claims.
+- `finite_polynomial` provides dynamic unbounded `BigZ` polynomial
+  arithmetic, exact monic division, and exact cyclotomic polynomials. It
+  returns finite coefficient facts only and assigns no dynamical meaning to
+  roots or quotient classes.
 - A capped balanced-pair automaton is inconclusive, never a proof or
   counterexample.
 - Tuning patterns, directive prefixes, and column coincidence are finite
