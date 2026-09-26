@@ -1,0 +1,79 @@
+{
+  "schema": "rational-dynamics-cyclotomic/v1",
+  "status": "r1-implemented",
+  "authority": "none",
+  "objects": {
+    "reduced_rational": {
+      "fields": [
+        "numerator",
+        "denominator"
+      ],
+      "invariants": [
+        "numerator >= 0",
+        "denominator > 0",
+        "gcd(numerator, denominator) = 1"
+      ]
+    },
+    "cyclotomic": {
+      "fields": [
+        "conductor",
+        "reduced_coefficients"
+      ],
+      "invariants": [
+        "conductor > 0",
+        "coefficients are exact rationals",
+        "degree < phi(conductor)",
+        "representative reduced modulo Phi_conductor"
+      ]
+    }
+  },
+  "operations": {
+    "rational_dynamics": [
+      "reduce",
+      "double_mod_one",
+      "mod_inverse",
+      "signed_mod_inverse",
+      "continued_fraction",
+      "convergents",
+      "farey_determinant"
+    ],
+    "cyclotomic_exact": [
+      "zeta",
+      "add",
+      "sub",
+      "mul",
+      "neg",
+      "exact_equal",
+      "automorphism",
+      "canonical_bytes"
+    ],
+    "quadratic_germ_future": [
+      "truncated_iterate",
+      "parabolic_factor",
+      "reciprocal_series_coefficient"
+    ]
+  },
+  "refusals": [
+    "negative rational numerator",
+    "zero or negative rational denominator",
+    "modular inverse of the zero residue or any nonunit residue modulo q",
+    "cyclotomic conductor <= 0",
+    "noncanonical or rejected rational coefficient",
+    "automorphism exponent not coprime to conductor",
+    "reciprocal-series request with noninvertible constant coefficient"
+  ],
+  "nonclaims": [
+    "ray landing",
+    "bulb diameter",
+    "component geometry",
+    "connectivity",
+    "local connectivity",
+    "certificate acceptance for any consumer"
+  ],
+  "implementation": {
+    "rational_dynamics": "rational_dynamics/rational.mojo",
+    "rational_dynamics_tests": "tests/rational_dynamics/test_rational_dynamics.mojo",
+    "cyclotomic_exact": "planned",
+    "rational_dynamics_reference": "tools/rational_dynamics_reference.py"
+  }
+}

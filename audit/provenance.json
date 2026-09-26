@@ -21,7 +21,7 @@
       "relation": "authored"
     },
     "README.md": {
-      "blob": "5c07ba553c53a0d3d9ce23088718db19da2a4402",
+      "blob": "9112ed44d207e75ea429fc3c6963e47ad05be20c",
       "relation": "authored"
     },
     "audit/CONSOLIDATION_PROVENANCE.md": {
@@ -537,7 +537,7 @@
       "relation": "authored"
     },
     "pixi.toml": {
-      "blob": "0ae776d1e4f000bc500a4d8642a4156603a0412e",
+      "blob": "87923c8b70608557fb7bacc3e4dcb39e3f9e1057",
       "relation": "authored"
     },
     "proof_records/ProofArchitecture.tla": {
@@ -994,6 +994,38 @@
       "source": "finite_mandelbrot_research",
       "source_blob": "76ddda76a2cc3dea8221ac8b8192fe3d7e4f14c4",
       "source_path": "tools/check_vendored_sync.py"
+    },
+    "docs/rational-dynamics-cyclotomic-bridge.md": {
+      "blob": "af38f8488b2aa965debf118f158409495d3bd338",
+      "relation": "authored"
+    },
+    "contracts/rational-dynamics-cyclotomic-v1.json": {
+      "blob": "e777a7d04d938426dfd601179e086caaaec15c94",
+      "relation": "authored"
+    },
+    "rational_dynamics/__init__.mojo": {
+      "blob": "02c525febbc75a3610b60d40a434da844bb8a322",
+      "relation": "authored"
+    },
+    "rational_dynamics/rational.mojo": {
+      "blob": "484b0a299f77586ebd431ddc70cbf99fec326ea3",
+      "relation": "authored"
+    },
+    "tests/rational_dynamics/test_rational_dynamics.mojo": {
+      "blob": "316e8f4a17b56dc7a63d3b90f0aef6773eaadba1",
+      "relation": "authored"
+    },
+    "tests/rational_dynamics/test_rational_dynamics_reference.py": {
+      "blob": "4a7c836bd8615a326de470856b694a6316dde074",
+      "relation": "authored"
+    },
+    "tools/rational_dynamics_reference.py": {
+      "blob": "8fc015487f3601598d6f4bf801f42348056a08dd",
+      "relation": "authored"
+    },
+    "tests/rational_dynamics/test_reference.py": {
+      "blob": "10b24789996c27f23fa287eb7be502ba48ebea08",
+      "relation": "authored"
     }
   },
   "format": "finite-math-kernels provenance 1",

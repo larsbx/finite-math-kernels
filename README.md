@@ -26,6 +26,8 @@ substitution_dynamics/
 quadratic_orbit/
   orbit.mojo
   collision.mojo
+rational_dynamics/
+  rational.mojo
 finite_field_orbit/
   census.mojo
 mojo_smoke/
@@ -74,6 +76,7 @@ not part of this repository.
   intends to collide, knows nothing about any parameter, and proves nothing
   about any orbit; an invalid type intends nothing rather than something
   arbitrary.
+- `rational_dynamics` provides exact unbounded reduced-fraction arithmetic, explicit doubling modulo one, modular and centered modular inverses, canonical simple continued fractions and convergents, and Farey determinants. It interprets none of these as measured angles or domain claims.
 - The finite-field orbit census (`finite_field_orbit/census.mojo`,
   `docs/polyglot-orbit-census-design.md`) computes exact tails and periods of
   `x -> x^2 + c` over `F_p` for a block of seeds, up to a cap. Cap reached is
