@@ -98,10 +98,12 @@ The extraction should be staged:
 2. **C0 — polynomial foundation: IMPLEMENTED on the stacked branch.** Dynamic
    unbounded `BigZ[x]`, exact monic division, and exact `Phi_n` construction
    by the divisor product identity, with independent replay.
-3. **C1 — cyclotomic representation:** exact quotient arithmetic and
-   canonical bytes, with independent property vectors.
-4. **C2 — Galois action:** exact `zeta -> zeta^a` replay and conjugation
-   vectors.
+3. **C1 — cyclotomic representation: IMPLEMENTED on the quotient branch.**
+   Canonical exact representatives in `Q[X]/(Phi_q)`, exact addition,
+   subtraction, multiplication/reduction, powers, and canonical bytes.
+4. **C2 — Galois action: IMPLEMENTED on the quotient branch.** Exact
+   `zeta -> zeta^a` for units `a mod q`, including conjugation and
+   composition replay.
 5. **Q1 — quadratic germ jets:** truncated exact composition over a generic
    exact coefficient ring.
 6. **Q2 — reciprocal-series coefficient:** fail closed when the required
