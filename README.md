@@ -28,6 +28,9 @@ quadratic_orbit/
   collision.mojo
 rational_dynamics/
   rational.mojo
+projective_limits/
+  line.mojo
+  limits.mojo
 finite_field_orbit/
   census.mojo
 mojo_smoke/
@@ -77,6 +80,7 @@ not part of this repository.
   about any orbit; an invalid type intends nothing rather than something
   arbitrary.
 - `rational_dynamics` provides exact unbounded reduced-fraction arithmetic, explicit doubling modulo one, modular and centered modular inverses, canonical simple continued fractions and convergents, and Farey determinants. It interprets none of these as measured angles or domain claims.
+- `projective_limits` computes limits of rational functions over Q as points of P^1(Q), infinity included, through one kernel: the lowest-order point on the exceptional divisor. It covers poles, the degree rule, L'Hopital, tangent slopes in the pencil, asymptotes, directional and arc limits of bivariate quotients, Moebius maps and the squared chordal metric. A found path-dependence witness certifies that a limit does not exist; a search that finds none is inconclusive.
 - The finite-field orbit census (`finite_field_orbit/census.mojo`,
   `docs/polyglot-orbit-census-design.md`) computes exact tails and periods of
   `x -> x^2 + c` over `F_p` for a block of seeds, up to a cap. Cap reached is
