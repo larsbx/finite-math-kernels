@@ -41,6 +41,7 @@ vendoring/
   check_vendored_sync.py
 audit/
   claim_governance/
+  estate_repository/v1/
 ```
 
 The implementation retains compatibility modules (`rat_q`, `closed_q`,
@@ -114,6 +115,7 @@ not part of this repository.
   corpus: this repository lost a 64-bit wrap and a singular lattice to a corpus
   that was silent rather than wrong. A class declared reached and never drawn
   fails the run, and so does a class declared missed and then drawn.
+- The shared Estate Repository Template v1 audit (`audit/estate_repository/v1/`) validates repository authority/layout declarations only. Consumers pin it as CI/tooling; it never acquires their mathematical, proof, certificate, effect, or persisted-state authority.
 - Claim-governance checks enforce only a consumer-supplied policy; the
   monorepo does not encode NLAP or PSC theorem status as library truth. The
   `coverage` check reports which claims no test guards; it never decides that
