@@ -26,12 +26,6 @@ from finite_polynomial.polynomial_z import (
 )
 
 
-def coefficient_is(poly, index: Int, expected: Int64) -> Bool:
-    if poly.rejected or index < 0 or index >= len(poly.coeffs):
-        return False
-    return bigz_eq(poly.coeffs[index], bigz_from_i64(expected))
-
-
 def test_exact_monic_division() raises:
     # (x^4 - 1) / (x^2 - 1) = x^2 + 1.
     var dividend = poly_xn_minus_one(4)
