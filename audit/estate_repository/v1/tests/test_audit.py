@@ -118,6 +118,60 @@ class EstateAuditTests(unittest.TestCase):
         with self.assertRaisesRegex(AssertionError, "duplicate plane target"):
             audit.audit(root)
 
+    def test_shared_tooling_pin_must_match_executing_action(self):
+        audit = load_audit()
+        revision = "0123456789abcdef0123456789abcdef01234567"
+        pinned = manifest(
+            f"""
+            [estate_tooling]
+            repository = "larsbx/finite-math-kernels"
+            path = "audit/estate_repository/v1"
+            revision = "{revision}"
+            """
+        )
+        root = self.make_repo(pinned)
+        audit.audit(
+            root,
+            tooling_repository="larsbx/finite-math-kernels",
+            tooling_path="audit/estate_repository/v1",
+            tooling_revision=revision,
+        )
+
+    def test_shared_tooling_pin_rejects_revision_drift(self):
+        audit = load_audit()
+        declared = "0123456789abcdef0123456789abcdef01234567"
+        executing = "89abcdef0123456789abcdef0123456789abcdef"
+        pinned = manifest(
+            f"""
+            [estate_tooling]
+            repository = "larsbx/finite-math-kernels"
+            path = "audit/estate_repository/v1"
+            revision = "{declared}"
+            """
+        )
+        root = self.make_repo(pinned)
+        with self.assertRaisesRegex(AssertionError, "revision disagrees"):
+            audit.audit(
+                root,
+                tooling_repository="larsbx/finite-math-kernels",
+                tooling_path="audit/estate_repository/v1",
+                tooling_revision=executing,
+            )
+
+    def test_shared_tooling_pin_must_be_immutable_sha(self):
+        audit = load_audit()
+        pinned = manifest(
+            """
+            [estate_tooling]
+            repository = "larsbx/finite-math-kernels"
+            path = "audit/estate_repository/v1"
+            revision = "main"
+            """
+        )
+        root = self.make_repo(pinned)
+        with self.assertRaisesRegex(AssertionError, "immutable 40-hex"):
+            audit.audit(root)
+
     def test_pixi_identity_must_match_repository(self):
         audit = load_audit()
         root = self.make_repo()
