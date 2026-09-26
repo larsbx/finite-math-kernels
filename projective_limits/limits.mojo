@@ -44,8 +44,15 @@ struct Poly(Copyable, Movable):
             return Q.zero()
         return self.coeffs[k].copy()
 
+    def accepted(self) -> Bool:
+        """Every stored coefficient is a valid exact rational."""
+        for k in range(len(self.coeffs)):
+            if self.coeffs[k].rejected:
+                return False
+        return True
+
     def degree(self) -> Int:
-        """Degree, or -1 for the zero polynomial."""
+        """Degree, or -1 for the zero polynomial. Call only after accepted()."""
         var k = len(self.coeffs) - 1
         while k >= 0 and self.coeffs[k].num.is_zero():
             k -= 1
@@ -76,6 +83,8 @@ struct Poly(Copyable, Movable):
         return out^
 
     def pow(self, n: Int) -> Poly:
+        if n < 0:
+            return constant(q_rejected())
         var out = constant(Q.one())
         for _ in range(n):
             out = out.mul(self)
@@ -149,6 +158,10 @@ def landing(p_local: Poly, q_local: Poly) -> P1:
 def rational_limit(f: RationalMap, point: P1) -> P1:
     """lim_{x -> point} f(x) in P^1, for any point of P^1 including infinity."""
     if not point.accepted():
+        return p1_rejected()
+    # Degree trimming inspects numerators, so reject malformed coefficients
+    # before a rejected Q can masquerade as a valid zero coefficient.
+    if not f.num.accepted() or not f.den.accepted():
         return p1_rejected()
     if p1_is_infinity(point):
         var d = max(f.num.degree(), f.den.degree())
