@@ -1,0 +1,14 @@
+name: Estate Repository v1
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  estate-v1:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test shared estate audit mechanism
+        run: python3 -m unittest discover -s audit/estate_repository/v1/tests -v
