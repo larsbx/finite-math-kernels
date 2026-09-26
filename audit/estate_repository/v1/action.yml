@@ -5,4 +5,12 @@ runs:
   steps:
     - name: Validate estate repository architecture
       shell: bash
-      run: python3 "$GITHUB_ACTION_PATH/audit_estate_layout.py" --root "$GITHUB_WORKSPACE"
+      env:
+        ESTATE_TOOLING_REPOSITORY: ${{ github.action_repository }}
+        ESTATE_TOOLING_REVISION: ${{ github.action_ref }}
+      run: >-
+        python3 "$GITHUB_ACTION_PATH/audit_estate_layout.py"
+        --root "$GITHUB_WORKSPACE"
+        --tooling-repository "$ESTATE_TOOLING_REPOSITORY"
+        --tooling-path "audit/estate_repository/v1"
+        --tooling-revision "$ESTATE_TOOLING_REVISION"
