@@ -21,7 +21,7 @@
       "relation": "authored"
     },
     "README.md": {
-      "blob": "767114297db60736909a5781165805e3bab5ec92",
+      "blob": "1ded0e8741efc45610ce4a339f2800f57af476e0",
       "relation": "authored"
     },
     "audit/CONSOLIDATION_PROVENANCE.md": {
@@ -537,7 +537,7 @@
       "relation": "authored"
     },
     "pixi.toml": {
-      "blob": "8b89fc0edae0f9e597221c042f3deadb1495c60c",
+      "blob": "f7c0686bb4e06a1bb9479ad8fb7f1ee4d5f75284",
       "relation": "authored"
     },
     "proof_records/ProofArchitecture.tla": {
@@ -996,11 +996,11 @@
       "source_path": "tools/check_vendored_sync.py"
     },
     "docs/rational-dynamics-cyclotomic-bridge.md": {
-      "blob": "4dd1a9521430256a247f0ec55413a692b31bef73",
+      "blob": "19b3377933b4e6902d79f9cdf0c4c9289d304e65",
       "relation": "authored"
     },
     "contracts/rational-dynamics-cyclotomic-v1.json": {
-      "blob": "e777a7d04d938426dfd601179e086caaaec15c94",
+      "blob": "700733fa818e9b2a890e3624ee67f085d7e939ea",
       "relation": "authored"
     },
     "rational_dynamics/__init__.mojo": {
@@ -1045,6 +1045,22 @@
     },
     "tests/finite_polynomial/test_cyclotomic_reference.py": {
       "blob": "25daaa615e080c6f948004df6d5322a99b4ad797",
+      "relation": "authored"
+    },
+    "finite_polynomial/cyclotomic_q.mojo": {
+      "blob": "ca1df6ed0cd3e5359b1653322b7d531918a8cd70",
+      "relation": "authored"
+    },
+    "tests/finite_polynomial/test_cyclotomic_q.mojo": {
+      "blob": "72208ea1396a9d4557b64213992c2622115e4da8",
+      "relation": "authored"
+    },
+    "tools/cyclotomic_quotient_reference.py": {
+      "blob": "45482b79dc9aea6dcd59820907df673c7e7342bd",
+      "relation": "authored"
+    },
+    "tests/finite_polynomial/test_cyclotomic_quotient_reference.py": {
+      "blob": "19844bd1a37395df7ed6376ddc4f0cf12572cca1",
       "relation": "authored"
     }
   },
