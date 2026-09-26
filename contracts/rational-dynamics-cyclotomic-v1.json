@@ -1,6 +1,6 @@
 {
   "schema": "rational-dynamics-cyclotomic/v1",
-  "status": "r1-implemented",
+  "status": "r1-implemented; c1-c2-q1-q2-reference",
   "authority": "none",
   "objects": {
     "reduced_rational": {
@@ -45,11 +45,13 @@
       "neg",
       "exact_equal",
       "automorphism",
-      "canonical_bytes"
+      "canonical_bytes",
+      "inverse"
     ],
-    "quadratic_germ_future": [
+    "quadratic_germ": [
       "truncated_iterate",
       "parabolic_factor",
+      "reciprocal_series",
       "reciprocal_series_coefficient"
     ]
   },
@@ -59,6 +61,8 @@
     "modular inverse of the zero residue or any nonunit residue modulo q",
     "cyclotomic conductor <= 0",
     "noncanonical or rejected rational coefficient",
+    "inverse of zero",
+    "parabolic-factor request whose residual does not vanish to order period+1",
     "automorphism exponent not coprime to conductor",
     "reciprocal-series request with noninvertible constant coefficient"
   ],
@@ -73,7 +77,10 @@
   "implementation": {
     "rational_dynamics": "rational_dynamics/rational.mojo",
     "rational_dynamics_tests": "tests/rational_dynamics/test_rational_dynamics.mojo",
-    "cyclotomic_exact": "planned",
-    "rational_dynamics_reference": "tools/rational_dynamics_reference.py"
+    "cyclotomic_exact": "planned (Mojo); independent reference in tools/cyclotomic_reference.py",
+    "rational_dynamics_reference": "tools/rational_dynamics_reference.py",
+    "quadratic_germ": "planned (Mojo); independent reference in tools/cyclotomic_reference.py",
+    "cyclotomic_reference_tests": "tests/cyclotomic/test_cyclotomic_reference.py",
+    "cyclotomic_vectors": "fixtures/cyclotomic_germ_v1.json"
   }
 }

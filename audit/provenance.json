@@ -21,7 +21,7 @@
       "relation": "authored"
     },
     "README.md": {
-      "blob": "9112ed44d207e75ea429fc3c6963e47ad05be20c",
+      "blob": "6bd9d236921f4bf59f1df3d44634657b4d1df754",
       "relation": "authored"
     },
     "audit/CONSOLIDATION_PROVENANCE.md": {
@@ -257,6 +257,10 @@
       "blob": "58b91924e02276f3bcd5540134212090796cdae3",
       "relation": "authored"
     },
+    "contracts/rational-dynamics-cyclotomic-v1.json": {
+      "blob": "8438029dc930e145ed03663d38f5b56ad585257f",
+      "relation": "authored"
+    },
     "contracts/typed-proof-graph-normalization-v1.json": {
       "blob": "ea15d8ea0c99e632dde785dc6647c89c44629a2c",
       "relation": "authored"
@@ -320,6 +324,10 @@
     },
     "docs/provenance-for-computer-assisted-proof.md": {
       "blob": "50502aabc3fe7457da6adca6c2ce10c2329fb921",
+      "relation": "authored"
+    },
+    "docs/rational-dynamics-cyclotomic-bridge.md": {
+      "blob": "92250913b68e580c22c242249b54b61d68d8dc6a",
       "relation": "authored"
     },
     "docs/rational-interval-arithmetic-spec.md": {
@@ -443,6 +451,10 @@
       "source_blob": "17b306e1f70173110abaf148e035805209a913b8",
       "source_path": "finite_linear_algebra/w3.mojo"
     },
+    "fixtures/cyclotomic_germ_v1.json": {
+      "blob": "f25997f6aa72d83bee15c189b03db9cbe7344805",
+      "relation": "authored"
+    },
     "fixtures/ledger/example.json": {
       "blob": "9035e65722af1f215ad3bb2ee33c06f93cd3d216",
       "relation": "authored"
@@ -537,7 +549,7 @@
       "relation": "authored"
     },
     "pixi.toml": {
-      "blob": "87923c8b70608557fb7bacc3e4dcb39e3f9e1057",
+      "blob": "67d94abbcf680eef71cd428c0eb8871f55bf9880",
       "relation": "authored"
     },
     "proof_records/ProofArchitecture.tla": {
@@ -613,6 +625,14 @@
       "source": "finite_mandelbrot_research",
       "source_blob": "53544fff8ade511fc7ffd4f7bb1de879a7bede1e",
       "source_path": "src/interval_orbit.mojo"
+    },
+    "rational_dynamics/__init__.mojo": {
+      "blob": "02c525febbc75a3610b60d40a434da844bb8a322",
+      "relation": "authored"
+    },
+    "rational_dynamics/rational.mojo": {
+      "blob": "484b0a299f77586ebd431ddc70cbf99fec326ea3",
+      "relation": "authored"
     },
     "substitution_dynamics/__init__.mojo": {
       "blob": "76f83f038f0df80fc776202b5a5d52f8c18677e4",
@@ -745,6 +765,14 @@
       "source": "claim_governance_tools",
       "source_blob": "8f3617dc2b87fc167d7fff294dc124755b19225f",
       "source_path": "tests/test_terminology.py"
+    },
+    "tests/cyclotomic/__init__.py": {
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "relation": "authored"
+    },
+    "tests/cyclotomic/test_cyclotomic_reference.py": {
+      "blob": "c6d5e0aff057c5e60186d7456f85548b58a74b9b",
+      "relation": "authored"
     },
     "tests/facades/test_stable_facades.mojo": {
       "blob": "35bf8dcf9403f339848bfb0b48b8c9ad89af4598",
@@ -904,6 +932,18 @@
       "blob": "d919b9e0f69314fe34e33fb5ebf8f363efb9b544",
       "relation": "authored"
     },
+    "tests/rational_dynamics/test_rational_dynamics.mojo": {
+      "blob": "316e8f4a17b56dc7a63d3b90f0aef6773eaadba1",
+      "relation": "authored"
+    },
+    "tests/rational_dynamics/test_rational_dynamics_reference.py": {
+      "blob": "4a7c836bd8615a326de470856b694a6316dde074",
+      "relation": "authored"
+    },
+    "tests/rational_dynamics/test_reference.py": {
+      "blob": "10b24789996c27f23fa287eb7be502ba48ebea08",
+      "relation": "authored"
+    },
     "tests/references/test_references.py": {
       "blob": "0d267a68d3c523395b514e41f123fa7afd845a93",
       "relation": "authored"
@@ -935,8 +975,16 @@
       "blob": "915fcb2262f0abc3a53c3b6b0ca54d7a73230c7d",
       "relation": "authored"
     },
+    "tools/cyclotomic_reference.py": {
+      "blob": "af727635754608924b7386ed20ed637ad7631b27",
+      "relation": "authored"
+    },
     "tools/madic_oracle.py": {
       "blob": "25ec820a10f2d9235b486ab568f95a4c4865c1bc",
+      "relation": "authored"
+    },
+    "tools/make_cyclotomic_vectors.py": {
+      "blob": "46b882c87011c0836e8f5779a6bb447c9f262918",
       "relation": "authored"
     },
     "tools/make_graph_contract_vector.py": {
@@ -973,6 +1021,10 @@
       "blob": "f16ba536b9a0631195b18ef6f06a893c1b801944",
       "relation": "authored"
     },
+    "tools/rational_dynamics_reference.py": {
+      "blob": "8fc015487f3601598d6f4bf801f42348056a08dd",
+      "relation": "authored"
+    },
     "tools/replay_mojo.py": {
       "blob": "14baba913cc2752b7d8bc50f9eb16e82fd957d44",
       "relation": "modified",
@@ -994,38 +1046,6 @@
       "source": "finite_mandelbrot_research",
       "source_blob": "76ddda76a2cc3dea8221ac8b8192fe3d7e4f14c4",
       "source_path": "tools/check_vendored_sync.py"
-    },
-    "docs/rational-dynamics-cyclotomic-bridge.md": {
-      "blob": "af38f8488b2aa965debf118f158409495d3bd338",
-      "relation": "authored"
-    },
-    "contracts/rational-dynamics-cyclotomic-v1.json": {
-      "blob": "e777a7d04d938426dfd601179e086caaaec15c94",
-      "relation": "authored"
-    },
-    "rational_dynamics/__init__.mojo": {
-      "blob": "02c525febbc75a3610b60d40a434da844bb8a322",
-      "relation": "authored"
-    },
-    "rational_dynamics/rational.mojo": {
-      "blob": "484b0a299f77586ebd431ddc70cbf99fec326ea3",
-      "relation": "authored"
-    },
-    "tests/rational_dynamics/test_rational_dynamics.mojo": {
-      "blob": "316e8f4a17b56dc7a63d3b90f0aef6773eaadba1",
-      "relation": "authored"
-    },
-    "tests/rational_dynamics/test_rational_dynamics_reference.py": {
-      "blob": "4a7c836bd8615a326de470856b694a6316dde074",
-      "relation": "authored"
-    },
-    "tools/rational_dynamics_reference.py": {
-      "blob": "8fc015487f3601598d6f4bf801f42348056a08dd",
-      "relation": "authored"
-    },
-    "tests/rational_dynamics/test_reference.py": {
-      "blob": "10b24789996c27f23fa287eb7be502ba48ebea08",
-      "relation": "authored"
     }
   },
   "format": "finite-math-kernels provenance 1",
