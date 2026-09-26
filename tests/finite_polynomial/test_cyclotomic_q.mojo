@@ -7,6 +7,7 @@ from std.testing import assert_false, assert_true
 
 from finite_exact.rat_q import Q
 from finite_polynomial.cyclotomic_q import (
+    CyclotomicQ,
     cyclotomic_add,
     cyclotomic_automorphism,
     cyclotomic_bytes_equal,
@@ -21,7 +22,7 @@ from finite_polynomial.cyclotomic_q import (
 )
 
 
-def from_i64s(conductor: Int, values: List[Int64]):
+def from_i64s(conductor: Int, values: List[Int64]) -> CyclotomicQ:
     var coefficients = List[Q]()
     for value in values:
         coefficients.append(Q(value, 1))
