@@ -87,8 +87,20 @@ The canonical v1 mechanism lives in this directory:
 - `action.yml` — GitHub composite action for mirror CI;
 - `tests/` — mechanism conformance tests.
 
-Consumers should pin the shared mechanism by immutable revision. They retain their
-own `estate.toml`, `ARCHITECTURE.md`, and domain-specific policy.
+Consumers pin the shared mechanism by immutable 40-hex commit revision in two
+places: the CI/action reference and the consumer-owned `[estate_tooling]` table in
+`estate.toml`. The shared action compares those values and fails closed on drift.
+Consumers retain their own `estate.toml`, `ARCHITECTURE.md`, and domain-specific
+policy.
+
+Example:
+
+```toml
+[estate_tooling]
+repository = "larsbx/finite-math-kernels"
+path = "audit/estate_repository/v1"
+revision = "<40-hex commit SHA>"
+```
 
 The shared mechanism does **not** require a consumer to copy this contract into its
 own repository. A local copy may remain temporarily during migration, but is derived
@@ -104,6 +116,7 @@ The v1 audit checks at minimum:
 - authority values and language roles are valid;
 - exactly one canonical language owns the kernel role;
 - supporting languages cannot claim acceptance authority;
+- a declared shared-tooling pin is an immutable 40-hex commit SHA and, when the shared action supplies its executing identity, the repository/path/revision match exactly;
 - `ARCHITECTURE.md` exists;
 - Pixi workspace identity agrees with the repository identity when Pixi is present;
 - a polyglot manifest, when present, names the same repository and links to
