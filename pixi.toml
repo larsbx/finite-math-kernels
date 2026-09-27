@@ -30,6 +30,7 @@ test-orbit-reference = "python -m pytest -q tests/finite_field_orbit/test_orbit_
 orbit-vectors = "python tools/make_orbit_vectors.py"
 test-mojo-smoke = "mojo run -I . tests/mojo_smoke/test_report.mojo"
 test-parallel-fold = "mojo run -I . tests/parallel_fold/test_map_fold.mojo"
+test-weighted-cycle = "mojo run -I . tests/weighted_graph/test_cycle_gain.mojo"
 test-vendoring = "python -m pytest -q tests/vendoring"
 test-proof-records = "python -m pytest -q tests/proof_records"
 vocabularies = "python -m pytest -q tests/proof_records/test_vocabularies.py"
