@@ -44,6 +44,7 @@ SOURCES = {
     "finite_proof_records": ("larsbx/finite_proof_records", ("finite_proof_records",)),
     "claim_governance_tools": ("larsbx/claim_governance_tools", ("claim_governance",)),
     "finite_mandelbrot_research": ("larsbx/finite-mandelbrot-research", ("src", "tools")),
+    "estate_governance": ("larsbx/estate-governance", ("kernel", "docs")),
 }
 
 

@@ -134,8 +134,8 @@ next = [
 
 [governance]
 repository = "larsbx/estate-governance"
-revision = "bd0a9491488f54f28b4a3b9076051349092383bb"
+revision = "283b6955395ea17f022412aa1539db7aa0448e08"
 
 [governance.sha256]
-"docs/architecture/estate-repository-template-v1.md" = "b5eab7543c877484a159b47cbe36aa6255c51bd6ec5863dbb9fe13d9a2c06f6b"
-"tools/audit_estate_layout.py" = "f462c397dee8a596a2a7a8c40fd5ded2989652322186c568b712366294251003"
+"docs/architecture/estate-repository-template-v1.md" = "e2a136e7779290224c1c4a73f4fefb9da51e1b0881fd460e911611db59da08d5"
+"tools/audit_estate_layout.py" = "8037f9366da3eeb03f928944c9688ea3ef14a6861c8a8950d9351692e22f37da"

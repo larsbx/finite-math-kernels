@@ -30,6 +30,9 @@ VENDORED: dict[str, str] = {
     "docs/architecture/estate-repository-template-v1.md": "docs/architecture/estate-repository-template-v1.md",
 }
 
+#: Top-level directories outside every plane: hidden ones and build artifacts.
+UNTRACKED = re.compile(r"\..*|__pycache__|.*\.egg-info")
+
 ENTRYPOINTS = ("ARCHITECTURE.md", "docs/architecture/estate-repository-template-v1.md")
 
 ALLOWED_PLANE_AUTHORITIES = frozenset({
@@ -120,6 +123,30 @@ def validate_planes(data: dict, root: Path) -> None:
 
     for mandatory in ("kernel", "policy"):
         require(mandatory in ids, f"{mandatory} plane is required for this template")
+
+    if data["repository"]["layout_status"] == "canonical":
+        validate_canonical(data, root)
+
+
+def validate_canonical(data: dict, root: Path) -> None:
+    """Canonical: every plane maps its target (root-level files aside), and every
+    top-level directory is some plane's target."""
+    for plane in data["plane"]:
+        current = plane.get("current", [])
+        extras = [rel for rel in current if rel != plane["target"]]
+        require(
+            plane["target"] in current
+            and not plane.get("current_globs")
+            and all("/" not in rel and (root / rel).is_file() for rel in extras),
+            f"canonical layout: plane {plane['id']} must map its target {plane['target']!r} "
+            "plus only root-level files",
+        )
+    require(not data.get("migration", {}).get("next"), "canonical layout must have no pending migration")
+    targets = {plane["target"] for plane in data["plane"]}
+    for entry in sorted(root.iterdir()):
+        if entry.is_dir() and not UNTRACKED.fullmatch(entry.name):
+            require(entry.name in targets,
+                    f"canonical layout: top-level directory {entry.name!r} belongs to no plane")
 
 
 def validate_languages(data: dict) -> None:
