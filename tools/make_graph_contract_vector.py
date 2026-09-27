@@ -7,8 +7,8 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE = ROOT / "fixtures/ledger/relationship-graph.json"
-EXPECTED = ROOT / "fixtures/oracle/typed-proof-graph-normalization-v1.json"
+SOURCE = ROOT / "conformance/ledger/relationship-graph.json"
+EXPECTED = ROOT / "conformance/oracle/typed-proof-graph-normalization-v1.json"
 
 
 def normalize(value: dict) -> dict:

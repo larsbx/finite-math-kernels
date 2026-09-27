@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Regenerate the example ledger under fixtures/ledger/ and its generated surfaces.
+"""Regenerate the example ledger under conformance/ledger/ and its generated surfaces.
 
 The example names the records of `tools/make_vectors.py` plus a withdrawn
 pending claim and a record that depends on it, so that every branch of
-`proof_records/generate_ledgers.py` (proved, imported, bounded, open, withdrawn,
+`kernel/proof_records/generate_ledgers.py` (proved, imported, bounded, open, withdrawn,
 unreachable, assumption sets, status overrides) appears in the committed
 output. `tests/proof_records/test_generate_ledgers.py` fails if the committed
 files differ from the regeneration. Usage: make_ledger_example.py [--check]
@@ -16,14 +16,14 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(ROOT / "kernel"))
 sys.path.insert(0, str(ROOT / "tools"))
 
 from proof_records.records import Kind, Record, edge  # noqa: E402
 from proof_records import generate_ledgers as gl  # noqa: E402
 import make_vectors as mv  # noqa: E402
 
-DIR = ROOT / "fixtures" / "ledger"
+DIR = ROOT / "conformance" / "ledger"
 LEDGER = DIR / "example.json"
 POLICY = DIR / "policy.toml"
 

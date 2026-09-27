@@ -4,7 +4,8 @@
 Scans every tracked Markdown, Mojo, Python, TOML, and YAML file for
 backticked path tokens (``dir/file.ext`` or a bare ``file.ext``) and for
 ``pixi run <task>`` phrases. A path token must name a tracked file (a bare
-filename resolves when exactly one tracked file has that basename) or appear
+filename resolves when exactly one tracked file has that basename, and a
+package-relative path when it names a file under a package root) or appear
 in EXTERNAL, which attests which other repository it lives in. A task must
 be defined in ``pixi.toml`` or be an executable pixi runs directly. Task
 phrases inside a double-quoted string literal on a code line are data, not
@@ -29,7 +30,10 @@ sys.path.insert(0, str(ROOT / "tools"))
 from provenance import tracked_files  # noqa: E402
 
 CHECKED_SUFFIXES = (".md", ".mojo", ".py", ".toml", ".yml")
-SKIPPED_PREFIXES = ("audit/POST_CONSOLIDATION_AUDIT_", "tests/references/")
+SKIPPED_PREFIXES = ("docs/audit/POST_CONSOLIDATION_AUDIT_", "tests/references/")
+#: Include roots of the vendorable packages: paths inside a package are
+#: package-relative, so a token also resolves beneath one of these.
+PACKAGE_ROOTS = ("kernel", "oracles", "tools")
 EXECUTABLES = frozenset({"mojo", "python"})
 PATH_TOKEN = re.compile(r"`([A-Za-z0-9_][A-Za-z0-9_./-]*\.(?:md|mojo|py|toml|json|yml|lock))`")
 TASK_TOKEN = re.compile(r"pixi run ([A-Za-z0-9_-]+)")
@@ -72,10 +76,10 @@ EXTERNAL: Mapping[str, str] = {
     "mojo/psc/finite_cokernel_address.mojo": PSC,
     "docs/padic-representation-literature-gate-2026-09-16.md": PSC,
     "tests/test_substitution_dynamics_oracle.py": PSC,
-    "claim_governance.toml": "the consumer repository root (audit/docs/policy-format.md)",
+    "claim_governance.toml": "the consumer repository root (docs/audit/policy-format.md)",
     "docs/ledger-index.md": "the consumer repository (docs/ledger-generation-spec.md, section 3.4)",
-    "interval_q/closed_q.mojo": "larsbx/interval_q at the commit pinned in audit/provenance.json",
-    "kernel/audit_estate_layout.py": "larsbx/estate-governance at the commit pinned in audit/provenance.json",
+    "interval_q/closed_q.mojo": "larsbx/interval_q at the commit pinned in policy/provenance.json",
+    "kernel/audit_estate_layout.py": "larsbx/estate-governance at the commit pinned in policy/provenance.json",
 }
 
 
@@ -98,7 +102,8 @@ def check(files: Mapping[str, str], tracked: Iterable[str], tasks: Iterable[str]
         if path.startswith(SKIPPED_PREFIXES) or not path.endswith(CHECKED_SUFFIXES):
             continue
         for token in path_tokens(text):
-            resolves = token in tracked or token in external or ("/" not in token and basenames[token] == 1)
+            resolves = (token in tracked or token in external or ("/" not in token and basenames[token] == 1)
+                        or ("/" in token and any(f"{root}/{token}" in tracked for root in PACKAGE_ROOTS)))
             if not resolves:
                 errors.append(f"{path}: path `{token}` is not a tracked file, a unique basename, or a listed external reference")
         for task in task_tokens(text):

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Pin and verify the consolidation provenance of every tracked file.
 
-``audit/provenance.json`` records, per source repository, the branch, the
+``policy/provenance.json`` records, per source repository, the branch, the
 commit, and the git tree id of every top-level directory at that commit, and,
 per tracked file in this repository except the manifest itself:
 
@@ -39,8 +39,8 @@ from collections.abc import Mapping
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-MANIFEST = ROOT / "audit" / "provenance.json"
-MANIFEST_PATH = "audit/provenance.json"  # the one tracked file the manifest cannot describe: itself
+MANIFEST = ROOT / "policy" / "provenance.json"
+MANIFEST_PATH = "policy/provenance.json"  # the one tracked file the manifest cannot describe: itself
 FORMAT = "finite-math-kernels provenance 1"
 RELATIONS = frozenset({"copy", "modified", "facade", "authored", "generated"})
 IMPORTED = frozenset({"copy", "modified"})
@@ -148,7 +148,7 @@ def main(argv: list[str]) -> int:
     if errors:
         print("provenance divergence:\n  " + "\n  ".join(errors))
         return 1
-    print(f"OK: {len(blobs)} tracked files match audit/provenance.json.")
+    print(f"OK: {len(blobs)} tracked files match policy/provenance.json.")
     return 0
 
 

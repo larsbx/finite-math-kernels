@@ -16,11 +16,18 @@ The ordering rule is:
 authority -> mathematical/domain concern -> implementation language
 ```
 
-Mojo packages at the root (`finite_exact/`, `finite_linear_algebra/`, ...) are the
-canonical kernels. Python references and oracles under `tools/`, and the frontier
-polyglot lane under `benchmarks/frontier/`, are non-authoritative.
+Mojo packages under `kernel/` (`finite_exact/`, `finite_linear_algebra/`, ...) are
+the canonical kernels, and `kernel/` is their include root (`-I kernel`). Python
+references under `reference/`, oracles under `oracles/`, and the frontier
+polyglot lane under `experiments/frontier/` are non-authoritative. Normative
+contracts are in `schemas/`, their vectors in `conformance/`.
 
-The layout is transitional. Each plane in `estate.toml` records its future
-`target` and the existing paths it currently covers; existing paths remain
-authoritative until a dedicated migration PR moves one bounded context. Directory
-renames alone must not change claim status, acceptance, or authority.
+Consumers vendor packages from `kernel/`, `oracles/` and `tools/`. Paths inside
+those packages are package-relative, so a vendored copy reads the same in every
+repository; references from a package to the rest of this repository name the
+repository path.
+
+The layout is canonical: every plane in `estate.toml` maps exactly its `target`
+(root-level files aside), every top-level directory is some plane's target, and
+no migration step is pending; the audit enforces all three. Directory renames
+alone must not change claim status, acceptance, or authority.

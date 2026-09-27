@@ -8,7 +8,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-CONTRACT = ROOT / "contracts/typed-proof-graph-normalization-v1.json"
+CONTRACT = ROOT / "schemas/typed-proof-graph-normalization-v1.json"
 
 
 def load_vector_tool():
@@ -43,7 +43,7 @@ def test_input_digest_and_expected_vector_are_domain_owned() -> None:
 
 def test_minimal_vector_is_a_normalization_fixed_point() -> None:
     tool = load_vector_tool()
-    source = json.loads((ROOT / "fixtures/oracle/typed-proof-graph-minimal-v1.input.json").read_text())
-    expected = json.loads((ROOT / "fixtures/oracle/typed-proof-graph-minimal-v1.expected.json").read_text())
+    source = json.loads((ROOT / "conformance/oracle/typed-proof-graph-minimal-v1.input.json").read_text())
+    expected = json.loads((ROOT / "conformance/oracle/typed-proof-graph-minimal-v1.expected.json").read_text())
     assert tool.normalize(source) == expected
     assert tool.normalize(expected) == expected

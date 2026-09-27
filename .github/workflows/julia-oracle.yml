@@ -31,11 +31,11 @@ jobs:
 
       - name: Generate the authoritative Mojo transcript
         working-directory: finite-math-kernels
-        run: pixi run mojo run -I . tests/finite_exact/property_probe.mojo > zq-transcript.txt
+        run: pixi run mojo run -I kernel tests/finite_exact/property_probe.mojo > zq-transcript.txt
 
       - name: Preserve the existing Python differential path
         working-directory: finite-math-kernels
-        run: pixi run python tools/property_oracle.py --layers zq zq-transcript.txt
+        run: pixi run python oracles/property_oracle.py --layers zq zq-transcript.txt
 
       - name: Require independent Julia agreement
         run: julia --project=julia-oracle-lab julia-oracle-lab/bin/exact_arithmetic_oracle.jl finite-math-kernels/zq-transcript.txt

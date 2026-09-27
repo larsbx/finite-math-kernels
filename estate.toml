@@ -6,7 +6,7 @@ id = "larsbx/finite-math-kernels"
 kind = "library"
 lifecycle = "active"
 default_branch = "main"
-layout_status = "transitional"
+layout_status = "canonical"
 
 [principles]
 ordering = ["authority", "domain", "language"]
@@ -16,76 +16,78 @@ generated_surfaces = "derived_only"
 vendor_code = "non_local"
 experimental_code = "non_authoritative"
 
+# policy/provenance.json pins where every tracked file came from.
 [[plane]]
 id = "policy"
 target = "policy"
 authority = "governance"
 required = true
-current = ["estate.toml"]
+current = ["policy", "estate.toml"]
 
+# Mojo include root (-I kernel). Packages here are vendored by consumers; paths inside them are package-relative.
 [[plane]]
 id = "kernel"
 target = "kernel"
 authority = "canonical_executable"
 required = true
-current = ["finite_exact", "finite_linear_algebra", "finite_field_orbit", "quadratic_orbit", "rational_dynamics", "substitution_dynamics", "parallel_fold", "mojo_smoke", "proof_records"]
-
-[[plane]]
-id = "proof"
-target = "proof"
-authority = "claim_state"
-required = true
-current = ["proof_records/ProofArchitecture.tla"]
+current = ["kernel"]
 
 [[plane]]
 id = "reference"
 target = "reference"
 authority = "non_authoritative_reference"
 required = true
-current_globs = ["tools/*_reference.py"]
+current = ["reference"]
 
 [[plane]]
 id = "oracles"
 target = "oracles"
 authority = "non_authoritative_oracle"
 required = true
-current = ["tools/property_oracle.py", "tools/madic_oracle.py", "oracle_refinement"]
+current = ["oracles"]
 
 [[plane]]
 id = "experiments"
 target = "experiments"
 authority = "non_authoritative_experiment"
 required = true
-current = ["benchmarks/frontier"]
+current = ["experiments"]
 
 [[plane]]
 id = "schemas"
 target = "schemas"
 authority = "contract"
 required = true
-current = ["contracts"]
+current = ["schemas"]
 
 [[plane]]
 id = "conformance"
 target = "conformance"
 authority = "evidence"
 required = true
-current = ["tests", "fixtures", "audit/provenance.json"]
+current = ["conformance"]
 
+[[plane]]
+id = "tests"
+target = "tests"
+authority = "evidence"
+required = true
+current = ["tests"]
+
+# Includes claim_governance and vendoring, which consumers vendor under tools/.
 [[plane]]
 id = "tooling"
 target = "tools"
 authority = "repository_tooling"
 required = true
-current = ["vendoring", "audit/claim_governance", "tools/check_references.py", "tools/provenance.py", "tools/replay_mojo.py"]
-current_globs = ["tools/make_*.py"]
+current = ["tools"]
 
 [[plane]]
 id = "docs"
 target = "docs"
 authority = "exposition"
 required = true
-current = ["docs", "audit/docs", "audit/CONSOLIDATION_PROVENANCE.md", "audit/POST_CONSOLIDATION_AUDIT_2026-09-15.md"]
+current = ["docs", "README.md", "ARCHITECTURE.md"]
 
 [[language]]
 name = "Mojo"
@@ -126,11 +128,7 @@ acceptance_authority = false
 [migration]
 mode = "boundary_first"
 mass_move = false
-next = [
-  "group kernel packages under kernel by domain",
-  "move Python reference semantics out of tools into reference",
-  "move the frontier polyglot lane into experiments",
-]
+next = []
 
 [governance]
 repository = "larsbx/estate-governance"

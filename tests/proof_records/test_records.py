@@ -9,7 +9,7 @@ from pathlib import Path
 from unittest import mock
 
 ROOT = Path(__file__).resolve().parents[2]
-sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(ROOT / "kernel"))
 sys.path.insert(0, str(ROOT / "tools"))
 
 from proof_records.records import (Edge, Kind, MissingLink, Record, canonical_bytes, close, digest, edge, identified, identity,  # noqa: E402

@@ -28,7 +28,7 @@ effect, or mutate operational state.
 
 ## Retirement gate
 
-`tools/property_oracle.py` must not be removed until a separate PR:
+`oracles/property_oracle.py` must not be removed until a separate PR:
 
 - records successful parallel runs;
 - confirms the Julia generator is structurally independent rather than a
