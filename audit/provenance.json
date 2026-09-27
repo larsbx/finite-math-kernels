@@ -550,7 +550,7 @@
       "relation": "authored"
     },
     "pixi.toml": {
-      "blob": "cd8687451060a77ddc5a46d8089b90db4f8062a3",
+      "blob": "71e4c34736d8e9b26dd7903604d69afdfbbb7426",
       "relation": "authored"
     },
     "projective_limits/__init__.mojo": {
@@ -1063,6 +1063,22 @@
       "source": "finite_mandelbrot_research",
       "source_blob": "76ddda76a2cc3dea8221ac8b8192fe3d7e4f14c4",
       "source_path": "tools/check_vendored_sync.py"
+    },
+    "docs/weighted-cycle-gain-research-scaffold.md": {
+      "relation": "authored",
+      "blob": "a0bc752b79b841bb337b57360b84a78d74792a46"
+    },
+    "tests/weighted_graph/test_cycle_gain.mojo": {
+      "relation": "authored",
+      "blob": "dbe18a31fdbe65a860e210f90f62e3bc1b913c60"
+    },
+    "weighted_graph/__init__.mojo": {
+      "relation": "authored",
+      "blob": "4dec0b038a05a94417fb80fb08d24444741ed44c"
+    },
+    "weighted_graph/cycle_gain.mojo": {
+      "relation": "authored",
+      "blob": "42912704b518a1ed6116050fce0a067865240da7"
     }
   },
   "format": "finite-math-kernels provenance 1",
