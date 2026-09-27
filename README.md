@@ -79,6 +79,12 @@ not part of this repository.
   intends to collide, knows nothing about any parameter, and proves nothing
   about any orbit; an invalid type intends nothing rather than something
   arbitrary.
+- `tools/cyclotomic_reference.py` is the independent reference for the
+  cyclotomic (`Q[zeta_q]`, Galois action) and quadratic-germ (truncated
+  iterate, parabolic factor, reciprocal series) stages of
+  `docs/rational-dynamics-cyclotomic-bridge.md`; its Mojo stage is planned.
+  It returns finite algebra only; naming a coefficient as an index, or
+  relating it to any bulb, is the consumer's.
 - `rational_dynamics` provides exact unbounded reduced-fraction arithmetic, explicit doubling modulo one, modular and centered modular inverses, canonical simple continued fractions and convergents, and Farey determinants. It interprets none of these as measured angles or domain claims.
 - `projective_limits` computes limits of rational functions over Q as points of P^1(Q), infinity included, through one kernel: the lowest-order point on the exceptional divisor. It covers poles, the degree rule, L'Hopital, tangent slopes in the pencil, asymptotes, directional and arc limits of bivariate quotients, Moebius maps and the squared chordal metric. A found path-dependence witness certifies that a limit does not exist; a search that finds none is inconclusive. An independent Python reference (`tools/projective_limits_reference.py`: gcd cancellation and evaluation, polynomial division) writes the golden vectors `fixtures/projective_limits_v1.txt`, which the Mojo kernel replays.
 - The finite-field orbit census (`finite_field_orbit/census.mojo`,
