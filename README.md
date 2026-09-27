@@ -28,6 +28,9 @@ kernel/quadratic_orbit/
   collision.mojo
 kernel/rational_dynamics/
   rational.mojo
+kernel/projective_limits/
+  line.mojo
+  limits.mojo
 kernel/finite_field_orbit/
   census.mojo
 kernel/mojo_smoke/
@@ -38,10 +41,10 @@ kernel/proof_records/
   ProofArchitecture.tla
   graph.py
 tools/
-  vendoring/check_vendored_sync.py
+  tools/vendoring/check_vendored_sync.py
   claim_governance/
 reference/                  Python reference semantics
-oracles/                    differential oracles and oracle_refinement/
+oracles/                    differential oracles and oracles/oracle_refinement/
 experiments/frontier/       the polyglot frontier lane
 schemas/                    normative contracts
 conformance/                golden vectors and ledger fixtures
@@ -81,7 +84,14 @@ not part of this repository.
   intends to collide, knows nothing about any parameter, and proves nothing
   about any orbit; an invalid type intends nothing rather than something
   arbitrary.
+- `reference/cyclotomic_reference.py` is the independent reference for the
+  cyclotomic (`Q[zeta_q]`, Galois action) and quadratic-germ (truncated
+  iterate, parabolic factor, reciprocal series) stages of
+  `docs/rational-dynamics-cyclotomic-bridge.md`; its Mojo stage is planned.
+  It returns finite algebra only; naming a coefficient as an index, or
+  relating it to any bulb, is the consumer's.
 - `rational_dynamics` provides exact unbounded reduced-fraction arithmetic, explicit doubling modulo one, modular and centered modular inverses, canonical simple continued fractions and convergents, and Farey determinants. It interprets none of these as measured angles or domain claims.
+- `projective_limits` computes limits of rational functions over Q as points of P^1(Q), infinity included, through one kernel: the lowest-order point on the exceptional divisor. It covers poles, the degree rule, L'Hopital, tangent slopes in the pencil, asymptotes, directional and arc limits of bivariate quotients, Moebius maps and the squared chordal metric. A found path-dependence witness certifies that a limit does not exist; a search that finds none is inconclusive. An independent Python reference (`reference/projective_limits_reference.py`: gcd cancellation and evaluation, polynomial division) writes the golden vectors `conformance/projective_limits_v1.txt`, which the Mojo kernel replays.
 - The finite-field orbit census (`kernel/finite_field_orbit/census.mojo`,
   `docs/polyglot-orbit-census-design.md`) computes exact tails and periods of
   `x -> x^2 + c` over `F_p` for a block of seeds, up to a cap. Cap reached is

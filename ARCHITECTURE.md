@@ -16,7 +16,7 @@ The ordering rule is:
 authority -> mathematical/domain concern -> implementation language
 ```
 
-Mojo packages under `kernel/` (`finite_exact/`, `finite_linear_algebra/`, ...) are
+Mojo packages under `kernel/` (`kernel/finite_exact/`, `kernel/finite_linear_algebra/`, ...) are
 the canonical kernels, and `kernel/` is their include root (`-I kernel`). Python
 references under `reference/`, oracles under `oracles/`, and the frontier
 polyglot lane under `experiments/frontier/` are non-authoritative. Normative

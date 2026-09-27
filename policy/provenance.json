@@ -21,11 +21,15 @@
       "relation": "authored"
     },
     "ARCHITECTURE.md": {
-      "blob": "0c1768130cd583a38bc8291af94ae0f44dcc9de7",
+      "blob": "9a1eb37ed288007a3d3e351846f82fb30940884e",
       "relation": "authored"
     },
     "README.md": {
-      "blob": "740d2b0ce0042f0bfbecb339c5a7878d63f30a59",
+      "blob": "7b2e687c7f5243206f4d16f3e4a2b814e8f9798b",
+      "relation": "authored"
+    },
+    "conformance/cyclotomic_germ_v1.json": {
+      "blob": "f25997f6aa72d83bee15c189b03db9cbe7344805",
       "relation": "authored"
     },
     "conformance/ledger/example.json": {
@@ -93,6 +97,11 @@
       "generator": "tools/make_orbit_vectors.py",
       "relation": "generated"
     },
+    "conformance/projective_limits_v1.txt": {
+      "blob": "bb94765530b4b402d1e748fad8c85b07b962dfc3",
+      "generator": "tools/make_projective_limits_vectors.py",
+      "relation": "generated"
+    },
     "conformance/vectors.json": {
       "blob": "ac459b6280c847831c3f274831cfe1b8fed4bfe5",
       "generator": "tools/make_vectors.py",
@@ -136,6 +145,10 @@
     },
     "docs/dep-proof-consumer-boundary.md": {
       "blob": "1e71928a598be077049f1974f13afd475b77074a",
+      "relation": "authored"
+    },
+    "docs/embedded-module-normal-form-spec.md": {
+      "blob": "8a809a343706386e83bc9811a11b579f91f2ebd2",
       "relation": "authored"
     },
     "docs/evidence-vocabulary-map.md": {
@@ -189,7 +202,7 @@
       "relation": "authored"
     },
     "docs/rational-dynamics-cyclotomic-bridge.md": {
-      "blob": "af38f8488b2aa965debf118f158409495d3bd338",
+      "blob": "e6d536182c6a7d04eff8533a1f91d4fce11966c7",
       "relation": "authored"
     },
     "docs/rational-interval-arithmetic-spec.md": {
@@ -209,6 +222,10 @@
     },
     "docs/typed-relationship-graph-spec.md": {
       "blob": "5bb74e7173a5c88d3ee346ff62f0110324667077",
+      "relation": "authored"
+    },
+    "docs/weighted-cycle-gain-research-scaffold.md": {
+      "blob": "a0bc752b79b841bb337b57360b84a78d74792a46",
       "relation": "authored"
     },
     "estate.toml": {
@@ -382,6 +399,10 @@
       "source_blob": "5cefbb9810a7919dfd37a6cf4360d60e87e7b12e",
       "source_path": "finite_linear_algebra/__init__.mojo"
     },
+    "kernel/finite_linear_algebra/integer_module.mojo": {
+      "blob": "85b5b17e1a7dee9520c90a419389979534919a6f",
+      "relation": "authored"
+    },
     "kernel/finite_linear_algebra/madic_ball.mojo": {
       "blob": "d19744a6e6323bd69d482e154f7e3ac7d3366ba1",
       "relation": "authored"
@@ -450,6 +471,18 @@
     },
     "kernel/parallel_fold/map_fold.mojo": {
       "blob": "a9a5800d9b6a0e8b8477bb94072452c2fca34dd6",
+      "relation": "authored"
+    },
+    "kernel/projective_limits/__init__.mojo": {
+      "blob": "a5d43ea3403105a6b7f5cf06b6e5253de98f3002",
+      "relation": "authored"
+    },
+    "kernel/projective_limits/limits.mojo": {
+      "blob": "d739eceae19781dff1e0b0c080ec4f1e6e0500c0",
+      "relation": "authored"
+    },
+    "kernel/projective_limits/line.mojo": {
+      "blob": "7a9a673b5ce116c89e0397d4f08b23911eecbbe7",
       "relation": "authored"
     },
     "kernel/proof_records/ProofArchitecture.tla": {
@@ -588,6 +621,14 @@
       "source_blob": "7666617cfd592d99f1c15c88dbb47deca6f82277",
       "source_path": "substitution_dynamics/words.mojo"
     },
+    "kernel/weighted_graph/__init__.mojo": {
+      "blob": "4dec0b038a05a94417fb80fb08d24444741ed44c",
+      "relation": "authored"
+    },
+    "kernel/weighted_graph/cycle_gain.mojo": {
+      "blob": "42912704b518a1ed6116050fce0a067865240da7",
+      "relation": "authored"
+    },
     "oracles/madic_oracle.py": {
       "blob": "61f78df27c442759cc3f05d2b694da129b9e462f",
       "relation": "authored"
@@ -604,11 +645,19 @@
       "source_path": "tools/property_oracle.py"
     },
     "pixi.toml": {
-      "blob": "0560760d21a5fb934020361ef6289ff9cf249c78",
+      "blob": "c4319383ed9998f62c54c0998df2763bec7f40ba",
+      "relation": "authored"
+    },
+    "reference/cyclotomic_reference.py": {
+      "blob": "af727635754608924b7386ed20ed637ad7631b27",
       "relation": "authored"
     },
     "reference/orbit_census_reference.py": {
       "blob": "60f9d47089c45ccf93f169869a9e64e79de6beba",
+      "relation": "authored"
+    },
+    "reference/projective_limits_reference.py": {
+      "blob": "12f1ad8dd8e62ef595c60bec5258dec99d9d2562",
       "relation": "authored"
     },
     "reference/rational_dynamics_reference.py": {
@@ -620,7 +669,7 @@
       "relation": "authored"
     },
     "schemas/rational-dynamics-cyclotomic-v1.json": {
-      "blob": "dfa3fc4ca936d0fba420b2cb664e9fdcf261eb81",
+      "blob": "da3aaa557dff49926db28cd3332c3e045045813b",
       "relation": "authored"
     },
     "schemas/typed-proof-graph-normalization-v1.json": {
@@ -709,6 +758,14 @@
       "blob": "780e4451eabbb5663c0ab4124251e811b459a7b2",
       "relation": "authored"
     },
+    "tests/cyclotomic/__init__.py": {
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "relation": "authored"
+    },
+    "tests/cyclotomic/test_cyclotomic_reference.py": {
+      "blob": "8c09602ab7f0ae15a0e2887a9186edb22eed704e",
+      "relation": "authored"
+    },
     "tests/facades/test_stable_facades.mojo": {
       "blob": "35bf8dcf9403f339848bfb0b48b8c9ad89af4598",
       "relation": "authored"
@@ -776,6 +833,10 @@
       "source_blob": "c68eac9e0f00760b10eb03ab8314a7c97d928841",
       "source_path": "tests/test_finite_linear_algebra.mojo"
     },
+    "tests/finite_linear_algebra/test_integer_module.mojo": {
+      "blob": "999d34d66c741d93b45f1a6da29a42407b77421b",
+      "relation": "authored"
+    },
     "tests/finite_linear_algebra/test_madic_ball.mojo": {
       "blob": "f4503c20a6f652e62624331f91b61c6b2c114792",
       "relation": "authored"
@@ -809,6 +870,18 @@
     },
     "tests/parallel_fold/test_map_fold.mojo": {
       "blob": "3db3534306d348c36a9d53b18925bada79612ed9",
+      "relation": "authored"
+    },
+    "tests/projective_limits/test_projective_limits.mojo": {
+      "blob": "593dc182500e9edb8f190e7c9f13d6428b150df4",
+      "relation": "authored"
+    },
+    "tests/projective_limits/test_projective_limits_reference.py": {
+      "blob": "2e8f01a9107ae9d1c877a24a43f912d23bf4db75",
+      "relation": "authored"
+    },
+    "tests/projective_limits/test_reference_vectors.mojo": {
+      "blob": "1d790e19a5d18cb393eb9d0f2d30a4e7587a18c6",
       "relation": "authored"
     },
     "tests/proof_records/replay_vectors.mojo": {
@@ -902,8 +975,20 @@
       "blob": "d745f65589068e2b4bb56753bd59f0fb19821b9a",
       "relation": "authored"
     },
+    "tests/toolchain/__init__.py": {
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "relation": "authored"
+    },
+    "tests/toolchain/test_modular_pins.py": {
+      "blob": "b0c1ac325f55469af252cc0d39365ae4438cb050",
+      "relation": "authored"
+    },
     "tests/vendoring/test_check_vendored_sync.py": {
       "blob": "369ce9d260a2ba5e48833e4cabfe3e3cac312fec",
+      "relation": "authored"
+    },
+    "tests/weighted_graph/test_cycle_gain.mojo": {
+      "blob": "dbe18a31fdbe65a860e210f90f62e3bc1b913c60",
       "relation": "authored"
     },
     "tools/audit_estate_layout.py": {
@@ -1012,6 +1097,10 @@
       "source_blob": "992c82396e57c304169341877af45c38e9e67d3f",
       "source_path": "claim_governance/runner.py"
     },
+    "tools/make_cyclotomic_vectors.py": {
+      "blob": "3618b08f39200dcd0265f109fa63f1f88d683637",
+      "relation": "authored"
+    },
     "tools/make_graph_contract_vector.py": {
       "blob": "69c12b5f11eb64ad7f99809969667720e1d87982",
       "relation": "authored"
@@ -1022,6 +1111,10 @@
     },
     "tools/make_orbit_vectors.py": {
       "blob": "378eefa9044ac1ef500d760d200693419424fcfd",
+      "relation": "authored"
+    },
+    "tools/make_projective_limits_vectors.py": {
+      "blob": "1313e6a1bd16ce0db5b347dde48364b352738a2b",
       "relation": "authored"
     },
     "tools/make_vectors.py": {
