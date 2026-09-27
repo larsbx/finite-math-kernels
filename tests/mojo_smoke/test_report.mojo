@@ -1,7 +1,7 @@
 """The reporter's own self-test, run as a driver.
 
 Run with `pixi run test-mojo-smoke`
-(`mojo run -I . tests/mojo_smoke/test_report.mojo`).
+(`mojo run -I kernel tests/mojo_smoke/test_report.mojo`).
 """
 
 from mojo_smoke.report import SmokeReport, smoke_report_smoke

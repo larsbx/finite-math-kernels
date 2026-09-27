@@ -12,7 +12,7 @@ from pathlib import Path
 import pytest
 
 from tools import make_cyclotomic_vectors
-from tools.cyclotomic_reference import (
+from cyclotomic_reference import (
     add,
     automorphism,
     canonical_bytes,
@@ -195,7 +195,7 @@ def test_complex_conjugation_is_the_automorphism_minus_one():
 
 
 def test_pinned_vectors_are_current():
-    path = Path(__file__).resolve().parents[2] / "fixtures" / "cyclotomic_germ_v1.json"
+    path = Path(__file__).resolve().parents[2] / "conformance/cyclotomic_germ_v1.json"
     assert path.read_text() == make_cyclotomic_vectors.render()
     payload = json.loads(path.read_text())
     assert payload["schema"] == "cyclotomic-germ/v1"

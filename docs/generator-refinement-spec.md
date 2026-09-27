@@ -55,7 +55,7 @@ Each missed class states the branch it leaves unexercised, and `tests/oracle_ref
 | `random_fraction` | `integer-valued` | canonicalisation to denominator one |
 | `random_interval` | `degenerate` | the point-interval reciprocal and sign paths |
 
-These are not defects. They are the parts of the grammar the property probe does not reach, written down, so that the next reader sees a stated boundary rather than a green result. Closing them means changing the generator in `tools/property_oracle.py` **and** `tests/finite_exact/property_probe.mojo` call for call, which changes every line of the transcript and the copy `larsbx/interval_q` vendors; that is a separate change, not a side effect of declaring the gap.
+These are not defects. They are the parts of the grammar the property probe does not reach, written down, so that the next reader sees a stated boundary rather than a green result. Closing them means changing the generator in `oracles/property_oracle.py` **and** `tests/finite_exact/property_probe.mojo` call for call, which changes every line of the transcript and the copy `larsbx/interval_q` vendors; that is a separate change, not a side effect of declaring the gap.
 
 ## 4. A vendorable package, and why it is not called `refinement`
 
@@ -69,7 +69,7 @@ Beside the generator, not beside the model: the corpus is what is being describe
 
 | Declaration | Generator |
 | --- | --- |
-| `tools/property_oracle.py`: `INTEGER`, `FRACTION`, `INTERVAL` | the xorshift stream the exact-arithmetic probe and its oracle share |
+| `oracles/property_oracle.py`: `INTEGER`, `FRACTION`, `INTERVAL` | the xorshift stream the exact-arithmetic probe and its oracle share |
 | `tests/finite_linear_algebra/test_madic_oracle.py`: `COORDINATE`, `LATTICE` | the M-adic corpus, widened so it reaches the wrap boundary and contains a singular lattice |
 
 The layer split is part of the declaration: `finite_exact` prints no interval case, so `INTERVAL` has no corpus to judge and is not asserted against an empty one; `larsbx/interval_q` runs the layer and it is.

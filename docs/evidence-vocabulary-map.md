@@ -1,6 +1,6 @@
 # One outcome vocabulary: external evidence classes as proof records
 
-**Status:** specification of `proof_records/vocabularies.py`, round-two item R4 of `docs/cross-pollination-round-two-2026-09-16.md` (A1, item 2). Three programs in this account keep content-addressed evidence ledgers and arrived at the same shape with different vocabularies: `larsbx/sprucegoose` with five evidence classes for governed releases, `larsbx/crypto-composer` with a two-status test ledger, and this package with six record kinds and four outcomes. This document fixes the map between them and the authority rule it must obey. It states no mathematics and changes no claim status.
+**Status:** specification of `kernel/proof_records/vocabularies.py`, round-two item R4 of `docs/cross-pollination-round-two-2026-09-16.md` (A1, item 2). Three programs in this account keep content-addressed evidence ledgers and arrived at the same shape with different vocabularies: `larsbx/sprucegoose` with five evidence classes for governed releases, `larsbx/crypto-composer` with a two-status test ledger, and this package with six record kinds and four outcomes. This document fixes the map between them and the authority rule it must obey. It states no mathematics and changes no claim status.
 
 ## 0. What a map may and may not do
 
@@ -15,7 +15,7 @@ Translating a receipt **preserves or lowers authority, never raises it**. Concre
 
 The Mandelbrot consumer named in `tools/check_references.py` is `larsbx/finite-mandlebrot-research`, which took over from `larsbx/NLAP-JT` on 2026-09-16; the historical name is kept only where a sentence quotes a past commit.
 
-Both were read at those commits rather than transcribed from the round-two audit; if either vocabulary changes, this document and `proof_records/vocabularies.py` change with it, and the conformance tests fail until they do.
+Both were read at those commits rather than transcribed from the round-two audit; if either vocabulary changes, this document and `kernel/proof_records/vocabularies.py` change with it, and the conformance tests fail until they do.
 
 ## 2. The map
 

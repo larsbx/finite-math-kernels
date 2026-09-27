@@ -30,7 +30,7 @@ from projective_limits.limits import (
     tangent_slope,
 )
 
-comptime FIXTURE = "fixtures/projective_limits_v1.txt"
+comptime FIXTURE = "conformance/projective_limits_v1.txt"
 
 
 def fields(text: String, sep: String) -> List[String]:

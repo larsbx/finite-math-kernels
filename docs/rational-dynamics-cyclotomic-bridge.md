@@ -2,8 +2,8 @@
 
 **Status:** representation contract and extraction roadmap. R1 is
 implemented in Mojo; C1, C2, Q1 and Q2 have an independent Python reference
-(`tools/cyclotomic_reference.py`) and pinned vectors
-(`fixtures/cyclotomic_germ_v1.json`). No executable authority is added by
+(`reference/cyclotomic_reference.py`) and pinned vectors
+(`conformance/cyclotomic_germ_v1.json`). No executable authority is added by
 this document, and the reference does not substitute for the canonical Mojo
 stage.
 

@@ -1,10 +1,10 @@
 # Ledger generation from proof records: specification
 
-**Status:** specification of `proof_records/generate_ledgers.py` (`python -m proof_records.generate_ledgers`), round-two item R2 of `docs/cross-pollination-round-two-2026-09-16.md`. The consumer repositories keep their claim status on several hand-maintained surfaces at once: a TLA+ ledger and its TLC model configurations (`larsbx/pisot-substitution-conjecture-research`, `tla/`), a `claim_governance.toml` claim ledger (`audit/docs/policy-format.md`), and a Markdown index. Each surface can drift from the others, and the claim-governance `consistency` check detects drift only after the fact. This document makes one named ledger of finite proof records (`docs/proof-records-specification.md`) the single source, and every other surface a deterministic function of it, so drift becomes impossible rather than detected. The example ledger `fixtures/ledger/example.json` and its generated surfaces are committed; `tools/make_ledger_example.py --check` fails when they are stale.
+**Status:** specification of `kernel/proof_records/generate_ledgers.py` (`python -m proof_records.generate_ledgers`), round-two item R2 of `docs/cross-pollination-round-two-2026-09-16.md`. The consumer repositories keep their claim status on several hand-maintained surfaces at once: a TLA+ ledger and its TLC model configurations (`larsbx/pisot-substitution-conjecture-research`, `tla/`), a `claim_governance.toml` claim ledger (`docs/audit/policy-format.md`), and a Markdown index. Each surface can drift from the others, and the claim-governance `consistency` check detects drift only after the fact. This document makes one named ledger of finite proof records (`docs/proof-records-specification.md`) the single source, and every other surface a deterministic function of it, so drift becomes impossible rather than detected. The example ledger `conformance/ledger/example.json` and its generated surfaces are committed; `tools/make_ledger_example.py --check` fails when they are stale.
 
 ## 0. Scope and non-scope
 
-The generator decides no mathematics. It reads records, validates them with the proof-records reference model, computes their dependency closures, and renders. The status of a claim is a function of the record's kind, its tags, and its closure (section 2.3); the generator never promotes a claim on its own. The TLA+ state machine it targets, `proof_records/ProofArchitecture.tla`, is the generic dependency machine of the PSC program with its repository-specific observables removed: a result is established only by assumption or by discharging a proved result whose prerequisites are all established, and a withdrawn result is never discharged.
+The generator decides no mathematics. It reads records, validates them with the proof-records reference model, computes their dependency closures, and renders. The status of a claim is a function of the record's kind, its tags, and its closure (section 2.3); the generator never promotes a claim on its own. The TLA+ state machine it targets, `kernel/proof_records/ProofArchitecture.tla`, is the generic dependency machine of the PSC program with its repository-specific observables removed: a result is established only by assumption or by discharging a proved result whose prerequisites are all established, and a withdrawn result is never discharged.
 
 ## 1. The named ledger
 
@@ -19,7 +19,7 @@ index_path       path of the generated Markdown index; default "docs/ledger-inde
 graph_path       path of the generated typed relationship graph (docs/typed-relationship-graph-spec.md),
                  relative to the consumer root; omitted or empty means no graph is generated
 records          object: name -> proof record (docs/proof-records-specification.md, section 2, in the
-                 JSON shape of fixtures/vectors.json: depends_on as 5-tuples, evidence as pairs)
+                 JSON shape of conformance/vectors.json: depends_on as 5-tuples, evidence as pairs)
 assumption_sets  object: name -> list of record names; each becomes a TLA+ definition a consumer model may
                  bind to Assumed; optional
 status_classes   object: overrides of the default status classes of section 2.3; optional

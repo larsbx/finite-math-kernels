@@ -6,7 +6,7 @@
 # Executable property probe for the BigZ / Q public boundary. It draws
 # deterministic pseudo-random operands, applies the public operations, and
 # prints one transcript line per case using only the canonical byte encodings
-# of docs/canonical-encoding.md. tools/property_oracle.py (run with
+# of docs/canonical-encoding.md. oracles/property_oracle.py (run with
 # `--layers zq`; the interval layer of the grammar is exercised by the
 # larsbx/interval_q probe, which extends this one)
 # regenerates the same operands from the same generator, recomputes every

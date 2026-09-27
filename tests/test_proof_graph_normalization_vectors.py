@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 
 
-VECTOR = Path("fixtures/ledger/proof-graph-normalization-v1.json")
+VECTOR = Path("conformance/ledger/proof-graph-normalization-v1.json")
 EXCLUDED = {
     "mathematical_proof",
     "certificate_acceptance",
