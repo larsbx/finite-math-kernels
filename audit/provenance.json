@@ -550,7 +550,7 @@
       "relation": "authored"
     },
     "pixi.toml": {
-      "blob": "71e4c34736d8e9b26dd7903604d69afdfbbb7426",
+      "blob": "39615dd9f7f2ed9d71287c23ca0f249ae7364183",
       "relation": "authored"
     },
     "projective_limits/__init__.mojo": {
@@ -1079,6 +1079,18 @@
     "weighted_graph/cycle_gain.mojo": {
       "relation": "authored",
       "blob": "42912704b518a1ed6116050fce0a067865240da7"
+    },
+    "docs/embedded-module-normal-form-spec.md": {
+      "relation": "authored",
+      "blob": "1baf9ae252db2e9f0ab737b9342980682b9bfcdf"
+    },
+    "finite_linear_algebra/integer_module.mojo": {
+      "relation": "authored",
+      "blob": "85b5b17e1a7dee9520c90a419389979534919a6f"
+    },
+    "tests/finite_linear_algebra/test_integer_module.mojo": {
+      "relation": "authored",
+      "blob": "a0675056c9bef0a395247dcc54280afb43bfcea9"
     }
   },
   "format": "finite-math-kernels provenance 1",
