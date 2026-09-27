@@ -4,7 +4,17 @@ channels = ["https://conda.modular.com/max-nightly/", "conda-forge"]
 platforms = ["linux-64"]
 
 [dependencies]
-modular = ">=26.6.0.dev2026090805,<27"
+# Modular nightly 2026-09-08: every MAX and Mojo package pinned to one build
+# (tests/toolchain/test_modular_pins.py).
+modular = "==26.6.0.dev2026090805"
+max = "==26.6.0.dev2026090805"
+max-core = "==26.6.0.dev2026090805"
+max-serve = "==26.6.0.dev2026090805"
+max-benchmark = "==26.6.0.dev2026090805"
+mblack = "==26.6.0.dev2026090805"
+mojo = "==1.1.0.dev2026090805"
+mojo-compiler = "==1.1.0.dev2026090805"
+mojo-python = "==1.1.0.dev2026090805"
 python = ">=3.11"
 pytest = "*"
 
@@ -33,7 +43,7 @@ test-parallel-fold = "mojo run -I . tests/parallel_fold/test_map_fold.mojo"
 test-vendoring = "python -m pytest -q tests/vendoring"
 test-proof-records = "python -m pytest -q tests/proof_records"
 vocabularies = "python -m pytest -q tests/proof_records/test_vocabularies.py"
-test-python = "python -m pytest -q tests/finite_exact tests/proof_records tests/substitution_dynamics tests/rational_dynamics tests/projective_limits tests/cyclotomic"
+test-python = "python -m pytest -q tests/toolchain tests/finite_exact tests/proof_records tests/substitution_dynamics tests/rational_dynamics tests/projective_limits tests/cyclotomic"
 cyclotomic-vectors = "python tools/make_cyclotomic_vectors.py --check"
 test-audit = "PYTHONPATH=audit python -m pytest -q tests/audit"
 test-provenance = "python -m pytest -q tests/provenance"
