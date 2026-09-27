@@ -21,7 +21,7 @@
       "relation": "authored"
     },
     "README.md": {
-      "blob": "6bd9d236921f4bf59f1df3d44634657b4d1df754",
+      "blob": "db896acd81143355572f39a9d5202aa6e6a68dab",
       "relation": "authored"
     },
     "audit/CONSOLIDATION_PROVENANCE.md": {
@@ -520,6 +520,11 @@
       "generator": "tools/make_orbit_vectors.py",
       "relation": "generated"
     },
+    "fixtures/projective_limits_v1.txt": {
+      "blob": "bb94765530b4b402d1e748fad8c85b07b962dfc3",
+      "generator": "tools/make_projective_limits_vectors.py",
+      "relation": "generated"
+    },
     "fixtures/vectors.json": {
       "blob": "ac459b6280c847831c3f274831cfe1b8fed4bfe5",
       "generator": "tools/make_vectors.py",
@@ -549,7 +554,19 @@
       "relation": "authored"
     },
     "pixi.toml": {
-      "blob": "67d94abbcf680eef71cd428c0eb8871f55bf9880",
+      "blob": "448f915d2c33588f4d232036434ea7c590aa7b84",
+      "relation": "authored"
+    },
+    "projective_limits/__init__.mojo": {
+      "blob": "a5d43ea3403105a6b7f5cf06b6e5253de98f3002",
+      "relation": "authored"
+    },
+    "projective_limits/limits.mojo": {
+      "blob": "d739eceae19781dff1e0b0c080ec4f1e6e0500c0",
+      "relation": "authored"
+    },
+    "projective_limits/line.mojo": {
+      "blob": "7a9a673b5ce116c89e0397d4f08b23911eecbbe7",
       "relation": "authored"
     },
     "proof_records/ProofArchitecture.tla": {
@@ -876,6 +893,18 @@
       "blob": "d6b5e903542ff99f871d3953acbf128b4376ba04",
       "relation": "authored"
     },
+    "tests/projective_limits/test_projective_limits.mojo": {
+      "blob": "593dc182500e9edb8f190e7c9f13d6428b150df4",
+      "relation": "authored"
+    },
+    "tests/projective_limits/test_projective_limits_reference.py": {
+      "blob": "2e8f01a9107ae9d1c877a24a43f912d23bf4db75",
+      "relation": "authored"
+    },
+    "tests/projective_limits/test_reference_vectors.mojo": {
+      "blob": "81ee86c1ad521a0585751f35741eecd622fad5f3",
+      "relation": "authored"
+    },
     "tests/proof_records/replay_vectors.mojo": {
       "blob": "8df6f7c60a2b55c1cc7967b1e837f9bcde46be85",
       "relation": "modified",
@@ -999,6 +1028,10 @@
       "blob": "191724a2d74659c49b66a49cad6c1c1704883962",
       "relation": "authored"
     },
+    "tools/make_projective_limits_vectors.py": {
+      "blob": "7a822a9e92665f5ec9fa5fcaef19d4b6d2ffdba9",
+      "relation": "authored"
+    },
     "tools/make_vectors.py": {
       "blob": "5fb11d8a6ad482ce7ab2b37fdb1aa832bca75efa",
       "relation": "modified",
@@ -1008,6 +1041,10 @@
     },
     "tools/orbit_census_reference.py": {
       "blob": "4416b5cc9a75a9e3560e696dab38386c13b1f0ec",
+      "relation": "authored"
+    },
+    "tools/projective_limits_reference.py": {
+      "blob": "12f1ad8dd8e62ef595c60bec5258dec99d9d2562",
       "relation": "authored"
     },
     "tools/property_oracle.py": {
