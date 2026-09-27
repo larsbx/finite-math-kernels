@@ -87,7 +87,7 @@ def checked_graph(
         raise Error("weighted graph gains require a positive coordinate dimension")
 
     for i in range(len(edges)):
-        var e = edges[i]
+        var e = edges[i].copy()
         if e.source < 0 or e.source >= vertex_count:
             raise Error("weighted edge source is outside the vertex range")
         if e.target < 0 or e.target >= vertex_count:
@@ -137,7 +137,7 @@ def _tree_path(
         head += 1
         for j in range(len(tree_adj[v])):
             var ei = tree_adj[v][j]
-            var e = g.edges[ei]
+            var e = g.edges[ei].copy()
             var w = e.target if e.source == v else e.source
             if previous_vertex[w] != -2:
                 continue
@@ -158,7 +158,7 @@ def _tree_path(
         var ei = previous_edge[current]
         if parent_vertex < 0 or ei < 0:
             raise Error("broken spanning-tree predecessor chain")
-        var e = g.edges[ei]
+        var e = g.edges[ei].copy()
         var coefficient = 1 if e.source == parent_vertex and e.target == current else -1
         edges.append(ei)
         coefficients.append(coefficient)
@@ -179,7 +179,7 @@ def signed_cycle_is_closed(g: WeightedDigraph, c: SignedCycle) -> Bool:
             return False
         if coefficient != 1 and coefficient != -1:
             return False
-        var e = g.edges[ei]
+        var e = g.edges[ei].copy()
         boundary[e.source] -= coefficient
         boundary[e.target] += coefficient
     for v in range(g.vertex_count):
@@ -208,7 +208,7 @@ def fundamental_cycles(g: WeightedDigraph) raises -> List[SignedCycle]:
     # join distinct underlying components. Parallel edges and self-loops then
     # become non-tree generators, as they must in the multigraph cycle lattice.
     for i in range(len(g.edges)):
-        var e = g.edges[i]
+        var e = g.edges[i].copy()
         if e.source == e.target:
             continue
         var a = _find(parent, e.source)
@@ -224,7 +224,7 @@ def fundamental_cycles(g: WeightedDigraph) raises -> List[SignedCycle]:
     for i in range(len(g.edges)):
         if is_tree_edge[i]:
             continue
-        var e = g.edges[i]
+        var e = g.edges[i].copy()
         var path = _tree_path(g, tree_adj, e.target, e.source)
         var edge_indices = List[Int]()
         var coefficients = List[Int]()
@@ -236,7 +236,7 @@ def fundamental_cycles(g: WeightedDigraph) raises -> List[SignedCycle]:
         var cycle = SignedCycle(edge_indices, coefficients)
         if not signed_cycle_is_closed(g, cycle):
             raise Error("fundamental-cycle construction produced a non-closed signed chain")
-        out.append(cycle)
+        out.append(cycle.copy())
     return out^
 
 
@@ -248,7 +248,7 @@ def cycle_gain(g: WeightedDigraph, c: SignedCycle) raises -> List[Q]:
     for _ in range(g.gain_dimension):
         out.append(Q.zero())
     for k in range(len(c.edge_indices)):
-        var e = g.edges[c.edge_indices[k]]
+        var e = g.edges[c.edge_indices[k]].copy()
         var coefficient = c.coefficients[k]
         for j in range(g.gain_dimension):
             if coefficient == 1:
