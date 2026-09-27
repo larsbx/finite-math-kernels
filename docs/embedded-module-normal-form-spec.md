@@ -20,20 +20,30 @@ Those can agree for distinct embedded subgroups.
 
 ## Integer contract
 
-For a matrix whose columns generate L <= Z^d, compute a canonical embedded
-lattice presentation using a fixed Hermite-normal-form convention.
+Generators are **rows**. `row_hnf(rows, dimension)` takes a list of rows, each
+of length `dimension` = d, and canonicalizes the subgroup L <= Z^d they
+generate:
 
-The public contract must pin:
+    L = { sum_i c_i * rows[i] : c_i in Z }.
 
-- whether generators are columns or rows;
-- pivot ordering;
-- pivot sign convention;
-- residue interval convention;
-- handling of rank-deficient matrices;
-- the zero lattice;
-- deterministic serialization.
+An input whose generators are stored as columns must be transposed by the
+caller; `row_hnf` rejects any row whose length differs from `dimension`
+rather than guessing an orientation.
 
-Equal generated subgroups must produce byte-identical canonical presentations.
+The output is the unique nonzero row Hermite normal form H of L:
+
+- generators are rows, one per output row, each of length d;
+- pivot columns increase strictly from top to bottom;
+- every pivot is positive;
+- entries below each pivot are zero;
+- entries above a pivot lie in the residue interval [0, pivot);
+- zero rows are dropped, so len(H) = rank(L) for rank-deficient input;
+- the zero lattice (no generators, only zero generators, or d = 0) is the
+  empty list;
+- H is returned as the ordered row list above; deterministic byte
+  serialization of that list is not yet provided and remains required.
+
+Equal generated subgroups must produce identical canonical presentations.
 
 ## Rational contract
 

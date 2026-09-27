@@ -276,6 +276,10 @@
       "blob": "1e71928a598be077049f1974f13afd475b77074a",
       "relation": "authored"
     },
+    "docs/embedded-module-normal-form-spec.md": {
+      "blob": "8a809a343706386e83bc9811a11b579f91f2ebd2",
+      "relation": "authored"
+    },
     "docs/evidence-vocabulary-map.md": {
       "blob": "b920216575d9d57e8f5e5c43c93d1b3ff2bb748f",
       "relation": "authored"
@@ -349,6 +353,10 @@
       "blob": "13805e96baa1c14e0876f49c0253c89c76e8a00d",
       "relation": "authored"
     },
+    "docs/weighted-cycle-gain-research-scaffold.md": {
+      "blob": "a0bc752b79b841bb337b57360b84a78d74792a46",
+      "relation": "authored"
+    },
     "finite_exact/__init__.mojo": {
       "blob": "4397b5e5e7ad08dd46986a1313e5772a60eb47b4",
       "relation": "modified",
@@ -399,6 +407,10 @@
       "source": "finite_linear_algebra",
       "source_blob": "5cefbb9810a7919dfd37a6cf4360d60e87e7b12e",
       "source_path": "finite_linear_algebra/__init__.mojo"
+    },
+    "finite_linear_algebra/integer_module.mojo": {
+      "blob": "85b5b17e1a7dee9520c90a419389979534919a6f",
+      "relation": "authored"
     },
     "finite_linear_algebra/madic_ball.mojo": {
       "blob": "d19744a6e6323bd69d482e154f7e3ac7d3366ba1",
@@ -846,6 +858,10 @@
       "source_blob": "c68eac9e0f00760b10eb03ab8314a7c97d928841",
       "source_path": "tests/test_finite_linear_algebra.mojo"
     },
+    "tests/finite_linear_algebra/test_integer_module.mojo": {
+      "blob": "999d34d66c741d93b45f1a6da29a42407b77421b",
+      "relation": "authored"
+    },
     "tests/finite_linear_algebra/test_madic_ball.mojo": {
       "blob": "213c9cb5c6359b0b87ba27715ad0ab257f51f0e4",
       "relation": "authored"
@@ -988,6 +1004,10 @@
       "blob": "670312c96ff8ad55ffb2dfbb307370e5a7fb5bec",
       "relation": "authored"
     },
+    "tests/weighted_graph/test_cycle_gain.mojo": {
+      "blob": "dbe18a31fdbe65a860e210f90f62e3bc1b913c60",
+      "relation": "authored"
+    },
     "tools/check_references.py": {
       "blob": "915fcb2262f0abc3a53c3b6b0ca54d7a73230c7d",
       "relation": "authored"
@@ -1064,33 +1084,13 @@
       "source_blob": "76ddda76a2cc3dea8221ac8b8192fe3d7e4f14c4",
       "source_path": "tools/check_vendored_sync.py"
     },
-    "docs/weighted-cycle-gain-research-scaffold.md": {
-      "relation": "authored",
-      "blob": "a0bc752b79b841bb337b57360b84a78d74792a46"
-    },
-    "tests/weighted_graph/test_cycle_gain.mojo": {
-      "relation": "authored",
-      "blob": "dbe18a31fdbe65a860e210f90f62e3bc1b913c60"
-    },
     "weighted_graph/__init__.mojo": {
-      "relation": "authored",
-      "blob": "4dec0b038a05a94417fb80fb08d24444741ed44c"
+      "blob": "4dec0b038a05a94417fb80fb08d24444741ed44c",
+      "relation": "authored"
     },
     "weighted_graph/cycle_gain.mojo": {
-      "relation": "authored",
-      "blob": "42912704b518a1ed6116050fce0a067865240da7"
-    },
-    "docs/embedded-module-normal-form-spec.md": {
-      "relation": "authored",
-      "blob": "1baf9ae252db2e9f0ab737b9342980682b9bfcdf"
-    },
-    "finite_linear_algebra/integer_module.mojo": {
-      "relation": "authored",
-      "blob": "85b5b17e1a7dee9520c90a419389979534919a6f"
-    },
-    "tests/finite_linear_algebra/test_integer_module.mojo": {
-      "relation": "authored",
-      "blob": "a0675056c9bef0a395247dcc54280afb43bfcea9"
+      "blob": "42912704b518a1ed6116050fce0a067865240da7",
+      "relation": "authored"
     }
   },
   "format": "finite-math-kernels provenance 1",

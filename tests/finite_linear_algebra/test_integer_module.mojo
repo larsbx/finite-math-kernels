@@ -41,7 +41,7 @@ def rows_y_even() -> List[List[BigZ]]:
     return out^
 
 
-def assert_row2(row: List[BigZ], a: Int64, b: Int64):
+def assert_row2(row: List[BigZ], a: Int64, b: Int64) raises:
     assert_equal(len(row), 2)
     assert_true(bigz_eq(row[0], bigz_from_i64(a)))
     assert_true(bigz_eq(row[1], bigz_from_i64(b)))
@@ -93,6 +93,35 @@ def test_negative_entries_reduce_canonically() raises:
     assert_row2(h[1], 0, 2)
 
 
+def test_generators_are_rows_not_columns() raises:
+    # L = <(1, 0, 3), (0, 2, 5)> <= Z^3: two generators, one per row.
+    var rows = List[List[BigZ]]()
+    var r0: List[Int64] = [1, 0, 3]
+    var r1: List[Int64] = [0, 2, 5]
+    rows.append(i64_row(r0))
+    rows.append(i64_row(r1))
+    var h = row_hnf(rows, 3)
+    assert_equal(len(h), 2)
+    assert_equal(len(h[0]), 3)
+    assert_true(bigz_eq(h[1][1], bigz_from_i64(2)))
+
+    # The same generators stored as columns are three length-2 rows,
+    # which do not live in Z^3 and must be rejected.
+    var columns = List[List[BigZ]]()
+    var c0: List[Int64] = [1, 0]
+    var c1: List[Int64] = [0, 2]
+    var c2: List[Int64] = [3, 5]
+    columns.append(i64_row(c0))
+    columns.append(i64_row(c1))
+    columns.append(i64_row(c2))
+    var rejected = False
+    try:
+        _ = row_hnf(columns, 3)
+    except:
+        rejected = True
+    assert_true(rejected)
+
+
 def main() raises:
     test_generator_changes_do_not_change_embedded_lattice()
     print("[PASS] test_generator_changes_do_not_change_embedded_lattice")
@@ -102,4 +131,6 @@ def main() raises:
     print("[PASS] test_rank_deficient_and_zero_generators")
     test_negative_entries_reduce_canonically()
     print("[PASS] test_negative_entries_reduce_canonically")
-    print("4 embedded integer-module Mojo tests passed.")
+    test_generators_are_rows_not_columns()
+    print("[PASS] test_generators_are_rows_not_columns")
+    print("5 embedded integer-module Mojo tests passed.")
