@@ -108,10 +108,10 @@
       "relation": "generated"
     },
     "docs/architecture/estate-repository-template-v1.md": {
-      "blob": "89b12ac8c1cc682e320419285f8e7a0c56c7986b",
+      "blob": "1ebbce11a4903dc2fef1ad0003c8f0c9df0e415d",
       "relation": "copy",
       "source": "estate_governance",
-      "source_blob": "89b12ac8c1cc682e320419285f8e7a0c56c7986b",
+      "source_blob": "1ebbce11a4903dc2fef1ad0003c8f0c9df0e415d",
       "source_path": "docs/architecture/estate-repository-template-v1.md"
     },
     "docs/audit/CONSOLIDATION_PROVENANCE.md": {
@@ -229,7 +229,7 @@
       "relation": "authored"
     },
     "estate.toml": {
-      "blob": "8bd4c29229f94decff63b5b223d4f45825430c39",
+      "blob": "d54b1e7e41f33245282786371caefb514b589fdb",
       "relation": "authored"
     },
     "experiments/frontier/FrontierCensus.cfg": {
@@ -992,10 +992,10 @@
       "relation": "authored"
     },
     "tools/audit_estate_layout.py": {
-      "blob": "efdd0ab0e468bdbce558e66ffdc058bef50213c7",
+      "blob": "936453913af34ca2f8f17e7160673c1cf177dfd0",
       "relation": "copy",
       "source": "estate_governance",
-      "source_blob": "efdd0ab0e468bdbce558e66ffdc058bef50213c7",
+      "source_blob": "936453913af34ca2f8f17e7160673c1cf177dfd0",
       "source_path": "kernel/audit_estate_layout.py"
     },
     "tools/check_references.py": {
@@ -1162,14 +1162,14 @@
     },
     "estate_governance": {
       "branch": "claude/estate-template-scaffolding-nxpvm2",
-      "commit": "c4852b614572c50753bfe1e947cdf80b91a67a73",
+      "commit": "bed4af2492dcf17dba2ed03fe429713dc4338da6",
       "repository": "larsbx/estate-governance",
       "subtrees": {
         ".github": "cf518ac28afb5ae29378bdecc95b7c9e3593e0aa",
-        "docs": "5a6c0a1ea7321f44c04676251a8c28c34be5a3e3",
-        "kernel": "85c281789368dbc535f83a1406fc59f0c77b9ff8",
+        "docs": "96321b5578ec56ffd8b3607bf2d4bcdd1422618a",
+        "kernel": "3674d0f7cac2e87f9c5d0dfb1cdff56a8c8ffbf6",
         "policy": "7e05959ffb5fe2e84bc8a89bb7c2041b925d4b01",
-        "tests": "9cfc58607ef9c0dfd0aee56e4c619e5a942e5c28",
+        "tests": "a16538d45b4dce5794f6ceec575b7a960ebfec31",
         "tools": "b6134df07bf5d1c4faa3c55817bddd3940bfc745"
       }
     },
