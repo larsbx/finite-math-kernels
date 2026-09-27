@@ -276,6 +276,10 @@
       "blob": "1e71928a598be077049f1974f13afd475b77074a",
       "relation": "authored"
     },
+    "docs/embedded-module-normal-form-spec.md": {
+      "blob": "8a809a343706386e83bc9811a11b579f91f2ebd2",
+      "relation": "authored"
+    },
     "docs/evidence-vocabulary-map.md": {
       "blob": "b920216575d9d57e8f5e5c43c93d1b3ff2bb748f",
       "relation": "authored"
@@ -349,6 +353,10 @@
       "blob": "13805e96baa1c14e0876f49c0253c89c76e8a00d",
       "relation": "authored"
     },
+    "docs/weighted-cycle-gain-research-scaffold.md": {
+      "blob": "a0bc752b79b841bb337b57360b84a78d74792a46",
+      "relation": "authored"
+    },
     "finite_exact/__init__.mojo": {
       "blob": "4397b5e5e7ad08dd46986a1313e5772a60eb47b4",
       "relation": "modified",
@@ -399,6 +407,10 @@
       "source": "finite_linear_algebra",
       "source_blob": "5cefbb9810a7919dfd37a6cf4360d60e87e7b12e",
       "source_path": "finite_linear_algebra/__init__.mojo"
+    },
+    "finite_linear_algebra/integer_module.mojo": {
+      "blob": "85b5b17e1a7dee9520c90a419389979534919a6f",
+      "relation": "authored"
     },
     "finite_linear_algebra/madic_ball.mojo": {
       "blob": "d19744a6e6323bd69d482e154f7e3ac7d3366ba1",
@@ -554,7 +566,7 @@
       "relation": "authored"
     },
     "pixi.toml": {
-      "blob": "55b57ba0a7acfb7aa20bf58a1a3847c40c4b222f",
+      "blob": "a97997eea0dd47bf66e041b9a5cc76b54b859d9e",
       "relation": "authored"
     },
     "projective_limits/__init__.mojo": {
@@ -858,6 +870,10 @@
       "source_blob": "c68eac9e0f00760b10eb03ab8314a7c97d928841",
       "source_path": "tests/test_finite_linear_algebra.mojo"
     },
+    "tests/finite_linear_algebra/test_integer_module.mojo": {
+      "blob": "999d34d66c741d93b45f1a6da29a42407b77421b",
+      "relation": "authored"
+    },
     "tests/finite_linear_algebra/test_madic_ball.mojo": {
       "blob": "213c9cb5c6359b0b87ba27715ad0ab257f51f0e4",
       "relation": "authored"
@@ -996,8 +1012,20 @@
       "blob": "efa0852ff67dad45805b849d16c32590a041217d",
       "relation": "authored"
     },
+    "tests/toolchain/__init__.py": {
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "relation": "authored"
+    },
+    "tests/toolchain/test_modular_pins.py": {
+      "blob": "b0c1ac325f55469af252cc0d39365ae4438cb050",
+      "relation": "authored"
+    },
     "tests/vendoring/test_check_vendored_sync.py": {
       "blob": "670312c96ff8ad55ffb2dfbb307370e5a7fb5bec",
+      "relation": "authored"
+    },
+    "tests/weighted_graph/test_cycle_gain.mojo": {
+      "blob": "dbe18a31fdbe65a860e210f90f62e3bc1b913c60",
       "relation": "authored"
     },
     "tools/check_references.py": {
@@ -1083,6 +1111,14 @@
       "source": "finite_mandelbrot_research",
       "source_blob": "76ddda76a2cc3dea8221ac8b8192fe3d7e4f14c4",
       "source_path": "tools/check_vendored_sync.py"
+    },
+    "weighted_graph/__init__.mojo": {
+      "blob": "4dec0b038a05a94417fb80fb08d24444741ed44c",
+      "relation": "authored"
+    },
+    "weighted_graph/cycle_gain.mojo": {
+      "blob": "42912704b518a1ed6116050fce0a067865240da7",
+      "relation": "authored"
     }
   },
   "format": "finite-math-kernels provenance 1",
