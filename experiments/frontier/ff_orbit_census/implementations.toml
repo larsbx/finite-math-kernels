@@ -16,8 +16,13 @@ build = ["cargo", "build", "--release", "--quiet", "--manifest-path", "{dir}/rus
 run = ["{build}/rust/release/census"]
 version = ["rustc", "--version"]
 
+# Julia compiles just in time, so there is no build step and no cold compile
+# time: the kernel warms itself on a short word, kernel_ns is the warm run, and
+# the row's wall time carries startup and compilation. Threads are fixed at
+# startup, so the runtime takes the lane's count as an option.
 [julia]
-status = "not_implemented"
+run = ["julia", "--startup-file=no", "--history-file=no", "-O3", "--threads", "{threads}", "{dir}/julia/census.jl"]
+version = ["julia", "--version"]
 
 # Bend 2 (github.com/bendlang/bend). The runtime owns `--threads`; `--` ends
 # its options. IO.now() ticks in milliseconds, so kernel_ns is ms-quantized.
