@@ -4,7 +4,7 @@
 
 Provide domain-neutral exact machinery for finite directed graphs carrying additive edge labels.
 
-The motivating consumer is the post-PSC Growth Bridge programme, but this package must not encode PSC, Penrose, tilings, eigenvalues, or spectral claims.
+The motivating consumer is the Tier 2 Growth Bridge research programme in pisot-substitution-conjecture-research, but this package must not encode PSC, Penrose, tilings, eigenvalues, or spectral claims.
 
 ## Proposed objects
 
