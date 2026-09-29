@@ -1,12 +1,37 @@
-version = 1
-template = "estate-repository-v1"
+version = 2
+template = "estate-repository-v2"
 
-[repository]
-id = "larsbx/finite-math-kernels"
-kind = "library"
-lifecycle = "active"
+# SPEC_estate v0.1 §3 fields, then this template's layout sections.
+
+[repo]
+id = "finite-math-kernels"
+slug = "larsbx/finite-math-kernels"
+class = "kernel"
+layer = 0
+band = "HARDENED"
+stage = "candidate"           # written by estate CI only (no estate CI ledger exists yet)
+inv = []                      # INV families: registration pending
 default_branch = "main"
-layout_status = "canonical"
+
+[origin]
+decided_by = "proposed"       # agent-authored; the owner adopts it by decision record
+chats = []
+artifacts = []
+
+[[dep]]
+id = "estate-governance"
+rev = "0833929ed82d42cf3674a1565681625a9622827b"
+pin = "sha256:7dff31575b2834b937395f3ff6f7ce2e2d1d7927b893cf8229c682ad7f3a99d2"
+
+[[conform]]
+id = "julia-oracle-lab"
+vectors = "exact-arithmetic property transcript (zq), replayed by its Julia oracle at d694949"
+
+[exports]
+names = ["finite_exact", "finite_linear_algebra", "finite_field_orbit", "quadratic_orbit", "rational_dynamics", "substitution_dynamics", "parallel_fold", "mojo_smoke", "proof_records", "projective_limits", "weighted_graph", "claim_governance", "vendoring", "oracle_refinement", "rational-dynamics-cyclotomic-v1", "typed-proof-graph-normalization-v1"]
+
+[layout]
+status = "canonical"
 
 [principles]
 ordering = ["authority", "domain", "language"]
@@ -22,7 +47,7 @@ id = "policy"
 target = "policy"
 authority = "governance"
 required = true
-current = ["policy", "estate.toml"]
+current = ["policy", "ESTATE.toml"]
 
 # Mojo include root (-I kernel). Packages here are vendored by consumers; paths inside them are package-relative.
 [[plane]]
@@ -129,11 +154,3 @@ acceptance_authority = false
 mode = "boundary_first"
 mass_move = false
 next = []
-
-[governance]
-repository = "larsbx/estate-governance"
-revision = "283b6955395ea17f022412aa1539db7aa0448e08"
-
-[governance.sha256]
-"docs/architecture/estate-repository-template-v1.md" = "e2a136e7779290224c1c4a73f4fefb9da51e1b0881fd460e911611db59da08d5"
-"tools/audit_estate_layout.py" = "8037f9366da3eeb03f928944c9688ea3ef14a6861c8a8950d9351692e22f37da"

@@ -79,7 +79,6 @@ EXTERNAL: Mapping[str, str] = {
     "claim_governance.toml": "the consumer repository root (docs/audit/policy-format.md)",
     "docs/ledger-index.md": "the consumer repository (docs/ledger-generation-spec.md, section 3.4)",
     "interval_q/closed_q.mojo": "larsbx/interval_q at the commit pinned in policy/provenance.json",
-    "kernel/audit_estate_layout.py": "larsbx/estate-governance at the commit pinned in policy/provenance.json",
 }
 
 
