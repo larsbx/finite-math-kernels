@@ -20,7 +20,7 @@ artifacts = []
 
 [[dep]]
 id = "estate-governance"
-rev = "f5fe90d588806c09998764c4929e6238f2298e64"
+rev = "0833929ed82d42cf3674a1565681625a9622827b"
 pin = "sha256:32e4bc78a70c59f11e7c53654e33eae3078733fb489d5c7400a11ca6cfcdb274"
 
 [[conform]]
