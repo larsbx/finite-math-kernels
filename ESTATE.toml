@@ -21,7 +21,7 @@ artifacts = []
 [[dep]]
 id = "estate-governance"
 rev = "0833929ed82d42cf3674a1565681625a9622827b"
-pin = "sha256:32e4bc78a70c59f11e7c53654e33eae3078733fb489d5c7400a11ca6cfcdb274"
+pin = "sha256:26ea59cf16dc775430011bc14b4b9287db0e52a769d3fedd8f93edb8cd56bbc8"
 
 [[conform]]
 id = "julia-oracle-lab"
