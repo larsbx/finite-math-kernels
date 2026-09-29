@@ -57,6 +57,53 @@ The half-turn is the involution
 `tests/projective_limits/test_field_generic.mojo` checks these laws
 exhaustively over F_7 and F_13.
 
+## Rotors
+
+`projective_limits.rotor` implements this rotation group for any field of
+characteristic other than 2. The rotor group T(K) is P^1(K) minus the
+isotropic points.
+
+| Name | Meaning |
+|---|---|
+| `rotor(a)` | R_a = [[y, x], [-x, y]] for a = [x:y] |
+| `rotor_add(a, b)` | the group law a (+) b = R_a(b), a Moebius action, so infinity needs no special case |
+| `rotor_identity` | the identity, 0 |
+| `half_turn` | the half-turn, infinity |
+| `rotor_neg` | the inverse, [x:y] -> [-x:y] |
+| `circle_point`, `circle_rotor` | the chart to x^2 + y^2 = 1 and back |
+| `rotor_spread` | sin^2 of the rotation angle, 4 x^2 y^2 / (x^2 + y^2)^2 |
+| `spread_polynomial` | S_n, with S_{k+1} = 2 (1 - 2 s) S_k - S_{k-1} + 2 s |
+
+**Laws checked** in `tests/projective_limits/test_rotor.mojo`, exhaustively
+over F_7 and F_13:
+
+- the group law equals composition of the maps R_a;
+- it also equals multiplication of points on the circle, an independent
+  method: (x1, y1)(x2, y2) = (x1 x2 - y1 y2, x1 y2 + x2 y1);
+- the group axioms hold;
+- the chart is a bijection onto the circle;
+- s(n theta) = S_n(s(theta)), and S_n o S_m = S_{nm}.
+
+**Turns over F_p.** T(F_p) is cyclic of order `rotor_group_order_fp(p)`
+= p - (-1/p).
+
+- `turn(g, N, a, n)` sends the turn a/n to g^(a N / n) when n divides N.
+  It is a homomorphism from (1/N)Z/Z.
+- Which rotor a turn becomes depends on the chosen generator g, just as
+  e^(2 pi i/n) depends on the choice of a primitive root.
+- Two turns do not depend on g. The half-turn 1/2 always goes to infinity,
+  the unique involution. The quarter-turn 1/4 always goes to +1 or -1.
+- `rotor_generator_fp` fixes a choice: the first generator among
+  0, ..., p - 1, infinity.
+
+**Over Q.** The rotors of finite order are 0, infinity, 1 and -1 (Niven's
+theorem). The test checks this on rationals of small height as evidence, not
+proof. So a turn a/n with n not in {1, 2, 4} needs a larger field: Q(zeta_n),
+or F_p with n dividing N_p.
+
+**Characteristic 2** is excluded because there 2 t / (1 + t^2) = 0 and the
+chart does not cover the circle. `rotor_group_order_fp(2)` is 0.
+
 ## Characteristic p
 
 Landing reads the lowest order of a Taylor shift and takes no derivatives, so

@@ -6,6 +6,9 @@
 # docs/projective-limits-over-exact-fields.md.
 #
 #   line    P1 in normal form, Moebius maps, the squared chordal metric.
+#   rotor   rotations as non-isotropic points of P^1(K): the group law
+#           a (+) b = R_a(b), the half-turn infinity, orders, turns a/n
+#           through a generator, the circle chart, spreads and S_n.
 #   limits  the landing kernel (lowest-order point on the exceptional divisor)
 #           and what it computes: limits at any point of P^1, tangent slopes
 #           in the pencil, asymptotes, directional and arc limits of bivariate
