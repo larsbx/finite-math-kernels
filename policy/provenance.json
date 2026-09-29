@@ -5,7 +5,7 @@
       "relation": "authored"
     },
     ".github/workflows/ci.yml": {
-      "blob": "9087923626774e4ac7dc22a653a40d53a18100ee",
+      "blob": "d0037e098251e5302f0bbfcbd8f1051102f33bcf",
       "relation": "authored"
     },
     ".github/workflows/frontier-polyglot.yml": {
@@ -21,7 +21,11 @@
       "relation": "authored"
     },
     "ARCHITECTURE.md": {
-      "blob": "9a1eb37ed288007a3d3e351846f82fb30940884e",
+      "blob": "6ca755846462db58cdf182a5a5f52eabb014ec4f",
+      "relation": "authored"
+    },
+    "ESTATE.toml": {
+      "blob": "c58180574fa390df959e0580bd5b849e4ab0c242",
       "relation": "authored"
     },
     "README.md": {
@@ -107,15 +111,8 @@
       "generator": "tools/make_vectors.py",
       "relation": "generated"
     },
-    "docs/architecture/estate-repository-template-v1.md": {
-      "blob": "1ebbce11a4903dc2fef1ad0003c8f0c9df0e415d",
-      "relation": "copy",
-      "source": "estate_governance",
-      "source_blob": "1ebbce11a4903dc2fef1ad0003c8f0c9df0e415d",
-      "source_path": "docs/architecture/estate-repository-template-v1.md"
-    },
     "docs/audit/CONSOLIDATION_PROVENANCE.md": {
-      "blob": "ff4feaca575ec5e8b689258b56907e57876b7f16",
+      "blob": "34d52b9cd92ca1d8d40f508e7edc8d9fbc9301e5",
       "relation": "authored"
     },
     "docs/audit/POST_CONSOLIDATION_AUDIT_2026-09-15.md": {
@@ -225,11 +222,7 @@
       "relation": "authored"
     },
     "docs/weighted-cycle-gain-research-scaffold.md": {
-      "blob": "a0bc752b79b841bb337b57360b84a78d74792a46",
-      "relation": "authored"
-    },
-    "estate.toml": {
-      "blob": "d54b1e7e41f33245282786371caefb514b589fdb",
+      "blob": "4dae1c37a8b4bf4225fd48c9a2ca5cf5df8b8503",
       "relation": "authored"
     },
     "experiments/frontier/FrontierCensus.cfg": {
@@ -645,7 +638,7 @@
       "source_path": "tools/property_oracle.py"
     },
     "pixi.toml": {
-      "blob": "c4319383ed9998f62c54c0998df2763bec7f40ba",
+      "blob": "6a5cfabed7c0a1ed521e78dcc8a6ff66296cad69",
       "relation": "authored"
     },
     "reference/cyclotomic_reference.py": {
@@ -933,7 +926,7 @@
       "relation": "authored"
     },
     "tests/provenance/test_provenance.py": {
-      "blob": "7ecc621bfdd10cc2c2bdbafaf5e45654bd3cbf1b",
+      "blob": "a5b517d57e8a37d5a6ef87557f5d5a15d22ca16a",
       "relation": "authored"
     },
     "tests/quadratic_orbit/test_quadratic_orbit.mojo": {
@@ -991,15 +984,8 @@
       "blob": "dbe18a31fdbe65a860e210f90f62e3bc1b913c60",
       "relation": "authored"
     },
-    "tools/audit_estate_layout.py": {
-      "blob": "936453913af34ca2f8f17e7160673c1cf177dfd0",
-      "relation": "copy",
-      "source": "estate_governance",
-      "source_blob": "936453913af34ca2f8f17e7160673c1cf177dfd0",
-      "source_path": "kernel/audit_estate_layout.py"
-    },
     "tools/check_references.py": {
-      "blob": "74e39fcfe63cccb1b5ca8a198ab122db76957d8f",
+      "blob": "18aebb67620f0e718bed47408e08ab9d4dd6b00c",
       "relation": "authored"
     },
     "tools/claim_governance/__init__.py": {
@@ -1158,19 +1144,6 @@
         "claim_governance": "a04df88d10b1ecbeb6da265fac4270db6d046b19",
         "docs": "4a517f5e4d7cd2a254c11fdeff9d319863182709",
         "tests": "e738f915afb2710cfaff105b336b12b3255e03a1"
-      }
-    },
-    "estate_governance": {
-      "branch": "claude/estate-template-scaffolding-nxpvm2",
-      "commit": "bed4af2492dcf17dba2ed03fe429713dc4338da6",
-      "repository": "larsbx/estate-governance",
-      "subtrees": {
-        ".github": "cf518ac28afb5ae29378bdecc95b7c9e3593e0aa",
-        "docs": "96321b5578ec56ffd8b3607bf2d4bcdd1422618a",
-        "kernel": "3674d0f7cac2e87f9c5d0dfb1cdff56a8c8ffbf6",
-        "policy": "7e05959ffb5fe2e84bc8a89bb7c2041b925d4b01",
-        "tests": "a16538d45b4dce5794f6ceec575b7a960ebfec31",
-        "tools": "b6134df07bf5d1c4faa3c55817bddd3940bfc745"
       }
     },
     "finite_exact": {
