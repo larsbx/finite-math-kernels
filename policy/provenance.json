@@ -639,11 +639,11 @@
     },
     "policy/estate-audits/0833929ed82d42cf3674a1565681625a9622827b.py": {
       "blob": "da1073c6777d4471d0a711646f4daa96ac313814",
-      "relation": "mirrored"
+      "relation": "authored"
     },
     "policy/estate-audits/f5fe90d588806c09998764c4929e6238f2298e64.py": {
       "blob": "da1073c6777d4471d0a711646f4daa96ac313814",
-      "relation": "mirrored"
+      "relation": "authored"
     },
     "README.md": {
       "blob": "7b2e687c7f5243206f4d16f3e4a2b814e8f9798b",
