@@ -25,7 +25,7 @@
       "relation": "authored"
     },
     "README.md": {
-      "blob": "7b2e687c7f5243206f4d16f3e4a2b814e8f9798b",
+      "blob": "661cedc5ef043a8f6c2087eb1fc47332cdfaa0db",
       "relation": "authored"
     },
     "conformance/cyclotomic_germ_v1.json": {
@@ -190,6 +190,10 @@
       "blob": "b47efa82154ffffe280f91f06814fdf7b2bbec84",
       "relation": "authored"
     },
+    "docs/projective-limits-over-exact-fields.md": {
+      "blob": "8ab33d734631b83e18444915e554dde0c4b2da98",
+      "relation": "authored"
+    },
     "docs/proof-records-specification.md": {
       "blob": "689f0c886ddbf0f03b19b4bd34f7ffa27b745dd1",
       "relation": "modified",
@@ -225,7 +229,7 @@
       "relation": "authored"
     },
     "docs/weighted-cycle-gain-research-scaffold.md": {
-      "blob": "a0bc752b79b841bb337b57360b84a78d74792a46",
+      "blob": "4dae1c37a8b4bf4225fd48c9a2ca5cf5df8b8503",
       "relation": "authored"
     },
     "estate.toml": {
@@ -349,7 +353,7 @@
       "relation": "authored"
     },
     "kernel/finite_exact/__init__.mojo": {
-      "blob": "1b3b5d5331f1cca9cc7620403b3169f563b5aa10",
+      "blob": "aa90eae9b0a0b5e310aa7733c18332fea9bd9299",
       "relation": "modified",
       "source": "finite_exact",
       "source_blob": "113139f4e0f1ecce72126472bb0f7ea5ef239fe4",
@@ -372,6 +376,14 @@
       "source": "interval_q",
       "source_blob": "d622ed1eee2881e01705ec09f60bacf6b35c26ea",
       "source_path": "interval_q/closed_q.mojo"
+    },
+    "kernel/finite_exact/field.mojo": {
+      "blob": "12604f8219e661fd3bde29badb4f7a6a6cbc2853",
+      "relation": "authored"
+    },
+    "kernel/finite_exact/fp.mojo": {
+      "blob": "827489c8fa696db594385af418a7f620031cdb22",
+      "relation": "authored"
     },
     "kernel/finite_exact/rat_q.mojo": {
       "blob": "ab297da7f6192f0c7e88b3c06dfdea177f50e668",
@@ -474,15 +486,15 @@
       "relation": "authored"
     },
     "kernel/projective_limits/__init__.mojo": {
-      "blob": "a5d43ea3403105a6b7f5cf06b6e5253de98f3002",
+      "blob": "350a915d24a31524f7b69891c06c44d86ef84776",
       "relation": "authored"
     },
     "kernel/projective_limits/limits.mojo": {
-      "blob": "d739eceae19781dff1e0b0c080ec4f1e6e0500c0",
+      "blob": "d859eeaa63b4d2dc01cf6fa264b3a7411e78950e",
       "relation": "authored"
     },
     "kernel/projective_limits/line.mojo": {
-      "blob": "7a9a673b5ce116c89e0397d4f08b23911eecbbe7",
+      "blob": "c5f89097e91a5c1a22594f87ce38d743ddd257ea",
       "relation": "authored"
     },
     "kernel/proof_records/ProofArchitecture.tla": {
@@ -645,7 +657,7 @@
       "source_path": "tools/property_oracle.py"
     },
     "pixi.toml": {
-      "blob": "c4319383ed9998f62c54c0998df2763bec7f40ba",
+      "blob": "a5d653b22bd8ea116468ea97ee5e75686db821ae",
       "relation": "authored"
     },
     "reference/cyclotomic_reference.py": {
@@ -870,6 +882,10 @@
     },
     "tests/parallel_fold/test_map_fold.mojo": {
       "blob": "3db3534306d348c36a9d53b18925bada79612ed9",
+      "relation": "authored"
+    },
+    "tests/projective_limits/test_field_generic.mojo": {
+      "blob": "4a1d9418a9a48a1c4119d1cad123f9582b399365",
       "relation": "authored"
     },
     "tests/projective_limits/test_projective_limits.mojo": {

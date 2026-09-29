@@ -6,6 +6,10 @@
 #   rat_q     Q, a normalized BigZ fraction with a sticky `rejected` flag,
 #             cofactor-scaled addition and order, cross-cancelled products,
 #             and the canonical Q(num, den) encoding.
+#   field     ExactField, a field as a structure over its Element type, which
+#             field-generic kernels are written against; QField adapts Q.
+#   fp        Fp[p], elements of Z/pZ with a compile-time prime modulus below
+#             2^31, canonical residues, and sticky rejection; FpField[p].
 #
 # Public boundary and stability promise: docs/exact-arithmetic-public-boundary.md.
 # Specification: docs/rational-interval-arithmetic-spec.md.

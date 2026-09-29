@@ -1,4 +1,9 @@
-# projective_limits: exact limits of rational functions as points of P^1(Q).
+# projective_limits: exact limits of rational functions as points of P^1(K).
+#
+# K is any finite_exact.field.ExactField: QField by default (P1, Poly, ...
+# are the QField instances of P1Over, PolyOver, ...), or FpField[p]. A limit of
+# f in K(x) at a point of P^1(K) lies in P^1(K); see
+# docs/projective-limits-over-exact-fields.md.
 #
 #   line    P1 in normal form, Moebius maps, the squared chordal metric.
 #   limits  the landing kernel (lowest-order point on the exceptional divisor)
