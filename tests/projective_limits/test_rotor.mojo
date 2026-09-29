@@ -139,12 +139,12 @@ def check_group_law_is_circle_multiplication[p: Int64]() raises:
     for a in ts:
         var u = circle_point(a)
         assert_true(u.accepted())
-        assert_true(u.x.mul(u.x).add(u.y.mul(u.y)).eq(Fp[p].one()))
+        assert_true(u.x * u.x + u.y * u.y == Fp[p].one())
         assert_true(p1_equal(circle_rotor[FpField[p]](u.x, u.y), a))
         for b in ts:
             var v = circle_point(b)
-            var x = u.x.mul(v.x).sub(u.y.mul(v.y))
-            var y = u.x.mul(v.y).add(v.x.mul(u.y))
+            var x = u.x * v.x - u.y * v.y
+            var y = u.x * v.y + v.x * u.y
             assert_true(p1_equal(circle_rotor[FpField[p]](x, y), rotor_add(a, b)))
 
 
@@ -160,15 +160,15 @@ def check_circle_bijection[p: Int64]() raises:
         for y in range(Int(p)):
             var fx = Fp[p](Int64(x))
             var fy = Fp[p](Int64(y))
-            if not fx.mul(fx).add(fy.mul(fy)).eq(Fp[p].one()):
+            if fx * fx + fy * fy != Fp[p].one():
                 continue
             count += 1
             var t = circle_rotor[FpField[p]](fx, fy)
             assert_true(is_rotor(t))
             var back = circle_point(t)
             assert_true(back.accepted())
-            assert_true(back.x.eq(fx))
-            assert_true(back.y.eq(fy))
+            assert_true(back.x == fx)
+            assert_true(back.y == fy)
     assert_equal(count, len(rotors[p]()))
     assert_equal(Int64(count), rotor_group_order_fp(p))
 
@@ -345,7 +345,7 @@ def check_spread_of_powers[p: Int64]() raises:
         for n in range(8):
             var lhs = rotor_spread(rotor_power(a, n))
             var rhs = spread_polynomial[FpField[p]](n, rotor_spread(a))
-            assert_true(lhs.eq(rhs))
+            assert_true(lhs == rhs)
 
 
 def test_spread_of_a_power_is_a_spread_polynomial() raises:

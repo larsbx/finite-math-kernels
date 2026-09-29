@@ -73,12 +73,12 @@ def monomial_power[p: Int64](k: Int, a: Int64) -> PolyOver[FpField[p]]:
 def check_field_axioms[p: Int64]() raises:
     for a in range(Int(p)):
         var x = Fp[p](Int64(a))
-        assert_true(x.add(x.neg()).is_zero())
+        assert_true((x + (-x)).is_zero())
         if a != 0:
-            assert_true(x.mul(Fp[p].one().div(x)).eq(Fp[p].one()))
-    assert_false(Fp[p].one().div(Fp[p].zero()).accepted())
+            assert_true(x * (Fp[p].one() / x) == Fp[p].one())
+    assert_false((Fp[p].one() / Fp[p].zero()).accepted())
     # Reduction is canonical: -1 and p - 1 are one element.
-    assert_true(Fp[p](-1).eq(Fp[p](p - 1)))
+    assert_true(Fp[p](-1) == Fp[p](p - 1))
 
 
 def test_prime_field_axioms() raises:
@@ -87,10 +87,10 @@ def test_prime_field_axioms() raises:
 
 
 def test_rejection_is_sticky() raises:
-    var bad = Fp[7].one().div(Fp[7].zero())
-    assert_false(bad.add(Fp[7].one()).accepted())
-    assert_false(bad.mul(Fp[7].zero()).accepted())
-    assert_false(bad.eq(bad))
+    var bad = Fp[7].one() / Fp[7].zero()
+    assert_false((bad + Fp[7].one()).accepted())
+    assert_false((bad * Fp[7].zero()).accepted())
+    assert_false(bad == bad)
     # The ExactField contract: a rejected value is never zero.
     assert_false(bad.is_zero())
     assert_false(QField.is_zero(Q.one().div(Q.zero())))
@@ -174,7 +174,7 @@ def check_rotation_invariance[p: Int64]() raises:
                 )
                 assert_equal(before.accepted(), after.accepted())
                 if before.accepted():
-                    assert_true(before.eq(after))
+                    assert_true(before == after)
 
 
 def test_chordal_quadrance_is_rotation_invariant() raises:
@@ -189,7 +189,7 @@ def test_chordal_quadrance_is_four_spread() raises:
     assert_true(chordal_distance_squared(p1_affine(Q(0, 1)), p1_affine(Q(1, 1))).eq(Q(2, 1)))
     assert_true(chordal_distance_squared(p1_affine(Q(0, 1)), p1_infinity()).eq(Q(4, 1)))
     assert_true(
-        chordal_distance_squared(at[7](0), infinity[7]()).eq(Fp[7](4))
+        chordal_distance_squared(at[7](0), infinity[7]()) == Fp[7](4)
     )
 
 

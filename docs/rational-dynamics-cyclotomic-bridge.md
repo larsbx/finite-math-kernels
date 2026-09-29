@@ -1,11 +1,19 @@
 # Rational dynamics and cyclotomic exactness bridge
 
-**Status:** representation contract and extraction roadmap. R1 is
-implemented in Mojo; C1, C2, Q1 and Q2 have an independent Python reference
-(`reference/cyclotomic_reference.py`) and pinned vectors
-(`conformance/cyclotomic_germ_v1.json`). No executable authority is added by
-this document, and the reference does not substitute for the canonical Mojo
-stage.
+**Status:** representation contract and extraction roadmap.
+
+- **R1** is implemented in Mojo.
+- **C1, C2, Q1 and Q2** are implemented in Mojo in `kernel/cyclotomic`.
+  - The Mojo stages replay `conformance/cyclotomic_field_v1.txt`, which the
+    independent Python reference (`reference/cyclotomic_reference.py`)
+    writes.
+  - They are also tested as laws in
+    `tests/cyclotomic/test_cyclotomic_field.mojo`.
+  - The reference remains non-authoritative, and
+    `conformance/cyclotomic_germ_v1.json` remains its pinned consumer-facing
+    vector set.
+
+No executable authority is added by this document.
 
 Several consumers currently carry neighboring pieces of the same finite
 arithmetic:
@@ -99,17 +107,17 @@ belongs to the consumer.
 The extraction should be staged:
 
 1. **R1 — rational combinatorics: IMPLEMENTED.** Reduced nonnegative fractions over unbounded BigZ, explicit doubling modulo one, modular inverse, signed inverse, continued fractions, convergents, and Farey determinant are executable and tested.
-2. **C1 — cyclotomic representation: REFERENCE.** Exact quotient arithmetic,
+2. **C1 — cyclotomic representation: IMPLEMENTED.** Exact quotient arithmetic,
    field inverse by extended Euclid in `Q[X]`, and canonical bytes
    `Z(q) || Q(c_0) || ... || Q(c_{phi(q)-1})` in the encoding of
    `docs/canonical-encoding.md`. `Phi_q` is computed by exact division of
    `X^q - 1`, never imported from a computer-algebra system.
-3. **C2 — Galois action: REFERENCE.** `zeta -> zeta^a` for `gcd(a,q)=1`;
+3. **C2 — Galois action: IMPLEMENTED.** `zeta -> zeta^a` for `gcd(a,q)=1`;
    tested as a ring map, with `sigma_s . sigma_t = sigma_st`.
-4. **Q1 — quadratic germ jets: REFERENCE.** Truncated composition of
+4. **Q1 — quadratic germ jets: IMPLEMENTED.** Truncated composition of
    `g_lambda` over `Q[zeta_q]`, and the parabolic factor `P`, refused unless
    the residual vanishes to order `q+1`.
-5. **Q2 — reciprocal-series coefficient: REFERENCE.** Refused when the
+5. **Q2 — reciprocal-series coefficient: IMPLEMENTED.** Refused when the
    constant coefficient is zero. The pinned vectors carry `[w^q] 1/P` for
    `q <= 8` and every unit `p`; the tests check the exact Galois
    equivariance `coefficient(zeta^p) = sigma_p(coefficient(zeta))`.
@@ -121,8 +129,23 @@ Each stage receives independent differential replay before a later stage may
 depend on it. The first consumer replay is
 `larsbx/mandelbrot-bulbs-and-ford-circles-research`, which checks the pinned
 vectors against its own separately written `Q(zeta_q)` series code and its
-ball-arithmetic oracle. A Mojo implementation of C1-Q2 is the remaining step;
-until it lands, the stages are reference-only.
+ball-arithmetic oracle.
+
+The Mojo implementation in `kernel/cyclotomic` deliberately uses different
+algorithms from the reference, so that agreement between the two is
+evidence:
+
+| Quantity | Mojo kernel | Python reference |
+|---|---|---|
+| Phi_q | the Moebius product prod_{d | q} (X^d - 1)^mu(q/d) | recursive division of X^q - 1 |
+| inverse | through the norm, a^-1 = prod_{e != 1} sigma_e(a) / N(a) | extended Euclid |
+
+Phi_q and phi(q) are compile-time constants of `Cyc[q]`, and the compiler
+checks deg Phi_q = phi(q) for every conductor in use.
+
+`CyclotomicField[q]` is an `ExactField`, so `projective_limits` and its rotor
+module run over Q(zeta_q) unchanged. There, the rotor of the turn 1/q has
+exact order q, where Q alone allows only orders 1, 2 and 4.
 
 ## 5. Authority boundary
 

@@ -47,6 +47,8 @@ test-proof-records = "python -m pytest -q tests/proof_records"
 vocabularies = "python -m pytest -q tests/proof_records/test_vocabularies.py"
 test-python = "python -m pytest -q tests/toolchain tests/finite_exact tests/proof_records tests/substitution_dynamics tests/rational_dynamics tests/projective_limits tests/cyclotomic"
 cyclotomic-vectors = "python tools/make_cyclotomic_vectors.py --check"
+cyclotomic-field-vectors = "python tools/make_cyclotomic_field_vectors.py --check"
+test-cyclotomic = "mojo run -I kernel tests/cyclotomic/test_cyclotomic_field.mojo && mojo run -I kernel tests/cyclotomic/test_cyclotomic_vectors.mojo"
 test-audit = "PYTHONPATH=tools python -m pytest -q tests/audit"
 test-provenance = "python -m pytest -q tests/provenance"
 test-references = "python -m pytest -q tests/references"
@@ -56,7 +58,7 @@ bench-frontier = "python experiments/frontier/harness.py run ff_orbit_census --c
 distribution = "python oracles/property_oracle.py --layers zq --distribution"
 references = "python tools/check_references.py"
 estate-audit = "python tools/audit_estate_layout.py"
-test = { depends-on = ["test-finite-exact", "test-interval", "test-linear-algebra", "test-integer-module", "test-madic", "test-madic-oracle", "test-substitution", "test-tuning", "test-facades", "test-quadratic-orbit", "test-rational-dynamics", "test-projective-limits", "test-orbit-census", "test-orbit-reference", "test-mojo-smoke", "test-parallel-fold", "test-weighted-cycle", "test-vendoring", "test-proof-records", "test-python", "test-audit", "test-provenance", "test-references", "test-refinement", "test-frontier", "cyclotomic-vectors", "property"] }
+test = { depends-on = ["test-finite-exact", "test-interval", "test-linear-algebra", "test-integer-module", "test-madic", "test-madic-oracle", "test-substitution", "test-tuning", "test-facades", "test-quadratic-orbit", "test-rational-dynamics", "test-projective-limits", "test-cyclotomic", "test-orbit-census", "test-orbit-reference", "test-mojo-smoke", "test-parallel-fold", "test-weighted-cycle", "test-vendoring", "test-proof-records", "test-python", "test-audit", "test-provenance", "test-references", "test-refinement", "test-frontier", "cyclotomic-vectors", "cyclotomic-field-vectors", "property"] }
 
 # The polyglot lane of docs/polyglot-orbit-census-design.md. Separate from the
 # default environment so the authoritative gates above neither gain nor lose a

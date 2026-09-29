@@ -31,6 +31,10 @@ kernel/rational_dynamics/
 kernel/projective_limits/
   line.mojo
   limits.mojo
+  rotor.mojo
+kernel/cyclotomic/
+  field.mojo
+  germ.mojo
 kernel/finite_field_orbit/
   census.mojo
 kernel/mojo_smoke/
@@ -87,7 +91,11 @@ not part of this repository.
 - `reference/cyclotomic_reference.py` is the independent reference for the
   cyclotomic (`Q[zeta_q]`, Galois action) and quadratic-germ (truncated
   iterate, parabolic factor, reciprocal series) stages of
-  `docs/rational-dynamics-cyclotomic-bridge.md`; its Mojo stage is planned.
+  `docs/rational-dynamics-cyclotomic-bridge.md`. Its Mojo stage is
+  `kernel/cyclotomic`: `Cyc[q]` with operators, `CyclotomicField[q]` as an
+  `ExactField`, the Galois action, trace and norm, canonical bytes, and the
+  germ series. The Mojo stage replays `conformance/cyclotomic_field_v1.txt`
+  (`pixi run test-cyclotomic`).
   It returns finite algebra only; naming a coefficient as an index, or
   relating it to any bulb, is the consumer's.
 - `rational_dynamics` provides exact unbounded reduced-fraction arithmetic, explicit doubling modulo one, modular and centered modular inverses, canonical simple continued fractions and convergents, and Farey determinants. It interprets none of these as measured angles or domain claims.

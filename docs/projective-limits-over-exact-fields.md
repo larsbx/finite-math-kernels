@@ -7,7 +7,9 @@ An `ExactField` is a field as a structure. It names an `Element` type and
 supplies the operations on it, so a field is kept apart from its elements:
 
 - `QField` has elements `Q`;
-- `FpField[p]` has elements `Fp[p]`.
+- `FpField[p]` has elements `Fp[p]`;
+- `cyclotomic.field.CyclotomicField[q]` has elements `Cyc[q]`, which is
+  Q(zeta_q).
 
 `P1`, `Poly`, `RationalMap`, `Mobius`, `Monomial` and `Poly2` are the `QField`
 instances of `P1Over`, `PolyOver`, `RationalMapOver`, `MobiusOver`,

@@ -24,7 +24,7 @@ def fp_modulus_ok(p: Int64) -> Bool:
     return True
 
 
-struct Fp[p: Int64](Copyable):
+struct Fp[p: Int64](Copyable, Writable):
     var v: Int64
     var rejected: Bool
 
@@ -53,22 +53,22 @@ struct Fp[p: Int64](Copyable):
     def is_zero(self) -> Bool:
         return not self.rejected and self.v == 0
 
-    def neg(self) -> Self:
+    def __neg__(self) -> Self:
         if self.rejected:
             return Self.rejected_value()
         return Self(-self.v)
 
-    def add(self, other: Self) -> Self:
+    def __add__(self, other: Self) -> Self:
         if self.rejected or other.rejected:
             return Self.rejected_value()
         return Self(self.v + other.v)
 
-    def sub(self, other: Self) -> Self:
+    def __sub__(self, other: Self) -> Self:
         if self.rejected or other.rejected:
             return Self.rejected_value()
         return Self(self.v - other.v)
 
-    def mul(self, other: Self) -> Self:
+    def __mul__(self, other: Self) -> Self:
         if self.rejected or other.rejected:
             return Self.rejected_value()
         return Self(self.v * other.v)
@@ -87,11 +87,21 @@ struct Fp[p: Int64](Copyable):
             (s0, s1) = (s1, s0 - k * s1)
         return Self(s0)
 
-    def div(self, other: Self) -> Self:
-        return self.mul(other.inverse())
+    def __truediv__(self, other: Self) -> Self:
+        return self * other.inverse()
 
-    def eq(self, other: Self) -> Bool:
+    def __eq__(self, other: Self) -> Bool:
+        """Equal accepted residues; False whenever either side is rejected."""
         return not self.rejected and not other.rejected and self.v == other.v
+
+    def __ne__(self, other: Self) -> Bool:
+        return not self == other
+
+    def write_to(self, mut writer: Some[Writer]):
+        if self.rejected:
+            writer.write("Fp[", Self.p, "](rejected)")
+        else:
+            writer.write(self.v, " mod ", Self.p)
 
 
 struct FpField[p: Int64](ExactField):
@@ -125,24 +135,24 @@ struct FpField[p: Int64](ExactField):
 
     @staticmethod
     def neg(a: Fp[Self.p]) -> Fp[Self.p]:
-        return a.neg()
+        return -a
 
     @staticmethod
     def add(a: Fp[Self.p], b: Fp[Self.p]) -> Fp[Self.p]:
-        return a.add(b)
+        return a + b
 
     @staticmethod
     def sub(a: Fp[Self.p], b: Fp[Self.p]) -> Fp[Self.p]:
-        return a.sub(b)
+        return a - b
 
     @staticmethod
     def mul(a: Fp[Self.p], b: Fp[Self.p]) -> Fp[Self.p]:
-        return a.mul(b)
+        return a * b
 
     @staticmethod
     def div(a: Fp[Self.p], b: Fp[Self.p]) -> Fp[Self.p]:
-        return a.div(b)
+        return a / b
 
     @staticmethod
     def eq(a: Fp[Self.p], b: Fp[Self.p]) -> Bool:
-        return a.eq(b)
+        return a == b

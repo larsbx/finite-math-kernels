@@ -25,7 +25,11 @@
       "relation": "authored"
     },
     "README.md": {
-      "blob": "66b24efd82a93dd634033f65fcd34ac8bd2c2d58",
+      "blob": "325751ee1836a47156dee4e4d9a47cd8eb756859",
+      "relation": "authored"
+    },
+    "conformance/cyclotomic_field_v1.txt": {
+      "blob": "7900fc3918dc1de26289804ad0f75414ee8d8b34",
       "relation": "authored"
     },
     "conformance/cyclotomic_germ_v1.json": {
@@ -191,7 +195,7 @@
       "relation": "authored"
     },
     "docs/projective-limits-over-exact-fields.md": {
-      "blob": "e79198babee3ca8d5774d31d45b8d79fed1481d7",
+      "blob": "22a6278d621a4bf71cfe17eeedecfa3c520cf021",
       "relation": "authored"
     },
     "docs/proof-records-specification.md": {
@@ -206,7 +210,7 @@
       "relation": "authored"
     },
     "docs/rational-dynamics-cyclotomic-bridge.md": {
-      "blob": "e6d536182c6a7d04eff8533a1f91d4fce11966c7",
+      "blob": "92e3311468bf324d75baf4e9dc8cc4bab39b7dc5",
       "relation": "authored"
     },
     "docs/rational-interval-arithmetic-spec.md": {
@@ -352,8 +356,20 @@
       "blob": "16ffcbe10a72031a08eac9d2c2dc965b8bc2d739",
       "relation": "authored"
     },
+    "kernel/cyclotomic/__init__.mojo": {
+      "blob": "2061128f300e596402fdcc404f70959390fff8a7",
+      "relation": "authored"
+    },
+    "kernel/cyclotomic/field.mojo": {
+      "blob": "012beaa3db591618d5ba517d8ab7ea861d6d3baa",
+      "relation": "authored"
+    },
+    "kernel/cyclotomic/germ.mojo": {
+      "blob": "8a95fc35170938ba83d31831bed4d2c2ce5efa70",
+      "relation": "authored"
+    },
     "kernel/finite_exact/__init__.mojo": {
-      "blob": "aa90eae9b0a0b5e310aa7733c18332fea9bd9299",
+      "blob": "64acf9314f96e3becd49fad2b749a05e95aa26fa",
       "relation": "modified",
       "source": "finite_exact",
       "source_blob": "113139f4e0f1ecce72126472bb0f7ea5ef239fe4",
@@ -382,7 +398,7 @@
       "relation": "authored"
     },
     "kernel/finite_exact/fp.mojo": {
-      "blob": "827489c8fa696db594385af418a7f620031cdb22",
+      "blob": "e58459c8dc70dd04e1e85d726e7309c719b8f01e",
       "relation": "authored"
     },
     "kernel/finite_exact/rat_q.mojo": {
@@ -661,7 +677,7 @@
       "source_path": "tools/property_oracle.py"
     },
     "pixi.toml": {
-      "blob": "0cfecb96b4b345557e105f1ec0aeae957bd95fe9",
+      "blob": "99b541a745c01d817fdf3573641cd7f3481e34a7",
       "relation": "authored"
     },
     "reference/cyclotomic_reference.py": {
@@ -778,8 +794,16 @@
       "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
       "relation": "authored"
     },
+    "tests/cyclotomic/test_cyclotomic_field.mojo": {
+      "blob": "15d7cd0dd6d23253ccf587fb0b3819620c0580bf",
+      "relation": "authored"
+    },
     "tests/cyclotomic/test_cyclotomic_reference.py": {
       "blob": "8c09602ab7f0ae15a0e2887a9186edb22eed704e",
+      "relation": "authored"
+    },
+    "tests/cyclotomic/test_cyclotomic_vectors.mojo": {
+      "blob": "2555398b8f984e5504948cad180a033af05e75d0",
       "relation": "authored"
     },
     "tests/facades/test_stable_facades.mojo": {
@@ -889,7 +913,7 @@
       "relation": "authored"
     },
     "tests/projective_limits/test_field_generic.mojo": {
-      "blob": "4a1d9418a9a48a1c4119d1cad123f9582b399365",
+      "blob": "71caf7751a63f0811e9557b9c9bbf28fbf7137fa",
       "relation": "authored"
     },
     "tests/projective_limits/test_projective_limits.mojo": {
@@ -905,7 +929,7 @@
       "relation": "authored"
     },
     "tests/projective_limits/test_rotor.mojo": {
-      "blob": "2ca4923faa2cfbe8d4f83dc70e548cc033ffb821",
+      "blob": "7c26a9202a29f10e887c1b8a9c0412931d733679",
       "relation": "authored"
     },
     "tests/proof_records/replay_vectors.mojo": {
@@ -1120,6 +1144,10 @@
       "source": "claim_governance_tools",
       "source_blob": "992c82396e57c304169341877af45c38e9e67d3f",
       "source_path": "claim_governance/runner.py"
+    },
+    "tools/make_cyclotomic_field_vectors.py": {
+      "blob": "ddf34ff18fbb85e9b8c2e81ea4144d864253b146",
+      "relation": "authored"
     },
     "tools/make_cyclotomic_vectors.py": {
       "blob": "3618b08f39200dcd0265f109fa63f1f88d683637",
