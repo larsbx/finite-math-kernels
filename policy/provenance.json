@@ -641,6 +641,13 @@
       "blob": "da1073c6777d4471d0a711646f4daa96ac313814",
       "relation": "authored"
     },
+    "policy/estate-audits/63b5605c33af726317a193c303708a37f93d7394.py": {
+      "blob": "5f33ac850d18b819e3d2e6beac12bc0ca1597df6",
+      "relation": "copy",
+      "source": "estate_governance",
+      "source_blob": "5f33ac850d18b819e3d2e6beac12bc0ca1597df6",
+      "source_path": "kernel/audit_estate_layout.py"
+    },
     "policy/estate-audits/f5fe90d588806c09998764c4929e6238f2298e64.py": {
       "blob": "da1073c6777d4471d0a711646f4daa96ac313814",
       "relation": "authored"
@@ -1152,6 +1159,14 @@
         "claim_governance": "a04df88d10b1ecbeb6da265fac4270db6d046b19",
         "docs": "4a517f5e4d7cd2a254c11fdeff9d319863182709",
         "tests": "e738f915afb2710cfaff105b336b12b3255e03a1"
+      }
+    },
+    "estate_governance": {
+      "branch": "main",
+      "commit": "63b5605c33af726317a193c303708a37f93d7394",
+      "repository": "larsbx/estate-governance",
+      "subtrees": {
+        "kernel": "5f33ac850d18b819e3d2e6beac12bc0ca1597df6"
       }
     },
     "finite_exact": {
