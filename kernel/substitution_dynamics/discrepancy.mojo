@@ -25,12 +25,23 @@ def discrepancy(p: Pair, size: Int) -> Int:
     for i in range(len(p.u)):
         var x = p.u[i]
         var y = p.v[i]
+        if x == y:
+            continue
         diff[x] = diff[x] + 1
         diff[y] = diff[y] - 1
-        for j in range(size):
-            var a = diff[j] if diff[j] >= 0 else -diff[j]
-            if a > best:
-                best = a
+        # Only these two coordinates changed.  Keep all four sign-sensitive
+        # comparisons explicit: this is the canonical hot path, while the
+        # Python implementation remains an independently written oracle.
+        var dx = diff[x]
+        var dy = diff[y]
+        if dx > best:
+            best = dx
+        elif -dx > best:
+            best = -dx
+        if dy > best:
+            best = dy
+        elif -dy > best:
+            best = -dy
     return best
 
 
