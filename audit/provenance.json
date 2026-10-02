@@ -220,7 +220,7 @@
       "relation": "authored"
     },
     "docs/ledger-generation-spec.md": {
-      "blob": "fae0dbc4106170e86e84fb21e679ead8ce70d895",
+      "blob": "00143eb14e4dfda6b03d106868581241bbdb5bd5",
       "relation": "authored"
     },
     "docs/madic-ball-arithmetic-spec.md": {
@@ -372,7 +372,7 @@
       "relation": "authored"
     },
     "fixtures/ledger/tla/Example.tla": {
-      "blob": "3fcb6f7ceef0d71b304048725732e4b1943cea30",
+      "blob": "9c5dfbdf82de40199648f17fb42eb49c12167831",
       "relation": "authored"
     },
     "fixtures/ledger/tla/MCExampleGaloisAssumed.cfg": {
@@ -444,7 +444,7 @@
       "relation": "authored"
     },
     "proof_records/ProofArchitecture.tla": {
-      "blob": "6e616fb85ffe0cf62306c1ee1f89f730f3fb9cd2",
+      "blob": "e504713260570774702d6aac537816fe3d937108",
       "relation": "authored"
     },
     "proof_records/__init__.mojo": {
@@ -462,11 +462,11 @@
       "source_path": "finite_proof_records/__init__.py"
     },
     "proof_records/generate_ledgers.py": {
-      "blob": "46d8a8dbafe7b55161da2156bea4236c44449179",
+      "blob": "603e957df48d16f75a9d5ff27b4ffde8271173e8",
       "relation": "authored"
     },
     "proof_records/graph.py": {
-      "blob": "ef2e4bbe3b1dbc16ec6bc501b06991a9fd7b8f00",
+      "blob": "1991e94c4214a136f7ef480dbffca8054e4bc316",
       "relation": "authored"
     },
     "proof_records/known_answers.py": {
@@ -738,8 +738,12 @@
       "source_blob": "770bea4dd8a5f31298deba90388ea92668b33cdd",
       "source_path": "tests/replay_vectors.mojo"
     },
+    "tests/proof_records/test_dependency_alternatives.py": {
+      "blob": "3e0503835a80d504e89e516af06c427ff64426b4",
+      "relation": "authored"
+    },
     "tests/proof_records/test_generate_ledgers.py": {
-      "blob": "e175ce68dc17fe96f203866b3adcb536ad0474c0",
+      "blob": "6495f919dfcf722c3daed5d4f3b0500e1ea7650d",
       "relation": "authored"
     },
     "tests/proof_records/test_graph.py": {
