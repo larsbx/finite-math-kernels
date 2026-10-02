@@ -57,7 +57,7 @@
       "relation": "authored"
     },
     "conformance/ledger/tla/Example.tla": {
-      "blob": "3fcb6f7ceef0d71b304048725732e4b1943cea30",
+      "blob": "9c5dfbdf82de40199648f17fb42eb49c12167831",
       "relation": "authored"
     },
     "conformance/ledger/tla/MCExampleGaloisAssumed.cfg": {
@@ -100,6 +100,10 @@
       "blob": "a4aeeeb91ce824afdd16e3600ca561d145fef6ae",
       "generator": "tools/make_orbit_vectors.py",
       "relation": "generated"
+    },
+    "conformance/polyglot_boundary_envelope_v1.json": {
+      "blob": "7a41ae95d56b554e6bea6e80e933f165c665e013",
+      "relation": "authored"
     },
     "conformance/projective_limits_v1.txt": {
       "blob": "bb94765530b4b402d1e748fad8c85b07b962dfc3",
@@ -176,7 +180,7 @@
       "relation": "authored"
     },
     "docs/ledger-generation-spec.md": {
-      "blob": "8ffbfe8486e3fe86af84477f77fd3831da991502",
+      "blob": "1df13b74ea0ae4470e880b6040279a933371e1c6",
       "relation": "authored"
     },
     "docs/madic-ball-arithmetic-spec.md": {
@@ -495,7 +499,7 @@
       "relation": "authored"
     },
     "kernel/proof_records/ProofArchitecture.tla": {
-      "blob": "6e616fb85ffe0cf62306c1ee1f89f730f3fb9cd2",
+      "blob": "e504713260570774702d6aac537816fe3d937108",
       "relation": "authored"
     },
     "kernel/proof_records/__init__.mojo": {
@@ -513,11 +517,11 @@
       "source_path": "finite_proof_records/__init__.py"
     },
     "kernel/proof_records/generate_ledgers.py": {
-      "blob": "df2180f9f45b3c0f7805f96ac7092dde104463c3",
+      "blob": "613f3d9474ae3864c00d2299ea7f13cd18552d1b",
       "relation": "authored"
     },
     "kernel/proof_records/graph.py": {
-      "blob": "ef2e4bbe3b1dbc16ec6bc501b06991a9fd7b8f00",
+      "blob": "1991e94c4214a136f7ef480dbffca8054e4bc316",
       "relation": "authored"
     },
     "kernel/proof_records/known_answers.py": {
@@ -672,6 +676,10 @@
       "blob": "da1073c6777d4471d0a711646f4daa96ac313814",
       "relation": "authored"
     },
+    "reference/boundary_envelope.py": {
+      "blob": "9e5619146476a8c311365b8047b433ce1020091e",
+      "relation": "authored"
+    },
     "reference/cyclotomic_reference.py": {
       "blob": "af727635754608924b7386ed20ed637ad7631b27",
       "relation": "authored"
@@ -690,6 +698,10 @@
     },
     "reference/tuning_reference.py": {
       "blob": "d5dc33f644d2ba735fed1b71d4ccc1b562bcc8e4",
+      "relation": "authored"
+    },
+    "schemas/polyglot-boundary-envelope-v1.json": {
+      "blob": "46cb8fa918abbd5d5cfbc640384227ce252ee766",
       "relation": "authored"
     },
     "schemas/rational-dynamics-cyclotomic-v1.json": {
@@ -920,6 +932,10 @@
       "blob": "3db3534306d348c36a9d53b18925bada79612ed9",
       "relation": "authored"
     },
+    "tests/polyglot/test_boundary_envelope.py": {
+      "blob": "75722fac9fd69614ecb16ff72736f12dec9258a0",
+      "relation": "authored"
+    },
     "tests/projective_limits/test_projective_limits.mojo": {
       "blob": "593dc182500e9edb8f190e7c9f13d6428b150df4",
       "relation": "authored"
@@ -939,8 +955,12 @@
       "source_blob": "770bea4dd8a5f31298deba90388ea92668b33cdd",
       "source_path": "tests/replay_vectors.mojo"
     },
+    "tests/proof_records/test_dependency_alternatives.py": {
+      "blob": "6384780eca00f543d2935b581ea0f4124d4acaa8",
+      "relation": "authored"
+    },
     "tests/proof_records/test_generate_ledgers.py": {
-      "blob": "065aa19e97c6e05dcde0cc83451fc36e090f44f2",
+      "blob": "12c3fa0c840647741c2cf5bd8021a2300b906f8a",
       "relation": "authored"
     },
     "tests/proof_records/test_graph.py": {
@@ -1186,22 +1206,6 @@
       "source": "finite_mandelbrot_research",
       "source_blob": "76ddda76a2cc3dea8221ac8b8192fe3d7e4f14c4",
       "source_path": "tools/check_vendored_sync.py"
-    },
-    "conformance/polyglot_boundary_envelope_v1.json": {
-      "blob": "7a41ae95d56b554e6bea6e80e933f165c665e013",
-      "relation": "authored"
-    },
-    "reference/boundary_envelope.py": {
-      "blob": "9e5619146476a8c311365b8047b433ce1020091e",
-      "relation": "authored"
-    },
-    "schemas/polyglot-boundary-envelope-v1.json": {
-      "blob": "46cb8fa918abbd5d5cfbc640384227ce252ee766",
-      "relation": "authored"
-    },
-    "tests/polyglot/test_boundary_envelope.py": {
-      "blob": "75722fac9fd69614ecb16ff72736f12dec9258a0",
-      "relation": "authored"
     }
   },
   "format": "finite-math-kernels provenance 1",
