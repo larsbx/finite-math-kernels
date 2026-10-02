@@ -11,7 +11,7 @@ from pathlib import Path
 import pytest
 
 ROOT = Path(__file__).resolve().parents[2]
-FRONTIER = ROOT / "benchmarks" / "frontier"
+FRONTIER = ROOT / "experiments" / "frontier"
 sys.path.insert(0, str(FRONTIER))
 sys.path.insert(0, str(FRONTIER / "ff_orbit_census"))
 

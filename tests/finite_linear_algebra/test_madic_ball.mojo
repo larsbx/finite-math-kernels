@@ -1,8 +1,8 @@
 """Regressions for the M-adic ball carrier.
 
-Run with `pixi run test-madic` (`mojo run -I . tests/finite_linear_algebra/test_madic_ball.mojo`).
+Run with `pixi run test-madic` (`mojo run -I kernel tests/finite_linear_algebra/test_madic_ball.mojo`).
 Every pinned number here is also asserted, independently, by
-`tests/finite_linear_algebra/test_madic_oracle.py` against `tools/madic_oracle.py`,
+`tests/finite_linear_algebra/test_madic_oracle.py` against `oracles/madic_oracle.py`,
 which was written from the definitions rather than transliterated from this
 module. The specification is `docs/madic-ball-arithmetic-spec.md`.
 """

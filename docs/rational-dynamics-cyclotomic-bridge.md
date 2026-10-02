@@ -1,7 +1,11 @@
 # Rational dynamics and cyclotomic exactness bridge
 
-**Status:** representation contract and extraction roadmap. No executable
-authority is added by this document.
+**Status:** representation contract and extraction roadmap. R1 is
+implemented in Mojo; C1, C2, Q1 and Q2 have an independent Python reference
+(`reference/cyclotomic_reference.py`) and pinned vectors
+(`conformance/cyclotomic_germ_v1.json`). No executable authority is added by
+this document, and the reference does not substitute for the canonical Mojo
+stage.
 
 Several consumers currently carry neighboring pieces of the same finite
 arithmetic:
@@ -95,25 +99,39 @@ belongs to the consumer.
 The extraction should be staged:
 
 1. **R1 — rational combinatorics: IMPLEMENTED.** Reduced nonnegative fractions over unbounded BigZ, explicit doubling modulo one, modular inverse, signed inverse, continued fractions, convergents, and Farey determinant are executable and tested.
-2. **C0 — polynomial foundation: IMPLEMENTED on the stacked branch.** Dynamic
-   unbounded `BigZ[x]`, exact monic division, and exact `Phi_n` construction
-   by the divisor product identity, with independent replay.
-3. **C1 — cyclotomic representation: IMPLEMENTED on the quotient branch.**
-   Canonical exact representatives in `Q[X]/(Phi_q)`, exact addition,
-   subtraction, multiplication/reduction, powers, and canonical bytes.
-4. **C2 — Galois action: IMPLEMENTED on the quotient branch.** Exact
-   `zeta -> zeta^a` for units `a mod q`, including conjugation and
-   composition replay.
-5. **Q1 — quadratic germ jets:** truncated exact composition over a generic
-   exact coefficient ring.
-6. **Q2 — reciprocal-series coefficient:** fail closed when the required
-   constant coefficient is not invertible.
+2. **C0 — polynomial foundation: IMPLEMENTED.** Dynamic unbounded
+   `BigZ[x]` in `kernel/finite_polynomial`, exact monic division, and exact
+   `Phi_n` construction by the divisor product identity, replayed against
+   `reference/cyclotomic_reference.py`.
+3. **C1 — cyclotomic representation: IMPLEMENTED.** Mojo canonical
+   representatives in `kernel/finite_polynomial/cyclotomic_q.mojo`, with
+   exact addition, subtraction, multiplication/reduction and powers, replayed
+   against the reference. Reference: exact quotient arithmetic,
+   field inverse by extended Euclid in `Q[X]`, and canonical bytes
+   `Z(q) || Q(c_0) || ... || Q(c_{phi(q)-1})` in the encoding of
+   `docs/canonical-encoding.md`. `Phi_q` is computed by exact division of
+   `X^q - 1`, never imported from a computer-algebra system.
+4. **C2 — Galois action: IMPLEMENTED.** Mojo `zeta -> zeta^a` for units
+   `a mod q`, including conjugation and composition replay. Reference:
+   `zeta -> zeta^a` for `gcd(a,q)=1`;
+   tested as a ring map, with `sigma_s . sigma_t = sigma_st`.
+5. **Q1 — quadratic germ jets: REFERENCE.** Truncated composition of
+   `g_lambda` over `Q[zeta_q]`, and the parabolic factor `P`, refused unless
+   the residual vanishes to order `q+1`.
+6. **Q2 — reciprocal-series coefficient: REFERENCE.** Refused when the
+   constant coefficient is zero. The pinned vectors carry `[w^q] 1/P` for
+   `q <= 8` and every unit `p`; the tests check the exact Galois
+   equivariance `coefficient(zeta^p) = sigma_p(coefficient(zeta))`.
 7. **consumer adapters:** parameter-plane, dynamical-plane, and arithmetic-
    correction projects interpret those finite outputs under their own
    theorem/evidence policies.
 
 Each stage receives independent differential replay before a later stage may
-depend on it.
+depend on it. The first consumer replay is
+`larsbx/mandelbrot-bulbs-and-ford-circles-research`, which checks the pinned
+vectors against its own separately written `Q(zeta_q)` series code and its
+ball-arithmetic oracle. A Mojo implementation of C1-Q2 is the remaining step;
+until it lands, the stages are reference-only.
 
 ## 5. Authority boundary
 

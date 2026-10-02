@@ -7,7 +7,7 @@ compare, and replay exact data without parsing decimal text.
 The canonical Mojo probe is checked independently by two non-authoritative
 oracles during the migration:
 
-- `tools/property_oracle.py`, using Python `int` and
+- `oracles/property_oracle.py`, using Python `int` and
   `fractions.Fraction`;
 - `finite-exact.zq.property-transcript` from the pinned
   `larsbx/julia-oracle-lab` revision, using Julia `BigInt` and

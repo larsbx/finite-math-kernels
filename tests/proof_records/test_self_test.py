@@ -18,7 +18,7 @@ from pathlib import Path
 import pytest
 
 ROOT = Path(__file__).resolve().parents[2]
-sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(ROOT / "kernel"))
 sys.path.insert(0, str(ROOT / "tools"))
 
 from proof_records import SelfTestError, self_test  # noqa: E402
@@ -82,7 +82,7 @@ def test_the_message_says_what_to_do():
 
 
 def test_importing_the_package_runs_the_gate():
-    assert "verify()" in (ROOT / "proof_records" / "__init__.py").read_text(encoding="utf-8")
+    assert "verify()" in (ROOT / "kernel" / "proof_records" / "__init__.py").read_text(encoding="utf-8")
 
 
 def test_a_wrong_codec_makes_the_package_unimportable(tmp_path):
@@ -94,7 +94,7 @@ def test_a_wrong_codec_makes_the_package_unimportable(tmp_path):
         "import proof_records.known_answers as k\n"
         "k.IDENTITY = 'sha256:' + '0' * 64\n"
         "import importlib, proof_records\n"
-        "importlib.reload(proof_records)\n" % str(ROOT)
+        "importlib.reload(proof_records)\n" % str(ROOT / "kernel")
     )
     done = subprocess.run([sys.executable, "-c", script], capture_output=True, text=True)
     assert done.returncode != 0
@@ -105,7 +105,7 @@ def test_a_wrong_codec_makes_the_package_unimportable(tmp_path):
 
 
 def test_the_known_answers_are_the_generated_ones():
-    assert (ROOT / "proof_records" / "known_answers.py").read_text(encoding="utf-8") == mv.render_known_answers()
+    assert (ROOT / "kernel" / "proof_records" / "known_answers.py").read_text(encoding="utf-8") == mv.render_known_answers()
 
 
 def test_the_pinned_record_is_chosen_by_a_rule():
@@ -127,8 +127,8 @@ def test_the_pinned_answers_are_what_the_codec_produces():
 def test_the_generator_check_covers_both_outputs():
     done = subprocess.run([sys.executable, str(ROOT / "tools" / "make_vectors.py"), "--check"], capture_output=True, text=True)
     assert done.returncode == 0, done.stdout
-    assert "fixtures/vectors.json is up to date" in done.stdout
-    assert "proof_records/known_answers.py is up to date" in done.stdout
+    assert "conformance/vectors.json is up to date" in done.stdout
+    assert "kernel/proof_records/known_answers.py is up to date" in done.stdout
 
 
 # --- the generator can still run when the answers it replaces are stale ------------
@@ -137,10 +137,10 @@ def test_the_generator_check_covers_both_outputs():
 def _transplant(tmp_path):
     """A standalone copy of the package and its generator, so a corrupted
     `known_answers.py` can be repaired without touching the checkout."""
-    shutil.copytree(ROOT / "proof_records", tmp_path / "proof_records", ignore=shutil.ignore_patterns("__pycache__"))
+    shutil.copytree(ROOT / "kernel" / "proof_records", tmp_path / "kernel" / "proof_records", ignore=shutil.ignore_patterns("__pycache__"))
     (tmp_path / "tools").mkdir()
     shutil.copy(ROOT / "tools" / "make_vectors.py", tmp_path / "tools" / "make_vectors.py")
-    known_py = tmp_path / "proof_records" / "known_answers.py"
+    known_py = tmp_path / "kernel" / "proof_records" / "known_answers.py"
     known_py.write_text(known_py.read_text(encoding="utf-8").replace(known.IDENTITY, "sha256:" + "0" * 64), encoding="utf-8")
     return known_py
 
@@ -156,7 +156,7 @@ def test_stale_answers_stop_a_consumer(tmp_path):
     """The premise of the test below: with the answers corrupted, an ordinary
     import of the copy fails."""
     _transplant(tmp_path)
-    done = subprocess.run([sys.executable, "-c", "import proof_records"], capture_output=True, text=True, cwd=tmp_path)
+    done = subprocess.run([sys.executable, "-c", "import proof_records"], capture_output=True, text=True, cwd=tmp_path / "kernel")
     assert done.returncode != 0 and "refuses to load" in done.stderr
 
 
@@ -167,12 +167,12 @@ def test_stale_answers_do_not_stop_the_generator(tmp_path):
     known_py = _transplant(tmp_path)
     done = subprocess.run([sys.executable, str(tmp_path / "tools" / "make_vectors.py")], capture_output=True, text=True, cwd=tmp_path)
     assert done.returncode == 0, done.stderr
-    assert known_py.read_text(encoding="utf-8") == (ROOT / "proof_records" / "known_answers.py").read_text(encoding="utf-8")
+    assert known_py.read_text(encoding="utf-8") == (ROOT / "kernel" / "proof_records" / "known_answers.py").read_text(encoding="utf-8")
 
 
 def test_skipping_the_gate_is_announced(tmp_path):
     """A check that can be turned off silently is not a check."""
     done = subprocess.run([sys.executable, "-c", "import proof_records"], capture_output=True, text=True,
-                          cwd=tmp_path, env={**os.environ, self_test.REGENERATING: "1", "PYTHONPATH": str(ROOT)})
+                          cwd=tmp_path, env={**os.environ, self_test.REGENERATING: "1", "PYTHONPATH": str(ROOT / "kernel")})
     assert done.returncode == 0, done.stderr
     assert "the known-answer gate did not run" in done.stderr

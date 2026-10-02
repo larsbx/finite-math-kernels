@@ -6,7 +6,7 @@
 # domain's bound p^2 for p = 2^24 - 3, and prints the rendered lines; the test
 # compares them with the reference's arithmetic.
 import Base
-import ../../benchmarks/frontier/census.bend as C
+import ../../experiments/frontier/census.bend as C
 
 def agg(+s: Nat, +l: Nat) -> C.Agg:
   C.Agg{1, 1, s, l, 0, 1, 0, 0, 1, 0}

@@ -21,5 +21,5 @@ from an already validated ledger; normalization does not validate the theorem.
 
 The first canonical vector is the existing generated example graph. Its input
 digest is pinned in the registration. The expected result under
-`fixtures/oracle/` is committed separately so downstream implementations must
+`conformance/oracle/` is committed separately so downstream implementations must
 match a domain-owned answer rather than regenerate their own expectation.

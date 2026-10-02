@@ -1,6 +1,6 @@
 # Exact arithmetic public boundary
 
-Status: package invariant for `finite_exact/bigint_z.mojo` and `finite_exact/rat_q.mojo`. It declares which names, semantics, and encodings consumers may rely on. It states no theorem and enables no certificate acceptance: arithmetic readiness is a property of this package, acceptance is decided by each consumer.
+Status: package invariant for `kernel/finite_exact/bigint_z.mojo` and `kernel/finite_exact/rat_q.mojo`. It declares which names, semantics, and encodings consumers may rely on. It states no theorem and enables no certificate acceptance: arithmetic readiness is a property of this package, acceptance is decided by each consumer.
 
 Specification of the arithmetic itself: `docs/rational-interval-arithmetic-spec.md`. Encodings: `docs/canonical-encoding.md`. The interval layer (`IQ`, `ComplexIQ`) has its own boundary document in `larsbx/interval_q`.
 
@@ -34,9 +34,9 @@ Result carriers `BigZDivModResult`, `BigZExactDivisionResult`, `BigZCanonicalByt
 ## 4. Verification of the boundary
 
 - `tests/finite_exact/test_finite_exact.mojo` executes the field laws, the sticky-rejection rule, `bigz_long_division_smoke`, and `q_cancellation_smoke` on every CI run (`pixi run test-finite-exact`).
-- `tests/finite_exact/property_probe.mojo` draws deterministic pseudo-random operands and prints the canonical bytes of every result; `tools/property_oracle.py --layers zq` recomputes them with Python `int` and `fractions.Fraction` and compares token by token. Long division is checked in-process against the shift-and-subtract reference on every case, and every produced value is checked for canonical form (`pixi run property`).
+- `tests/finite_exact/property_probe.mojo` draws deterministic pseudo-random operands and prints the canonical bytes of every result; `oracles/property_oracle.py --layers zq` recomputes them with Python `int` and `fractions.Fraction` and compares token by token. Long division is checked in-process against the shift-and-subtract reference on every case, and every produced value is checked for canonical form (`pixi run property`).
 - `tests/finite_exact/test_property_oracle.py` checks the oracle's own encoder against the documented byte examples and, when a `mojo` binary is present, runs the full comparison; `tests/finite_exact/test_public_boundary.py` checks the wiring above (`pixi run test`).
 
 ## 5. Stability promise
 
-Names and semantics in sections 1 and 2 change only with a note in this file, a matching change in `docs/rational-interval-arithmetic-spec.md`, and a passing property probe. Names outside section 1 carry no promise. Consumers pin a commit of this repository (`audit/CONSOLIDATION_PROVENANCE.md`); a change here reaches a consumer only when it moves its pin.
+Names and semantics in sections 1 and 2 change only with a note in this file, a matching change in `docs/rational-interval-arithmetic-spec.md`, and a passing property probe. Names outside section 1 carry no promise. Consumers pin a commit of this repository (`docs/audit/CONSOLIDATION_PROVENANCE.md`); a change here reaches a consumer only when it moves its pin.
