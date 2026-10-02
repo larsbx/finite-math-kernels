@@ -8,7 +8,7 @@ from pathlib import Path
 import pytest
 
 ROOT = Path(__file__).resolve().parents[2]
-sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(ROOT / "kernel"))
 
 from proof_records.records import (ACCEPTED, BOUNDED, Edge, Kind, OPEN, Record, close, edge, identified, identity,  # noqa: E402
                                    outcome, validate)

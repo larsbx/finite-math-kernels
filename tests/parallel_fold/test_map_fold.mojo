@@ -1,7 +1,7 @@
 """Executable laws for the parallel_fold package.
 
 Run with `pixi run test-parallel-fold`
-(`mojo run -I . tests/parallel_fold/test_map_fold.mojo`).
+(`mojo run -I kernel tests/parallel_fold/test_map_fold.mojo`).
 
 The one law: for an associative `combine` with identity `e`,
 `parallel_map_fold(map, combine, e, n, workers)` equals the sequential left

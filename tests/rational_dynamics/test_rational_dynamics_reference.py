@@ -2,7 +2,7 @@ from fractions import Fraction
 
 import pytest
 
-from tools.rational_dynamics_reference import (
+from rational_dynamics_reference import (
     address,
     continued_fraction,
     convergents,

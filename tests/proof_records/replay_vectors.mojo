@@ -1,7 +1,7 @@
 """Replays a vector transcript through the Mojo implementation.
 
 Input (path in the REPLAY_INPUT environment variable, or argv[1]) is
-written by tools/replay_mojo.py from fixtures/vectors.json, one
+written by tools/replay_mojo.py from conformance/vectors.json, one
 tab-separated line per item, counts before lists:
 
   P <name> <n> <tag> <reason> ...                  a named tag policy
@@ -90,7 +90,7 @@ def main() raises:
     var path = getenv("REPLAY_INPUT", "")
     if path.byte_length() == 0:
         if len(argv()) < 2:
-            raise Error("usage: REPLAY_INPUT=<transcript> mojo run -I . tests/proof_records/replay_vectors.mojo")
+            raise Error("usage: REPLAY_INPUT=<transcript> mojo run -I kernel tests/proof_records/replay_vectors.mojo")
         path = String(argv()[1])
     var text = open(path, "r").read()
     var ledger = Ledger()

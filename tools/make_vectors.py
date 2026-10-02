@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Regenerate fixtures/vectors.json from the Python reference model.
+"""Regenerate conformance/vectors.json from the Python reference model.
 
 Each vector names a ledger, a root, a policy, and the expected validation
 kinds, identities, digests, and closure. Ledger keys are record identifiers
 (digests of the preimage), so the fixture also carries a label map for
 readers. The Mojo implementation replays this file;
 tests/proof_records/test_vectors.py fails if the committed file differs
-from the regeneration. It also writes proof_records/known_answers.py, the
+from the regeneration. It also writes kernel/proof_records/known_answers.py, the
 constants the import-time self-test checks. Usage: make_vectors.py [--check]
 """
 
@@ -19,9 +19,9 @@ from dataclasses import replace
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(ROOT / "kernel"))
 
-# This tool writes proof_records/known_answers.py, so it is the one importer that
+# This tool writes kernel/proof_records/known_answers.py, so it is the one importer that
 # cannot be held to the answers already committed there: an intended codec change
 # would otherwise fail the import-time gate before the tool that repairs it could
 # run. The door is opened for this import only and closed again immediately.
@@ -36,8 +36,8 @@ try:
 finally:
     os.environ.pop(REGENERATING, None)
 
-FIXTURE = ROOT / "fixtures" / "vectors.json"
-KNOWN = ROOT / "proof_records" / "known_answers.py"
+FIXTURE = ROOT / "conformance" / "vectors.json"
+KNOWN = ROOT / "kernel" / "proof_records" / "known_answers.py"
 
 POLICIES = {
     "none": no_policy,
@@ -170,7 +170,7 @@ def pinned_key() -> str:
 
 
 def render_known_answers() -> str:
-    """`proof_records/known_answers.py`, the constants the import-time self-test
+    """`kernel/proof_records/known_answers.py`, the constants the import-time self-test
     checks. Generated from the same reference ledger as the fixture, so the two
     cannot disagree, and committed, so a codec change is a diff somebody
     accepts rather than a self-test that agrees with itself."""
@@ -179,7 +179,7 @@ def render_known_answers() -> str:
         '"""The known answers of the import-time self-test. Generated; do not edit.',
         "",
         "Written by tools/make_vectors.py from the reference ledger that also produces",
-        "fixtures/vectors.json. `make_vectors.py --check` fails when a regeneration",
+        "conformance/vectors.json. `make_vectors.py --check` fails when a regeneration",
         "differs from the committed file, which is what keeps these from being",
         "constants the code agrees with by construction.",
         '"""',

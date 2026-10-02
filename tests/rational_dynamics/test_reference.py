@@ -6,7 +6,7 @@ import random
 
 import pytest
 
-from tools.rational_dynamics_reference import (
+from rational_dynamics_reference import (
     Address,
     address,
     continued_fraction,

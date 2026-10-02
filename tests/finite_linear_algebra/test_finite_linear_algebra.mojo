@@ -1,6 +1,6 @@
 """Regressions for the finite_linear_algebra package.
 
-Run with `pixi run test` (`mojo run -I . tests/test_finite_linear_algebra.mojo`).
+Run with `pixi run test` (`mojo run -I kernel tests/test_finite_linear_algebra.mojo`).
 The assertions are the general ones carried over from the PSC kernel test;
 certificate-specific claims stay in that repository.
 """
