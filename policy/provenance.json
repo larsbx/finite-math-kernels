@@ -1152,7 +1152,7 @@
       "relation": "authored"
     },
     "reference/boundary_envelope.py": {
-      "blob": "f3739a1d86dd94e17f37b4b173936a81e03faa6b",
+      "blob": "9e5619146476a8c311365b8047b433ce1020091e",
       "relation": "authored"
     },
     "schemas/polyglot-boundary-envelope-v1.json": {
@@ -1160,7 +1160,7 @@
       "relation": "authored"
     },
     "tests/polyglot/test_boundary_envelope.py": {
-      "blob": "07f750802bae33d59f87421860d877e61b2c0beb",
+      "blob": "75722fac9fd69614ecb16ff72736f12dec9258a0",
       "relation": "authored"
     }
   },

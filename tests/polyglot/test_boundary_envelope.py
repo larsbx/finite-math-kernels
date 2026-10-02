@@ -32,5 +32,11 @@ def test_unsupported_schema_keyword_refused():
     assert refusal({"type": "object", "minProperties": 1}, {}) is not None
 
 
+def test_unsupported_keyword_in_an_absent_optional_property_refused():
+    """The schema is checked whole, not only along the paths a value happens to visit."""
+    schema = {"type": "object", "properties": {"critical": {"type": "object", "minProperties": 1}}}
+    assert refusal(schema, {}) is not None
+
+
 def test_vectors_name_this_boundary():
     assert VECTORS["boundary"] == SCHEMA["properties"]["boundary"]["const"]

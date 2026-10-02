@@ -1,24 +1,30 @@
 """Reference semantics of schemas/polyglot-boundary-envelope-v1.json: a closed, fail-closed validator.
 
 It understands exactly the JSON Schema keywords that contract uses. Any other
-keyword is refused rather than ignored, so a schema change can never make the
-validator silently more permissive.
+keyword anywhere in the schema is refused rather than ignored, whatever the
+value, so a schema change can never make the validator silently more permissive.
 """
 
 from __future__ import annotations
 
 import re
 
-ANNOTATIONS = {"$schema", "$id", "title"}
+KEYWORDS = {"$schema", "$id", "title", "type", "additionalProperties", "required", "properties",
+            "const", "enum", "minLength", "pattern"}
 TYPES = {"object": dict, "string": str}
 
 
-def refusal(schema: dict, value, path: str = "$") -> str | None:
-    """None if value satisfies schema; otherwise the first reason it does not."""
-    unknown = set(schema) - ANNOTATIONS - {"type", "additionalProperties", "required", "properties",
-                                            "const", "enum", "minLength", "pattern"}
+def unsupported(schema: dict, path: str = "$") -> str | None:
+    """The first schema location using a keyword this validator does not implement, if any."""
+    unknown = set(schema) - KEYWORDS
     if unknown:
         return f"{path}: unsupported schema keywords {sorted(unknown)}"
+    return next((r for k, sub in schema.get("properties", {}).items()
+                 for r in [unsupported(sub, f"{path}.{k}")] if r), None)
+
+
+def violation(schema: dict, value, path: str = "$") -> str | None:
+    """The first reason value fails a schema that uses only supported keywords, if any."""
     if "type" in schema and not isinstance(value, TYPES[schema["type"]]):
         return f"{path}: expected {schema['type']}"
     if "const" in schema and value != schema["const"]:
@@ -37,5 +43,10 @@ def refusal(schema: dict, value, path: str = "$") -> str | None:
         if schema.get("additionalProperties") is False and set(value) - set(properties):
             return f"{path}: unknown fields {sorted(set(value) - set(properties))}"
         return next((r for k, sub in properties.items() if k in value
-                     for r in [refusal(sub, value[k], f"{path}.{k}")] if r), None)
+                     for r in [violation(sub, value[k], f"{path}.{k}")] if r), None)
     return None
+
+
+def refusal(schema: dict, value) -> str | None:
+    """None if value satisfies schema; otherwise why not. An unsupported schema refuses every value."""
+    return unsupported(schema) or violation(schema, value)
