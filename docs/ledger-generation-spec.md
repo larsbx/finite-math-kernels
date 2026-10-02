@@ -58,9 +58,31 @@ Imported theorems are never `Proved`: `ProofArchitecture` establishes a proved r
 
 In order: `withdrawn` (class `retired`); a `status:<class>` tag; kind `verified_finite_computation` or `repository_theorem` with an incomplete closure (class `conditional`); the class of the kind (`proved` for both proved kinds, `imported`, `finite-domain`, `open`). `status_classes` may rename any of the seven classes by its key (`verified_finite_computation`, `repository_theorem`, `conditional`, `imported_theorem`, `bounded_experiment`, `pending_dependency`, `withdrawn`); a consumer that distinguishes finite computations from theorems maps `verified_finite_computation` to its finite-domain class.
 
-### 2.4 The established fixpoint
+### 2.4 Alternative dependency routes
 
-`established(A, assumed)` is the least set containing `assumed` and closed under: if `r` is in `ProvedDef`, every name in `RequiresDef[r]` is in the set, and none is withdrawn, then `r` is in the set. This is the reachable-state limit of `ProofArchitecture` under the same constants; the models of section 3.2 make TLC verify the agreement.
+A record may carry one `dependency_alternatives` evidence value: JSON encoding
+an outer nonempty list of nonempty lists of dependency record identifiers.
+Each inner list is a conjunction; the outer list is a disjunction. The union
+must equal exactly the identifiers in `depends_on`, with no duplicate member
+in a branch or duplicate branch (including reordered duplicates). Malformed
+JSON, unknown identifiers, empty branches, and omitted or uncited dependencies
+are refused. With the field absent, all dependencies remain one conjunction.
+The evidence value is part of the record digest, so changing the grouping
+requires re-identifying the record and its dependent records.
+
+This declares proof sufficiency, not a converse implication. Each alternative
+must be justified by the consumer's source. A pending, bounded, imported, or
+withdrawn premise does not become proved through membership in a route.
+Withdrawn premises block their own branch, while another clean branch may
+establish the result. An assumed result is refused if every branch contains a
+withdrawn premise. Status tags and the record closure are unchanged: `close`
+conservatively audits all cited proof references, including unused branches;
+it does not select a proof route or promote a theorem. The index prints the
+alternatives as AND/OR, and graph edges name their alternative branch numbers.
+
+### 2.5 The established fixpoint
+
+`established(A, assumed)` is the least set containing `assumed` and closed under: if `r` is in `ProvedDef`, every name in at least one dependency branch is in the set, and none in that branch is withdrawn, then `r` is in the set. This is the reachable-state limit of `ProofArchitecture` under the same constants; the models of section 3.2 make TLC verify the agreement.
 
 ## 3. Generated surfaces
 
@@ -99,3 +121,5 @@ A consumer replaces its hand-written ledger module, model configurations, `[[cla
 ## 7. Non-claims
 
 The generator does not decide that a record is true, that an import's hypotheses hold, that a bounded experiment generalizes, or that a `status:` override is justified. Those are the consumer's records and the consumer's policy; the generator only guarantees that every surface says the same thing about them.
+
+Migration: copy the matching upstream `ProofArchitecture.tla` and regenerate the ledger together. `Requires` now uniformly contains sets of prerequisite sets; legacy records still have one conjunctive branch.

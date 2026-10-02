@@ -182,15 +182,15 @@ def test_tla_ledger_rendering():
     text = gl.render_tla(ANALYSIS)
     assert text.startswith("---- MODULE Example ----\n")
     assert "EXTENDS ProofArchitecture" in text
-    assert '      [] r = "Lemma" -> {"Census", "Density"}' in text
-    assert '    CASE r = "Census" -> {}' in text
-    assert '      [] r = "WithinSweep" -> {"Sweep"}]' in text
+    assert '      [] r = "Lemma" -> {{"Census", "Density"}}' in text
+    assert '    CASE r = "Census" -> {{}}' in text
+    assert '      [] r = "WithinSweep" -> {{"Sweep"}}]' in text
     proved = text[text.index("ProvedDef == {"):text.index("\nImportedDef == ")]
     assert '"Census"' in proved and '"Density"' not in proved and '"Sweep"' not in proved and '"Retracted"' not in proved
     assert 'ImportedDef == {\n    "Density"\n}' in text
     assert 'WithdrawnDef == {\n    "Retracted"\n}' in text
     assert 'GaloisAssumed == {\n    "Galois"\n}' in text
-    assert '      [] r = "Theorem" -> {"Lemma", "Proof"}' in text
+    assert '      [] r = "Theorem" -> {{"Lemma", "Proof"}}' in text
     assert "ImportsAssumed == ImportedDef" in text
     assert 'RetractedNotEstablished == "Retracted" \\notin established' in text
     assert text == gl.render_tla(gl.analyse(ledger()))

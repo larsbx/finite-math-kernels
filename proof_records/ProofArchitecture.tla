@@ -3,7 +3,7 @@
 (* Generic dependency state machine for a ledger of named proof records.    *)
 (*                                                                         *)
 (* A result is established only by explicit assumption or by discharging a  *)
-(* standing proved theorem after all of its prerequisites are established.   *)
+(* standing proved theorem after one prerequisite branch is established.   *)
 (* Withdrawn results can never be discharged.                               *)
 (*                                                                         *)
 (* Requires encodes one-way proof sufficiency/dependency. It must not be     *)
@@ -28,7 +28,7 @@ ASSUME
     /\ Withdrawn \subseteq Results
     /\ Assumed \subseteq Results
     /\ Proved \cap Withdrawn = {}
-    /\ Requires \in [Results -> SUBSET Results]
+    /\ Requires \in [Results -> SUBSET (SUBSET Results)]
 
 VARIABLE established
 
@@ -36,8 +36,14 @@ vars == <<established>>
 
 Init == established = Assumed
 
+(* Each branch is a conjunction; branches are alternatives. {{}} is unconditional. *)
+DependencyRoutes(r) == Requires[r]
+
 Ready == {
-    r \in (Proved \ established) : Requires[r] \subseteq established
+    r \in (Proved \ established) :
+        \E branch \in DependencyRoutes(r) :
+            /\ branch \subseteq established
+            /\ branch \cap Withdrawn = {}
 }
 
 Next ==
@@ -55,7 +61,8 @@ NothingUnjustified == established \subseteq (Proved \cup Assumed)
 
 NoWithdrawnDependency ==
     /\ established \cap Withdrawn = {}
-    /\ \A r \in established : Requires[r] \cap Withdrawn = {}
+    /\ \A r \in established :
+        \E branch \in DependencyRoutes(r) : branch \cap Withdrawn = {}
 
 -----------------------------------------------------------------------------
 (* Observables are configuration-specific and live in the generated ledger   *)
