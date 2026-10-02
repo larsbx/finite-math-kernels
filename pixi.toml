@@ -48,7 +48,7 @@ test-weighted-cycle = "mojo run -I kernel tests/weighted_graph/test_cycle_gain.m
 test-vendoring = "python -m pytest -q tests/vendoring"
 test-proof-records = "python -m pytest -q tests/proof_records"
 vocabularies = "python -m pytest -q tests/proof_records/test_vocabularies.py"
-test-python = "python -m pytest -q tests/toolchain tests/finite_exact tests/proof_records tests/substitution_dynamics tests/rational_dynamics tests/projective_limits tests/cyclotomic tests/finite_polynomial"
+test-python = "python -m pytest -q tests/toolchain tests/finite_exact tests/proof_records tests/substitution_dynamics tests/rational_dynamics tests/projective_limits tests/cyclotomic tests/finite_polynomial tests/polyglot"
 cyclotomic-vectors = "python tools/make_cyclotomic_vectors.py --check"
 test-audit = "PYTHONPATH=tools python -m pytest -q tests/audit"
 test-provenance = "python -m pytest -q tests/provenance"
