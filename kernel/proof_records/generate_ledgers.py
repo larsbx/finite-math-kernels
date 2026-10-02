@@ -98,6 +98,7 @@ class Entry:
     status: str
     requires: tuple[str, ...]
     closure: Closure
+    routes: tuple[tuple[str, ...], ...] = ()
 
 
 @dataclass(frozen=True)
@@ -203,6 +204,42 @@ def output_paths(ledger: Ledger) -> tuple[str, ...]:
     return (*tla, ledger.index_path, *graph)
 
 
+def dependency_routes(record: Record, by_id: Mapping[str, str], requires: Sequence[str]) -> tuple[tuple[str, ...], ...]:
+    """Read digest-bound alternatives from record evidence; absent means AND.
+
+    Each branch is a nonempty conjunction of cited dependencies. The union
+    must equal the record's dependency set, so no citation is silently dropped
+    and no uncited prerequisite can enter the establishment model.
+    """
+    values = [v for k, v in record.evidence if k == "dependency_alternatives"]
+    if not values:
+        return (tuple(requires),)
+    if len(values) != 1:
+        raise LedgerError("dependency_alternatives must occur exactly once")
+    try:
+        groups = json.loads(values[0])
+    except (ValueError, TypeError) as exc:
+        raise LedgerError("dependency_alternatives must be JSON") from exc
+    if (not isinstance(groups, list) or not groups
+            or any(not isinstance(g, list) or not g
+                   or any(not isinstance(d, str) for d in g) for g in groups)):
+        raise LedgerError("dependency_alternatives must be nonempty lists of nonempty identifier lists")
+    cited = {e.record_id for e in record.depends_on}
+    if {d for g in groups for d in g} != cited:
+        raise LedgerError("dependency_alternatives must cover exactly the cited dependencies")
+    if any(len(g) != len(set(g)) for g in groups):
+        raise LedgerError("dependency_alternatives contains a duplicate dependency")
+    if len({frozenset(g) for g in groups}) != len(groups):
+        raise LedgerError("dependency_alternatives contains a duplicate branch")
+    if any(d not in by_id for g in groups for d in g):
+        raise LedgerError("dependency_alternatives names an unknown dependency")
+    return tuple(tuple(by_id[d] for d in g) for g in groups)
+
+
+def route_ready(routes: Sequence[Sequence[str]], done: set[str], withdrawn: set[str]) -> bool:
+    return any(set(branch) <= done and not (set(branch) & withdrawn) for branch in routes)
+
+
 def analyse(ledger: Ledger) -> Analysis:
     errors: list[str] = []
     if not NAME.match(ledger.module):
@@ -264,16 +301,21 @@ def analyse(ledger: Ledger) -> Analysis:
         overrides = [t[len(STATUS_TAG):] for t in sorted(record.tags) if t.startswith(STATUS_TAG)]
         if len(overrides) > 1:
             errors.append(f"{name}: more than one status override tag")
+        try:
+            routes = dependency_routes(record, by_id, requires)
+        except LedgerError as exc:
+            errors.append(f"{name}: {exc}")
+            routes = ()
         closure = close(id_ledger, record.id)
-        entries.append(Entry(name, record, found, withdrawn, _status(ledger, record, withdrawn, overrides, closure), tuple(requires), closure))
+        entries.append(Entry(name, record, found, withdrawn, _status(ledger, record, withdrawn, overrides, closure), tuple(requires), closure, routes))
     analysis = Analysis(ledger, tuple(entries))
     withdrawn = set(analysis.withdrawn)
-    requires = {e.name: set(e.requires) for e in entries}
+    routes = {e.name: e.routes for e in entries}
     for set_name, members in (("ImportsAssumed", analysis.imported), *sorted(ledger.assumption_sets.items())):
         for member in members:
             if member in withdrawn:
                 errors.append(f"{set_name}: {member} is withdrawn and cannot be assumed")
-            elif requires.get(member, set()) & withdrawn:
+            elif all(set(branch) & withdrawn for branch in routes.get(member, ())):
                 errors.append(f"{set_name}: {member} requires a withdrawn result and cannot be assumed")
     if errors:
         raise LedgerError("ledger refused:\n  " + "\n  ".join(errors))
@@ -294,16 +336,16 @@ def _status(ledger: Ledger, record: Record, withdrawn: bool, overrides: Sequence
 
 def established(analysis: Analysis, assumed: Sequence[str]) -> frozenset[str]:
     """Least fixpoint of ProofArchitecture: the assumed results plus every
-    proved result whose prerequisites are established. Withdrawn results are
+    proved result with an established, non-withdrawn prerequisite branch. Withdrawn results are
     never established and block whatever requires them; `analyse` has already
     refused assumptions that are withdrawn or require a withdrawn result, so
     the fixpoint is exactly the reachable limit of the state machine."""
     proved = set(analysis.proved)
     withdrawn = set(analysis.withdrawn)
-    requires = {e.name: set(e.requires) for e in analysis.entries}
+    routes = {e.name: e.routes for e in analysis.entries}
     done = set(assumed)
     while True:
-        ready = {r for r in proved - done if requires[r] <= done and not (requires[r] & withdrawn)}
+        ready = {r for r in proved - done if route_ready(routes[r], done, withdrawn)}
         if not ready:
             return frozenset(done)
         done |= ready
@@ -336,7 +378,7 @@ def render_tla(analysis: Analysis) -> str:
     for e in analysis.entries:
         keyword = "    CASE" if first else "      []"
         first = False
-        deps = "{" + ", ".join(f'"{d}"' for d in e.requires) + "}"
+        deps = "{" + ", ".join("{" + ", ".join(f'"{d}"' for d in branch) + "}" for branch in e.routes) + "}"
         lines.append(f'{keyword} r = "{e.name}" -> {deps}')
     lines[-1] += "]"
     lines += ["",
@@ -448,6 +490,8 @@ def render_index(analysis: Analysis) -> str:
     for e in analysis.entries:
         label = ledger.status_labels.get(e.status, e.status)
         deps = ", ".join(f"`{d}`" for d in e.requires) or "none"
+        if e.record.field("dependency_alternatives") is not None:
+            deps = " OR ".join("(" + " AND ".join(f"`{d}`" for d in branch) + ")" for branch in e.routes)
         closure = "complete" if e.closure.complete else "incomplete: " + "; ".join(f"{_name(analysis, m.record_id)} ({m.reason})" for m in e.closure.missing_links)
         lines.append(f"| {e.name} | {_cell(label)} | {e.record.kind.value} | {_cell(e.record.scope)} | {_cell(e.record.statement)} | {deps} | {_cell(closure)} |")
     return "\n".join(lines) + "\n"

@@ -163,8 +163,12 @@ def edges(analysis) -> tuple[Edge, ...]:
         for dep in entry.record.depends_on:
             premise = by_name[name_of[dep.record_id]]
             mark = provenance(premise)
-            out.append(Edge(IMPLICATIVE, premise.name, entry.name, mark, CERTAIN, dep.use_site,
-                            "" if mark == THEOREM_BACKED else f"premise is {mark}"))
+            note = "" if mark == THEOREM_BACKED else f"premise is {mark}"
+            if entry.record.field("dependency_alternatives") is not None:
+                branches = [str(i + 1) for i, branch in enumerate(entry.routes) if premise.name in branch]
+                route_note = "alternative dependency branch(es): " + ", ".join(branches)
+                note = "; ".join(x for x in (note, route_note) if x)
+            out.append(Edge(IMPLICATIVE, premise.name, entry.name, mark, CERTAIN, dep.use_site, note))
             if premise.withdrawn and not entry.withdrawn:
                 out.append(Edge(CONTRADICTORY, premise.name, entry.name, "withdrawn", CERTAIN, dep.use_site,
                                 "a live result stands on a withdrawn one"))

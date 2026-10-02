@@ -4,7 +4,7 @@
 
 ## 0. Scope and non-scope
 
-The generator decides no mathematics. It reads records, validates them with the proof-records reference model, computes their dependency closures, and renders. The status of a claim is a function of the record's kind, its tags, and its closure (section 2.3); the generator never promotes a claim on its own. The TLA+ state machine it targets, `kernel/proof_records/ProofArchitecture.tla`, is the generic dependency machine of the PSC program with its repository-specific observables removed: a result is established only by assumption or by discharging a proved result whose prerequisites are all established, and a withdrawn result is never discharged.
+The generator decides no mathematics. It reads records, validates them with the proof-records reference model, computes their dependency closures, and renders. The status of a claim is a function of the record's kind, its tags, and its closure (section 2.3); the generator never promotes a claim on its own. The TLA+ state machine it targets, `kernel/proof_records/ProofArchitecture.tla`, is the generic dependency machine of the PSC program with its repository-specific observables removed: a result is established only by assumption or by discharging a proved result whose prerequisites in at least one declared route are all established, and a withdrawn result is never discharged.
 
 ## 1. The named ledger
 
@@ -50,7 +50,7 @@ Every accepted, bounded, or open record is a result. With `outcome` as in the pr
 | `ImportedDef` | outcome `accepted` and kind `imported_theorem` |
 | `BoundedDef` | outcome `bounded` |
 | `WithdrawnDef` | tagged `withdrawn` |
-| `RequiresDef[r]` | the names of the records `r` depends on, in edge order |
+| `RequiresDef[r]` | the alternative prerequisite sets of `r`, in declared branch order; without alternatives, one set containing all dependency names |
 
 Imported theorems are never `Proved`: `ProofArchitecture` establishes a proved result by discharge, and an import is not discharged in the repository. They are established only by assumption, which is what `ImportsAssumed == ImportedDef` and the `Imports` model of section 3.2 make explicit. Bounded experiments and pending records are in `ResultSet` and never in `Proved`, so anything that requires them stays unestablished in every model; this is the `ProofArchitecture` form of the proof-records rule that a bounded experiment is evidence, not a theorem. A verified record whose edge requires a bounded outcome on its own scope has a complete closure (proof-records section 5) but is still not established by TLC without assuming the experiment; this leak is deliberate and documented in the index by the closure column.
 
@@ -58,15 +58,37 @@ Imported theorems are never `Proved`: `ProofArchitecture` establishes a proved r
 
 In order: `withdrawn` (class `retired`); a `status:<class>` tag; kind `verified_finite_computation` or `repository_theorem` with an incomplete closure (class `conditional`); the class of the kind (`proved` for both proved kinds, `imported`, `finite-domain`, `open`). `status_classes` may rename any of the seven classes by its key (`verified_finite_computation`, `repository_theorem`, `conditional`, `imported_theorem`, `bounded_experiment`, `pending_dependency`, `withdrawn`); a consumer that distinguishes finite computations from theorems maps `verified_finite_computation` to its finite-domain class.
 
-### 2.4 The established fixpoint
+### 2.4 Alternative dependency routes
 
-`established(A, assumed)` is the least set containing `assumed` and closed under: if `r` is in `ProvedDef`, every name in `RequiresDef[r]` is in the set, and none is withdrawn, then `r` is in the set. This is the reachable-state limit of `ProofArchitecture` under the same constants; the models of section 3.2 make TLC verify the agreement.
+A record may carry one `dependency_alternatives` evidence value: JSON encoding
+an outer nonempty list of nonempty lists of dependency record identifiers.
+Each inner list is a conjunction; the outer list is a disjunction. The union
+must equal exactly the identifiers in `depends_on`, with no duplicate member
+in a branch or duplicate branch (including reordered duplicates). Malformed
+JSON, unknown identifiers, empty branches, and omitted or uncited dependencies
+are refused. With the field absent, all dependencies remain one conjunction.
+The evidence value is part of the record digest, so changing the grouping
+requires re-identifying the record and its dependent records.
+
+This declares proof sufficiency, not a converse implication. Each alternative
+must be justified by the consumer's source. A pending, bounded, imported, or
+withdrawn premise does not become proved through membership in a route.
+Withdrawn premises block their own branch, while another clean branch may
+establish the result. An assumed result is refused if every branch contains a
+withdrawn premise. Status tags and the record closure are unchanged: `close`
+conservatively audits all cited proof references, including unused branches;
+it does not select a proof route or promote a theorem. The index prints the
+alternatives as AND/OR, and graph edges name their alternative branch numbers.
+
+### 2.5 The established fixpoint
+
+`established(A, assumed)` is the least set containing `assumed` and closed under: if `r` is in `ProvedDef`, every name in at least one dependency branch is in the set, and none in that branch is withdrawn, then `r` is in the set. This is the reachable-state limit of `ProofArchitecture` under the same constants; the models of section 3.2 make TLC verify the agreement.
 
 ## 3. Generated surfaces
 
 ### 3.1 The TLA+ ledger `<tla_dir>/<Module>.tla`
 
-`EXTENDS ProofArchitecture` and defines `ResultSet`, `RequiresDef` (a `CASE` over the results), the four sets of section 2.2, `NoAssumptions == {}`, `ImportsAssumed == ImportedDef`, every assumption set of the ledger, and one observable `<Name>NotEstablished == "<Name>" \notin established` per result. Results are listed in name order, so the file is a canonical function of the ledger.
+`EXTENDS ProofArchitecture` and defines `ResultSet`, `RequiresDef` (a `CASE` over the results; sets of sets of names; one branch for legacy conjunctions, multiple branches for declared alternatives), the four sets of section 2.2, `NoAssumptions == {}`, `ImportsAssumed == ImportedDef`, every assumption set of the ledger, and one observable `<Name>NotEstablished == "<Name>" \notin established` per result. Results are listed in name order, so the file is a canonical function of the ledger.
 
 ### 3.2 The TLC models `MC<Module>Open`, `MC<Module>Imports`, and `MC<Module><Set>`
 
@@ -99,3 +121,17 @@ A consumer replaces its hand-written ledger module, model configurations, `[[cla
 ## 7. Non-claims
 
 The generator does not decide that a record is true, that an import's hypotheses hold, that a bounded experiment generalizes, or that a `status:` override is justified. Those are the consumer's records and the consumer's policy; the generator only guarantees that every surface says the same thing about them.
+
+## Alternative-route regression boundary
+
+`tests/proof_records/test_dependency_alternatives.py` pins both independent
+routes to one canonical conclusion and a downstream dependent result, AND
+within a branch, no unconditional establishment, malformed group refusal,
+withdrawn-branch isolation, unchanged status, and rendered graph/index/TLC
+semantics. With TLC available, both routes hold and a deliberately false
+canonical-nonestablishment invariant fails.
+
+Migration: regenerate the ledger and copy the matching upstream
+`ProofArchitecture.tla` together. `Requires` now uniformly contains sets of
+prerequisite sets; legacy records still have exactly one conjunctive branch.
+A generated ledger must not be used with the older flat-set state machine.
