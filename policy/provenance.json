@@ -218,7 +218,7 @@
       "relation": "authored"
     },
     "ESTATE.toml": {
-      "blob": "acd26a403663bdd701be4b251f474d32f3f1a5e8",
+      "blob": "cfa79bc3157fae35c85d0490aff8659852c94e1d",
       "relation": "authored"
     },
     "experiments/frontier/candidates.toml": {
@@ -634,7 +634,7 @@
       "source_path": "tools/property_oracle.py"
     },
     "pixi.toml": {
-      "blob": "6a5cfabed7c0a1ed521e78dcc8a6ff66296cad69",
+      "blob": "e14f8a60aad2134e295ca8c1dc241991edb213c9",
       "relation": "authored"
     },
     "policy/estate-audits/0833929ed82d42cf3674a1565681625a9622827b.py": {
@@ -1146,6 +1146,22 @@
       "source": "finite_mandelbrot_research",
       "source_blob": "76ddda76a2cc3dea8221ac8b8192fe3d7e4f14c4",
       "source_path": "tools/check_vendored_sync.py"
+    },
+    "conformance/polyglot_boundary_envelope_v1.json": {
+      "blob": "7a41ae95d56b554e6bea6e80e933f165c665e013",
+      "relation": "authored"
+    },
+    "reference/boundary_envelope.py": {
+      "blob": "f3739a1d86dd94e17f37b4b173936a81e03faa6b",
+      "relation": "authored"
+    },
+    "schemas/polyglot-boundary-envelope-v1.json": {
+      "blob": "46cb8fa918abbd5d5cfbc640384227ce252ee766",
+      "relation": "authored"
+    },
+    "tests/polyglot/test_boundary_envelope.py": {
+      "blob": "07f750802bae33d59f87421860d877e61b2c0beb",
+      "relation": "authored"
     }
   },
   "format": "finite-math-kernels provenance 1",
