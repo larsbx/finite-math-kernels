@@ -1,10 +1,10 @@
 """Executable laws for the finite_field_orbit package.
 
 Run with `pixi run test-orbit-census`
-(`mojo run -I . tests/finite_field_orbit/test_orbit_census.mojo`).
+(`mojo run -I kernel tests/finite_field_orbit/test_orbit_census.mojo`).
 
 The kernel is checked against every golden vector in
-`fixtures/orbit_census_v1.txt` (written by `tools/make_orbit_vectors.py` from
+`conformance/orbit_census_v1.txt` (written by `tools/make_orbit_vectors.py` from
 the reference semantics), and the witness replay, which shares no code with
 the census, is checked on its own.
 """
@@ -29,7 +29,7 @@ def expect(label: String, got: String, want: String) raises:
 
 def check_vectors() raises -> Int:
     var checked = 0
-    for raw in open("fixtures/orbit_census_v1.txt", "r").read().split("\n"):
+    for raw in open("conformance/orbit_census_v1.txt", "r").read().split("\n"):
         var line = String(raw)
         if line.byte_length() == 0 or line.startswith("#"):
             continue

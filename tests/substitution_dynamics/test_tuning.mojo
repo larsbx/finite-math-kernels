@@ -2,7 +2,7 @@
 
 Every constant pinned here is also asserted by the independent Python oracle
 `tests/substitution_dynamics/test_tuning_reference.py` over
-`tools/tuning_reference.py`. Run with `pixi run test-tuning`.
+`reference/tuning_reference.py`. Run with `pixi run test-tuning`.
 """
 
 from std.testing import assert_equal, assert_false, assert_true

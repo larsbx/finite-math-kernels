@@ -1,6 +1,6 @@
 # M-adic ball arithmetic: specification of the lattice-coset carrier
 
-**Status:** specification of `finite_linear_algebra/madic_ball.mojo` and of its independent Python oracle `tools/madic_oracle.py`. Sections 0 to 5 are repository-independent and carry no theorem: the carrier removes one class of error from a computation and decides one membership question. Section 6 names the consumer and section 7 says how the specification is enforced.
+**Status:** specification of `kernel/finite_linear_algebra/madic_ball.mojo` and of its independent Python oracle `oracles/madic_oracle.py`. Sections 0 to 5 are repository-independent and carry no theorem: the carrier removes one class of error from a computation and decides one membership question. Section 6 names the consumer and section 7 says how the specification is enforced.
 
 This carrier exists because a consumer asked for a "shared real times 2-adic box kernel" and the obvious reading of that request is wrong. Section 3 is the reason, and it is the part of this document worth reading first.
 
@@ -163,13 +163,13 @@ productivity, separation, or tiling.
 ## 7. Enforcement
 
 - `pixi run test-madic` runs `tests/finite_linear_algebra/test_madic_ball.mojo`, which pins the table of section 3, the contract of section 2, and the refusals of section 5.
-- `pixi run test-madic-oracle` runs `tests/finite_linear_algebra/test_madic_oracle.py`, which asserts the same pinned values against `tools/madic_oracle.py` and adds the enumeration properties: the number of distinct cosets equals `|det M^k|`, the lattice columns are members at their own level, and separation is monotone in the level.
+- `pixi run test-madic-oracle` runs `tests/finite_linear_algebra/test_madic_oracle.py`, which asserts the same pinned values against `oracles/madic_oracle.py` and adds the enumeration properties: the number of distinct cosets equals `|det M^k|`, the lattice columns are members at their own level, and separation is monotone in the level.
 - Both are in `pixi run test`, so CI runs them.
 
 The oracle is written from the definitions in this document rather than
 transliterated from the Mojo, so agreement between the two is evidence rather
 than an echo. What is **not** implemented is the shared-transcript probe that
-`tests/finite_exact/property_probe.mojo` uses against `tools/property_oracle.py`,
+`tests/finite_exact/property_probe.mojo` uses against `oracles/property_oracle.py`,
 where the two languages exchange canonical bytes for the same generated cases.
 That is the stronger form; this carrier has the weaker one, and this sentence
 records the difference rather than letting the word "differential" carry more

@@ -5,18 +5,18 @@ from the finite-regime Mandelbrot program (`larsbx/finite-mandlebrot-research`,
 formerly `larsbx/NLAP-JT`) and the Pisot substitution research program.
 
 ```text
-finite_exact/
+kernel/finite_exact/
   bigint_z.mojo
   rational.mojo
   closed_interval.mojo
-finite_linear_algebra/
+kernel/finite_linear_algebra/
   matrix.mojo
   matrix3.mojo
   rational_elimination.mojo
   tensor3.mojo
-finite_polynomial/
+kernel/finite_polynomial/
   polynomial_z.mojo
-substitution_dynamics/
+kernel/substitution_dynamics/
   words.mojo
   substitution.mojo
   balanced_pairs.mojo
@@ -25,24 +25,32 @@ substitution_dynamics/
   tuning.mojo
   sadic.mojo
   coincidence.mojo
-quadratic_orbit/
+kernel/quadratic_orbit/
   orbit.mojo
   collision.mojo
-rational_dynamics/
+kernel/rational_dynamics/
   rational.mojo
-finite_field_orbit/
+kernel/projective_limits/
+  line.mojo
+  limits.mojo
+kernel/finite_field_orbit/
   census.mojo
-mojo_smoke/
+kernel/mojo_smoke/
   report.mojo
-parallel_fold/
+kernel/parallel_fold/
   map_fold.mojo
-proof_records/
+kernel/proof_records/
   ProofArchitecture.tla
   graph.py
-vendoring/
-  check_vendored_sync.py
-audit/
+tools/
+  tools/vendoring/check_vendored_sync.py
   claim_governance/
+reference/                  Python reference semantics
+oracles/                    differential oracles and oracles/oracle_refinement/
+experiments/frontier/       the polyglot frontier lane
+schemas/                    normative contracts
+conformance/                golden vectors and ledger fixtures
+policy/provenance.json      consolidation provenance of every tracked file
 ```
 
 The implementation retains compatibility modules (`rat_q`, `closed_q`,
@@ -77,19 +85,26 @@ not part of this repository.
   the dynamical plane varies the seed at fixed `c`, so the seed is an argument
   and neither plane is the library's default. Terms are enclosures: separation
   of two terms is a fact about the boxes, and overlap is never equality.
-- The collision partition (`quadratic_orbit/collision.mojo`) is finite
+- The collision partition (`kernel/quadratic_orbit/collision.mojo`) is finite
   combinatorics on indices. It says which pairs an `(ell, period)` type
   intends to collide, knows nothing about any parameter, and proves nothing
   about any orbit; an invalid type intends nothing rather than something
   arbitrary.
+- `reference/cyclotomic_reference.py` is the independent reference for the
+  cyclotomic (`Q[zeta_q]`, Galois action) and quadratic-germ (truncated
+  iterate, parabolic factor, reciprocal series) stages of
+  `docs/rational-dynamics-cyclotomic-bridge.md`; its Mojo stage is planned.
+  It returns finite algebra only; naming a coefficient as an index, or
+  relating it to any bulb, is the consumer's.
 - `rational_dynamics` provides exact unbounded reduced-fraction arithmetic, explicit doubling modulo one, modular and centered modular inverses, canonical simple continued fractions and convergents, and Farey determinants. It interprets none of these as measured angles or domain claims.
-- The finite-field orbit census (`finite_field_orbit/census.mojo`,
+- `projective_limits` computes limits of rational functions over Q as points of P^1(Q), infinity included, through one kernel: the lowest-order point on the exceptional divisor. It covers poles, the degree rule, L'Hopital, tangent slopes in the pencil, asymptotes, directional and arc limits of bivariate quotients, Moebius maps and the squared chordal metric. A found path-dependence witness certifies that a limit does not exist; a search that finds none is inconclusive. An independent Python reference (`reference/projective_limits_reference.py`: gcd cancellation and evaluation, polynomial division) writes the golden vectors `conformance/projective_limits_v1.txt`, which the Mojo kernel replays.
+- The finite-field orbit census (`kernel/finite_field_orbit/census.mojo`,
   `docs/polyglot-orbit-census-design.md`) computes exact tails and periods of
   `x -> x^2 + c` over `F_p` for a block of seeds, up to a cap. Cap reached is
   inconclusive, never a fact about the orbit. Its replay predicate is the only
   authority for records proposed by the Bend challenger, and the Elixir
   orchestrator only schedules; neither decides anything.
-- The vendoring checker (`vendoring/`) reports drift between a consumer's
+- The vendoring checker (`tools/vendoring/`) reports drift between a consumer's
   copies and its pins. It decides nothing about the code it checks, and it
   searches upward for the manifest so that how deep a consumer puts it does
   not matter.
@@ -107,7 +122,7 @@ not part of this repository.
   malformed record.
 - Generated ledgers (`docs/ledger-generation-spec.md`) are functions of a
   consumer's named proof records: the TLA+ ledger and TLC models over
-  `proof_records/ProofArchitecture.tla`, the `[[claim]]` entries, and the
+  `kernel/proof_records/ProofArchitecture.tla`, the `[[claim]]` entries, and the
   Markdown index all say what the records say, and the generator refuses a
   ledger it cannot render faithfully. It promotes nothing.
 - The typed relationship graph (`docs/typed-relationship-graph-spec.md`) is
@@ -135,4 +150,4 @@ not part of this repository.
 pixi run test
 ```
 
-See `audit/CONSOLIDATION_PROVENANCE.md` for source mapping and retirement gates.
+See `docs/audit/CONSOLIDATION_PROVENANCE.md` for source mapping and retirement gates.

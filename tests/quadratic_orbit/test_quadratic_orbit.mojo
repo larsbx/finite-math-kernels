@@ -1,7 +1,7 @@
 """Executable laws for the quadratic_orbit package.
 
 Run with `pixi run test-quadratic-orbit`
-(`mojo run -I . tests/quadratic_orbit/test_quadratic_orbit.mojo`).
+(`mojo run -I kernel tests/quadratic_orbit/test_quadratic_orbit.mojo`).
 
 The orbit is checked against hand-computed exact terms in both seedings that
 consumers use, and the collision partition is checked to be a partition.

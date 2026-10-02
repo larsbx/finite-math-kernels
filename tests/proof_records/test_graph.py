@@ -1,4 +1,4 @@
-"""Conformance tests for proof_records/graph.py against docs/typed-relationship-graph-spec.md."""
+"""Conformance tests for kernel/proof_records/graph.py against docs/typed-relationship-graph-spec.md."""
 
 from __future__ import annotations
 
@@ -11,14 +11,14 @@ from pathlib import Path
 import pytest
 
 ROOT = Path(__file__).resolve().parents[2]
-sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(ROOT / "kernel"))
 sys.path.insert(0, str(ROOT / "tools"))
 
 from proof_records import generate_ledgers as gl  # noqa: E402
 from proof_records import graph as tg  # noqa: E402
 import make_ledger_example as mle  # noqa: E402
 
-FIXTURE = ROOT / "fixtures" / "ledger" / "relationship-graph.json"
+FIXTURE = ROOT / "conformance" / "ledger" / "relationship-graph.json"
 
 
 def analysis(**changes):

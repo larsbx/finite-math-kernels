@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Replay fixtures/vectors.json through the Mojo implementation and compare.
+"""Replay conformance/vectors.json through the Mojo implementation and compare.
 
 Writes the vectors as the tab-separated transcript that
 ``tests/proof_records/replay_vectors.mojo`` reads, runs it under
-``mojo run -I .``, and compares every validation result, identity, canonical
+``mojo run -I kernel``, and compares every validation result, identity, canonical
 digest (SHA-256 of the octets the Mojo side prints), and closure with the
 fixture. The identity field is the Mojo SHA-256 over the preimage, so the
 two SHA-256 implementations cross-check each other on every record. Nothing
@@ -29,7 +29,7 @@ import tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-FIXTURE = ROOT / "fixtures" / "vectors.json"
+FIXTURE = ROOT / "conformance" / "vectors.json"
 DRIVER = ROOT / "tests" / "proof_records" / "replay_vectors.mojo"
 POLICIES = {"none": [], "nlap_rank2": [("uses_rank2_circle", "rank-2 circle primitive rejected")]}
 
@@ -101,7 +101,7 @@ def run_mojo(data: dict) -> list[str] | None:
         handle.write("\n".join(input_lines(data)) + "\n")
         path = handle.name
     env = dict(os.environ, REPLAY_INPUT=path)
-    result = subprocess.run([mojo, "run", "-I", str(ROOT), str(DRIVER)], cwd=ROOT, env=env, capture_output=True, text=True, check=False)
+    result = subprocess.run([mojo, "run", "-I", str(ROOT / "kernel"), str(DRIVER)], cwd=ROOT, env=env, capture_output=True, text=True, check=False)
     if result.returncode != 0:
         raise RuntimeError(f"mojo replay failed with status {result.returncode}:\n{result.stderr}")
     return [line for line in result.stdout.splitlines() if line.strip()]
@@ -118,7 +118,7 @@ def main(argv: list[str]) -> int:
             return 2
     errors = compare(actual, data)
     if errors:
-        print("Mojo implementation disagrees with fixtures/vectors.json:\n")
+        print("Mojo implementation disagrees with conformance/vectors.json:\n")
         print("\n".join(errors))
         return 1
     print(f"OK: Mojo replay agrees with the reference on {len(data['ledger'])} records and {len(data['closures'])} closures.")
