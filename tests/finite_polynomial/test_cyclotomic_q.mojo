@@ -14,7 +14,9 @@ from finite_polynomial.cyclotomic_q import (
     cyclotomic_automorphism,
     cyclotomic_bytes_equal,
     cyclotomic_canonical_bytes,
+    cyclotomic_div,
     cyclotomic_equal,
+    cyclotomic_inverse,
     cyclotomic_from_coeffs,
     cyclotomic_mul,
     cyclotomic_one,
@@ -117,6 +119,25 @@ def test_rational_coefficients_remain_exact() raises:
     )
 
 
+def test_field_inverse_is_exact() raises:
+    var value = from_i64s(5, [2, -1, 3, 1])
+    var inverse = cyclotomic_inverse(value)
+    assert_true(inverse.accepted())
+    assert_true(
+        cyclotomic_equal(
+            cyclotomic_mul(value, inverse),
+            cyclotomic_one(5),
+        )
+    )
+    assert_true(
+        cyclotomic_equal(
+            cyclotomic_div(value, value),
+            cyclotomic_one(5),
+        )
+    )
+    assert_false(cyclotomic_inverse(cyclotomic_zero(5)).accepted())
+
+
 def test_galois_action_is_exact() raises:
     var z4 = zeta(4)
     var conjugated = cyclotomic_automorphism(z4, 3)
@@ -161,10 +182,12 @@ def main() raises:
     print("[PASS] test_high_degree_input_reduces_canonically")
     test_rational_coefficients_remain_exact()
     print("[PASS] test_rational_coefficients_remain_exact")
+    test_field_inverse_is_exact()
+    print("[PASS] test_field_inverse_is_exact")
     test_galois_action_is_exact()
     print("[PASS] test_galois_action_is_exact")
     test_conductor_is_part_of_identity_and_encoding()
     print("[PASS] test_conductor_is_part_of_identity_and_encoding")
     test_invalid_conductor_and_rejected_coefficient_fail_closed()
     print("[PASS] test_invalid_conductor_and_rejected_coefficient_fail_closed")
-    print("8 cyclotomic quotient Mojo tests passed.")
+    print("9 cyclotomic quotient Mojo tests passed.")

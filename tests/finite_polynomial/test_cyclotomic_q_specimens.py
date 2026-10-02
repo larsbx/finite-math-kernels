@@ -5,7 +5,7 @@ from functools import reduce
 
 import pytest
 
-from cyclotomic_reference import add, automorphism, constant, from_polynomial, mul, zeta
+from cyclotomic_reference import add, automorphism, constant, from_polynomial, inverse, mul, zeta
 
 
 def power(value, n: int):
@@ -31,6 +31,13 @@ def test_high_degree_relation_reduces_to_zero():
 def test_rational_coefficients():
     value, conjugate = from_polynomial(4, (F(1, 2), F(1, 3))), from_polynomial(4, (F(1, 2), F(-1, 3)))
     assert mul(value, conjugate) == constant(4, F(13, 36))
+
+
+def test_field_inverse():
+    value = from_polynomial(5, (2, -1, 3, 1))
+    assert mul(value, inverse(value)) == constant(5, 1)
+    with pytest.raises(ValueError):
+        inverse(constant(5, 0))
 
 
 def test_galois_composition_and_refusal():

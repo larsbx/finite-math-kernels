@@ -115,10 +115,16 @@ The extraction should be staged:
    `a mod q`, including conjugation and composition replay. Reference:
    `zeta -> zeta^a` for `gcd(a,q)=1`;
    tested as a ring map, with `sigma_s . sigma_t = sigma_st`.
-5. **Q1 — quadratic germ jets: REFERENCE.** Truncated composition of
+5. **Q1 — quadratic germ jets: IMPLEMENTED.** Mojo
+   `kernel/finite_polynomial/quadratic_germ.mojo`: truncated exact composition
+   of `w -> lambda*w + w^2` over the cyclotomic quotient, with an exact check
+   of the `w^(q+1)` factor. Reference: truncated composition of
    `g_lambda` over `Q[zeta_q]`, and the parabolic factor `P`, refused unless
    the residual vanishes to order `q+1`.
-6. **Q2 — reciprocal-series coefficient: REFERENCE.** Refused when the
+6. **Q2 — reciprocal-series coefficient: IMPLEMENTED.** Mojo: exact
+   cyclotomic field inversion plus the finite recurrence for `[w^q] 1/P(w)`;
+   refuses if the required constant coefficient is not invertible or the
+   parabolic factorization is absent. Reference: refused when the
    constant coefficient is zero. The pinned vectors carry `[w^q] 1/P` for
    `q <= 8` and every unit `p`; the tests check the exact Galois
    equivariance `coefficient(zeta^p) = sigma_p(coefficient(zeta))`.
