@@ -1,6 +1,6 @@
 {
   "schema": "rational-dynamics-cyclotomic/v1",
-  "status": "r1-implemented; c1-c2-q1-q2-reference",
+  "status": "r1-c1-c2-implemented; q1-q2-reference",
   "authority": "none",
   "objects": {
     "reduced_rational": {
@@ -77,7 +77,10 @@
   "implementation": {
     "rational_dynamics": "kernel/rational_dynamics/rational.mojo",
     "rational_dynamics_tests": "tests/rational_dynamics/test_rational_dynamics.mojo",
-    "cyclotomic_exact": "planned (Mojo); independent reference in reference/cyclotomic_reference.py",
+    "cyclotomic_exact": "kernel/finite_polynomial/cyclotomic_q.mojo",
+    "cyclotomic_exact_tests": "tests/finite_polynomial/test_cyclotomic_q.mojo",
+    "finite_polynomial": "kernel/finite_polynomial/polynomial_z.mojo",
+    "cyclotomic_exact_reference": "reference/cyclotomic_reference.py",
     "rational_dynamics_reference": "reference/rational_dynamics_reference.py",
     "quadratic_germ": "planned (Mojo); independent reference in reference/cyclotomic_reference.py",
     "cyclotomic_reference_tests": "tests/cyclotomic/test_cyclotomic_reference.py",

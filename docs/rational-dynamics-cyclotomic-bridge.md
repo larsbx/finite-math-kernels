@@ -103,12 +103,17 @@ The extraction should be staged:
    `BigZ[x]` in `kernel/finite_polynomial`, exact monic division, and exact
    `Phi_n` construction by the divisor product identity, replayed against
    `reference/cyclotomic_reference.py`.
-3. **C1 — cyclotomic representation: REFERENCE.** Exact quotient arithmetic,
+3. **C1 — cyclotomic representation: IMPLEMENTED.** Mojo canonical
+   representatives in `kernel/finite_polynomial/cyclotomic_q.mojo`, with
+   exact addition, subtraction, multiplication/reduction and powers, replayed
+   against the reference. Reference: exact quotient arithmetic,
    field inverse by extended Euclid in `Q[X]`, and canonical bytes
    `Z(q) || Q(c_0) || ... || Q(c_{phi(q)-1})` in the encoding of
    `docs/canonical-encoding.md`. `Phi_q` is computed by exact division of
    `X^q - 1`, never imported from a computer-algebra system.
-4. **C2 — Galois action: REFERENCE.** `zeta -> zeta^a` for `gcd(a,q)=1`;
+4. **C2 — Galois action: IMPLEMENTED.** Mojo `zeta -> zeta^a` for units
+   `a mod q`, including conjugation and composition replay. Reference:
+   `zeta -> zeta^a` for `gcd(a,q)=1`;
    tested as a ring map, with `sigma_s . sigma_t = sigma_st`.
 5. **Q1 — quadratic germ jets: REFERENCE.** Truncated composition of
    `g_lambda` over `Q[zeta_q]`, and the parabolic factor `P`, refused unless

@@ -29,7 +29,7 @@
       "relation": "authored"
     },
     "README.md": {
-      "blob": "48eec0761557a1d5adea0c1eee1b414258f62090",
+      "blob": "d66078a1e5caf65af71faea5d7f81367929c7d48",
       "relation": "authored"
     },
     "conformance/cyclotomic_germ_v1.json": {
@@ -199,7 +199,7 @@
       "relation": "authored"
     },
     "docs/rational-dynamics-cyclotomic-bridge.md": {
-      "blob": "ffbfbd258d225e3abaab9c7c8006acb24065645b",
+      "blob": "0bb1b8db4cab08b461280c71dc735f69a10d207f",
       "relation": "authored"
     },
     "docs/rational-interval-arithmetic-spec.md": {
@@ -451,6 +451,10 @@
       "blob": "94b09901c32caf4c9ea2d7bd1c45ff90424d753a",
       "relation": "authored"
     },
+    "kernel/finite_polynomial/cyclotomic_q.mojo": {
+      "blob": "ca1df6ed0cd3e5359b1653322b7d531918a8cd70",
+      "relation": "authored"
+    },
     "kernel/finite_polynomial/polynomial_z.mojo": {
       "blob": "13f8a2b2984cce80aa8dcc9297d97721ed37a55c",
       "relation": "authored"
@@ -646,7 +650,7 @@
       "source_path": "tools/property_oracle.py"
     },
     "pixi.toml": {
-      "blob": "cb127a5816954888a0b3e93019e3d202ccbd76be",
+      "blob": "05774f88f1ff2a7f4b688b3391eac75b2c457bcf",
       "relation": "authored"
     },
     "policy/estate-audits/0833929ed82d42cf3674a1565681625a9622827b.py": {
@@ -685,7 +689,7 @@
       "relation": "authored"
     },
     "schemas/rational-dynamics-cyclotomic-v1.json": {
-      "blob": "da3aaa557dff49926db28cd3332c3e045045813b",
+      "blob": "07635ddc33b57ac1b559c5a423fafed281251ad3",
       "relation": "authored"
     },
     "schemas/typed-proof-graph-normalization-v1.json": {
@@ -859,6 +863,14 @@
     },
     "tests/finite_linear_algebra/test_madic_oracle.py": {
       "blob": "1816473088d8414bd2c406c8ee272945da40c6c9",
+      "relation": "authored"
+    },
+    "tests/finite_polynomial/test_cyclotomic_q.mojo": {
+      "blob": "72208ea1396a9d4557b64213992c2622115e4da8",
+      "relation": "authored"
+    },
+    "tests/finite_polynomial/test_cyclotomic_q_specimens.py": {
+      "blob": "cc4cc7e43bed2c0a2b944989eb3edf7305999f76",
       "relation": "authored"
     },
     "tests/finite_polynomial/test_cyclotomic_specimens.py": {
