@@ -99,21 +99,25 @@ belongs to the consumer.
 The extraction should be staged:
 
 1. **R1 — rational combinatorics: IMPLEMENTED.** Reduced nonnegative fractions over unbounded BigZ, explicit doubling modulo one, modular inverse, signed inverse, continued fractions, convergents, and Farey determinant are executable and tested.
-2. **C1 — cyclotomic representation: REFERENCE.** Exact quotient arithmetic,
+2. **C0 — polynomial foundation: IMPLEMENTED.** Dynamic unbounded
+   `BigZ[x]` in `kernel/finite_polynomial`, exact monic division, and exact
+   `Phi_n` construction by the divisor product identity, replayed against
+   `reference/cyclotomic_reference.py`.
+3. **C1 — cyclotomic representation: REFERENCE.** Exact quotient arithmetic,
    field inverse by extended Euclid in `Q[X]`, and canonical bytes
    `Z(q) || Q(c_0) || ... || Q(c_{phi(q)-1})` in the encoding of
    `docs/canonical-encoding.md`. `Phi_q` is computed by exact division of
    `X^q - 1`, never imported from a computer-algebra system.
-3. **C2 — Galois action: REFERENCE.** `zeta -> zeta^a` for `gcd(a,q)=1`;
+4. **C2 — Galois action: REFERENCE.** `zeta -> zeta^a` for `gcd(a,q)=1`;
    tested as a ring map, with `sigma_s . sigma_t = sigma_st`.
-4. **Q1 — quadratic germ jets: REFERENCE.** Truncated composition of
+5. **Q1 — quadratic germ jets: REFERENCE.** Truncated composition of
    `g_lambda` over `Q[zeta_q]`, and the parabolic factor `P`, refused unless
    the residual vanishes to order `q+1`.
-5. **Q2 — reciprocal-series coefficient: REFERENCE.** Refused when the
+6. **Q2 — reciprocal-series coefficient: REFERENCE.** Refused when the
    constant coefficient is zero. The pinned vectors carry `[w^q] 1/P` for
    `q <= 8` and every unit `p`; the tests check the exact Galois
    equivariance `coefficient(zeta^p) = sigma_p(coefficient(zeta))`.
-6. **consumer adapters:** parameter-plane, dynamical-plane, and arithmetic-
+7. **consumer adapters:** parameter-plane, dynamical-plane, and arithmetic-
    correction projects interpret those finite outputs under their own
    theorem/evidence policies.
 
