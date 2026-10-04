@@ -4,22 +4,6 @@
       "blob": "d5bc8aabad700a66f8cebaf247ad028916a63eea",
       "relation": "authored"
     },
-    ".forgejo/ISSUE_TEMPLATE/bug.md": {
-      "blob": "98bc0ad040a45427d460cbbe4be09430d4dd939a",
-      "relation": "authored"
-    },
-    ".forgejo/ISSUE_TEMPLATE/change.md": {
-      "blob": "fba199ff2c53d8aa117e1a5f6ee083ad420435e8",
-      "relation": "authored"
-    },
-    ".forgejo/ISSUE_TEMPLATE/config.yml": {
-      "blob": "3fa378697e3ac4ea42885ad6a65126b988673c1c",
-      "relation": "authored"
-    },
-    ".forgejo/ISSUE_TEMPLATE/question.md": {
-      "blob": "8500025633e9544d630614a1dded46b925fb7e39",
-      "relation": "authored"
-    },
     ".forgejo/PULL_REQUEST_TEMPLATE.md": {
       "blob": "e3e2c548fe38e8c5984c8c01ebfcbeda43839636",
       "relation": "authored"
