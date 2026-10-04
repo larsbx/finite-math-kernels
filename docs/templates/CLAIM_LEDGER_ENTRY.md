@@ -1,14 +1,17 @@
 <!--
-Derived from templates/records/CLAIM_LEDGER_ENTRY.md in larsbx/agent-icm @ sha256:570fd5d1e526ee10
-Edit the canonical template or estate.toml, then re-render: make estate
-Hand-edits here are drift and `make estate-check` fails on them.
+Derived from templates/records/CLAIM_LEDGER_ENTRY.md in larsbx/agent-icm @ sha256:ecfd74f589edb33e
+Edit the canonical template or estate.toml in larsbx/agent-icm, then re-render there: make estate
+Hand-edits here are drift, and agent-icm's `make estate-check` fails on them.
 -->
 
 # Claim — `<Name>`
 
 <!--
-One claim, one entry. The ledger is the single status surface: anything else
-that states this claim's status is generated from here, or it is already drift.
+One claim, one entry, mirroring the repository's authoritative claim record.
+Where a generator derives claim entries from proof records, the record is the
+single status surface and this entry is derived from it: edit the record, then
+regenerate. Otherwise this entry is that surface. Anything else that states
+this claim's status is generated from the source, or it is already drift.
 -->
 
 - **Name:** `<Name>`            <!-- the identifier tests declare against -->

@@ -1,7 +1,7 @@
 <!--
 Derived from templates/github/PULL_REQUEST_TEMPLATE.md in larsbx/agent-icm @ sha256:1e174a33ab48cac7
-Edit the canonical template or estate.toml, then re-render: make estate
-Hand-edits here are drift and `make estate-check` fails on them.
+Edit the canonical template or estate.toml in larsbx/agent-icm, then re-render there: make estate
+Hand-edits here are drift, and agent-icm's `make estate-check` fails on them.
 -->
 
 ## What changed
@@ -19,13 +19,14 @@ Paste what you ran and what it said. A check you did not run is not evidence;
 say so plainly rather than leaving the line blank.
 -->
 
-| Check                              | Command                    | Result  |
-| ---------------------------------- | -------------------------- | ------- |
-| the aggregate suite, as CI runs it | `pixi run test`            | not run |
-| claim-governance audit             | `pixi run test-audit`      | not run |
-| provenance                         | `pixi run test-provenance` | not run |
-| reference integrity                | `pixi run references`      | not run |
-| independent property oracle        | `pixi run property`        | not run |
+| Check                                                      | Command                    | Result  |
+| ---------------------------------------------------------- | -------------------------- | ------- |
+| the aggregate suite, as CI runs it                         | `pixi run test`            | not run |
+| claim-governance audit                                     | `pixi run test-audit`      | not run |
+| provenance                                                 | `pixi run test-provenance` | not run |
+| reference integrity                                        | `pixi run references`      | not run |
+| independent property oracle                                | `pixi run property`        | not run |
+| frontier polyglot lane, as `frontier-polyglot.yml` runs it | `pixi run test-polyglot`   | not run |
 
 ## What this does *not* establish
 

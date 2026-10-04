@@ -1,7 +1,7 @@
 <!--
 Derived from templates/records/DECISION.md in larsbx/agent-icm @ sha256:b06f3979587eefb7
-Edit the canonical template or estate.toml, then re-render: make estate
-Hand-edits here are drift and `make estate-check` fails on them.
+Edit the canonical template or estate.toml in larsbx/agent-icm, then re-render there: make estate
+Hand-edits here are drift, and agent-icm's `make estate-check` fails on them.
 -->
 
 # D-NNNN — `<the decision, as a sentence that can be true or false>`

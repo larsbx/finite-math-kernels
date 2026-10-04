@@ -4,9 +4,9 @@ description: Repository-specific guidance for driving a pull request in finite-m
 ---
 
 <!--
-Derived from skills/steward/SKILL.md in larsbx/agent-icm @ sha256:9ab0d59f84f3fb31
-Edit the canonical template or estate.toml, then re-render: make estate
-Hand-edits here are drift and `make estate-check` fails on them.
+Derived from skills/steward/SKILL.md in larsbx/agent-icm @ sha256:64592e5b34b3339d
+Edit the canonical template or estate.toml in larsbx/agent-icm, then re-render there: make estate
+Hand-edits here are drift, and agent-icm's `make estate-check` fails on them.
 -->
 
 # Stewarding a pull request in finite-math-kernels
@@ -58,6 +58,12 @@ speculative ones.
 
    ```sh
    pixi run property
+   ```
+
+6. frontier polyglot lane, as `frontier-polyglot.yml` runs it —
+
+   ```sh
+   pixi run test-polyglot
    ```
 
 If a gate cannot run in this environment — a blocked toolchain, an absent
@@ -139,8 +145,9 @@ diff, say so in a comment and leave it.
 ## Reading a failure here
 
 Before concluding a failure is environmental, check it against this
-repository's shape. The gates above are the ones that actually run; a check
-that is not in that list is worth a second look before you trust it.
+repository's shape. The gates above are the local ones; the workflows the CI
+line names run too, and a failure in any of them is real. A check named in
+neither place is worth a second look before you trust it.
 
 ## When you stand down
 

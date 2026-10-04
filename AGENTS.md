@@ -1,7 +1,7 @@
 <!--
 Derived from templates/docs/AGENTS.md in larsbx/agent-icm @ sha256:e0ea75600e3d136a
-Edit the canonical template or estate.toml, then re-render: make estate
-Hand-edits here are drift and `make estate-check` fails on them.
+Edit the canonical template or estate.toml in larsbx/agent-icm, then re-render there: make estate
+Hand-edits here are drift, and agent-icm's `make estate-check` fails on them.
 -->
 
 # Agent policy — finite-math-kernels
@@ -58,6 +58,12 @@ Before proposing a change as finished, run:
 
    ```sh
    pixi run property
+   ```
+
+6. frontier polyglot lane, as `frontier-polyglot.yml` runs it —
+
+   ```sh
+   pixi run test-polyglot
    ```
 
 Report honestly which ran. A partial environment that reports a skip is worth

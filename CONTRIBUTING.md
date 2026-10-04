@@ -1,7 +1,7 @@
 <!--
 Derived from templates/docs/CONTRIBUTING.md in larsbx/agent-icm @ sha256:88bf9172c22bc8da
-Edit the canonical template or estate.toml, then re-render: make estate
-Hand-edits here are drift and `make estate-check` fails on them.
+Edit the canonical template or estate.toml in larsbx/agent-icm, then re-render there: make estate
+Hand-edits here are drift, and agent-icm's `make estate-check` fails on them.
 -->
 
 # Contributing to finite-math-kernels
@@ -57,6 +57,12 @@ evidence table.
 
    ```sh
    pixi run property
+   ```
+
+6. frontier polyglot lane, as `frontier-polyglot.yml` runs it —
+
+   ```sh
+   pixi run test-polyglot
    ```
 
 A check you did not run is not evidence. Say which ones you skipped and why;

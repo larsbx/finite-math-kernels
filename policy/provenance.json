@@ -1,47 +1,47 @@
 {
   "files": {
     ".claude/skills/steward/SKILL.md": {
-      "blob": "919a2900214c1d5aea011a9bad06f6c8a9708dc6",
+      "blob": "d5bc8aabad700a66f8cebaf247ad028916a63eea",
       "relation": "authored"
     },
     ".forgejo/ISSUE_TEMPLATE/bug.md": {
-      "blob": "c1c216eb20275acc39f20a0d060272b10c4e79f5",
+      "blob": "98bc0ad040a45427d460cbbe4be09430d4dd939a",
       "relation": "authored"
     },
     ".forgejo/ISSUE_TEMPLATE/change.md": {
-      "blob": "fb9c1c88c7656f6dbf182e98d515f4d5cc8ac71f",
+      "blob": "fba199ff2c53d8aa117e1a5f6ee083ad420435e8",
       "relation": "authored"
     },
     ".forgejo/ISSUE_TEMPLATE/config.yml": {
-      "blob": "a26b97df160d72a93b2ba5c735b44ab7f2f52ea2",
+      "blob": "3fa378697e3ac4ea42885ad6a65126b988673c1c",
       "relation": "authored"
     },
     ".forgejo/ISSUE_TEMPLATE/question.md": {
-      "blob": "f327fec81505e590ebd5a59d7817bcf7bb8698cf",
+      "blob": "8500025633e9544d630614a1dded46b925fb7e39",
       "relation": "authored"
     },
     ".forgejo/PULL_REQUEST_TEMPLATE.md": {
-      "blob": "1176f0fd1dc56b0a052fc08e9dc0d9ac7aa585e3",
+      "blob": "e3e2c548fe38e8c5984c8c01ebfcbeda43839636",
       "relation": "authored"
     },
     ".github/ISSUE_TEMPLATE/bug.md": {
-      "blob": "c1c216eb20275acc39f20a0d060272b10c4e79f5",
+      "blob": "98bc0ad040a45427d460cbbe4be09430d4dd939a",
       "relation": "authored"
     },
     ".github/ISSUE_TEMPLATE/change.md": {
-      "blob": "fb9c1c88c7656f6dbf182e98d515f4d5cc8ac71f",
+      "blob": "fba199ff2c53d8aa117e1a5f6ee083ad420435e8",
       "relation": "authored"
     },
     ".github/ISSUE_TEMPLATE/config.yml": {
-      "blob": "a26b97df160d72a93b2ba5c735b44ab7f2f52ea2",
+      "blob": "3fa378697e3ac4ea42885ad6a65126b988673c1c",
       "relation": "authored"
     },
     ".github/ISSUE_TEMPLATE/question.md": {
-      "blob": "f327fec81505e590ebd5a59d7817bcf7bb8698cf",
+      "blob": "8500025633e9544d630614a1dded46b925fb7e39",
       "relation": "authored"
     },
     ".github/PULL_REQUEST_TEMPLATE.md": {
-      "blob": "1176f0fd1dc56b0a052fc08e9dc0d9ac7aa585e3",
+      "blob": "e3e2c548fe38e8c5984c8c01ebfcbeda43839636",
       "relation": "authored"
     },
     ".github/actions/install-bend/action.yml": {
@@ -65,7 +65,7 @@
       "relation": "authored"
     },
     "AGENTS.md": {
-      "blob": "4068112f198fab3da77c12919082679e4a654a6c",
+      "blob": "6d90fb44ca1e4359813a4ba66dba5a6f3c89f570",
       "relation": "authored"
     },
     "ARCHITECTURE.md": {
@@ -73,7 +73,7 @@
       "relation": "authored"
     },
     "CONTRIBUTING.md": {
-      "blob": "2332b0745e259bbc7ecec9c9e323f4e3e0958858",
+      "blob": "6fa0a97c32abcd67a9a5a35fa3300a1d015205d2",
       "relation": "authored"
     },
     "ESTATE.toml": {
@@ -266,15 +266,15 @@
       "source_path": "docs/rational-interval-arithmetic-spec.md"
     },
     "docs/templates/AUDIT_FINDING.md": {
-      "blob": "5fb1fa128dd9d79e695c09f10b7bf2d91b6a759b",
+      "blob": "4a521c398184241f8d7b604ba8e933ebc177c819",
       "relation": "authored"
     },
     "docs/templates/CLAIM_LEDGER_ENTRY.md": {
-      "blob": "117f2a04feb8e025141a3d2f540fb36b5f84c1cf",
+      "blob": "dea1313bcdc5b16c426aecb3dd1c7c5604d16b14",
       "relation": "authored"
     },
     "docs/templates/DECISION.md": {
-      "blob": "e1e40a0cb02423fca8de97a5838f8c7010f157f4",
+      "blob": "baee2329180b0fbc4d8d51b2dda7d7e440469bd9",
       "relation": "authored"
     },
     "docs/tuning-substitutions-spec.md": {
