@@ -1,5 +1,49 @@
 {
   "files": {
+    ".claude/skills/steward/SKILL.md": {
+      "blob": "d5bc8aabad700a66f8cebaf247ad028916a63eea",
+      "relation": "authored"
+    },
+    ".forgejo/ISSUE_TEMPLATE/bug.md": {
+      "blob": "98bc0ad040a45427d460cbbe4be09430d4dd939a",
+      "relation": "authored"
+    },
+    ".forgejo/ISSUE_TEMPLATE/change.md": {
+      "blob": "fba199ff2c53d8aa117e1a5f6ee083ad420435e8",
+      "relation": "authored"
+    },
+    ".forgejo/ISSUE_TEMPLATE/config.yml": {
+      "blob": "3fa378697e3ac4ea42885ad6a65126b988673c1c",
+      "relation": "authored"
+    },
+    ".forgejo/ISSUE_TEMPLATE/question.md": {
+      "blob": "8500025633e9544d630614a1dded46b925fb7e39",
+      "relation": "authored"
+    },
+    ".forgejo/PULL_REQUEST_TEMPLATE.md": {
+      "blob": "e3e2c548fe38e8c5984c8c01ebfcbeda43839636",
+      "relation": "authored"
+    },
+    ".github/ISSUE_TEMPLATE/bug.md": {
+      "blob": "98bc0ad040a45427d460cbbe4be09430d4dd939a",
+      "relation": "authored"
+    },
+    ".github/ISSUE_TEMPLATE/change.md": {
+      "blob": "fba199ff2c53d8aa117e1a5f6ee083ad420435e8",
+      "relation": "authored"
+    },
+    ".github/ISSUE_TEMPLATE/config.yml": {
+      "blob": "3fa378697e3ac4ea42885ad6a65126b988673c1c",
+      "relation": "authored"
+    },
+    ".github/ISSUE_TEMPLATE/question.md": {
+      "blob": "8500025633e9544d630614a1dded46b925fb7e39",
+      "relation": "authored"
+    },
+    ".github/PULL_REQUEST_TEMPLATE.md": {
+      "blob": "e3e2c548fe38e8c5984c8c01ebfcbeda43839636",
+      "relation": "authored"
+    },
     ".github/actions/install-bend/action.yml": {
       "blob": "8e4a149c7778110fa4e87e7e6085fe284180d18f",
       "relation": "authored"
@@ -20,8 +64,16 @@
       "blob": "54b2cbb916777d47ed4479af6dad9d7505a0cfa3",
       "relation": "authored"
     },
+    "AGENTS.md": {
+      "blob": "6d90fb44ca1e4359813a4ba66dba5a6f3c89f570",
+      "relation": "authored"
+    },
     "ARCHITECTURE.md": {
       "blob": "6ca755846462db58cdf182a5a5f52eabb014ec4f",
+      "relation": "authored"
+    },
+    "CONTRIBUTING.md": {
+      "blob": "6fa0a97c32abcd67a9a5a35fa3300a1d015205d2",
       "relation": "authored"
     },
     "ESTATE.toml": {
@@ -212,6 +264,18 @@
       "source": "finite_exact",
       "source_blob": "86478aa8777903f6c605d4bcfd7d899ac51a74fa",
       "source_path": "docs/rational-interval-arithmetic-spec.md"
+    },
+    "docs/templates/AUDIT_FINDING.md": {
+      "blob": "4a521c398184241f8d7b604ba8e933ebc177c819",
+      "relation": "authored"
+    },
+    "docs/templates/CLAIM_LEDGER_ENTRY.md": {
+      "blob": "dea1313bcdc5b16c426aecb3dd1c7c5604d16b14",
+      "relation": "authored"
+    },
+    "docs/templates/DECISION.md": {
+      "blob": "baee2329180b0fbc4d8d51b2dda7d7e440469bd9",
+      "relation": "authored"
     },
     "docs/tuning-substitutions-spec.md": {
       "blob": "a9a6078ce56a52b4f5b0102ae274919c6624785f",
