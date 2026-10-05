@@ -47,6 +47,7 @@ EXTERNAL: dict[str, str] = {
     "docs/C1_theorem_tag_import_ledger.md": NLAP,
     "src/checked_ray_address.mojo": NLAP,
     "docs/C1_residual_directive_carrier.md": NLAP,
+    "docs/literature/open-problems-survey-2026-10.md": NLAP,
     "docs/cross-pollination-round-two-2026-09-16.md": f"{NLAP} and {PSC}",
     "docs/cross-pollination-round-three-2026-09-17.md": PSC,
     "docs/release-provenance.md": "larsbx/sprucegoose at the commit named in docs/evidence-vocabulary-map.md",
