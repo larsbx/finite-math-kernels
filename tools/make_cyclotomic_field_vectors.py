@@ -5,9 +5,11 @@ Usage:
     make_cyclotomic_field_vectors.py            rewrite conformance/cyclotomic_field_v1.txt
     make_cyclotomic_field_vectors.py --check    exit 1 if the committed file has drifted
 
-The Mojo kernel (kernel/cyclotomic) replays every line; the reference uses
-recursive division for Phi_q and extended Euclid for inverses, the kernel the
-Moebius product and the norm, so agreement is evidence rather than a copy.
+The Mojo kernel replays every line through finite_polynomial.cyclotomic_field
+(tests/finite_polynomial/test_cyclotomic_field_vectors.mojo). The reference uses
+recursive division for Phi_q and extended Euclid for inverses; the kernel uses
+the divisor product identity and exact RREF, so agreement is evidence rather
+than a copy.
 
 Encoding (tab-separated, one case per line); an element is its rational
 coordinates on 1, zeta, ..., zeta^(phi(q)-1), space-separated:

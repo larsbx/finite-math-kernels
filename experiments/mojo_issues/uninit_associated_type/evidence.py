@@ -142,9 +142,9 @@ def main():
     ),
     Case(
         "kernel-cyclotomic-rotor",
-        "a rotor over Q(zeta_8): the original occurrence in tests/cyclotomic/test_cyclotomic_field.mojo",
+        "a rotor over Q(zeta_8): the original occurrence, in tests/cyclotomic/test_cyclotomic_field.mojo at 621202a",
         "error: use of uninitialized value 't.rejected'",
-        source="""from cyclotomic.field import Cyc, CyclotomicField
+        source="""from finite_polynomial.cyclotomic_field import Cyc, CyclotomicField
 from projective_limits.rotor import circle_rotor
 
 

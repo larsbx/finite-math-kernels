@@ -2,7 +2,8 @@
 
 **Status:** report, 2026-10-05.
 
-- **Scope:** three commits on branch `claude/pi-algebraic-rational-trig-1m75i8`.
+- **Scope:** branch `claude/pi-algebraic-rational-trig-1m75i8`, merged with
+  `main` at `bf3f95c` (section 3.3).
 - **Toolchain:** Mojo `1.1.0.dev2026090805` (`34562fa1`), pinned in `pixi.toml`.
 - **Downstream:** the consumer side lives in
   `larsbx/mandelbrot-bulbs-and-ford-circles-research`.
@@ -24,12 +25,13 @@ The Mojo kernel now carries this in three layers.
 |---|---|---|
 | `6de258d` | field-generic `projective_limits` | `ExactField`, a field as a structure over its `Element` type; `QField`, `FpField[p]`; every limit kernel over any exact field |
 | `4ee9f09` | `projective_limits.rotor` | the rotation group of `x² + y² = 1` as the non-isotropic points of `P¹(K)`; turns, orders, spreads |
-| `621202a` | `kernel/cyclotomic` | `Q(ζ_q)` as `Cyc[q]` / `CyclotomicField[q]`, the Galois action, trace, norm, and the germ stages C1–Q2 of `docs/rational-dynamics-cyclotomic-bridge.md` |
+| `621202a`, then the merge | `kernel/finite_polynomial/cyclotomic_field.mojo` | `Q(ζ_q)` for the field-generic kernels: `Cyc[q]` with a compile-time conductor and operators, the Galois action, trace, norm, and `CyclotomicField[q]` as an `ExactField` |
 
-The three commits add 2 590 lines across 16 files of `kernel/`, `tests/`,
-`tools/` and `conformance/`. The new and generalised Mojo modules and their
-tests total 2 543 lines. `pixi run test` passes in full: every pre-existing
-gate, plus 43 new Mojo law tests and 226 new reference vectors.
+The arithmetic of `Q(ζ_q)` itself is `main`'s `finite_polynomial`.
+`621202a` first carried its own copy; the merge retired it (section 3.3).
+
+`pixi run test` passes in full: every pre-existing gate, plus 40 new Mojo law
+tests and 226 new reference vectors.
 
 ## 2. The mathematics the kernel now guarantees
 
@@ -74,31 +76,64 @@ checked on every point of `P¹(𝔽_7)` and `P¹(𝔽_13)`, not on samples.
 | `tests/projective_limits/test_reference_vectors.mojo` | 466 vectors | pre-existing Python-reference replay, unchanged |
 | `tests/projective_limits/test_field_generic.mojo` | 13 | exhaustive over `𝔽_7`, `𝔽_13`: normal form, `\|P¹\| = p+1`, `J`, rotation invariance of `χ²`, Wilson as a limit, landing where L'Hôpital fails |
 | `tests/projective_limits/test_rotor.mojo` | 16 | group law = Möbius composition = circle multiplication, axioms, chart bijection, `N_p`, Lagrange and `φ(N)` generators, turn homomorphism, spreads |
-| `tests/cyclotomic/test_cyclotomic_field.mojo` | 14 | see the list below |
-| `tests/cyclotomic/test_cyclotomic_vectors.mojo` | 226 vectors | Python-reference replay of `conformance/cyclotomic_field_v1.txt` |
+| `tests/finite_polynomial/test_cyclotomic_field.mojo` | 11 | see the list below |
+| `tests/finite_polynomial/test_cyclotomic_field_vectors.mojo` | 226 vectors | Python-reference replay of `conformance/cyclotomic_field_v1.txt` through `Cyc[q]` |
 
-The 14 cyclotomic law tests check:
+The 11 cyclotomic-field law tests check:
 
-- `∏_{d \| q} Φ_d = X^q − 1`, and `Φ_105` has `−2` at `X^7`;
+- the totient, the Möbius function and `Cyc[q].DEGREE`;
 - `ζ` has exact order `q`;
-- the field axioms and sticky rejection;
-- the Galois group law;
-- `Tr ζ_q = μ(q)` and `N(1 − ζ_q) = Φ_q(1)`;
-- `P · P⁻¹ = 1`;
+- the field axioms through the operators, and sticky rejection;
+- the Galois group law, with negative exponents;
+- `Tr ζ_q = μ(q)` and `N(1 − ζ_q) = Φ_q(1)`, with the norm multiplicative;
 - a landing over `ℚ(ζ_5)`;
 - turns beyond Niven.
+
+`main`'s own suites (`tests/finite_polynomial/`) cover `Φ_q`, reduction and
+the germ.
 
 **Independence of the replays.** Each kernel and its Python reference use
 different algorithms, so agreement is evidence and not a transliteration.
 
 | Quantity | Mojo kernel | Python reference |
 |---|---|---|
-| `Φ_q` | the Möbius product `∏_{d\|q}(X^d − 1)^{μ(q/d)}` | recursive division of `X^q − 1` |
-| inverses | through the norm, `a⁻¹ = ∏_{σ≠1} σ(a) / N(a)` | the extended Euclidean algorithm |
+| `Φ_q` | the divisor product identity, exact monic division over `BigZ` (`finite_polynomial.polynomial_z`) | recursive division of `X^q − 1` |
+| inverses | exact RREF of the multiplication matrix (`finite_polynomial.cyclotomic_q`) | the extended Euclidean algorithm |
 | limits | landing on the exceptional divisor | `gcd` cancellation and evaluation |
 
 `tools/make_cyclotomic_field_vectors.py --check` runs in `pixi run test`, so
 the fixture cannot drift from the reference.
+
+### 3.3 Reconciliation with `main`
+
+While this branch was in flight, `main` landed its own Mojo stage for
+`Q(ζ_q)` and the germ, in `kernel/finite_polynomial`. Two implementations of
+one field would be the worst outcome, so the merge made `main`'s canonical:
+
+- **Removed.** `kernel/cyclotomic`, this branch's arithmetic, was deleted.
+- **Kept.** What only this branch adds became
+  `kernel/finite_polynomial/cyclotomic_field.mojo`: the compile-time-typed
+  view `Cyc[q]` with operators, the `ExactField` adapter, trace and norm.
+  The law tests and the reference replay moved with it, and now exercise
+  `main`'s arithmetic.
+
+**The replay found a bug on `main`.** `cyclotomic_canonical_bytes` prefixed
+the conductor, the coefficient count and every coefficient with a `u64`
+length. The documented contract of C1 is
+`Z(q) ‖ Q(c_0) ‖ … ‖ Q(c_{φ(q)−1})` over `docs/canonical-encoding.md`, and
+the reference and `conformance/cyclotomic_germ_v1.json` use it.
+
+- **Why it went unnoticed.** `main`'s tests compared only byte strings with
+  each other, never against pinned values.
+- **The fix.** The merge restores the contract. Each `Z` and `Q` encoding is
+  self-delimiting and the conductor fixes the coefficient count, so no prefix
+  is needed.
+- **What changes for consumers.** This is a behaviour change of an exported
+  function: same signature, different bytes. A consumer that stored bytes
+  from `main`'s version will see them change.
+
+Every other line of the replay agreed with `main`'s arithmetic as it was:
+`Φ_q`, products, inverses, the Galois action, and both germ quantities.
 
 ### 3.2 Mutation testing
 
@@ -109,7 +144,7 @@ re-run.
 |---|---|---|---|---|
 | `kernel/finite_exact/fp.mojo`, `kernel/finite_exact/field.mojo`, generic `line`/`limits` | 7 | 6 | 1 | the equivalent mutant drops a redundant `+ p` before `%`, which is already floored in Mojo |
 | `kernel/projective_limits/rotor.mojo` | 12 | 12 | 0 | |
-| `kernel/cyclotomic/field.mojo`, `kernel/cyclotomic/germ.mojo` | 11 | 10 | 1 | two killed **at compile time** (§4.1); the equivalent one is again floored `%` |
+| `kernel/cyclotomic` as of `621202a`, retired at the merge (§3.3) | 11 | 10 | 1 | two killed **at compile time** (§4.1); the equivalent one is again floored `%` |
 
 One survivor in the first round of the field work was a real gap: "a rejected
 value counts as zero". The fix was a test that pins the `ExactField` contract
@@ -119,12 +154,14 @@ directly, not a change to the code.
 
 ### 4.1 Compile-time evaluation as verification
 
-`Cyc[q]` declares `comptime PHI = cyclotomic_polynomial(q)` and
-`comptime DEGREE = euler_phi(q)`. It then asserts
-`len(materialize[PHI]()) == DEGREE + 1`.
+`Cyc[q]` declares `comptime DEGREE = euler_phi(q)` and asserts
+`cyclotomic_degree(q) == DEGREE`. `cyclotomic_degree` is `main`'s, computed
+with unbounded `BigZ` polynomial arithmetic, and the compiler evaluates it
+for every conductor instantiated.
 
-- **Mutants caught by the compiler.** Two seeded faults in `Φ_q` (a wrong
-  Möbius function, and `X^d + 1` in place of `X^d − 1`) failed **function
+- **Mutants caught by the compiler.** At `621202a`, where `Φ_q` was this
+  branch's own comptime table, two seeded faults in `Φ_q` (a wrong Möbius
+  function, and `X^d + 1` in place of `X^d − 1`) failed **function
   instantiation** before any test ran.
 - **Theorem-level checks.** The assertion `deg Φ_q = φ(q)` is a theorem about
   cyclotomic polynomials, and the compiler re-proves it numerically for every
@@ -307,12 +344,13 @@ Extension-style conformance would let `Q` be an `ExactField` directly.
 
 ### 5.5 Toolchain
 
-- **Compile-bound tests.** Build dominates the test loop. In this repository:
+- **Compile-bound tests.** Build dominates the test loop. Measured at
+  `15fb287`, before the merge:
 
   | File | Build | Run |
   |---|---|---|
-  | `tests/cyclotomic/test_cyclotomic_field.mojo` | 8.9 s | 0.32 s |
-  | `tests/cyclotomic/test_cyclotomic_vectors.mojo` | 10.6 s | 1.30 s |
+  | `tests/finite_polynomial/test_cyclotomic_field.mojo` (then under `tests/cyclotomic/`, 14 tests) | 8.9 s | 0.32 s |
+  | `tests/finite_polynomial/test_cyclotomic_field_vectors.mojo` (then under `tests/cyclotomic/`) | 10.6 s | 1.30 s |
   | `tests/projective_limits/test_rotor.mojo` | 4.0 s | 0.23 s |
   | `tests/projective_limits/test_projective_limits.mojo` | 3.7 s | 0.07 s |
 
@@ -325,14 +363,17 @@ Extension-style conformance would let `Q` be an `ExactField` directly.
 
 1. **File §5.1 upstream** (`modular/modular`) with the reproduction and the
    variant table. It is the only issue that blocks valid code.
-2. **Comptime tables.** Once §5.2 improves, hold `Φ_q` as a comptime
-   `InlineArray` and drop the per-operation `materialize` copy.
+2. **Comptime tables.** Once §5.2 improves, `cyclotomic_q` could hold `Φ_q`
+   per conductor as a comptime table instead of recomputing it per
+   reduction.
 3. **Wider fields.**
    - `FpField` over `BigZ` for primes `≥ 2^31`.
    - `CyclotomicField` conductors beyond the replayed `q ≤ 12`. The kernel
      accepts `q < 30030`; the law tests reach `q = 30`, and `Φ_q` is checked
      at `q = 105`.
-4. **Consumers.** The bulb–Ford repository replays the cyclotomic vectors
-   from the Python reference today. It can switch to
-   `conformance/cyclotomic_field_v1.txt` once this branch merges, which makes
-   the Mojo kernel the canonical C1–Q2 stage, as the bridge document requires.
+4. **Consumers.**
+   - The bulb–Ford repository replays the cyclotomic vectors from the Python
+     reference today. It can replay `conformance/cyclotomic_field_v1.txt`
+     against the canonical Mojo stage instead.
+   - Any consumer that hashed `cyclotomic_canonical_bytes` output from `main`
+     before this merge must re-derive it (§3.3).

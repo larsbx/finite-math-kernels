@@ -1,12 +1,14 @@
-"""Laws for the cyclotomic field Q(zeta_q) = Q[X]/(Phi_q) and its germ stages.
+"""Laws for Cyc[q] and CyclotomicField[q], the typed view of Q(zeta_q).
 
-Run with `pixi run test-cyclotomic`.
+The arithmetic is finite_polynomial.cyclotomic_q's, whose own tests cover Phi_q,
+reduction and the germ; these laws cover what the typed view adds: operators,
+trace and norm, and Q(zeta_q) as a field for projective_limits and its rotors.
+Run with `pixi run test-cyclotomic-field`.
 """
 
 from std.testing import assert_equal, assert_false, assert_true
 
-from cyclotomic.field import Cyc, CyclotomicField, cyclotomic_polynomial, euler_phi, mobius_mu, units
-from cyclotomic.germ import parabolic_factor, reciprocal_series, truncated_iterate
+from finite_polynomial.cyclotomic_field import Cyc, CyclotomicField, euler_phi, mobius_mu, units
 from finite_exact.rat_q import Q
 from projective_limits.limits import PolyOver, RationalMapOver, rational_limit
 from projective_limits.line import P1Over, p1_affine, p1_equal
@@ -47,54 +49,22 @@ def power[q: Int](a: Cyc[q], n: Int) -> Cyc[q]:
     return out^
 
 
-# Section 1: Phi_q, the totient and the Moebius function.
+# Section 1: the number-theoretic helpers.
 
 
-def test_cyclotomic_polynomials() raises:
-    assert_true(cyclotomic_polynomial(1) == [-1, 1])
-    assert_true(cyclotomic_polynomial(4) == [1, 0, 1])
-    assert_true(cyclotomic_polynomial(6) == [1, -1, 1])
-    assert_true(cyclotomic_polynomial(12) == [1, 0, -1, 0, 1])
-    assert_true(cyclotomic_polynomial(8) == [1, 0, 0, 0, 1])
-    # Phi_105 is the first with a coefficient outside {-1, 0, 1}: -2 at X^7.
-    assert_equal(cyclotomic_polynomial(105)[7], -2)
+def test_totient_and_mobius() raises:
     var totients: List[Int] = [1, 1, 2, 2, 4, 2, 6, 4, 6, 4, 10, 4]
-    for q in range(1, 13):
-        assert_equal(len(cyclotomic_polynomial(q)) - 1, totients[q - 1])
-        assert_equal(euler_phi(q), totients[q - 1])
     var mus: List[Int] = [1, -1, -1, 0, -1, 1, -1, 0, 0, 1, -1, 0]
     for q in range(1, 13):
+        assert_equal(euler_phi(q), totients[q - 1])
         assert_equal(mobius_mu(q), mus[q - 1])
+        assert_equal(len(units(q)), euler_phi(q))
+    comptime for q in [1, 5, 8, 12]:
+        assert_equal(Cyc[q].DEGREE, euler_phi(q))
+        assert_equal(len(Cyc[q].zeta().coefficients()), euler_phi(q))
 
 
-def check_product_is_x_q_minus_one[q: Int]() raises:
-    # prod_{d | q} Phi_d = X^q - 1, over the integers.
-    var prod: List[Int] = [1]
-    for d in range(1, q + 1):
-        if q % d != 0:
-            continue
-        var f = cyclotomic_polynomial(d)
-        var out = List[Int]()
-        for _ in range(len(prod) + len(f) - 1):
-            out.append(0)
-        for i in range(len(prod)):
-            for j in range(len(f)):
-                out[i + j] += prod[i] * f[j]
-        prod = out^
-    assert_equal(len(prod), q + 1)
-    assert_equal(prod[0], -1)
-    assert_equal(prod[q], 1)
-    for k in range(1, q):
-        assert_equal(prod[k], 0)
-
-
-def test_product_of_cyclotomic_polynomials() raises:
-    check_product_is_x_q_minus_one[12]()
-    check_product_is_x_q_minus_one[30]()
-    check_product_is_x_q_minus_one[36]()
-
-
-# Section 2: C1, field arithmetic.
+# Section 2: field arithmetic through the operators.
 
 
 def check_zeta_is_primitive[q: Int]() raises:
@@ -161,7 +131,7 @@ def test_reduction_modulo_phi() raises:
     assert_true(zeta[8](4) == const[8](-1))
 
 
-# Section 3: C2, the Galois action.
+# Section 3: the Galois action, trace and norm.
 
 
 def check_galois[q: Int]() raises:
@@ -209,41 +179,7 @@ def test_norm_of_one_minus_zeta() raises:
     assert_true((a * b).norm().eq(a.norm().mul(b.norm())))
 
 
-# Section 4: Q1 and Q2, the quadratic germ at zeta.
-
-
-def test_germ_multiplier_and_parabolic_factor() raises:
-    var lam = zeta[3]()
-    # g(w) = lam w + w^2: first iterate is exactly that.
-    var g = truncated_iterate(lam, 1, 4)
-    assert_true(g.accepted())
-    assert_true(g.terms[0].is_zero())
-    assert_true(g.terms[1] == lam)
-    assert_true(g.terms[2] == const[3](1))
-    assert_true(g.terms[3].is_zero())
-    # w - g^3(w) vanishes to order 4 at lam = zeta_3; the factor's constant
-    # is -5 - zeta_3 (pinned in conformance/cyclotomic_germ_v1.json).
-    var factor = parabolic_factor(lam, 3)
-    assert_true(factor.accepted())
-    assert_true(factor.terms[0] == const[3](-5) - lam)
-    # A non-root of unity multiplier is refused: the residual has a linear term.
-    assert_false(parabolic_factor(const[3](2), 3).accepted())
-
-
-def test_reciprocal_series() raises:
-    var factor = parabolic_factor(zeta[5](), 5)
-    var inv = reciprocal_series(factor)
-    assert_true(inv.accepted())
-    # P * (1/P) = 1 to the truncation order.
-    var unit = factor * inv
-    for k in range(len(unit.terms)):
-        assert_true(unit.terms[k] == const[5](Int64(1 if k == 0 else 0)))
-    var bad = factor.copy()
-    bad.terms[0] = const[5](0)
-    assert_false(reciprocal_series(bad).accepted())
-
-
-# Section 5: Q(zeta) as a field for the kernels above.
+# Section 4: Q(zeta) as a field for the kernels above.
 
 
 def test_landing_over_q_zeta() raises:
@@ -296,10 +232,8 @@ def test_spread_of_an_eighth_turn_is_one_half() raises:
 
 
 def main() raises:
-    test_cyclotomic_polynomials()
-    print("[PASS] test_cyclotomic_polynomials")
-    test_product_of_cyclotomic_polynomials()
-    print("[PASS] test_product_of_cyclotomic_polynomials")
+    test_totient_and_mobius()
+    print("[PASS] test_totient_and_mobius")
     test_zeta_has_exact_order_q()
     print("[PASS] test_zeta_has_exact_order_q")
     test_field_axioms()
@@ -314,14 +248,10 @@ def main() raises:
     print("[PASS] test_trace_of_zeta_is_mobius")
     test_norm_of_one_minus_zeta()
     print("[PASS] test_norm_of_one_minus_zeta")
-    test_germ_multiplier_and_parabolic_factor()
-    print("[PASS] test_germ_multiplier_and_parabolic_factor")
-    test_reciprocal_series()
-    print("[PASS] test_reciprocal_series")
     test_landing_over_q_zeta()
     print("[PASS] test_landing_over_q_zeta")
     test_turns_beyond_niven_have_exact_order()
     print("[PASS] test_turns_beyond_niven_have_exact_order")
     test_spread_of_an_eighth_turn_is_one_half()
     print("[PASS] test_spread_of_an_eighth_turn_is_one_half")
-    print("14 cyclotomic Mojo tests passed.")
+    print("11 cyclotomic-field Mojo tests passed.")

@@ -8,8 +8,8 @@ supplies the operations on it, so a field is kept apart from its elements:
 
 - `QField` has elements `Q`;
 - `FpField[p]` has elements `Fp[p]`;
-- `cyclotomic.field.CyclotomicField[q]` has elements `Cyc[q]`, which is
-  Q(zeta_q).
+- `finite_polynomial.cyclotomic_field.CyclotomicField[q]` has elements
+  `Cyc[q]`, a typed view of Q(zeta_q) over `finite_polynomial.cyclotomic_q`.
 
 `P1`, `Poly`, `RationalMap`, `Mobius`, `Monomial` and `Poly2` are the `QField`
 instances of `P1Over`, `PolyOver`, `RationalMapOver`, `MobiusOver`,

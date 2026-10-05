@@ -1,44 +1,26 @@
 #!/usr/bin/env python3
-"""Check that local path and pixi task references in the tree resolve.
+"""Check that the path and task references in this repository resolve.
 
-Scans every tracked Markdown, Mojo, Python, TOML, and YAML file for
-backticked path tokens (``dir/file.ext`` or a bare ``file.ext``) and for
-``pixi run <task>`` phrases. A path token must name a tracked file (a bare
-filename resolves when exactly one tracked file has that basename, and a
-package-relative path when it names a file under a package root) or appear
-in EXTERNAL, which attests which other repository it lives in. A task must
-be defined in ``pixi.toml`` or be an executable pixi runs directly. Task
-phrases inside a double-quoted string literal on a code line are data, not
-references, and are not checked. Dated audit records quote past states
-verbatim, and this checker's own tests contain synthetic references by
-construction; both are skipped.
+The engine is the vendorable `references` package (`tools/references/`); this
+file is the policy: which paths this repository skips, which include roots hold
+package-relative paths, and which references live in another repository and
+are attested rather than resolved. Dated audit records quote past states
+verbatim, dated vendoring inventories name other repositories' paths
+throughout, and the reference tests contain synthetic references by
+construction; all three are skipped.
 
 Usage: check_references.py            exit 1 on any unresolved reference
 """
 
 from __future__ import annotations
 
-import re
 import sys
-from collections import Counter
-from collections.abc import Iterable, Mapping
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
 
-from provenance import tracked_files  # noqa: E402
-
-CHECKED_SUFFIXES = (".md", ".mojo", ".py", ".toml", ".yml")
-SKIPPED_PREFIXES = ("docs/audit/POST_CONSOLIDATION_AUDIT_", "tests/references/")
-#: Include roots of the vendorable packages: paths inside a package are
-#: package-relative, so a token also resolves beneath one of these.
-PACKAGE_ROOTS = ("kernel", "oracles", "tools")
-EXECUTABLES = frozenset({"mojo", "python"})
-PATH_TOKEN = re.compile(r"`([A-Za-z0-9_][A-Za-z0-9_./-]*\.(?:md|mojo|py|toml|json|yml|lock))`")
-TASK_TOKEN = re.compile(r"pixi run ([A-Za-z0-9_-]+)")
-QUOTED = re.compile(r'"[^"]*"')
-TASK_DEFINITION = re.compile(r"^([A-Za-z0-9_-]+) = ", re.M)
+from references.check_references import Policy, run  # noqa: E402
 
 # The finite-regime Mandelbrot program moved from larsbx/NLAP-JT to this
 # repository on 2026-09-16; NLAP-JT is historical and receives no new work,
@@ -47,7 +29,7 @@ TASK_DEFINITION = re.compile(r"^([A-Za-z0-9_-]+) = ", re.M)
 # carried since creation to the correct one; the old name redirects.
 NLAP = "larsbx/finite-mandelbrot-research (formerly larsbx/finite-mandlebrot-research, and before that larsbx/NLAP-JT)"
 PSC = "larsbx/pisot-substitution-conjecture-research"
-EXTERNAL: Mapping[str, str] = {
+EXTERNAL: dict[str, str] = {
     "docs/canonical-serialization.md": NLAP,
     "docs/library-extraction-candidates-2026-09-14.md": NLAP,
     "docs/finite-proof-records-spec.md": NLAP,
@@ -78,57 +60,20 @@ EXTERNAL: Mapping[str, str] = {
     "tests/test_substitution_dynamics_oracle.py": PSC,
     "claim_governance.toml": "the consumer repository root (docs/audit/policy-format.md)",
     "docs/ledger-index.md": "the consumer repository (docs/ledger-generation-spec.md, section 3.4)",
+    "docs/enclosure-width-lemma.md": "larsbx/finite-julia-set-research, which supplies the step factor K of section 2.5",
+    "docs/taylor-models.md": "larsbx/finite-julia-set-research, which built and measured the models of section 2.5",
+    "docs/scaled-boxes.md": "larsbx/finite-julia-set-research, which implemented the E = F endpoints of section 2.1",
+    "docs/tiling-connections-2026-09-20.md": "larsbx/finite-julia-set-research, whose item 2 asked for the general-size characteristic polynomial and the root isolation of docs/exact-polynomial-root-isolation-spec.md",
+    "kernel/integer_vector_bench.mojo": PSC,
     "interval_q/closed_q.mojo": "larsbx/interval_q at the commit pinned in policy/provenance.json",
-    "kernel/audit_estate_layout.py": "larsbx/estate-governance at the commit pinned in policy/provenance.json",
 }
 
-
-def path_tokens(text: str) -> list[str]:
-    return PATH_TOKEN.findall(text)
-
-
-def task_tokens(text: str) -> list[str]:
-    """Task names outside double-quoted literals."""
-    return [m.group(1) for line in text.splitlines() for m in TASK_TOKEN.finditer(QUOTED.sub("", line))]
-
-
-def check(files: Mapping[str, str], tracked: Iterable[str], tasks: Iterable[str], external: Mapping[str, str] = EXTERNAL) -> list[str]:
-    """Every unresolved reference as ``path: kind token``."""
-    tracked = set(tracked)
-    basenames = Counter(Path(p).name for p in tracked)
-    known_tasks = set(tasks) | EXECUTABLES
-    errors = []
-    for path, text in sorted(files.items()):
-        if path.startswith(SKIPPED_PREFIXES) or not path.endswith(CHECKED_SUFFIXES):
-            continue
-        for token in path_tokens(text):
-            resolves = (token in tracked or token in external or ("/" not in token and basenames[token] == 1)
-                        or ("/" in token and any(f"{root}/{token}" in tracked for root in PACKAGE_ROOTS)))
-            if not resolves:
-                errors.append(f"{path}: path `{token}` is not a tracked file, a unique basename, or a listed external reference")
-        for task in task_tokens(text):
-            if task not in known_tasks:
-                errors.append(f"{path}: task `pixi run {task}` is not defined in pixi.toml")
-    return errors
-
-
-def tree_files(root: Path = ROOT) -> dict[str, str]:
-    return {p: (root / p).read_text(encoding="utf-8", errors="replace") for p in tracked_files(root) if p.endswith(CHECKED_SUFFIXES)}
-
-
-def defined_tasks(root: Path = ROOT) -> set[str]:
-    return set(TASK_DEFINITION.findall((root / "pixi.toml").read_text(encoding="utf-8")))
-
-
-def main(argv: list[str]) -> int:
-    files = tree_files()
-    errors = check(files, tracked_files(), defined_tasks())
-    if errors:
-        print("unresolved references:\n  " + "\n  ".join(errors))
-        return 1
-    print(f"OK: every path and task reference in {len(files)} files resolves.")
-    return 0
+POLICY = Policy(
+    external=EXTERNAL,
+    skipped_prefixes=("docs/audit/POST_CONSOLIDATION_AUDIT_", "docs/vendoring-candidates-", "tests/references/"),
+    package_roots=("kernel", "oracles", "tools"),
+)
 
 
 if __name__ == "__main__":
-    sys.exit(main(sys.argv))
+    sys.exit(run(ROOT, POLICY))

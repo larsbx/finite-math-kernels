@@ -9,6 +9,7 @@ the reference semantics), and the witness replay, which shares no code with
 the census, is checked on its own.
 """
 
+from certified_records.codec import vector_cases
 from finite_field_orbit.census import (
     Agg,
     Block,
@@ -18,6 +19,7 @@ from finite_field_orbit.census import (
     merge,
     replay,
     request_verdict,
+    step,
     witness_verdict,
 )
 
@@ -28,55 +30,56 @@ def expect(label: String, got: String, want: String) raises:
 
 
 def check_vectors() raises -> Int:
+    var text = open("conformance/orbit_census_v1.txt", "r").read()
     var checked = 0
-    for raw in open("conformance/orbit_census_v1.txt", "r").read().split("\n"):
-        var line = String(raw)
-        if line.byte_length() == 0 or line.startswith("#"):
-            continue
-        var cols = List[String]()
-        for part in line.split("\t"):
-            cols.append(String(part))
-        if cols[0] == "census":
-            var d = decode(cols[1])
-            expect("decode " + cols[1], d.reason, "")
-            expect("request " + cols[1], request_verdict(d.block), "")
-            expect("census", encode(d.block, census(d.block)), cols[1])
-            expect("replay " + cols[1], replay(cols[1]), "accepted")
-        elif cols[0] == "tampered":
-            expect("tampered " + cols[2], replay(cols[2]), cols[1])
-        elif cols[0] == "request-malformed":
-            var v = List[Int]()
-            for part in cols[2].split(" "):
-                v.append(Int(String(part)))
-            expect("request " + cols[2], request_verdict(Block(v[0], v[1], v[2], v[3], v[4])), "malformed:" + cols[1])
-        elif cols[0] == "wide":
-            var d = decode(cols[1])
-            expect("decode wide " + cols[1], d.reason, "")
-            expect("wide round trip", encode(d.block, d.agg), cols[1])
-        elif cols[0] == "decode-malformed":
-            expect("decode '" + cols[2] + "'", decode(cols[2]).reason, "malformed:" + cols[1])
-            expect("replay '" + cols[2] + "'", replay(cols[2]), "malformed:" + cols[1])
-        else:
-            raise Error("unknown vector kind " + cols[0])
+    for row in vector_cases(text, "census"):
+        var d = decode(row[0])
+        expect("decode " + row[0], d.reason, "")
+        expect("request " + row[0], request_verdict(d.block), "")
+        expect("census", encode(d.block, census(d.block)), row[0])
+        expect("replay " + row[0], replay(row[0]), "accepted")
+        checked += 1
+    for row in vector_cases(text, "tampered"):
+        expect("tampered " + row[1], replay(row[1]), row[0])
+        checked += 1
+    for row in vector_cases(text, "request-malformed"):
+        var v = List[Int]()
+        for part in row[1].split(" "):
+            v.append(Int(String(part)))
+        expect("request " + row[1], request_verdict(Block(v[0], v[1], v[2], v[3], v[4])), "malformed:" + row[0])
+        checked += 1
+    for row in vector_cases(text, "wide"):
+        var d = decode(row[0])
+        expect("decode wide " + row[0], d.reason, "")
+        expect("wide round trip", encode(d.block, d.agg), row[0])
+        checked += 1
+    for row in vector_cases(text, "decode-malformed"):
+        expect("decode '" + row[1] + "'", decode(row[1]).reason, "malformed:" + row[0])
+        expect("replay '" + row[1] + "'", replay(row[1]), "malformed:" + row[0])
         checked += 1
     return checked
 
 
-def test_declared_domain_is_refused_as_unsupported() raises:
-    """Well-formed but outside the kernel's table: unsupported, never malformed."""
-    expect("p = 2^24 + 43", request_verdict(Block(16777259, 0, 5, 0, 5)), "unsupported:p")
-    expect("replay above 2^24", replay("orbit-census-v1 4294967291 0 1 0 0 0 0 0 0 0 0 0 0 0"), "unsupported:p")
-    expect("largest supported prime", request_verdict(Block(16777213, 0, 5, 0, 5)), "")
+def test_the_whole_contract_domain_is_supported() raises:
+    """Every well-formed block is answered: a table of p words below 2^24, hashing above."""
+    expect("p = 2^32 - 5", request_verdict(Block(4294967291, 0, 5, 0, 5)), "")
+    expect("empty block at 2^32 - 5", replay("orbit-census-v1 4294967291 0 1 0 0 0 0 0 0 0 0 0 0 0"), "accepted")
+    expect("still prime-checked", request_verdict(Block(4294967295, 0, 5, 0, 5)), "malformed:p")
 
 
-def test_sums_beyond_int64_are_unsupported_not_malformed() raises:
-    """Sums range to 2^64 in the contract; this kernel's Int holds sums below 2^63.
+def test_the_step_is_exact_in_64_bits() raises:
+    """With p = 2^32 - 5, x^2 + c reaches 2^64 - 12 * 2^32: past Int, inside UInt64."""
+    var p = 4294967291
+    if step(p - 1, 5, p) != 6 or step(2147483648, 7, p) != 1073741836 or step(p - 1, p - 1, p) != 0:
+        raise Error("step(x) = x^2 + c mod p is wrong near 2^32")
 
-    No record inside the declared domain (p < 2^24, so sums < 2^48) is refused.
-    """
-    expect("2^63", replay("orbit-census-v1 7 3 7 0 7 7 7 9223372036854775808 21 3 1 1 2 3"), "unsupported:sum_mu")
-    expect("2^64 - 1", replay("orbit-census-v1 7 3 7 0 7 7 7 6 18446744073709551615 3 1 1 2 3"), "unsupported:sum_lambda")
+
+def test_sums_range_to_2_to_the_64() raises:
+    """A sum is at most p^2 < 2^64: every value below 2^64 decodes and reaches replay."""
     expect("2^63 - 1", replay("orbit-census-v1 7 3 7 0 7 7 7 9223372036854775807 21 3 1 1 2 3"), "mismatch:sum_mu")
+    expect("2^63", replay("orbit-census-v1 7 3 7 0 7 7 7 9223372036854775808 21 3 1 1 2 3"), "mismatch:sum_mu")
+    expect("2^64 - 1", replay("orbit-census-v1 7 3 7 0 7 7 7 6 18446744073709551615 3 1 1 2 3"), "mismatch:sum_lambda")
+    expect("2^64", decode("orbit-census-v1 7 3 7 0 7 7 7 6 18446744073709551616 3 1 1 2 3").reason, "malformed:sum_lambda")
 
 
 def test_witness_replay_is_independent() raises:
@@ -107,8 +110,9 @@ def main() raises:
     var checked = check_vectors()
     if checked < 50:
         raise Error("only " + String(checked) + " vectors checked")
-    test_declared_domain_is_refused_as_unsupported()
-    test_sums_beyond_int64_are_unsupported_not_malformed()
+    test_the_whole_contract_domain_is_supported()
+    test_the_step_is_exact_in_64_bits()
+    test_sums_range_to_2_to_the_64()
     test_witness_replay_is_independent()
     test_merge_is_partition_invariant()
     print("finite_field_orbit laws passed on", checked, "vectors.")

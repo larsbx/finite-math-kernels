@@ -1,155 +1,58 @@
 # finite-math-kernels
 
-Canonical monorepo for reusable exact finite-mathematics kernels extracted
-from the finite-regime Mandelbrot program (`larsbx/finite-mandlebrot-research`,
-formerly `larsbx/NLAP-JT`) and the Pisot substitution research program.
+Exact finite-mathematics kernels, in Mojo, shared by the finite-regime
+Mandelbrot programme (`larsbx/finite-mandlebrot-research`) and the Pisot
+substitution programme.
 
-```text
-kernel/finite_exact/
-  bigint_z.mojo
-  rational.mojo
-  closed_interval.mojo
-kernel/finite_linear_algebra/
-  matrix.mojo
-  matrix3.mojo
-  rational_elimination.mojo
-  tensor3.mojo
-kernel/substitution_dynamics/
-  words.mojo
-  substitution.mojo
-  balanced_pairs.mojo
-  automaton.mojo
-  discrepancy.mojo
-  tuning.mojo
-  sadic.mojo
-  coincidence.mojo
-kernel/quadratic_orbit/
-  orbit.mojo
-  collision.mojo
-kernel/rational_dynamics/
-  rational.mojo
-kernel/projective_limits/
-  line.mojo
-  limits.mojo
-  rotor.mojo
-kernel/cyclotomic/
-  field.mojo
-  germ.mojo
-kernel/finite_field_orbit/
-  census.mojo
-kernel/mojo_smoke/
-  report.mojo
-kernel/parallel_fold/
-  map_fold.mojo
-kernel/proof_records/
-  ProofArchitecture.tla
-  graph.py
-tools/
-  tools/vendoring/check_vendored_sync.py
-  claim_governance/
-reference/                  Python reference semantics
-oracles/                    differential oracles and oracles/oracle_refinement/
-experiments/frontier/       the polyglot frontier lane
-schemas/                    normative contracts
-conformance/                golden vectors and ledger fixtures
-policy/provenance.json      consolidation provenance of every tracked file
-```
+The library computes finite facts. It never turns a computation into a theorem:
+an unknown stays unknown, and a capped search that hits its cap is
+*inconclusive*, never a proof or a counterexample. Interpreting results is the
+consumer's job.
 
-The implementation retains compatibility modules (`rat_q`, `closed_q`,
-`mat3`, `qlinalg`, `scalar`, and `w3`) while consumers move to the stable public
-filenames above. There is one in-tree `finite_exact`; vendored duplicates are
-not part of this repository.
+## Packages
 
-## Boundaries
+All canonical kernels live under `kernel/` (the include root, `-I kernel`).
 
-- `BigZ` and `Q` are exact and unbounded; malformed construction and invalid
-  arithmetic on constructor-produced values are rejected fail-closed. Direct
-  assignment to `BigZ` fields is outside the boundary
-  (`docs/exact-arithmetic-public-boundary.md`, section 2).
-- Closed intervals are conservative filters. Unknown containment or sign is
-  never promoted to equality or certificate acceptance.
-- Linear algebra computes exact finite-dimensional facts and makes no spectral
-  or conjectural theorem claims.
-- A capped balanced-pair automaton is inconclusive, never a proof or
-  counterexample.
-- Tuning patterns, directive prefixes, and column coincidence are finite
-  combinatorics (`docs/tuning-substitutions-spec.md`). A coincidence witness
-  is a fact about columns of powers of a substitution; the spectral
-  conclusion (Dekking) and the kneading interpretation of tuning are the
-  consumer's imported theorems. The parity twist is the real-line
-  convention; the continuation twist is the general rule.
-- The quadratic orbit is seeded. Both planes of the family iterate
-  `z -> z^2 + c`; the parameter plane varies `c` from the critical seed and
-  the dynamical plane varies the seed at fixed `c`, so the seed is an argument
-  and neither plane is the library's default. Terms are enclosures: separation
-  of two terms is a fact about the boxes, and overlap is never equality.
-- The collision partition (`kernel/quadratic_orbit/collision.mojo`) is finite
-  combinatorics on indices. It says which pairs an `(ell, period)` type
-  intends to collide, knows nothing about any parameter, and proves nothing
-  about any orbit; an invalid type intends nothing rather than something
-  arbitrary.
-- `reference/cyclotomic_reference.py` is the independent reference for the
-  cyclotomic (`Q[zeta_q]`, Galois action) and quadratic-germ (truncated
-  iterate, parabolic factor, reciprocal series) stages of
-  `docs/rational-dynamics-cyclotomic-bridge.md`. Its Mojo stage is
-  `kernel/cyclotomic`: `Cyc[q]` with operators, `CyclotomicField[q]` as an
-  `ExactField`, the Galois action, trace and norm, canonical bytes, and the
-  germ series. The Mojo stage replays `conformance/cyclotomic_field_v1.txt`
-  (`pixi run test-cyclotomic`).
-  It returns finite algebra only; naming a coefficient as an index, or
-  relating it to any bulb, is the consumer's.
-- `rational_dynamics` provides exact unbounded reduced-fraction arithmetic, explicit doubling modulo one, modular and centered modular inverses, canonical simple continued fractions and convergents, and Farey determinants. It interprets none of these as measured angles or domain claims.
-- `projective_limits` computes limits of rational functions over an exact field K (Q, or a prime field `Fp[p]`) as points of P^1(K), infinity included, through one kernel: the lowest-order point on the exceptional divisor. It covers poles, the degree rule, L'Hopital, tangent slopes in the pencil, asymptotes, directional and arc limits of bivariate quotients, Moebius maps and the squared chordal metric. A found path-dependence witness certifies that a limit does not exist; a search that finds none is inconclusive. An independent Python reference (`reference/projective_limits_reference.py`: gcd cancellation and evaluation, polynomial division) writes the golden vectors `conformance/projective_limits_v1.txt`, which the Mojo kernel replays. Field-generic laws over F_p (the half-turn involution t -> -1/t, rotation invariance of the chordal quadrance, landing in characteristic p) are in `tests/projective_limits/test_field_generic.mojo`; see `docs/projective-limits-over-exact-fields.md`. `projective_limits.rotor` makes the rotations of x^2 + y^2 = 1 the non-isotropic points of P^1(K), with no angle anywhere: the group law is the Moebius action, the half-turn is infinity, a turn a/n is g^(aN/n) through a generator of the cyclic group T(F_p) of order p - (-1/p), and spreads obey s(n theta) = S_n(s(theta)) (`tests/projective_limits/test_rotor.mojo`).
-- The finite-field orbit census (`kernel/finite_field_orbit/census.mojo`,
-  `docs/polyglot-orbit-census-design.md`) computes exact tails and periods of
-  `x -> x^2 + c` over `F_p` for a block of seeds, up to a cap. Cap reached is
-  inconclusive, never a fact about the orbit. Its replay predicate is the only
-  authority for records proposed by the Bend challenger, and the Elixir
-  orchestrator only schedules; neither decides anything.
-- The vendoring checker (`tools/vendoring/`) reports drift between a consumer's
-  copies and its pins. It decides nothing about the code it checks, and it
-  searches upward for the manifest so that how deep a consumer puts it does
-  not matter.
-- `mojo_smoke` is test scaffolding: it reports the verdicts it is handed and
-  certifies nothing.
-- `parallel_fold` evaluates a map-fold over an index range on worker threads
-  and folds the chunks in index order, so an associative `combine` returns the
-  sequential fold at every worker count; it relies on associativity alone,
-  never commutativity. It is the one package that needs MAX
-  (`max.algorithm.parallelize`, from `max-core`) and it certifies nothing.
-- Proof-record acceptance policy belongs to the consumer.
-- The evidence-vocabulary map (`docs/evidence-vocabulary-map.md`) only preserves
-  or lowers authority: a non-transferable exercise never becomes a theorem, an
-  unexecuted step never becomes a failure, and a failing test never becomes a
-  malformed record.
-- Generated ledgers (`docs/ledger-generation-spec.md`) are functions of a
-  consumer's named proof records: the TLA+ ledger and TLC models over
-  `kernel/proof_records/ProofArchitecture.tla`, the `[[claim]]` entries, and the
-  Markdown index all say what the records say, and the generator refuses a
-  ledger it cannot render faithfully. It promotes nothing.
-- The typed relationship graph (`docs/typed-relationship-graph-spec.md`) is
-  the same records read as a graph: it types the relationships the ledger
-  already records and infers none, and every edge is declared rather than
-  scored, so importing it into an LLM-asserted graph cannot launder a guess
-  into a verified relationship.
-- Generator refinements (`oracle_refinement`, `docs/generator-refinement-spec.md`) declare what each
-  differential oracle draws from, because a comparison is only as strong as its
-  corpus: this repository lost a 64-bit wrap and a singular lattice to a corpus
-  that was silent rather than wrong. A class declared reached and never drawn
-  fails the run, and so does a class declared missed and then drawn.
-- Claim-governance checks enforce only a consumer-supplied policy; the
-  monorepo does not encode NLAP or PSC theorem status as library truth. The
-  `coverage` check reports which claims no test guards; it never decides that
-  a test establishes one.
-  `docs/provenance-for-computer-assisted-proof.md` states the record and
-  enforcement layers for readers outside these programmes: the three outcomes,
-  the five record kinds, the six checks, and what adopting them costs. It is
-  methodology, not mathematics, and proves nothing.
+| Package | What it provides |
+|---|---|
+| `finite_exact` | Unbounded integers `BigZ`, rationals `Q`, conservative closed intervals, enclosure-width bounds; machine-`Int` gcd, overflow-refusing arithmetic, base-ten rendering. Fail-closed on invalid input. `ExactField`, a field as a structure over its `Element` type (`QField`), and the prime fields `Fp[p]` / `FpField[p]`. |
+| `finite_linear_algebra` | Exact matrices, RREF/rank/nullspace over `Q`, rank-three tensors, checked integer vectors and primitivity of non-negative integer matrices; `qpoly`: polynomials over `Q`, Sturm chains, isolating brackets, the characteristic polynomial in any dimension (`docs/exact-polynomial-root-isolation-spec.md`). |
+| `finite_polynomial` | `BigZ` polynomials, cyclotomic fields `Q[X]/(Phi_n)` with Galois actions, jets of the quadratic germ. `cyclotomic_field` types it for the field-generic kernels: `Cyc[q]` with a compile-time conductor and operators `+ − * / ==`, trace and norm, and `CyclotomicField[q]` as an `ExactField`. |
+| `substitution_dynamics` | Words, substitutions, balanced pairs, tuning, S-adic sequences, column coincidence. Its automaton reads components through `finite_graph`, so the two are vendored together. |
+| `quadratic_orbit` | Enclosed orbits of `z -> z^2 + c`, the collision partition, and box certificates for preperiodic points (exclusion; Krawczyk hypothesis). |
+| `angle_doubling` | `t -> 2t` on `Q/Z`: preperiod and period in closed form, angle types. |
+| `projective` | The quadratic map on `P^1(C)` in homogeneous coordinates, and its charts. |
+| `rational_dynamics` | Reduced fractions, doubling mod 1, continued fractions, Farey determinants. |
+| `projective_limits` | Limits of rational functions over any `ExactField` K (Q, F_p, Q(zeta_q)) as points of `P^1(K)`; `rotor`: rotations of `x^2 + y^2 = 1` as non-isotropic points of `P^1(K)`, turns, orders and spreads, with no angle (`docs/projective-limits-over-exact-fields.md`). |
+| `certified_records` | Canonical one-line records: a schema of 32/64-bit fields, a total decoder, `malformed:`/`mismatch:` refusals (Mojo and Python). |
+| `finite_field_orbit` | Exact tails and periods of `x -> x^2 + c` over `F_p`. |
+| `parallel_fold` | Order-preserving parallel map-fold (the only package needing MAX). |
+| `proof_records` | Proof-record model (`ProofArchitecture.tla`) and its graph. |
+| `finite_automata` | Total DFAs over an integer alphabet: Boolean operations, projection, minimisation, emptiness witnesses, exact counts. |
+| `finite_graph` | Strongly connected components, union-find, F2 signings (period, cyclic classes, Perron compatibility). |
+| `mojo_smoke` | Test scaffolding, and the `require_claim` / `require_contract` receipts the claim-governance coverage check reads. |
+
+Stable entry points in `finite_exact` and `finite_linear_algebra` are
+`rational`, `closed_interval`, `matrix`, `matrix3` and `rational_elimination`;
+older module names (`rat_q`, `mat3`, `qlinalg`, …) remain for compatibility.
+
+## Rest of the repository
+
+| Path | Role |
+|---|---|
+| `reference/` | Independent Python reference semantics (non-authoritative). |
+| `oracles/` | Differential oracles. |
+| `schemas/`, `conformance/` | Normative contracts and their golden vectors. |
+| `tools/` | Vendorable `vendoring`, `references` and `claim_governance` packages; provenance; vector generators. |
+| `experiments/frontier/` | Polyglot experiments (non-authoritative). |
+| `experiments/mojo_issues/` | Reproductions and logged evidence for Mojo toolchain issues (non-authoritative; `pixi run mojo-issue-evidence`). |
+| `docs/` | Specifications; start with `docs/exact-arithmetic-public-boundary.md`. |
+| `policy/provenance.json` | Origin of every tracked file. |
+
+See `ARCHITECTURE.md` for layout rules and `CONTRIBUTING.md` for workflow.
 
 ## Verification
 
 ```bash
 pixi run test
 ```
-
-See `docs/audit/CONSOLIDATION_PROVENANCE.md` for source mapping and retirement gates.

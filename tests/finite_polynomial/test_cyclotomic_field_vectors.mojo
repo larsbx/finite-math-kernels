@@ -2,15 +2,23 @@
 
 The vectors are written by tools/make_cyclotomic_field_vectors.py from the
 independent Python reference (Phi_q by recursive division, inverses by
-extended Euclid); the kernel uses the Moebius product and the norm, so
-agreement cross-checks two methods. The conductor of each line is a runtime
-value, dispatched to the compile-time field Cyc[q] by an unrolled loop.
-Run with `pixi run test-cyclotomic`.
+extended Euclid). The kernel, finite_polynomial, computes Phi_q by the divisor
+product identity and inverses by exact RREF, so agreement cross-checks two
+methods. Each line is replayed through the typed view Cyc[q]; its runtime
+conductor is dispatched to the compile-time field by an unrolled loop.
+Run with `pixi run test-cyclotomic-field`.
 """
 
-from cyclotomic.field import Cyc, cyclotomic_polynomial
-from cyclotomic.germ import parabolic_factor, reciprocal_series_coefficient
 from finite_exact.bigint_z import BigZ, bigz_abs_mul_small, bigz_add, bigz_from_i64, bigz_neg
+from finite_exact.exact_decimal import bigz_decimal
+from finite_polynomial.cyclotomic_field import Cyc
+from finite_polynomial.polynomial_z import cyclotomic_polynomial, poly_coefficient
+from finite_polynomial.quadratic_germ import (
+    jet_seed,
+    jet_sub,
+    quadratic_germ_index_coefficient,
+    quadratic_germ_iterate,
+)
 from finite_exact.rat_q import Q, q_from_bigz
 
 comptime FIXTURE = "conformance/cyclotomic_field_v1.txt"
@@ -57,9 +65,13 @@ def replay[q: Int](cols: List[String]) raises:
     var kind = cols[0]
     var label = String("\t").join(cols)
     if kind == "phi":
-        var want = [Int(c) for c in fields(cols[2], " ")]
-        if cyclotomic_polynomial(q) != want or materialize[Cyc[q].PHI]() != want:
-            raise Error(label + ": Phi_q disagrees")
+        var want = fields(cols[2], " ")
+        var phi = cyclotomic_polynomial(q)
+        if phi.degree() != len(want) - 1:
+            raise Error(label + ": deg Phi_q disagrees")
+        for k in range(len(want)):
+            if bigz_decimal(poly_coefficient(phi, k)) != want[k]:
+                raise Error(label + ": Phi_q disagrees at X^" + String(k))
     elif kind == "mul":
         expect[q](label, element[q](cols[2]) * element[q](cols[3]), cols[4])
     elif kind == "inv":
@@ -71,11 +83,14 @@ def replay[q: Int](cols: List[String]) raises:
         if enc.rejected or hex(enc.bytes) != cols[3]:
             raise Error(label + ": canonical bytes disagree")
     elif kind == "germ":
-        var factor = parabolic_factor(Cyc[q].zeta(Int(cols[2])), q)
-        if not factor.accepted():
-            raise Error(label + ": parabolic factor refused")
-        expect[q](label, factor.terms[0], cols[3])
-        var coefficient = reciprocal_series_coefficient(factor, q)
+        # P(0) is the coefficient of w^(q+1) in w - g^q(w), from the kernel's jets.
+        var p = Int(cols[2])
+        var order = 2 * q + 1
+        var residual = jet_sub(jet_seed(q, order), quadratic_germ_iterate(Cyc[q].zeta(p).value, q, order))
+        if not residual.accepted():
+            raise Error(label + ": germ iterate refused")
+        expect[q](label, Cyc[q].wrap(residual.coeffs[q + 1]), cols[3])
+        var coefficient = Cyc[q].wrap(quadratic_germ_index_coefficient(p, q))
         expect[q](label, coefficient, cols[4])
         if hex(coefficient.canonical_bytes().bytes) != cols[5]:
             raise Error(label + ": coefficient bytes disagree")

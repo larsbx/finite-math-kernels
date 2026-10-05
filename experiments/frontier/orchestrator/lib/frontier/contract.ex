@@ -2,8 +2,9 @@ defmodule Frontier.Contract do
   @moduledoc """
   Well-formedness of a block (design section 3.1) and the declared domains of
   section 3.6. The orchestrator refuses before dispatch, so no request outside
-  a domain reaches a kernel. That matters most for Bend, whose U32 arithmetic
-  wraps silently outside the domain it was written for.
+  a domain reaches a kernel. Both current kernels answer the whole contract
+  domain; a kernel with a narrower one declares it here and is never asked
+  what it cannot answer.
   """
 
   @bound 4_294_967_296
@@ -30,12 +31,11 @@ defmodule Frontier.Contract do
     end
   end
 
-  @doc "Mojo kernel: a visited table of `p` words (section 3.6)."
-  def mojo_domain({p, _, _, _, _}) when p < 16_777_216, do: :ok
-  def mojo_domain(_), do: {:unsupported, "p"}
+  @doc "Mojo kernel: the whole contract (UInt64 steps and sums, a table below 2^24, hashing above)."
+  def mojo_domain(_block), do: :ok
 
-  @doc "Bend 2 challenger: 24-bit double-and-add squares and Nat sums below 2^48, so the Mojo domain."
-  def bend_domain(block), do: mojo_domain(block)
+  @doc "Bend 2 challenger: the whole contract (32-bit double-and-add squares, two-half sums)."
+  def bend_domain(_block), do: :ok
 
   @spec prime?(integer) :: boolean
   def prime?(p) when p < 2, do: false

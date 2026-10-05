@@ -1,10 +1,10 @@
 {
   "environment": {
-    "date_utc": "2026-10-05T15:30:51Z",
+    "date_utc": "2026-10-05T15:38:50Z",
     "mojo": "Mojo 1.1.0.dev2026090805 (34562fa1)",
     "platform": "Linux-6.18.44-fc-v70-x86_64-with-glibc2.39",
     "python": "3.12.14",
-    "repository_commit": "15fb287ad27fdc5b1ac7d667dcef10bdaed9ef0f",
+    "repository_commit": "2116d476af7e228b6e4f7ae34e4480b5a87f8b13",
     "working_tree_clean": false
   },
   "cases": [
@@ -15,7 +15,7 @@
       "observed": "error: use of uninitialized value 's.x'",
       "agrees": true,
       "exit_code": 1,
-      "seconds": 0.75,
+      "seconds": 0.88,
       "diagnostics": [
         "repro.mojo:43:15: error: use of uninitialized value 's.x'",
         "    print(s.x == v)",
@@ -33,7 +33,7 @@
       "observed": "True",
       "agrees": true,
       "exit_code": 0,
-      "seconds": 0.63,
+      "seconds": 0.7,
       "diagnostics": []
     },
     {
@@ -43,7 +43,7 @@
       "observed": "True",
       "agrees": true,
       "exit_code": 0,
-      "seconds": 0.76,
+      "seconds": 0.87,
       "diagnostics": []
     },
     {
@@ -53,7 +53,7 @@
       "observed": "error: use of uninitialized value 's.x'",
       "agrees": true,
       "exit_code": 1,
-      "seconds": 0.77,
+      "seconds": 0.78,
       "diagnostics": [
         "swapped-operands.mojo:43:13: error: use of uninitialized value 's.x'",
         "    print(v == s.x)",
@@ -71,7 +71,7 @@
       "observed": "error: use of uninitialized value 's.x'",
       "agrees": true,
       "exit_code": 1,
-      "seconds": 0.79,
+      "seconds": 0.9,
       "diagnostics": [
         "copy-first.mojo:43:21: error: use of uninitialized value 's.x'",
         "    var w = s.x.copy()",
@@ -89,7 +89,7 @@
       "observed": "True",
       "agrees": true,
       "exit_code": 0,
-      "seconds": 0.64,
+      "seconds": 0.74,
       "diagnostics": []
     },
     {
@@ -117,7 +117,7 @@
       "observed": "error: use of uninitialized value 's.x'",
       "agrees": true,
       "exit_code": 1,
-      "seconds": 0.73,
+      "seconds": 0.9,
       "diagnostics": [
         "movable-bounds.mojo:14:32: warning: redundant trait composition: 'Copyable' already implies 'Movable'",
         "    comptime Element: Copyable & Movable & Deinitable",
@@ -138,7 +138,7 @@
       "observed": "error: use of uninitialized value 's.x'",
       "agrees": true,
       "exit_code": 1,
-      "seconds": 0.71,
+      "seconds": 0.75,
       "diagnostics": [
         "implicitly-copyable.mojo:43:15: error: use of uninitialized value 's.x'",
         "    print(s.x == v)",
@@ -156,7 +156,7 @@
       "observed": "error: use of uninitialized value 'back.rejected'",
       "agrees": true,
       "exit_code": 1,
-      "seconds": 0.98,
+      "seconds": 1.03,
       "diagnostics": [
         "kernel-rotor-over-fp.mojo:10:35: error: use of uninitialized value 'back.rejected'",
         "    print(back.x == fx and back.y == fy)",
@@ -174,17 +174,17 @@
       "observed": "True",
       "agrees": true,
       "exit_code": 0,
-      "seconds": 0.94,
+      "seconds": 0.88,
       "diagnostics": []
     },
     {
       "name": "kernel-cyclotomic-rotor",
-      "why": "a rotor over Q(zeta_8): the original occurrence in tests/cyclotomic/test_cyclotomic_field.mojo",
+      "why": "a rotor over Q(zeta_8): the original occurrence, in tests/cyclotomic/test_cyclotomic_field.mojo at 621202a",
       "expect": "error: use of uninitialized value 't.rejected'",
       "observed": "error: use of uninitialized value 't.rejected'",
       "agrees": true,
       "exit_code": 1,
-      "seconds": 1.1,
+      "seconds": 1.18,
       "diagnostics": [
         "kernel-cyclotomic-rotor.mojo:8:20: error: use of uninitialized value 't.rejected'",
         "    return t.x.copy()",
@@ -202,7 +202,7 @@
       "observed": "True",
       "agrees": true,
       "exit_code": 0,
-      "seconds": 0.71,
+      "seconds": 0.62,
       "diagnostics": []
     },
     {
@@ -212,7 +212,7 @@
       "observed": "True",
       "agrees": true,
       "exit_code": 0,
-      "seconds": 0.7,
+      "seconds": 0.72,
       "diagnostics": []
     },
     {
@@ -222,7 +222,7 @@
       "observed": "True",
       "agrees": true,
       "exit_code": 0,
-      "seconds": 0.67,
+      "seconds": 0.65,
       "diagnostics": []
     },
     {
@@ -232,7 +232,7 @@
       "observed": "error: use of uninitialized value 's.x'",
       "agrees": true,
       "exit_code": 1,
-      "seconds": 0.74,
+      "seconds": 0.8,
       "diagnostics": [
         "layout-element1-s1.mojo:29:15: error: use of uninitialized value 's.x'",
         "    print(s.x == v)",
@@ -250,7 +250,7 @@
       "observed": "True",
       "agrees": true,
       "exit_code": 0,
-      "seconds": 0.7,
+      "seconds": 0.68,
       "diagnostics": []
     },
     {
@@ -260,7 +260,7 @@
       "observed": "True",
       "agrees": true,
       "exit_code": 0,
-      "seconds": 0.68,
+      "seconds": 0.67,
       "diagnostics": []
     },
     {
@@ -288,7 +288,7 @@
       "observed": "error: use of uninitialized value 's.f0'",
       "agrees": true,
       "exit_code": 1,
-      "seconds": 0.95,
+      "seconds": 0.83,
       "diagnostics": [
         "layout-element2-s2.mojo:33:15: error: use of uninitialized value 's.f0'",
         "    print(s.x == v)",
@@ -306,7 +306,7 @@
       "observed": "True",
       "agrees": true,
       "exit_code": 0,
-      "seconds": 0.64,
+      "seconds": 0.73,
       "diagnostics": []
     },
     {
@@ -316,7 +316,7 @@
       "observed": "error: use of uninitialized value 's.x'",
       "agrees": true,
       "exit_code": 1,
-      "seconds": 0.75,
+      "seconds": 0.83,
       "diagnostics": [
         "layout-element3-s1.mojo:33:15: error: use of uninitialized value 's.x'",
         "    print(s.x == v)",
@@ -334,7 +334,7 @@
       "observed": "error: use of uninitialized value 's.f0'",
       "agrees": true,
       "exit_code": 1,
-      "seconds": 0.75,
+      "seconds": 0.77,
       "diagnostics": [
         "layout-element3-s2.mojo:35:15: error: use of uninitialized value 's.f0'",
         "    print(s.x == v)",
@@ -352,7 +352,7 @@
       "observed": "error: use of uninitialized value 's.f1'",
       "agrees": true,
       "exit_code": 1,
-      "seconds": 0.77,
+      "seconds": 0.86,
       "diagnostics": [
         "layout-element3-s3.mojo:37:15: error: use of uninitialized value 's.f1'",
         "    print(s.x == v)",
