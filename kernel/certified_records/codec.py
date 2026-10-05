@@ -33,8 +33,13 @@ class Schema:
         return tuple(name for name, _ in self.fields)
 
 
+#: 2^64 - 1 has 20 digits; a longer token is refused before `int`, whose own
+#: digit limit would otherwise raise a different error.
+MAX_DIGITS = 20
+
+
 def parse_canonical(token: str, bits: int) -> int | None:
-    if not (token.isascii() and token.isdigit()) or (len(token) > 1 and token[0] == "0"):
+    if len(token) > MAX_DIGITS or not (token.isascii() and token.isdigit()) or (len(token) > 1 and token[0] == "0"):
         return None
     value = int(token)
     return value if value < 2**bits else None

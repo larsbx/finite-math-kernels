@@ -61,7 +61,7 @@
       "relation": "authored"
     },
     "ESTATE.toml": {
-      "blob": "2b3b47334e2eb8e07e0b3dae852f5da10d1bddbb",
+      "blob": "a4d483e66eaec1e9442c7c75d314460708ebc2be",
       "relation": "authored"
     },
     "README.md": {
@@ -69,7 +69,7 @@
       "relation": "authored"
     },
     "conformance/certified_records_v1.txt": {
-      "blob": "1a9b1617f75ebe7d0fce8e468726e0f54d857f6e",
+      "blob": "4f63904a36f4786157dfbc8e96342dce26b56e63",
       "relation": "authored"
     },
     "conformance/cyclotomic_germ_v1.json": {
@@ -410,7 +410,7 @@
       "relation": "authored"
     },
     "kernel/certified_records/codec.py": {
-      "blob": "bc1d2c253f91fc5293b2e84aabeb1db3f6e15986",
+      "blob": "df95732380dc68f6a5c95bc9097df09f3345ea58",
       "relation": "authored"
     },
     "kernel/finite_exact/__init__.mojo": {
