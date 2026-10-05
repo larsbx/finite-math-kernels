@@ -346,15 +346,13 @@ def cyclotomic_automorphism(value: CyclotomicQ, exponent: Int) -> CyclotomicQ:
     return out^
 
 
-def _append_u64(mut bytes: List[UInt8], value: UInt64):
-    var shift = 56
-    while shift >= 0:
-        bytes.append(UInt8((value >> UInt64(shift)) & 255))
-        shift -= 8
-
-
 def cyclotomic_canonical_bytes(value: CyclotomicQ) -> CyclotomicCanonicalBytes:
-    """Canonical conductor + full reduced coefficient vector encoding."""
+    """Z(conductor) || Q(c_0) || ... || Q(c_{phi(n)-1}), the encoding of C1 in
+    docs/rational-dynamics-cyclotomic-bridge.md over docs/canonical-encoding.md.
+
+    Every Z and Q encoding is self-delimiting and the conductor fixes the
+    number of coefficients, so the concatenation needs no length prefixes.
+    """
     if value.rejected or value.conductor < 1:
         return rejected_cyclotomic_bytes()
 
@@ -363,16 +361,12 @@ def cyclotomic_canonical_bytes(value: CyclotomicQ) -> CyclotomicCanonicalBytes:
         return rejected_cyclotomic_bytes()
 
     var out = CyclotomicCanonicalBytes()
-    _append_u64(out.bytes, UInt64(len(conductor.bytes)))
     for byte in conductor.bytes:
         out.bytes.append(byte)
-
-    _append_u64(out.bytes, UInt64(len(value.coeffs)))
     for coefficient in value.coeffs:
         var encoded = q_canonical_bytes(coefficient)
         if encoded.rejected:
             return rejected_cyclotomic_bytes()
-        _append_u64(out.bytes, UInt64(len(encoded.bytes)))
         for byte in encoded.bytes:
             out.bytes.append(byte)
     return out^
