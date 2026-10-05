@@ -65,7 +65,7 @@
       "relation": "authored"
     },
     "README.md": {
-      "blob": "2885d7a314f6391ece8a06c4638115de2be15601",
+      "blob": "aeffa0a8018d6bd09eb31a1f88e0b57d15ea801a",
       "relation": "authored"
     },
     "conformance/certified_records_v1.txt": {
@@ -175,7 +175,7 @@
       "source_path": "docs/example-policy.toml"
     },
     "docs/audit/policy-format.md": {
-      "blob": "e36f1feefe115ccbb8ddc16928ff7b478dd3e83c",
+      "blob": "0682b81918d34e2c42b7b47c966355c475816e98",
       "relation": "modified",
       "source": "claim_governance_tools",
       "source_blob": "1aabe8474bbdd10bea1f268e70448265387c1c33",
@@ -201,7 +201,7 @@
       "relation": "authored"
     },
     "docs/exact-arithmetic-public-boundary.md": {
-      "blob": "d16c6746a28d6ea26f0037486ff01f54c88c5328",
+      "blob": "7464e43e1deb17069c1ae357eee6a21c8f92b605",
       "relation": "modified",
       "source": "finite_exact",
       "source_blob": "a850a73bca82ffc0de10d02380f6040e04fa9880",
@@ -228,7 +228,7 @@
       "relation": "authored"
     },
     "docs/ledger-generation-spec.md": {
-      "blob": "1df13b74ea0ae4470e880b6040279a933371e1c6",
+      "blob": "255273d7062e5e09352cff2d28fed60abeb3e508",
       "relation": "authored"
     },
     "docs/madic-ball-arithmetic-spec.md": {
@@ -248,7 +248,7 @@
       "relation": "authored"
     },
     "docs/proof-records-specification.md": {
-      "blob": "689f0c886ddbf0f03b19b4bd34f7ffa27b745dd1",
+      "blob": "edc2582468ba97eb5d4d6c515d8bd58db4b82972",
       "relation": "modified",
       "source": "finite_proof_records",
       "source_blob": "145c282052309b9fdbcc7baeef4bbeadc4963875",
@@ -480,7 +480,7 @@
       "source_path": "finite_exact/bigint_z.mojo"
     },
     "kernel/finite_exact/checked_int.mojo": {
-      "blob": "aabaf52ddb218dfb676c2cfc2177b815a14724ea",
+      "blob": "e9d276215a2f4bdfb386402dedb8f6d89471de87",
       "relation": "authored"
     },
     "kernel/finite_exact/closed_interval.mojo": {
@@ -511,7 +511,7 @@
       "relation": "authored"
     },
     "kernel/finite_exact/integer_gcd.mojo": {
-      "blob": "a9ea5f91989fd5d8cbd8a3a4b25993dda788b72c",
+      "blob": "370efdbaf61565cf4998a921a29e57e12653b678",
       "relation": "authored"
     },
     "kernel/finite_exact/rat_q.mojo": {
@@ -557,7 +557,7 @@
       "source_path": "finite_linear_algebra/__init__.mojo"
     },
     "kernel/finite_linear_algebra/integer_matrix.mojo": {
-      "blob": "33751ffbb2edf72bf8f62c628dd934ed74133493",
+      "blob": "7cad71be686e3a348284ec87d50f15bcad98f8f0",
       "relation": "authored"
     },
     "kernel/finite_linear_algebra/integer_module.mojo": {
@@ -628,11 +628,11 @@
       "relation": "authored"
     },
     "kernel/finite_polynomial/cyclotomic_field.mojo": {
-      "blob": "86b74b2701b4f8bd34aafe8b52379900fff014fc",
+      "blob": "84ac505b2c9ee3cad3198b067f3ab836177e180d",
       "relation": "authored"
     },
     "kernel/finite_polynomial/cyclotomic_q.mojo": {
-      "blob": "9ed7bc2cb367e3fe222ae5175288206f9edc0281",
+      "blob": "ef22a1f99121d8eece2130dc042915c648d91142",
       "relation": "authored"
     },
     "kernel/finite_polynomial/polynomial_z.mojo": {
@@ -640,7 +640,7 @@
       "relation": "authored"
     },
     "kernel/finite_polynomial/quadratic_germ.mojo": {
-      "blob": "2c97387f49a3d777cbf2b3025c88e1430e1d9832",
+      "blob": "9bd63372d9eca72bb3495c60b9f84afcbe65fd79",
       "relation": "authored"
     },
     "kernel/mojo_smoke/__init__.mojo": {
@@ -713,11 +713,11 @@
       "source_path": "finite_proof_records/__init__.py"
     },
     "kernel/proof_records/generate_ledgers.py": {
-      "blob": "613f3d9474ae3864c00d2299ea7f13cd18552d1b",
+      "blob": "9738c3c75430f91474989918593a2a8a901cb64b",
       "relation": "authored"
     },
     "kernel/proof_records/graph.py": {
-      "blob": "1991e94c4214a136f7ef480dbffca8054e4bc316",
+      "blob": "eb9cca823b0d4ba74355bfd3cb5b1f37e2132a55",
       "relation": "authored"
     },
     "kernel/proof_records/known_answers.py": {
@@ -732,7 +732,7 @@
       "source_path": "finite_proof_records/records.mojo"
     },
     "kernel/proof_records/records.py": {
-      "blob": "802ab06fcdf0e09ec652283acce7fe72701f58e4",
+      "blob": "8f68500479dfc20571e2dfc67ab1f9ee40f3dec4",
       "relation": "modified",
       "source": "finite_proof_records",
       "source_blob": "04c2650793e8c7a0d87eb360b845be5750b149a7",
@@ -960,7 +960,7 @@
       "source_path": "tests/test_consistency.py"
     },
     "tests/audit/test_coverage.py": {
-      "blob": "39c33083a1a369d7aee9750690c48f357106af11",
+      "blob": "1020ac7f13b05e7eda6e0acbf22df3fe19429886",
       "relation": "authored"
     },
     "tests/audit/test_lexing.py": {
@@ -1049,7 +1049,7 @@
       "relation": "authored"
     },
     "tests/finite_exact/test_machine_int.mojo": {
-      "blob": "7e9ddf2a622623b9aaf8ae0bf6b10ae1b0322e91",
+      "blob": "627975078e1f69fb00e62b9321d07e2f68d184ca",
       "relation": "authored"
     },
     "tests/finite_exact/test_property_oracle.py": {
@@ -1102,7 +1102,7 @@
       "source_path": "tests/test_finite_linear_algebra.mojo"
     },
     "tests/finite_linear_algebra/test_integer_matrix.mojo": {
-      "blob": "800b312e4cd8932e9e94e9c79d3e6ea76582f7c8",
+      "blob": "d096228a4836b280132296a57a4f8cc1f7ae6479",
       "relation": "authored"
     },
     "tests/finite_linear_algebra/test_integer_module.mojo": {
@@ -1232,7 +1232,7 @@
       "source_path": "tests/replay_vectors.mojo"
     },
     "tests/proof_records/test_dependency_alternatives.py": {
-      "blob": "6384780eca00f543d2935b581ea0f4124d4acaa8",
+      "blob": "2e319aa2487a607ebb3160012e9ae3950811cbf1",
       "relation": "authored"
     },
     "tests/proof_records/test_generate_ledgers.py": {
@@ -1368,7 +1368,7 @@
       "source_path": "claim_governance/checks/consistency.py"
     },
     "tools/claim_governance/checks/coverage.py": {
-      "blob": "3675ade437f9cee64d1bd1088b482c60e14c0d49",
+      "blob": "029e641497f3519fb074b015712dae327db7ee8f",
       "relation": "authored"
     },
     "tools/claim_governance/checks/numerics.py": {
@@ -1407,8 +1407,8 @@
       "source_path": "claim_governance/findings.py"
     },
     "tools/claim_governance/lexing.py": {
-      "blob": "cc391e283583993bfd9759f62bad8e1c98fa1059",
-      "relation": "copy",
+      "blob": "23cf9631b9c369209720c874eab943f7f88d28c2",
+      "relation": "modified",
       "source": "claim_governance_tools",
       "source_blob": "cc391e283583993bfd9759f62bad8e1c98fa1059",
       "source_path": "claim_governance/lexing.py"

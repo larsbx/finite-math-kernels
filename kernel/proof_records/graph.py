@@ -149,7 +149,9 @@ def nodes(analysis) -> tuple[Node, ...]:
 
 def _unestablished(by_name: Mapping[str, object], entry) -> tuple[str, ...]:
     """The entry's direct premises that are not themselves theorem-backed."""
-    return tuple(sorted({name for name in entry.requires if provenance(by_name[name]) != THEOREM_BACKED}))
+    return tuple(sorted({name for name in entry.requires
+                         if by_name[name].record.id in entry.closure.reached
+                         and provenance(by_name[name]) != THEOREM_BACKED}))
 
 
 def edges(analysis) -> tuple[Edge, ...]:

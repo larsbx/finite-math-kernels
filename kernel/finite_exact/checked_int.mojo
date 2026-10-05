@@ -43,8 +43,13 @@ def checked_sub(a: Int, b: Int) raises -> Int:
 def checked_mul(a: Int, b: Int) raises -> Int:
     if a == 0 or b == 0:
         return 0
-    var aa = checked_abs(a)
-    var bb = checked_abs(b)
-    if aa > Int.MAX // bb:
+    # Unsigned magnitudes include abs(MIN), without ever negating MIN in
+    # signed arithmetic. The negative range admits one extra magnitude.
+    var aa = UInt64(-(a + 1)) + 1 if a < 0 else UInt64(a)
+    var bb = UInt64(-(b + 1)) + 1 if b < 0 else UInt64(b)
+    var limit = UInt64(Int.MAX)
+    if (a < 0) != (b < 0):
+        limit += 1
+    if aa > limit // bb:
         raise Error("checked integer multiplication overflow")
     return a * b

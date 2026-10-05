@@ -113,10 +113,16 @@ contract that is no ledger claim, such as a vendored kernel's arithmetic.
 Findings: a test file that declares neither; a named claim that is not in the
 ledger; an empty contract; and, against `claim_governance.toml` itself, a
 claim whose class is in `require_classes` that no test guards. Declarations
-are read with comments blanked, so a commented-out declaration does not
-count. Both patterns are regexes and must capture the named group
+must contain executable source outside the literal argument: comments,
+docstrings and string examples cannot count, including when receipts are
+absent. Literal arguments of actual calls are preserved. Both patterns are
+regexes and must capture the named group
 (`claim`, `contract`) the check reads, which is what lets a repository whose
 tests are not Mojo keep its own spelling.
+Executable declaration scanning supports Python, Mojo and Zig (including
+Zig line comments and multiline string literals). Other file suffixes
+credit no declarations until a source lexer is provided; a custom regex
+alone cannot establish that matching text is executable code.
 
 `receipts`, when named and present, is the run log of the suite in this
 format, tab-separated, one line per declaration the run actually reached:

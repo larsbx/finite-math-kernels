@@ -313,7 +313,12 @@ def cyclotomic_pow(value: CyclotomicQ, exponent: Int) -> CyclotomicQ:
 
 def cyclotomic_automorphism(value: CyclotomicQ, exponent: Int) -> CyclotomicQ:
     """Apply zeta -> zeta^exponent when exponent is a unit modulo conductor."""
-    if value.rejected or exponent < 0 or gcd_int(exponent, value.conductor) != 1:
+    if value.rejected or exponent < 0:
+        return rejected_cyclotomic()
+    try:
+        if gcd_int(exponent, value.conductor) != 1:
+            return rejected_cyclotomic()
+    except:
         return rejected_cyclotomic()
 
     var generator = zeta(value.conductor)
