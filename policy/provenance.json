@@ -1240,7 +1240,7 @@
       "relation": "authored"
     },
     "tests/vendoring/test_check_vendored_sync.py": {
-      "blob": "b4b674b10abe7d8b2a72e303c9523e7583c55601",
+      "blob": "c112398aed04c5def31ebd94a1d49c23f007980d",
       "relation": "authored"
     },
     "tests/weighted_graph/test_cycle_gain.mojo": {
@@ -1397,7 +1397,7 @@
       "relation": "authored"
     },
     "tools/vendoring/check_vendored_sync.py": {
-      "blob": "55990784ab6de5f0b3f2180329a1f5ef24e0af70",
+      "blob": "e7f3ca8bd82ec8a7e9dbea83eaf9792fb859afd5",
       "relation": "modified",
       "source": "finite_mandelbrot_research",
       "source_blob": "76ddda76a2cc3dea8221ac8b8192fe3d7e4f14c4",

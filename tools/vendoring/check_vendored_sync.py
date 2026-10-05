@@ -126,7 +126,7 @@ def estate_pins(root: Path | None = None, manifest: Path | None = None) -> dict[
 
 
 def _dep_pin(dep_id: str) -> re.Pattern[str]:
-    return re.compile(r'(^\[\[dep\]\]\nid = "' + re.escape(dep_id) + r'"\n(?:[^\[\n].*\n|\n)*?pin = ")([^"]*)(")', re.M)
+    return re.compile(r'(^\[\[dep\]\][ \t]*(?:#.*)?\nid = "' + re.escape(dep_id) + r'"\n(?:[^\[\n].*\n|\n)*?pin = ")([^"]*)(")', re.M)
 
 
 def estate_drift(root: Path | None = None, manifest: Path | None = None) -> list[str]:

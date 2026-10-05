@@ -144,3 +144,11 @@ def test_a_missing_estate_dep_fails_closed(tmp_path):
     (tmp_path / "ESTATE.toml").write_text(ESTATE_TEMPLATE.format(commit=COMMIT, pin="x").replace('id = "finite-math-kernels"', 'id = "renamed"'), encoding="utf-8")
     assert any("no [[dep]]" in e for e in checker.check(tmp_path))
     assert any("no [[dep]]" in e for e in checker.write_estate_pins(tmp_path))
+
+
+def test_a_commented_dep_header_is_still_rewritten(tmp_path):
+    build_consumer(tmp_path)
+    estate = tmp_path / "ESTATE.toml"
+    estate.write_text(ESTATE_TEMPLATE.format(commit=COMMIT, pin="stale").replace("[[dep]]\n", "[[dep]]   # vendored packages\n"), encoding="utf-8")
+    assert checker.write_estate_pins(tmp_path) == []
+    assert checker.check(tmp_path) == []
