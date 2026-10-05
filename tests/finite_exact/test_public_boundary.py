@@ -24,7 +24,7 @@ def test_boundary_document_declares_names_semantics_and_promise():
 
 
 def test_long_division_replaces_shift_and_subtract_and_keeps_the_reference():
-    z = text("finite_exact/bigint_z.mojo")
+    z = text("kernel/finite_exact/bigint_z.mojo")
     assert "def bigz_abs_divmod_shift_subtract(" in z
     assert "def bigz_abs_divmod(" in z
     assert "Knuth Algorithm D" in z
@@ -33,7 +33,7 @@ def test_long_division_replaces_shift_and_subtract_and_keeps_the_reference():
 
 
 def test_rational_operations_cancel_before_multiplying():
-    q = text("finite_exact/rat_q.mojo")
+    q = text("kernel/finite_exact/rat_q.mojo")
     assert "def q_cross_terms(" in q
     assert "var g1 = bigz_gcd(self.num, other.den)" in q
     assert "var g2 = bigz_gcd(other.num, self.den)" in q
@@ -44,18 +44,18 @@ def test_rational_operations_cancel_before_multiplying():
 
 def test_package_is_self_contained_and_never_raises_or_aborts():
     for name in ["bigint_z", "rat_q"]:
-        body = text(f"finite_exact/{name}.mojo")
+        body = text(f"kernel/finite_exact/{name}.mojo")
         assert "raise " not in body and "abort(" not in body
         for line in body.splitlines():
             if line.startswith("from ") or line.startswith("import "):
                 assert line.startswith("from finite_exact."), line
-    assert "from finite_exact.bigint_z import" in text("finite_exact/rat_q.mojo")
+    assert "from finite_exact.bigint_z import" in text("kernel/finite_exact/rat_q.mojo")
 
 
 def test_probe_and_smoke_are_wired_into_pixi_and_ci():
     manifest = tomllib.loads(text("pixi.toml"))
-    assert manifest["tasks"]["property"] == "python tools/property_oracle.py --layers zq"
-    assert manifest["tasks"]["test-finite-exact"] == "mojo run -I . tests/finite_exact/test_finite_exact.mojo"
+    assert manifest["tasks"]["property"] == "python oracles/property_oracle.py --layers zq"
+    assert manifest["tasks"]["test-finite-exact"] == "mojo run -I kernel tests/finite_exact/test_finite_exact.mojo"
     workflow = text(".github/workflows/ci.yml")
     for task in ["pixi run test"]:
         assert task in workflow

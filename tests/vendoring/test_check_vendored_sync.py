@@ -14,7 +14,7 @@ from pathlib import Path
 import pytest
 
 ROOT = Path(__file__).resolve().parents[2]
-sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(ROOT / "kernel"))
 
 from vendoring import check_vendored_sync as checker  # noqa: E402
 

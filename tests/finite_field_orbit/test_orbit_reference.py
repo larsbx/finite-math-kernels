@@ -17,7 +17,7 @@ from orbit_census_reference import (  # noqa: E402
     tree_census,
 )
 
-VECTORS = ROOT / "fixtures" / "orbit_census_v1.txt"
+VECTORS = ROOT / "conformance" / "orbit_census_v1.txt"
 SMALL_PRIMES = (2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 101)
 
 

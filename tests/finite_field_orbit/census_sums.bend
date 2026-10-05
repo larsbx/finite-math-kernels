@@ -6,7 +6,7 @@
 # domain's bound p^2 for p = 2^32 - 5, and 2^64 - 1, the largest two-half
 # value. The test compares the lines with Python's integers.
 import Base
-import ../../benchmarks/frontier/census.bend as C
+import ../../experiments/frontier/census.bend as C
 
 def agg(+s: C.U64, +l: C.U64) -> C.Agg:
   C.Agg{1, 1, s, l, 0, 1, 0, 0, 1, 0}

@@ -1,7 +1,7 @@
 """The Bend 2 challenger against the golden vectors, its refusals, and its determinism.
 
 Runs in the polyglot environment (`pixi run test-orbit-bend`), which builds
-`benchmarks/frontier/census.bend` with the Bend 2 `bend` on PATH and names the
+`experiments/frontier/census.bend` with the Bend 2 `bend` on PATH and names the
 binary FRONTIER_BEND_BIN. A missing binary fails the gate; it does not skip.
 The sums check builds `tests/finite_field_orbit/census_sums.bend` with that
 same `bend`.
@@ -22,7 +22,7 @@ sys.path.insert(0, str(ROOT / "tools"))
 
 from orbit_census_reference import decode  # noqa: E402
 
-VECTORS = ROOT / "fixtures" / "orbit_census_v1.txt"
+VECTORS = ROOT / "conformance" / "orbit_census_v1.txt"
 
 
 def bend(*args: object, threads: int = 4) -> str:

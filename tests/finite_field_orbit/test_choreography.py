@@ -1,4 +1,4 @@
-"""Model-check the census choreography (benchmarks/frontier/FrontierCensus.tla).
+"""Model-check the census choreography (experiments/frontier/FrontierCensus.tla).
 
 Runs in the polyglot environment (`pixi run test-choreography`) with
 TLA_TOOLS naming a tla2tools.jar. A missing jar or Java fails the gate; it
@@ -16,7 +16,7 @@ from pathlib import Path
 import pytest
 
 ROOT = Path(__file__).resolve().parents[2]
-SPEC = ROOT / "benchmarks" / "frontier" / "FrontierCensus.tla"
+SPEC = ROOT / "experiments" / "frontier" / "FrontierCensus.tla"
 CONFIG = SPEC.with_suffix(".cfg")
 
 

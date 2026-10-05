@@ -1,4 +1,4 @@
-"""Conformance tests for proof_records/generate_ledgers.py against docs/ledger-generation-spec.md."""
+"""Conformance tests for kernel/proof_records/generate_ledgers.py against docs/ledger-generation-spec.md."""
 
 from __future__ import annotations
 
@@ -13,15 +13,15 @@ from pathlib import Path
 import pytest
 
 ROOT = Path(__file__).resolve().parents[2]
-sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(ROOT / "kernel"))
 sys.path.insert(0, str(ROOT / "tools"))
 
 from proof_records import generate_ledgers as gl  # noqa: E402
 import make_ledger_example as mle  # noqa: E402
 import make_vectors as mv  # noqa: E402
 
-ENV = {**os.environ, "PYTHONPATH": str(ROOT / "audit")}
-FIXTURE = ROOT / "fixtures" / "ledger"
+ENV = {**os.environ, "PYTHONPATH": str(ROOT / "tools")}
+FIXTURE = ROOT / "conformance" / "ledger"
 
 
 def ledger(**changes) -> gl.Ledger:
@@ -182,15 +182,15 @@ def test_tla_ledger_rendering():
     text = gl.render_tla(ANALYSIS)
     assert text.startswith("---- MODULE Example ----\n")
     assert "EXTENDS ProofArchitecture" in text
-    assert '      [] r = "Lemma" -> {"Census", "Density"}' in text
-    assert '    CASE r = "Census" -> {}' in text
-    assert '      [] r = "WithinSweep" -> {"Sweep"}]' in text
+    assert '      [] r = "Lemma" -> {{"Census", "Density"}}' in text
+    assert '    CASE r = "Census" -> {{}}' in text
+    assert '      [] r = "WithinSweep" -> {{"Sweep"}}]' in text
     proved = text[text.index("ProvedDef == {"):text.index("\nImportedDef == ")]
     assert '"Census"' in proved and '"Density"' not in proved and '"Sweep"' not in proved and '"Retracted"' not in proved
     assert 'ImportedDef == {\n    "Density"\n}' in text
     assert 'WithdrawnDef == {\n    "Retracted"\n}' in text
     assert 'GaloisAssumed == {\n    "Galois"\n}' in text
-    assert '      [] r = "Theorem" -> {"Lemma", "Proof"}' in text
+    assert '      [] r = "Theorem" -> {{"Lemma", "Proof"}}' in text
     assert "ImportsAssumed == ImportedDef" in text
     assert 'RetractedNotEstablished == "Retracted" \\notin established' in text
     assert text == gl.render_tla(gl.analyse(ledger()))
@@ -300,7 +300,7 @@ def tlc(directory: Path, model: str) -> str:
 def test_tlc_verifies_both_models_and_rejects_a_wrong_configuration(tmp_path):
     for path in (FIXTURE / "tla").iterdir():
         shutil.copy(path, tmp_path / path.name)
-    shutil.copy(ROOT / "proof_records" / "ProofArchitecture.tla", tmp_path / "ProofArchitecture.tla")
+    shutil.copy(ROOT / "kernel" / "proof_records" / "ProofArchitecture.tla", tmp_path / "ProofArchitecture.tla")
     for model, states in (("MCExampleOpen", 2), ("MCExampleImports", 4), ("MCExampleGaloisAssumed", 2)):
         log = tlc(tmp_path, model)
         assert "No error has been found" in log, log

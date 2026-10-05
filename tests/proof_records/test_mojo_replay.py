@@ -10,7 +10,7 @@ from pathlib import Path
 import pytest
 
 ROOT = Path(__file__).resolve().parents[2]
-sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(ROOT / "kernel"))
 sys.path.insert(0, str(ROOT / "tools"))
 
 from proof_records.records import canonical_bytes, identity  # noqa: E402

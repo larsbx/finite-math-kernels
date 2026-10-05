@@ -2,8 +2,8 @@
 
 **Status:** methodological note. It states no theorem, depends on no conjecture, and is written for
 readers who have never seen the research programmes that produced the machinery it describes. The
-reference implementation is this repository: `proof_records/` for the record layer and
-`audit/claim_governance/` for the enforcement layer.
+reference implementation is this repository: `kernel/proof_records/` for the record layer and
+`tools/claim_governance/` for the enforcement layer.
 
 ## 1. The problem
 
@@ -53,7 +53,7 @@ The discipline is that a refusal is never read as a negative. Three refusals wor
 
 A record is a claim plus the evidence its class requires. Five kinds, with the outcome each can
 carry, are specified in `docs/proof-records-specification.md` and implemented in
-`proof_records/records.mojo`:
+`kernel/proof_records/records.mojo`:
 
 | Kind | Can support a theorem |
 | --- | --- |
@@ -74,8 +74,8 @@ open frontier, or an acceptable source is the consumer's, supplied as a predicat
 
 ## 4. The enforcement layer
 
-One policy file per repository (`audit/docs/policy-format.md`, with a worked example in
-`audit/docs/example-policy.toml`) drives six checks over prose and source:
+One policy file per repository (`docs/audit/policy-format.md`, with a worked example in
+`docs/audit/example-policy.toml`) drives six checks over prose and source:
 
 - **status vocabulary** — every claim has a declared status from a closed set;
 - **promotion** — a claim the prose describes as proved must be proved in the ledger; this is the
