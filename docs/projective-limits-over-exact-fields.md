@@ -89,8 +89,9 @@ over F_7 and F_13:
 **Turns over F_p.** T(F_p) is cyclic of order `rotor_group_order_fp(p)`
 = p - (-1/p).
 
-- `turn(g, N, a, n)` sends the turn a/n to g^(a N / n) when n divides N.
-  It is a homomorphism from (1/N)Z/Z.
+- `turn(g, N, a, n)` sends the turn a/n to g^(a N / n) when n divides N
+  and g^N is the identity. It is a homomorphism from (1/N)Z/Z, and is
+  injective when g has exact order N.
 - Which rotor a turn becomes depends on the chosen generator g, just as
   e^(2 pi i/n) depends on the choice of a primitive root.
 - Two turns do not depend on g. The half-turn 1/2 always goes to infinity,
@@ -100,8 +101,12 @@ over F_7 and F_13:
 
 **Over Q.** The rotors of finite order are 0, infinity, 1 and -1 (Niven's
 theorem). The test checks this on rationals of small height as evidence, not
-proof. So a turn a/n with n not in {1, 2, 4} needs a larger field: Q(zeta_n),
-or F_p with n dividing N_p.
+proof. A reduced turn a/n with n not in {1, 2, 4} needs a larger field.
+The circle-rotor construction tested here uses Q(zeta_q) with 4 dividing q,
+so both zeta_q and i = zeta_q^(q/4) are available; it is tested for
+q in {8, 12, 20}. A root of unity in Q(zeta_n) alone does not guarantee that
+the corresponding circle rotor lies in that same field. Over F_p, an exact
+turn of order n is available when n divides N_p.
 
 **Characteristic 2** is excluded because there 2 t / (1 + t^2) = 0 and the
 chart does not cover the circle. `rotor_group_order_fp(2)` is 0.

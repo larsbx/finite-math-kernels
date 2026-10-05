@@ -53,9 +53,11 @@ The closure and half-turn results are in
    - The half-turn `1/2 ↦ ∞` is the same for every generator.
    - The quarter-turn `1/4 ↦ ±1` is the same up to sign.
 4. **Niven's limit and how ℚ(ζ_q) passes it.** Over ℚ only the rotors
-   `0, ∞, 1, −1` have finite order. Over `ℚ(ζ_q)` the rotor of the turn `1/q`
-   has exact order `q`. This is tested for `q = 8, 12, 20`, using
-   `i = ζ_q^{q/4}`.
+   `0, ∞, 1, −1` have finite order. When `4 ∣ q`, the construction over
+   `ℚ(ζ_q)` uses `i = ζ_q^{q/4}` and gives a rotor of the turn `1/q` with
+   exact order `q`. This is tested for `q = 8, 12, 20`. A root of unity
+   alone does not establish that the corresponding circle rotor lies in
+   the same field for other conductors.
 5. **Rational trigonometry.**
    - The squared chordal metric is 4 × spread.
    - `rotor_spread = sin²θ`, and `s(nθ) = S_n(s(θ))` with the spread
