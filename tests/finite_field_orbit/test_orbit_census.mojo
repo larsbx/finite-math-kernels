@@ -18,6 +18,7 @@ from finite_field_orbit.census import (
     merge,
     replay,
     request_verdict,
+    step,
     witness_verdict,
 )
 
@@ -62,21 +63,26 @@ def check_vectors() raises -> Int:
     return checked
 
 
-def test_declared_domain_is_refused_as_unsupported() raises:
-    """Well-formed but outside the kernel's table: unsupported, never malformed."""
-    expect("p = 2^24 + 43", request_verdict(Block(16777259, 0, 5, 0, 5)), "unsupported:p")
-    expect("replay above 2^24", replay("orbit-census-v1 4294967291 0 1 0 0 0 0 0 0 0 0 0 0 0"), "unsupported:p")
-    expect("largest supported prime", request_verdict(Block(16777213, 0, 5, 0, 5)), "")
+def test_the_whole_contract_domain_is_supported() raises:
+    """Every well-formed block is answered: a table of p words below 2^24, hashing above."""
+    expect("p = 2^32 - 5", request_verdict(Block(4294967291, 0, 5, 0, 5)), "")
+    expect("empty block at 2^32 - 5", replay("orbit-census-v1 4294967291 0 1 0 0 0 0 0 0 0 0 0 0 0"), "accepted")
+    expect("still prime-checked", request_verdict(Block(4294967295, 0, 5, 0, 5)), "malformed:p")
 
 
-def test_sums_beyond_int64_are_unsupported_not_malformed() raises:
-    """Sums range to 2^64 in the contract; this kernel's Int holds sums below 2^63.
+def test_the_step_is_exact_in_64_bits() raises:
+    """With p = 2^32 - 5, x^2 + c reaches 2^64 - 12 * 2^32: past Int, inside UInt64."""
+    var p = 4294967291
+    if step(p - 1, 5, p) != 6 or step(2147483648, 7, p) != 1073741836 or step(p - 1, p - 1, p) != 0:
+        raise Error("step(x) = x^2 + c mod p is wrong near 2^32")
 
-    No record inside the declared domain (p < 2^24, so sums < 2^48) is refused.
-    """
-    expect("2^63", replay("orbit-census-v1 7 3 7 0 7 7 7 9223372036854775808 21 3 1 1 2 3"), "unsupported:sum_mu")
-    expect("2^64 - 1", replay("orbit-census-v1 7 3 7 0 7 7 7 6 18446744073709551615 3 1 1 2 3"), "unsupported:sum_lambda")
+
+def test_sums_range_to_2_to_the_64() raises:
+    """A sum is at most p^2 < 2^64: every value below 2^64 decodes and reaches replay."""
     expect("2^63 - 1", replay("orbit-census-v1 7 3 7 0 7 7 7 9223372036854775807 21 3 1 1 2 3"), "mismatch:sum_mu")
+    expect("2^63", replay("orbit-census-v1 7 3 7 0 7 7 7 9223372036854775808 21 3 1 1 2 3"), "mismatch:sum_mu")
+    expect("2^64 - 1", replay("orbit-census-v1 7 3 7 0 7 7 7 6 18446744073709551615 3 1 1 2 3"), "mismatch:sum_lambda")
+    expect("2^64", decode("orbit-census-v1 7 3 7 0 7 7 7 6 18446744073709551616 3 1 1 2 3").reason, "malformed:sum_lambda")
 
 
 def test_witness_replay_is_independent() raises:
@@ -107,8 +113,9 @@ def main() raises:
     var checked = check_vectors()
     if checked < 50:
         raise Error("only " + String(checked) + " vectors checked")
-    test_declared_domain_is_refused_as_unsupported()
-    test_sums_beyond_int64_are_unsupported_not_malformed()
+    test_the_whole_contract_domain_is_supported()
+    test_the_step_is_exact_in_64_bits()
+    test_sums_range_to_2_to_the_64()
     test_witness_replay_is_independent()
     test_merge_is_partition_invariant()
     print("finite_field_orbit laws passed on", checked, "vectors.")

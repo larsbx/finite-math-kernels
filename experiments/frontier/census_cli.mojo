@@ -1,6 +1,6 @@
 """Port executable for the `orbit-census-v1` Mojo kernel.
 
-    census_cli census P C CAP LO HI    one record line, or malformed:/unsupported:<field>
+    census_cli census P C CAP LO HI    one record line, or malformed:<field>
     census_cli replay RECORD           accepted, or the authority's first reason not to
 
 Always exactly one line on stdout and exit status 0 for an answer, so the
@@ -20,9 +20,9 @@ def answer_census(args: List[String]) raises -> String:
     var v = List[Int]()
     for i in range(5):
         var value = parse_canonical(args[i])
-        if value < 0:  # request fields are narrow, so never UNREPRESENTABLE
+        if not value:
             return "malformed:" + names[i]
-        v.append(value)
+        v.append(Int(value.value()))
     var b = Block(v[0], v[1], v[2], v[3], v[4])
     var refusal = request_verdict(b)
     return refusal if refusal.byte_length() > 0 else encode(b, census(b))

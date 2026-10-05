@@ -133,7 +133,7 @@
       "relation": "authored"
     },
     "conformance/orbit_census_v1.txt": {
-      "blob": "a4aeeeb91ce824afdd16e3600ca561d145fef6ae",
+      "blob": "5a8fd0b52689abe329d798454bb85f1b2b0c3a65",
       "generator": "tools/make_orbit_vectors.py",
       "relation": "generated"
     },
@@ -200,7 +200,7 @@
       "source_path": "docs/exact-arithmetic-public-boundary.md"
     },
     "docs/frontier-math-compute-candidates.md": {
-      "blob": "1e4ea9cbb443987b8621a3cf3b8577c11a4a9c18",
+      "blob": "5cd666db9f0bb483670c958047f219c682aa9fdb",
       "relation": "authored"
     },
     "docs/generator-refinement-spec.md": {
@@ -224,7 +224,7 @@
       "relation": "authored"
     },
     "docs/polyglot-orbit-census-design.md": {
-      "blob": "b47efa82154ffffe280f91f06814fdf7b2bbec84",
+      "blob": "22a551fad977a56a85764e309ef1a848807ca1b5",
       "relation": "authored"
     },
     "docs/proof-records-specification.md": {
@@ -290,11 +290,11 @@
       "relation": "authored"
     },
     "experiments/frontier/census.bend": {
-      "blob": "85875bb5c930b57ad6dc7ef83b0299da71febf75",
+      "blob": "538418a8e57a9f03873cdad8e3ad4b766e4b7bf7",
       "relation": "authored"
     },
     "experiments/frontier/census_cli.mojo": {
-      "blob": "4e7ee3917eab2ab230c00e3a680f156c44d5862a",
+      "blob": "fba72a0f8115fb7c2f51a816c7f3e88c5d55840a",
       "relation": "authored"
     },
     "experiments/frontier/ff_orbit_census/CONTRACT.md": {
@@ -354,7 +354,7 @@
       "relation": "authored"
     },
     "experiments/frontier/orchestrator/lib/frontier/contract.ex": {
-      "blob": "6636a76d2570058c9a508c5a4cc475ebbe0cd9bb",
+      "blob": "de11e3619e150d74c67fd4ae130153f6095f51e5",
       "relation": "authored"
     },
     "experiments/frontier/orchestrator/lib/frontier/port_kernel.ex": {
@@ -374,11 +374,11 @@
       "relation": "authored"
     },
     "experiments/frontier/orchestrator/test/census_test.exs": {
-      "blob": "2a58ac4316f1fc72818b7b699073b9e43a95d334",
+      "blob": "2113659957dbe0c5f7aeb45824aa1f397bd37a75",
       "relation": "authored"
     },
     "experiments/frontier/orchestrator/test/port_integration_test.exs": {
-      "blob": "1c788e4365559157564796da8e868da2bb7fb632",
+      "blob": "a16f13463e940c36e1243242296f8100937bf80f",
       "relation": "authored"
     },
     "experiments/frontier/orchestrator/test/protocol_test.exs": {
@@ -386,7 +386,7 @@
       "relation": "authored"
     },
     "experiments/frontier/orchestrator/test/record_test.exs": {
-      "blob": "7d0b49491cae44c223fba6d4ef4f844f5a94ccbf",
+      "blob": "dbf54af756c94fecb5859895f32ffe82dcfe5c76",
       "relation": "authored"
     },
     "experiments/frontier/orchestrator/test/test_helper.exs": {
@@ -434,7 +434,7 @@
       "relation": "authored"
     },
     "kernel/finite_field_orbit/census.mojo": {
-      "blob": "406dbf0353985dd5fa3c9b3e13ea629c36d6f3bc",
+      "blob": "4dfa52b416395dc444f5b5185e480525e40c2b99",
       "relation": "authored"
     },
     "kernel/finite_linear_algebra/__init__.mojo": {
@@ -891,11 +891,11 @@
       "source_path": "tests/test_public_boundary.py"
     },
     "tests/finite_field_orbit/census_sums.bend": {
-      "blob": "9e8e7007d651ccc009e0ad15e3c66898ad2fad53",
+      "blob": "7ccfa0b723e9c1f5d9603b85afffe38e9714f217",
       "relation": "authored"
     },
     "tests/finite_field_orbit/test_bend_census.py": {
-      "blob": "7547722f2218d6eee5b6e51a1274ea9effd1367a",
+      "blob": "3d5ed065e216aeb45222bf8ef43f58fd0eed84f0",
       "relation": "authored"
     },
     "tests/finite_field_orbit/test_choreography.py": {
@@ -903,7 +903,7 @@
       "relation": "authored"
     },
     "tests/finite_field_orbit/test_orbit_census.mojo": {
-      "blob": "40efdfea83dce57e8ac5dbdf709946ced36e44be",
+      "blob": "7e0c47739adbc5d42ff6b38bc2fd6f82b0053cf1",
       "relation": "authored"
     },
     "tests/finite_field_orbit/test_orbit_reference.py": {
@@ -1219,7 +1219,7 @@
       "relation": "authored"
     },
     "tools/make_orbit_vectors.py": {
-      "blob": "378eefa9044ac1ef500d760d200693419424fcfd",
+      "blob": "515debb56f3822ece956c62d18a46b3d8c5a1236",
       "relation": "authored"
     },
     "tools/make_projective_limits_vectors.py": {
