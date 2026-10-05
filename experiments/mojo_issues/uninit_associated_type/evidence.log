@@ -1,37 +1,37 @@
 Mojo issue evidence: use of uninitialized value on associated-type fields
 
-date_utc             2026-10-05T15:38:50Z
+date_utc             2026-10-05T15:50:22Z
 mojo                 Mojo 1.1.0.dev2026090805 (34562fa1)
 platform             Linux-6.18.44-fc-v70-x86_64-with-glibc2.39
 python               3.12.14
-repository_commit    2116d476af7e228b6e4f7ae34e4480b5a87f8b13
-working_tree_clean   False
+repository_commit    be6315bc27b85666f13b17ac3eea4a0760824a6c
+working_tree_clean   True
 
 case                               agrees  exit  seconds  observed
 repro                              yes     1     0.88     error: use of uninitialized value 's.x'
-plain-type-parameter               yes     0     0.7      True
-temporary-operand                  yes     0     0.87     True
-swapped-operands                   yes     1     0.78     error: use of uninitialized value 's.x'
-copy-first                         yes     1     0.9      error: use of uninitialized value 's.x'
-int-subfield                       yes     0     0.74     True
-second-struct-field                yes     1     0.75     error: use of uninitialized value 's.flag'
-movable-bounds                     yes     1     0.9      error: use of uninitialized value 's.x'
-implicitly-copyable                yes     1     0.75     error: use of uninitialized value 's.x'
-kernel-rotor-over-fp               yes     1     1.03     error: use of uninitialized value 'back.rejected'
-kernel-rotor-over-fp-temporaries   yes     0     0.88     True
-kernel-cyclotomic-rotor            yes     1     1.18     error: use of uninitialized value 't.rejected'
-layout-element0-s1                 yes     0     0.62     True
-layout-element0-s2                 yes     0     0.72     True
-layout-element0-s3                 yes     0     0.65     True
-layout-element1-s1                 yes     1     0.8      error: use of uninitialized value 's.x'
+plain-type-parameter               yes     0     0.67     True
+temporary-operand                  yes     0     0.66     True
+swapped-operands                   yes     1     0.8      error: use of uninitialized value 's.x'
+copy-first                         yes     1     0.78     error: use of uninitialized value 's.x'
+int-subfield                       yes     0     0.7      True
+second-struct-field                yes     1     0.79     error: use of uninitialized value 's.flag'
+movable-bounds                     yes     1     0.8      error: use of uninitialized value 's.x'
+implicitly-copyable                yes     1     0.99     error: use of uninitialized value 's.x'
+kernel-rotor-over-fp               yes     1     1.04     error: use of uninitialized value 'back.rejected'
+kernel-rotor-over-fp-temporaries   yes     0     0.94     True
+kernel-cyclotomic-rotor            yes     1     1.3      error: use of uninitialized value 't.rejected'
+layout-element0-s1                 yes     0     0.72     True
+layout-element0-s2                 yes     0     0.68     True
+layout-element0-s3                 yes     0     0.73     True
+layout-element1-s1                 yes     1     0.81     error: use of uninitialized value 's.x'
 layout-element1-s2                 yes     0     0.68     True
-layout-element1-s3                 yes     0     0.67     True
-layout-element2-s1                 yes     1     0.81     error: use of uninitialized value 's.x'
-layout-element2-s2                 yes     1     0.83     error: use of uninitialized value 's.f0'
-layout-element2-s3                 yes     0     0.73     True
-layout-element3-s1                 yes     1     0.83     error: use of uninitialized value 's.x'
-layout-element3-s2                 yes     1     0.77     error: use of uninitialized value 's.f0'
-layout-element3-s3                 yes     1     0.86     error: use of uninitialized value 's.f1'
+layout-element1-s3                 yes     0     0.7      True
+layout-element2-s1                 yes     1     0.78     error: use of uninitialized value 's.x'
+layout-element2-s2                 yes     1     0.82     error: use of uninitialized value 's.f0'
+layout-element2-s3                 yes     0     0.72     True
+layout-element3-s1                 yes     1     0.85     error: use of uninitialized value 's.x'
+layout-element3-s2                 yes     1     0.82     error: use of uninitialized value 's.f0'
+layout-element3-s3                 yes     1     0.8      error: use of uninitialized value 's.f1'
 
 --- repro: the minimal program
 expect:   error: use of uninitialized value 's.x'

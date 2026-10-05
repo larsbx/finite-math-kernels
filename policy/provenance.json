@@ -418,11 +418,11 @@
       "relation": "authored"
     },
     "experiments/mojo_issues/uninit_associated_type/evidence.json": {
-      "blob": "8d01961cf56c96201ce7ce9c3ff44572d9abd6ed",
+      "blob": "69febb8a0594323aa8f32a42cc466e893d18c5ad",
       "relation": "authored"
     },
     "experiments/mojo_issues/uninit_associated_type/evidence.log": {
-      "blob": "bc6b498d6c595c05a093872deaa2ee3b948a790b",
+      "blob": "4e4749fba845a2a3db8488ab84e44def981ce462",
       "relation": "authored"
     },
     "experiments/mojo_issues/uninit_associated_type/evidence.py": {
