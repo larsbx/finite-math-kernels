@@ -236,7 +236,7 @@
       "relation": "authored"
     },
     "docs/mojo-exact-fields-report.md": {
-      "blob": "5094a03bd6723ddf104ff4fc86f9eb6ae9635af5",
+      "blob": "6ed0aac622dfd7873162a09582413bdd37511998",
       "relation": "authored"
     },
     "docs/polyglot-orbit-census-design.md": {
@@ -628,7 +628,7 @@
       "relation": "authored"
     },
     "kernel/finite_polynomial/cyclotomic_field.mojo": {
-      "blob": "c3099456746a7fa87e26cc3babadc816c7b56f44",
+      "blob": "86b74b2701b4f8bd34aafe8b52379900fff014fc",
       "relation": "authored"
     },
     "kernel/finite_polynomial/cyclotomic_q.mojo": {
@@ -691,7 +691,7 @@
       "relation": "authored"
     },
     "kernel/projective_limits/rotor.mojo": {
-      "blob": "db73a1796ec2ac3ac022b2059200594fff2b85f1",
+      "blob": "df6ba67d86f5ce4f91ef2211598d1534f59b6d8c",
       "relation": "authored"
     },
     "kernel/proof_records/ProofArchitecture.tla": {
@@ -1130,11 +1130,11 @@
       "relation": "authored"
     },
     "tests/finite_polynomial/test_cyclotomic_field.mojo": {
-      "blob": "4b0f7489ba9a0b35c133661aa1ad20b16d75de07",
+      "blob": "a58a77812977653709a2ee51d52d06c5d387e6dc",
       "relation": "authored"
     },
     "tests/finite_polynomial/test_cyclotomic_field_vectors.mojo": {
-      "blob": "7c6ff8afadf715c3a9bd9e58fd2e4484aa13295f",
+      "blob": "d6a6d0c072ed9691ca5805491ed6d50788ebf073",
       "relation": "authored"
     },
     "tests/finite_polynomial/test_cyclotomic_q.mojo": {
@@ -1221,7 +1221,7 @@
       "relation": "authored"
     },
     "tests/projective_limits/test_rotor.mojo": {
-      "blob": "7c26a9202a29f10e887c1b8a9c0412931d733679",
+      "blob": "1cf0c346794732c2d47a2b58a20a685605646623",
       "relation": "authored"
     },
     "tests/proof_records/replay_vectors.mojo": {

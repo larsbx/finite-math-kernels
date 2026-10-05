@@ -67,7 +67,6 @@ def units(q: Int) -> List[Int]:
     return [e for e in range(1, q + 1) if gcd_int(e, q) == 1]
 
 
-@fieldwise_init
 struct Cyc[q: Int](Copyable, Writable):
     """An element of Q(zeta_q): a CyclotomicQ of conductor q, typed by q."""
 
@@ -75,13 +74,15 @@ struct Cyc[q: Int](Copyable, Writable):
 
     var value: CyclotomicQ
 
-    @staticmethod
-    def wrap(value: CyclotomicQ) -> Self:
+    def __init__(out self, value: CyclotomicQ):
+        """Adopt `value` as an element of Q(zeta_q). The only constructor: a value
+        of any other conductor, or a rejected one, becomes a rejected Cyc[q]."""
         comptime assert Self.q >= 1, "conductor must be positive"
         comptime assert cyclotomic_degree(Self.q) == Self.DEGREE, "deg Phi_q != phi(q)"
         if value.rejected or value.conductor != Self.q:
-            return Self(rejected_cyclotomic())
-        return Self(value.copy())
+            self.value = rejected_cyclotomic()
+        else:
+            self.value = value.copy()
 
     @staticmethod
     def refused() -> Self:
@@ -90,7 +91,7 @@ struct Cyc[q: Int](Copyable, Writable):
     @staticmethod
     def from_poly(coefficients: List[Q]) -> Self:
         """The class of sum c_k X^k modulo Phi_q."""
-        return Self.wrap(cyclotomic_from_coeffs(Self.q, coefficients))
+        return Self(cyclotomic_from_coeffs(Self.q, coefficients))
 
     @staticmethod
     def rational(r: Q) -> Self:
@@ -99,7 +100,7 @@ struct Cyc[q: Int](Copyable, Writable):
     @staticmethod
     def zeta(k: Int = 1) -> Self:
         """zeta_q^k for any integer k."""
-        return Self.wrap(cyclotomic_pow(zeta(Self.q), k % Self.q))
+        return Self(cyclotomic_pow(zeta(Self.q), k % Self.q))
 
     def accepted(self) -> Bool:
         return not self.value.rejected
@@ -112,19 +113,19 @@ struct Cyc[q: Int](Copyable, Writable):
         return self.value.coeffs.copy() if self.accepted() else List[Q]()
 
     def __neg__(self) -> Self:
-        return Self.wrap(cyclotomic_neg(self.value))
+        return Self(cyclotomic_neg(self.value))
 
     def __add__(self, other: Self) -> Self:
-        return Self.wrap(cyclotomic_add(self.value, other.value))
+        return Self(cyclotomic_add(self.value, other.value))
 
     def __sub__(self, other: Self) -> Self:
-        return Self.wrap(cyclotomic_sub(self.value, other.value))
+        return Self(cyclotomic_sub(self.value, other.value))
 
     def __mul__(self, other: Self) -> Self:
-        return Self.wrap(cyclotomic_mul(self.value, other.value))
+        return Self(cyclotomic_mul(self.value, other.value))
 
     def __truediv__(self, other: Self) -> Self:
-        return Self.wrap(cyclotomic_div(self.value, other.value))
+        return Self(cyclotomic_div(self.value, other.value))
 
     def __eq__(self, other: Self) -> Bool:
         return self.accepted() and other.accepted() and cyclotomic_equal(self.value, other.value)
@@ -133,11 +134,11 @@ struct Cyc[q: Int](Copyable, Writable):
         return not self == other
 
     def inverse(self) -> Self:
-        return Self.wrap(cyclotomic_inverse(self.value))
+        return Self(cyclotomic_inverse(self.value))
 
     def galois(self, e: Int) -> Self:
         """sigma_e(zeta) = zeta^e for any integer e coprime to q (reduced mod q first)."""
-        return Self.wrap(cyclotomic_automorphism(self.value, e % Self.q))
+        return Self(cyclotomic_automorphism(self.value, e % Self.q))
 
     def rational_part(self) -> Q:
         """self as a rational, rejecting unless every irrational coordinate vanishes."""

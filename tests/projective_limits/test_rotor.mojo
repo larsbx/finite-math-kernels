@@ -299,6 +299,26 @@ def test_turns_are_a_homomorphism() raises:
     check_turn_homomorphism[13]()
 
 
+def test_turn_requires_the_generator_order_to_divide_order() raises:
+    # turn is a homomorphism (1/order)Z/Z -> T(K) only when g^order = 0, so any
+    # other generator is refused rather than giving wrong turns.
+    var half = p1_affine(Q(1, 2))  # infinite order over Q
+    assert_false(turn(half, 4, 1, 2).accepted())
+    assert_false(turn(half, 4, 0, 1).accepted())
+    var g = rotor_generator_fp[13]()  # order 12
+    assert_false(turn(g, 6, 1, 2).accepted())
+    assert_true(turn(g, 12, 1, 2).accepted())
+    # An element of order 4 declared with order 12 (4 | 12) is a valid generator
+    # of the subgroup, and turns through it still add.
+    var four = rotor_power(g, 3)
+    assert_equal(rotor_order(four, 12), 4)
+    for a in range(12):
+        for b in range(12):
+            assert_true(
+                p1_equal(rotor_add(turn(four, 12, a, 12), turn(four, 12, b, 12)), turn(four, 12, a + b, 12))
+            )
+
+
 def test_quarter_turn_is_plus_or_minus_one() raises:
     # 4 divides N_13 = 12; every generator sends 1/4 to +1 or -1.
     for a in rotors[13]():
@@ -382,6 +402,8 @@ def main() raises:
     print("[PASS] test_rational_torsion_is_niven")
     test_turns_are_a_homomorphism()
     print("[PASS] test_turns_are_a_homomorphism")
+    test_turn_requires_the_generator_order_to_divide_order()
+    print("[PASS] test_turn_requires_the_generator_order_to_divide_order")
     test_quarter_turn_is_plus_or_minus_one()
     print("[PASS] test_quarter_turn_is_plus_or_minus_one")
     test_spread_polynomials()
@@ -390,4 +412,4 @@ def main() raises:
     print("[PASS] test_rotor_spread_is_s2_of_the_half_angle_spread")
     test_spread_of_a_power_is_a_spread_polynomial()
     print("[PASS] test_spread_of_a_power_is_a_spread_polynomial")
-    print("16 projective_limits rotor Mojo tests passed.")
+    print("17 projective_limits rotor Mojo tests passed.")

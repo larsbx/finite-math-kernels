@@ -177,12 +177,15 @@ def rotor_group_order_fp(p: Int64) -> Int64:
 
 
 def turn[K: ExactField](generator: P1Over[K], order: Int, a: Int, n: Int) -> P1Over[K]:
-    """The turn a/n through a rotor of order `order`: generator^(a order / n).
+    """The turn a/n through a rotor whose order divides `order`: generator^(a order / n).
 
-    Rejects unless n > 0 divides order. A homomorphism (1/order)Z/Z -> T(K) for
-    any rotor; injective when the generator has exact order `order`.
+    Rejects unless n > 0 divides order and generator^order is the identity, which
+    is what makes this a homomorphism (1/order)Z/Z -> T(K); it is injective when
+    the generator has exact order `order`.
     """
     if n <= 0 or order <= 0 or order % n != 0 or not is_rotor(generator):
+        return p1_rejected[K]()
+    if not p1_equal(rotor_power(generator, order), rotor_identity[K]()):
         return p1_rejected[K]()
     return rotor_power(generator, (a % n) * (order // n))
 

@@ -89,8 +89,8 @@ def replay[q: Int](cols: List[String]) raises:
         var residual = jet_sub(jet_seed(q, order), quadratic_germ_iterate(Cyc[q].zeta(p).value, q, order))
         if not residual.accepted():
             raise Error(label + ": germ iterate refused")
-        expect[q](label, Cyc[q].wrap(residual.coeffs[q + 1]), cols[3])
-        var coefficient = Cyc[q].wrap(quadratic_germ_index_coefficient(p, q))
+        expect[q](label, Cyc[q](residual.coeffs[q + 1]), cols[3])
+        var coefficient = Cyc[q](quadratic_germ_index_coefficient(p, q))
         expect[q](label, coefficient, cols[4])
         if hex(coefficient.canonical_bytes().bytes) != cols[5]:
             raise Error(label + ": coefficient bytes disagree")

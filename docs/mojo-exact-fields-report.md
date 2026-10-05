@@ -30,7 +30,7 @@ The Mojo kernel now carries this in three layers.
 The arithmetic of `Q(ζ_q)` itself is `main`'s `finite_polynomial`.
 `621202a` first carried its own copy; the merge retired it (section 3.3).
 
-`pixi run test` passes in full: every pre-existing gate, plus 40 new Mojo law
+`pixi run test` passes in full: every pre-existing gate, plus 42 new Mojo law
 tests and 226 new reference vectors.
 
 ## 2. The mathematics the kernel now guarantees
@@ -75,13 +75,14 @@ checked on every point of `P¹(𝔽_7)` and `P¹(𝔽_13)`, not on samples.
 | `tests/projective_limits/test_projective_limits.mojo` | 18 | pre-existing laws over ℚ, unchanged |
 | `tests/projective_limits/test_reference_vectors.mojo` | 466 vectors | pre-existing Python-reference replay, unchanged |
 | `tests/projective_limits/test_field_generic.mojo` | 13 | exhaustive over `𝔽_7`, `𝔽_13`: normal form, `\|P¹\| = p+1`, `J`, rotation invariance of `χ²`, Wilson as a limit, landing where L'Hôpital fails |
-| `tests/projective_limits/test_rotor.mojo` | 16 | group law = Möbius composition = circle multiplication, axioms, chart bijection, `N_p`, Lagrange and `φ(N)` generators, turn homomorphism, spreads |
-| `tests/finite_polynomial/test_cyclotomic_field.mojo` | 11 | see the list below |
+| `tests/projective_limits/test_rotor.mojo` | 17 | group law = Möbius composition = circle multiplication, axioms, chart bijection, `N_p`, Lagrange and `φ(N)` generators, turn homomorphism and its refusal of a generator whose order does not divide `order`, spreads |
+| `tests/finite_polynomial/test_cyclotomic_field.mojo` | 12 | see the list below |
 | `tests/finite_polynomial/test_cyclotomic_field_vectors.mojo` | 226 vectors | Python-reference replay of `conformance/cyclotomic_field_v1.txt` through `Cyc[q]` |
 
-The 11 cyclotomic-field law tests check:
+The 12 cyclotomic-field law tests check:
 
 - the totient, the Möbius function and `Cyc[q].DEGREE`;
+- every construction of `Cyc[q]`, the constructor included, refuses another conductor;
 - `ζ` has exact order `q`;
 - the field axioms through the operators, and sticky rejection;
 - the Galois group law, with negative exponents;
@@ -103,6 +104,21 @@ different algorithms, so agreement is evidence and not a transliteration.
 
 `tools/make_cyclotomic_field_vectors.py --check` runs in `pixi run test`, so
 the fixture cannot drift from the reference.
+
+### 3.2 Mutation testing
+
+Every new module was mutated by hand (one seeded fault per run) and the suite
+re-run.
+
+| Module | Mutants | Killed | Equivalent | Notes |
+|---|---|---|---|---|
+| `kernel/finite_exact/fp.mojo`, `kernel/finite_exact/field.mojo`, generic `line`/`limits` | 7 | 6 | 1 | the equivalent mutant drops a redundant `+ p` before `%`, which is already floored in Mojo |
+| `kernel/projective_limits/rotor.mojo` | 12 | 12 | 0 | |
+| `kernel/cyclotomic` as of `621202a`, retired at the merge (§3.3) | 11 | 10 | 1 | two killed **at compile time** (§4.1); the equivalent one is again floored `%` |
+
+One survivor in the first round of the field work was a real gap: "a rejected
+value counts as zero". The fix was a test that pins the `ExactField` contract
+directly, not a change to the code.
 
 ### 3.3 Reconciliation with `main`
 
@@ -135,20 +151,27 @@ the reference and `conformance/cyclotomic_germ_v1.json` use it.
 Every other line of the replay agreed with `main`'s arithmetic as it was:
 `Φ_q`, products, inverses, the Galois action, and both germ quantities.
 
-### 3.2 Mutation testing
+### 3.4 Findings from review
 
-Every new module was mutated by hand (one seeded fault per run) and the suite
-re-run.
+The Codex review of larsbx/finite-math-kernels#62 found two real gaps. Both
+were fixed test-first: each regression failed before its fix.
 
-| Module | Mutants | Killed | Equivalent | Notes |
-|---|---|---|---|---|
-| `kernel/finite_exact/fp.mojo`, `kernel/finite_exact/field.mojo`, generic `line`/`limits` | 7 | 6 | 1 | the equivalent mutant drops a redundant `+ p` before `%`, which is already floored in Mojo |
-| `kernel/projective_limits/rotor.mojo` | 12 | 12 | 0 | |
-| `kernel/cyclotomic` as of `621202a`, retired at the merge (§3.3) | 11 | 10 | 1 | two killed **at compile time** (§4.1); the equivalent one is again floored `%` |
-
-One survivor in the first round of the field work was a real gap: "a rejected
-value counts as zero". The fix was a test that pins the `ExactField` contract
-directly, not a change to the code.
+1. **`Cyc[q]` and `@fieldwise_init`.**
+   - **The gap.** `@fieldwise_init` generated a public constructor that
+     bypassed the conductor check of `wrap`. So `Cyc[5](zeta(7))` was accepted
+     as an element of `ℚ(ζ_5)`, defeating the compile-time separation of
+     fields.
+   - **The fix.** `Cyc[q]` now has one explicit `__init__` that performs the
+     check, and `wrap` is gone.
+   - **The lesson for Mojo code.** `@fieldwise_init` belongs on structs
+     without invariants. A struct whose fields must satisfy a relation needs
+     its own constructor.
+2. **`turn` and the generator's order.**
+   - **The gap.** `turn(g, order, a, n)` did not check `g^order = 0`. With
+     the infinite-order rational rotor `g = 1/2` it returned turns that do not
+     add.
+   - **The fix.** It now refuses such a generator. An element whose order
+     divides `order` is still accepted, and its turns add.
 
 ## 4. Language features, and what they bought
 
@@ -199,7 +222,7 @@ as a default, and `𝔽_p` call sites name the field:
 | default type parameters | the pre-existing ℚ API (`P1`, `Poly`, `p1_infinity()`, …) compiles unchanged on top of the generic kernel |
 | operator overloading | `Cyc[q]` and `Fp[p]` have `+ − * / ==`; laws read as written: `a * (b + c) == a*b + a*c`, `(a*b).galois(s) == a.galois(s) * b.galois(s)` |
 | `comptime for` | the vector replay dispatches a runtime conductor to the compile-time field `Cyc[q]` by an unrolled loop over `1 … 12` |
-| `@fieldwise_init` | `CycSeries`, `CycCanonicalBytes` |
+| `@fieldwise_init` | `CycSeries` and `CycCanonicalBytes` in the retired `kernel/cyclotomic`. It is deliberately **not** used on `Cyc[q]`, for the reason in §3.4. |
 | `Writable` | a failing replay prints the field element itself |
 | list comprehensions, `comptime for` over list literals | test tables (`comptime for q in [1, 6, 7, 8, 9, 10, 30]`) |
 | floored `%` | canonical residues with one `%`; it also explains both equivalent mutants |

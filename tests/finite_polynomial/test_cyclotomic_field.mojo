@@ -9,6 +9,8 @@ Run with `pixi run test-cyclotomic-field`.
 from std.testing import assert_equal, assert_false, assert_true
 
 from finite_polynomial.cyclotomic_field import Cyc, CyclotomicField, euler_phi, mobius_mu, units
+from finite_polynomial.cyclotomic_q import rejected_cyclotomic
+from finite_polynomial.cyclotomic_q import zeta as raw_zeta
 from finite_exact.rat_q import Q
 from projective_limits.limits import PolyOver, RationalMapOver, rational_limit
 from projective_limits.line import P1Over, p1_affine, p1_equal
@@ -120,6 +122,16 @@ def test_rejection_is_sticky() raises:
     comptime K = CyclotomicField[5]
     assert_false(K.accepted(K.div(K.one(), K.zero())))
     assert_false(K.is_zero(K.rejected()))
+
+
+def test_direct_construction_checks_the_conductor() raises:
+    # Every way of building a Cyc[q], the constructor included, refuses a
+    # CyclotomicQ of another conductor, so no wrong-field value is accepted.
+    assert_false(Cyc[5](raw_zeta(7)).accepted())
+    assert_false(Cyc[5](rejected_cyclotomic()).accepted())
+    assert_false((Cyc[5](raw_zeta(7)) + Cyc[5].zeta()).accepted())
+    assert_true(Cyc[5](raw_zeta(5)) == Cyc[5].zeta())
+    assert_false(CyclotomicField[5].accepted(Cyc[5](raw_zeta(8))))
 
 
 def test_reduction_modulo_phi() raises:
@@ -240,6 +252,8 @@ def main() raises:
     print("[PASS] test_field_axioms")
     test_rejection_is_sticky()
     print("[PASS] test_rejection_is_sticky")
+    test_direct_construction_checks_the_conductor()
+    print("[PASS] test_direct_construction_checks_the_conductor")
     test_reduction_modulo_phi()
     print("[PASS] test_reduction_modulo_phi")
     test_galois_action()
@@ -254,4 +268,4 @@ def main() raises:
     print("[PASS] test_turns_beyond_niven_have_exact_order")
     test_spread_of_an_eighth_turn_is_one_half()
     print("[PASS] test_spread_of_an_eighth_turn_is_one_half")
-    print("11 cyclotomic-field Mojo tests passed.")
+    print("12 cyclotomic-field Mojo tests passed.")
