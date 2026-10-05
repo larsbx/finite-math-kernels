@@ -16,7 +16,7 @@
 
 from finite_exact.exact_decimal import q_decimal
 from finite_exact.field import ExactField
-from finite_exact.integer_gcd import gcd_int
+from finite_exact.bigint_z import bigz_eq, bigz_from_i64, bigz_gcd
 from finite_exact.rat_q import Q, q_rejected
 from finite_polynomial.cyclotomic_q import (
     CyclotomicCanonicalBytes,
@@ -39,10 +39,19 @@ from finite_polynomial.cyclotomic_q import (
 from finite_polynomial.polynomial_z import cyclotomic_degree
 
 
+def _coprime(a: Int, b: Int) -> Bool:
+    # This predicate is also evaluated at compile time for Cyc.DEGREE.
+    # Reuse the unbounded canonical GCD to keep this field API non-raising.
+    return bigz_eq(
+        bigz_gcd(bigz_from_i64(Int64(a)), bigz_from_i64(Int64(b))),
+        bigz_from_i64(1),
+    )
+
+
 def euler_phi(n: Int) -> Int:
     var count = 0
     for k in range(1, n + 1):
-        if gcd_int(k, n) == 1:
+        if _coprime(k, n):
             count += 1
     return count
 
@@ -64,7 +73,7 @@ def mobius_mu(n: Int) -> Int:
 
 def units(q: Int) -> List[Int]:
     """The exponents 1 <= e <= q with gcd(e, q) = 1: the Galois group of Q(zeta_q)."""
-    return [e for e in range(1, q + 1) if gcd_int(e, q) == 1]
+    return [e for e in range(1, q + 1) if _coprime(e, q)]
 
 
 struct Cyc[q: Int](Copyable, Writable):

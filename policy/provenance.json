@@ -628,7 +628,7 @@
       "relation": "authored"
     },
     "kernel/finite_polynomial/cyclotomic_field.mojo": {
-      "blob": "86b74b2701b4f8bd34aafe8b52379900fff014fc",
+      "blob": "84ac505b2c9ee3cad3198b067f3ab836177e180d",
       "relation": "authored"
     },
     "kernel/finite_polynomial/cyclotomic_q.mojo": {
