@@ -61,11 +61,11 @@
       "relation": "authored"
     },
     "ESTATE.toml": {
-      "blob": "2b3b47334e2eb8e07e0b3dae852f5da10d1bddbb",
+      "blob": "58e20cb2ca8b1fe428dcacce9cea3ba666a8d984",
       "relation": "authored"
     },
     "README.md": {
-      "blob": "8b4f03fdb10a384f152399aeb87c0f3942012eeb",
+      "blob": "0ddd2da61020d416bbd4cd547af59bd2f25042bf",
       "relation": "authored"
     },
     "conformance/cyclotomic_germ_v1.json": {
@@ -199,6 +199,10 @@
       "source_blob": "a850a73bca82ffc0de10d02380f6040e04fa9880",
       "source_path": "docs/exact-arithmetic-public-boundary.md"
     },
+    "docs/exact-polynomial-root-isolation-spec.md": {
+      "blob": "c15132b95d9139552e888f205369a02aacc2d536",
+      "relation": "authored"
+    },
     "docs/frontier-math-compute-candidates.md": {
       "blob": "5cd666db9f0bb483670c958047f219c682aa9fdb",
       "relation": "authored"
@@ -243,7 +247,7 @@
       "relation": "authored"
     },
     "docs/rational-interval-arithmetic-spec.md": {
-      "blob": "3140e04f5ccc61fe4bf27b7cdab428257ce6142f",
+      "blob": "50cf1f3a10562598d2e303b30aa33b98364b0f5c",
       "relation": "modified",
       "source": "finite_exact",
       "source_blob": "86478aa8777903f6c605d4bcfd7d899ac51a74fa",
@@ -393,6 +397,14 @@
       "blob": "16ffcbe10a72031a08eac9d2c2dc965b8bc2d739",
       "relation": "authored"
     },
+    "kernel/angle_doubling/__init__.mojo": {
+      "blob": "260ded1601f157daa44ad909b8352f2fb9298a66",
+      "relation": "authored"
+    },
+    "kernel/angle_doubling/angle.mojo": {
+      "blob": "a08b174f2b84a2d4013059f3e95d8302153a0f1c",
+      "relation": "authored"
+    },
     "kernel/finite_exact/__init__.mojo": {
       "blob": "1b3b5d5331f1cca9cc7620403b3169f563b5aa10",
       "relation": "modified",
@@ -412,11 +424,15 @@
       "relation": "facade"
     },
     "kernel/finite_exact/closed_q.mojo": {
-      "blob": "d622ed1eee2881e01705ec09f60bacf6b35c26ea",
-      "relation": "copy",
+      "blob": "28c07e6a893ee5ea9962da4eee9c6093a097c0f9",
+      "relation": "modified",
       "source": "interval_q",
       "source_blob": "d622ed1eee2881e01705ec09f60bacf6b35c26ea",
       "source_path": "interval_q/closed_q.mojo"
+    },
+    "kernel/finite_exact/enclosure_width.mojo": {
+      "blob": "72766a8f53de932d0c84fa7499ad0de83449e6f0",
+      "relation": "authored"
     },
     "kernel/finite_exact/rat_q.mojo": {
       "blob": "ab297da7f6192f0c7e88b3c06dfdea177f50e668",
@@ -438,8 +454,8 @@
       "relation": "authored"
     },
     "kernel/finite_linear_algebra/__init__.mojo": {
-      "blob": "5cefbb9810a7919dfd37a6cf4360d60e87e7b12e",
-      "relation": "copy",
+      "blob": "1c8ae9722474e2d7619008a2b64fc6a170ffde22",
+      "relation": "modified",
       "source": "finite_linear_algebra",
       "source_blob": "5cefbb9810a7919dfd37a6cf4360d60e87e7b12e",
       "source_path": "finite_linear_algebra/__init__.mojo"
@@ -473,6 +489,10 @@
       "source": "finite_linear_algebra",
       "source_blob": "c4282515cabd0b1725df735f6d8820fc55f49d8d",
       "source_path": "finite_linear_algebra/qlinalg.mojo"
+    },
+    "kernel/finite_linear_algebra/qpoly.mojo": {
+      "blob": "bc8ee229f9bc9da97f2a3cb25604adf379d599c1",
+      "relation": "authored"
     },
     "kernel/finite_linear_algebra/rational_elimination.mojo": {
       "blob": "de5ced5965b42f088ea473ca32f0b48db54a6d1e",
@@ -532,6 +552,18 @@
     },
     "kernel/parallel_fold/map_fold.mojo": {
       "blob": "a9a5800d9b6a0e8b8477bb94072452c2fca34dd6",
+      "relation": "authored"
+    },
+    "kernel/projective/__init__.mojo": {
+      "blob": "75c6dc4462ff4b9e588b95ec4f93e025e7359bb7",
+      "relation": "authored"
+    },
+    "kernel/projective/chart.mojo": {
+      "blob": "1c9709bd225b6d7316f104bf1769aab447b3033c",
+      "relation": "authored"
+    },
+    "kernel/projective/homogeneous.mojo": {
+      "blob": "b9cd33edb7224dbfd477dc80225bb74ba207f6c9",
       "relation": "authored"
     },
     "kernel/projective_limits/__init__.mojo": {
@@ -620,6 +652,10 @@
       "source_blob": "53544fff8ade511fc7ffd4f7bb1de879a7bede1e",
       "source_path": "src/interval_orbit.mojo"
     },
+    "kernel/quadratic_orbit/preperiodic.mojo": {
+      "blob": "dc72cbf6a77627b9dc16a4210fb7813c647258bc",
+      "relation": "authored"
+    },
     "kernel/rational_dynamics/__init__.mojo": {
       "blob": "02c525febbc75a3610b60d40a434da844bb8a322",
       "relation": "authored"
@@ -706,7 +742,7 @@
       "source_path": "tools/property_oracle.py"
     },
     "pixi.toml": {
-      "blob": "119c180b8da90c51c563d2ba67e679b188f93d54",
+      "blob": "864475250447406ccce61256c3bdde5a96729f03",
       "relation": "authored"
     },
     "policy/estate-audits/0833929ed82d42cf3674a1565681625a9622827b.py": {
@@ -740,6 +776,10 @@
       "blob": "12f1ad8dd8e62ef595c60bec5258dec99d9d2562",
       "relation": "authored"
     },
+    "reference/qpoly_reference.py": {
+      "blob": "27e4fece7703d06a41aa30630e86ca49c8d4e570",
+      "relation": "authored"
+    },
     "reference/rational_dynamics_reference.py": {
       "blob": "8fc015487f3601598d6f4bf801f42348056a08dd",
       "relation": "authored"
@@ -762,6 +802,10 @@
     },
     "tests/__init__.py": {
       "blob": "aecf15d997057942d02ecfbe9d6530da0b6bb7aa",
+      "relation": "authored"
+    },
+    "tests/angle_doubling/test_angle_doubling.mojo": {
+      "blob": "98bb156b72f2966a6e4da2817944d77504398f7f",
       "relation": "authored"
     },
     "tests/audit/__init__.py": {
@@ -866,7 +910,7 @@
       "source_path": "tests/property_probe.mojo"
     },
     "tests/finite_exact/test_finite_exact.mojo": {
-      "blob": "8cbc5067b4eaa2cdecca6124c445b035c2d18e7c",
+      "blob": "669aa4f8233d029320ff5db6cba3025bb193b70c",
       "relation": "modified",
       "source": "finite_exact",
       "source_blob": "faa1a65bf55875a1097cd8ef7a9ad9eb89212955",
@@ -929,6 +973,14 @@
       "blob": "2a4230f397eee71b93b9f5c8df88262808b416bf",
       "relation": "authored"
     },
+    "tests/finite_linear_algebra/test_qpoly.mojo": {
+      "blob": "f6b37e4f853134a2c08cfb6649b746275ca82d5d",
+      "relation": "authored"
+    },
+    "tests/finite_linear_algebra/test_qpoly_reference.py": {
+      "blob": "86dfb50fb402bc9cd04b91af82ccc84346e5b4e6",
+      "relation": "authored"
+    },
     "tests/finite_polynomial/test_cyclotomic_q.mojo": {
       "blob": "730d67cfc24d2a774c717af7463430f637442d20",
       "relation": "authored"
@@ -962,7 +1014,7 @@
       "relation": "authored"
     },
     "tests/interval/test_interval_q.mojo": {
-      "blob": "91d59d8a2ccd6c3be14c10ba0bd684de4ffceaca",
+      "blob": "61c5366189688e6db7d1c5633fe6a27c95699534",
       "relation": "modified",
       "source": "interval_q",
       "source_blob": "0ee6e90f0e5c2f13faee3fe2c63b97aa9653f166",
@@ -982,6 +1034,10 @@
     },
     "tests/polyglot/test_boundary_envelope.py": {
       "blob": "75722fac9fd69614ecb16ff72736f12dec9258a0",
+      "relation": "authored"
+    },
+    "tests/projective/test_projective.mojo": {
+      "blob": "e6ccedb5ba65fb777e0debf6915b9a542521e1c8",
       "relation": "authored"
     },
     "tests/projective_limits/test_projective_limits.mojo": {
@@ -1049,11 +1105,11 @@
       "relation": "authored"
     },
     "tests/provenance/test_provenance.py": {
-      "blob": "24abe7e845fd17ab124c884c7f89a36729ba93f5",
+      "blob": "3bb3f097ba263f6d89a5c771b8c58ad67410cf23",
       "relation": "authored"
     },
     "tests/quadratic_orbit/test_quadratic_orbit.mojo": {
-      "blob": "b04f496a51c0c758010b4c857f7a277b752e34da",
+      "blob": "4e8b27a493d5856618a9715e912ce88e76251a95",
       "relation": "authored"
     },
     "tests/rational_dynamics/test_rational_dynamics.mojo": {
@@ -1069,7 +1125,7 @@
       "relation": "authored"
     },
     "tests/references/test_references.py": {
-      "blob": "c51416999cc681016c1f59e126b174caa02934f6",
+      "blob": "20aa21e30f1f306a34d67b531042afff70887cf5",
       "relation": "authored"
     },
     "tests/substitution_dynamics/test_substitution_dynamics.mojo": {
@@ -1108,7 +1164,7 @@
       "relation": "authored"
     },
     "tools/check_references.py": {
-      "blob": "18aebb67620f0e718bed47408e08ab9d4dd6b00c",
+      "blob": "771017b329c2e954a52749c01faf1afd91e396e9",
       "relation": "authored"
     },
     "tools/claim_governance/__init__.py": {
@@ -1234,7 +1290,15 @@
       "source_path": "tools/make_vectors.py"
     },
     "tools/provenance.py": {
-      "blob": "aba96e979712d60f6cf1b24ec3e756d1a3bc9418",
+      "blob": "85ddc505c5035a07738f12c2e48e71cfd42e5e6b",
+      "relation": "authored"
+    },
+    "tools/references/__init__.py": {
+      "blob": "b16f3b005f4b62492febf49317fb4dcfe96d96c7",
+      "relation": "authored"
+    },
+    "tools/references/check_references.py": {
+      "blob": "fd4829cefe2dbb053767fcf8fa6fb6679dfe2661",
       "relation": "authored"
     },
     "tools/replay_mojo.py": {

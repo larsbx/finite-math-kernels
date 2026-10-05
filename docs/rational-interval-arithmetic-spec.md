@@ -95,7 +95,7 @@ I_E := { [a, b] : a, b ∈ E,  a ≤ b }.
 
 Two endpoint sets are relevant.
 
-- **`E = F` with directed rounding.** Lower endpoints are computed rounding toward `−∞`, upper endpoints toward `+∞`. Every result contains the true result. Requires rounding-mode control on the hardware; fast.
+- **`E = F` with directed rounding.** Lower endpoints are computed rounding toward `−∞`, upper endpoints toward `+∞`. Every result contains the true result. This does **not** require rounding-mode control on the hardware: a dyadic rational with a bounded numerator is the same idea done exactly, and the direction is a floor or a ceiling over `Z`, decided rather than configured. It is implemented that way in `larsbx/finite-julia-set-research` (`docs/scaled-boxes.md`), where the endpoint carries a **separated binary exponent**. That is what the mode is for in an exact setting: an escaping orbit reaches magnitude `2^(2^n)`, so writing the value in one piece costs `2^n` bits whatever the arithmetic does, and the measured effect of separating the exponent was to take an external-angle computation from 9 digits to 117 at the same starting box. Exactness and affordability are different axes, and this is the one that buys depth.
 - **`E = Q` (rational endpoints).** Endpoint arithmetic is exact (section 1), so no rounding mode is needed and the enclosures are the tightest the formulas allow. This is the mode both repositories use; `E = F` is stated for completeness and is **not** admitted in certificate paths.
 
 Invariant **J1:** `a ≤ b` at construction. Reversed endpoints must raise, not swap.
@@ -109,6 +109,7 @@ Invariant **J1:** `a ≤ b` at construction. Reversed endpoints must raise, not 
 1/[c,d]       = [1/d, 1/c]           only if 0 ∉ [c,d]; otherwise raise
 [a,b] ÷ [c,d] = [a,b] × (1/[c,d])
 [a,b]²        = [0, max(a², b²)]     if 0 ∈ [a,b];  else [a,b] × [a,b]
+(X + iY)²     = (X² − Y², 2XY)        each coordinate square by the line above
 ```
 
 Under `E = F` each endpoint formula is evaluated with the outward rounding stated in 2.1; under `E = Q` it is evaluated exactly.
@@ -121,7 +122,7 @@ For every operation `∘` above and every `x ∈ X`, `y ∈ Y` in `I_E`,
 x ∘ y ∈ X ∘ Y.
 ```
 
-By induction, for any expression `f` built from `+ − × ÷` and constants, the **natural interval extension** `f_I` satisfies `f(x) ∈ f_I(X)` whenever `x ∈ X`. This is the only theorem the layer provides, and it is the whole point: rounding error becomes a **certified width** `b − a` rather than an unobservable `δ`. Transcendental and algebraic functions outside `ℚ` are admitted here through any enclosure `g_I` with `g(x) ∈ g_I(X)`, for example a rational bracket of a Perron root obtained by exact sign changes at rational points.
+By induction, for any expression `f` built from `+ − × ÷` and constants, the **natural interval extension** `f_I` satisfies `f(x) ∈ f_I(X)` whenever `x ∈ X`. This is the layer's central theorem, and it is the whole point: rounding error becomes a **certified width** `b − a` rather than an unobservable `δ`. Transcendental and algebraic functions outside `ℚ` are admitted here through any enclosure `g_I` with `g(x) ∈ g_I(X)`, for example a rational bracket of a Perron root obtained by exact sign changes at rational points. What it does **not** say is how far the enclosure and the point drift apart under iteration; section 2.5 bounds that.
 
 ### 2.4 Decision semantics
 
@@ -143,8 +144,15 @@ An interval never returns equality, and `0` from `sign_I` must never be consumed
 
 ### 2.5 Costs
 
-- **Dependency problem.** Occurrences of the same variable are treated as independent. `X − X = [a−b, b−a] ≠ [0,0]` and `X × X ⊋ X²` when `0 ∈ X`. Only **subdistributivity** holds: `X(Y + Z) ⊆ XY + XZ`. Widths therefore inflate along long computations and through iterated maps (the wrapping effect). The natural extension of the same polynomial in Horner form and in expanded form gives different, both valid, enclosures; Horner is generally tighter and is the required form here.
-- **Mitigations.** Bisection of `X` (width shrinks linearly in the number of pieces, cost grows the same way); centred forms and mean-value forms; affine or Taylor-model arithmetic, which tracks first-order correlations and cancels `X − X` exactly. Affine and Taylor models are out of scope for both repositories at present; bisection and Horner are in scope.
+- **Dependency problem.** Occurrences of the same variable are treated as independent. `X − X = [a−b, b−a] ≠ [0,0]` and `X × X ⊋ X²` when `0 ∈ X`. Only **subdistributivity** holds: `X(Y + Z) ⊆ XY + XZ`. Widths therefore inflate along long computations and through iterated maps (the wrapping effect). The natural extension of the same polynomial in Horner form and in expanded form gives different, both valid, enclosures; Horner is generally tighter for a variable that occurs once, and is the required form there. It is **not** the right form for a Taylor polynomial over a box centred at the origin, where the variable occurs in every term and Horner's nesting multiplies the same box by itself repeatedly: term by term with each power taken by repeated squaring is tighter, measured at between `1.01x` and `1.40x` on the cases of `docs/taylor-models.md` in `larsbx/finite-julia-set-research`.
+- **Refinement.** The inflation is bounded per step, and that is what makes bisection a decision procedure rather than a hope. Suppose `rad(F(X)) ≤ K · rad(X)` for every enclosure confined to a region `R`, with `K ≥ 1` rational. Then while the iterates stay in `R`,
+
+  ```text
+  rad(F^n(X)) ≤ K^n · rad(X),   and   |w − f^n(x)| ≤ 2 K^n · rad(X)   for w ∈ F^n(X), x ∈ X
+  ```
+
+  both in the sup norm. So a certificate that holds at a point with margin `δ` holds on the whole enclosure once `rad(X) < δ / (2 K^n)`, which bisection reaches in `⌈log2(2 K^n · rad(X) / δ)⌉ levels`. `K` is the caller's, because it depends on the map; nothing else here does. `finite_exact/enclosure_width.mojo` computes each quantity exactly, and a consumer supplies `K`: for `z ↦ z² + c` on a box of coordinate bound `M` it is `6M` (`docs/enclosure-width-lemma.md` in `larsbx/finite-julia-set-research`).
+- **Mitigations.** Centred forms and mean-value forms; affine or Taylor-model arithmetic, which tracks correlations the natural extension loses. **Taylor models are no longer out of scope**: they are implemented and measured in `larsbx/finite-julia-set-research` (`docs/taylor-models.md`), as an exact jet over `Q(i)` plus a rigorous interval remainder. The measurement is the part worth carrying here, because it is not what this line used to imply: they are **not uniformly tighter**. On a long expanding run they were `6.3x` tighter than the plain enclosure after six steps; on a quadratic map near a repelling fixed point the plain enclosure was `1.36x` tighter, because a single sharp square is already close to optimal and the model pays for a remainder it did not need. They reduce width, never coordinate bit size, so an exact backend's budget binds exactly as before. Affine arithmetic stays out of scope; bisection stays in scope.
 - **No exact answer.** The layer proves enclosure, never value. Equality is only ever refuted.
 
 ### 2.6 Best fit
