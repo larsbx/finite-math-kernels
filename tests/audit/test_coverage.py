@@ -58,6 +58,40 @@ def test_a_declaration_in_a_comment_does_not_count(tree):
     assert [f.rule for f in run_check("coverage", policy(), root)] == ["BoundedExclusion"]
 
 
+@pytest.mark.parametrize("example", [
+    '\'require_claim("BoundedExclusion")\'',
+    '\'\'\'require_claim("BoundedExclusion")\'\'\'',
+    '"""Example:\nrequire_claim("BoundedExclusion")\n"""',
+    'r\'require_claim("BoundedExclusion")\'',
+    'f\'require_claim("BoundedExclusion")\'',
+    r'"""Example: \""" require_claim("BoundedExclusion") """',
+])
+@pytest.mark.parametrize("receipts", [None, "build/absent.tsv"])
+@pytest.mark.parametrize("suffix", [".mojo", ".py"])
+def test_string_examples_cannot_guard_a_claim(tree, example, receipts, suffix):
+    path = "tests/test_a" + suffix
+    root = tree({path: example + '\nrequire_contract("x")\n'})
+    assert [f.rule for f in run_check("coverage", policy(receipts=receipts, tests=[path]), root)] == ["BoundedExclusion"]
+
+
+def test_a_docstring_is_not_a_contract_declaration(tree):
+    root = tree({"tests/test_a.mojo": '\'require_contract("x")\'\n'})
+    assert [f.rule for f in run_check("coverage", policy(), root)] == ["declaration", "BoundedExclusion"]
+
+
+def test_real_declarations_after_docstrings_keep_their_line_numbers(tree):
+    root = tree({"tests/test_a.mojo": '"""Example:\nrequire_claim("Invented")\n"""\nrequire_claim("BoundedExclusion")\nrequire_claim("Unknown")\n'})
+    assert [(f.line, f.rule) for f in run_check("coverage", policy(), root)] == [(5, "Unknown")]
+
+
+def test_a_receipt_cannot_turn_a_string_example_into_a_declaration(tree):
+    root = tree({
+        "tests/test_a.mojo": '\'require_claim("BoundedExclusion")\'\nrequire_contract("x")\n',
+        "build/receipts.tsv": f"{RECEIPTS}\ntests/test_a.mojo\tclaim\tBoundedExclusion\ntests/test_a.mojo\tcontract\tx\n",
+    })
+    assert [f.rule for f in run_check("coverage", policy(receipts="build/receipts.tsv"), root)] == ["BoundedExclusion", "BoundedExclusion"]
+
+
 def test_no_test_globs_means_the_check_is_silent(tree):
     root = tree({"tests/test_a.mojo": "def main():\n    pass\n"})
     assert run_check("coverage", make_policy(claim=LEDGER), root) == ()

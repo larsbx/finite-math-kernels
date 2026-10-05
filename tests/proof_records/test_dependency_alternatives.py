@@ -95,6 +95,56 @@ def test_rendered_models_and_graph_preserve_the_alternatives():
     assert all("alternative dependency branch(es):" in e.leaks for e in deps)
 
 
+def completed_route_fixture(*, complete=True, mismatch=False, nested=False):
+    pending = mv.rec(mv.Kind.PENDING, "unused gate", mv.PISOT, reason="open")
+    ready = mv.rec(mv.Kind.REPOSITORY, "ready gate", mv.PISOT, source="proof", proof_reviewed="true") if complete else mv.rec(mv.Kind.PENDING, "ready gate", mv.PISOT, reason="open")
+    ready_edge = mv.edge(ready, "choice/ready")
+    if mismatch:
+        ready_edge = replace(ready_edge, expected_claim="another claim")
+    choice = mv.rec(mv.Kind.REPOSITORY, "choice", mv.PISOT,
+                    (mv.edge(pending, "choice/unused"), ready_edge),
+                    source="proof", proof_reviewed="true",
+                    dependency_alternatives=json.dumps([[pending.id], [ready.id]]))
+    downstream = mv.rec(mv.Kind.REPOSITORY, "downstream", mv.PISOT,
+                        (mv.edge(choice, "downstream/choice"),), source="proof", proof_reviewed="true")
+    records = {"Pending": pending, "Ready": ready, "Choice": choice, "Downstream": downstream}
+    if nested:
+        upper = mv.rec(mv.Kind.REPOSITORY, "nested choice", mv.PISOT,
+                       (mv.edge(pending, "upper/unused"), mv.edge(downstream, "upper/downstream")),
+                       source="proof", proof_reviewed="true",
+                       dependency_alternatives=json.dumps([[pending.id], [downstream.id]]))
+        records["Upper"] = upper
+    return ledger(records={name: mle.record_json(record) for name, record in records.items()},
+                  aliases={}, surfaces={}, assumption_sets={})
+
+
+def test_one_complete_route_agrees_across_every_status_surface():
+    a = gl.analyse(completed_route_fixture(nested=True))
+    strict = gl.close({r.id: r for r in a.ledger.records.values()}, a.ledger.records["Choice"].id)
+    assert not strict.complete  # the existing default still audits every citation
+    for name in ("Choice", "Downstream", "Upper"):
+        entry = next(e for e in a.entries if e.name == name)
+        assert entry.closure.complete
+        assert entry.status == "proved"
+        assert name in gl.established(a, ())
+        label = a.ledger.status_labels.get("proved", "proved")
+        assert f'| {name} | {label} |' in gl.render_index(a)
+        assert f'name = "{name}"\nstatus = "proved"' in gl.render_claims(a)
+        node = next(n for n in graph.build(a).nodes if n.id == name)
+        assert node.provenance == graph.THEOREM_BACKED
+        assert not node.leaks
+
+
+@pytest.mark.parametrize("kwargs", [{"complete": False}, {"mismatch": True}])
+def test_no_complete_valid_route_stays_conditional(kwargs):
+    a = gl.analyse(completed_route_fixture(**kwargs))
+    for name in ("Choice", "Downstream"):
+        entry = next(e for e in a.entries if e.name == name)
+        assert not entry.closure.complete
+        assert entry.status == "conditional"
+        assert "incomplete:" in gl.render_index(a)
+
+
 @pytest.mark.skipif(not TLA_TOOLS or shutil.which("java") is None, reason="set TLA_TOOLS for the dependency state machine")
 def test_tlc_accepts_both_routes_and_rejects_a_false_nonestablishment(tmp_path):
     a = gl.analyse(fixture())

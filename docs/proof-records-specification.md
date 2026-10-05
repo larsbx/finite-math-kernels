@@ -129,6 +129,17 @@ A **missing link** is `(record_id, reason)` with one of these reasons:
 
 The root is reached without an edge, so it is held to `accepted` with no claim or scope requirement. The closure is **complete** iff there are no missing links: every reached record is validated, matches the edge that reached it in claim, scope, and outcome, is accepted by the policy, and the graph below the root is acyclic. A bounded experiment as root is therefore never complete, and a verified record's closure is complete over a bounded experiment only when its edge requires `bounded` on the `same` scope: bounded evidence closes its own proposition on its own domain and nothing more. Records with claim, scope, or outcome mismatches and pending or bounded records still have their dependencies walked, so a report names every missing link below them, not only the first. A record reached through several edges is validated and walked once, but the claim, scope, and outcome of every incoming edge are checked, so a diamond whose second edge is wrong is incomplete.
 
+The Python ledger tooling additionally accepts `close(..., routes=...)`,
+where the named-ledger generator supplies validated, digest-bound
+alternative groups (see `docs/ledger-generation-spec.md` section 2.4).
+All members of one group must close; one complete group suffices. Selected
+edges retain every validation above. `reached` holds the first complete
+route, or the union of attempted routes and their missing links when none
+completes. Incomplete branches do not contaminate a complete alternative.
+The default Python call and the Mojo replay retain the conjunctive contract
+above; this option is a ledger-generation feature, not a new mathematical
+proof checker or an authority increase.
+
 ## 6. Consumer policy predicates
 
 A policy is a function `Record -> reason | None`. The package provides `tag_policy(forbidden)`, which refuses a record carrying any tag in `forbidden` with the consumer's stated reason, and `no_policy`. Examples the consumers already encode by hand today:

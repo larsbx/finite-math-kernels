@@ -75,10 +75,17 @@ must be justified by the consumer's source. A pending, bounded, imported, or
 withdrawn premise does not become proved through membership in a route.
 Withdrawn premises block their own branch, while another clean branch may
 establish the result. An assumed result is refused if every branch contains a
-withdrawn premise. Status tags and the record closure are unchanged: `close`
-conservatively audits all cited proof references, including unused branches;
-it does not select a proof route or promote a theorem. The index prints the
-alternatives as AND/OR, and graph edges name their alternative branch numbers.
+withdrawn premise. The generator supplies the validated alternatives to
+`close(..., routes=...)`: a closure is complete when at least one branch is
+complete, recursively, with every selected edge satisfying the proof-record
+claim, scope, outcome, policy and cycle checks. Its `reached` set records the
+first complete branch in declared order; when all branches fail it retains
+their missing-link diagnostics. An unused pending branch cannot make a
+completed route conditional, including through dependent records. Status
+override tags still take precedence. The index prints the alternatives as
+AND/OR, graph edges retain every citation and its branch numbers, and graph
+node leaks refer to premises reached by the closure witness. The default
+`close` call without routes continues to audit all citations conjunctively.
 
 ### 2.5 The established fixpoint
 

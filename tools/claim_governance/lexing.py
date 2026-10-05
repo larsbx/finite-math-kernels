@@ -30,22 +30,22 @@ def mask_comments_and_strings(source: str, *, keep_strings: bool = False) -> str
             if char == "\n":
                 out.append("\n")
                 if not triple:
-                    quote, escaped = None, False
+                    quote = None
+                escaped = False
                 index += 1
                 continue
-            if triple and source.startswith(quote * 3, index):
+            if triple and not escaped and source.startswith(quote * 3, index):
                 out.extend(quote * 3 if keep_strings else "   ")
                 index += 3
                 quote, triple = None, False
                 continue
             out.append(char if keep_strings else " ")
-            if not triple:
-                if escaped:
-                    escaped = False
-                elif char == "\\":
-                    escaped = True
-                elif char == quote:
-                    quote = None
+            if escaped:
+                escaped = False
+            elif char == "\\":
+                escaped = True
+            elif not triple and char == quote:
+                quote = None
             index += 1
             continue
         if char == "#":

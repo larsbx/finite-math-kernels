@@ -6,7 +6,8 @@ declares the ledger claim it guards (or the contract it guards that is no
 ledger claim), the declaration must resolve, and a claim whose warrant is an
 executable computation must have at least one test that names it.
 
-A declaration is static text.  When the policy names a receipts file and
+A declaration is a call in source, with a literal argument; examples inside
+comments or string literals do not count. When the policy names a receipts file and
 that file exists, it is the run log of the suite: a declaration the run did
 not reach does not count, so a claim guarded only by a test body that is
 never called is reported rather than credited.
@@ -57,8 +58,14 @@ def read_receipts(cfg: Coverage, repo: Repo) -> tuple[frozenset[Receipt] | None,
 def declarations(cfg: Coverage, repo: Repo, rel: str) -> tuple[tuple[str, str, int], ...]:
     """Every ``(kind, value, line)`` a test file declares, in file order."""
     text = repo.surface(rel)
-    found = [(CLAIM, m.group(CLAIM), line_of(text, m.start())) for m in cfg.claims().finditer(text)]
-    found += [(CONTRACT, m.group(CONTRACT), line_of(text, m.start())) for m in cfg.contracts().finditer(text)]
+    code = repo.masked(rel)
+    # Match the literal argument on the surface, but require the declaration
+    # prefix to be source code. Both views retain identical character offsets
+    # in Python/Mojo, so a function name inside a string is entirely blank.
+    found = [(kind, m.group(kind), line_of(text, m.start()))
+             for kind, pattern in ((CLAIM, cfg.claims()), (CONTRACT, cfg.contracts()))
+             for m in pattern.finditer(text)
+             if code[m.start():m.start(kind)].strip()]
     return tuple(sorted(found, key=lambda d: d[2]))
 
 

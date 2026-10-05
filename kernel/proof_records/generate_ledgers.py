@@ -280,7 +280,7 @@ def analyse(ledger: Ledger) -> Analysis:
                 errors.append(f"{name}: a passthrough surface needs a path")
 
     id_ledger = {r.id: r for r in ledger.records.values()}
-    entries: list[Entry] = []
+    parsed = []
     for name in sorted(ledger.records):
         record = ledger.records[name]
         checked = validate(record)
@@ -306,8 +306,16 @@ def analyse(ledger: Ledger) -> Analysis:
         except LedgerError as exc:
             errors.append(f"{name}: {exc}")
             routes = ()
-        closure = close(id_ledger, record.id)
-        entries.append(Entry(name, record, found, withdrawn, _status(ledger, record, withdrawn, overrides, closure), tuple(requires), closure, routes))
+        parsed.append((name, record, found, withdrawn, overrides, tuple(requires), routes))
+    # Parse every route first so closure can honor nested alternatives. Keep
+    # the full immutable records: pruning citations would invalidate their IDs.
+    id_routes = {record.id: tuple(tuple(ledger.records[n].id for n in branch) for branch in routes)
+                 for _, record, _, _, _, _, routes in parsed}
+    entries: list[Entry] = []
+    for name, record, found, withdrawn, overrides, requires, routes in parsed:
+        closure = close(id_ledger, record.id, routes=id_routes)
+        entries.append(Entry(name, record, found, withdrawn,
+                             _status(ledger, record, withdrawn, overrides, closure), requires, closure, routes))
     analysis = Analysis(ledger, tuple(entries))
     withdrawn = set(analysis.withdrawn)
     routes = {e.name: e.routes for e in entries}

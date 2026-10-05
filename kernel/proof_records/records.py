@@ -215,10 +215,19 @@ def edge(target: Record, use_site: str, scope_relation: str = SAME_SCOPE, requir
     return Edge(target.id, target.statement, use_site, scope_relation, required_outcome)
 
 
-def close(ledger: Mapping[str, Record], root: str, policy: Policy = no_policy) -> Closure:
+def close(ledger: Mapping[str, Record], root: str, policy: Policy = no_policy,
+          *, routes: Mapping[str, tuple[tuple[str, ...], ...]] | None = None) -> Closure:
     """Dependency closure of ``root``; complete only if every reached record
     is validated, matches the edge that reached it in claim, scope, and
-    outcome, is accepted by ``policy``, and the graph below the root is acyclic."""
+    outcome, is accepted by ``policy``, and the graph below the root is acyclic.
+
+    Without ``routes``, all citations are conjunctive. A ledger generator may
+    supply its validated, digest-bound alternatives: each node then needs one
+    complete branch, recursively. The first complete branch is the witness in
+    ``reached``; if none completes, diagnostics from every branch are retained.
+    Grouping never changes records or their identifiers, and every chosen edge
+    still undergoes the same claim, scope, outcome, policy and cycle checks.
+    """
     reached: list[str] = []
     links: list[MissingLink] = []
     stack: list[str] = []
@@ -267,8 +276,31 @@ def close(ledger: Mapping[str, Record], root: str, policy: Policy = no_policy) -
         if verdict is not None:
             links.append(MissingLink(record_id, "policy: " + verdict))
         stack.append(record_id)
-        for dep in record.depends_on:
-            visit(dep.record_id, dep, record.scope)
+        branches = routes.get(record_id) if routes is not None else None
+        if branches is None:
+            for dep in record.depends_on:
+                visit(dep.record_id, dep, record.scope)
+        elif (not branches or any(not branch for branch in branches if record.depends_on)
+              or {d for branch in branches for d in branch} != {e.record_id for e in record.depends_on}
+              or any(len(branch) != len(set(branch)) for branch in branches)):
+            links.append(MissingLink(record_id, "invalid dependency routes"))
+        else:
+            base_reached, base_links = reached.copy(), links.copy()
+            failed_reached: list[str] = []
+            failed_links: list[MissingLink] = []
+            for branch in branches:
+                reached[:] = base_reached
+                links[:] = base_links
+                for dep in record.depends_on:
+                    if dep.record_id in branch:
+                        visit(dep.record_id, dep, record.scope)
+                if len(links) == len(base_links):
+                    break
+                failed_reached.extend(reached)
+                failed_links.extend(links[len(base_links):])
+            else:
+                reached[:] = list(dict.fromkeys((*base_reached, *failed_reached)))
+                links[:] = list(dict.fromkeys((*base_links, *failed_links)))
         stack.pop()
 
     visit(root, None, "")

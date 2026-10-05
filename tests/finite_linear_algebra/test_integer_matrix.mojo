@@ -21,7 +21,7 @@ def wielandt(n: Int) -> List[Int]:
     return m^
 
 
-def first_positive_power(m: List[Int], n: Int) -> Int:
+def first_positive_power(m: List[Int], n: Int) raises -> Int:
     var p = m.copy()
     for k in range(1, wielandt_bound(n) + 1):
         if is_positive(p):
@@ -59,6 +59,36 @@ def test_sign_predicates() raises:
         assert_equal(product[i], expected[i])
 
 
+def test_matrix_products_refuse_overflow() raises:
+    var product_refused = False
+    var accumulation_refused = False
+    var large: List[Int] = [3037000500, 1, 1, 0]
+    try:
+        _ = matmul(large, large, 2)
+    except:
+        product_refused = True
+    var a: List[Int] = [Int.MAX, 1, 0, 0]
+    var b: List[Int] = [1, 0, 1, 0]
+    try:
+        _ = matmul(a, b, 2)
+    except:
+        accumulation_refused = True
+    assert_true(product_refused)
+    assert_true(accumulation_refused)
+    var identity: List[Int] = [1, 0, 0, 1]
+    var minima: List[Int] = [Int.MIN, 0, 0, 1]
+    assert_equal(matmul(identity, minima, 2)[0], Int.MIN)
+
+
+def test_primitivity_depends_only_on_support() raises:
+    var large: List[Int] = [3037000500, 1, 1, 0]
+    assert_true(is_primitive(large, 2))
+    var periodic: List[Int] = [0, Int.MAX, Int.MAX, 0]
+    assert_false(is_primitive(periodic, 2))
+    var reducible: List[Int] = [Int.MAX, 0, 0, Int.MAX]
+    assert_false(is_primitive(reducible, 2))
+
+
 def main() raises:
     test_the_bound_is_attained_and_sufficient()
     print("[PASS] test_the_bound_is_attained_and_sufficient")
@@ -66,4 +96,8 @@ def main() raises:
     print("[PASS] test_irreducible_but_periodic_is_not_primitive")
     test_sign_predicates()
     print("[PASS] test_sign_predicates")
-    print("3 integer_matrix tests passed.")
+    test_matrix_products_refuse_overflow()
+    print("[PASS] test_matrix_products_refuse_overflow")
+    test_primitivity_depends_only_on_support()
+    print("[PASS] test_primitivity_depends_only_on_support")
+    print("5 integer_matrix tests passed.")

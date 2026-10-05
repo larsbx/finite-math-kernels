@@ -162,7 +162,12 @@ def quadratic_germ_index_coefficient(p: Int, q: Int) -> CyclotomicQ:
 
     Requires q >= 1, p >= 1, gcd(p,q)=1.  The q=1 case uses zeta_1=1.
     """
-    if q < 1 or p < 1 or gcd_int(p, q) != 1:
+    if q < 1 or p < 1:
+        return rejected_cyclotomic()
+    try:
+        if gcd_int(p, q) != 1:
+            return rejected_cyclotomic()
+    except:
         return rejected_cyclotomic()
 
     var generator = zeta(q)
