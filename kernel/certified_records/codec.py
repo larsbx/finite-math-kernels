@@ -10,16 +10,31 @@ fields survive intact.
 from __future__ import annotations
 
 import importlib.util
+import os
 from dataclasses import dataclass
 from pathlib import Path
 
-EXTENSION = Path(__file__).resolve().parents[2] / ".build" / "certified_records_ext.so"
+BUILT = Path(".build") / "certified_records_ext.so"
+
+
+def _extension() -> Path:
+    """`CERTIFIED_RECORDS_EXT` if set, else the nearest `.build/certified_records_ext.so`
+    above this package: a consumer may vendor it under any include root."""
+    named = os.environ.get("CERTIFIED_RECORDS_EXT")
+    if named:
+        return Path(named)
+    for directory in Path(__file__).resolve().parent.parents:
+        if (directory / BUILT).is_file():
+            return directory / BUILT
+    raise ImportError(f"no {BUILT} above {Path(__file__).parent}; build it with "
+                      "`pixi run build-certified-records-py`, or set CERTIFIED_RECORDS_EXT")
 
 
 def _load():
-    if not EXTENSION.is_file():
-        raise ImportError(f"{EXTENSION} is missing; build it with `pixi run build-certified-records-py`")
-    spec = importlib.util.spec_from_file_location("certified_records_ext", EXTENSION)
+    extension = _extension()
+    if not extension.is_file():
+        raise ImportError(f"{extension} is missing; build it with `pixi run build-certified-records-py`")
+    spec = importlib.util.spec_from_file_location("certified_records_ext", extension)
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     return module

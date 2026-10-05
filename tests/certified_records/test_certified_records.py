@@ -6,6 +6,10 @@ this checks only that values, reasons and rows cross the binding intact.
 
 from __future__ import annotations
 
+import os
+import shutil
+import subprocess
+import sys
 from pathlib import Path
 
 import pytest
@@ -46,3 +50,27 @@ def test_first_mismatch_can_skip_a_prefix():
 def test_vector_cases_skip_comments_and_keep_empty_columns():
     text = "# comment\nk\tx\t\nother\ty\nk\t\tz\n"
     assert vector_cases(text, "k") == [["x", ""], ["", "z"]]
+
+
+def _import_in(package_parent: Path, env: dict[str, str]) -> subprocess.CompletedProcess:
+    probe = "from certified_records.codec import Schema, decode; print(decode(Schema('toy-v1', (('a', 32), ('b', 64))), 'toy-v1 1 2'))"
+    return subprocess.run([sys.executable, "-c", probe], cwd=package_parent, env={**os.environ, **env},
+                          capture_output=True, text=True, check=False)
+
+
+def test_a_consumer_finds_its_own_build_under_any_include_root(tmp_path):
+    """Vendored three levels below the consumer's root, the binding still finds the
+    consumer's .build/certified_records_ext.so, or the one CERTIFIED_RECORDS_EXT names."""
+    package_parent = tmp_path / "consumer" / "vendor" / "python" / "deep"
+    shutil.copytree(ROOT / "kernel" / "certified_records", package_parent / "certified_records",
+                    ignore=shutil.ignore_patterns("*.mojo", "__pycache__"))
+    built = ROOT / ".build" / "certified_records_ext.so"
+    (tmp_path / "consumer" / ".build").mkdir()
+    shutil.copy2(built, tmp_path / "consumer" / ".build" / built.name)
+    found = _import_in(package_parent, {})
+    assert found.returncode == 0 and found.stdout.strip() == "(1, 2)", found.stderr
+    (tmp_path / "consumer" / ".build" / built.name).unlink()
+    named = _import_in(package_parent, {"CERTIFIED_RECORDS_EXT": str(built)})
+    assert named.returncode == 0 and named.stdout.strip() == "(1, 2)", named.stderr
+    missing = _import_in(package_parent, {})
+    assert missing.returncode != 0 and "build-certified-records-py" in missing.stderr

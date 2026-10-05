@@ -454,7 +454,7 @@
       "relation": "authored"
     },
     "kernel/certified_records/codec.py": {
-      "blob": "fe02defb07b0ab754aa954ccb7a3f5b6bc9f9fc6",
+      "blob": "924c76e2e17cd7b671ab43190d4200d6f024f94a",
       "relation": "authored"
     },
     "kernel/certified_records/python_binding.mojo": {
@@ -1007,7 +1007,7 @@
       "relation": "authored"
     },
     "tests/certified_records/test_certified_records.py": {
-      "blob": "83c724c5db8dfe802319ad146d44d12462b92308",
+      "blob": "ecbb96621ec875fb95b5f278fe24458eb7dae842",
       "relation": "authored"
     },
     "tests/conftest.py": {
