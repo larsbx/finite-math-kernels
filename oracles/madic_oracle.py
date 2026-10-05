@@ -12,6 +12,10 @@ membership of the difference in `M^k Z^n` does not make them equal. Two points
 in different cosets are certainly distinct, and that is the only certificate
 this carrier issues.
 
+`M` is a list of rows, `m[i][j] = M[i][j]`, and `M^k Z^n` is spanned by the
+columns of `M^k`. The rows span `Z^n M^k`, which is a different lattice in
+general.
+
 The spec is `docs/madic-ball-arithmetic-spec.md`.
 """
 
@@ -126,7 +130,8 @@ def quotient_order(m: Matrix, level: int) -> int:
 def contains(m: Matrix, level: int, delta: list[int]) -> bool:
     """Whether `delta` lies in the lattice `M^k Z^n`.
 
-    Solves `M^k x = delta` over the rationals and asks whether `x` is integral.
+    Solves `M^k x = delta` over the rationals and asks whether `x` is integral:
+    `delta` is an integer combination of the columns of `M^k`, never of its rows.
 
     The determinant of the *original* `M` is checked before exponentiation, not
     after. At `level = 0` the power is the identity whatever `M` was, so a
