@@ -12,6 +12,11 @@
 #   integer_gcd      gcd on machine Int and Int64.
 #   checked_int      machine-Int add, sub, mul, neg, abs that raise on overflow.
 #   exact_decimal    base-ten rendering of BigZ and Q.
+#   field     ExactField, a field as a structure over its Element type, which
+#             field-generic kernels are written against; QField adapts Q.
+#   fp        Fp[p], elements of Z/pZ with a compile-time prime modulus below
+#             2^31, canonical residues, operators + - * / == and sticky
+#             rejection; FpField[p].
 #
 # Public boundary and stability promise: docs/exact-arithmetic-public-boundary.md.
 # Specification: docs/rational-interval-arithmetic-spec.md.

@@ -1,11 +1,16 @@
 # Rational dynamics and cyclotomic exactness bridge
 
-**Status:** representation contract and extraction roadmap. R1 is
-implemented in Mojo; C1, C2, Q1 and Q2 have an independent Python reference
-(`reference/cyclotomic_reference.py`) and pinned vectors
-(`conformance/cyclotomic_germ_v1.json`). No executable authority is added by
-this document, and the reference does not substitute for the canonical Mojo
-stage.
+**Status:** representation contract and extraction roadmap.
+
+- R1 is implemented in Mojo.
+- C0, C1, C2, Q1 and Q2 are implemented in Mojo in `kernel/finite_polynomial`
+  (section 4).
+- They also have an independent Python reference
+  (`reference/cyclotomic_reference.py`) and pinned vectors
+  (`conformance/cyclotomic_germ_v1.json`).
+
+No executable authority is added by this document, and the reference does not
+substitute for the canonical Mojo stage.
 
 Several consumers currently carry neighboring pieces of the same finite
 arithmetic:
@@ -136,8 +141,20 @@ Each stage receives independent differential replay before a later stage may
 depend on it. The first consumer replay is
 `larsbx/mandelbrot-bulbs-and-ford-circles-research`, which checks the pinned
 vectors against its own separately written `Q(zeta_q)` series code and its
-ball-arithmetic oracle. A Mojo implementation of C1-Q2 is the remaining step;
-until it lands, the stages are reference-only.
+ball-arithmetic oracle.
+
+The Mojo stages are `kernel/finite_polynomial/cyclotomic_q.mojo` and
+`kernel/finite_polynomial/quadratic_germ.mojo`.
+`kernel/finite_polynomial/cyclotomic_field.mojo` types them for the
+field-generic kernels:
+
+- `Cyc[q]` fixes the conductor at compile time and has operators.
+- `CyclotomicField[q]` is a `finite_exact.field.ExactField`, so
+  `projective_limits` and its rotor module run over Q(zeta_q) unchanged.
+- `conformance/cyclotomic_field_v1.txt`, written by the reference, is
+  replayed against these stages through that view. It checks Phi_q,
+  products, inverses, the Galois action, canonical bytes, and the germ
+  coefficients for q <= 12.
 
 ## 5. Authority boundary
 
