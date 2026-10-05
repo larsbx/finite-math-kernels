@@ -14,6 +14,7 @@
 # meaning under their own definitions/theorems; this kernel does not infer
 # bulb geometry, landing, connectivity, or any analytic statement.
 
+from finite_exact.integer_gcd import gcd_int
 from finite_polynomial.cyclotomic_q import (
     CyclotomicQ,
     cyclotomic_add,
@@ -156,26 +157,12 @@ def quadratic_germ_iterate(
     return state^
 
 
-def _int_gcd(left: Int, right: Int) -> Int:
-    var a = left
-    var b = right
-    if a < 0:
-        a = -a
-    if b < 0:
-        b = -b
-    while b != 0:
-        var r = a % b
-        a = b
-        b = r
-    return a
-
-
 def quadratic_germ_index_coefficient(p: Int, q: Int) -> CyclotomicQ:
     """Exact [w^q] 1/P for lambda=zeta_q^p.
 
     Requires q >= 1, p >= 1, gcd(p,q)=1.  The q=1 case uses zeta_1=1.
     """
-    if q < 1 or p < 1 or _int_gcd(p, q) != 1:
+    if q < 1 or p < 1 or gcd_int(p, q) != 1:
         return rejected_cyclotomic()
 
     var generator = zeta(q)

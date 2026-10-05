@@ -9,6 +9,9 @@
 #             Cauchy root bound, the Sturm chain, an isolating bracket for the
 #             largest real root, and the characteristic polynomial in any
 #             dimension (docs/exact-polynomial-root-isolation-spec.md).
+#   integer_matrix  square non-negative Int matrices of any size: product,
+#             positivity, primitivity by Wielandt's bound.
+#   integer_vector  checked Int vector add, sub and matvec.
 #   tensor3   Q^27 with lex coordinates: shuffle functional and matrix, cube
 #             action of a Mat3, Levi-Civita contraction.
 #   w3        the shuffle kernel W_3 = ker(S): derived basis, membership,

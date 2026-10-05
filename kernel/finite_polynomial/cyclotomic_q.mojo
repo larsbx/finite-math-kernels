@@ -12,6 +12,7 @@
 # No numerical embedding, trigonometric function, angle measurement, or
 # approximate complex value appears anywhere in this module.
 
+from finite_exact.integer_gcd import gcd_int
 from finite_exact.bigint_z import (
     bigz_canonical_bytes,
     bigz_from_i64,
@@ -310,23 +311,9 @@ def cyclotomic_pow(value: CyclotomicQ, exponent: Int) -> CyclotomicQ:
     return out^
 
 
-def _int_gcd(left: Int, right: Int) -> Int:
-    var a = left
-    var b = right
-    if a < 0:
-        a = -a
-    if b < 0:
-        b = -b
-    while b != 0:
-        var r = a % b
-        a = b
-        b = r
-    return a
-
-
 def cyclotomic_automorphism(value: CyclotomicQ, exponent: Int) -> CyclotomicQ:
     """Apply zeta -> zeta^exponent when exponent is a unit modulo conductor."""
-    if value.rejected or exponent < 0 or _int_gcd(exponent, value.conductor) != 1:
+    if value.rejected or exponent < 0 or gcd_int(exponent, value.conductor) != 1:
         return rejected_cyclotomic()
 
     var generator = zeta(value.conductor)

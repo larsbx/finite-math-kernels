@@ -10,6 +10,7 @@ evidence. Component routines are iterative and index-based.
 from substitution_dynamics.balanced_pairs import children, normalise, seed_states
 from substitution_dynamics.substitution import Substitution
 from substitution_dynamics.words import Pair
+from finite_graph.scc import has_cycle as graph_has_cycle, sccs as graph_sccs
 
 
 struct Automaton(Copyable, Movable):
@@ -82,77 +83,13 @@ def require_complete(a: Automaton) raises:
 
 
 def sccs(a: Automaton) raises -> List[List[Int]]:
-    """Tarjan's algorithm, iterative (no recursion-depth limit)."""
+    """Strongly connected components of a complete automaton (`finite_graph.scc`)."""
     require_complete(a)
-    var n = a.size()
-    var idx = List[Int]()
-    var low = List[Int]()
-    var on = List[Bool]()
-    for _ in range(n):
-        idx.append(-1)
-        low.append(0)
-        on.append(False)
-    var stack = List[Int]()
-    var out = List[List[Int]]()
-    var counter = 0
-
-    for root in range(n):
-        if idx[root] != -1:
-            continue
-        var call = List[Int]()
-        var pos = List[Int]()
-        call.append(root)
-        pos.append(0)
-        idx[root] = counter
-        low[root] = counter
-        counter += 1
-        stack.append(root)
-        on[root] = True
-
-        while len(call) > 0:
-            var v = call[len(call) - 1]
-            var p = pos[len(pos) - 1]
-            if p < len(a.adj[v]):
-                pos[len(pos) - 1] = p + 1
-                var w = a.adj[v][p]
-                if idx[w] == -1:
-                    idx[w] = counter
-                    low[w] = counter
-                    counter += 1
-                    stack.append(w)
-                    on[w] = True
-                    call.append(w)
-                    pos.append(0)
-                elif on[w]:
-                    if idx[w] < low[v]:
-                        low[v] = idx[w]
-            else:
-                _ = call.pop()
-                _ = pos.pop()
-                if len(call) > 0:
-                    var parent = call[len(call) - 1]
-                    if low[v] < low[parent]:
-                        low[parent] = low[v]
-                if low[v] == idx[v]:
-                    var comp = List[Int]()
-                    while True:
-                        var w = stack.pop()
-                        on[w] = False
-                        comp.append(w)
-                        if w == v:
-                            break
-                    out.append(comp^)
-    return out^
+    return graph_sccs(a.adj)
 
 
 def has_cycle(a: Automaton, comp: List[Int]) -> Bool:
-    if len(comp) > 1:
-        return True
-    var v = comp[0]
-    for i in range(len(a.adj[v])):
-        if a.adj[v][i] == v:
-            return True
-    return False
+    return graph_has_cycle(a.adj, comp)
 
 
 def is_noncoincident(a: Automaton, comp: List[Int]) -> Bool:

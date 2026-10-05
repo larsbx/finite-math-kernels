@@ -109,3 +109,38 @@ def test_pin_refuses_a_short_commit(tmp_path):
     build_consumer(tmp_path)
     manifest = tmp_path / "vendored.toml"
     assert checker.pin("widget", "abc1234", tmp_path, manifest) == ["commit must be a full 40-hex SHA"]
+
+
+ESTATE_TEMPLATE = '[repo]\nid = "consumer"\n\n[[dep]]\nid = "finite-math-kernels"\nrev = "{commit}"\npin = "{pin}"\n'
+
+
+def test_a_consumer_without_estate_has_no_estate_pins_to_keep(tmp_path):
+    build_consumer(tmp_path)
+    assert checker.estate_drift(tmp_path) == []
+    assert checker.write_estate_pins(tmp_path) == []
+
+
+def test_the_estate_pin_is_derived_and_drift_is_rederived(tmp_path):
+    build_consumer(tmp_path)
+    want = checker.estate_pins(tmp_path)["finite-math-kernels"]
+    assert want.startswith("sha256:") and len(want) == 7 + 64
+    estate = tmp_path / "ESTATE.toml"
+    estate.write_text(ESTATE_TEMPLATE.format(commit=COMMIT, pin="sha256:" + "0" * 64), encoding="utf-8")
+    assert any("pin" in e for e in checker.check(tmp_path))
+    assert checker.write_estate_pins(tmp_path) == []
+    assert estate.read_text(encoding="utf-8") == ESTATE_TEMPLATE.format(commit=COMMIT, pin=want)
+    assert checker.check(tmp_path) == []
+
+
+def test_the_estate_pin_covers_file_contents(tmp_path):
+    build_consumer(tmp_path)
+    before = checker.estate_pins(tmp_path)
+    (tmp_path / "src" / "widget" / "core.mojo").write_text("def core() -> Bool:\n    return False\n", encoding="utf-8")
+    assert checker.estate_pins(tmp_path) != before
+
+
+def test_a_missing_estate_dep_fails_closed(tmp_path):
+    build_consumer(tmp_path)
+    (tmp_path / "ESTATE.toml").write_text(ESTATE_TEMPLATE.format(commit=COMMIT, pin="x").replace('id = "finite-math-kernels"', 'id = "renamed"'), encoding="utf-8")
+    assert any("no [[dep]]" in e for e in checker.check(tmp_path))
+    assert any("no [[dep]]" in e for e in checker.write_estate_pins(tmp_path))

@@ -63,6 +63,7 @@ EXTERNAL: dict[str, str] = {
     "docs/taylor-models.md": "larsbx/finite-julia-set-research, which built and measured the models of section 2.5",
     "docs/scaled-boxes.md": "larsbx/finite-julia-set-research, which implemented the E = F endpoints of section 2.1",
     "docs/tiling-connections-2026-09-20.md": "larsbx/finite-julia-set-research, whose item 2 asked for the general-size characteristic polynomial and the root isolation of docs/exact-polynomial-root-isolation-spec.md",
+    "kernel/integer_vector_bench.mojo": PSC,
     "interval_q/closed_q.mojo": "larsbx/interval_q at the commit pinned in policy/provenance.json",
 }
 
