@@ -277,6 +277,10 @@
       "blob": "5bb74e7173a5c88d3ee346ff62f0110324667077",
       "relation": "authored"
     },
+    "docs/vendoring-candidates-2026-10-05.md": {
+      "blob": "ab3602714fb9f1708f092928d4d6c652debfd01f",
+      "relation": "authored"
+    },
     "docs/weighted-cycle-gain-research-scaffold.md": {
       "blob": "4dae1c37a8b4bf4225fd48c9a2ca5cf5df8b8503",
       "relation": "authored"
@@ -1244,7 +1248,7 @@
       "relation": "authored"
     },
     "tools/check_references.py": {
-      "blob": "84a985a0fc5746bcfe59d81aa1b93683eeac6a7a",
+      "blob": "f2258bf9921030970b68d49c2f50185e0872b0c2",
       "relation": "authored"
     },
     "tools/claim_governance/__init__.py": {

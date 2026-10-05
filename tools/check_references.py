@@ -5,8 +5,9 @@ The engine is the vendorable `references` package (`tools/references/`); this
 file is the policy: which paths this repository skips, which include roots hold
 package-relative paths, and which references live in another repository and
 are attested rather than resolved. Dated audit records quote past states
-verbatim, and the reference tests contain synthetic references by
-construction; both are skipped.
+verbatim, dated vendoring inventories name other repositories' paths
+throughout, and the reference tests contain synthetic references by
+construction; all three are skipped.
 
 Usage: check_references.py            exit 1 on any unresolved reference
 """
@@ -69,7 +70,7 @@ EXTERNAL: dict[str, str] = {
 
 POLICY = Policy(
     external=EXTERNAL,
-    skipped_prefixes=("docs/audit/POST_CONSOLIDATION_AUDIT_", "tests/references/"),
+    skipped_prefixes=("docs/audit/POST_CONSOLIDATION_AUDIT_", "docs/vendoring-candidates-", "tests/references/"),
     package_roots=("kernel", "oracles", "tools"),
 )
 
