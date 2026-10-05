@@ -24,7 +24,7 @@ All canonical kernels live under `kernel/` (the include root, `-I kernel`).
 | `projective` | The quadratic map on `P^1(C)` in homogeneous coordinates, and its charts. |
 | `rational_dynamics` | Reduced fractions, doubling mod 1, continued fractions, Farey determinants. |
 | `projective_limits` | Limits of rational functions over any `ExactField` K (Q, F_p, Q(zeta_q)) as points of `P^1(K)`; `rotor`: rotations of `x^2 + y^2 = 1` as non-isotropic points of `P^1(K)`, turns, orders and spreads, with no angle (`docs/projective-limits-over-exact-fields.md`). |
-| `certified_records` | Canonical one-line records: a schema of 32/64-bit fields, a total decoder, `malformed:`/`mismatch:` refusals (Mojo and Python). |
+| `certified_records` | Canonical one-line records: a schema of 32/64-bit fields, a total decoder, `malformed:`/`mismatch:` refusals (Mojo; a Python binding to the same codec). |
 | `finite_field_orbit` | Exact tails and periods of `x -> x^2 + c` over `F_p`. |
 | `parallel_fold` | Order-preserving parallel map-fold (the only package needing MAX). |
 | `proof_records` | Proof-record model (`ProofArchitecture.tla`) and its graph. |

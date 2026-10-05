@@ -1,4 +1,4 @@
-"""Laws of the certified_records codec, on the vectors the Python half reads too.
+"""Laws of the certified_records codec, on the vectors its Python binding test reads too.
 
 Run with `pixi run test-certified-records`
 (`mojo run -I kernel tests/certified_records/test_certified_records.mojo`).

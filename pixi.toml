@@ -42,9 +42,10 @@ test-rational-dynamics = "mojo run -I kernel tests/rational_dynamics/test_ration
 test-projective-limits = "mojo run -I kernel tests/projective_limits/test_projective_limits.mojo && mojo run -I kernel tests/projective_limits/test_reference_vectors.mojo && mojo run -I kernel tests/projective_limits/test_field_generic.mojo && mojo run -I kernel tests/projective_limits/test_rotor.mojo"
 projective-limits-vectors = "python tools/make_projective_limits_vectors.py"
 test-certified-records = "mojo run -I kernel tests/certified_records/test_certified_records.mojo"
+build-certified-records-py = "mkdir -p .build && mojo build -I kernel kernel/certified_records/python_binding.mojo --emit shared-lib -o .build/certified_records_ext.so"
 test-orbit-census = "mojo run -I kernel tests/finite_field_orbit/test_orbit_census.mojo"
-test-orbit-reference = "python -m pytest -q tests/finite_field_orbit/test_orbit_reference.py"
-orbit-vectors = "python tools/make_orbit_vectors.py"
+test-orbit-reference = { cmd = "python -m pytest -q tests/finite_field_orbit/test_orbit_reference.py", depends-on = ["build-certified-records-py"] }
+orbit-vectors = { cmd = "python tools/make_orbit_vectors.py", depends-on = ["build-certified-records-py"] }
 test-angle-doubling = "mojo run -I kernel tests/angle_doubling/test_angle_doubling.mojo"
 test-projective = "mojo run -I kernel tests/projective/test_projective.mojo"
 test-machine-int = "mojo run -I kernel tests/finite_exact/test_machine_int.mojo"
@@ -59,7 +60,7 @@ test-weighted-cycle = "mojo run -I kernel tests/weighted_graph/test_cycle_gain.m
 test-vendoring = "python -m pytest -q tests/vendoring"
 test-proof-records = "python -m pytest -q tests/proof_records"
 vocabularies = "python -m pytest -q tests/proof_records/test_vocabularies.py"
-test-python = "python -m pytest -q tests/toolchain tests/finite_exact tests/certified_records tests/proof_records tests/substitution_dynamics tests/rational_dynamics tests/projective_limits tests/cyclotomic tests/finite_polynomial tests/polyglot"
+test-python = { cmd = "python -m pytest -q tests/toolchain tests/finite_exact tests/certified_records tests/proof_records tests/substitution_dynamics tests/rational_dynamics tests/projective_limits tests/cyclotomic tests/finite_polynomial tests/polyglot", depends-on = ["build-certified-records-py"] }
 cyclotomic-vectors = "python tools/make_cyclotomic_vectors.py --check"
 cyclotomic-field-vectors = "python tools/make_cyclotomic_field_vectors.py --check"
 test-cyclotomic-field = "mojo run -I kernel tests/finite_polynomial/test_cyclotomic_field.mojo && mojo run -I kernel tests/finite_polynomial/test_cyclotomic_field_vectors.mojo"
@@ -89,7 +90,7 @@ ELIXIR_ERL_OPTIONS = "+fnu"
 [feature.polyglot.tasks]
 build-census = "mkdir -p .build && mojo build -I kernel experiments/frontier/census_cli.mojo -o .build/census_cli"
 build-census-bend = "mkdir -p .build && bend experiments/frontier/census.bend -o .build/census-bend2"
-test-orbit-bend = { cmd = "FRONTIER_BEND_BIN=$PIXI_PROJECT_ROOT/.build/census-bend2 python -m pytest -q tests/finite_field_orbit/test_bend_census.py", depends-on = ["build-census-bend"] }
+test-orbit-bend = { cmd = "FRONTIER_BEND_BIN=$PIXI_PROJECT_ROOT/.build/census-bend2 python -m pytest -q tests/finite_field_orbit/test_bend_census.py", depends-on = ["build-census-bend", "build-certified-records-py"] }
 test-orchestrator = { cmd = "FRONTIER_MOJO_BIN=$PIXI_PROJECT_ROOT/.build/census_cli FRONTIER_BEND_BIN=$PIXI_PROJECT_ROOT/.build/census-bend2 mix test --warnings-as-errors", cwd = "experiments/frontier/orchestrator", depends-on = ["build-census", "build-census-bend"] }
 test-choreography = "python -m pytest -q tests/finite_field_orbit/test_choreography.py"
 test-polyglot = { depends-on = ["test-orbit-bend", "test-orchestrator", "test-choreography"] }
