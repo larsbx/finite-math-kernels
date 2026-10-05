@@ -211,10 +211,19 @@ def main():
     print(s.x == v)
 ```
 
+Evidence: `experiments/mojo_issues/uninit_associated_type/`.
+
+- `repro.mojo` is the program above.
+- `evidence.py` (`pixi run mojo-issue-evidence`) compiles and runs 24 cases
+  with the pinned toolchain.
+- `evidence.log` and `evidence.json` record the toolchain, platform, commit,
+  exit codes and full diagnostics. All 24 cases agree with their declared
+  outcome.
+- `--check` exits 1 on any change, including the day the compiler is fixed.
+
 | Variant | Result |
 |---|---|
 | as above | `error: use of uninitialized value 's.x'` |
-| `var b` removed from `V` (one field) | compiles, `True` |
 | `S[T: Copyable & Deinitable]` with `x: Self.T` (no associated type) | compiles, `True` |
 | `s.x == V(0)` (temporary, not a named local) | compiles, `True` |
 | `v == s.x` (operands swapped) | same error |
@@ -224,14 +233,38 @@ def main():
 | `S` conforming to `Movable` too, or `Element: Copyable & Movable & Deinitable` | same error |
 | `ImplicitlyCopyable` element | same error |
 
-So all three conditions are necessary:
+**The field counts interact.** An earlier version of this report said a
+two-field element was necessary. That held only for an `S` with two fields.
+The harness shows the dependence on both counts:
+
+| element ↓ / fields of `S` → | 1 | 2 | 3 |
+|---|---|---|---|
+| `Int` | ✓ | ✓ | ✓ |
+| `V`, 1 field | ✗ `s.x` | ✓ | ✓ |
+| `V`, 2 fields | ✗ `s.x` | ✗ `s.f0` | ✓ |
+| `V`, 3 fields | ✗ `s.x` | ✗ `s.f0` | ✗ `s.f1` |
+
+In these minimal programs the error appears exactly when the element is a
+struct with at least as many fields as `S`, and it always names the **last**
+field of `S`. This is *consistent with* the definite-initialisation analysis
+indexing the outer struct's fields by the element type's field indices. That
+is a hypothesis, not a finding.
+
+The two kernel witnesses in the harness show that a pure count rule is not
+the whole story:
+
+- `CirclePoint[FpField[13]]` has 3 fields, `Fp` has 2, and it still fails.
+- The same comparison written with temporaries compiles.
+
+Necessary in every case observed:
 
 1. the field's type is a trait's associated type;
-2. the bound type has at least two fields;
-3. the field meets a named local in a call.
+2. the field meets a named local in the call;
+3. the element is a struct (never `Int`), with the field counts above.
 
-**Workaround in the kernel.** Restructure the call site, or return the whole
-struct (`turn_rotor` returns its `P1Over` rather than one of its fields).
+**Workaround in the kernel.** Restructure the call site: compare against
+temporaries, or split the conjunction into separate assertions. Or return the
+whole struct: `turn_rotor` returns its `P1Over` rather than one of its fields.
 
 ### 5.2 `comptime` values of non-trivially-copyable type
 

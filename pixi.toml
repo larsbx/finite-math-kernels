@@ -58,6 +58,7 @@ bench-frontier = "python experiments/frontier/harness.py run ff_orbit_census --c
 distribution = "python oracles/property_oracle.py --layers zq --distribution"
 references = "python tools/check_references.py"
 estate-audit = "python tools/audit_estate_layout.py"
+mojo-issue-evidence = "python experiments/mojo_issues/uninit_associated_type/evidence.py"
 test = { depends-on = ["test-finite-exact", "test-interval", "test-linear-algebra", "test-integer-module", "test-madic", "test-madic-oracle", "test-substitution", "test-tuning", "test-facades", "test-quadratic-orbit", "test-rational-dynamics", "test-projective-limits", "test-cyclotomic", "test-orbit-census", "test-orbit-reference", "test-mojo-smoke", "test-parallel-fold", "test-weighted-cycle", "test-vendoring", "test-proof-records", "test-python", "test-audit", "test-provenance", "test-references", "test-refinement", "test-frontier", "cyclotomic-vectors", "cyclotomic-field-vectors", "property"] }
 
 # The polyglot lane of docs/polyglot-orbit-census-design.md. Separate from the

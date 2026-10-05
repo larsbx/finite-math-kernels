@@ -1,0 +1,233 @@
+Mojo issue evidence: use of uninitialized value on associated-type fields
+
+date_utc             2026-10-05T15:30:51Z
+mojo                 Mojo 1.1.0.dev2026090805 (34562fa1)
+platform             Linux-6.18.44-fc-v70-x86_64-with-glibc2.39
+python               3.12.14
+repository_commit    15fb287ad27fdc5b1ac7d667dcef10bdaed9ef0f
+working_tree_clean   False
+
+case                               agrees  exit  seconds  observed
+repro                              yes     1     0.75     error: use of uninitialized value 's.x'
+plain-type-parameter               yes     0     0.63     True
+temporary-operand                  yes     0     0.76     True
+swapped-operands                   yes     1     0.77     error: use of uninitialized value 's.x'
+copy-first                         yes     1     0.79     error: use of uninitialized value 's.x'
+int-subfield                       yes     0     0.64     True
+second-struct-field                yes     1     0.75     error: use of uninitialized value 's.flag'
+movable-bounds                     yes     1     0.73     error: use of uninitialized value 's.x'
+implicitly-copyable                yes     1     0.71     error: use of uninitialized value 's.x'
+kernel-rotor-over-fp               yes     1     0.98     error: use of uninitialized value 'back.rejected'
+kernel-rotor-over-fp-temporaries   yes     0     0.94     True
+kernel-cyclotomic-rotor            yes     1     1.1      error: use of uninitialized value 't.rejected'
+layout-element0-s1                 yes     0     0.71     True
+layout-element0-s2                 yes     0     0.7      True
+layout-element0-s3                 yes     0     0.67     True
+layout-element1-s1                 yes     1     0.74     error: use of uninitialized value 's.x'
+layout-element1-s2                 yes     0     0.7      True
+layout-element1-s3                 yes     0     0.68     True
+layout-element2-s1                 yes     1     0.81     error: use of uninitialized value 's.x'
+layout-element2-s2                 yes     1     0.95     error: use of uninitialized value 's.f0'
+layout-element2-s3                 yes     0     0.64     True
+layout-element3-s1                 yes     1     0.75     error: use of uninitialized value 's.x'
+layout-element3-s2                 yes     1     0.75     error: use of uninitialized value 's.f0'
+layout-element3-s3                 yes     1     0.77     error: use of uninitialized value 's.f1'
+
+--- repro: the minimal program
+expect:   error: use of uninitialized value 's.x'
+observed: error: use of uninitialized value 's.x'
+  | repro.mojo:43:15: error: use of uninitialized value 's.x'
+  |     print(s.x == v)
+  |               ^
+  | repro.mojo:42:9: note: 's' declared here
+  |     var s = S[VField](V(0))
+  |         ^
+  | .pixi/envs/default/bin/mojo: error: failed to run the pass manager
+
+--- plain-type-parameter: S[T: Copyable & Deinitable] with x: Self.T instead of the associated type K.Element
+expect:   True
+observed: True
+
+--- temporary-operand: s.x == V(0): a temporary instead of the named local v
+expect:   True
+observed: True
+
+--- swapped-operands: v == s.x
+expect:   error: use of uninitialized value 's.x'
+observed: error: use of uninitialized value 's.x'
+  | swapped-operands.mojo:43:13: error: use of uninitialized value 's.x'
+  |     print(v == s.x)
+  |             ^
+  | swapped-operands.mojo:42:9: note: 's' declared here
+  |     var s = S[VField](V(0))
+  |         ^
+  | .pixi/envs/default/bin/mojo: error: failed to run the pass manager
+
+--- copy-first: var w = s.x.copy(); print(w == v): copying the field first is no workaround
+expect:   error: use of uninitialized value 's.x'
+observed: error: use of uninitialized value 's.x'
+  | copy-first.mojo:43:21: error: use of uninitialized value 's.x'
+  |     var w = s.x.copy()
+  |                     ^
+  | copy-first.mojo:42:9: note: 's' declared here
+  |     var s = S[VField](V(0))
+  |         ^
+  | .pixi/envs/default/bin/mojo: error: failed to run the pass manager
+
+--- int-subfield: s.x.a == v.a: comparing Int subfields compiles
+expect:   True
+observed: True
+
+--- second-struct-field: S with a second field: the diagnostic names that field instead
+expect:   error: use of uninitialized value 's.flag'
+observed: error: use of uninitialized value 's.flag'
+  | second-struct-field.mojo:45:15: error: use of uninitialized value 's.flag'
+  |     print(s.x == v)
+  |               ^
+  | second-struct-field.mojo:44:9: note: 's' declared here
+  |     var s = S[VField](V(0))
+  |         ^
+  | .pixi/envs/default/bin/mojo: error: failed to run the pass manager
+
+--- movable-bounds: Element: Copyable & Movable & Deinitable, and S also Movable
+expect:   error: use of uninitialized value 's.x'
+observed: error: use of uninitialized value 's.x'
+  | movable-bounds.mojo:14:32: warning: redundant trait composition: 'Copyable' already implies 'Movable'
+  |     comptime Element: Copyable & Movable & Deinitable
+  |                                ^
+  | movable-bounds.mojo:43:15: error: use of uninitialized value 's.x'
+  |     print(s.x == v)
+  |               ^
+  | movable-bounds.mojo:42:9: note: 's' declared here
+  |     var s = S[VField](V(0))
+  |         ^
+  | .pixi/envs/default/bin/mojo: error: failed to run the pass manager
+
+--- implicitly-copyable: an ImplicitlyCopyable element
+expect:   error: use of uninitialized value 's.x'
+observed: error: use of uninitialized value 's.x'
+  | implicitly-copyable.mojo:43:15: error: use of uninitialized value 's.x'
+  |     print(s.x == v)
+  |               ^
+  | implicitly-copyable.mojo:42:9: note: 's' declared here
+  |     var s = S[VField](V(0))
+  |         ^
+  | .pixi/envs/default/bin/mojo: error: failed to run the pass manager
+
+--- kernel-rotor-over-fp: projective_limits.rotor over F_13: the original occurrence in tests/projective_limits/test_rotor.mojo
+expect:   error: use of uninitialized value 'back.rejected'
+observed: error: use of uninitialized value 'back.rejected'
+  | kernel-rotor-over-fp.mojo:10:35: error: use of uninitialized value 'back.rejected'
+  |     print(back.x == fx and back.y == fy)
+  |                                   ^
+  | kernel-rotor-over-fp.mojo:9:9: note: 'back' declared here
+  |     var back = circle_point(t)
+  |         ^
+  | .pixi/envs/default/bin/mojo: error: failed to run the pass manager
+
+--- kernel-rotor-over-fp-temporaries: the same comparison with temporaries in place of the named locals compiles
+expect:   True
+observed: True
+
+--- kernel-cyclotomic-rotor: a rotor over Q(zeta_8): the original occurrence in tests/cyclotomic/test_cyclotomic_field.mojo
+expect:   error: use of uninitialized value 't.rejected'
+observed: error: use of uninitialized value 't.rejected'
+  | kernel-cyclotomic-rotor.mojo:8:20: error: use of uninitialized value 't.rejected'
+  |     return t.x.copy()
+  |                    ^
+  | kernel-cyclotomic-rotor.mojo:7:9: note: 't' declared here
+  |     var t = circle_rotor[CyclotomicField[8]](z, z)
+  |         ^
+  | .pixi/envs/default/bin/mojo: error: failed to run the pass manager
+
+--- layout-element0-s1: element Int, S with 1 field(s)
+expect:   True
+observed: True
+
+--- layout-element0-s2: element Int, S with 2 field(s)
+expect:   True
+observed: True
+
+--- layout-element0-s3: element Int, S with 3 field(s)
+expect:   True
+observed: True
+
+--- layout-element1-s1: element V with 1 field(s), S with 1 field(s)
+expect:   error: use of uninitialized value 's.x'
+observed: error: use of uninitialized value 's.x'
+  | layout-element1-s1.mojo:29:15: error: use of uninitialized value 's.x'
+  |     print(s.x == v)
+  |               ^
+  | layout-element1-s1.mojo:28:9: note: 's' declared here
+  |     var s = S[EField](V(0))
+  |         ^
+  | .pixi/envs/default/bin/mojo: error: failed to run the pass manager
+
+--- layout-element1-s2: element V with 1 field(s), S with 2 field(s)
+expect:   True
+observed: True
+
+--- layout-element1-s3: element V with 1 field(s), S with 3 field(s)
+expect:   True
+observed: True
+
+--- layout-element2-s1: element V with 2 field(s), S with 1 field(s)
+expect:   error: use of uninitialized value 's.x'
+observed: error: use of uninitialized value 's.x'
+  | layout-element2-s1.mojo:31:15: error: use of uninitialized value 's.x'
+  |     print(s.x == v)
+  |               ^
+  | layout-element2-s1.mojo:30:9: note: 's' declared here
+  |     var s = S[EField](V(0))
+  |         ^
+  | .pixi/envs/default/bin/mojo: error: failed to run the pass manager
+
+--- layout-element2-s2: element V with 2 field(s), S with 2 field(s)
+expect:   error: use of uninitialized value 's.f0'
+observed: error: use of uninitialized value 's.f0'
+  | layout-element2-s2.mojo:33:15: error: use of uninitialized value 's.f0'
+  |     print(s.x == v)
+  |               ^
+  | layout-element2-s2.mojo:32:9: note: 's' declared here
+  |     var s = S[EField](V(0))
+  |         ^
+  | .pixi/envs/default/bin/mojo: error: failed to run the pass manager
+
+--- layout-element2-s3: element V with 2 field(s), S with 3 field(s)
+expect:   True
+observed: True
+
+--- layout-element3-s1: element V with 3 field(s), S with 1 field(s)
+expect:   error: use of uninitialized value 's.x'
+observed: error: use of uninitialized value 's.x'
+  | layout-element3-s1.mojo:33:15: error: use of uninitialized value 's.x'
+  |     print(s.x == v)
+  |               ^
+  | layout-element3-s1.mojo:32:9: note: 's' declared here
+  |     var s = S[EField](V(0))
+  |         ^
+  | .pixi/envs/default/bin/mojo: error: failed to run the pass manager
+
+--- layout-element3-s2: element V with 3 field(s), S with 2 field(s)
+expect:   error: use of uninitialized value 's.f0'
+observed: error: use of uninitialized value 's.f0'
+  | layout-element3-s2.mojo:35:15: error: use of uninitialized value 's.f0'
+  |     print(s.x == v)
+  |               ^
+  | layout-element3-s2.mojo:34:9: note: 's' declared here
+  |     var s = S[EField](V(0))
+  |         ^
+  | .pixi/envs/default/bin/mojo: error: failed to run the pass manager
+
+--- layout-element3-s3: element V with 3 field(s), S with 3 field(s)
+expect:   error: use of uninitialized value 's.f1'
+observed: error: use of uninitialized value 's.f1'
+  | layout-element3-s3.mojo:37:15: error: use of uninitialized value 's.f1'
+  |     print(s.x == v)
+  |               ^
+  | layout-element3-s3.mojo:36:9: note: 's' declared here
+  |     var s = S[EField](V(0))
+  |         ^
+  | .pixi/envs/default/bin/mojo: error: failed to run the pass manager
+
+24 of 24 cases agree with their declared expectation.

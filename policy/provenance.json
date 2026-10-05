@@ -191,7 +191,7 @@
       "relation": "authored"
     },
     "docs/mojo-exact-fields-report.md": {
-      "blob": "58797fe83477e57f62c34d32f4ae4dabc4368638",
+      "blob": "cef188b90dbd29d15ee626e12e7b2faba2c3ccc2",
       "relation": "authored"
     },
     "docs/polyglot-orbit-census-design.md": {
@@ -358,6 +358,22 @@
     },
     "experiments/frontier/orchestrator/test/test_helper.exs": {
       "blob": "16ffcbe10a72031a08eac9d2c2dc965b8bc2d739",
+      "relation": "authored"
+    },
+    "experiments/mojo_issues/uninit_associated_type/evidence.json": {
+      "blob": "12719bab42220eb17fadd2699ffffa5c8dd6e7e3",
+      "relation": "authored"
+    },
+    "experiments/mojo_issues/uninit_associated_type/evidence.log": {
+      "blob": "630e28f98d0ce4749e014749c10440a2309c95ae",
+      "relation": "authored"
+    },
+    "experiments/mojo_issues/uninit_associated_type/evidence.py": {
+      "blob": "1d732cce62f4d22edf86180d43f361c551556fd5",
+      "relation": "authored"
+    },
+    "experiments/mojo_issues/uninit_associated_type/repro.mojo": {
+      "blob": "365adebfdf041e4e43b4302cb72d8b00a369ccc3",
       "relation": "authored"
     },
     "kernel/cyclotomic/__init__.mojo": {
@@ -681,7 +697,7 @@
       "source_path": "tools/property_oracle.py"
     },
     "pixi.toml": {
-      "blob": "99b541a745c01d817fdf3573641cd7f3481e34a7",
+      "blob": "44aae7b9c55e59b4fcab975cca3e3956e6ce43f6",
       "relation": "authored"
     },
     "reference/cyclotomic_reference.py": {
