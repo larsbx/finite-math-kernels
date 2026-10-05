@@ -12,7 +12,7 @@ sys.path.insert(0, str(ROOT / "tools"))
 import check_references as refs  # noqa: E402
 import provenance  # noqa: E402
 
-TRACKED = ["README.md", "pixi.toml", "docs/spec.md", "pkg/a.mojo", "tests/pkg/test_a.mojo", "tools/x.py", "audit/POST_CONSOLIDATION_AUDIT_2026-09-15.md"]
+TRACKED = ["README.md", "pixi.toml", "docs/spec.md", "pkg/a.mojo", "tests/pkg/test_a.mojo", "tools/x.py", "docs/audit/POST_CONSOLIDATION_AUDIT_2026-09-15.md"]
 TASKS = {"test", "test-pkg"}
 
 
@@ -46,10 +46,17 @@ def test_check_resolves_tracked_unique_basename_and_external_only():
 
 
 def test_audit_records_and_unchecked_suffixes_are_skipped():
-    files = {"audit/POST_CONSOLIDATION_AUDIT_2026-09-15.md": "`gone.md` `pixi run smoke`", "fixtures/v.json": "`gone.md`",
+    files = {"docs/audit/POST_CONSOLIDATION_AUDIT_2026-09-15.md": "`gone.md` `pixi run smoke`", "conformance/v.json": "`gone.md`",
              "tests/references/test_references.py": "`gone.md`"}
     assert refs.check(files, TRACKED, TASKS, external={}) == []
 
 
 def test_executables_are_not_tasks():
     assert refs.check({"README.md": "`pixi run mojo run -I . x.mojo` and `pixi run python tools/x.py`"}, TRACKED, TASKS, external={}) == []
+
+
+def test_package_relative_paths_resolve_under_a_package_root():
+    tracked = ["kernel/pkg/a.mojo", "kernel/pkg/b.py", "docs/spec.md"]
+    assert refs.check({"kernel/pkg/a.mojo": "see `pkg/b.py`"}, tracked, TASKS) == []
+    assert refs.check({"docs/spec.md": "see `pkg/c.py`"}, tracked, TASKS) == [
+        "docs/spec.md: path `pkg/c.py` is not a tracked file, a unique basename, or a listed external reference"]

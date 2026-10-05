@@ -9,7 +9,7 @@ from pathlib import Path
 import pytest
 
 ROOT = Path(__file__).resolve().parents[2]
-sys.path.insert(0, str(ROOT / "benchmarks" / "frontier" / "ff_orbit_census"))
+sys.path.insert(0, str(ROOT / "experiments" / "frontier" / "ff_orbit_census"))
 
 import reference as ref  # noqa: E402
 

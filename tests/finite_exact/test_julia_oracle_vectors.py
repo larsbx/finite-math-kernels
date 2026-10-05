@@ -27,7 +27,7 @@ def test_julia_oracle_bigint_known_answers_match_authoritative_mojo() -> None:
     mojo = shutil.which("mojo")
     assert mojo is not None, "mojo must be available in the canonical pixi/Woodpecker test environment"
     result = subprocess.run(
-        [mojo, "run", "-I", str(ROOT), str(PROBE)],
+        [mojo, "run", "-I", str(ROOT / "kernel"), str(PROBE)],
         cwd=ROOT,
         capture_output=True,
         text=True,

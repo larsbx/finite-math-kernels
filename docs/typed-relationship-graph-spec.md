@@ -1,6 +1,6 @@
 # The claim ledger as a typed relationship graph: specification
 
-**Status:** specification of `proof_records/graph.py`, the second half of round-two item R8 of `docs/cross-pollination-round-two-2026-09-16.md` (transfer A3.1, "export the registries as a typed graph", with A3.2, "import provenance into the graph"). It states no mathematics. It re-presents records that `docs/ledger-generation-spec.md` has already validated, in the edge vocabulary of the `larsbx/tui-story` semantic graph, so that a relationship which is not a dependency becomes a queryable edge instead of prose. The committed example is `fixtures/ledger/relationship-graph.json`; `tools/make_ledger_example.py --check` fails when it is stale.
+**Status:** specification of `kernel/proof_records/graph.py`, the second half of round-two item R8 of `docs/cross-pollination-round-two-2026-09-16.md` (transfer A3.1, "export the registries as a typed graph", with A3.2, "import provenance into the graph"). It states no mathematics. It re-presents records that `docs/ledger-generation-spec.md` has already validated, in the edge vocabulary of the `larsbx/tui-story` semantic graph, so that a relationship which is not a dependency becomes a queryable edge instead of prose. The committed example is `conformance/ledger/relationship-graph.json`; `tools/make_ledger_example.py --check` fails when it is stale.
 
 ## 0. Why a second reading of the same ledger
 

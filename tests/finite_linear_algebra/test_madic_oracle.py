@@ -1,6 +1,6 @@
 """The Python oracle of the M-adic ball carrier, and the values it shares with Mojo.
 
-`tools/madic_oracle.py` is written from the definitions; `finite_linear_algebra/madic_ball.mojo`
+`oracles/madic_oracle.py` is written from the definitions; `kernel/finite_linear_algebra/madic_ball.mojo`
 is written over `Q` and `BigZ`. Every pinned number below is asserted by both, so
 agreement is evidence rather than an echo. The structural properties in the second
 half are checked only here, because they need enumeration that the Mojo
@@ -19,7 +19,7 @@ from pathlib import Path
 import pytest
 
 ROOT = Path(__file__).resolve().parents[2]
-sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(ROOT / "kernel"))
 sys.path.insert(0, str(ROOT / "tools"))
 
 import madic_oracle as oracle  # noqa: E402

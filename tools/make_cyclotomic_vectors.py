@@ -2,7 +2,7 @@
 """Write the ``cyclotomic-germ-v1`` golden vectors from the C1-Q2 reference.
 
 Usage:
-    make_cyclotomic_vectors.py            rewrite fixtures/cyclotomic_germ_v1.json
+    make_cyclotomic_vectors.py            rewrite conformance/cyclotomic_germ_v1.json
     make_cyclotomic_vectors.py --check    exit 1 if the committed file has drifted
 
 For every conductor q <= Q_MAX and every exponent p coprime to q, the vector
@@ -18,7 +18,7 @@ import sys
 from math import gcd
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "reference"))
 
 from cyclotomic_reference import (  # noqa: E402
     canonical_bytes,
@@ -29,7 +29,7 @@ from cyclotomic_reference import (  # noqa: E402
 )
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "fixtures" / "cyclotomic_germ_v1.json"
+OUT = ROOT / "conformance/cyclotomic_germ_v1.json"
 Q_MAX = 8
 
 

@@ -2,7 +2,7 @@
 
 Status: design and executable protocol lane beside Slice 1 of
 `docs/frontier-math-compute-candidates.md` (whose Lane A contract is
-`benchmarks/frontier/ff_orbit_census/CONTRACT.md`)  
+`experiments/frontier/ff_orbit_census/CONTRACT.md`)  
 Authority: performance and conformance evidence only; the Mojo replay
 predicate is the only acceptance authority, and it accepts finite facts about
 finite fields, never theorems
@@ -24,7 +24,7 @@ Wyzer is not a dependency. It is an experimental research language, and this
 design takes two of its ideas, not its toolchain:
 
 1. **Choreographic programming.** The protocol is written once, as a global
-   exchange between roles (`benchmarks/frontier/FrontierCensus.tla`). Each
+   exchange between roles (`experiments/frontier/FrontierCensus.tla`). Each
    role's local behaviour is its projection. The orchestrator's projection is
    a pure transition function (`Frontier.Protocol.step/2`) whose clauses match
    the specification's actions one to one. The specification is model-checked
@@ -47,10 +47,14 @@ and each side is free to mutate privately.
 
 ## 2. The frontier question and the finite subproblem
 
-Frontier question (owned by `larsbx/giant-fibers-finite-fields-thin-groups`):
-the statistics of tail and cycle lengths of `x -> x^2 + c` on prime fields,
-and the exceptional parameters where they deviate from random-mapping
-predictions.
+Frontier question (candidate 4 of `docs/frontier-math-compute-candidates.md`,
+owned by `larsbx/finite-mandelbrot-research` and
+`larsbx/finite-julia-set-research`): the statistics of tail and cycle lengths
+of `x -> x^2 + c` on prime fields, the exceptional parameters where they
+deviate from random-mapping predictions, and the modular obstructions to a
+critical orbit type over `Q`. (`larsbx/giant-fibers-finite-fields-thin-groups`
+studies the Descartes quadric and thin-group words, candidate 1; it is not a
+consumer of this contract.)
 
 The finite subproblem computed here (and nothing more): for a block of seeds
 in `F_p` at a fixed `c`, the exact tail (`mu`) and period (`lambda`) of each
@@ -138,23 +142,22 @@ A supervisor must never turn a rejection into an acceptance by retrying.
 
 | Implementation | Domain | Measured reason |
 |---|---|---|
-| Mojo kernel | `p < 2^24`; sums below `2^63` | visited table of `p` words per worker; a sum in `[2^63, 2^64)` does not fit an `Int` and decodes as `unsupported:<field>`. No record in the domain is refused, since there `p < 2^24` bounds the sums below `2^48` |
-| Bend 2 challenger | `p < 2^24`, the Mojo kernel's domain | Bend 2 has no integer wider than `U32`. For `x < 2^16`, `x^2 < 2^32` is exact; above that, `x^2 mod p` is double-and-add over 24 bits with conditional subtraction, no division. The sums are `Nat`, whose immediates reach `2^48 - 1`, and each sum is at most `n p <= p^2 <= (2^24 - 3)^2 < 2^48`. Past `2^48 - 1` the runtime aborts rather than wrapping (measured), so an overflow cannot become a wrong record |
-| Python reference | contract domain | unbounded integers |
+| Mojo kernel | the whole contract, `p < 2^32` | `x^2 + c` reaches `2^64 - 12 * 2^32`, past `Int`, so a step is computed in `UInt64`; the sums reach `p^2 < 2^64` and are `UInt64` too. The visited set is a table of `p` words below `2^24` and a hash map above, where a table would take 16 GB |
+| Bend 2 challenger | the whole contract, `p < 2^32` | Bend 2 has no integer wider than `U32`. For `x < 2^16`, `x^2 < 2^32` is exact; above that, `x^2 mod p` is double-and-add over 32 bits. Each `a + b` of residues is reduced by one conditional subtraction, and the wrapped sum overflowed exactly when it is smaller than `a`. A sum reaches `p^2 < 2^64`, past the `2^48 - 1` of an immediate `Nat` (measured), so the sums are two `U32` halves with carry, printed by long division over 16-bit digits |
+| Python reference | the whole contract | unbounded integers |
 
-A request outside a domain is answered `unsupported` *before* dispatch. The
-Bend lane in particular can never be allowed to wrap.
+A request outside a domain is answered `unsupported` *before* dispatch. Both
+kernels now answer every well-formed block, so neither declares a narrower
+domain. The mechanism stays in the orchestrator for any kernel that does, and
+its test uses a deliberately narrow fake domain.
 
-The contract is U32, but both kernels stop at `p < 2^24`, and they record
-the narrower domain as a measured fact rather than relaxing the contract to
-fit it. In Bend the next step is structural, not a larger constant. At
-`p < 2^32` a sum can reach `2^64`, past `Nat`'s immediates, and `x^2 mod p`
-needs a 32-bit double-and-add whose partial sums `a + b < 2^33` overflow
-`U32` (section 10).
+At `p` near `2^32`, Brent's doubling `power` must not wrap. It never needs to
+pass `2^31`: `f` is 2-to-1, so every term after the seed lies in an image of
+`(p + 1) / 2` values, which bounds `mu + lambda <= (p + 3) / 2 < 2^31`.
 
 ## 4. The authority: replay predicate
 
-`replay(record)` in `finite_field_orbit/census.mojo` accepts iff **all** of
+`replay(record)` in `kernel/finite_field_orbit/census.mojo` accepts iff **all** of
 the following hold:
 
 1. the record decodes and its block is well-formed and supported;
@@ -227,7 +230,7 @@ Invariants, checked by TLC on the specification and by property tests on
   ledger entry. In the projection this is "an undecided block always has
   exactly one outstanding effect".
 
-The model (`benchmarks/frontier/FrontierCensus.cfg`, two blocks, `k = 3`)
+The model (`experiments/frontier/FrontierCensus.cfg`, two blocks, `k = 3`)
 has 2,025 distinct states. To show that the invariants can fail, the
 specification carries three mutant orchestrators, and each must trip the
 invariant that names its fault: acceptance without replay, retry after a
@@ -251,16 +254,19 @@ gains checks and loses none. The polyglot gates run in a separate workflow
 (`.github/workflows/frontier-polyglot.yml`). There they **fail** rather than
 skip when a toolchain is missing.
 
-Golden vectors (`fixtures/orbit_census_v1.txt`, generated by
-`tools/make_orbit_vectors.py` from `tools/orbit_census_reference.py`) contain
+Golden vectors (`conformance/orbit_census_v1.txt`, generated by
+`tools/make_orbit_vectors.py` from `reference/orbit_census_reference.py`) contain
 accepted blocks, tampered records paired with the rejection the authority
-must give, malformed and unsupported requests, and boundary blocks: empty
+must give, malformed requests and lines, and boundary blocks: empty
 ranges, `cap = 0`, `cap = p`, `c = 0`, `p = 2`, `p = 65521` (the largest
-prime whose squares Bend 2 computes natively), seeds just past `2^16`, and the
-domain edge `p = 2^24 - 3` with seeds near `p - 1`. Sums of `2^32` or more
-reach the Bend 2 challenger only through
+prime whose squares Bend 2 computes natively), seeds just past `2^16`,
+`p = 2^24 - 3` and `16777259` on either side of the Mojo kernel's switch from a
+table to hashing, `2^31 - 1`, and the contract's edge `p = 2^32 - 5` with seeds
+near `p - 1` and a cap that resolves some seeds and not others. Sums of `2^32`
+or more reach the Bend 2 challenger only through
 `tests/finite_field_orbit/census_sums.bend`, which drives its `merge` and
-`render` up to `p^2` directly, because an honest record with such a sum costs
+`render` directly through a carry into the high half, the bound `p^2` for
+`p = 2^32 - 5`, and `2^64 - 1`, because an honest record with such a sum costs
 at least `2^32` steps.
 
 ## 8. Measured facts from building the slice
@@ -298,7 +304,7 @@ The rest hold for the current lane:
   only structurally decreasing recursion, so each seed runs Brent's cycle
   detection with `Nat` fuel of `3p + 3` steps for the first phase and `p + 3`
   for the second. The bound, `2^k - 1 + lambda < 3 (mu + lambda) + 2`, is
-  proved in the header of `benchmarks/frontier/census.bend`. Exhausting the
+  proved in the header of `experiments/frontier/census.bend`. Exhausting the
   fuel exits with status 3 and prints no record. The method needs no memory,
   and the contract's definition refers only to `j = mu + lambda`, so any
   correct cycle finder agrees with the visited-table kernels.
@@ -313,8 +319,12 @@ The rest hold for the current lane:
   took 0.69 s; the remaining gap is the `Nat` sums. A 512-seed block at
   `p = 2^24 - 3` takes 1.4 s on one thread.
 - **`Nat` immediates stop at `2^48 - 1`.** `Nat.mul` past it aborts with
-  "a Nat past the largest immediate 2^48-1" rather than wrapping. That bound
-  is what makes `p < 2^24` the natural edge of this lane, since `p^2 < 2^48`.
+  "a Nat past the largest immediate 2^48-1" rather than wrapping. `Nat` sums
+  therefore covered `p < 2^24`, where `p^2 < 2^48`; the whole contract needed
+  two-half sums.
+- **The 32-bit multiply is nearly free where it is not needed.** With 32-bit
+  double-and-add and two-half sums, the full `(65521, 1, 65521, 0, 65521)`
+  block takes 0.74 s on one thread, against 0.69 s for the `p < 2^24` build.
 
 ## 9. Removability
 
@@ -325,13 +335,10 @@ still gate the kernel.
 
 ## 10. Deferred
 
-- `p < 2^32` in both kernels: two-limb sums past `2^48` in Bend, a 32-bit
-  multiply-mod whose partial sums fit, and a hashed visited set in Mojo
-  (section 3.6).
-- Running this contract through `benchmarks/frontier/harness.py` for timing.
+- Running this contract through `experiments/frontier/harness.py` for timing.
 - GPU lanes (Bend 2's `!` calls, Mojo GPU): wait for an identified runner.
 - The Julia oracle lane and the Rust baseline for Slice 1's throughput table.
-- Timing capture (`benchmarks/frontier/candidates.toml` result requirements):
+- Timing capture (`experiments/frontier/candidates.toml` result requirements):
   this slice proves agreement first.
 - Distribution across BEAM nodes: the core is already location-transparent,
   but a single node is enough to test the protocol.

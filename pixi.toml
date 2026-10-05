@@ -4,46 +4,61 @@ channels = ["https://conda.modular.com/max-nightly/", "conda-forge"]
 platforms = ["linux-64"]
 
 [dependencies]
-modular = ">=26.6.0.dev2026090805,<27"
+# Modular nightly 2026-09-08: every MAX and Mojo package pinned to one build
+# (tests/toolchain/test_modular_pins.py).
+modular = "==26.6.0.dev2026090805"
+max = "==26.6.0.dev2026090805"
+max-core = "==26.6.0.dev2026090805"
+max-serve = "==26.6.0.dev2026090805"
+max-benchmark = "==26.6.0.dev2026090805"
+mblack = "==26.6.0.dev2026090805"
+mojo = "==1.1.0.dev2026090805"
+mojo-compiler = "==1.1.0.dev2026090805"
+mojo-python = "==1.1.0.dev2026090805"
 python = ">=3.11"
 pytest = "*"
 
 [tasks]
-property = "python tools/property_oracle.py --layers zq"
+property = "python oracles/property_oracle.py --layers zq"
 replay = "python tools/replay_mojo.py"
 provenance = "python tools/provenance.py --update"
 ledgers = "python tools/make_ledger_example.py"
-test-finite-exact = "mojo run -I . tests/finite_exact/test_finite_exact.mojo"
-test-interval = "mojo run -I . tests/interval/test_interval_q.mojo"
-test-linear-algebra = "mojo run -I . tests/finite_linear_algebra/test_finite_linear_algebra.mojo"
-test-madic = "mojo run -I . tests/finite_linear_algebra/test_madic_ball.mojo"
+test-finite-exact = "mojo run -I kernel tests/finite_exact/test_finite_exact.mojo"
+test-interval = "mojo run -I kernel tests/interval/test_interval_q.mojo"
+test-linear-algebra = "mojo run -I kernel tests/finite_linear_algebra/test_finite_linear_algebra.mojo"
+test-finite-polynomial = "mojo run -I kernel tests/finite_polynomial/test_polynomial_z.mojo"
+test-cyclotomic-q = "mojo run -I kernel tests/finite_polynomial/test_cyclotomic_q.mojo"
+test-quadratic-germ = "mojo run -I kernel tests/finite_polynomial/test_quadratic_germ.mojo"
+test-integer-module = "mojo run -I kernel tests/finite_linear_algebra/test_integer_module.mojo"
+test-madic = "mojo run -I kernel tests/finite_linear_algebra/test_madic_ball.mojo"
 test-madic-oracle = "python -m pytest -q tests/finite_linear_algebra/test_madic_oracle.py"
-test-substitution = "mojo run -I . tests/substitution_dynamics/test_substitution_dynamics.mojo"
-test-tuning = "mojo run -I . tests/substitution_dynamics/test_tuning.mojo"
-test-facades = "mojo run -I . tests/facades/test_stable_facades.mojo"
-test-quadratic-orbit = "mojo run -I . tests/quadratic_orbit/test_quadratic_orbit.mojo"
-test-rational-dynamics = "mojo run -I . tests/rational_dynamics/test_rational_dynamics.mojo"
-test-projective-limits = "mojo run -I . tests/projective_limits/test_projective_limits.mojo && mojo run -I . tests/projective_limits/test_reference_vectors.mojo"
+test-substitution = "mojo run -I kernel tests/substitution_dynamics/test_substitution_dynamics.mojo"
+test-tuning = "mojo run -I kernel tests/substitution_dynamics/test_tuning.mojo"
+test-facades = "mojo run -I kernel tests/facades/test_stable_facades.mojo"
+test-quadratic-orbit = "mojo run -I kernel tests/quadratic_orbit/test_quadratic_orbit.mojo"
+test-rational-dynamics = "mojo run -I kernel tests/rational_dynamics/test_rational_dynamics.mojo"
+test-projective-limits = "mojo run -I kernel tests/projective_limits/test_projective_limits.mojo && mojo run -I kernel tests/projective_limits/test_reference_vectors.mojo"
 projective-limits-vectors = "python tools/make_projective_limits_vectors.py"
-test-orbit-census = "mojo run -I . tests/finite_field_orbit/test_orbit_census.mojo"
+test-orbit-census = "mojo run -I kernel tests/finite_field_orbit/test_orbit_census.mojo"
 test-orbit-reference = "python -m pytest -q tests/finite_field_orbit/test_orbit_reference.py"
 orbit-vectors = "python tools/make_orbit_vectors.py"
-test-mojo-smoke = "mojo run -I . tests/mojo_smoke/test_report.mojo"
-test-parallel-fold = "mojo run -I . tests/parallel_fold/test_map_fold.mojo"
+test-mojo-smoke = "mojo run -I kernel tests/mojo_smoke/test_report.mojo"
+test-parallel-fold = "mojo run -I kernel tests/parallel_fold/test_map_fold.mojo"
+test-weighted-cycle = "mojo run -I kernel tests/weighted_graph/test_cycle_gain.mojo"
 test-vendoring = "python -m pytest -q tests/vendoring"
 test-proof-records = "python -m pytest -q tests/proof_records"
 vocabularies = "python -m pytest -q tests/proof_records/test_vocabularies.py"
-test-python = "python -m pytest -q tests/finite_exact tests/proof_records tests/substitution_dynamics tests/rational_dynamics tests/projective_limits tests/cyclotomic"
+test-python = "python -m pytest -q tests/toolchain tests/finite_exact tests/proof_records tests/substitution_dynamics tests/rational_dynamics tests/projective_limits tests/cyclotomic tests/finite_polynomial tests/polyglot"
 cyclotomic-vectors = "python tools/make_cyclotomic_vectors.py --check"
-test-audit = "PYTHONPATH=audit python -m pytest -q tests/audit"
+test-audit = "PYTHONPATH=tools python -m pytest -q tests/audit"
 test-provenance = "python -m pytest -q tests/provenance"
 test-references = "python -m pytest -q tests/references"
 test-refinement = "python -m pytest -q tests/oracle_refinement"
 test-frontier = "python -m pytest -q tests/frontier"
-bench-frontier = "python benchmarks/frontier/harness.py run ff_orbit_census --corpus bench"
-distribution = "python tools/property_oracle.py --layers zq --distribution"
+bench-frontier = "python experiments/frontier/harness.py run ff_orbit_census --corpus bench"
+distribution = "python oracles/property_oracle.py --layers zq --distribution"
 references = "python tools/check_references.py"
-test = { depends-on = ["test-finite-exact", "test-interval", "test-linear-algebra", "test-madic", "test-madic-oracle", "test-substitution", "test-tuning", "test-facades", "test-quadratic-orbit", "test-rational-dynamics", "test-projective-limits", "test-orbit-census", "test-orbit-reference", "test-mojo-smoke", "test-parallel-fold", "test-vendoring", "test-proof-records", "test-python", "test-audit", "test-provenance", "test-references", "test-refinement", "test-frontier", "cyclotomic-vectors", "property"] }
+test = { depends-on = ["test-finite-exact", "test-interval", "test-linear-algebra", "test-finite-polynomial", "test-cyclotomic-q", "test-quadratic-germ", "test-integer-module", "test-madic", "test-madic-oracle", "test-substitution", "test-tuning", "test-facades", "test-quadratic-orbit", "test-rational-dynamics", "test-projective-limits", "test-orbit-census", "test-orbit-reference", "test-mojo-smoke", "test-parallel-fold", "test-weighted-cycle", "test-vendoring", "test-proof-records", "test-python", "test-audit", "test-provenance", "test-references", "test-refinement", "test-frontier", "cyclotomic-vectors", "property"] }
 
 # The polyglot lane of docs/polyglot-orbit-census-design.md. Separate from the
 # default environment so the authoritative gates above neither gain nor lose a
@@ -58,10 +73,10 @@ openjdk = ">=17"
 ELIXIR_ERL_OPTIONS = "+fnu"
 
 [feature.polyglot.tasks]
-build-census = "mkdir -p .build && mojo build -I . benchmarks/frontier/census_cli.mojo -o .build/census_cli"
-build-census-bend = "mkdir -p .build && bend benchmarks/frontier/census.bend -o .build/census-bend2"
+build-census = "mkdir -p .build && mojo build -I kernel experiments/frontier/census_cli.mojo -o .build/census_cli"
+build-census-bend = "mkdir -p .build && bend experiments/frontier/census.bend -o .build/census-bend2"
 test-orbit-bend = { cmd = "FRONTIER_BEND_BIN=$PIXI_PROJECT_ROOT/.build/census-bend2 python -m pytest -q tests/finite_field_orbit/test_bend_census.py", depends-on = ["build-census-bend"] }
-test-orchestrator = { cmd = "FRONTIER_MOJO_BIN=$PIXI_PROJECT_ROOT/.build/census_cli FRONTIER_BEND_BIN=$PIXI_PROJECT_ROOT/.build/census-bend2 mix test --warnings-as-errors", cwd = "benchmarks/frontier/orchestrator", depends-on = ["build-census", "build-census-bend"] }
+test-orchestrator = { cmd = "FRONTIER_MOJO_BIN=$PIXI_PROJECT_ROOT/.build/census_cli FRONTIER_BEND_BIN=$PIXI_PROJECT_ROOT/.build/census-bend2 mix test --warnings-as-errors", cwd = "experiments/frontier/orchestrator", depends-on = ["build-census", "build-census-bend"] }
 test-choreography = "python -m pytest -q tests/finite_field_orbit/test_choreography.py"
 test-polyglot = { depends-on = ["test-orbit-bend", "test-orchestrator", "test-choreography"] }
 

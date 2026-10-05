@@ -39,6 +39,22 @@ def _sum(xs: List[Int]) -> Int:
     return out
 
 
+def _reference_discrepancy(p: Pair, size: Int) -> Int:
+    """Original full-scan definition, retained only as a test oracle."""
+    var diff = List[Int]()
+    for _ in range(size):
+        diff.append(0)
+    var best = 0
+    for i in range(len(p.u)):
+        diff[p.u[i]] += 1
+        diff[p.v[i]] -= 1
+        for j in range(size):
+            var magnitude = diff[j] if diff[j] >= 0 else -diff[j]
+            if magnitude > best:
+                best = magnitude
+    return best
+
+
 def test_boundary_rejects_bad_letters_and_erasing_images() raises:
     var bad_letter: List[List[Int]] = [[0, 2], [0]]
     var caught = False
@@ -122,6 +138,22 @@ def test_pairs_and_invariants_over_two_letters() raises:
     assert_equal(discrepancy(p, 2), 1)
     var unbalanced = Pair([0, 0], [0, 1])
     assert_false(is_balanced(unbalanced, 2))
+
+
+def test_discrepancy_unrolled_sign_branches_match_full_scan() raises:
+    # Together these paths exercise positive and negative values for both
+    # updated coordinates.  Each fixture is checked against the original
+    # max(abs(diff[j])) definition rather than only a hand-written constant.
+    var cases = List[Pair]()
+    # x positive / y negative; each side becomes the strict maximum in turn.
+    cases.append(Pair([0, 0, 2, 2], [1, 2, 1, 0]))
+    cases.append(Pair([1, 2, 1, 0], [0, 0, 2, 2]))
+    # A later update sees x negative and y positive after their coordinates
+    # were driven in the opposite directions by earlier prefixes.
+    cases.append(Pair([1, 1, 0, 2], [0, 0, 2, 1]))
+    cases.append(Pair([0, 0, 2, 1], [1, 1, 0, 2]))
+    for i in range(len(cases)):
+        assert_equal(discrepancy(cases[i], 3), _reference_discrepancy(cases[i], 3))
 
 
 def test_four_letter_boundaries_and_seeds() raises:
@@ -219,6 +251,8 @@ def main() raises:
     print("[PASS] test_generic_streaming_counts")
     test_pairs_and_invariants_over_two_letters()
     print("[PASS] test_pairs_and_invariants_over_two_letters")
+    test_discrepancy_unrolled_sign_branches_match_full_scan()
+    print("[PASS] test_discrepancy_unrolled_sign_branches_match_full_scan")
     test_four_letter_boundaries_and_seeds()
     print("[PASS] test_four_letter_boundaries_and_seeds")
     test_fibonacci_automaton_matches_oracle()
@@ -231,4 +265,4 @@ def main() raises:
     print("[PASS] test_capped_build_is_flagged_not_answered")
     test_keys_are_injective_on_large_alphabets()
     print("[PASS] test_keys_are_injective_on_large_alphabets")
-    print("10 substitution-dynamics Mojo tests passed.")
+    print("11 substitution-dynamics Mojo tests passed.")

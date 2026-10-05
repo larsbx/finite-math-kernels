@@ -163,11 +163,11 @@ A language is promoted for a workload only after:
 ## Implementation sequence
 
 Status (2026-09-22): Slice 0 is in place and Slice 1 has its CPU correctness
-path. `benchmarks/frontier/harness.py` builds, runs, replays and records
+path. `experiments/frontier/harness.py` builds, runs, replays and records
 (`pixi run bench-frontier`; tests in `pixi run test-frontier`). The Lane A
-contract is `benchmarks/frontier/ff_orbit_census/CONTRACT.md`: a census of
+contract is `experiments/frontier/ff_orbit_census/CONTRACT.md`: a census of
 reduced Apollonian words over `F_p`, replayed by the spec oracle
-`benchmarks/frontier/ff_orbit_census/reference.py`. Mojo and Rust
+`experiments/frontier/ff_orbit_census/reference.py`. Mojo and Rust
 (`cpu_single`, `cpu_all`) emit byte-identical records on every shipped
 corpus, and so does Bend 2 (`cpu_single` and `cpu_all`, via its runtime's
 `--threads`). Every kernel reduces residues by conditional subtraction, the
@@ -181,7 +181,7 @@ needs a tuning pass before any speedup against it is claimed.
 
 ### Slice 0 — harness and contracts
 
-Create `benchmarks/frontier/` with a machine-readable manifest, JSON Lines
+Create `experiments/frontier/` with a machine-readable manifest, JSON Lines
 results, corpus digests, environment capture, and a comparator that refuses
 semantic-contract mismatches.
 
@@ -195,8 +195,8 @@ A companion contract, `orbit-census-v1` (`docs/polyglot-orbit-census-design.md`)
 takes the rho census of `x^2 + c` through the same Mojo-decides discipline
 with an Elixir orchestrator and a model-checked choreography. It is a protocol
 lane, not a second Lane A. Its challenger is Bend 2, the same pinned build as
-the harness, with the declared domain `p < 2^24`, the same as the Mojo
-kernel's.
+the harness, and both it and the Mojo kernel answer the contract's whole
+domain, `p < 2^32`.
 
 ### Slice 2 — batched NTT
 
