@@ -175,7 +175,7 @@
       "source_path": "docs/example-policy.toml"
     },
     "docs/audit/policy-format.md": {
-      "blob": "9d8ffc27678ec4ab5903baf478b13a44a7939c59",
+      "blob": "0682b81918d34e2c42b7b47c966355c475816e98",
       "relation": "modified",
       "source": "claim_governance_tools",
       "source_blob": "1aabe8474bbdd10bea1f268e70448265387c1c33",
@@ -960,7 +960,7 @@
       "source_path": "tests/test_consistency.py"
     },
     "tests/audit/test_coverage.py": {
-      "blob": "1181a35af0fbf1de68eaab3784a54295b12b349b",
+      "blob": "1020ac7f13b05e7eda6e0acbf22df3fe19429886",
       "relation": "authored"
     },
     "tests/audit/test_lexing.py": {
@@ -1368,7 +1368,7 @@
       "source_path": "claim_governance/checks/consistency.py"
     },
     "tools/claim_governance/checks/coverage.py": {
-      "blob": "4d64c6fb5314c728aeed9cf84c576f8139ac3f4b",
+      "blob": "029e641497f3519fb074b015712dae327db7ee8f",
       "relation": "authored"
     },
     "tools/claim_governance/checks/numerics.py": {
@@ -1407,7 +1407,7 @@
       "source_path": "claim_governance/findings.py"
     },
     "tools/claim_governance/lexing.py": {
-      "blob": "1819193993b69ac5a7da2e2d64eb267296d8ec40",
+      "blob": "23cf9631b9c369209720c874eab943f7f88d28c2",
       "relation": "modified",
       "source": "claim_governance_tools",
       "source_blob": "cc391e283583993bfd9759f62bad8e1c98fa1059",

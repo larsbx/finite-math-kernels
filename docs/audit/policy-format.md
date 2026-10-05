@@ -119,6 +119,10 @@ absent. Literal arguments of actual calls are preserved. Both patterns are
 regexes and must capture the named group
 (`claim`, `contract`) the check reads, which is what lets a repository whose
 tests are not Mojo keep its own spelling.
+Executable declaration scanning supports Python, Mojo and Zig (including
+Zig line comments and multiline string literals). Other file suffixes
+credit no declarations until a source lexer is provided; a custom regex
+alone cannot establish that matching text is executable code.
 
 `receipts`, when named and present, is the run log of the suite in this
 format, tab-separated, one line per declaration the run actually reached:

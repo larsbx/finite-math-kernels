@@ -177,7 +177,35 @@ def test_a_declaration_pattern_must_compile_and_name_its_group(key, pattern, mes
 
 
 def test_custom_patterns_are_honoured(tree):
-    custom = {"tests": ["tests/*.zig"], "claim_pattern": r'requireProof\("(?P<claim>[^"]*)"\)', "contract_pattern": r'statement\("(?P<contract>[^"]*)"\)'}
+    custom = {"tests": ["tests/*.zig"], "require_classes": ["proved"], "claim_pattern": r'requireProof\("(?P<claim>[^"]*)"\)', "contract_pattern": r'statement\("(?P<contract>[^"]*)"\)'}
     root = tree({"tests/t.zig": 'requireProof("WedgeBound");\n'})
     assert run_check("coverage", policy_from_mapping({"repository": {"name": "x/y"}, "status": {"classes": ["proved"], "synonyms": {}},
                                                      "claim": [{"name": "WedgeBound", "status": "proved"}], "coverage": custom}), root) == ()
+
+
+@pytest.mark.parametrize("body", [
+    '// requireProof("WedgeBound");\n',
+    '/// requireProof("WedgeBound");\n',
+    '//! requireProof("WedgeBound");\n',
+    'const example =\n    \\\\requireProof("WedgeBound");\n;\n',
+    'const example = "requireProof(\\"WedgeBound\\")";\n',
+])
+@pytest.mark.parametrize("receipts", [None, "missing.tsv"])
+def test_custom_zig_patterns_only_credit_code(tree, body, receipts):
+    custom = {"tests": ["tests/*.zig"], "require_classes": ["proved"], "receipts": receipts,
+              "claim_pattern": r'requireProof\("(?P<claim>[^"]*)"\)'}
+    root = tree({"tests/t.zig": body})
+    configured = policy_from_mapping({"repository": {"name": "x/y"},
+                                      "status": {"classes": ["proved"], "synonyms": {}},
+                                      "claim": [{"name": "WedgeBound", "status": "proved"}], "coverage": custom})
+    assert [f.rule for f in run_check("coverage", configured, root)] == ["declaration", "WedgeBound"]
+
+
+def test_coverage_fails_closed_for_sources_without_a_lexer(tree):
+    root = tree({"tests/example.txt": 'require_claim("BoundedExclusion")\n'})
+    assert [f.rule for f in run_check("coverage", policy(tests=["tests/*.txt"]), root)] == ["declaration", "BoundedExclusion"]
+
+
+def test_escaped_newline_stays_inside_a_source_string(tree):
+    root = tree({"tests/test_a.py": "'example \\\nrequire_claim(\"BoundedExclusion\")'\n"})
+    assert [f.rule for f in run_check("coverage", policy(tests=["tests/*.py"]), root)] == ["declaration", "BoundedExclusion"]

@@ -22,8 +22,10 @@ absent one would make a green suite out of a file nobody can read.
 
 from __future__ import annotations
 
+from pathlib import Path
+
 from claim_governance.findings import Finding
-from claim_governance.lexing import line_of
+from claim_governance.lexing import declaration_code, line_of
 from claim_governance.policy import Coverage, Policy
 from claim_governance.repo import Repo
 
@@ -58,10 +60,11 @@ def read_receipts(cfg: Coverage, repo: Repo) -> tuple[frozenset[Receipt] | None,
 def declarations(cfg: Coverage, repo: Repo, rel: str) -> tuple[tuple[str, str, int], ...]:
     """Every ``(kind, value, line)`` a test file declares, in file order."""
     text = repo.surface(rel)
-    code = repo.masked(rel)
+    code = declaration_code(Path(rel).suffix, repo.text(rel))
     # Match the literal argument on the surface, but require the declaration
     # prefix to be source code. Both views retain identical character offsets
-    # in Python/Mojo, so a function name inside a string is entirely blank.
+    # in supported source languages, so a function name inside a string or
+    # comment is entirely blank. Unknown source languages fail closed.
     found = [(kind, m.group(kind), line_of(text, m.start()))
              for kind, pattern in ((CLAIM, cfg.claims()), (CONTRACT, cfg.contracts()))
              for m in pattern.finditer(text)
