@@ -7,6 +7,13 @@ canonical determinant-two substitution `Z^3 / M^2 Z^3` is `Z/2 x Z/2` while a
 scalar `Z_2` ball at precision two is `Z/4` -- the same order and a different
 group. `quotient_invariants` is the function that reports which.
 
+**The generators are the columns.** `M` is given row-major, `entries[n*i + j]`
+is `M[i][j]`, and `M^k Z^n` is the span of the *columns* of `M^k` -- the
+convention of the substitution incidence matrix, whose column `j` is the
+abelianisation of `sigma(j)`. The row span `Z^n M^k` is a different lattice in
+general: a carrier reading the generators off the rows answers membership for
+the transpose, and for the canonical substitution the two part at level four.
+
 **The contract is the closed interval's, transposed.** Two points in the same
 coset at level `k` are *unknown*: membership of their difference in `M^k Z^n`
 does not make them equal, and refining the level can still separate them. Two
@@ -44,7 +51,9 @@ def q_is_integer(x: Q) -> Bool:
 
 
 def lift_square(entries: List[Int], n: Int) -> List[List[Q]]:
-    """Row-major integer entries, `entries[n*i + j]`, lifted into `Q`."""
+    """Row-major integer entries, `entries[n*i + j] = M[i][j]`, lifted into `Q`.
+
+    Storage order only: the lattice generators are the columns of `M`."""
     if n < 1 or n > MAX_DIMENSION:
         abort("M-adic dimension outside the supported range")
     if len(entries) != n * n:
@@ -233,7 +242,8 @@ def quotient_order(entries: List[Int], n: Int, level: Int) -> BigZ:
 def contains_exact(entries: List[Int], n: Int, level: Int, delta: List[Q]) -> Bool:
     """Whether the exact vector `delta` lies in the lattice `M^k Z^n`.
 
-    Solves `M^k x = delta` over `Q` and asks whether `x` is integral.
+    Solves `M^k x = delta` over `Q` and asks whether `x` is integral: `delta` is
+    an integer combination of the columns of `M^k`, never of its rows.
 
     The determinant of the *original* `M` is checked before exponentiation, not
     after. At `level = 0` the power is the identity whatever `M` was, so a

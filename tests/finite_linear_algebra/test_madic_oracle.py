@@ -30,6 +30,7 @@ UNIMODULAR = [[1, 1, 0], [0, 1, 1], [1, 0, 0]]  # det 1, the unit branch
 TWO_BY_TWO = [[2, 0], [0, 2]]                   # Z/2 x Z/2, smallest non-cyclic
 COPRIME_DIAGONAL = [[2, 0], [0, 3]]             # Z/6, cyclic despite two factors
 SINGULAR = [[1, 2], [2, 4]]                     # det 0, no filtration of finite index
+SHEAR = [[2, 1], [0, 1]]                        # rows and columns span different lattices
 WRAP = 1 << 63                                  # where Int subtraction used to wrap
 
 
@@ -64,6 +65,8 @@ LATTICE = Refinement(
         Class("proper non-unit", lambda m: abs(oracle.determinant(m)) > 1),
         Class("singular", lambda m: oracle.determinant(m) == 0),
         Class("dimension one", lambda m: len(m) == 1),
+        Class("rows span another lattice", lambda m: oracle.determinant(m) != 0
+              and rows_and_columns_differ(m, 1)),
     ),
 )
 
@@ -85,7 +88,21 @@ def coordinates(draws: int = 300, seed: int = 17) -> list[int]:
 
 def lattices() -> list[list[list[int]]]:
     """Every matrix this file reasons about, singular ones included."""
-    return [CANONICAL, UNIMODULAR, TWO_BY_TWO, COPRIME_DIAGONAL, SINGULAR, [[3]]]
+    return [CANONICAL, UNIMODULAR, TWO_BY_TWO, COPRIME_DIAGONAL, SINGULAR, SHEAR, [[3]]]
+
+
+def transpose(m: list[list[int]]) -> list[list[int]]:
+    return [list(row) for row in zip(*m)]
+
+
+def rows_and_columns_differ(m: list[list[int]], level: int) -> bool:
+    """Whether some row of `M^k` lies outside `M^k Z^n`, the lattice its columns span.
+
+    Both lattices have index `|det M|^k`, so one row outside is enough to make
+    them different lattices. Where every row is inside, they coincide and no
+    membership test over `m` can tell a row-convention carrier from this one.
+    """
+    return not all(oracle.contains(m, level, row) for row in oracle.power(m, level))
 
 
 # --- the values the Mojo regressions pin as well ---------------------------------
@@ -155,6 +172,49 @@ def test_the_lattice_columns_are_members_at_their_own_level():
         lattice = oracle.power(CANONICAL, level)
         for column in range(3):
             assert oracle.contains(CANONICAL, level, [lattice[i][column] for i in range(3)])
+
+
+# Where the row and column lattices of `M^k` differ, so a membership test can
+# tell which of them the carrier means.
+GENERATOR_WITNESSES = ((SHEAR, 1), (SHEAR, 2), (SHEAR, 3), (CANONICAL, 4))
+
+
+def generator_contract_violations(contains) -> list[str]:
+    """Where `contains` departs from the column contract: `M^k Z^n` is spanned by
+    the columns of `M^k`, and at a witness level its first row lies outside it."""
+    problems = []
+    for m, level in GENERATOR_WITNESSES:
+        lattice = oracle.power(m, level)
+        for j in range(len(m)):
+            if not contains(m, level, [row[j] for row in lattice]):
+                problems.append(f"column {j} of {m}^{level} is not a member")
+        if contains(m, level, lattice[0]):
+            problems.append(f"row 0 of {m}^{level} reads as a member")
+    return problems
+
+
+def test_the_generators_are_the_columns_not_the_rows():
+    assert generator_contract_violations(oracle.contains) == []
+    assert oracle.contains(SHEAR, 1, [2, 0])
+    assert not oracle.contains(SHEAR, 1, [2, 1])
+
+
+def test_a_row_convention_carrier_is_refused():
+    """The mutant that reads the generators off the rows, `Z^n M^k`, which is
+    `(M^T)^k Z^n` transposed. The contract must fail it, or it pins nothing."""
+    def rows_generate(m, level, delta):
+        return oracle.contains(transpose(m), level, delta)
+
+    assert generator_contract_violations(rows_generate) != []
+
+
+def test_the_canonical_regression_tells_rows_from_columns_only_from_level_four():
+    """Why the convention went unpinned: for the standing regression the row and
+    column lattices coincide up to level three, where every other membership pin
+    stops, so those pins hold under either convention."""
+    assert [rows_and_columns_differ(CANONICAL, k) for k in range(6)] == [False] * 4 + [True] * 2
+    assert oracle.contains(CANONICAL, 4, [5, 7, 3])         # first column of M^4
+    assert not oracle.contains(CANONICAL, 4, [5, 13, 11])   # first row of M^4
 
 
 def test_the_corpus_meets_its_declared_refinement():

@@ -46,6 +46,12 @@ def coprime_diagonal() -> List[Int]:
     return e^
 
 
+def shear() -> List[Int]:
+    """`[[2, 1], [0, 1]]`: its rows span a different lattice from its columns."""
+    var e: List[Int] = [2, 1, 0, 1]
+    return e^
+
+
 def is_int(value: BigZ, expected: Int) -> Bool:
     return bigz_eq(value, bigz_from_i64(Int64(expected)))
 
@@ -99,6 +105,26 @@ def test_membership_of_the_lattice() raises:
     assert_true(contains(canonical(), 3, 3, member))
     assert_false(contains(canonical(), 3, 3, outsider))
     assert_true(contains(canonical(), 3, 3, origin))
+
+
+def test_the_generators_are_the_columns_not_the_rows() raises:
+    """`M^k Z^n` is spanned by the columns of `M^k`, entries read row-major.
+
+    The canonical pins above hold under either convention: its row and column
+    lattices coincide up to level three and part only at level four.
+    """
+    var shear_column: List[Int] = [2, 0]
+    var shear_row: List[Int] = [2, 1]
+    var shear_column_2: List[Int] = [3, 1]       # second column of SHEAR^2
+    var shear_row_2: List[Int] = [4, 3]
+    var canonical_column_4: List[Int] = [5, 7, 3]
+    var canonical_row_4: List[Int] = [5, 13, 11]
+    assert_true(contains(shear(), 2, 1, shear_column))
+    assert_false(contains(shear(), 2, 1, shear_row))
+    assert_true(contains(shear(), 2, 2, shear_column_2))
+    assert_false(contains(shear(), 2, 2, shear_row_2))
+    assert_true(contains(canonical(), 3, 4, canonical_column_4))
+    assert_false(contains(canonical(), 3, 4, canonical_row_4))
 
 
 def test_same_coset_is_the_unknown_answer_and_refinement_can_separate() raises:
@@ -159,6 +185,8 @@ def main() raises:
     print("[PASS] test_the_unit_branch_has_a_trivial_filtration")
     test_membership_of_the_lattice()
     print("[PASS] test_membership_of_the_lattice")
+    test_the_generators_are_the_columns_not_the_rows()
+    print("[PASS] test_the_generators_are_the_columns_not_the_rows")
     test_same_coset_is_the_unknown_answer_and_refinement_can_separate()
     print("[PASS] test_same_coset_is_the_unknown_answer_and_refinement_can_separate")
     test_separation_is_the_only_certificate()
@@ -167,4 +195,4 @@ def main() raises:
     print("[PASS] test_far_apart_coordinates_do_not_wrap")
     test_index_subsets_enumerates_each_subset_once()
     print("[PASS] test_index_subsets_enumerates_each_subset_once")
-    print("9 M-adic ball Mojo tests passed.")
+    print("10 M-adic ball Mojo tests passed.")

@@ -308,7 +308,7 @@
       "relation": "authored"
     },
     "docs/madic-ball-arithmetic-spec.md": {
-      "blob": "c46a1615b697688d241db5c47c9f4385af50cf91",
+      "blob": "6ec26573319a0df8439af4dbf197d4f5a3fa197f",
       "relation": "authored"
     },
     "docs/polyglot-orbit-census-design.md": {
@@ -401,7 +401,7 @@
       "source_path": "finite_linear_algebra/__init__.mojo"
     },
     "finite_linear_algebra/madic_ball.mojo": {
-      "blob": "d19744a6e6323bd69d482e154f7e3ac7d3366ba1",
+      "blob": "558c8435d1dcde825f6ad8217e7788731ca2c8e5",
       "relation": "authored"
     },
     "finite_linear_algebra/mat3.mojo": {
@@ -859,11 +859,11 @@
       "source_path": "tests/test_finite_linear_algebra.mojo"
     },
     "tests/finite_linear_algebra/test_madic_ball.mojo": {
-      "blob": "213c9cb5c6359b0b87ba27715ad0ab257f51f0e4",
+      "blob": "e2bab5b8a6c2be79183ac18b397fde8604a78b7f",
       "relation": "authored"
     },
     "tests/finite_linear_algebra/test_madic_oracle.py": {
-      "blob": "57ddd7a95283ebd46829d2999914f7f4d768da95",
+      "blob": "87e41a88cb63be5b425b84407adfc213ba63c5f0",
       "relation": "authored"
     },
     "tests/frontier/test_ff_orbit_census.py": {
@@ -1009,7 +1009,7 @@
       "relation": "authored"
     },
     "tools/madic_oracle.py": {
-      "blob": "25ec820a10f2d9235b486ab568f95a4c4865c1bc",
+      "blob": "15c2aaaeb1efe92af90afb4d76fe7df33e7f3b98",
       "relation": "authored"
     },
     "tools/make_cyclotomic_vectors.py": {
