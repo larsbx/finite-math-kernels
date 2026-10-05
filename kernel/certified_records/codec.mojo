@@ -1,8 +1,8 @@
 # codec.mojo
 #
 # Canonical one-line records: a tag and unsigned decimal fields of 32 or 64
-# bits. Mojo half of kernel/certified_records/codec.py; both read the
-# vectors in conformance/certified_records_v1.txt.
+# bits. The only implementation: Python tooling reaches it through
+# python_binding.mojo. Pinned by conformance/certified_records_v1.txt.
 #
 # A record line is the tag and one canonical decimal per field, single-space
 # separated. A canonical decimal is ASCII digits with no sign and no leading

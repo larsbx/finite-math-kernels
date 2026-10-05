@@ -5,5 +5,6 @@
 #
 # A contract declares its tag and field widths as a Schema and inherits the
 # refusal grammar `malformed:arity`, `malformed:<field>`, `mismatch:<field>`.
-# finite_field_orbit (contract orbit-census-v1) is built on it. The Python
-# half, codec.py, reads the same vectors: conformance/certified_records_v1.txt.
+# finite_field_orbit (contract orbit-census-v1) is built on it. Python
+# tooling calls this codec through python_binding (an extension module built
+# by `pixi run build-certified-records-py`); codec.py only binds it.

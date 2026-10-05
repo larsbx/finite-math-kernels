@@ -1,5 +1,8 @@
-"""The canonical record codec of `kernel/certified_records/codec.py` against
-`conformance/certified_records_v1.txt`, the vectors the Mojo half reads too."""
+"""The Python binding to the Mojo record codec, on the vectors the Mojo tests read.
+
+`tests/certified_records/test_certified_records.mojo` checks the codec itself;
+this checks only that values, reasons and rows cross the binding intact.
+"""
 
 from __future__ import annotations
 
@@ -7,7 +10,7 @@ from pathlib import Path
 
 import pytest
 
-from certified_records.codec import Schema, decode, encode, first_mismatch, parse_canonical, vector_cases
+from certified_records.codec import Schema, decode, encode, first_mismatch, vector_cases
 
 ROOT = Path(__file__).resolve().parents[2]
 VECTORS = (ROOT / "conformance" / "certified_records_v1.txt").read_text(encoding="utf-8")
@@ -30,16 +33,9 @@ def test_first_mismatch_names_the_first_differing_field(reason, claimed, actual)
     assert first_mismatch(TOY, decode(TOY, claimed), decode(TOY, actual)) == reason
 
 
-def test_the_canonical_decimal_is_bounded_by_its_width():
-    assert parse_canonical("4294967295", 32) == 2**32 - 1 and parse_canonical("4294967296", 32) is None
-    assert parse_canonical("18446744073709551615", 64) == 2**64 - 1
-    assert parse_canonical("18446744073709551616", 64) is None
-    assert [parse_canonical(t, 64) for t in ("", "0", "00", "007", "+1", "-0", " 1", "1 ")] == [None, 0] + [None] * 6
-
-
-def test_a_schema_refuses_widths_other_than_32_and_64():
-    with pytest.raises(ValueError):
-        Schema("bad-v1", (("a", 16),))
+def test_64_bit_values_cross_the_binding_intact():
+    assert decode(TOY, "toy-v1 4294967295 18446744073709551615") == (2**32 - 1, 2**64 - 1)
+    assert encode(TOY, (0, 2**64 - 1)) == "toy-v1 0 18446744073709551615"
 
 
 def test_first_mismatch_can_skip_a_prefix():

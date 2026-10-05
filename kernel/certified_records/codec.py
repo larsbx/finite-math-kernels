@@ -1,22 +1,31 @@
-"""Canonical one-line records: a tag and unsigned decimal fields of 32 or 64 bits.
+"""Python binding to the Mojo record codec, `kernel/certified_records/codec.mojo`.
 
-Python half of `kernel/certified_records/codec.mojo`; the two read the same
-vectors, `conformance/certified_records_v1.txt`.
-
-A record line is the tag and one canonical decimal per field, single-space
-separated. A canonical decimal is ASCII digits with no sign and no leading
-zero, below 2^bits. `decode` is total: every line either decodes or is refused
-as `malformed:arity` (wrong tag or token count) or `malformed:<field>` (the
-first field that is not canonical), so a contract built on it inherits one
-refusal grammar. Two records are equal iff their fields are, so replay
-compares fields with `first_mismatch` and reports `mismatch:<field>`.
+There is one codec. This module holds no parsing or encoding logic: it loads
+the extension module that `pixi run build-certified-records-py` builds from
+`kernel/certified_records/python_binding.mojo` and converts types at the
+boundary. A `Schema` is plain data; values cross as decimal strings, so 64-bit
+fields survive intact.
 """
 
 from __future__ import annotations
 
+import importlib.util
 from dataclasses import dataclass
+from pathlib import Path
 
-WIDTHS = (32, 64)
+EXTENSION = Path(__file__).resolve().parents[2] / ".build" / "certified_records_ext.so"
+
+
+def _load():
+    if not EXTENSION.is_file():
+        raise ImportError(f"{EXTENSION} is missing; build it with `pixi run build-certified-records-py`")
+    spec = importlib.util.spec_from_file_location("certified_records_ext", EXTENSION)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+_mojo = _load()
 
 
 @dataclass(frozen=True)
@@ -24,54 +33,29 @@ class Schema:
     tag: str
     fields: tuple[tuple[str, int], ...]
 
-    def __post_init__(self) -> None:
-        if not self.fields or any(bits not in WIDTHS for _, bits in self.fields):
-            raise ValueError(f"{self.tag}: every field is 32 or 64 bits")
-
     @property
     def names(self) -> tuple[str, ...]:
         return tuple(name for name, _ in self.fields)
 
-
-#: 2^64 - 1 has 20 digits; a longer token is refused before `int`, whose own
-#: digit limit would otherwise raise a different error.
-MAX_DIGITS = 20
-
-
-def parse_canonical(token: str, bits: int) -> int | None:
-    if len(token) > MAX_DIGITS or not (token.isascii() and token.isdigit()) or (len(token) > 1 and token[0] == "0"):
-        return None
-    value = int(token)
-    return value if value < 2**bits else None
+    def wire(self) -> tuple:
+        return (self.tag, list(self.names), [bits for _, bits in self.fields])
 
 
 def decode(schema: Schema, line: str) -> tuple[int, ...]:
     """The field values of `line`, or `ValueError('malformed:...')`."""
-    tokens = line.split(" ")
-    if len(tokens) != 1 + len(schema.fields) or tokens[0] != schema.tag:
-        raise ValueError("malformed:arity")
-    values = []
-    for (name, bits), token in zip(schema.fields, tokens[1:]):
-        value = parse_canonical(token, bits)
-        if value is None:
-            raise ValueError(f"malformed:{name}")
-        values.append(value)
-    return tuple(values)
+    reason, values = _mojo.decode(schema.wire(), line)
+    if reason:
+        raise ValueError(reason)
+    return tuple(int(v) for v in values)
 
 
 def encode(schema: Schema, values: tuple[int, ...]) -> str:
-    return " ".join([schema.tag, *map(str, values)])
+    return _mojo.encode(schema.wire(), [str(v) for v in values])
 
 
 def first_mismatch(schema: Schema, claimed: tuple[int, ...], actual: tuple[int, ...], start: int = 0) -> str:
-    """`mismatch:<field>` for the first field from `start` on where they differ, else ''."""
-    for name, x, y in list(zip(schema.names, claimed, actual))[start:]:
-        if x != y:
-            return f"mismatch:{name}"
-    return ""
+    return _mojo.first_mismatch(schema.wire(), [str(v) for v in claimed], [str(v) for v in actual], start)
 
 
 def vector_cases(text: str, kind: str) -> list[list[str]]:
-    """The tab-separated columns after the kind, for every row of that kind; `#` lines are comments."""
-    rows = [line.split("\t") for line in text.splitlines() if not line.startswith("#")]
-    return [row[1:] for row in rows if row[0] == kind]
+    return [list(row) for row in _mojo.vector_cases(text, kind)]

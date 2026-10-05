@@ -123,11 +123,12 @@ terminated by `\n`, in block order. The encoding is injective and the
 decoding is total: any other byte string is `malformed`.
 
 The codec is the generic `certified_records` package
-(`kernel/certified_records/codec.mojo`, with its Python half
-`kernel/certified_records/codec.py`). The contract supplies only its
-`Schema`: the tag, the field names, and the widths, 64 bits for the sums and
-32 for the rest. Both halves are pinned by
-`conformance/certified_records_v1.txt`. The package also supplies the refusal
+(`kernel/certified_records/codec.mojo`). Python tooling, such as the reference
+and the vector generator, calls that same codec through an extension module
+built from `kernel/certified_records/python_binding.mojo`, so there is one
+implementation. The contract supplies only its `Schema`: the tag, the field
+names, and the widths, 64 bits for the sums and 32 for the rest. The codec is
+pinned by `conformance/certified_records_v1.txt`. The package also supplies the refusal
 grammar `malformed:arity`, `malformed:<field>` and `mismatch:<field>`. The
 Elixir orchestrator keeps its own `Frontier.Record`, since nothing vendors it.
 

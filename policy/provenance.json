@@ -65,7 +65,7 @@
       "relation": "authored"
     },
     "README.md": {
-      "blob": "aeffa0a8018d6bd09eb31a1f88e0b57d15ea801a",
+      "blob": "a08cebaae03d6542e154ab2f4200ac3da570c4a5",
       "relation": "authored"
     },
     "conformance/certified_records_v1.txt": {
@@ -240,7 +240,7 @@
       "relation": "authored"
     },
     "docs/polyglot-orbit-census-design.md": {
-      "blob": "7559f7196238719c4dafb75fe707ebd1de4b25d3",
+      "blob": "332e78231c364a9a0463355ca33a09fe3577ad92",
       "relation": "authored"
     },
     "docs/projective-limits-over-exact-fields.md": {
@@ -442,19 +442,23 @@
       "relation": "authored"
     },
     "kernel/certified_records/__init__.mojo": {
-      "blob": "345e7a4eb77a754a7c773d780da572ffdc1a437d",
+      "blob": "de24c3a8c112affefde01ee69b1e43f1426cf77f",
       "relation": "authored"
     },
     "kernel/certified_records/__init__.py": {
-      "blob": "811cce7d029c68e5f7066081cd245a466e29f9c8",
+      "blob": "cd6e18b7b45f55ea8a65c69a46489f019e22ffd9",
       "relation": "authored"
     },
     "kernel/certified_records/codec.mojo": {
-      "blob": "28d02f44cb00aaf1b60cea51245f8d21808466b1",
+      "blob": "d1460c4322df19c8da3fa3a71ee5c01546ac3bed",
       "relation": "authored"
     },
     "kernel/certified_records/codec.py": {
-      "blob": "df95732380dc68f6a5c95bc9097df09f3345ea58",
+      "blob": "fe02defb07b0ab754aa954ccb7a3f5b6bc9f9fc6",
+      "relation": "authored"
+    },
+    "kernel/certified_records/python_binding.mojo": {
+      "blob": "c3fc73244f09cff3df6c734f909cf1e2ab635af6",
       "relation": "authored"
     },
     "kernel/finite_automata/__init__.mojo": {
@@ -858,7 +862,7 @@
       "source_path": "tools/property_oracle.py"
     },
     "pixi.toml": {
-      "blob": "093e8ef608e515e57c5cf4059ddf1d53b07d2555",
+      "blob": "0ccf41722ce8820eea56bfff0be4da8019106f06",
       "relation": "authored"
     },
     "policy/estate-audits/0833929ed82d42cf3674a1565681625a9622827b.py": {
@@ -999,11 +1003,11 @@
       "source_path": "tests/test_terminology.py"
     },
     "tests/certified_records/test_certified_records.mojo": {
-      "blob": "6da08d56aea1ce161d41d6d1c10b707ffa45fd92",
+      "blob": "238ece0d5da6f2ece05b554b497e800297ab7c2f",
       "relation": "authored"
     },
     "tests/certified_records/test_certified_records.py": {
-      "blob": "370f976e9508f20915ff51e23a5be2e641cebdec",
+      "blob": "83c724c5db8dfe802319ad146d44d12462b92308",
       "relation": "authored"
     },
     "tests/conftest.py": {
