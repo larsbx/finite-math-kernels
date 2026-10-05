@@ -47,10 +47,14 @@ and each side is free to mutate privately.
 
 ## 2. The frontier question and the finite subproblem
 
-Frontier question (owned by `larsbx/giant-fibers-finite-fields-thin-groups`):
-the statistics of tail and cycle lengths of `x -> x^2 + c` on prime fields,
-and the exceptional parameters where they deviate from random-mapping
-predictions.
+Frontier question (candidate 4 of `docs/frontier-math-compute-candidates.md`,
+owned by `larsbx/finite-mandelbrot-research` and
+`larsbx/finite-julia-set-research`): the statistics of tail and cycle lengths
+of `x -> x^2 + c` on prime fields, the exceptional parameters where they
+deviate from random-mapping predictions, and the modular obstructions to a
+critical orbit type over `Q`. (`larsbx/giant-fibers-finite-fields-thin-groups`
+studies the Descartes quadric and thin-group words, candidate 1; it is not a
+consumer of this contract.)
 
 The finite subproblem computed here (and nothing more): for a block of seeds
 in `F_p` at a fixed `c`, the exact tail (`mu`) and period (`lambda`) of each
