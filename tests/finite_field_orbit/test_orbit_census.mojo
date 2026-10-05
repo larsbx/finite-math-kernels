@@ -9,6 +9,7 @@ the reference semantics), and the witness replay, which shares no code with
 the census, is checked on its own.
 """
 
+from certified_records.codec import vector_cases
 from finite_field_orbit.census import (
     Agg,
     Block,
@@ -29,36 +30,32 @@ def expect(label: String, got: String, want: String) raises:
 
 
 def check_vectors() raises -> Int:
+    var text = open("conformance/orbit_census_v1.txt", "r").read()
     var checked = 0
-    for raw in open("conformance/orbit_census_v1.txt", "r").read().split("\n"):
-        var line = String(raw)
-        if line.byte_length() == 0 or line.startswith("#"):
-            continue
-        var cols = List[String]()
-        for part in line.split("\t"):
-            cols.append(String(part))
-        if cols[0] == "census":
-            var d = decode(cols[1])
-            expect("decode " + cols[1], d.reason, "")
-            expect("request " + cols[1], request_verdict(d.block), "")
-            expect("census", encode(d.block, census(d.block)), cols[1])
-            expect("replay " + cols[1], replay(cols[1]), "accepted")
-        elif cols[0] == "tampered":
-            expect("tampered " + cols[2], replay(cols[2]), cols[1])
-        elif cols[0] == "request-malformed":
-            var v = List[Int]()
-            for part in cols[2].split(" "):
-                v.append(Int(String(part)))
-            expect("request " + cols[2], request_verdict(Block(v[0], v[1], v[2], v[3], v[4])), "malformed:" + cols[1])
-        elif cols[0] == "wide":
-            var d = decode(cols[1])
-            expect("decode wide " + cols[1], d.reason, "")
-            expect("wide round trip", encode(d.block, d.agg), cols[1])
-        elif cols[0] == "decode-malformed":
-            expect("decode '" + cols[2] + "'", decode(cols[2]).reason, "malformed:" + cols[1])
-            expect("replay '" + cols[2] + "'", replay(cols[2]), "malformed:" + cols[1])
-        else:
-            raise Error("unknown vector kind " + cols[0])
+    for row in vector_cases(text, "census"):
+        var d = decode(row[0])
+        expect("decode " + row[0], d.reason, "")
+        expect("request " + row[0], request_verdict(d.block), "")
+        expect("census", encode(d.block, census(d.block)), row[0])
+        expect("replay " + row[0], replay(row[0]), "accepted")
+        checked += 1
+    for row in vector_cases(text, "tampered"):
+        expect("tampered " + row[1], replay(row[1]), row[0])
+        checked += 1
+    for row in vector_cases(text, "request-malformed"):
+        var v = List[Int]()
+        for part in row[1].split(" "):
+            v.append(Int(String(part)))
+        expect("request " + row[1], request_verdict(Block(v[0], v[1], v[2], v[3], v[4])), "malformed:" + row[0])
+        checked += 1
+    for row in vector_cases(text, "wide"):
+        var d = decode(row[0])
+        expect("decode wide " + row[0], d.reason, "")
+        expect("wide round trip", encode(d.block, d.agg), row[0])
+        checked += 1
+    for row in vector_cases(text, "decode-malformed"):
+        expect("decode '" + row[1] + "'", decode(row[1]).reason, "malformed:" + row[0])
+        expect("replay '" + row[1] + "'", replay(row[1]), "malformed:" + row[0])
         checked += 1
     return checked
 

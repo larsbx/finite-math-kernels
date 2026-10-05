@@ -122,6 +122,15 @@ The run digest is SHA-256 over the concatenation of the record lines, each
 terminated by `\n`, in block order. The encoding is injective and the
 decoding is total: any other byte string is `malformed`.
 
+The codec is the generic `certified_records` package
+(`kernel/certified_records/codec.mojo`, with its Python half
+`kernel/certified_records/codec.py`). The contract supplies only its
+`Schema`: the tag, the field names, and the widths, 64 bits for the sums and
+32 for the rest. Both halves are pinned by
+`conformance/certified_records_v1.txt`. The package also supplies the refusal
+grammar `malformed:arity`, `malformed:<field>` and `mismatch:<field>`. The
+Elixir orchestrator keeps its own `Frontier.Record`, since nothing vendors it.
+
 ### 3.5 Outcomes
 
 Every request ends in exactly one of:

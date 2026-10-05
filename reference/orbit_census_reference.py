@@ -16,13 +16,16 @@ from dataclasses import astuple, dataclass, replace
 from functools import reduce
 from typing import NamedTuple
 
+from certified_records.codec import Schema, first_mismatch
+from certified_records.codec import decode as decode_record
+from certified_records.codec import encode as encode_record
+
 TAG = "orbit-census-v1"
 BOUND = 2**32
-#: Sums are at most p (p - 1) < 2^64 (section 3.4); every other field is below 2^32.
-WIDE_FIELDS = frozenset({"sum_mu", "sum_lambda"})
-WIDE_BOUND = 2**64
 FIELDS = ("n", "resolved", "sum_mu", "sum_lambda", "periodic", "has_w", "w_seed", "w_mu", "w_lambda")
 BLOCK_FIELDS = ("p", "c", "cap", "lo", "hi")
+#: Sums are at most p (p - 1) < 2^64 (section 3.4); every other field is below 2^32.
+SCHEMA = Schema(TAG, tuple((name, 64 if name.startswith("sum_") else 32) for name in BLOCK_FIELDS + FIELDS))
 
 
 class Block(NamedTuple):
@@ -113,20 +116,12 @@ def tree_census(b: Block, cuts: list[int]) -> Agg:
 
 
 def encode(b: Block, a: Agg) -> str:
-    return " ".join([TAG, *map(str, (*b, *astuple(a)))])
+    return encode_record(SCHEMA, (*b, *astuple(a)))
 
 
 def decode(line: str) -> tuple[Block, Agg]:
     """Total inverse of ``encode``: every other string raises ``ValueError('malformed:...')``."""
-    tokens = line.split(" ")
-    if len(tokens) != 1 + len(BLOCK_FIELDS) + len(FIELDS) or tokens[0] != TAG:
-        raise ValueError("malformed:arity")
-    names = BLOCK_FIELDS + FIELDS
-    for name, t in zip(names, tokens[1:]):
-        bound = WIDE_BOUND if name in WIDE_FIELDS else BOUND
-        if not (t.isascii() and t.isdigit()) or (len(t) > 1 and t[0] == "0") or int(t) >= bound:
-            raise ValueError(f"malformed:{name}")
-    values = [int(t) for t in tokens[1:]]
+    values = decode_record(SCHEMA, line)
     return Block(*values[:5]), Agg(*values[5:])
 
 
@@ -146,10 +141,7 @@ def replay_verdict(b: Block, claimed: Agg) -> str:
     if (field := malformed_field(b)) is not None:
         return f"malformed:{field}"
     actual = census(b)
-    for name, x, y in zip(FIELDS, astuple(claimed), astuple(actual)):
-        if x != y:
-            return f"mismatch:{name}"
-    return "accepted"
+    return first_mismatch(SCHEMA, (*b, *astuple(claimed)), (*b, *astuple(actual)), start=len(BLOCK_FIELDS)) or "accepted"
 
 
 def tamper(a: Agg, field: str, delta: int = 1) -> Agg:

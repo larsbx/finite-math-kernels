@@ -10,7 +10,8 @@ infrastructure fault and never as a verdict.
 
 from std.sys import argv
 
-from finite_field_orbit.census import Block, census, encode, parse_canonical, replay, request_verdict
+from certified_records.codec import parse_canonical
+from finite_field_orbit.census import Block, census, encode, replay, request_verdict
 
 
 def answer_census(args: List[String]) raises -> String:
@@ -19,7 +20,7 @@ def answer_census(args: List[String]) raises -> String:
         return "malformed:arity"
     var v = List[Int]()
     for i in range(5):
-        var value = parse_canonical(args[i])
+        var value = parse_canonical(args[i], 32)
         if not value:
             return "malformed:" + names[i]
         v.append(Int(value.value()))

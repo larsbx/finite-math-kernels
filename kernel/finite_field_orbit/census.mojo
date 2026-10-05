@@ -14,8 +14,10 @@
 # 2^64 - 12 * 2^32, past Int, so a step is computed in UInt64; a sum reaches
 # p^2 < 2^64, so the sums are UInt64 too.
 
+from certified_records import codec
+from certified_records.codec import Schema
+
 comptime TAG = "orbit-census-v1"
-comptime ARITY = 15
 comptime CONTRACT_BOUND = 4294967296  # 2^32: every field but the sums, which range to 2^64
 comptime TABLE_BOUND = 16777216  # 2^24: below it the visited set is a table of p words
 
@@ -73,12 +75,21 @@ def field_names() -> List[String]:
             "has_w", "w_seed", "w_mu", "w_lambda"]
 
 
-def fields(b: Block, a: Agg) -> List[String]:
-    """The fourteen canonical decimals of a record, in field order. Two records are
-    equal iff their fields are, so replay compares these and encode joins them."""
-    return [String(b.p), String(b.c), String(b.cap), String(b.lo), String(b.hi),
-            String(a.n), String(a.resolved), String(a.sum_mu), String(a.sum_lambda), String(a.periodic),
-            String(a.has_w), String(a.w_seed), String(a.w_mu), String(a.w_lambda)]
+def schema() -> Schema:
+    """The record of section 3.4 as a certified_records schema: sums below 2^64, the rest below 2^32."""
+    var names = field_names()
+    var bits = List[Int]()
+    for name in names:
+        bits.append(64 if name == "sum_mu" or name == "sum_lambda" else 32)
+    return Schema(TAG, names^, bits^)
+
+
+def fields(b: Block, a: Agg) -> List[UInt64]:
+    """The fourteen field values of a record, in field order. Two records are
+    equal iff their fields are, so replay compares these and encode writes them."""
+    return [UInt64(b.p), UInt64(b.c), UInt64(b.cap), UInt64(b.lo), UInt64(b.hi),
+            UInt64(a.n), UInt64(a.resolved), a.sum_mu, a.sum_lambda, UInt64(a.periodic),
+            UInt64(a.has_w), UInt64(a.w_seed), UInt64(a.w_mu), UInt64(a.w_lambda)]
 
 
 def witness_first(a: Agg, b: Agg) -> Bool:
@@ -201,7 +212,7 @@ def census(b: Block) raises -> Agg:
 
 
 def encode(b: Block, a: Agg) -> String:
-    return String(TAG) + " " + String(" ").join(fields(b, a))
+    return codec.encode(schema(), fields(b, a))
 
 
 struct Decoded(Movable):
@@ -217,40 +228,12 @@ struct Decoded(Movable):
         self.agg = agg^
 
 
-def parse_canonical(token: String, wide: Bool = False) -> Optional[UInt64]:
-    """An unsigned decimal with no leading zero, below 2^32 (or 2^64 when `wide`)."""
-    var bytes = token.as_bytes()
-    var n = len(bytes)
-    if n == 0 or n > (20 if wide else 10) or (n > 1 and Int(bytes[0]) == ord("0")):
-        return None
-    var value: UInt64 = 0
-    for i in range(n):
-        var digit = Int(bytes[i]) - ord("0")
-        if digit < 0 or digit > 9:
-            return None
-        if value > (UInt64.MAX - UInt64(digit)) // 10:
-            return None  # 2^64 or more
-        value = value * 10 + UInt64(digit)
-    if not wide and value >= UInt64(CONTRACT_BOUND):
-        return None
-    return value
-
-
 def decode(line: String) -> Decoded:
     """Total inverse of `encode`: every other string is `malformed:<field>`."""
-    var tokens = List[String]()
-    for part in line.split(" "):
-        tokens.append(String(part))
-    if len(tokens) != ARITY or tokens[0] != TAG:
-        return Decoded("malformed:arity", Block(0, 0, 0, 0, 0), Agg())
-    var names = field_names()
-    var v = List[UInt64]()
-    for i in range(1, ARITY):
-        var name = names[i - 1]
-        var value = parse_canonical(tokens[i], wide=name == "sum_mu" or name == "sum_lambda")
-        if not value:
-            return Decoded("malformed:" + name, Block(0, 0, 0, 0, 0), Agg())
-        v.append(value.value())
+    var d = codec.decode(schema(), line)
+    if d.reason.byte_length() > 0:
+        return Decoded(d.reason, Block(0, 0, 0, 0, 0), Agg())
+    var v = d.values.copy()
     return Decoded(
         "",
         Block(Int(v[0]), Int(v[1]), Int(v[2]), Int(v[3]), Int(v[4])),
@@ -293,12 +276,9 @@ def replay(line: String) -> String:
     if refusal.byte_length() > 0:
         return refusal
     try:
-        var claimed = fields(d.block, d.agg)
-        var actual = fields(d.block, census(d.block))
-        var names = field_names()
-        for i in range(5, ARITY - 1):
-            if claimed[i] != actual[i]:
-                return "mismatch:" + names[i]
+        var mismatch = codec.first_mismatch(schema(), fields(d.block, d.agg), fields(d.block, census(d.block)), start=5)
+        if mismatch.byte_length() > 0:
+            return mismatch
     except e:
         return "infra:" + String(e)
     var w = witness_verdict(d.block, d.agg)

@@ -22,6 +22,7 @@ All canonical kernels live under `kernel/` (the include root, `-I kernel`).
 | `quadratic_orbit` | Enclosed orbits of `z -> z^2 + c` and the collision partition. |
 | `rational_dynamics` | Reduced fractions, doubling mod 1, continued fractions, Farey determinants. |
 | `projective_limits` | Limits of rational functions over `Q` as points of `P^1(Q)`. |
+| `certified_records` | Canonical one-line records: a schema of 32/64-bit fields, a total decoder, `malformed:`/`mismatch:` refusals (Mojo and Python). |
 | `finite_field_orbit` | Exact tails and periods of `x -> x^2 + c` over `F_p`. |
 | `parallel_fold` | Order-preserving parallel map-fold (the only package needing MAX). |
 | `proof_records` | Proof-record model (`ProofArchitecture.tla`) and its graph. |
