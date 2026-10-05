@@ -6,11 +6,18 @@
 #   rat_q     Q, a normalized BigZ fraction with a sticky `rejected` flag,
 #             cofactor-scaled addition and order, cross-cancelled products,
 #             and the canonical Q(num, den) encoding.
+#   closed_q  IQ and ComplexIQ, conservative closed intervals and boxes over Q
+#             (stable facade closed_interval).
+#   enclosure_width  width bounds for iterated enclosures (spec section 2.5).
+#   integer_gcd      gcd on machine Int and Int64.
+#   checked_int      machine-Int add, sub, mul, neg, abs that raise on overflow.
+#   exact_decimal    base-ten rendering of BigZ and Q.
 #
 # Public boundary and stability promise: docs/exact-arithmetic-public-boundary.md.
 # Specification: docs/rational-interval-arithmetic-spec.md.
 #
-# Nothing in this package raises, aborts, or decides certificate acceptance:
+# Apart from checked_int, whose contract is to raise rather than wrap,
+# nothing in this package raises, aborts, or decides certificate acceptance:
 # invalid arithmetic is reported through the `rejected` flag, and what an
 # accepted value is allowed to prove is the consumer's decision. Consumers
 # pin a released commit of this monorepo; see docs/audit/CONSOLIDATION_PROVENANCE.md.
