@@ -41,6 +41,7 @@ test-quadratic-orbit = "mojo run -I kernel tests/quadratic_orbit/test_quadratic_
 test-rational-dynamics = "mojo run -I kernel tests/rational_dynamics/test_rational_dynamics.mojo"
 test-projective-limits = "mojo run -I kernel tests/projective_limits/test_projective_limits.mojo && mojo run -I kernel tests/projective_limits/test_reference_vectors.mojo"
 projective-limits-vectors = "python tools/make_projective_limits_vectors.py"
+test-certified-records = "mojo run -I kernel tests/certified_records/test_certified_records.mojo"
 test-orbit-census = "mojo run -I kernel tests/finite_field_orbit/test_orbit_census.mojo"
 test-orbit-reference = "python -m pytest -q tests/finite_field_orbit/test_orbit_reference.py"
 orbit-vectors = "python tools/make_orbit_vectors.py"
@@ -58,7 +59,7 @@ test-weighted-cycle = "mojo run -I kernel tests/weighted_graph/test_cycle_gain.m
 test-vendoring = "python -m pytest -q tests/vendoring"
 test-proof-records = "python -m pytest -q tests/proof_records"
 vocabularies = "python -m pytest -q tests/proof_records/test_vocabularies.py"
-test-python = "python -m pytest -q tests/toolchain tests/finite_exact tests/proof_records tests/substitution_dynamics tests/rational_dynamics tests/projective_limits tests/cyclotomic tests/finite_polynomial tests/polyglot"
+test-python = "python -m pytest -q tests/toolchain tests/finite_exact tests/certified_records tests/proof_records tests/substitution_dynamics tests/rational_dynamics tests/projective_limits tests/cyclotomic tests/finite_polynomial tests/polyglot"
 cyclotomic-vectors = "python tools/make_cyclotomic_vectors.py --check"
 test-audit = "PYTHONPATH=tools python -m pytest -q tests/audit"
 test-provenance = "python -m pytest -q tests/provenance"
@@ -68,7 +69,7 @@ test-frontier = "python -m pytest -q tests/frontier"
 bench-frontier = "python experiments/frontier/harness.py run ff_orbit_census --corpus bench"
 distribution = "python oracles/property_oracle.py --layers zq --distribution"
 references = "python tools/check_references.py"
-test = { depends-on = ["test-finite-exact", "test-interval", "test-linear-algebra", "test-finite-polynomial", "test-cyclotomic-q", "test-quadratic-germ", "test-integer-module", "test-madic", "test-madic-oracle", "test-qpoly", "test-qpoly-oracle", "test-substitution", "test-tuning", "test-facades", "test-quadratic-orbit", "test-rational-dynamics", "test-projective-limits", "test-orbit-census", "test-orbit-reference", "test-angle-doubling", "test-projective", "test-machine-int", "test-integer-matrix", "test-integer-vector", "test-finite-automata", "test-finite-graph", "test-claims", "test-mojo-smoke", "test-parallel-fold", "test-weighted-cycle", "test-vendoring", "test-proof-records", "test-python", "test-audit", "test-provenance", "test-references", "test-refinement", "test-frontier", "cyclotomic-vectors", "property"] }
+test = { depends-on = ["test-finite-exact", "test-interval", "test-linear-algebra", "test-finite-polynomial", "test-cyclotomic-q", "test-quadratic-germ", "test-integer-module", "test-madic", "test-madic-oracle", "test-qpoly", "test-qpoly-oracle", "test-substitution", "test-tuning", "test-facades", "test-quadratic-orbit", "test-rational-dynamics", "test-projective-limits", "test-certified-records", "test-orbit-census", "test-orbit-reference", "test-angle-doubling", "test-projective", "test-machine-int", "test-integer-matrix", "test-integer-vector", "test-finite-automata", "test-finite-graph", "test-claims", "test-mojo-smoke", "test-parallel-fold", "test-weighted-cycle", "test-vendoring", "test-proof-records", "test-python", "test-audit", "test-provenance", "test-references", "test-refinement", "test-frontier", "cyclotomic-vectors", "property"] }
 
 # The polyglot lane of docs/polyglot-orbit-census-design.md. Separate from the
 # default environment so the authoritative gates above neither gain nor lose a

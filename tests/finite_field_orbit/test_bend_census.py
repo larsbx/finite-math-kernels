@@ -20,6 +20,7 @@ import pytest
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "tools"))
 
+from certified_records.codec import vector_cases  # noqa: E402
 from orbit_census_reference import decode  # noqa: E402
 
 VECTORS = ROOT / "conformance" / "orbit_census_v1.txt"
@@ -37,8 +38,7 @@ def bend(*args: object, threads: int = 4) -> str:
 
 
 def cases(kind: str) -> list[list[str]]:
-    rows = [row.split("\t") for row in VECTORS.read_text(encoding="utf-8").splitlines() if not row.startswith("#")]
-    return [row[1:] for row in rows if row[0] == kind]
+    return vector_cases(VECTORS.read_text(encoding="utf-8"), kind)
 
 
 def census_lines() -> list[str]:

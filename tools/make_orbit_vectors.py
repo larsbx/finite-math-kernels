@@ -23,7 +23,8 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "reference"))
+for plane in ("kernel", "reference"):
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1] / plane))
 
 from orbit_census_reference import FIELDS, Block, census, encode, replay_verdict, tamper  # noqa: E402
 
