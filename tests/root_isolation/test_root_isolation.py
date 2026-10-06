@@ -114,6 +114,14 @@ def test_malformed_shapes_are_programming_errors():
         krawczyk_image((ONE,), (ONE,), ((ONE,),), (ONE, ONE), ((ONE,),))
 
 
+@pytest.mark.parametrize("n", [0, 3])
+def test_the_isolation_test_refuses_a_dimension_other_than_one_or_two(n):
+    # all() over no coordinates is vacuously true: an empty box must not isolate.
+    box = tuple(ComplexIQ.of(0, 1, 0, 1) for _ in range(n))
+    with pytest.raises(ValueError):
+        strictly_inside(box, box)
+
+
 # --- sections 2-4: known roots -----------------------------------------------------------
 
 

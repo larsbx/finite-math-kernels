@@ -1122,7 +1122,7 @@
       "relation": "authored"
     },
     "oracles/root_isolation_py/krawczyk_moore.py": {
-      "blob": "3dbea094100bce8c5d09082407bde67942c2f073",
+      "blob": "17a9bb47c14277c4ab150fd60b04403065a63d28",
       "relation": "authored"
     },
     "pixi.toml": {
@@ -1673,7 +1673,7 @@
       "relation": "authored"
     },
     "tests/root_isolation/test_root_isolation.py": {
-      "blob": "35b1ce8cea6b26f51f9568c0801d45675e9b2611",
+      "blob": "70386f87745a8be1e22643a0530897a9a2cc616c",
       "relation": "authored"
     },
     "tests/substitution_dynamics/test_dumont_thomas.mojo": {
