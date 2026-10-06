@@ -6,6 +6,11 @@ The facts come from ``polyglot.manifest.toml`` at the repository root:
 file is written to ``.polyglot/`` with ``{{owner}}``, ``{{repo}}`` and
 ``{{boundary}}`` substituted, and nothing else changed.
 
+Every ``*.json`` file in ``.polyglot/`` is generated: one that renders no
+current template (a template renamed or removed) is drift, and writing
+removes it. Other files there (``README.md``, a manifest) are the
+repository's own and are never read or touched.
+
 Usage:
     render.py [--root ROOT]            write .polyglot/ from the template
     render.py [--root ROOT] --check    exit 1 if .polyglot/ is not the rendering
@@ -26,6 +31,8 @@ MANIFEST = "polyglot.manifest.toml"
 OUT = ".polyglot"
 HERE = Path(__file__).resolve().parent
 FACTS = ("owner", "repo", "boundary")
+#: The generated files: every template is a ``*.json``, and so is its rendering.
+GENERATED = "*.json"
 PLACEHOLDER = re.compile(r"\{\{(\w+)\}\}")
 # A fact lands inside a JSON string and a URN, so it is a plain lowercase slug.
 SLUG = re.compile(r"^[a-z0-9][a-z0-9-]*$")
@@ -33,7 +40,7 @@ SLUG = re.compile(r"^[a-z0-9][a-z0-9-]*$")
 
 def templates() -> dict[str, str]:
     """Published file name -> template text."""
-    return {p.name: p.read_text(encoding="utf-8") for p in sorted(HERE.glob("*.json"))}
+    return {p.name: p.read_text(encoding="utf-8") for p in sorted(HERE.glob(GENERATED))}
 
 
 def reserved() -> frozenset[str]:
@@ -81,21 +88,31 @@ def rendering(root: Path) -> dict[str, str]:
     return render(facts(manifest))
 
 
+def stale(root: Path, rendered: dict[str, str]) -> list[Path]:
+    """Generated files in ``.polyglot/`` that render no current template."""
+    return sorted(p for p in (root / OUT).glob(GENERATED) if p.name not in rendered)
+
+
 def drift(root: Path) -> list[str]:
-    """Every published file that is missing or is not its rendering."""
+    """Every published file that is missing, is not its rendering, or renders no template."""
+    rendered = rendering(root)
     out = []
-    for name, text in sorted(rendering(root).items()):
+    for name, text in sorted(rendered.items()):
         path = root / OUT / name
         if not path.is_file():
             out.append(f"{OUT}/{name} missing")
         elif path.read_text(encoding="utf-8") != text:
             out.append(f"{OUT}/{name} differs from its rendering")
+    out += [f"{OUT}/{path.name} is not the rendering of any template" for path in stale(root, rendered)]
     return out
 
 
 def write(root: Path) -> None:
+    rendered = rendering(root)
     (root / OUT).mkdir(exist_ok=True)
-    for name, text in rendering(root).items():
+    for path in stale(root, rendered):
+        path.unlink()
+    for name, text in rendered.items():
         (root / OUT / name).write_text(text, encoding="utf-8")
 
 

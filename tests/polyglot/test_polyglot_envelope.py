@@ -120,6 +120,22 @@ def test_a_hand_edit_is_drift(tmp_path):
     assert envelope.main(["--root", str(root), "--check"]) == 1
 
 
+def test_a_stale_generated_file_is_drift_and_writing_removes_only_it(tmp_path):
+    # Every *.json in .polyglot/ is generated; a template renamed or removed
+    # leaves its old rendering behind. Hand-written files are not generated.
+    root = consumer(tmp_path)
+    envelope.write(root)
+    out = root / envelope.OUT
+    (out / "conformance-v0.json").write_text("{}", encoding="utf-8")
+    (out / "README.md").write_text("hand-written\n", encoding="utf-8")
+    (out / envelope.MANIFEST).write_text(MANIFEST, encoding="utf-8")
+    assert envelope.drift(root) == [f"{envelope.OUT}/conformance-v0.json is not the rendering of any template"]
+    assert envelope.main(["--root", str(root), "--check"]) == 1
+    assert envelope.main(["--root", str(root)]) == 0
+    assert envelope.drift(root) == []
+    assert sorted(p.name for p in out.iterdir()) == sorted(["README.md", envelope.MANIFEST, *INSTANCE])
+
+
 def test_main_writes(tmp_path):
     root = consumer(tmp_path)
     assert envelope.main(["--root", str(root)]) == 0

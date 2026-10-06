@@ -1525,7 +1525,7 @@
       "relation": "authored"
     },
     "tests/polyglot/test_polyglot_envelope.py": {
-      "blob": "b9a439099418e221dbba7d0f76efd179663ad153",
+      "blob": "870eeb5805e818392469da6b1f8e1f13276505f7",
       "relation": "authored"
     },
     "tests/projective/test_projective.mojo": {
@@ -1886,7 +1886,7 @@
       "relation": "authored"
     },
     "tools/polyglot_envelope/render.py": {
-      "blob": "96d7922de00a098828c501aa9986823bf8af0868",
+      "blob": "ab09ea77730a2ecaf37d0210cda5e582a5db0a5d",
       "relation": "authored"
     },
     "tools/provenance.py": {
