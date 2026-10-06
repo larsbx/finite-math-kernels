@@ -15,11 +15,11 @@ All canonical kernels live under `kernel/` (the include root, `-I kernel`).
 
 | Package | What it provides |
 |---|---|
-| `finite_exact` | Unbounded integers `BigZ`, rationals `Q`, conservative closed intervals, enclosure-width bounds; machine-`Int` gcd, overflow-refusing arithmetic, base-ten rendering. Signed-minimum inputs are supported when the result fits; unrepresentable GCDs and arithmetic raise. `ExactField`, a field as a structure over its `Element` type (`QField`), and the prime fields `Fp[p]` / `FpField[p]`. |
+| `finite_exact` | Unbounded integers `BigZ`, rationals `Q`, conservative closed intervals and boxes (common-denominator and Gaussian-rational constructors, exact singleton predicates), enclosure-width bounds and box magnitudes; machine-`Int` gcd, overflow-refusing arithmetic, base-ten rendering. Signed-minimum inputs are supported when the result fits; unrepresentable GCDs and arithmetic raise. `ExactField`, a field as a structure over its `Element` type (`QField`), and the prime fields `Fp[p]` / `FpField[p]`. |
 | `finite_linear_algebra` | Exact matrices, RREF/rank/nullspace over `Q`, rank-three tensors, checked integer vectors and matrix multiplication; exact Boolean support powers decide primitivity of non-negative integer matrices without weight overflow; `qpoly`: polynomials over `Q`, Sturm chains, isolating brackets, the characteristic polynomial in any dimension (`docs/exact-polynomial-root-isolation-spec.md`). |
 | `finite_polynomial` | `BigZ` polynomials, cyclotomic fields `Q[X]/(Phi_n)` with Galois actions, jets of the quadratic germ. `cyclotomic_field` types it for the field-generic kernels: `Cyc[q]` with a compile-time conductor and operators `+ − * / ==`, trace and norm, and `CyclotomicField[q]` as an `ExactField`. |
 | `substitution_dynamics` | Words, substitutions, balanced pairs, tuning, S-adic sequences, column coincidence. Its automaton reads components through `finite_graph`, so the two are vendored together. |
-| `quadratic_orbit` | Enclosed orbits of `z -> z^2 + c`, the collision partition, and box certificates for preperiodic points (exclusion; Krawczyk hypothesis). |
+| `quadratic_orbit` | Enclosed orbits of `z -> z^2 + c`, the collision partition, box certificates for preperiodic points (exclusion; Krawczyk hypothesis), the escape test `N(z) > max(4, N(c))` with its rational growth certificate, and the exact multiplier trichotomy. |
 | `angle_doubling` | `t -> 2t` on `Q/Z`: preperiod and period in closed form, angle types. |
 | `projective` | The quadratic map on `P^1(C)` in homogeneous coordinates, and its charts. |
 | `rational_dynamics` | Reduced fractions, doubling mod 1, continued fractions, Farey determinants. |
