@@ -12,8 +12,11 @@ the README of each consumer repository.
 Usage:
     check_vendored_sync.py                 check every package; exit 1 on drift
     check_vendored_sync.py pin NAME COMMIT re-pin NAME's digests from the local
-                                           files after copying them from COMMIT
-                                           (re-derives the ESTATE.toml pins too)
+                                           files after replacing the package
+                                           directory with a clean copy from
+                                           COMMIT (a file upstream removed
+                                           drops out; re-derives the
+                                           ESTATE.toml pins too)
     check_vendored_sync.py estate          re-derive the ESTATE.toml pins only
 
 A consumer whose ESTATE.toml pins a vendoring source with a [[dep]] gets that
@@ -213,11 +216,12 @@ def pin(name: str, commit: str, root: Path | None = None, manifest: Path | None 
     if target is None:
         return [f"no package named {name!r} in {manifest.name}"]
     base = root / target["root"]
-    files = dict(target["files"])
-    files.update({p.relative_to(base).as_posix(): "" for p in sources(base / name)})
-    missing = [rel for rel in files if not (base / rel).exists()]
-    if missing:
-        return [f"{name}: cannot pin missing file {rel}" for rel in missing]
+    # The pin set is the fresh copy: every source file it holds, plus each
+    # listed non-source file it still holds. A file upstream removed drops out.
+    files = sorted({rel for rel in target["files"] if (base / rel).is_file()}
+                   | {p.relative_to(base).as_posix() for p in sources(base / name)})
+    if not files:
+        return [f"{name}: nothing to pin under {target['root']}/{name}"]
     target["files"] = {rel: sha256(base / rel) for rel in files}
     target["commit"] = commit
     manifest.write_text(render(packages), encoding="utf-8")

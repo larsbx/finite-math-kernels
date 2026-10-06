@@ -105,6 +105,35 @@ def test_pin_rewrites_the_digests_it_was_given(tmp_path):
     assert commit in manifest.read_text()
 
 
+def test_pin_drops_a_file_that_the_fresh_copy_no_longer_has(tmp_path):
+    build_consumer(tmp_path)
+    manifest = tmp_path / "vendored.toml"
+    removed = tmp_path / "src" / "widget" / "core.mojo"
+    removed.unlink()
+    assert checker.pin("widget", "a" * 40, tmp_path, manifest) == []
+    assert "core.mojo" not in manifest.read_text()
+    assert checker.check(tmp_path, manifest) == []
+
+
+def test_pin_keeps_a_listed_non_source_file_that_is_still_present(tmp_path):
+    build_consumer(tmp_path)
+    manifest = tmp_path / "vendored.toml"
+    (tmp_path / "src" / "widget" / "Spec.tla").write_text("---- MODULE Spec ----\n", encoding="utf-8")
+    manifest.write_text(manifest.read_text().replace(
+        "[package.files]\n", '[package.files]\n"widget/Spec.tla" = "0"\n'), encoding="utf-8")
+    assert checker.pin("widget", "a" * 40, tmp_path, manifest) == []
+    assert '"widget/Spec.tla"' in manifest.read_text()
+    assert checker.check(tmp_path, manifest) == []
+
+
+def test_pin_refuses_a_package_with_nothing_left_to_pin(tmp_path):
+    build_consumer(tmp_path)
+    manifest = tmp_path / "vendored.toml"
+    for path in (tmp_path / "src" / "widget").iterdir():
+        path.unlink()
+    assert checker.pin("widget", "a" * 40, tmp_path, manifest) == ["widget: nothing to pin under src/widget"]
+
+
 def test_pin_refuses_a_short_commit(tmp_path):
     build_consumer(tmp_path)
     manifest = tmp_path / "vendored.toml"
