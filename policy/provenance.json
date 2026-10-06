@@ -65,7 +65,7 @@
       "relation": "authored"
     },
     "README.md": {
-      "blob": "2423e22a9dbdc624236c3ca014c3a2cc22e17f44",
+      "blob": "91787f6441e7a97d016af897d2a9df0e6964d4e0",
       "relation": "authored"
     },
     "conformance/certified_records_v1.txt": {
@@ -933,7 +933,7 @@
       "relation": "authored"
     },
     "kernel/substitution_dynamics/__init__.mojo": {
-      "blob": "88ae88d7722f0f9df7b4e83513d1678185411909",
+      "blob": "0a54c1a9b1f98a4aebbb4e2a0bcbc09f8ed86906",
       "relation": "modified",
       "source": "substitution_dynamics",
       "source_blob": "39630ebf50177ba3e2cdd73b6b5ed1898b76324a",
@@ -946,12 +946,20 @@
       "source_blob": "e94d702a03badeeeb1af97fa9808fdcdc35a7e12",
       "source_path": "substitution_dynamics/automaton.mojo"
     },
+    "kernel/substitution_dynamics/balanced_pair_algorithm.mojo": {
+      "blob": "e6c8cb0023c11cfacdd33d8b19034fbf15ab035c",
+      "relation": "authored"
+    },
     "kernel/substitution_dynamics/balanced_pairs.mojo": {
       "blob": "9cc1c10b81df03f83db5502509c3088cf04e5291",
       "relation": "copy",
       "source": "substitution_dynamics",
       "source_blob": "9cc1c10b81df03f83db5502509c3088cf04e5291",
       "source_path": "substitution_dynamics/balanced_pairs.mojo"
+    },
+    "kernel/substitution_dynamics/barge_class.mojo": {
+      "blob": "ce82a9c54a66bef523761f3b7585cf8a34b47f1c",
+      "relation": "authored"
     },
     "kernel/substitution_dynamics/coincidence.mojo": {
       "blob": "ee79d491dfb367b0393b2fb8d87ea391dfef3de6",
@@ -964,20 +972,40 @@
       "source_blob": "04f6f0d04f3320397c1f1c16bde2d038260d994e",
       "source_path": "substitution_dynamics/discrepancy.mojo"
     },
+    "kernel/substitution_dynamics/dumont_thomas.mojo": {
+      "blob": "1c10e8e2bda7cba7a1cde2402be2c21282ef6594",
+      "relation": "authored"
+    },
+    "kernel/substitution_dynamics/endpoint_maps.mojo": {
+      "blob": "504181809acbb8792d5fa726a3e95bb5964f2ad8",
+      "relation": "authored"
+    },
     "kernel/substitution_dynamics/internal_address.mojo": {
       "blob": "0a6f24be06fde66560940aa53e879a2dee6b509b",
+      "relation": "authored"
+    },
+    "kernel/substitution_dynamics/return_lattice.mojo": {
+      "blob": "9c6ca7f286e9043720c65243365176cb908d6086",
       "relation": "authored"
     },
     "kernel/substitution_dynamics/sadic.mojo": {
       "blob": "409a6a1a3029c74a8f73b63563a4b71979be390c",
       "relation": "authored"
     },
+    "kernel/substitution_dynamics/strong_coincidence.mojo": {
+      "blob": "644f964433e61a6cb55846cff9a5db3d636c42a7",
+      "relation": "authored"
+    },
     "kernel/substitution_dynamics/substitution.mojo": {
-      "blob": "6ff23b0f8d48cffcc551c48ad6347278669cb6c7",
-      "relation": "copy",
+      "blob": "1ada73776108ad75ef664373ed7986ce73efcc8d",
+      "relation": "modified",
       "source": "substitution_dynamics",
       "source_blob": "6ff23b0f8d48cffcc551c48ad6347278669cb6c7",
       "source_path": "substitution_dynamics/substitution.mojo"
+    },
+    "kernel/substitution_dynamics/symmetry.mojo": {
+      "blob": "fdbf0e91db1f5d64d9f913ae37899711ee29bb67",
+      "relation": "authored"
     },
     "kernel/substitution_dynamics/tuning.mojo": {
       "blob": "b66cb6eeeebb664904f84bd955b064a90433fbd1",
@@ -1098,7 +1126,7 @@
       "relation": "authored"
     },
     "pixi.toml": {
-      "blob": "e5880bf66120acc48df64fb4fe00d130bddc5245",
+      "blob": "361462f266b6a131abfe2ba358a31b80759c9bd8",
       "relation": "authored"
     },
     "policy/estate-audits/0833929ed82d42cf3674a1565681625a9622827b.py": {
@@ -1648,12 +1676,28 @@
       "blob": "35b1ce8cea6b26f51f9568c0801d45675e9b2611",
       "relation": "authored"
     },
+    "tests/substitution_dynamics/test_dumont_thomas.mojo": {
+      "blob": "ee61f92dad89b8a8a5b5cd97b0018042277a25e4",
+      "relation": "authored"
+    },
+    "tests/substitution_dynamics/test_return_lattice.mojo": {
+      "blob": "4b754decd54cbca115a317fa4a1eb61ca988afff",
+      "relation": "authored"
+    },
+    "tests/substitution_dynamics/test_strong_coincidence.mojo": {
+      "blob": "d8b3fb49f8bd5d8a2bba3ccc3674ed54eeb298ab",
+      "relation": "authored"
+    },
     "tests/substitution_dynamics/test_substitution_dynamics.mojo": {
       "blob": "fe5fd6549e66fc6dda87aa6871f4bfd2b5168336",
       "relation": "modified",
       "source": "substitution_dynamics",
       "source_blob": "e7761a4b496ac948ab94f5070af80ad4f5f30a70",
       "source_path": "tests/test_substitution_dynamics.mojo"
+    },
+    "tests/substitution_dynamics/test_symmetry.mojo": {
+      "blob": "617bfab5da67e7129a968cde819ebcb106b9eccb",
+      "relation": "authored"
     },
     "tests/substitution_dynamics/test_tuning.mojo": {
       "blob": "8903aaf196815588ec9281496040a325a5756e6a",
@@ -1684,7 +1728,7 @@
       "relation": "authored"
     },
     "tools/check_references.py": {
-      "blob": "6f0ee965839c00f338e639564db6274ec1951603",
+      "blob": "1557c483a89fcbf52a658e597caea88ccc8377e6",
       "relation": "authored"
     },
     "tools/claim_governance/__init__.py": {

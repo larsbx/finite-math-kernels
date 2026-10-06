@@ -90,3 +90,14 @@ struct Substitution(Copyable, Movable):
                         c += 1
                 e.append(c)
         return e^
+
+    def power(self, n: Int) raises -> Substitution:
+        """`sigma^n` as a substitution on the same alphabet: the image of each
+        letter under `n` applications. A substitution prolongable only at a
+        power is prolongable at a letter of that power."""
+        if n < 1:
+            raise Error("a substitution power is at least one")
+        var images = List[List[Int]]()
+        for a in range(self.size):
+            images.append(self.apply_n([a], n))
+        return Substitution(images^, self.size)

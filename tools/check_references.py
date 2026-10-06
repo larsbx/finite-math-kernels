@@ -78,6 +78,13 @@ EXTERNAL: dict[str, str] = {
     "kernel/bulbford/antipode.py": "larsbx/mandelbrot-bulbs-and-ford-circles-research; inventoried in docs/root-isolation-spec.md section 8",
     "reference/preperiodic.py": "larsbx/finite-julia-set-research; inventoried in docs/root-isolation-spec.md section 8",
     "docs/literature-gate-2026-09-20-krawczyk.md": "larsbx/finite-julia-set-research, which gated KrawczykMooreUniqueness (docs/root-isolation-spec.md section 4)",
+    "kernel/tests/test_census_library.mojo": PSC,
+    "kernel/tests/test_endpoint_core.mojo": PSC,
+    "kernel/tests/test_automata.mojo": PSC,
+    "kernel/tests/test_barge_class.mojo": PSC,
+    "kernel/tests/test_boundary_sync.mojo": PSC,
+    "kernel/tests/test_return_lattice.mojo": PSC,
+    "kernel/psc/coincidence_formula.mojo": PSC,
     "interval_q/closed_q.mojo": "larsbx/interval_q at the commit pinned in policy/provenance.json",
 }
 
