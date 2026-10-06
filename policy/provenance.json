@@ -993,7 +993,7 @@
       "relation": "authored"
     },
     "kernel/substitution_dynamics/strong_coincidence.mojo": {
-      "blob": "644f964433e61a6cb55846cff9a5db3d636c42a7",
+      "blob": "1d6c0e1de55b6a9aa18d0b0490323327b193c884",
       "relation": "authored"
     },
     "kernel/substitution_dynamics/substitution.mojo": {
@@ -1685,7 +1685,7 @@
       "relation": "authored"
     },
     "tests/substitution_dynamics/test_strong_coincidence.mojo": {
-      "blob": "d8b3fb49f8bd5d8a2bba3ccc3674ed54eeb298ab",
+      "blob": "babd5ffecf7357fa2cb4cd059b732128e8ac3c3f",
       "relation": "authored"
     },
     "tests/substitution_dynamics/test_substitution_dynamics.mojo": {

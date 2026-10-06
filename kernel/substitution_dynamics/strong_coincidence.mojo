@@ -389,8 +389,8 @@ def balanced_proper_prefix_pairs(sigma: Substitution, top: Int, bottom: Int) -> 
 
 def pair_paths(radix: Int, word: List[Int]) raises -> List[List[Int]]:
     """The two path words a packed pair word carries, top track first."""
-    if radix < 2:
-        raise Error("a digit alphabet has at least two digits")
+    if radix < 1:
+        raise Error("a digit alphabet has at least one digit")
     var top = List[Int]()
     var bottom = List[Int]()
     for i in range(len(word)):

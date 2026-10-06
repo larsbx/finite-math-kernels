@@ -255,6 +255,29 @@ def test_elimination_is_the_direct_automaton() raises:
     assert_equal(deep.states(), 616)
 
 
+def test_one_digit_paths_are_read() raises:
+    # Every image is one letter, so the digit alphabet is radix 1 and the
+    # pair alphabet one packed letter: valid, and the witness must decode.
+    var sigma = Substitution.checked([[0], [0]])
+    var box = Box(sigma, BOX)
+    var found = coincidence_witness(sigma, 0, 1, box)
+    assert_false(found.empty)
+    assert_equal(len(found.word), 1)
+    var paths = pair_paths(max_image_length(sigma), found.word)
+    assert_equal(len(paths[0]), 1)
+    assert_equal(paths[0][0], 0)
+    assert_equal(paths[1][0], 0)
+    assert_equal(path_letter(sigma, 0, paths[0]), path_letter(sigma, 1, paths[1]))
+    var eliminated = coincidence_by_elimination(sigma, 0, 1, parikh_equality_automaton(sigma, 0, 1, box))
+    assert_true(same_language(eliminated, minimised(coincidence_automaton(sigma, 0, 1, box))))
+    var refused = False
+    try:
+        _ = pair_paths(0, [0])
+    except:
+        refused = True
+    assert_true(refused)
+
+
 def test_malformed_input_raises() raises:
     var sigma = specimens()[0].copy()
     var box = Box(sigma, BOX)
@@ -302,6 +325,8 @@ def main() raises:
     print("[PASS] test_levels_match_the_definition_on_other_alphabets")
     test_elimination_is_the_direct_automaton()
     print("[PASS] test_elimination_is_the_direct_automaton")
+    test_one_digit_paths_are_read()
+    print("[PASS] test_one_digit_paths_are_read")
     test_malformed_input_raises()
     print("[PASS] test_malformed_input_raises")
-    print("6 strong-coincidence Mojo tests passed.")
+    print("7 strong-coincidence Mojo tests passed.")
