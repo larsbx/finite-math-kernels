@@ -7,7 +7,8 @@ docs/vendoring-candidates-2026-10-05.md). It depends on the standard library
 only (``fractions``, ``math``), is exact throughout, and fails closed: an
 input outside a function's domain raises ``ValueError`` (``TypeError`` for a
 float), it is never rounded, clamped or coerced into range, and no search
-stops at a cap.
+stops at a cap. It is named ``rational_dynamics_py`` so that it never shares a
+package name (and so a ``vendored.toml`` entry) with the Mojo package.
 
 It is non-authoritative in this repository's sense (``oracles/``): the Mojo
 ``rational_dynamics`` and ``angle_doubling`` packages under ``kernel/`` are

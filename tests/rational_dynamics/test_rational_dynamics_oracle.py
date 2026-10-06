@@ -1,4 +1,4 @@
-"""The vendorable Python ``rational_dynamics`` package (oracles/rational_dynamics).
+"""The vendorable Python ``rational_dynamics_py`` package (oracles/rational_dynamics_py).
 
 Golden values and invariants are ported from the consumers the package
 replaces, each cited where it is used: larsbx/mandelbrot-bulbs-and-ford-circles-research
@@ -18,8 +18,8 @@ from math import gcd
 
 import pytest
 
-import rational_dynamics as rd
-from rational_dynamics import (
+import rational_dynamics_py as rd
+from rational_dynamics_py import (
     address,
     binary_block,
     binary_digits,

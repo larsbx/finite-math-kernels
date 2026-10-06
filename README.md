@@ -42,7 +42,7 @@ fail closed; they exist for consumers with no Mojo toolchain (decision D1,
 
 | Package | What it provides |
 |---|---|
-| `oracles/rational_dynamics` | Reduced fractions, continued fractions, units, mediants, Farey sequences and parents; the doubling map on `Q/Z` (preperiod, exact period, binary expansions, rotation cycles, mechanical words, wakes, rotation numbers, doubling orbits); Moebius, Dedekind and Ramanujan sums. Also the R1 reference that `reference/rational_dynamics_reference.py` re-exports. |
+| `oracles/rational_dynamics_py` | Reduced fractions, continued fractions, units, mediants, Farey sequences and parents; the doubling map on `Q/Z` (preperiod, exact period, binary expansions, rotation cycles, mechanical words, wakes, rotation numbers, doubling orbits); Moebius, Dedekind and Ramanujan sums. Also the R1 reference that `reference/rational_dynamics_reference.py` re-exports. |
 | `oracles/closed_interval` | The Python twin of `finite_exact/closed_q.mojo`: `IQ`, `ComplexIQ` (alias `ComplexBox`) over `Fraction`, and directed dyadic rounding. |
 | `oracles/oracle_refinement` | Declared generator codomains (`docs/generator-refinement-spec.md`). |
 | `tools/vendoring` | The `vendored.toml` checker and pinner. |

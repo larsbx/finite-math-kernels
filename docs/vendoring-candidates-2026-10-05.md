@@ -35,7 +35,7 @@ below, and it settles the "which oracle is canonical" question for the
 
 | Upstream now | From | Consumer action |
 |---|---|---|
-| `oracles/rational_dynamics`: continued fractions, units, mediants, Farey sequences and parents, preperiod and exact period, binary expansions, rotation cycles, mechanical words, wakes, rotation numbers, doubling orbits, Moebius, Dedekind and Ramanujan sums; the R1 reference moves in and `reference/rational_dynamics_reference.py` re-exports it | bulbs `kernel/bulbford/{cf,wake,cycles}.py`, `experiments/scripts/{spectral,bridges_spike}.py`; vizops `atlas/trace.py` `period_of`; Mandelbrot `misiurewicz_catalogue_reference.py` (`moebius`, `exact_type`) and `structure_names_reference.py` (`farey_neighbours`, `rotation_angles`) | bulbs and vizops vendor it and delete their copies; Mandelbrot may keep its two references as independent oracles or call it |
+| `oracles/rational_dynamics_py`: continued fractions, units, mediants, Farey sequences and parents, preperiod and exact period, binary expansions, rotation cycles, mechanical words, wakes, rotation numbers, doubling orbits, Moebius, Dedekind and Ramanujan sums; the R1 reference moves in and `reference/rational_dynamics_reference.py` re-exports it | bulbs `kernel/bulbford/{cf,wake,cycles}.py`, `experiments/scripts/{spectral,bridges_spike}.py`; vizops `atlas/trace.py` `period_of`; Mandelbrot `misiurewicz_catalogue_reference.py` (`moebius`, `exact_type`) and `structure_names_reference.py` (`farey_neighbours`, `rotation_angles`) | bulbs and vizops vendor it and delete their copies; Mandelbrot may keep its two references as independent oracles or call it |
 | `oracles/closed_interval`: `IQ`, `ComplexIQ` (alias `ComplexBox`), directed dyadic rounding | Julia `reference/interval_box.py`, `reference/dyadic.py` | Julia vendors it and switches by import path (`from closed_interval import ComplexBox, IQ, round_down, round_up`) |
 | `tools/exact_arithmetic_audit`: one engine and a `Policy` for the spec section 7 audit | Julia and Mandelbrot `tools/audit_exact_arithmetic.py` (diverged copies) | Julia and Mandelbrot vendor it with `vendoring` and `claim_governance` and keep only their `Policy`; Julia vendors `claim_governance` for the first time |
 | `vendored_directories` in `tools/vendoring` | Julia's three hand-written readers of `vendored.toml` (`audit_exact_arithmetic.py`, `audit_terminology.py`, `tests/test_documented_invariants.py`) | Julia re-pins `vendoring` and calls it |
@@ -76,9 +76,9 @@ What the consumers' copies disagreed on, found while porting:
 Not moved, and why: Brjuno sums (a sum of logarithms, not exact); the Mojo
 halves of the doubling-map row (Mandelbrot `misiurewicz_catalogue.mojo`,
 `angle_tuning.mojo`); the other audits of the audits row; Krawczyk and the
-other `root_isolation` candidates. The Python `rational_dynamics` shares its
-name with the Mojo package, so a consumer that vendors both needs two
-manifest entries with distinct names.
+other `root_isolation` candidates. The Python package is named
+`rational_dynamics_py`, not `rational_dynamics`, so it never shares a name, and
+therefore a `vendored.toml` entry, with the Mojo package.
 
 ## Found and deferred
 
