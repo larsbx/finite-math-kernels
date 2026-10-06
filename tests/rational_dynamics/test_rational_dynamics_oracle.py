@@ -509,3 +509,23 @@ def test_direct_integer_addresses_keep_exact_arithmetic():
     value = rd.Address(1, 3)
     assert rd.continued_fraction(value) == (0, 3)
     assert rd.farey_determinant(value, rd.Address(1, 2)) == -1
+
+
+@pytest.mark.parametrize("fields", [(1, 0), (0, 0), (1, -2), (-1, 2)])
+def test_direct_address_construction_enforces_the_factory_domain(fields):
+    with pytest.raises(ValueError):
+        rd.Address(*fields)
+    with pytest.raises(ValueError):
+        rd.address(*fields)
+
+
+@pytest.mark.parametrize("fields", [(2, 4), (0, 17), (6, 3)])
+def test_direct_address_construction_reduces_like_the_factory(fields):
+    value = rd.Address(*fields)
+    assert value == rd.address(*fields)
+    assert (value.numerator, value.denominator) == (F(*fields).numerator, F(*fields).denominator)
+    assert rd.continued_fraction(value) == rd.continued_fraction(rd.address(*fields))
+
+
+def test_direct_unreduced_address_has_the_correct_farey_predicate():
+    assert rd.farey_adjacent(rd.Address(2, 4), rd.Address(1, 3))

@@ -40,6 +40,10 @@ FLOAT_RE = re.compile(
     r")(?![\w.])"
 )
 
+# Python's builtin complex stores floating-point components. Mojo's exact
+# complex carriers are unaffected by this Python-only token rule.
+_PYTHON_FLOAT_RE = re.compile(FLOAT_RE.pattern + r"|\bcomplex\b")
+
 
 @dataclass(frozen=True)
 class Policy:
@@ -232,7 +236,9 @@ def _python_float_lines(text: str) -> set[int] | None:
               if token.type not in (tokenize.COMMENT, tokenize.NL, tokenize.NEWLINE,
                                     tokenize.INDENT, tokenize.DEDENT, tokenize.ENDMARKER)]
     hits = {token.start[0] for token in tokens
-            if token.type in (tokenize.NAME, tokenize.NUMBER) and FLOAT_RE.search(token.string)}
+            if token.type in (tokenize.NAME, tokenize.NUMBER)
+            and (_PYTHON_FLOAT_RE.search(token.string)
+                 or (token.type == tokenize.NUMBER and token.string.endswith(("j", "J"))))}
     for index, token in enumerate(tokens):
         if (index >= 2 and token.type == tokenize.NAME
                 and tokens[index - 2].string == "DType" and tokens[index - 1].string == "."
@@ -241,8 +247,12 @@ def _python_float_lines(text: str) -> set[int] | None:
     hits |= {
         node.value.lineno for node in ast.walk(tree)
         if isinstance(node, ast.FormattedValue)
-        and FLOAT_RE.search(mask_comments_and_strings(ast.unparse(node.value)))
+        and _PYTHON_FLOAT_RE.search(mask_comments_and_strings(ast.unparse(node.value)))
     }
+    # Python 3.11 tokenizes an entire f-string as STRING; its imaginary
+    # constants still appear as complex values in the syntax tree.
+    hits |= {node.lineno for node in ast.walk(tree)
+             if isinstance(node, ast.Constant) and isinstance(node.value, complex)}
     return hits
 
 

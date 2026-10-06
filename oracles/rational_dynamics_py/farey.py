@@ -28,13 +28,23 @@ from math import gcd
 
 @dataclass(frozen=True, slots=True)
 class Address:
-    """``numerator / denominator`` in lowest terms, with non-boolean integer fields."""
+    """A reduced address with an integer numerator >= 0 and denominator > 0.
+
+    Direct construction has the same checks and reduction as ``address``.
+    """
 
     numerator: int
     denominator: int
 
     def __post_init__(self) -> None:
         require_int(self.numerator, self.denominator)
+        if self.numerator < 0:
+            raise ValueError("numerator must be nonnegative")
+        if self.denominator <= 0:
+            raise ValueError("denominator must be positive")
+        common = gcd(self.numerator, self.denominator)
+        object.__setattr__(self, "numerator", self.numerator // common)
+        object.__setattr__(self, "denominator", self.denominator // common)
 
 
 def require_int(*values: object) -> None:
@@ -47,13 +57,7 @@ def require_int(*values: object) -> None:
 def address(numerator: int, denominator: int) -> Address:
     """The reduced address of ``numerator / denominator``; refuses a negative
     numerator and a non-positive denominator."""
-    require_int(numerator, denominator)
-    if numerator < 0:
-        raise ValueError("numerator must be nonnegative")
-    if denominator <= 0:
-        raise ValueError("denominator must be positive")
-    common = gcd(numerator, denominator)
-    return Address(numerator // common, denominator // common)
+    return Address(numerator, denominator)
 
 
 def double_mod_one(value: Address) -> Address:

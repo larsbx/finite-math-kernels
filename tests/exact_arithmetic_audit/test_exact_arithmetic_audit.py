@@ -377,7 +377,7 @@ def test_mojo_imports_are_read_when_python_cannot_parse_the_file(tmp_path, polic
 
 @BOTH
 @pytest.mark.parametrize("expression", ['f"{0.5}"', 'f"{float(3)}"', 'f"{x!r:{1.5}}"', "rf'{2e3}'",
-                                         'f"{f\'{0.5}\'}"', 'f"{float(\'3\')}"'])
+                                         'f"{f\'{0.5}\'}"', 'f"{float(\'3\')}"', 'f"{complex(1, 2)}"'])
 def test_an_executable_f_string_expression_is_scanned(tmp_path, policy, expression):
     python = replace(policy, suffixes=(".mojo", ".py"))
     root = build(tmp_path, python)
@@ -386,9 +386,28 @@ def test_an_executable_f_string_expression_is_scanned(tmp_path, policy, expressi
 
 
 @BOTH
+@pytest.mark.parametrize("literal", ["1.5j", "2e3j", "1j", "0J"])
+@pytest.mark.parametrize("interpolated", [False, True])
+def test_python_imaginary_literals_are_floating_point(tmp_path, policy, literal, interpolated):
+    python = replace(policy, suffixes=(".mojo", ".py"))
+    root = build(tmp_path, python)
+    expression = f'f"{{{literal}}}"' if interpolated else literal
+    write(root, "src/report.py", f"value = {expression}\n")
+    assert audit(root, python) == [f"src/report.py:1: floating point in kernel scope (C1): value = {expression}"]
+
+
+@BOTH
+def test_the_python_complex_constructor_is_floating_point(tmp_path, policy):
+    python = replace(policy, suffixes=(".mojo", ".py"))
+    root = build(tmp_path, python)
+    write(root, "src/report.py", "value = complex(1, 2)\n")
+    assert audit(root, python) == ["src/report.py:1: floating point in kernel scope (C1): value = complex(1, 2)"]
+
+
+@BOTH
 @pytest.mark.parametrize("clean", ['f"value {x} is 0.5"', 'f"{x:.3}"', 'f"{{0.5}}"',
                                   'f"{\'0.5\'}"', 'f"{len(\'float\')}"',
-                                  'f"{f\'value {x} is 0.5\'}"',
+                                  'f"{f\'value {x} is 0.5\'}"', 'f"{\'1.5j\'}"',
                                   pytest.param('f"{"0.5"}"', marks=pytest.mark.skipif(
                                       sys.version_info < (3, 12), reason="same-quote f-string fields require Python 3.12"))])
 def test_literal_f_string_text_is_not_a_violation(tmp_path, policy, clean):

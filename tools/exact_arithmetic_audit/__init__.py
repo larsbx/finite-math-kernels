@@ -28,6 +28,8 @@ It checks, in order, stopping early where a later check would be noise:
    except allowlisted files and the policy's exempt prefixes.
    Python f-string interpolations, including nested format fields, are
    executable code and are scanned; unparseable Python files are reported.
+   Python imaginary literals and the builtin ``complex`` type store floating
+   components and are also C1 violations.
 
 It is unified from the two diverged copies in larsbx/finite-julia-set-research
 and larsbx/finite-mandelbrot-research (tools/audit_exact_arithmetic.py in

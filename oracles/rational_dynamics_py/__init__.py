@@ -8,8 +8,10 @@ only (``fractions``, ``math``), is exact throughout, and fails closed: an
 input outside a function's domain raises ``ValueError`` (``TypeError`` for a
 wrong type). Integer parameters, including both ``Address`` constructor
 fields, require non-boolean ``int`` values. An input is never rounded,
-clamped or coerced into range, and no search
-stops at a cap. It is named ``rational_dynamics_py`` so that it never shares a
+clamped or coerced into range. Direct ``Address`` construction enforces a
+nonnegative numerator and positive denominator and reduces to lowest terms,
+as the ``address`` factory does. No search stops at a cap. It is named
+``rational_dynamics_py`` so that it never shares a
 package name (and so a ``vendored.toml`` entry) with the Mojo package.
 
 It is non-authoritative in this repository's sense (``oracles/``): the Mojo

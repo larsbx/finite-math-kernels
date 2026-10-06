@@ -878,7 +878,7 @@
       "source_path": "tools/property_oracle.py"
     },
     "oracles/rational_dynamics_py/__init__.py": {
-      "blob": "fa4d6dc5ca1e2d2109e3a4bc023664cf1b91a7c8",
+      "blob": "79422556525d8add2973b8fefd60850511681aad",
       "relation": "authored"
     },
     "oracles/rational_dynamics_py/arithmetic.py": {
@@ -890,7 +890,7 @@
       "relation": "authored"
     },
     "oracles/rational_dynamics_py/farey.py": {
-      "blob": "9909f1649224c8e685b375c06387eaead133bd64",
+      "blob": "d00700598a327c441e2036dfcb4e17b732dc756a",
       "relation": "authored"
     },
     "pixi.toml": {
@@ -1067,7 +1067,7 @@
       "relation": "authored"
     },
     "tests/exact_arithmetic_audit/test_exact_arithmetic_audit.py": {
-      "blob": "8814f6ec0cec1706d160fa975fdf52d794bad0e8",
+      "blob": "d9a1dc06c9e7c2b0b89c3fb399f79635e8596eff",
       "relation": "authored"
     },
     "tests/facades/test_stable_facades.mojo": {
@@ -1341,7 +1341,7 @@
       "relation": "authored"
     },
     "tests/rational_dynamics/test_rational_dynamics_oracle.py": {
-      "blob": "5da4343fd3060f50824d0282ffb4a7c32c6de356",
+      "blob": "928ad6b269648cdec67d44166404fd77b10da49d",
       "relation": "authored"
     },
     "tests/rational_dynamics/test_rational_dynamics_reference.py": {
@@ -1491,11 +1491,11 @@
       "source_path": "claim_governance/runner.py"
     },
     "tools/exact_arithmetic_audit/__init__.py": {
-      "blob": "46948a0ae432907e19d5153c1a426ee0ff565f10",
+      "blob": "cd9985253b0936caf6ace73c522788112d900af5",
       "relation": "authored"
     },
     "tools/exact_arithmetic_audit/audit.py": {
-      "blob": "0983f49ea0a0020ea19034120709f979557bc60f",
+      "blob": "88bb5d898bdc64604fbdd755e0b48484985c7502",
       "relation": "authored"
     },
     "tools/make_cyclotomic_field_vectors.py": {
