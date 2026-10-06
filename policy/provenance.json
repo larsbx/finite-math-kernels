@@ -973,7 +973,7 @@
       "source_path": "substitution_dynamics/discrepancy.mojo"
     },
     "kernel/substitution_dynamics/dumont_thomas.mojo": {
-      "blob": "2b6353a030f6841c405693429ec2fab7b78c0119",
+      "blob": "f4cb179f2be4c62a706ccd4eaef3518cfe9e6abe",
       "relation": "authored"
     },
     "kernel/substitution_dynamics/endpoint_maps.mojo": {
@@ -1677,7 +1677,7 @@
       "relation": "authored"
     },
     "tests/substitution_dynamics/test_dumont_thomas.mojo": {
-      "blob": "93db54eaf606c53640af5f73044b32f2cb372ec8",
+      "blob": "6207c628200c1ff4c93cc3177bdfcc8c56d7fb2b",
       "relation": "authored"
     },
     "tests/substitution_dynamics/test_return_lattice.mojo": {

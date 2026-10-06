@@ -145,6 +145,25 @@ def test_prolongable_points_are_the_first_letter_cycles() raises:
     for i in range(4):
         assert_equal(points[i].power, 4)
         assert_equal(points[i].letter, i)
+    # Fixed points: each letter at its first return only, never again at a
+    # multiple of its period.
+    var both_fixed = prolongable_points(sub([[0, 1], [1, 0]]))
+    assert_equal(len(both_fixed), 2)
+    for i in range(2):
+        assert_equal(both_fixed[i].power, 1)
+        assert_equal(both_fixed[i].letter, i)
+    var trib = prolongable_points(tribonacci())
+    assert_equal(len(trib), 1)
+    assert_equal(trib[0].power, 1)
+    assert_equal(trib[0].letter, 0)
+    var mixed = prolongable_points(sub([[0], [2, 1], [1, 2]]))  # 0 fixed, 1 <-> 2
+    assert_equal(len(mixed), 3)
+    assert_equal(mixed[0].power, 1)
+    assert_equal(mixed[0].letter, 0)
+    assert_equal(mixed[1].power, 2)
+    assert_equal(mixed[1].letter, 1)
+    assert_equal(mixed[2].power, 2)
+    assert_equal(mixed[2].letter, 2)
     var refused = False
     try:
         _ = tribonacci().power(0)

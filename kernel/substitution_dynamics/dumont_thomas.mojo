@@ -51,12 +51,16 @@ def prolongable_points(sigma: Substitution) -> List[ProlongablePoint]:
     map, in increasing `q` then `c`: exactly the cycles of `sigma_+`."""
     var first = sigma.prefix_endpoint_map()
     var out = List[ProlongablePoint]()
+    var recorded = List[Bool](length=sigma.size, fill=False)
     for q in range(1, sigma.size + 1):
         for c in range(sigma.size):
+            if recorded[c]:
+                continue  # a multiple of its period, not a first return
             var x = c
             for _ in range(q):
                 x = first[x]
             if x == c:
+                recorded[c] = True
                 out.append(ProlongablePoint(q, c))
     return out^
 
