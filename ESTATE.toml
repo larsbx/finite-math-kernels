@@ -28,7 +28,7 @@ id = "julia-oracle-lab"
 vectors = "exact-arithmetic property transcript (zq), replayed by its Julia oracle at d694949"
 
 [exports]
-names = ["finite_exact", "finite_linear_algebra", "finite_polynomial", "finite_field_orbit", "certified_records", "quadratic_orbit", "rational_dynamics", "substitution_dynamics", "parallel_fold", "mojo_smoke", "proof_records", "projective_limits", "weighted_graph", "finite_graph", "finite_automata", "angle_doubling", "projective", "claim_governance", "vendoring", "references", "oracle_refinement", "rational_dynamics_py", "closed_interval", "exact_arithmetic_audit", "rational-dynamics-cyclotomic-v1", "typed-proof-graph-normalization-v1", "polyglot-boundary-envelope-v1"]
+names = ["finite_exact", "finite_linear_algebra", "finite_polynomial", "finite_field_orbit", "certified_records", "quadratic_orbit", "rational_dynamics", "substitution_dynamics", "parallel_fold", "mojo_smoke", "proof_records", "projective_limits", "weighted_graph", "finite_graph", "finite_automata", "angle_doubling", "projective", "claim_governance", "vendoring", "references", "oracle_refinement", "rational_dynamics_py", "closed_interval", "exact_arithmetic_audit", "lexical_audit", "rational-dynamics-cyclotomic-v1", "typed-proof-graph-normalization-v1", "polyglot-boundary-envelope-v1"]
 
 [layout]
 status = "canonical"
@@ -99,7 +99,7 @@ authority = "evidence"
 required = true
 current = ["tests"]
 
-# Includes claim_governance, vendoring, references and exact_arithmetic_audit, which consumers vendor under tools/.
+# Includes claim_governance, vendoring, references, exact_arithmetic_audit and lexical_audit, which consumers vendor under tools/.
 [[plane]]
 id = "tooling"
 target = "tools"

@@ -61,11 +61,11 @@
       "relation": "authored"
     },
     "ESTATE.toml": {
-      "blob": "4abe6406a7db3af9e30e70c6bac4c62e0c5e6ace",
+      "blob": "041dda1e570d3ba3b3d65f17f79a5510a4c331ee",
       "relation": "authored"
     },
     "README.md": {
-      "blob": "6b3595f239ce1077b191a89a749abefbd2b0e274",
+      "blob": "7193a8945f8a1e52e00f0dbe2510b1a16c0d4561",
       "relation": "authored"
     },
     "conformance/certified_records_v1.txt": {
@@ -894,7 +894,7 @@
       "relation": "authored"
     },
     "pixi.toml": {
-      "blob": "8f00de8cf3b5b9bfb8d09b6d5a9a9b2690c8fe8f",
+      "blob": "48cf68c8008e806830857833962de6d34dec5728",
       "relation": "authored"
     },
     "policy/estate-audits/0833929ed82d42cf3674a1565681625a9622827b.py": {
@@ -1228,6 +1228,10 @@
       "source_blob": "0ee6e90f0e5c2f13faee3fe2c63b97aa9653f166",
       "source_path": "tests/test_interval_q.mojo"
     },
+    "tests/lexical_audit/test_lexical_audit.py": {
+      "blob": "9234b3efbf5cb8a014bb12e188b3ee8b7e3c0384",
+      "relation": "authored"
+    },
     "tests/mojo_smoke/test_claims.mojo": {
       "blob": "f100afcd46bee27e16ae30a22f8d3f576b7f77a8",
       "relation": "authored"
@@ -1496,6 +1500,14 @@
     },
     "tools/exact_arithmetic_audit/audit.py": {
       "blob": "88bb5d898bdc64604fbdd755e0b48484985c7502",
+      "relation": "authored"
+    },
+    "tools/lexical_audit/__init__.py": {
+      "blob": "17b898f6f27c141b181db699742a041eef0be91a",
+      "relation": "authored"
+    },
+    "tools/lexical_audit/audit.py": {
+      "blob": "842f230902b082c22825fb1eb54e599003dbcfc3",
       "relation": "authored"
     },
     "tools/make_cyclotomic_field_vectors.py": {

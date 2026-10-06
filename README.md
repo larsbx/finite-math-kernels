@@ -49,6 +49,7 @@ fail closed; they exist for consumers with no Mojo toolchain (decision D1,
 | `tools/references` | Path and task reference checking under a consumer policy. |
 | `tools/claim_governance` | Claim-status, terminology and coverage checks under a consumer policy. |
 | `tools/exact_arithmetic_audit` | The section 7 exact-arithmetic consumer audit under a consumer policy; vendored with `vendoring` and `claim_governance`. |
+| `tools/lexical_audit` | Terminology, banned-token and prose audits (clause, context and declaration rules) under a consumer policy; vendored with `vendoring` and `claim_governance`. |
 
 Stable entry points in `finite_exact` and `finite_linear_algebra` are
 `rational`, `closed_interval`, `matrix`, `matrix3` and `rational_elimination`;
@@ -61,7 +62,7 @@ older module names (`rat_q`, `mat3`, `qlinalg`, …) remain for compatibility.
 | `reference/` | Independent Python reference semantics (non-authoritative). |
 | `oracles/` | Differential oracles, and the vendorable Python packages above. |
 | `schemas/`, `conformance/` | Normative contracts and their golden vectors. |
-| `tools/` | Vendorable `vendoring`, `references`, `claim_governance` and `exact_arithmetic_audit` packages; provenance; vector generators. |
+| `tools/` | Vendorable `vendoring`, `references`, `claim_governance`, `exact_arithmetic_audit` and `lexical_audit` packages; provenance; vector generators. |
 | `experiments/frontier/` | Polyglot experiments (non-authoritative). |
 | `experiments/mojo_issues/` | Reproductions and logged evidence for Mojo toolchain issues (non-authoritative; `pixi run mojo-issue-evidence`). |
 | `docs/` | Specifications; start with `docs/exact-arithmetic-public-boundary.md`. |
