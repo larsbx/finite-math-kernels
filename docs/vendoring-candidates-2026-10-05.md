@@ -112,6 +112,7 @@ Owner decisions taken for this round:
 | `root_isolation` (Mojo: `krawczyk`, `krawczyk_moore`, `boxes`), `oracles/root_isolation_py`, `docs/root-isolation-spec.md`; `quadratic_orbit/krawczyk_operator` is its `z^2 + c` application | Julia `reference/preperiodic.py`; Mandelbrot `certificates/krawczyk_witness.mojo`; bulbs `kernel/bulbford/{certify,antipode}.py` | all three run on it |
 | `tools/lexical_audit` | Julia and Mandelbrot `tools/audit_terminology.py`; bulbs `tools/audit_limits.py` | each keeps a thin policy |
 | `tools/polyglot_envelope` | `.polyglot/` in Julia, Mandelbrot and Pisot | each renders from its `polyglot.manifest.toml`, `--check` in CI |
+| `substitution_dynamics/{symmetry,endpoint_maps}.mojo` and named `barge_class`, `balanced_pair_algorithm`, `dumont_thomas`, `return_lattice`, `strong_coincidence` | Pisot `psc/{symmetry,endpoint_core,barge_class,bounded_bpa,dumont_thomas,return_lattice,coincidence_*}.mojo` | Pisot keeps thin alphabet-3 views, the C4 endpoint names and the Perron-field reserve |
 
 **Naming.** Per the owner's rule, every named literature object that sat
 inside a generic module now has its own cited module and the old module
@@ -227,6 +228,26 @@ rejected vectors (drift; re-rendering adds them; the schemas are
 byte-identical). `.polyglot/README.md` and `polyglot.manifest.toml` stay per
 repository; agent-icm's `render_estate.py` does not cover these files.
 
+**Substitution symmetry, endpoint maps, Barge class, bounded BPA,
+Dumont-Thomas numeration, return lattices, strong coincidence (Pisot).** The
+`ALPHABET = 3` constant was a parameter in all of them, and `perron_field3`
+was reached only through `oa_overlap_types.prolongable_point` and the
+coincidence automaton's pruning reserve. `substitution_dynamics` now has
+`symmetry` and `endpoint_maps` and the named modules `barge_class` (Barge
+2016; Barge-Kwapisz 2006), `balanced_pair_algorithm` (Livshits 1987;
+Sirvent-Solomyak 2002), `dumont_thomas` (Dumont-Thomas 1989), `return_lattice`
+(Durand 1998) and `strong_coincidence` (Arnoux-Ito 2001; Dekking 1978), the
+last generic over a caller-supplied `DifferenceBound`. Pisot's Perron-field
+reserve and its C4 A..G endpoint names stay local; its `psc` modules are thin
+alphabet-3 views. Pisot's 80 claim receipts and the stdout of 20 dependent
+census runs are byte-identical; FMK regressions pin the alphabet-3 outputs and
+check two- and four-letter cases against independent routes.
+
+**Vendoring checker.** Round 3 also fixed a regression of the round-2 change
+(#67): `pin` walked only `<root>/<name>/`, so a package pinned as single files
+under its root (Pisot's `proof_architecture`) could not be re-pinned. Listed
+files outside the package directory are pinned again and must still exist.
+
 Open for the owner after round 3:
 
 - Mandelbrot `certificates/certificate_sets.mojo` is modern syntax but not
@@ -238,16 +259,22 @@ Open for the owner after round 3:
 - The kneading prefix of an angle is a candidate for its own named module.
 - `root_isolation.boxes.is_point` and `closed_q`'s `ComplexIQ.is_singleton`
   (both new this round) test the same thing; one could call the other.
+- `substitution_dynamics/__init__.mojo` stays an index, not a code re-export:
+  re-exporting would make `finite_automata` a dependency of every consumer.
+- The state-capped balanced pair automaton still lives in `automaton.mojo`;
+  moving it into `balanced_pair_algorithm` would change a facade Julia and
+  Mandelbrot pin.
+- The Livshits 1987 citation (title, Russian Math. Surveys 42) should be
+  checked against the source.
 
 ## Found and deferred
 
 Each row is generic in substance but is not a byte-for-byte move today. The reason is the
-blocker; removing it is the next step. In round 3 the owner kept the last three rows
+blocker; removing it is the next step. In round 3 the owner kept these three rows
 deferred: one consumer each, so nothing is built until a second one appears.
 
 | Candidate | Where | Target | Blocker |
 |---|---|---|---|
-| Substitution symmetry, endpoint maps, Barge class, bounded BPA, Dumont-Thomas numeration, return lattices, strong-coincidence automata | Pisot `psc/{symmetry,endpoint_core,barge_class,bounded_bpa,dumont_thomas,return_lattice,coincidence_*}.mojo` | `substitution_dynamics` | `ALPHABET = 3` hardwired, or imports reach `perron_field3` |
 | PRNG, bounded histogram, hash mixing | Pisot `psc/{prng,histogram}.mojo`, three `_mix_hash` copies | a census-support package | no second consumer yet |
 | Manuscript and Markdown source validators, recorded-data checksums | Pisot `tools/check_{manuscript,markdown}_source.py`, `tests/test_recorded_data_integrity.py` | `tools/` | no second consumer yet |
 | `BPA.tla` and its models | Pisot `proof/tla/` | beside `substitution_dynamics` | its models are generated against Pisot's ledger |
