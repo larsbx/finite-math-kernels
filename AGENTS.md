@@ -77,15 +77,17 @@ more than one that passes vacuously.
   promoted claim has a record; a record without a proof is scaffolding and
   says so.
 - This repository is vendored byte-for-byte downstream.
-  `larsbx/pisot-substitution-conjecture-research` pins four Mojo packages,
-  three Python packages and one TLA+ module here by SHA-256 in its
-  `vendored.toml`, all at one upstream commit.
+  `larsbx/pisot-substitution-conjecture-research`,
+  `larsbx/finite-mandelbrot-research` and `larsbx/finite-julia-set-research`
+  each pin packages here by SHA-256 in their `vendored.toml`, every package at
+  one upstream commit that is on `main`.
 
 ## Standing prohibitions
 
 - Never change a package facade without saying so in the PR: downstream pins
-  it by digest and must re-vendor and re-pin (`tools/check_vendored_sync.py
-  pin NAME COMMIT`).
+  it by digest and must re-vendor and re-pin with the vendored checker
+  (`python tools/vendoring/check_vendored_sync.py pin NAME COMMIT`, with the
+  path of the consumer's vendored `vendoring/` package).
 - Never substitute a floating approximation for an exact predicate. Optimize
   the exact algorithm instead.
 - Never let a claim's status surface drift from its proof record; the audit
