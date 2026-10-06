@@ -1497,7 +1497,7 @@
       "source_path": "tests/test_interval_q.mojo"
     },
     "tests/lexical_audit/test_lexical_audit.py": {
-      "blob": "9234b3efbf5cb8a014bb12e188b3ee8b7e3c0384",
+      "blob": "f953110f3df36678814d96bf674ecfe0f5db20bb",
       "relation": "authored"
     },
     "tests/mojo_smoke/test_claims.mojo": {
@@ -1835,11 +1835,11 @@
       "relation": "authored"
     },
     "tools/lexical_audit/__init__.py": {
-      "blob": "17b898f6f27c141b181db699742a041eef0be91a",
+      "blob": "e623a44b8aa984741a0c978c3b03ad8b02913333",
       "relation": "authored"
     },
     "tools/lexical_audit/audit.py": {
-      "blob": "842f230902b082c22825fb1eb54e599003dbcfc3",
+      "blob": "cbf0166a8cfcb0e97cd645401766313d088fb27c",
       "relation": "authored"
     },
     "tools/make_cyclotomic_field_vectors.py": {

@@ -222,7 +222,7 @@ class ClauseRule(_Rule):
                 yield from flush()
                 marked = False
                 continue
-            if ITEM_RE.match(line):
+            if not markdown or ITEM_RE.match(line):
                 yield from flush()
             block.append((number, line, raw))
         yield from flush()

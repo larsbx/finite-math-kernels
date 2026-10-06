@@ -43,6 +43,10 @@ the stricter one unless that was an artefact:
 - a block of prose is a paragraph joined across its line breaks (Julia);
   bulbs read line by line, so a denial ending one line now reaches into the
   next line of the same clause;
+- a source file (any suffix but ``.md``) is read line by line, each line a
+  block of its own; Julia joined contiguous source lines like a paragraph,
+  so a denial on one comment line (``# no estimate``) reached a term on the
+  next (``# circle exists``);
 - a finding names the line of its match; Julia named the paragraph's first;
 - a denial is a whole word ending within reach before the term (Julia);
   bulbs searched a window cut at ``reach``, where a cut word could count;

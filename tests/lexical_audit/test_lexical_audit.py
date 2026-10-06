@@ -116,6 +116,13 @@ def test_source_files_are_read_with_their_comment_markers_removed():
     assert circles('"""A disc."""\n', name="tools/note.py") == ["disc"]
 
 
+def test_a_source_file_is_read_line_by_line():
+    # A denial on one comment line must not reach a term on the next.
+    assert circles("# no estimate\n# circle exists\n", name="tools/note.py") == ["circle"]
+    assert circles('"""Nothing is\nbounded by a disc."""\n', name="tools/note.py") == ["disc"]
+    assert not circles("# no circle exists\n", name="tools/note.py")
+
+
 def test_the_reported_line_is_the_line_of_the_match():
     hits = TERMINOLOGY.hits("docs/note.md", "First line of a paragraph\nthat names a circle.\n")
     assert [(hit.line, hit.text) for hit in hits] == [(2, "that names a circle.")]
