@@ -977,7 +977,7 @@
       "relation": "authored"
     },
     "kernel/substitution_dynamics/endpoint_maps.mojo": {
-      "blob": "504181809acbb8792d5fa726a3e95bb5964f2ad8",
+      "blob": "d813b2eb234590de0f8b1cacd74eb5f3993a47a4",
       "relation": "authored"
     },
     "kernel/substitution_dynamics/internal_address.mojo": {
@@ -1004,7 +1004,7 @@
       "source_path": "substitution_dynamics/substitution.mojo"
     },
     "kernel/substitution_dynamics/symmetry.mojo": {
-      "blob": "fdbf0e91db1f5d64d9f913ae37899711ee29bb67",
+      "blob": "3b12489754cd21de2b4af0adb0ce5b9a687a402c",
       "relation": "authored"
     },
     "kernel/substitution_dynamics/tuning.mojo": {

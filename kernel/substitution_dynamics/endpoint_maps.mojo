@@ -22,7 +22,7 @@ names the classes of one alphabet does so in its own vocabulary.
 from std.collections import Set
 
 from substitution_dynamics.balanced_pairs import sync_after
-from substitution_dynamics.symmetry import inverse_permutation, permutations, word_key, word_less
+from substitution_dynamics.symmetry import inverse_permutation, permutations, sort_words, word_key
 
 
 def fixed_points(h: List[Int]) -> Int:
@@ -118,7 +118,7 @@ def conjugacy_orbit(h: List[Int]) -> List[List[Int]]:
                 known = True
         if not known:
             out.append(image^)
-    sort(out, word_less)
+    sort_words(out)
     return out^
 
 
@@ -286,7 +286,7 @@ def classify_maps(size: Int) -> List[EndpointMapClass]:
         if word_key(rep) not in representatives:
             representatives.add(word_key(rep))
             canonical.append(rep^)
-    sort(canonical, word_less)
+    sort_words(canonical)
     var out = List[EndpointMapClass]()
     for i in range(len(canonical)):
         out.append(EndpointMapClass(canonical[i].copy()))

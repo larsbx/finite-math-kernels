@@ -30,6 +30,40 @@ def word_less(a: List[Int], b: List[Int]) -> Bool:
     return len(a) < len(b)
 
 
+def sort_words(mut words: List[List[Int]]):
+    """Sort `words` by `word_less`, stably, by a bottom-up merge sort.
+
+    Local rather than the standard library's comparator `sort`, whose
+    signature differs between the Mojo toolchains the consumers pin; every
+    caller sorts distinct words, so any correct sort gives the same order."""
+    var n = len(words)
+    var width = 1
+    while width < n:
+        var merged = List[List[Int]](capacity=n)
+        var lo = 0
+        while lo < n:
+            var mid = lo + width if lo + width < n else n
+            var hi = lo + 2 * width if lo + 2 * width < n else n
+            var i = lo
+            var j = mid
+            while i < mid and j < hi:
+                if word_less(words[j], words[i]):
+                    merged.append(words[j].copy())
+                    j += 1
+                else:
+                    merged.append(words[i].copy())
+                    i += 1
+            while i < mid:
+                merged.append(words[i].copy())
+                i += 1
+            while j < hi:
+                merged.append(words[j].copy())
+                j += 1
+            lo = hi
+        words = merged^
+        width *= 2
+
+
 def permutations(size: Int) -> List[List[Int]]:
     """The `size!` permutations of `0 .. size-1` as images `[p(0), ...]`,
     in lexicographic order, built by insertion into every position."""
@@ -46,7 +80,7 @@ def permutations(size: Int) -> List[List[Int]]:
                     extended.append(out[i][j])
                 grown.append(extended^)
         out = grown^
-    sort(out, word_less)
+    sort_words(out)
     return out^
 
 
