@@ -38,6 +38,7 @@ from substitution_dynamics.balanced_pair_algorithm import (
 )
 from substitution_dynamics.balanced_pairs import children, normalise, seed_states
 from substitution_dynamics.dumont_thomas import (
+    _covering_table,
     digits,
     image_lengths,
     letter_at,
@@ -216,6 +217,95 @@ def test_an_unrelated_letter_cannot_overflow_a_query() raises:
     assert_equal(len(digits(tau, 0, 100)), 100)
     assert_equal(letter_at(tau, 0, 100), 1)
     assert_equal(letter_at(tau, 0, 0), 0)
+
+
+def table_levels(tau: Substitution, letter: Int, position: Int) -> Int:
+    """The level of the table `digits` uses, or `-1` where it is refused."""
+    try:
+        return len(_covering_table(tau, letter, position)) - 1
+    except:
+        return -1
+
+
+def streamed_levels(tau: Substitution, letter: Int, position: Int) -> Int:
+    """`levels_to_cover`, or `-1` where it is refused."""
+    try:
+        return levels_to_cover(tau, letter, position)
+    except:
+        return -1
+
+
+def substituted_levels(tau: Substitution, letter: Int, position: Int, limit: Int) -> Int:
+    """The least `k <= limit` with `position < |tau^k(letter)|`, by
+    substituting the word itself; `-1` when no such level exists."""
+    var w: List[Int] = [letter]
+    for k in range(limit + 1):
+        if position < len(w):
+            return k
+        w = tau.apply(w)
+    return -1
+
+
+def test_levels_to_cover_is_the_level_of_the_digits_table() raises:
+    # Pisot, non-primitive, power-prolongable, disconnected (letter 2 never
+    # below 0 yet doubling) and stopped images (refusals) alike: the streamed
+    # count and the table `digits` builds name the same level, and the same
+    # refusal, at every position and every start letter.
+    var cases: List[Substitution] = [
+        tribonacci(),
+        fibonacci(),
+        four_letter(),
+        prolongable_form(tau_sigma()),
+        sub([[0, 1], [1]]),
+        sub([[0, 1], [1], [2, 2]]),
+        sub([[0], [1, 2], [2]]),
+        sub([[1], [2, 2], [2]]),
+        sub([[0, 1, 1], [1, 0]]),
+        sub([[0, 1, 2, 2], [2, 0], [1, 1, 0]]),
+        sub([[1, 0], [2], [3], [0, 1]]),
+    ]
+    var refusals = 0
+    for c in range(len(cases)):
+        ref tau = cases[c]
+        for letter in range(tau.size):
+            for n in range(130):
+                var streamed = streamed_levels(tau, letter, n)
+                assert_equal(streamed, table_levels(tau, letter, n))
+                if streamed < 0:
+                    refusals += 1
+                    assert_equal(substituted_levels(tau, letter, n, tau.size + 2), -1)
+                    continue
+                assert_equal(len(digits(tau, letter, n)), streamed)
+                if streamed <= 12:
+                    assert_equal(substituted_levels(tau, letter, n, 12), streamed)
+    assert_true(refusals > 0)
+    # Past the machine range of the unrelated letter 2 (it doubles), still in
+    # agreement on the slowly growing component.
+    var disconnected = sub([[0, 1], [1], [2, 2]])
+    for n in [64, 100, 1000]:
+        assert_equal(levels_to_cover(disconnected, 0, n), n)
+        assert_equal(table_levels(disconnected, 0, n), n)
+
+
+def test_levels_to_cover_streams_over_a_large_alphabet() raises:
+    # `0 -> 01, 1 -> 1` beside 2^17 - 2 inert letters `a -> a`: position N
+    # needs N levels. The streamed count keeps two vectors and advances only
+    # the descendants of 0, so it costs O(N + |A|). A table of every level
+    # would hold N * |A| = 10^6 * 2^17 machine integers (about a petabyte):
+    # it cannot pass this, however long it is given.
+    var size = 1 << 17
+    var images = List[List[Int]]()
+    images.append([0, 1])
+    images.append([1])
+    for a in range(2, size):
+        images.append([a])
+    var tau = sub(images)
+    var n = 1000000
+    assert_equal(levels_to_cover(tau, 0, n), n)
+    assert_equal(levels_to_cover(tau, 0, 0), 0)
+    # An inert letter's image stops growing at once: refused, not looped on.
+    assert_equal(streamed_levels(tau, 5, 1), -1)
+    assert_equal(levels_to_cover(tau, 5, 0), 0)
 
 
 def test_impossible_queries_are_refused() raises:
@@ -448,6 +538,10 @@ def main() raises:
     print("[PASS] test_a_slowly_growing_fixed_point_is_read_past_any_fixed_level")
     test_an_unrelated_letter_cannot_overflow_a_query()
     print("[PASS] test_an_unrelated_letter_cannot_overflow_a_query")
+    test_levels_to_cover_is_the_level_of_the_digits_table()
+    print("[PASS] test_levels_to_cover_is_the_level_of_the_digits_table")
+    test_levels_to_cover_streams_over_a_large_alphabet()
+    print("[PASS] test_levels_to_cover_streams_over_a_large_alphabet")
     test_impossible_queries_are_refused()
     print("[PASS] test_impossible_queries_are_refused")
     test_barge_class_alphabet3_fixtures()
@@ -462,4 +556,4 @@ def main() raises:
     print("[PASS] test_bounded_builder_agrees_with_the_materialising_one")
     test_an_over_budget_child_is_never_materialised()
     print("[PASS] test_an_over_budget_child_is_never_materialised")
-    print("12 numeration, Barge-class and bounded-builder Mojo tests passed.")
+    print("14 numeration, Barge-class and bounded-builder Mojo tests passed.")
