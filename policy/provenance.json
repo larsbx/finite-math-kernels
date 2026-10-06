@@ -636,11 +636,11 @@
       "relation": "authored"
     },
     "kernel/finite_polynomial/cyclotomic_field.mojo": {
-      "blob": "84ac505b2c9ee3cad3198b067f3ab836177e180d",
+      "blob": "cd86789ca002e5828147f7f5fd1176f0dc50cc9b",
       "relation": "authored"
     },
     "kernel/finite_polynomial/cyclotomic_q.mojo": {
-      "blob": "ef22a1f99121d8eece2130dc042915c648d91142",
+      "blob": "e846692d2824aec33f76d0484b1d080e487f16c3",
       "relation": "authored"
     },
     "kernel/finite_polynomial/distinct_degree.mojo": {

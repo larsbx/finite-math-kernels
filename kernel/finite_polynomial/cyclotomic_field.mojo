@@ -13,6 +13,8 @@
 # The compiler checks deg Phi_q = phi(q) for every conductor instantiated.
 # Rejection is sticky, and == is False whenever either side is rejected. No
 # angle, trigonometric function or floating-point number appears.
+#
+# Specification: docs/rational-interval-arithmetic-spec.md (coefficients are Q).
 
 from finite_exact.exact_decimal import q_decimal
 from finite_exact.field import ExactField

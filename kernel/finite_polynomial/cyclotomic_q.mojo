@@ -11,6 +11,8 @@
 # Equality is equality of conductor plus this reduced coefficient vector.
 # No numerical embedding, trigonometric function, angle measurement, or
 # approximate complex value appears anywhere in this module.
+#
+# Specification: docs/rational-interval-arithmetic-spec.md (coefficients are Q).
 
 from finite_exact.integer_gcd import gcd_int
 from finite_exact.bigint_z import (
