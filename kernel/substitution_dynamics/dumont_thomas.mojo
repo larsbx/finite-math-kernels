@@ -132,33 +132,71 @@ def _descendants(tau: Substitution, letter: Int) -> List[Bool]:
     return seen^
 
 
-def levels_to_cover(tau: Substitution, letter: Int, position: Int) raises -> Int:
-    """The least `k` with `position < |tau^k(letter)|`.
+def _next_reached(
+    tau: Substitution, lengths: List[Int], reach: List[Bool], cap: Int
+) -> List[Int]:
+    """`min(|tau^(k+1)(a)|, cap)` for each letter `a` in `reach`, from the same
+    for `k`; letters outside `reach` keep their value and are never read.
 
-    No level is capped. Images are non-erasing, so every length is
-    non-decreasing in `k`, and the lengths over the descendants of `letter`
-    evolve on their own: once one step leaves them all unchanged they never
-    change again, and a position past `|tau^k(letter)|` then lies past the
-    whole fixed point and is refused. Until then their sum grows every step,
-    so the search ends -- at the level, at that refusal, or at the checked
-    overflow of `image_lengths`."""
+    `reach` is closed under taking image letters, so these values depend on
+    one another alone: a letter that never occurs below the start letter
+    cannot overflow or refuse a query about it. The saturated recursion is
+    exact -- `min(sum min(t_b, cap), cap) = min(sum t_b, cap)` -- and cannot
+    overflow, since a partial sum stops at `cap` before it is formed."""
+    var next = lengths.copy()
+    for a in range(tau.size):
+        if not reach[a]:
+            continue
+        var total = 0
+        ref image = tau.images[a]
+        for i in range(len(image)):
+            if lengths[image[i]] >= cap - total:
+                total = cap
+                break
+            total += lengths[image[i]]
+        next[a] = total
+    return next^
+
+
+def _covering_table(tau: Substitution, letter: Int, position: Int) raises -> List[List[Int]]:
+    """`table[k][b] = min(|tau^k(b)|, position + 1)` for the descendants `b`
+    of `letter`, for `k = 0 .. K` with `K` the least level covering
+    `position`; refused when no level does.
+
+    Lengths never decrease (images are non-erasing), so the saturated vector
+    over the descendants stops changing after finitely many steps, and a step
+    that changes nothing is a fixed point: the position then lies past the
+    whole fixed point and is refused, never looped on. A saturated length is
+    exact wherever `digits` compares or subtracts it, since it subtracts only
+    blocks shorter than what is left of the position."""
     _require_letter(tau, letter)
     if position < 0:
         raise Error("a position is not negative")
+    if position == Int.MAX:
+        raise Error("a position past the machine integer range")
+    var cap = position + 1
     var reach = _descendants(tau, letter)
-    var lengths = List[Int](length=tau.size, fill=1)
-    var k = 0
-    while lengths[letter] <= position:
-        var next = _next_lengths(tau, lengths)
+    var table = List[List[Int]]()
+    table.append(List[Int](length=tau.size, fill=1))
+    while table[len(table) - 1][letter] <= position:
+        ref last = table[len(table) - 1]
+        var next = _next_reached(tau, last, reach, cap)
         var grew = False
         for a in range(tau.size):
-            if reach[a] and next[a] != lengths[a]:
+            if reach[a] and next[a] != last[a]:
                 grew = True
         if not grew:
             raise Error("position lies past the letter's image, which has stopped growing")
-        lengths = next^
-        k += 1
-    return k
+        table.append(next^)
+    return table^
+
+
+def levels_to_cover(tau: Substitution, letter: Int, position: Int) raises -> Int:
+    """The least `k` with `position < |tau^k(letter)|`.
+
+    No level is capped, and only the letters below `letter` are counted: see
+    `_covering_table`. The search ends at the level or at a refusal."""
+    return len(_covering_table(tau, letter, position)) - 1
 
 
 def digits(tau: Substitution, letter: Int, position: Int) raises -> List[Int]:
@@ -167,11 +205,8 @@ def digits(tau: Substitution, letter: Int, position: Int) raises -> List[Int]:
     The digit at each step is the index of the child block containing what is
     left of the position; the recursion ends with nothing left, at the letter
     that stands there."""
-    var level = levels_to_cover(tau, letter, position)
-    var table = List[List[Int]]()  # table[k] = |tau^k(a)| for each a
-    table.append(List[Int](length=tau.size, fill=1))
-    for k in range(1, level):
-        table.append(_next_lengths(tau, table[k - 1]))
+    var table = _covering_table(tau, letter, position)
+    var level = len(table) - 1
     var out = List[Int]()
     var current = letter
     var rest = position

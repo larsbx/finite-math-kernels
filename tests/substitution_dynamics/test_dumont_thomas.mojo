@@ -198,6 +198,17 @@ def test_a_slowly_growing_fixed_point_is_read_past_any_fixed_level() raises:
     assert_true(refuses_letter_at(bounded, 0, 2))
 
 
+def test_an_unrelated_letter_cannot_overflow_a_query() raises:
+    # Letter 2 doubles and never occurs in the fixed point at 0, whose
+    # prefix grows by one letter per level: past level 63 its length would
+    # leave the machine range, which must not refuse a position at 0.
+    var tau = sub([[0, 1], [1], [2, 2]])
+    assert_equal(levels_to_cover(tau, 0, 100), 100)
+    assert_equal(len(digits(tau, 0, 100)), 100)
+    assert_equal(letter_at(tau, 0, 100), 1)
+    assert_equal(letter_at(tau, 0, 0), 0)
+
+
 def test_impossible_queries_are_refused() raises:
     var tau = tribonacci()
     var flags: List[Bool] = [False, False, False, False, False]
@@ -310,6 +321,8 @@ def main() raises:
     print("[PASS] test_prolongable_points_are_the_first_letter_cycles")
     test_a_slowly_growing_fixed_point_is_read_past_any_fixed_level()
     print("[PASS] test_a_slowly_growing_fixed_point_is_read_past_any_fixed_level")
+    test_an_unrelated_letter_cannot_overflow_a_query()
+    print("[PASS] test_an_unrelated_letter_cannot_overflow_a_query")
     test_impossible_queries_are_refused()
     print("[PASS] test_impossible_queries_are_refused")
     test_barge_class_alphabet3_fixtures()
@@ -318,4 +331,4 @@ def main() raises:
     print("[PASS] test_barge_class_other_alphabets")
     test_bounded_builder_matches_the_canonical_one()
     print("[PASS] test_bounded_builder_matches_the_canonical_one")
-    print("8 numeration, Barge-class and bounded-builder Mojo tests passed.")
+    print("9 numeration, Barge-class and bounded-builder Mojo tests passed.")
