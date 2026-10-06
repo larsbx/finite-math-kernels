@@ -20,12 +20,13 @@ last coefficient is nonzero; the empty tuple is zero. Standard library only.
 from __future__ import annotations
 
 from itertools import product
+from math import isqrt
 
 Poly = tuple[int, ...]
 
 
 def is_prime(n: int) -> bool:
-    return n >= 2 and all(n % d for d in range(2, int(n**0.5) + 1))
+    return n >= 2 and all(n % d for d in range(2, isqrt(n) + 1))
 
 
 def poly(p: int, coeffs) -> Poly:

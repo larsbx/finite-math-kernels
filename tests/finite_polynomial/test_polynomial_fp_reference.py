@@ -55,6 +55,15 @@ def test_scalar_pins():
     assert r.prime_divisors(360) == [2, 3, 5]
 
 
+def test_is_prime_bounds_trial_division_exactly_for_any_size():
+    # A float square root overflows past ~1e308 and rounds past 2^53. Trial
+    # division to sqrt(n) of a prime square that large never finishes, so the
+    # overflow is what a test can reach: a big composite with a small factor.
+    assert not r.is_prime(2**1100)
+    assert not r.is_prime(3 * (2**1279 - 1))
+    assert not r.is_prime(5**2) and not r.is_prime(7919**2) and r.is_prime(7919)
+
+
 def strong_probable_prime(n: int, base: int) -> bool:
     d, s = n - 1, 0
     while d % 2 == 0:
