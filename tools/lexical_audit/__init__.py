@@ -77,7 +77,10 @@ the stricter one unless that was an artefact:
   each, on standard output.
 
 On the three consumers' trees at the commit they adopted this package, each
-policy reports nothing, as each local audit did.
+policy reported nothing, as each local audit did. Reading a source file line
+by line, which came later, reports one place in Julia's tree:
+``kernel/julia_orbit.mojo`` line 8, where the denial of an enumeration
+("No circle, / disk, arc, or polar angle") is wrapped across comment lines.
 
 Dependencies: the standard library, ``claim_governance`` (for ``lexing``)
 and ``vendoring`` (for ``vendored_directories``); a consumer vendors the three
