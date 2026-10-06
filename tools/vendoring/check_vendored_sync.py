@@ -5,7 +5,7 @@ A consumer repository copies each upstream package directory byte-for-byte
 and records, per package, the upstream repository, the upstream commit, the
 local root that acts as the Mojo include path, and the SHA-256 of every
 vendored file. This script verifies that every pinned file exists with the
-pinned digest and that no unlisted ``.mojo`` or ``.py`` file sits inside a
+pinned digest and that no unlisted file (bytecode caches aside) sits inside a
 vendored package directory, so no local patch can land unnoticed. Protocol:
 the README of each consumer repository.
 
@@ -49,7 +49,6 @@ from pathlib import Path, PurePosixPath
 MANIFEST_NAME = "vendored.toml"
 ESTATE = "ESTATE.toml"
 COMMIT_RE = re.compile(r"^[0-9a-f]{40}$")
-SOURCE_SUFFIXES = {".mojo", ".py"}
 
 
 def repo_root(start: Path | None = None) -> Path:
@@ -67,8 +66,10 @@ def repo_root(start: Path | None = None) -> Path:
     return here.parents[1]
 
 
-def sources(package_dir: Path) -> list[Path]:
-    return sorted(p for p in package_dir.glob("**/*") if p.suffix in SOURCE_SUFFIXES) if package_dir.exists() else []
+def package_files(package_dir: Path) -> list[Path]:
+    """Every file of a vendored package directory except Python bytecode caches."""
+    return sorted(p for p in package_dir.glob("**/*")
+                  if p.is_file() and p.suffix != ".pyc" and "__pycache__" not in p.parts)
 
 
 def sha256(path: Path) -> str:
@@ -122,7 +123,7 @@ def check_package(pkg: dict, root: Path) -> list[str]:
             errors.append(f"{name}: {rel} differs from {pkg['repository']}@{pkg['commit'][:12]}")
     package_dir = base / name
     listed = set(pkg["files"])
-    for path in sources(package_dir):
+    for path in package_files(package_dir):
         rel = path.relative_to(base).as_posix()
         if rel not in listed:
             errors.append(f"{name}: {rel} is not pinned in vendored.toml")
@@ -216,10 +217,9 @@ def pin(name: str, commit: str, root: Path | None = None, manifest: Path | None 
     if target is None:
         return [f"no package named {name!r} in {manifest.name}"]
     base = root / target["root"]
-    # The pin set is the fresh copy: every source file it holds, plus each
-    # listed non-source file it still holds. A file upstream removed drops out.
-    files = sorted({rel for rel in target["files"] if (base / rel).is_file()}
-                   | {p.relative_to(base).as_posix() for p in sources(base / name)})
+    # The pin set is the fresh copy, every file it holds: a file upstream
+    # removed drops out and one it added or renamed is pinned.
+    files = [p.relative_to(base).as_posix() for p in package_files(base / name)]
     if not files:
         return [f"{name}: nothing to pin under {target['root']}/{name}"]
     target["files"] = {rel: sha256(base / rel) for rel in files}

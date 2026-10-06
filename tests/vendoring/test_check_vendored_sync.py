@@ -134,6 +134,37 @@ def test_pin_refuses_a_package_with_nothing_left_to_pin(tmp_path):
     assert checker.pin("widget", "a" * 40, tmp_path, manifest) == ["widget: nothing to pin under src/widget"]
 
 
+def test_pin_records_a_non_source_file_that_upstream_renamed(tmp_path):
+    build_consumer(tmp_path)
+    manifest = tmp_path / "vendored.toml"
+    manifest.write_text(manifest.read_text().replace(
+        "[package.files]\n", '[package.files]\n"widget/Spec.tla" = "0"\n'), encoding="utf-8")
+    (tmp_path / "src" / "widget" / "Model.tla").write_text("---- MODULE Model ----\n", encoding="utf-8")
+    assert checker.pin("widget", "a" * 40, tmp_path, manifest) == []
+    pinned = manifest.read_text()
+    assert '"widget/Model.tla"' in pinned and "Spec.tla" not in pinned
+    assert checker.check(tmp_path, manifest) == []
+
+
+def test_an_unlisted_non_source_file_inside_the_package_is_drift(tmp_path):
+    build_consumer(tmp_path)
+    (tmp_path / "src" / "widget" / "Model.tla").write_text("---- MODULE Model ----\n", encoding="utf-8")
+    assert checker.check(tmp_path, tmp_path / "vendored.toml") == [
+        "widget: widget/Model.tla is not pinned in vendored.toml"]
+
+
+def test_bytecode_caches_are_neither_pinned_nor_drift(tmp_path):
+    build_consumer(tmp_path)
+    manifest = tmp_path / "vendored.toml"
+    cache = tmp_path / "src" / "widget" / "__pycache__"
+    cache.mkdir()
+    (cache / "core.cpython-311.pyc").write_bytes(b"\0")
+    (tmp_path / "src" / "widget" / "stale.pyc").write_bytes(b"\0")
+    assert checker.check(tmp_path, manifest) == []
+    assert checker.pin("widget", "a" * 40, tmp_path, manifest) == []
+    assert ".pyc" not in manifest.read_text()
+
+
 def test_pin_refuses_a_short_commit(tmp_path):
     build_consumer(tmp_path)
     manifest = tmp_path / "vendored.toml"
