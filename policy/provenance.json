@@ -865,6 +865,22 @@
       "source_blob": "fd1aaef547d8ed6c659c98785cf41865ec859fcf",
       "source_path": "tools/property_oracle.py"
     },
+    "oracles/rational_dynamics/__init__.py": {
+      "blob": "cbcb49fc70af246316892f3fe6baf2f6af389237",
+      "relation": "authored"
+    },
+    "oracles/rational_dynamics/arithmetic.py": {
+      "blob": "7510b41e1f7b4b6e08eeefe8ee652e5834b31ea8",
+      "relation": "authored"
+    },
+    "oracles/rational_dynamics/doubling.py": {
+      "blob": "e50166f6107bd51edbf480b9eac0cb6bf87d41de",
+      "relation": "authored"
+    },
+    "oracles/rational_dynamics/farey.py": {
+      "blob": "5d4395a8db6205035b77b050babc8fbb8ac7ad64",
+      "relation": "authored"
+    },
     "pixi.toml": {
       "blob": "0ccf41722ce8820eea56bfff0be4da8019106f06",
       "relation": "authored"
@@ -905,7 +921,7 @@
       "relation": "authored"
     },
     "reference/rational_dynamics_reference.py": {
-      "blob": "8fc015487f3601598d6f4bf801f42348056a08dd",
+      "blob": "2e8feeb7c3999add7f0c28893c452f25afe3e711",
       "relation": "authored"
     },
     "reference/tuning_reference.py": {
@@ -1294,6 +1310,10 @@
     },
     "tests/rational_dynamics/test_rational_dynamics.mojo": {
       "blob": "316e8f4a17b56dc7a63d3b90f0aef6773eaadba1",
+      "relation": "authored"
+    },
+    "tests/rational_dynamics/test_rational_dynamics_oracle.py": {
+      "blob": "c783e7a74324b6521b36f2b9cb08f172ae2a52ec",
       "relation": "authored"
     },
     "tests/rational_dynamics/test_rational_dynamics_reference.py": {
