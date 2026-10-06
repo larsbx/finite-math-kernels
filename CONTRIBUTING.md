@@ -77,7 +77,8 @@ the pull request template has a place for exactly that.
   says so.
 - This repository is vendored byte-for-byte downstream.
   `larsbx/pisot-substitution-conjecture-research`,
-  `larsbx/finite-mandelbrot-research` and `larsbx/finite-julia-set-research`
+  `larsbx/finite-mandelbrot-research`, `larsbx/finite-julia-set-research`,
+  `larsbx/mandelbrot-bulbs-and-ford-circles-research` and `larsbx/math-vizops`
   each pin packages here by SHA-256 in their `vendored.toml`, every package at
   one upstream commit that is on `main`.
 

@@ -388,8 +388,11 @@ def poly_fp_powmod(base: PolyFp, e: Int, f: PolyFp) raises -> PolyFp:
 
 
 def poly_fp_frobenius_power(f: PolyFp, k: Int) raises -> PolyFp:
-    """x^(p^k) mod f, by k p-th powers (square and multiply, no Frobenius matrix)."""
+    """x^(p^k) mod f, k >= 0, by k p-th powers (square and multiply, no
+    Frobenius matrix)."""
     require_field(f)
+    if k < 0:
+        raise Error("negative exponent")
     var h = poly_fp_rem(poly_fp_x(f.modulus), f)
     for _ in range(k):
         h = poly_fp_powmod(h, f.modulus.n, f)

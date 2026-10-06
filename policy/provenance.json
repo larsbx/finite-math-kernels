@@ -1,7 +1,7 @@
 {
   "files": {
     ".claude/skills/steward/SKILL.md": {
-      "blob": "350231c8aadeb1356a04a7cdb0136845cff80898",
+      "blob": "47e1006db4476c7ebbf608c1cada85e8ba1aea31",
       "relation": "authored"
     },
     ".forgejo/PULL_REQUEST_TEMPLATE.md": {
@@ -49,7 +49,7 @@
       "relation": "authored"
     },
     "AGENTS.md": {
-      "blob": "5670e05268743e8ccb33f680c726a7cfa6cf59c2",
+      "blob": "743c55fcd1e70c008508659f023d2a61e23cdc06",
       "relation": "authored"
     },
     "ARCHITECTURE.md": {
@@ -57,7 +57,7 @@
       "relation": "authored"
     },
     "CONTRIBUTING.md": {
-      "blob": "42861b37d65eb4238c984446c988c7763330c7d6",
+      "blob": "eb1188a01c0a3c7790e39c60db2a6349712f728a",
       "relation": "authored"
     },
     "ESTATE.toml": {
@@ -708,7 +708,7 @@
       "relation": "authored"
     },
     "kernel/finite_polynomial/polynomial_fp.mojo": {
-      "blob": "b274f256e638e637fe1afc180b769711cc2a51f9",
+      "blob": "1f8a06f5888263460365499c2339c387b1c3bb63",
       "relation": "authored"
     },
     "kernel/finite_polynomial/polynomial_z.mojo": {
@@ -947,7 +947,7 @@
       "source_path": "substitution_dynamics/automaton.mojo"
     },
     "kernel/substitution_dynamics/balanced_pair_algorithm.mojo": {
-      "blob": "e6c8cb0023c11cfacdd33d8b19034fbf15ab035c",
+      "blob": "9223a7b8018416c9e8fb2a0989b9930e50112b2a",
       "relation": "authored"
     },
     "kernel/substitution_dynamics/balanced_pairs.mojo": {
@@ -1454,7 +1454,7 @@
       "relation": "authored"
     },
     "tests/finite_polynomial/test_polynomial_fp.mojo": {
-      "blob": "ee4ce248b88a4ce855f588bfc328cf8e63ba0401",
+      "blob": "4642377d36744e72a16a0634bb2c9a1d119e107b",
       "relation": "authored"
     },
     "tests/finite_polynomial/test_polynomial_fp_reference.py": {
@@ -1677,7 +1677,7 @@
       "relation": "authored"
     },
     "tests/substitution_dynamics/test_dumont_thomas.mojo": {
-      "blob": "629f3ed9c57ada0a4a20fd7e6be46fd522f788c9",
+      "blob": "c751d181339e1a8e030773d5f66c4a7946301020",
       "relation": "authored"
     },
     "tests/substitution_dynamics/test_return_lattice.mojo": {
