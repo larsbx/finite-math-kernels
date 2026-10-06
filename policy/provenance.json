@@ -1835,7 +1835,7 @@
       "relation": "authored"
     },
     "tools/lexical_audit/__init__.py": {
-      "blob": "d2170eed6140f28ba454d9a5e168fc795c2ece92",
+      "blob": "52cef15815e1d96d5f0fa5b326e35bc86d865b8e",
       "relation": "authored"
     },
     "tools/lexical_audit/audit.py": {

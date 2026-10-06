@@ -78,9 +78,9 @@ the stricter one unless that was an artefact:
 
 On the three consumers' trees at the commit they adopted this package, each
 policy reported nothing, as each local audit did. Reading a source file line
-by line, which came later, reports one place in Julia's tree:
-``kernel/julia_orbit.mojo`` line 8, where the denial of an enumeration
-("No circle, / disk, arc, or polar angle") is wrapped across comment lines.
+by line, which came later, reports one place in Julia's tree: a comment in
+its kernel orbit module where the denial of an enumeration ("No circle, /
+disk, arc, or polar angle") is wrapped across two comment lines.
 
 Dependencies: the standard library, ``claim_governance`` (for ``lexing``)
 and ``vendoring`` (for ``vendored_directories``); a consumer vendors the three
