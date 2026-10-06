@@ -153,6 +153,32 @@ def test_prolongable_points_are_the_first_letter_cycles() raises:
     assert_true(refused)
 
 
+def refuses_letter_at(tau: Substitution, letter: Int, position: Int) -> Bool:
+    try:
+        _ = letter_at(tau, letter, position)
+    except:
+        return True
+    return False
+
+
+def test_a_slowly_growing_fixed_point_is_read_past_any_fixed_level() raises:
+    # `0 -> 01, 1 -> 1`: |tau^k(0)| = k + 1, so position n needs level n.
+    var tau = sub([[0, 1], [1]])
+    assert_equal(levels_to_cover(tau, 0, 65), 65)
+    assert_equal(len(digits(tau, 0, 65)), 65)
+    assert_equal(letter_at(tau, 0, 0), 0)
+    for n in range(1, 200):
+        assert_equal(letter_at(tau, 0, n), 1)
+    # A letter whose images stop growing has no position past them: refused,
+    # at once, never a wrong digit and never a loop.
+    var fixed = sub([[0], [1, 2], [2]])  # 0 stays one letter; 1 grows linearly
+    assert_true(refuses_letter_at(fixed, 0, 1))
+    assert_equal(letter_at(fixed, 1, 500), 2)
+    var bounded = sub([[1], [2, 2], [2]])  # |tau^k(0)| = 1, 1, 2, 2, ...
+    assert_equal(letter_at(bounded, 0, 1), 2)
+    assert_true(refuses_letter_at(bounded, 0, 2))
+
+
 def test_impossible_queries_are_refused() raises:
     var tau = tribonacci()
     var flags: List[Bool] = [False, False, False, False, False]
@@ -263,6 +289,8 @@ def main() raises:
     print("[PASS] test_counts_are_image_lengths_and_incidence_entries")
     test_prolongable_points_are_the_first_letter_cycles()
     print("[PASS] test_prolongable_points_are_the_first_letter_cycles")
+    test_a_slowly_growing_fixed_point_is_read_past_any_fixed_level()
+    print("[PASS] test_a_slowly_growing_fixed_point_is_read_past_any_fixed_level")
     test_impossible_queries_are_refused()
     print("[PASS] test_impossible_queries_are_refused")
     test_barge_class_alphabet3_fixtures()
@@ -271,4 +299,4 @@ def main() raises:
     print("[PASS] test_barge_class_other_alphabets")
     test_bounded_builder_matches_the_canonical_one()
     print("[PASS] test_bounded_builder_matches_the_canonical_one")
-    print("7 numeration, Barge-class and bounded-builder Mojo tests passed.")
+    print("8 numeration, Barge-class and bounded-builder Mojo tests passed.")

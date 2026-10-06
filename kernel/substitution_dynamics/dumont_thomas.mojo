@@ -84,6 +84,19 @@ def max_image_length(tau: Substitution) -> Int:
     return longest
 
 
+def _next_lengths(tau: Substitution, lengths: List[Int]) raises -> List[Int]:
+    """`|tau^(k+1)(a)|` for each `a`, from `|tau^k(b)|` for each `b`, checked."""
+    var next = List[Int](length=tau.size, fill=0)
+    for a in range(tau.size):
+        ref image = tau.images[a]
+        for i in range(len(image)):
+            var add = lengths[image[i]]
+            if next[a] > Int.MAX - add:
+                raise Error("image length exceeds the machine integer range")
+            next[a] += add
+    return next^
+
+
 def image_lengths(tau: Substitution, level: Int) raises -> List[Int]:
     """`|tau^level(a)|` for each letter `a`, by repeated substitution counts.
 
@@ -96,29 +109,52 @@ def image_lengths(tau: Substitution, level: Int) raises -> List[Int]:
         raise Error("a level is not negative")
     var lengths = List[Int](length=tau.size, fill=1)
     for _ in range(level):
-        var next = List[Int](length=tau.size, fill=0)
-        for a in range(tau.size):
-            ref image = tau.images[a]
-            for i in range(len(image)):
-                var add = lengths[image[i]]
-                if next[a] > Int.MAX - add:
-                    raise Error("image length exceeds the machine integer range")
-                next[a] += add
-        lengths = next^
+        lengths = _next_lengths(tau, lengths)
     return lengths^
 
 
+def _descendants(tau: Substitution, letter: Int) -> List[Bool]:
+    """The letters occurring in some `tau^k(letter)`, `letter` included."""
+    var seen = List[Bool](length=tau.size, fill=False)
+    seen[letter] = True
+    var stack: List[Int] = [letter]
+    while len(stack) > 0:
+        var a = stack.pop()
+        ref image = tau.images[a]
+        for i in range(len(image)):
+            if not seen[image[i]]:
+                seen[image[i]] = True
+                stack.append(image[i])
+    return seen^
+
+
 def levels_to_cover(tau: Substitution, letter: Int, position: Int) raises -> Int:
-    """The least `k` with `position < |tau^k(letter)|`."""
+    """The least `k` with `position < |tau^k(letter)|`.
+
+    No level is capped. Images are non-erasing, so every length is
+    non-decreasing in `k`, and the lengths over the descendants of `letter`
+    evolve on their own: once one step leaves them all unchanged they never
+    change again, and a position past `|tau^k(letter)|` then lies past the
+    whole fixed point and is refused. Until then their sum grows every step,
+    so the search ends -- at the level, at that refusal, or at the checked
+    overflow of `image_lengths`."""
+    _require_letter(tau, letter)
     if position < 0:
         raise Error("a position is not negative")
+    var reach = _descendants(tau, letter)
+    var lengths = List[Int](length=tau.size, fill=1)
     var k = 0
-    while True:
-        if image_lengths(tau, k)[letter] > position:
-            return k
+    while lengths[letter] <= position:
+        var next = _next_lengths(tau, lengths)
+        var grew = False
+        for a in range(tau.size):
+            if reach[a] and next[a] != lengths[a]:
+                grew = True
+        if not grew:
+            raise Error("position lies past the letter's image, which has stopped growing")
+        lengths = next^
         k += 1
-        if k > 64:
-            raise Error("position is beyond the level cap")
+    return k
 
 
 def digits(tau: Substitution, letter: Int, position: Int) raises -> List[Int]:
@@ -128,11 +164,15 @@ def digits(tau: Substitution, letter: Int, position: Int) raises -> List[Int]:
     left of the position; the recursion ends with nothing left, at the letter
     that stands there."""
     var level = levels_to_cover(tau, letter, position)
+    var table = List[List[Int]]()  # table[k] = |tau^k(a)| for each a
+    table.append(List[Int](length=tau.size, fill=1))
+    for k in range(1, level):
+        table.append(_next_lengths(tau, table[k - 1]))
     var out = List[Int]()
     var current = letter
     var rest = position
     for step in range(level, 0, -1):
-        var lengths = image_lengths(tau, step - 1)
+        ref lengths = table[step - 1]
         ref image = tau.images[current]
         var index = 0
         while index < len(image):
