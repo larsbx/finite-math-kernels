@@ -161,7 +161,9 @@ class ClauseRule(_Rule):
        space also matching a hyphen), which is blanked before matching;
     3. it lies in a section whose heading title matches an ``exempt_sections``
        pattern (``re.search``), including that section's subsections; or
-    4. it lies in the paragraph directly after ``<!-- marker: reason -->``.
+    4. it lies in the block directly after ``<!-- marker: reason -->``: the
+       next paragraph, or only the first item of a list or row of a table
+       (a blank line or a heading before any block disarms the marker).
 
     Every ``exempt_sections`` pattern must match a heading in scope, so that
     renaming a section cannot silently drop or widen its exemption.
@@ -195,9 +197,11 @@ class ClauseRule(_Rule):
         block: list[tuple[int, str, str]] = []
 
         def flush() -> Iterator[list[tuple[int, str, str]]]:
-            nonlocal block
-            if block and exempt_level is None and not marked:
-                yield block
+            nonlocal block, marked
+            if block:
+                if exempt_level is None and not marked:
+                    yield block
+                marked = False  # the marker covers this one block only
             block = []
 
         for number, raw in enumerate(text.splitlines(), start=1):

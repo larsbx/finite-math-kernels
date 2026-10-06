@@ -111,6 +111,16 @@ def test_the_marker_exempts_exactly_one_paragraph():
     assert circles("<!-- terminology-exempt: x -->\n\nEvery circle.\n") == ["circle"], "a blank line disarms the marker"
 
 
+def test_the_marker_is_consumed_by_the_one_block_after_it():
+    # A list item and a table row are each a block: the marker covers the first only.
+    marker = "<!-- terminology-exempt: a classical device -->\n"
+    assert circles(marker + "- a classical circle\n- a later circle\n") == ["circle"]
+    assert [hit.line for hit in TERMINOLOGY.hits("docs/note.md", marker + "- a disc\n- a circle\n- an arc\n")] == [3, 4]
+    assert circles(marker + "| a | disc |\n| b | circle |\n") == ["circle"]
+    assert circles(marker + "Every circle passes.\n- a later disc\n") == ["disc"]
+    assert circles("# <!-- terminology-exempt: x -->\n# a circle\n# a disc\n", name="tools/note.py") == ["disc"]
+
+
 def test_source_files_are_read_with_their_comment_markers_removed():
     assert circles("# The unit circle is the boundary here.\n", name="tools/note.py") == ["circle"]
     assert circles('"""A disc."""\n', name="tools/note.py") == ["disc"]
