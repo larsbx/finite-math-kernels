@@ -61,11 +61,11 @@
       "relation": "authored"
     },
     "ESTATE.toml": {
-      "blob": "4abe6406a7db3af9e30e70c6bac4c62e0c5e6ace",
+      "blob": "ccbcd4a40386e99954f92c557c1b7ccae39a4784",
       "relation": "authored"
     },
     "README.md": {
-      "blob": "6b3595f239ce1077b191a89a749abefbd2b0e274",
+      "blob": "191768eab03209a1e11d9cbaf2484dd35e710878",
       "relation": "authored"
     },
     "conformance/certified_records_v1.txt": {
@@ -1252,6 +1252,10 @@
       "blob": "75722fac9fd69614ecb16ff72736f12dec9258a0",
       "relation": "authored"
     },
+    "tests/polyglot/test_polyglot_envelope.py": {
+      "blob": "b9a439099418e221dbba7d0f76efd179663ad153",
+      "relation": "authored"
+    },
     "tests/projective/test_projective.mojo": {
       "blob": "e6ccedb5ba65fb777e0debf6915b9a542521e1c8",
       "relation": "authored"
@@ -1392,7 +1396,7 @@
       "relation": "authored"
     },
     "tools/check_references.py": {
-      "blob": "bc926420ee6ba4b5f6d7973563db1f273966bd65",
+      "blob": "105204f6ab65b2b962e4cb6d0f8d2fbe2c8be9f2",
       "relation": "authored"
     },
     "tools/claim_governance/__init__.py": {
@@ -1528,6 +1532,22 @@
       "source": "finite_proof_records",
       "source_blob": "dc86359eff444feb288cb63e35dad6b5849f9869",
       "source_path": "tools/make_vectors.py"
+    },
+    "tools/polyglot_envelope/__init__.py": {
+      "blob": "6b9ce01b9a4257818e1527d6a65e2eb79ca3252d",
+      "relation": "authored"
+    },
+    "tools/polyglot_envelope/boundary-envelope-v1.schema.json": {
+      "blob": "43b723590eb87638d9ac33781d8c280ce57705f2",
+      "relation": "authored"
+    },
+    "tools/polyglot_envelope/conformance-v1.json": {
+      "blob": "8ba341ddfbf7f0f21db0fb8536e7c9200012d5ee",
+      "relation": "authored"
+    },
+    "tools/polyglot_envelope/render.py": {
+      "blob": "96d7922de00a098828c501aa9986823bf8af0868",
+      "relation": "authored"
     },
     "tools/provenance.py": {
       "blob": "85ddc505c5035a07738f12c2e48e71cfd42e5e6b",

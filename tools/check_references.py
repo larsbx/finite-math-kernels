@@ -40,6 +40,9 @@ EXTERNAL: dict[str, str] = {
     # The manifest the vendoring checker reads lives in whichever repository
     # vendors these packages, never here: this monorepo is the upstream.
     "vendored.toml": "each consumer repository that vendors packages from this monorepo",
+    # Likewise the facts `polyglot_envelope` renders from: this repository's
+    # own rendering is checked by tests/polyglot instead.
+    "polyglot.manifest.toml": "each consumer repository that vendors polyglot_envelope",
     "src/C1_theorem_tag_import_ledger.mojo": NLAP,
     "src/C1_theorem_tag_assumption_payloads.mojo": NLAP,
     "src/C1_final_proof_block_ledger.mojo": NLAP,
