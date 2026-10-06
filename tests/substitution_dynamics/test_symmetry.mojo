@@ -126,6 +126,51 @@ def test_keys_are_injective_past_ten_letters() raises:
     assert_true(unclosed)
 
 
+def refuses_key(key: String, size: Int) -> Bool:
+    try:
+        _ = parse_substitution_key(key, size)
+    except:
+        return True
+    return False
+
+
+def test_only_canonical_keys_parse() raises:
+    """A key is read back only in the form `substitution_key` writes: one
+    digit for a letter below ten, `[n]` with decimal `n >= 10` and no leading
+    zero above, images separated by `/`. Anything else -- which `atol` would
+    read as some other letter -- is refused."""
+    var bad: List[String] = [
+        "[x]/0",      # not a number
+        "[1x]/0",     # trailing garbage
+        "[]/0",       # empty bracket
+        "[-1]/0",     # negative
+        "[+1]/0",     # sign
+        "[ 1]/0",     # space
+        "[3]/0",      # a letter below ten is one digit
+        "[010]/0",    # leading zero
+        "[1[2]]/0",   # nested bracket
+        "1]/0",       # unmatched close
+        "a/0",        # not a digit
+        "-1/0",       # negative unbracketed
+        "0 /0",       # stray space
+        "/0",         # empty first image
+        "0/",         # empty last image
+        "0//0",       # empty middle image
+        "0/1/",       # trailing separator
+        "",           # nothing
+        "2/0",        # letter outside the alphabet
+    ]
+    for i in range(len(bad)):
+        if not refuses_key(bad[i], 2):
+            raise Error("accepted a malformed key: '" + bad[i] + "'")
+    assert_true(refuses_key("[12]/0", 12))  # 12 outside 0..11
+    var ten = parse_substitution_key("[10]0/1/2/3/4/5/6/7/8/9/[10]", 11)
+    assert_equal(len(ten), 11)
+    assert_equal(ten[0][0], 10)
+    assert_equal(ten[0][1], 0)
+    assert_equal(ten[10][0], 10)
+
+
 def test_three_letter_maps_have_seven_conjugacy_classes() raises:
     var classes = classify_maps(3)
     var expected: List[String] = ["000", "001", "002", "012", "021", "100", "120"]
@@ -223,6 +268,8 @@ def main() raises:
     print("[PASS] test_other_alphabets")
     test_keys_are_injective_past_ten_letters()
     print("[PASS] test_keys_are_injective_past_ten_letters")
+    test_only_canonical_keys_parse()
+    print("[PASS] test_only_canonical_keys_parse")
     test_three_letter_maps_have_seven_conjugacy_classes()
     print("[PASS] test_three_letter_maps_have_seven_conjugacy_classes")
     test_three_letter_cores_and_entry_times()
@@ -231,4 +278,4 @@ def main() raises:
     print("[PASS] test_class_counts_on_other_alphabets")
     test_endpoint_maps_read_the_image_ends()
     print("[PASS] test_endpoint_maps_read_the_image_ends")
-    print("7 symmetry and endpoint-map Mojo tests passed.")
+    print("8 symmetry and endpoint-map Mojo tests passed.")

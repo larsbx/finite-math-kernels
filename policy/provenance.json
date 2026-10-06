@@ -1004,7 +1004,7 @@
       "source_path": "substitution_dynamics/substitution.mojo"
     },
     "kernel/substitution_dynamics/symmetry.mojo": {
-      "blob": "3b12489754cd21de2b4af0adb0ce5b9a687a402c",
+      "blob": "0f8cb0213fb3237ef8308f96557fd1d3434977d0",
       "relation": "authored"
     },
     "kernel/substitution_dynamics/tuning.mojo": {
@@ -1696,7 +1696,7 @@
       "source_path": "tests/test_substitution_dynamics.mojo"
     },
     "tests/substitution_dynamics/test_symmetry.mojo": {
-      "blob": "617bfab5da67e7129a968cde819ebcb106b9eccb",
+      "blob": "114825b18241709a91a3daea4daeba1934260b7a",
       "relation": "authored"
     },
     "tests/substitution_dynamics/test_tuning.mojo": {

@@ -185,37 +185,65 @@ def substitution_key(sigma: List[List[Int]]) -> String:
 
 
 def parse_substitution_key(key: String, size: Int) raises -> List[List[Int]]:
-    """Inverse of `substitution_key` on the alphabet `0 .. size-1`: exactly
-    `size` images, each letter a digit or a bracketed `[n]`, all inside the
-    alphabet. Anything else raises."""
+    """Inverse of `substitution_key` on the alphabet `0 .. size-1`, and only
+    of it: exactly `size` non-empty images separated by `/`, each letter one
+    decimal digit when below ten and `[n]` -- `n` a run of decimal digits with
+    no leading zero, ten or more -- otherwise, all inside the alphabet.
+
+    Anything else raises: a sign, a space, an empty or non-numeric bracket,
+    trailing characters, a bracketed letter below ten, an empty image. A key
+    read from an external or replayed row must name the substitution that
+    wrote it, never a neighbouring one."""
     var out = List[List[Int]]()
     for image in key.split("/"):
         var w = List[Int]()
-        var bracket = String("")
+        var digits = List[Int]()
         var inside = False
         for ch in image.codepoint_slices():
             var c = String(ch)
             if inside:
                 if c == "]":
-                    w.append(_parse_letter(bracket, size))
-                    bracket = String("")
+                    if len(digits) < 2 or digits[0] == 0:
+                        raise Error("bracketed letter must be ten or more, without a leading zero: " + key)
+                    w.append(_parse_letter(digits, size, key))
+                    digits = List[Int]()
                     inside = False
+                elif _digit(c) >= 0:
+                    digits.append(_digit(c))
                 else:
-                    bracket += c
+                    raise Error("bracketed letter must be decimal digits: " + key)
             elif c == "[":
                 inside = True
+            elif _digit(c) >= 0:
+                var single: List[Int] = [_digit(c)]
+                w.append(_parse_letter(single, size, key))
             else:
-                w.append(_parse_letter(c, size))
+                raise Error("substitution key has a character outside its grammar: " + key)
         if inside:
             raise Error("substitution key has an unclosed letter: " + key)
+        if len(w) == 0:
+            raise Error("substitution key has an empty image: " + key)
         out.append(w^)
     if len(out) != size:
         raise Error("substitution key must have exactly " + String(size) + " images: " + key)
     return out^
 
 
-def _parse_letter(text: String, size: Int) raises -> Int:
-    var letter = Int(atol(text))
-    if letter < 0 or letter >= size:
-        raise Error("substitution letter lies outside 0.." + String(size - 1) + ": " + text)
+def _digit(c: String) -> Int:
+    """The value of one decimal digit, or `-1` for anything else."""
+    var digits: List[String] = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+    for d in range(10):
+        if c == digits[d]:
+            return d
+    return -1
+
+
+def _parse_letter(digits: List[Int], size: Int, key: String) raises -> Int:
+    """A run of decimal digits as a letter of the alphabet, accumulated with
+    the alphabet as the bound, so it cannot overflow."""
+    var letter = 0
+    for i in range(len(digits)):
+        letter = letter * 10 + digits[i]
+        if letter >= size:
+            raise Error("substitution letter lies outside 0.." + String(size - 1) + ": " + key)
     return letter
