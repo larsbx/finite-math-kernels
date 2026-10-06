@@ -1497,7 +1497,7 @@
       "source_path": "tests/test_interval_q.mojo"
     },
     "tests/lexical_audit/test_lexical_audit.py": {
-      "blob": "9271489113f7a62c5a138165b9b9625c0664e85c",
+      "blob": "0c5564e8b19daa90ff24c067eef5f62eb8d524ae",
       "relation": "authored"
     },
     "tests/mojo_smoke/test_claims.mojo": {
@@ -1720,7 +1720,7 @@
       "relation": "authored"
     },
     "tests/vendoring/test_check_vendored_sync.py": {
-      "blob": "a1461577cda93597af1fecdc2f0e1cdcc8d16c54",
+      "blob": "adb85e225485c193c12ffea975a318d3d5583c23",
       "relation": "authored"
     },
     "tests/weighted_graph/test_cycle_gain.mojo": {
@@ -1839,7 +1839,7 @@
       "relation": "authored"
     },
     "tools/lexical_audit/audit.py": {
-      "blob": "b43ebed622953f0bcabd7cb6392e5435dec3a8dd",
+      "blob": "4772bb8f36fecfb0e0340c980a9d4272e32595ab",
       "relation": "authored"
     },
     "tools/make_cyclotomic_field_vectors.py": {
@@ -1913,7 +1913,7 @@
       "relation": "authored"
     },
     "tools/vendoring/check_vendored_sync.py": {
-      "blob": "ce7830915f9471f97a597d744b2d7d96538d64ef",
+      "blob": "22c72774af14b82d378fdc4365df18780b20f6df",
       "relation": "modified",
       "source": "finite_mandelbrot_research",
       "source_blob": "76ddda76a2cc3dea8221ac8b8192fe3d7e4f14c4",

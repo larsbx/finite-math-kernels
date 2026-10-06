@@ -102,6 +102,26 @@ def vendored_directories(root: Path | None = None, manifest: Path | None = None)
     }))
 
 
+def vendored_files(root: Path | None = None, manifest: Path | None = None) -> tuple[str, ...]:
+    """Every file the manifest pins, as sorted repo-relative paths.
+
+    ``root/rel`` for each ``rel`` under an entry's ``[package.files]``. A
+    package may pin files beside its directory rather than inside it (a
+    specification directly under its root), which ``vendored_directories``
+    does not cover; an exemption of vendored files reads both. No manifest
+    pins nothing, the fail-closed direction.
+    """
+    root = root or repo_root()
+    manifest = manifest or root / MANIFEST_NAME
+    if not manifest.exists():
+        return ()
+    return tuple(sorted({
+        (PurePosixPath(pkg["root"]) / rel).as_posix()
+        for pkg in load(manifest) if "root" in pkg
+        for rel in pkg.get("files", {})
+    }))
+
+
 def check_package(pkg: dict, root: Path) -> list[str]:
     name = pkg.get("name", "<unnamed>")
     errors: list[str] = []

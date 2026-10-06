@@ -317,6 +317,21 @@ def test_vendored_packages_are_skipped_when_the_scope_says_so(tmp_path):
     assert replace(scope, skip_vendored=False).files(tmp_path) == ("vendor/python/own.py", "vendor/python/pkg/a.py")
 
 
+def test_vendored_files_pinned_directly_under_a_root_are_skipped(tmp_path):
+    # A package can pin files that lie under its root but outside root/name:
+    # proof/Spec.tla here is vendored, proof/Own.tla is the repository's own.
+    (tmp_path / "vendored.toml").write_text(
+        '[[package]]\nname = "proof_architecture"\nroot = "proof"\n\n'
+        '[package.files]\n"Spec.tla" = "00"\n"proof_architecture/Model.tla" = "00"\n',
+        encoding="utf-8",
+    )
+    for rel in ("proof/Spec.tla", "proof/Own.tla", "proof/proof_architecture/Model.tla"):
+        (tmp_path / rel).parent.mkdir(parents=True, exist_ok=True)
+        (tmp_path / rel).write_text("\\* a circle\n", encoding="utf-8")
+    scope = Scope(("proof/**/*.tla",), skip_vendored=True)
+    assert scope.files(tmp_path) == ("proof/Own.tla",)
+
+
 def test_findings_are_named_once_in_a_stable_order(tmp_path):
     (tmp_path / "docs").mkdir()
     (tmp_path / "docs" / "b.md").write_text("isomorphic to; isomorphic to\n", encoding="utf-8")

@@ -255,3 +255,15 @@ def test_vendored_directories_normalise_a_root_at_the_repository_root(tmp_path):
 def test_no_manifest_vendors_nothing(tmp_path):
     """The fail-closed direction: an absent manifest exempts nothing."""
     assert checker.vendored_directories(tmp_path) == ()
+    assert checker.vendored_files(tmp_path) == ()
+
+
+def test_vendored_files_include_files_pinned_beside_the_package(tmp_path):
+    (tmp_path / "vendored.toml").write_text(
+        '[[package]]\nname = "proof_architecture"\nroot = "proof"\n\n'
+        '[package.files]\n"Spec.tla" = "00"\n"proof_architecture/Model.tla" = "00"\n\n'
+        '[[package]]\nname = "b"\nroot = "."\n\n[package.files]\n"b/x.py" = "00"\n'
+        '\n[[package]]\nroot = "nameless"\n',
+        encoding="utf-8",
+    )
+    assert checker.vendored_files(tmp_path) == ("b/x.py", "proof/Spec.tla", "proof/proof_architecture/Model.tla")

@@ -13,7 +13,7 @@ from fnmatch import fnmatch
 from pathlib import Path
 
 from claim_governance.lexing import find_all, has_context, line_of
-from vendoring.check_vendored_sync import vendored_directories
+from vendoring.check_vendored_sync import vendored_directories, vendored_files
 
 HEADING_RE = re.compile(r"^(#{1,6})\s+(.+?)\s*$")
 #: A list item, table row or numbered item starts a new block of prose.
@@ -27,9 +27,9 @@ class Scope:
     """The files a rule reads: repository-relative globs, minus exclusions.
 
     ``exclude`` patterns are ``fnmatch`` patterns over the POSIX path, where
-    ``*`` also matches ``/``. With ``skip_vendored`` a file inside a package
-    the consumer's ``vendored.toml`` vendors is skipped, read through the
-    ``vendoring`` package.
+    ``*`` also matches ``/``. With ``skip_vendored`` a file the consumer's
+    ``vendored.toml`` vendors is skipped -- inside a package directory, or
+    pinned by name beside it -- read through the ``vendoring`` package.
     """
 
     include: tuple[str, ...]
@@ -41,6 +41,7 @@ class Scope:
 
     def files(self, root: Path) -> tuple[str, ...]:
         vendored = tuple(f"{d}/" for d in vendored_directories(root)) if self.skip_vendored else ()
+        pinned = frozenset(vendored_files(root)) if self.skip_vendored else frozenset()
         found = {
             path.relative_to(root).as_posix()
             for pattern in self.include
@@ -49,7 +50,7 @@ class Scope:
         }
         return tuple(sorted(
             rel for rel in found
-            if not self.excluded(rel) and not (vendored and rel.startswith(vendored))
+            if not self.excluded(rel) and not (vendored and rel.startswith(vendored)) and rel not in pinned
         ))
 
 
