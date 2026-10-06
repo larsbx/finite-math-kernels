@@ -61,11 +61,11 @@
       "relation": "authored"
     },
     "ESTATE.toml": {
-      "blob": "1e3edb2bb54d9b1003fde67bb2f90fc585983e77",
+      "blob": "5785bb7a96402387b8cad39c9f6ae404f8407807",
       "relation": "authored"
     },
     "README.md": {
-      "blob": "a08cebaae03d6542e154ab2f4200ac3da570c4a5",
+      "blob": "b0bc08222d854542f804d1372e38ae988827a415",
       "relation": "authored"
     },
     "conformance/certified_records_v1.txt": {
@@ -298,7 +298,7 @@
       "relation": "authored"
     },
     "docs/vendoring-candidates-2026-10-05.md": {
-      "blob": "ab3602714fb9f1708f092928d4d6c652debfd01f",
+      "blob": "87b02869e850ed976f3d1c78f64cb11cb85d3e5e",
       "relation": "authored"
     },
     "docs/weighted-cycle-gain-research-scaffold.md": {

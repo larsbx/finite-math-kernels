@@ -32,6 +32,24 @@ All canonical kernels live under `kernel/` (the include root, `-I kernel`).
 | `finite_graph` | Strongly connected components, union-find, F2 signings (period, cyclic classes, Perron compatibility). |
 | `mojo_smoke` | Test scaffolding, and the `require_claim` / `require_contract` receipts the claim-governance coverage check reads. |
 
+## Python packages
+
+Pure-standard-library Python packages that consumers vendor byte-for-byte,
+like the Mojo ones. They are non-authoritative: where one overlaps a Mojo
+package, the Mojo package is canonical. Those under `oracles/` are exact and
+fail closed; they exist for consumers with no Mojo toolchain (decision D1,
+`docs/vendoring-candidates-2026-10-05.md`).
+
+| Package | What it provides |
+|---|---|
+| `oracles/rational_dynamics` | Reduced fractions, continued fractions, units, mediants, Farey sequences and parents; the doubling map on `Q/Z` (preperiod, exact period, binary expansions, rotation cycles, mechanical words, wakes, rotation numbers, doubling orbits); Moebius, Dedekind and Ramanujan sums. Also the R1 reference that `reference/rational_dynamics_reference.py` re-exports. |
+| `oracles/closed_interval` | The Python twin of `finite_exact/closed_q.mojo`: `IQ`, `ComplexIQ` (alias `ComplexBox`) over `Fraction`, and directed dyadic rounding. |
+| `oracles/oracle_refinement` | Declared generator codomains (`docs/generator-refinement-spec.md`). |
+| `tools/vendoring` | The `vendored.toml` checker and pinner. |
+| `tools/references` | Path and task reference checking under a consumer policy. |
+| `tools/claim_governance` | Claim-status, terminology and coverage checks under a consumer policy. |
+| `tools/exact_arithmetic_audit` | The section 7 exact-arithmetic consumer audit under a consumer policy; vendored with `vendoring` and `claim_governance`. |
+
 Stable entry points in `finite_exact` and `finite_linear_algebra` are
 `rational`, `closed_interval`, `matrix`, `matrix3` and `rational_elimination`;
 older module names (`rat_q`, `mat3`, `qlinalg`, …) remain for compatibility.
@@ -41,9 +59,9 @@ older module names (`rat_q`, `mat3`, `qlinalg`, …) remain for compatibility.
 | Path | Role |
 |---|---|
 | `reference/` | Independent Python reference semantics (non-authoritative). |
-| `oracles/` | Differential oracles. |
+| `oracles/` | Differential oracles, and the vendorable Python packages above. |
 | `schemas/`, `conformance/` | Normative contracts and their golden vectors. |
-| `tools/` | Vendorable `vendoring`, `references` and `claim_governance` packages; provenance; vector generators. |
+| `tools/` | Vendorable `vendoring`, `references`, `claim_governance` and `exact_arithmetic_audit` packages; provenance; vector generators. |
 | `experiments/frontier/` | Polyglot experiments (non-authoritative). |
 | `experiments/mojo_issues/` | Reproductions and logged evidence for Mojo toolchain issues (non-authoritative; `pixi run mojo-issue-evidence`). |
 | `docs/` | Specifications; start with `docs/exact-arithmetic-public-boundary.md`. |
