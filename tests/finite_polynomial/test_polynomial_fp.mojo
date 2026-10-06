@@ -156,6 +156,18 @@ def test_distinct_degree_factorization() raises:
     same(poly_fp_frobenius_power(PolyFp(prime_field(3), [1, 2, 0, 1, 0, 0, 1]), 2), [1, 2, 0, 0, 1])
 
 
+def test_frobenius_power_refuses_a_negative_count() raises:
+    # x^(p^k) has no meaning for k < 0 here: the count is refused exactly as
+    # poly_fp_powmod and Modulus.pow refuse a negative exponent, rather than
+    # read as k = 0.
+    var f = PolyFp(prime_field(3), [1, 2, 0, 1, 0, 0, 1])
+    same(poly_fp_frobenius_power(f, 0), [0, 1])
+    with assert_raises(contains="negative exponent"):
+        _ = poly_fp_frobenius_power(f, -1)
+    with assert_raises(contains="negative exponent"):
+        _ = poly_fp_frobenius_power(f, -5)
+
+
 def test_irreducibility_certificate() raises:
     var f = PolyFp(prime_field(3), [1, 2, 0, 1, 0, 0, 1])
     var c = poly_fp_irreducibility_certificate(f)
@@ -206,8 +218,10 @@ def main() raises:
     print("[PASS] test_ring_operations")
     test_distinct_degree_factorization()
     print("[PASS] test_distinct_degree_factorization")
+    test_frobenius_power_refuses_a_negative_count()
+    print("[PASS] test_frobenius_power_refuses_a_negative_count")
     test_irreducibility_certificate()
     print("[PASS] test_irreducibility_certificate")
     test_hensel_step()
     print("[PASS] test_hensel_step")
-    print("5 polynomial_fp Mojo tests passed.")
+    print("6 polynomial_fp Mojo tests passed.")
