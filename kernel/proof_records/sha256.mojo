@@ -5,6 +5,10 @@ Used only to derive and verify proof-record identifiers from their preimage
 uses `hashlib`; the replay harness compares the two on every fixture record,
 and `tests/proof_records/replay_vectors.mojo` checks the FIPS known answers
 for the empty message and "abc" before it prints a transcript.
+
+Reference: National Institute of Standards and Technology, FIPS PUB 180-4,
+*Secure Hash Standard (SHS)* (August 2015), sections 4.1.2, 4.2.2, 5.3.3 and
+6.2.
 """
 
 

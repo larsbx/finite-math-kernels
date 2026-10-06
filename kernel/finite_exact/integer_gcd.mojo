@@ -2,6 +2,11 @@
 #
 # Int and Int64 entry points remain explicit so callers do not narrow values.
 # Rational normalization uses the separately named zero-to-one policy.
+#
+# Reference: the Euclidean algorithm, Euclid, *Elements* VII.1-2; D. E. Knuth,
+# *The Art of Computer Programming*, vol. 2 (3rd ed., 1997), section 4.5.2,
+# Algorithm A. Remainders are taken on nonpositive magnitudes so that the
+# signed minimum needs no negation; this is not the binary (Stein) gcd.
 
 
 def gcd_int(a0: Int, b0: Int) raises -> Int:

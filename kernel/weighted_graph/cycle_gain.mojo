@@ -11,6 +11,16 @@ normalization of the generated Z-module is a separate layer: rational-span
 equality is not subgroup equality and must not be substituted for it.
 
 Incomplete/capped graphs are rejected rather than interpreted.
+
+References: the fundamental cycles of a spanning forest, one per non-tree
+edge, form a basis of the integer cycle lattice: G. Kirchhoff, "Ueber die
+Aufloesung der Gleichungen, auf welche man bei der Untersuchung der linearen
+Vertheilung galvanischer Stroeme gefuehrt wird", Ann. Phys. Chem. 72 (1847)
+497-508; T. Kavitha, C. Liebchen, K. Mehlhorn, D. Michail, R. Rizzi, T.
+Ueckerdt and K. A. Zweig, "Cycle bases in graphs: characterization,
+algorithms, complexity, and applications", Computer Science Review 3 (2009)
+199-243, section 2. This is not Karp's minimum mean cycle: no cycle is
+optimised here.
 """
 
 from finite_exact.rat_q import Q

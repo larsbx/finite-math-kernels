@@ -2,8 +2,9 @@
 
 The alphabet-3 kernel uses the fixed-size `Mat3` of `finite_linear_algebra`;
 sweeps over a variable alphabet need the same primitivity decision without a
-fixed dimension. Wielandt's bound makes it a finite check: a non-negative
-`n x n` matrix is primitive exactly when `M^k` is strictly positive for some
+fixed dimension. Wielandt's bound (`wielandt_bound.mojo`, which cites it, and
+re-exported here) makes it a finite check: a non-negative `n x n` matrix is
+primitive exactly when `M^k` is strictly positive for some
 `k <= n^2 - 2n + 2`. The decision computes Boolean support powers, since
 nonnegative multiplication has no cancellation; weights cannot overflow it.
 Numerical `matmul` separately checks every product and accumulation and raises
@@ -14,13 +15,7 @@ decision procedure with two representations, not two definitions.
 """
 
 from finite_exact.checked_int import checked_add, checked_mul
-
-
-def wielandt_bound(size: Int) raises -> Int:
-    """`n^2 - 2n + 2`: the largest exponent primitivity can need."""
-    if size < 1:
-        raise Error("integer matrix dimension must be positive")
-    return checked_add(checked_mul(size - 1, size - 1), 1)
+from finite_linear_algebra.wielandt_bound import wielandt_bound
 
 
 def _square_entries(size: Int) raises -> Int:

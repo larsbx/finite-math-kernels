@@ -9,6 +9,10 @@ Every zero-return block of a swap pair inherits `max_j ||Delta_n(j)||_inf`
 as a bound on its own discrepancy. This module only evaluates these
 quantities exactly; whether they are bounded in `n` is the consumer's
 theorem, not the kernel's.
+
+Reference: B. Adamczewski, "Balances for fixed points of primitive
+substitutions", Theoret. Comput. Sci. 307 (2003) 47-75 (discrepancy and
+balance of substitutive words).
 """
 
 from substitution_dynamics.automaton import Automaton

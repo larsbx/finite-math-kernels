@@ -11,28 +11,44 @@ by direct powering for small orders and otherwise from the Carmichael function
 of ``m`` by trial-division factorisation; either way it is exact, and the cost
 of a huge ``m`` with a huge order is time, never a wrong answer.
 
-The rotation part is ported from larsbx/mandelbrot-bulbs-and-ford-circles-research
-kernel/bulbford/wake.py (``rotation_cycle``, ``mechanical``, ``wake``) and
-kernel/bulbford/cycles.py (``rotation_number``, ``_orbit``). For
-``0 < p/q < 1`` in lowest terms, doubling has a cycle
-``x_0 < ... < x_{q-1}`` of angles over ``2^q - 1`` on which it acts as the
-rotation ``x_i -> x_{i+p mod q}``; its shortest arc ``(x_{p-1}, x_p)`` has
-length ``1/(2^q - 1)`` and is the characteristic arc.
+``doubling_orbit`` is ported from larsbx/mandelbrot-bulbs-and-ford-circles-research
+kernel/bulbford/cycles.py (``_orbit``). The rotation part ported with it now
+lives in the modules named after the objects it computes, and is re-exported
+here unchanged so ``from rational_dynamics_py.doubling import ...`` keeps
+working: ``mechanical_words`` (Morse-Hedlund mechanical words),
+``rotation_sets`` (``rotation_cycle`` and ``rotation_number``, Goldberg's
+rotation sets) and ``wakes`` (the characteristic arc, Douady-Hubbard wakes).
 
 What is claimed: every function computes the stated combinatorial object of
-the doubling map exactly. What is not: that the rotation cycle is unique
-[Gol92] and that its characteristic arc is the angular width of the
-``p/q``-wake [DH, Mil00] are imported theorems a consumer cites; this package
-neither proves nor uses them.
+the doubling map exactly. What is not: any dynamical statement about the
+angles; the theorems the rotation part's consumers import are named in its
+modules.
 """
 
 from __future__ import annotations
 
-from collections.abc import Iterable
 from fractions import Fraction
-from math import gcd, lcm
+from math import lcm
 
-from .farey import Address, as_fraction, require_int
+from .addresses import Address, as_fraction, require_int
+from .mechanical_words import mechanical_word
+from .rotation_sets import rotation_cycle, rotation_number
+from .wakes import wake
+
+__all__ = [
+    "binary_block",
+    "binary_digits",
+    "binary_expansion",
+    "doubling_orbit",
+    "exact_type",
+    "mechanical_word",
+    "order_of_two",
+    "period",
+    "preperiod",
+    "rotation_cycle",
+    "rotation_number",
+    "wake",
+]
 
 #: Below this many steps the order of two is found by direct powering.
 _DIRECT_STEPS = 1 << 12
@@ -155,49 +171,6 @@ def binary_block(value: Fraction | int | Address) -> str:
     return binary_expansion(value)[1]
 
 
-def _reduced(p: int, q: int) -> None:
-    if not (0 < p < q and gcd(p, q) == 1):
-        raise ValueError("need 0 < p < q with gcd(p, q) = 1")
-
-
-def mechanical_word(p: int, q: int, r: int) -> int:
-    """The conjugate ``c(r)`` of the ``p/q`` rotation cycle, as a numerator over ``2^q - 1``.
-
-    Bit ``k`` (most significant first, ``k < q``) is ``[(r + k p) mod q >= q - p]``,
-    so the word is ``format(mechanical_word(p, q, r), f"0{q}b")``. ``c(0)`` is the
-    word ``rotation_cycle`` starts from, doubling sends ``c(r)`` to ``c(r + p)``,
-    and the sorted cycle is ``c(0) < c(1) < ... < c(q - 1)``. Bulbs ``mechanical``.
-    """
-    require_int(p, q, r)
-    _reduced(p, q)
-    return int("".join("1" if (r + k * p) % q >= q - p else "0" for k in range(q)), 2)
-
-
-def rotation_cycle(p: int, q: int) -> tuple[Fraction, ...]:
-    """The doubling cycle ``x_0 < ... < x_{q-1}`` of rotation number ``p/q``.
-
-    Every ``x_i`` has denominator dividing ``2^q - 1`` and doubling maps ``x_i``
-    to ``x_{i+p mod q}``. Refuses anything but ``0 < p < q`` coprime.
-    """
-    require_int(p, q)
-    _reduced(p, q)
-    big = 2**q - 1
-    return tuple(Fraction(mechanical_word(p, q, r), big) for r in range(q))
-
-
-def wake(p: int, q: int) -> tuple[Fraction, Fraction]:
-    """``(theta_minus, theta_plus)``: the characteristic arc of the ``p/q`` rotation cycle.
-
-    The consecutive cycle points bounding the shortest arc; that arc is
-    ``(x_{p-1}, x_p)`` and has length ``1/(2^q - 1)``. Bulbs ``wake``; the
-    Mandelbrot ``rotation_angles`` computes the same pair by enumerating every
-    cycle (and returns ``(0, 0)`` at ``r = 0``, which is refused here).
-    """
-    require_int(p, q)
-    cycle = rotation_cycle(p, q)
-    return cycle[p - 1], cycle[p]
-
-
 def doubling_orbit(j: int, modulus: int) -> tuple[int, ...]:
     """The cycle of ``j mod M`` under ``j -> 2 j mod M``, starting at ``j mod M``.
 
@@ -214,30 +187,3 @@ def doubling_orbit(j: int, modulus: int) -> tuple[int, ...]:
     while (nxt := 2 * orbit[-1] % modulus) != start:
         orbit.append(nxt)
     return tuple(orbit)
-
-
-def rotation_number(angles: Iterable[int], modulus: int) -> Fraction | None:
-    """``s/k`` if doubling shifts the ``k`` sorted angles cyclically by ``s`` places, else ``None``.
-
-    ``angles`` are numerators over ``M``, taken modulo ``M``; they must be
-    distinct and closed under doubling (a union of doubling cycles), and a set
-    that is not is refused rather than read. ``None`` is the exact answer
-    that doubling does not act on the set as a rotation. A single fixed point
-    has rotation number ``0``. Bulbs ``rotation_number``, which raised
-    ``KeyError`` on a set not closed under doubling.
-    """
-    angles = tuple(angles)
-    require_int(*angles, modulus)
-    if modulus < 1:
-        raise ValueError("the modulus must be positive")
-    ordered = sorted(a % modulus for a in angles)
-    if not ordered:
-        raise ValueError("an empty set of angles has no rotation number")
-    if len(set(ordered)) != len(ordered):
-        raise ValueError("angles must be distinct modulo M")
-    k = len(ordered)
-    position = {a: i for i, a in enumerate(ordered)}
-    if any(2 * a % modulus not in position for a in ordered):
-        raise ValueError("angles must be closed under doubling")
-    shifts = {(position[2 * a % modulus] - i) % k for i, a in enumerate(ordered)}
-    return Fraction(shifts.pop(), k) if len(shifts) == 1 else None

@@ -19,6 +19,14 @@ potential x with
 
 If neither q works, the signing is Perron-strict.  This is a graph/signing
 classifier only: what a consumer concludes from it is the consumer's import.
+
+References: the period and cyclic classes of an irreducible non-negative
+matrix (its imprimitivity index and Frobenius normal form) are G. Frobenius,
+"Ueber Matrizen aus nicht negativen Elementen", Sitzungsber. Preuss. Akad.
+Wiss. (1912) 456-477; see R. A. Brualdi and H. J. Ryser, *Combinatorial Matrix
+Theory* (Cambridge, 1991), section 3.4, and E. Seneta, *Non-negative Matrices
+and Markov Chains* (2nd ed., Springer, 1981), section 1.3. The F2 coboundary
+test for signings is authored here for the consumer named above.
 """
 
 from std.os import abort
