@@ -269,6 +269,10 @@
       "source_blob": "86478aa8777903f6c605d4bcfd7d899ac51a74fa",
       "source_path": "docs/rational-interval-arithmetic-spec.md"
     },
+    "docs/survey-assessment-2026-10-05.md": {
+      "blob": "14ff975d4e6d4a007a141dd2fd4b2ae304e1a0f4",
+      "relation": "authored"
+    },
     "docs/templates/AUDIT_FINDING.md": {
       "blob": "4a521c398184241f8d7b604ba8e933ebc177c819",
       "relation": "authored"
@@ -1340,7 +1344,7 @@
       "relation": "authored"
     },
     "tools/check_references.py": {
-      "blob": "f2258bf9921030970b68d49c2f50185e0872b0c2",
+      "blob": "bc926420ee6ba4b5f6d7973563db1f273966bd65",
       "relation": "authored"
     },
     "tools/claim_governance/__init__.py": {
