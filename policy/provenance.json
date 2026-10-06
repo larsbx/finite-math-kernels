@@ -985,7 +985,7 @@
       "relation": "authored"
     },
     "kernel/substitution_dynamics/return_lattice.mojo": {
-      "blob": "22074eb9ab6672d7184908cb33eff1ec1caf2b60",
+      "blob": "a6085194348885054e29290334e0df671c4206a5",
       "relation": "authored"
     },
     "kernel/substitution_dynamics/sadic.mojo": {
@@ -1681,7 +1681,7 @@
       "relation": "authored"
     },
     "tests/substitution_dynamics/test_return_lattice.mojo": {
-      "blob": "eec16076cb980644ec307c2e2e5addb7c9dd5b88",
+      "blob": "59a2a19c402e19fe5463853464d9e4032ca6700c",
       "relation": "authored"
     },
     "tests/substitution_dynamics/test_strong_coincidence.mojo": {

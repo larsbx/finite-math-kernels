@@ -392,10 +392,10 @@ def covering_level(sigma: Substitution, n: Int) -> Int:
             var s = 0
             ref image = sigma.images[a]
             for i in range(len(image)):
-                s += lengths[image[i]]
-                if s >= n:
+                if lengths[image[i]] >= n - s:
                     s = n
                     break
+                s += lengths[image[i]]
             changed = changed or s != lengths[a]
             longer.append(s)
         if not changed:

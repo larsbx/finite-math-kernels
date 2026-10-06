@@ -167,6 +167,8 @@ def test_covering_level_refuses_a_length_that_stops_short() raises:
     # Letter 1 grows without bound; letter 0 never does.
     var stuck = Substitution.checked([[0], [1, 1]])
     assert_equal(covering_level(stuck, 2), -1)
+    # Saturation must not overflow on the way to a large order: |0^k| = 2^k.
+    assert_equal(covering_level(Substitution.checked([[0, 0]]), Int.MAX), 63)
     var refused = False
     try:
         verify_index_profile(stuck, 2, [1, 1])
