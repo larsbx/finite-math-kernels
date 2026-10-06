@@ -61,11 +61,11 @@
       "relation": "authored"
     },
     "ESTATE.toml": {
-      "blob": "4abe6406a7db3af9e30e70c6bac4c62e0c5e6ace",
+      "blob": "608e6b255d3471f089e63fe61975e27b361c3d43",
       "relation": "authored"
     },
     "README.md": {
-      "blob": "6b3595f239ce1077b191a89a749abefbd2b0e274",
+      "blob": "36ba8aa893469e8b925757c63f1b72a1a9673a7e",
       "relation": "authored"
     },
     "conformance/certified_records_v1.txt": {
@@ -268,6 +268,10 @@
       "source": "finite_exact",
       "source_blob": "86478aa8777903f6c605d4bcfd7d899ac51a74fa",
       "source_path": "docs/rational-interval-arithmetic-spec.md"
+    },
+    "docs/root-isolation-spec.md": {
+      "blob": "49a51c5ba272c332bb94a22724faad5b853ac9b1",
+      "relation": "authored"
     },
     "docs/survey-assessment-2026-10-05.md": {
       "blob": "14ff975d4e6d4a007a141dd2fd4b2ae304e1a0f4",
@@ -759,7 +763,7 @@
       "relation": "authored"
     },
     "kernel/quadratic_orbit/__init__.mojo": {
-      "blob": "0332cbc21cd95daedccfaa50c5ad29108b48fefd",
+      "blob": "9cdd89d661853ccd6890602dcfe1eeb157835196",
       "relation": "authored"
     },
     "kernel/quadratic_orbit/collision.mojo": {
@@ -777,7 +781,7 @@
       "source_path": "src/interval_orbit.mojo"
     },
     "kernel/quadratic_orbit/preperiodic.mojo": {
-      "blob": "dc72cbf6a77627b9dc16a4210fb7813c647258bc",
+      "blob": "7d7e1ffed03c68f16aa46f51d89d2b1181c5efbc",
       "relation": "authored"
     },
     "kernel/rational_dynamics/__init__.mojo": {
@@ -786,6 +790,22 @@
     },
     "kernel/rational_dynamics/rational.mojo": {
       "blob": "484b0a299f77586ebd431ddc70cbf99fec326ea3",
+      "relation": "authored"
+    },
+    "kernel/root_isolation/__init__.mojo": {
+      "blob": "ec0f5e170712775cbe380967006bb30e6fe2ef7e",
+      "relation": "authored"
+    },
+    "kernel/root_isolation/boxes.mojo": {
+      "blob": "b1c7b484a3b0b69545e64a7f4e99cc1537389439",
+      "relation": "authored"
+    },
+    "kernel/root_isolation/krawczyk.mojo": {
+      "blob": "f5513de5efa3d3f571f14aee443235097b157922",
+      "relation": "authored"
+    },
+    "kernel/root_isolation/krawczyk_moore.mojo": {
+      "blob": "7e4f8055e9ca442017b8957e9ffbc1e513d071fd",
       "relation": "authored"
     },
     "kernel/substitution_dynamics/__init__.mojo": {
@@ -893,8 +913,24 @@
       "blob": "d00700598a327c441e2036dfcb4e17b732dc756a",
       "relation": "authored"
     },
+    "oracles/root_isolation_py/__init__.py": {
+      "blob": "0968a7fd5a49acdaa2633988f2b1b6cae5540cb7",
+      "relation": "authored"
+    },
+    "oracles/root_isolation_py/boxes.py": {
+      "blob": "ece2760822b91e6d02ff435834b1ac1998c00854",
+      "relation": "authored"
+    },
+    "oracles/root_isolation_py/krawczyk.py": {
+      "blob": "34c1e76e948d8304c16896132c762337fb8bb506",
+      "relation": "authored"
+    },
+    "oracles/root_isolation_py/krawczyk_moore.py": {
+      "blob": "3dbea094100bce8c5d09082407bde67942c2f073",
+      "relation": "authored"
+    },
     "pixi.toml": {
-      "blob": "8f00de8cf3b5b9bfb8d09b6d5a9a9b2690c8fe8f",
+      "blob": "bc492e53035ca71ef7b536d7dc527c3493aedc53",
       "relation": "authored"
     },
     "policy/estate-audits/0833929ed82d42cf3674a1565681625a9622827b.py": {
@@ -1356,6 +1392,22 @@
       "blob": "20aa21e30f1f306a34d67b531042afff70887cf5",
       "relation": "authored"
     },
+    "tests/root_isolation/krawczyk_transcript.mojo": {
+      "blob": "9a7961d085ffffc76867bee87ad08be41c347faf",
+      "relation": "authored"
+    },
+    "tests/root_isolation/test_krawczyk_twin.py": {
+      "blob": "f1b5a78600f197440f7abc3449cb9bea15fb88e1",
+      "relation": "authored"
+    },
+    "tests/root_isolation/test_root_isolation.mojo": {
+      "blob": "935bf740fcfbfaeb508ed4af21b32b1c66c65b2e",
+      "relation": "authored"
+    },
+    "tests/root_isolation/test_root_isolation.py": {
+      "blob": "35b1ce8cea6b26f51f9568c0801d45675e9b2611",
+      "relation": "authored"
+    },
     "tests/substitution_dynamics/test_substitution_dynamics.mojo": {
       "blob": "fe5fd6549e66fc6dda87aa6871f4bfd2b5168336",
       "relation": "modified",
@@ -1392,7 +1444,7 @@
       "relation": "authored"
     },
     "tools/check_references.py": {
-      "blob": "bc926420ee6ba4b5f6d7973563db1f273966bd65",
+      "blob": "e3acdba1614f0054c98c94e04fc97b73192cecbf",
       "relation": "authored"
     },
     "tools/claim_governance/__init__.py": {

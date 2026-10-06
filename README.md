@@ -19,7 +19,8 @@ All canonical kernels live under `kernel/` (the include root, `-I kernel`).
 | `finite_linear_algebra` | Exact matrices, RREF/rank/nullspace over `Q`, rank-three tensors, checked integer vectors and matrix multiplication; exact Boolean support powers decide primitivity of non-negative integer matrices without weight overflow; `qpoly`: polynomials over `Q`, Sturm chains, isolating brackets, the characteristic polynomial in any dimension (`docs/exact-polynomial-root-isolation-spec.md`). |
 | `finite_polynomial` | `BigZ` polynomials, cyclotomic fields `Q[X]/(Phi_n)` with Galois actions, jets of the quadratic germ. `cyclotomic_field` types it for the field-generic kernels: `Cyc[q]` with a compile-time conductor and operators `+ − * / ==`, trace and norm, and `CyclotomicField[q]` as an `ExactField`. |
 | `substitution_dynamics` | Words, substitutions, balanced pairs, tuning, S-adic sequences, column coincidence. Its automaton reads components through `finite_graph`, so the two are vendored together. |
-| `quadratic_orbit` | Enclosed orbits of `z -> z^2 + c`, the collision partition, and box certificates for preperiodic points (exclusion; Krawczyk hypothesis). |
+| `quadratic_orbit` | Enclosed orbits of `z -> z^2 + c`, the collision partition, and box certificates for preperiodic points (exclusion; Krawczyk hypothesis, through `root_isolation`, which it is vendored with). |
+| `root_isolation` | Root isolation on complex rational boxes in one variable: `krawczyk` (the Krawczyk operator, Krawczyk 1969), `krawczyk_moore` (the strict-interior Krawczyk-Moore test, Moore 1977), `boxes` (exact centre and point inverse, exclusion, disjointness) (`docs/root-isolation-spec.md`). |
 | `angle_doubling` | `t -> 2t` on `Q/Z`: preperiod and period in closed form, angle types. |
 | `projective` | The quadratic map on `P^1(C)` in homogeneous coordinates, and its charts. |
 | `rational_dynamics` | Reduced fractions, doubling mod 1, continued fractions, Farey determinants. |
@@ -44,6 +45,7 @@ fail closed; they exist for consumers with no Mojo toolchain (decision D1,
 |---|---|
 | `oracles/rational_dynamics_py` | Reduced fractions, continued fractions, units, mediants, Farey sequences and parents; the doubling map on `Q/Z` (preperiod, exact period, binary expansions, rotation cycles, mechanical words, wakes, rotation numbers, doubling orbits); Moebius, Dedekind and Ramanujan sums. Also the R1 reference that `reference/rational_dynamics_reference.py` re-exports. |
 | `oracles/closed_interval` | The Python twin of `finite_exact/closed_q.mojo`: `IQ`, `ComplexIQ` (alias `ComplexBox`) over `Fraction`, and directed dyadic rounding. |
+| `oracles/root_isolation_py` | The same modules (`krawczyk`, `krawczyk_moore`, `boxes`) in one or two complex variables over `closed_interval`: exact or rounded midpoint preconditioners, caller-supplied outward rounding, and the isolation, exclusion and disjointness tests (`docs/root-isolation-spec.md`). Vendored with `closed_interval`. |
 | `oracles/oracle_refinement` | Declared generator codomains (`docs/generator-refinement-spec.md`). |
 | `tools/vendoring` | The `vendored.toml` checker and pinner. |
 | `tools/references` | Path and task reference checking under a consumer policy. |

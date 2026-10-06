@@ -7,6 +7,11 @@
 #   collision   which index pairs an (ell, period) orbit type intends to
 #               collide and which it forbids, and how many of each there are
 #               below a horizon.
+#   preperiodic the preperiodic residual and its derivative along the orbit,
+#               and its exclusion and Krawczyk-isolation tests on a box. The
+#               operator is `root_isolation.krawczyk`
+#               (docs/root-isolation-spec.md), so the two packages are vendored
+#               together.
 #
 # Both planes of the quadratic family use the same orbit. The parameter plane
 # iterates the critical orbit `z_0 = 0` over a parameter box `c`; the

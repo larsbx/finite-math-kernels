@@ -68,6 +68,13 @@ EXTERNAL: dict[str, str] = {
     "docs/scaled-boxes.md": "larsbx/finite-julia-set-research, which implemented the E = F endpoints of section 2.1",
     "docs/tiling-connections-2026-09-20.md": "larsbx/finite-julia-set-research, whose item 2 asked for the general-size characteristic polynomial and the root isolation of docs/exact-polynomial-root-isolation-spec.md",
     "kernel/integer_vector_bench.mojo": PSC,
+    "certificates/checked_krawczyk_witness.mojo": f"{NLAP}, under kernel/mojo; the checked-Int64 Krawczyk witness docs/root-isolation-spec.md section 8 leaves local",
+    "reference/scaled.py": "larsbx/finite-julia-set-research; the separated-exponent boxes docs/root-isolation-spec.md section 8 leaves local",
+    "certificates/krawczyk_witness.mojo": f"{NLAP}, under kernel/mojo; inventoried in docs/root-isolation-spec.md section 8",
+    "kernel/bulbford/certify.py": "larsbx/mandelbrot-bulbs-and-ford-circles-research; inventoried in docs/root-isolation-spec.md section 8",
+    "kernel/bulbford/antipode.py": "larsbx/mandelbrot-bulbs-and-ford-circles-research; inventoried in docs/root-isolation-spec.md section 8",
+    "reference/preperiodic.py": "larsbx/finite-julia-set-research; inventoried in docs/root-isolation-spec.md section 8",
+    "docs/literature-gate-2026-09-20-krawczyk.md": "larsbx/finite-julia-set-research, which gated KrawczykMooreUniqueness (docs/root-isolation-spec.md section 4)",
     "interval_q/closed_q.mojo": "larsbx/interval_q at the commit pinned in policy/provenance.json",
 }
 
