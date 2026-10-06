@@ -63,6 +63,7 @@ EXTERNAL: dict[str, str] = {
     "claim_governance.toml": "the consumer repository root (docs/audit/policy-format.md)",
     "docs/ledger-index.md": "the consumer repository (docs/ledger-generation-spec.md, section 3.4)",
     "docs/enclosure-width-lemma.md": "larsbx/finite-julia-set-research, which supplies the step factor K of section 2.5",
+    "docs/literature-gate-2026-10-06-algebraic-multiplier.md": "larsbx/finite-julia-set-research, whose finding 7 is the consumer of the rotor continued-fraction kernel",
     "docs/taylor-models.md": "larsbx/finite-julia-set-research, which built and measured the models of section 2.5",
     "docs/scaled-boxes.md": "larsbx/finite-julia-set-research, which implemented the E = F endpoints of section 2.1",
     "docs/tiling-connections-2026-09-20.md": "larsbx/finite-julia-set-research, whose item 2 asked for the general-size characteristic polynomial and the root isolation of docs/exact-polynomial-root-isolation-spec.md",
