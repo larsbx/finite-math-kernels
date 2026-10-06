@@ -171,12 +171,14 @@ def arithmetic_consumers(root: Path, policy: Policy) -> set[str]:
     """Scanned files that import the exact-arithmetic layers directly, by any spelling.
 
     Importing the package itself reaches every layer, so it counts whatever
-    the policy's ``arithmetic_modules`` are.
+    the policy's ``arithmetic_modules`` are. Imports are read from the source
+    with comments and strings masked, so a comment inside a parenthesised
+    import cannot hide a layer and an import quoted in a docstring is not one.
     """
     wanted = policy.arithmetic_modules
     return {
         rel for rel in scanned_files(root, policy)
-        if any(wanted is None or name is None or name in wanted for name in imported_layers(_read(root, rel)))
+        if any(wanted is None or name is None or name in wanted for name in imported_layers(mask_comments_and_strings(_read(root, rel))))
     }
 
 

@@ -1067,7 +1067,7 @@
       "relation": "authored"
     },
     "tests/exact_arithmetic_audit/test_exact_arithmetic_audit.py": {
-      "blob": "face038764cdfacc42d45a12647935a4699e3844",
+      "blob": "02fd1a39e51b6c08837b69f6542ee83412b79fdc",
       "relation": "authored"
     },
     "tests/facades/test_stable_facades.mojo": {
@@ -1495,7 +1495,7 @@
       "relation": "authored"
     },
     "tools/exact_arithmetic_audit/audit.py": {
-      "blob": "10eb4741a5086cf90cbdc9cd93caca381fbc30a8",
+      "blob": "c0ffd604c330862bd394ef20ddabb910ff7fa1c8",
       "relation": "authored"
     },
     "tools/make_cyclotomic_field_vectors.py": {

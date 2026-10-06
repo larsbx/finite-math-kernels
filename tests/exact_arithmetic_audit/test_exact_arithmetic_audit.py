@@ -363,3 +363,19 @@ def test_an_unparseable_python_file_is_named_not_skipped(tmp_path, policy):
     root = build(tmp_path, python)
     write(root, "src/broken.py", "def f(:\n")
     assert audit(root, python) == ["src/broken.py: cannot parse for the f-string scan (C1)"]
+
+
+@BOTH
+@pytest.mark.parametrize("spelling", ["from finite_exact import (\n    integer_gcd,  # helper\n    rat_q,\n)",
+                                      "from finite_exact import (integer_gcd,  # helper\n    rat_q)"])
+def test_a_comment_inside_a_parenthesised_import_hides_no_layer(tmp_path, policy, spelling):
+    root = build(tmp_path, policy)
+    write(root, "src/stray.mojo", HEADER + spelling + "\n")
+    assert audit(root, policy) == ["arithmetic consumer lacks binding row: src/stray.mojo"]
+
+
+@BOTH
+def test_an_import_quoted_in_a_docstring_is_not_a_consumer(tmp_path, policy):
+    root = build(tmp_path, policy)
+    write(root, "src/notes.mojo", '"""\nExample: from finite_exact.rat_q import Q\n"""\n')
+    assert audit(root, policy) == []
