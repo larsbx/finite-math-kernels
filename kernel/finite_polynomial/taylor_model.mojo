@@ -26,6 +26,8 @@
 # boxes are the only enclosure ring with a consumer.
 #
 # Python oracle: reference/taylor_model_reference.py.
+#
+# Specification: docs/rational-interval-arithmetic-spec.md (coefficients are closed_q boxes).
 
 from finite_exact.closed_q import ComplexIQ
 from finite_polynomial.coefficient_ring import ComplexBoxRing

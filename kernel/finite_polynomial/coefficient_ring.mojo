@@ -25,6 +25,8 @@
 # Instances: FieldRing[K] for every ExactField K (QField, FpField[p],
 # CyclotomicField[q]); CyclotomicRing (cyclotomic_field); ComplexBoxRing over
 # finite_exact.closed_q.ComplexIQ.
+#
+# Specification: docs/rational-interval-arithmetic-spec.md (coefficients are Q and closed_q boxes).
 
 from finite_exact.closed_q import ComplexIQ
 from finite_exact.field import ExactField

@@ -672,7 +672,7 @@
       "relation": "authored"
     },
     "kernel/finite_polynomial/coefficient_ring.mojo": {
-      "blob": "462b0862abefb40b0b281a79025938cfb0379b92",
+      "blob": "0382e21fed32af1a6b5e29ab9343c9f1fc1311bf",
       "relation": "authored"
     },
     "kernel/finite_polynomial/cyclotomic_field.mojo": {
@@ -724,7 +724,7 @@
       "relation": "authored"
     },
     "kernel/finite_polynomial/taylor_model.mojo": {
-      "blob": "32d7c9f0c03ef28ede54f00088c218188a8cfaab",
+      "blob": "5084bf2b5aba3417bed437615340a94adb0b64d3",
       "relation": "authored"
     },
     "kernel/finite_polynomial/truncated_jet.mojo": {
