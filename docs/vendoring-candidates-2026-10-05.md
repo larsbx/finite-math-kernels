@@ -80,33 +80,189 @@ other `root_isolation` candidates. The Python package is named
 `rational_dynamics_py`, not `rational_dynamics`, so it never shares a name, and
 therefore a `vendored.toml` entry, with the Mojo package.
 
+## Moved in round 3 (2026-10-06)
+
+Owner decisions taken for this round:
+
+- **Naming rule.** Every named, citable literature object gets its own module
+  named after it, with a citation docstring, re-exported from the package
+  facade; old paths keep re-exporting.
+- **Checked Int64 stack** (Mandelbrot `Q` / `IQ` / `ComplexIQ`): retired. BigQ
+  replays are the certificates of record; there is no fast path here.
+- **Uncompiled legacy** (`fn`/`inout`) Mandelbrot modules: port only what
+  compiled code uses; dead files stay untouched.
+- **Independent Python oracles** for `substitution_dynamics` (Pisot `bpa.py`,
+  `swap_discrepancy.py`) and Mandelbrot `interval_exclusion_reference.py` stay
+  in their consumers; they are not candidates.
+- **PRNG, histogram and hash mixing, the manuscript and Markdown validators,
+  `BPA.tla`**: stay deferred (one consumer each; the steward's "decide whether
+  to build" rule).
+- **Escape-test tie** `N(z) = N(c) > 4`: the strict test stays. The owner had
+  no preference; strict matches every copy and keeps Julia's ledgers
+  byte-identical. The tie stays undecided and is never reported as bounded.
+
+| Upstream now | From | Consumer action |
+|---|---|---|
+| Named modules (Mojo): `cauchy_bound`, `sturm_sequence`, `faddeev_leverrier`, `wielandt_bound`, `hermite_normal_form`, `smith_normal_form` (`finite_linear_algebra`); `continued_fractions`, `farey` (`rational_dynamics`); `krawczyk_operator` (`quadratic_orbit`); `cyclotomic_polynomial`, `euler_totient`, `moebius_function` (`finite_polynomial`); `subset_construction`, `moore_minimisation` (`finite_automata`); `mobius_transformation`, `spread_polynomial` (`projective_limits`). Python `rational_dynamics_py`: `addresses`, `continued_fractions`, `moebius_function`, `dedekind_sums`, `ramanujan_sums`, `mechanical_words`, `rotation_sets`, `wakes` | FMK's own generic modules | none: old paths re-export the same objects |
+| `quadratic_orbit/escape_criterion.mojo`, `quadratic_orbit/multiplier_classification.mojo`; `closed_q` `complex_box`, `gaussian_singleton`, `is_singleton`, `singleton_eq`; `enclosure_width` `sup_magnitude`, `within` | Julia's three escape-bound copies, `kernel/escape_certificate.mojo`, `julia_orbit.mojo`, `enclosure_bound.mojo` | Julia re-pins and deletes its copies; its five-way classification stays local on top |
+| `finite_polynomial/{coefficient_ring,truncated_jet,taylor_model}.mojo`; `quadratic_germ` rebuilt on the generic jets | Julia `kernel/{jet,taylor}.mojo` | Julia keeps only the `z^2 + c` steps |
+| `finite_polynomial/polynomial_fp.mojo` with `miller_rabin`, `distinct_degree`, `rabin_irreducibility`, `hensel_lifting` | Mandelbrot `dynamics/{exact_type_irreducibility,r41_algebraic_root_certificate,critical_relation_bridge}.mojo` | Mandelbrot calls it |
+| — (already upstream: `finite_linear_algebra/qpoly`) | Pisot `psc/{pisot,pisot_screen,real_root_sign}.mojo` | done (Pisot PR #220) |
+| `rational_dynamics/{doubling,multiplicative_order,carmichael,moebius,integers}.mojo`; `rational_dynamics_py/{multiplicative_order,carmichael}.py` and `exact_type_count`; `substitution_dynamics/internal_address.mojo` | Mandelbrot `misiurewicz_catalogue.mojo`, `angle_tuning.mojo`, `c1/residual/residual_directive_carrier.mojo` | Mandelbrot calls them and no longer imports its checked Int64 backend |
+| `root_isolation` (Mojo: `krawczyk`, `krawczyk_moore`, `boxes`), `oracles/root_isolation_py`, `docs/root-isolation-spec.md`; `quadratic_orbit/krawczyk_operator` is its `z^2 + c` application | Julia `reference/preperiodic.py`; Mandelbrot `certificates/krawczyk_witness.mojo`; bulbs `kernel/bulbford/{certify,antipode}.py` | all three run on it |
+| `tools/lexical_audit` | Julia and Mandelbrot `tools/audit_terminology.py`; bulbs `tools/audit_limits.py` | each keeps a thin policy |
+| `tools/polyglot_envelope` | `.polyglot/` in Julia, Mandelbrot and Pisot | each renders from its `polyglot.manifest.toml`, `--check` in CI |
+
+**Naming.** Per the owner's rule, every named literature object that sat
+inside a generic module now has its own cited module and the old module
+re-exports it, so no import changes. Already-standalone modules gained
+citations (Tarjan, Galler–Fischer, Kirchhoff cycle gain, Euclid, FIPS 180-4,
+Livshits/Sirvent–Solomyak, Dekking, Derrida–Gervois–Pomeau/Douady–Hubbard,
+Berthé–Delecroix, Adamczewski). Tests pin old and new paths to the same
+objects.
+
+**Escape criterion, multiplier classification, box constructors (Julia).**
+`escape_criterion.mojo` (Carleson–Gamelin 1993; Milnor 2006) replaces Julia's
+three escape-bound copies and `kernel/escape_certificate.mojo`. The copies
+agreed on the strict test `N(z) > max(4, N(c))` and differed only on
+refusals (two returned an accepted zero bound for a rejected parameter); the
+reconciled bound is rejected on any refused or negative quadrance.
+`multiplier_classification.mojo` (Milnor 2006; Koenigs 1884) decides
+attracting, indifferent and repelling exactly, with UNDECIDED and REJECTED
+kept apart. `sup_magnitude` and `within` refuse a rejected box (Julia's copy
+measured it as zero). Julia's outputs are byte-identical.
+
+**Truncated jets and Taylor models (Julia).** `coefficient_ring` gives
+`CoefficientRing` / `CoefficientField` as ring values, `FieldRing[K]`,
+`CyclotomicRing` with a run-time conductor and `ComplexBoxRing` over `closed_q`
+boxes; `truncated_jet` gives `TruncatedJet[R]`; `taylor_model` (Berz–Makino
+1998) is over complex boxes and re-exported. `quadratic_germ` is rebuilt on
+the generic jets with byte-identical outputs (226 golden vectors). The Taylor
+model is not generic in its enclosure ring: fields of associated type trip the
+pinned compiler's "use of uninitialized value" bug
+(`docs/mojo-exact-fields-report.md` §5.1). Still local: Julia's Python
+`reference/{jet,taylor}.py` (an independent oracle); bulbs `implosion.py`
+helpers (`_log` needs a Q-algebra; about 25 lines).
+
+**F_p polynomials (Mandelbrot).** `polynomial_fp` takes a run-time modulus
+below `2^31`; canonical residues keep every product below `2^62`.
+`miller_rabin` is deterministic below `2^31` (witnesses {2, 3, 5, 7}),
+`distinct_degree` is Cantor–Zassenhaus, `rabin_irreducibility` (Rabin 1980)
+carries a replayable certificate, `hensel_lifting` is Hensel 1908. The three
+Mandelbrot users have byte-identical outputs plus a differential check;
+`critical_relation_multiset.integer_orbit_value` no longer wraps (now BigZ).
+Still local: Mandelbrot's Int-coefficient `PolyZ` division over Z (a separate
+item) and the subset-sum irreducibility-over-Q test. Possible next user:
+Pisot's degree-4+ irreducibility refusal.
+
+**Q-polynomials (Pisot).** Pisot `psc/{pisot,pisot_screen,real_root_sign}.mojo`
+now build on the vendored `qpoly`. Kept local, with reasons: the unrolled
+Horner, O(1) degree, the length-preserving remainder, the Sturm chain of `p`
+itself, and the Tarski query.
+
+**Kneading, internal address, continuation letter; doubling-map number theory
+(Mandelbrot).** `substitution_dynamics/internal_address.mojo` (Lau–Schleicher
+1994); `continuation_twist` reads off it. `rational_dynamics` gains an
+uncapped BigZ `doubling.mojo` (preperiod, period, `exact_type`,
+`binary_digits`, `binary_block`, `exact_type_count`) and the named modules
+`multiplicative_order` (`order_of_two`), `carmichael` and `moebius`, with
+`integers.mojo` (`bigz_to_int` refuses rather than truncates). The Python
+plane mirrors them and a twin test replays a Mojo transcript. Local policy
+stays in Mandelbrot: catalogue bounds, the 62-period tuning contract, the
+kneading prefix of an angle. `angle_doubling` keeps its cap of 64; the exact
+order lives in `rational_dynamics.multiplicative_order`.
+
+One implementation per object after the merge: `rational_dynamics.moebius` is
+the only Mojo Möbius function, and `finite_polynomial.moebius_function`
+re-exports it as `moebius` and `mobius_mu` (`finite_polynomial` now imports
+`rational_dynamics`, which imports only `finite_exact`, so consumers vendoring
+`finite_polynomial` also vendor `rational_dynamics`). `mobius_mu` therefore
+refuses `n < 1`, as `moebius` does; it returned `1` there before. In Python,
+`moebius_function.moebius` is the one Möbius function, `order_of_two` lives
+in `multiplicative_order` and the prime factorisation in `carmichael`;
+`doubling` and `arithmetic` re-export them.
+
+**Checked Int64 stack, ray-address doubling, collision partition, Gaussian
+rationals (Mandelbrot, Julia).** The checked Int64 stack is retired. A probe
+over half-widths `2^1 .. 2^-63` showed byte-identical boxes, Krawczyk images
+and exclusion verdicts wherever the Int64 stack answered; beyond that it
+rejected on overflow while BigZ answered. Compiled users of ray-address
+doubling and the collision partition go through
+`rational_dynamics.double_mod_one` and `quadratic_orbit`; the remaining copies
+are in uncompiled legacy files. The Mandelbrot Gaussian-rational types are
+uncompiled legacy except `rational_trig.mojo`; Julia `reference/gaussian_q.py`
+has no second consumer and stays. The collision partition has not converged:
+Mandelbrot's versions treat `ell = 0` as purely periodic,
+`quadratic_orbit.intended_pair` does not.
+
+**Krawczyk / interval Newton (Julia, Mandelbrot, bulbs).** Specification
+first: `docs/root-isolation-spec.md` states the Krawczyk–Moore theorem with
+exact hypotheses and a proof outline; its §8 inventories five
+implementations that differ only in arithmetic, preconditioner and refusal
+convention, never in what they certify. `root_isolation` (Mojo, one variable,
+exact over `closed_q`) and `root_isolation_py` (one or two variables over
+`closed_interval`, with rounding hooks) share a transcript test. The three
+consumers' users run on it with byte-identical outputs. Left local: Julia
+`reference/scaled.py` separated-exponent boxes (orbit enclosure, one
+consumer); bulbs forbidden-pair exclusions, seeds and ζ selection. Certified
+roots of unity are Krawczyk plus disjointness (no module). Moore's interval
+Newton operator is not implemented (no consumer).
+
+**Terminology, banned-token and prose audits.** `tools/lexical_audit` is a
+frozen `Policy` plus `run(root, policy)`: clause rules with denial, allowed
+phrases, exempt sections and paragraph markers; context rules; declaration
+rules; governing documents. Where the audits differed only in mechanics the
+engine fixes one behaviour (listed in the package docstring); a differential
+run on about 31,000 mutated texts found no difference outside those classes.
+Mandelbrot `tools/source_tokens.py` had already moved into
+`claim_governance.lexing`. Not moved: bulbs `tools/audit_angles.py` (a
+Python-token rule, one consumer).
+
+**Polyglot boundary envelope.** `tools/polyglot_envelope` is a template and a
+standard-library renderer that reads owner, repository and `boundary_id`
+from each consumer's `polyglot.manifest.toml`. This repository's `schemas/`
+and `conformance/` files are its rendering with FMK's facts. The consumer
+copies also lacked FMK's malformed-digest and unknown-top-level-field
+rejected vectors (drift; re-rendering adds them; the schemas are
+byte-identical). `.polyglot/README.md` and `polyglot.manifest.toml` stay per
+repository; agent-icm's `render_estate.py` does not cover these files.
+
+Open for the owner after round 3:
+
+- Mandelbrot `certificates/certificate_sets.mojo` is modern syntax but not
+  compiled.
+- Nothing reads `.polyglot/` (`ci_wiring = false`); the copies could be
+  deleted and the ESTATE schemas plane pointed at the vendored template.
+- `claim_governance.checks.terminology` overlaps the `lexical_audit` context
+  rule and could be built on it.
+- The kneading prefix of an angle is a candidate for its own named module.
+- `root_isolation.boxes.is_point` and `closed_q`'s `ComplexIQ.is_singleton`
+  (both new this round) test the same thing; one could call the other.
+
 ## Found and deferred
 
 Each row is generic in substance but is not a byte-for-byte move today. The reason is the
-blocker; removing it is the next step.
+blocker; removing it is the next step. In round 3 the owner kept the last three rows
+deferred: one consumer each, so nothing is built until a second one appears.
 
 | Candidate | Where | Target | Blocker |
 |---|---|---|---|
-| Krawczyk / interval Newton (1-D and 2-D), certified roots of unity, separated-exponent boxes (dyadic outward rounding moved in round 2) | Julia `reference/{preperiodic,dyadic,scaled}.py`; bulbs `kernel/bulbford/{certify,antipode}.py`; Mandelbrot `certificates/krawczyk_witness.mojo` | new `root_isolation`; `finite_exact` | three implementations in two languages with different box types; needs one specification first, as `qpoly` had |
-| Truncated jets and Taylor models over a coefficient ring | Julia `kernel/{jet,taylor}.mojo`, `reference/{jet,taylor}.py`; bulbs `implosion.py` series helpers | `finite_polynomial` | `quadratic_germ` jets are over `CyclotomicQ`, Julia's over `ComplexIQ`; Mojo has no shared ring trait here yet |
-| Q-polynomials, Sturm, Tarski query, Routh/Pisot screen, cubic number fields | Pisot `psc/{pisot,real_root_sign,pisot_screen,field3,perron_*}.mojo`; Mandelbrot `structure_names_reference.py` `sturm_count` | `finite_linear_algebra/qpoly`, `finite_polynomial` | three local Q-polynomial layers to converge on `qpoly`'s API; the Pisot ones are cubic-specific and have about 25 importers |
-| F_p polynomials, distinct-degree factorisation, irreducibility certificates, Hensel steps, modular inverse, primality | Mandelbrot `dynamics/{exact_type_irreducibility,r41_algebraic_root_certificate,critical_relation_bridge}.mojo` | new `finite_polynomial/polynomial_fp` | machine-`Int` coefficients with unchecked products; must move onto `BigZ` or `checked_int` first |
-| Doubling-map number theory in Mojo: catalogue counts and binary blocks (the Python half moved in round 2) | Mandelbrot `misiurewicz_catalogue.mojo`, `angle_tuning.mojo` | `rational_dynamics`, `angle_doubling` | Mandelbrot's types are checked `Int64`; the Mojo `angle_doubling` caps its order search at 64 and would need the uncapped order first |
-| Kneading, internal address, continuation letter | Mandelbrot `c1/residual/residual_directive_carrier.mojo` | `substitution_dynamics/tuning` | Mandelbrot pins `tuning.mojo` before `continuation_twist`; re-pin, then retire the brute-force letter |
-| Ray-address doubling (three Int64/BigQ variants), collision partition (five copies) | Mandelbrot `dynamics/*ray_address.mojo`, `interval_orbit.mojo`, `certificates/*` | `rational_dynamics`, `quadratic_orbit` | importers are C1 research modules; about 45 of the files use the retired `fn`/`inout` syntax and are not compiled |
-| Checked Int64 Q / IQ / ComplexIQ stack | Mandelbrot `arithmetic/checked_*.mojo` | `finite_exact` fast path, or retire | a policy decision: BigQ replays of the same certificates exist |
-| Gaussian rationals, rational trigonometry | Julia `reference/gaussian_q.py`; Mandelbrot `arithmetic/{complex_inverse,coord_record_eval,rank2_operator,rational_trig}.mojo` | `finite_exact` or `cyclotomic_q` (conductor 4) | the Mandelbrot types are uncompiled legacy syntax |
-| Escape certificates, multiplier trichotomy, box constructors | Julia `kernel/{escape_certificate,julia_orbit,enclosure_bound}.mojo` | `quadratic_orbit`, `finite_exact/closed_q` | three local copies of the escape bound to reconcile first |
 | Substitution symmetry, endpoint maps, Barge class, bounded BPA, Dumont-Thomas numeration, return lattices, strong-coincidence automata | Pisot `psc/{symmetry,endpoint_core,barge_class,bounded_bpa,dumont_thomas,return_lattice,coincidence_*}.mojo` | `substitution_dynamics` | `ALPHABET = 3` hardwired, or imports reach `perron_field3` |
 | PRNG, bounded histogram, hash mixing | Pisot `psc/{prng,histogram}.mojo`, three `_mix_hash` copies | a census-support package | no second consumer yet |
-| Python references for `substitution_dynamics` and the remaining `closed_q` copy (Julia's moved in round 2) | Pisot `reference/psc_research/{bpa,swap_discrepancy}.py`; Mandelbrot `interval_exclusion_reference.py` | `reference/` | they are deliberately independent oracles in their consumers; copying one here is a decision about which oracle is canonical |
-| Terminology, banned-token and prose audits (the exact-arithmetic audit moved in round 2) | Julia and Mandelbrot `tools/audit_terminology.py` (diverged copies); Mandelbrot `tools/source_tokens.py`; bulbs `tools/audit_limits.py` | `tools/claim_governance` checks | the policies differ per repository; the engines need a shared policy format |
 | Manuscript and Markdown source validators, recorded-data checksums | Pisot `tools/check_{manuscript,markdown}_source.py`, `tests/test_recorded_data_integrity.py` | `tools/` | no second consumer yet |
 | `BPA.tla` and its models | Pisot `proof/tla/` | beside `substitution_dynamics` | its models are generated against Pisot's ledger |
-| Polyglot boundary envelope copies | `.polyglot/` in Julia, Mandelbrot and Pisot | `schemas/` as a parameterised template | only `$id`, `title` and `boundary_id` differ; needs a template mechanism |
 
 ## Not candidates
 
+- Python references for `substitution_dynamics` and the remaining `closed_q`
+  copy: Pisot `reference/psc_research/{bpa,swap_discrepancy}.py` and Mandelbrot
+  `interval_exclusion_reference.py` stay independent oracles in their consumers
+  (owner decision, round 3).
+- Uncompiled legacy (`fn`/`inout`) Mandelbrot modules, including the remaining
+  ray-address doubling and collision-partition copies and the Gaussian-rational
+  types other than `rational_trig.mojo`: dead files stay untouched (owner
+  decision, round 3). `rational_trig.mojo` and Julia `reference/gaussian_q.py`
+  have no second consumer.
 - `larsbx/math-vizops` `build/lib/` is a tracked, stale copy of `vizops/` with no unique
   code; it is a deletion for that repository, not a move here.
 - Pisot `archive/2026-09-08/instruments/` imports modules that are not tracked and cannot
