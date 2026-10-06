@@ -15,7 +15,7 @@ bounded builder on two letters. Run with `pixi run test-substitution`.
 from std.testing import assert_equal, assert_false, assert_true
 
 from finite_exact.bigint_z import BigZ, bigz_add, bigz_eq, bigz_from_i64, bigz_zero
-from substitution_dynamics.automaton import build
+from substitution_dynamics.automaton import Automaton, build
 from substitution_dynamics.barge_class import (
     KIND_DIRECT,
     KIND_LEFT_ROTATION,
@@ -28,7 +28,15 @@ from substitution_dynamics.barge_class import (
     rotate_left,
     rotate_right,
 )
-from substitution_dynamics.balanced_pair_algorithm import BUDGET_LENGTH, BUDGET_NONE, BUDGET_STATES, build_bounded
+from substitution_dynamics.balanced_pair_algorithm import (
+    BUDGET_LENGTH,
+    BUDGET_NONE,
+    BUDGET_STATES,
+    BoundedAutomaton,
+    bounded_children,
+    build_bounded,
+)
+from substitution_dynamics.balanced_pairs import children, normalise, seed_states
 from substitution_dynamics.dumont_thomas import (
     digits,
     image_lengths,
@@ -45,6 +53,7 @@ from substitution_dynamics.dumont_thomas import (
     prolongable_points,
 )
 from substitution_dynamics.substitution import Substitution
+from substitution_dynamics.words import Pair
 
 
 def sub(images: List[List[Int]]) raises -> Substitution:
@@ -312,6 +321,122 @@ def test_bounded_builder_matches_the_canonical_one() raises:
     assert_true(refused)
 
 
+def materialising_build_bounded(sigma: Substitution, max_states: Int, max_length: Int) -> BoundedAutomaton:
+    """The builder as it was before bounded inflation: every child of an
+    admitted state is materialised in full and queued, and only compared
+    with `max_length` when it is dequeued. The reference for equivalence."""
+    var states = List[Pair]()
+    var index = Dict[String, Int]()
+    var queue = List[Pair]()
+    var exhausted = BUDGET_NONE
+    var longest = 0
+    var seeds = seed_states(sigma.size)
+    for i in range(len(seeds)):
+        queue.append(normalise(seeds[i]))
+    var head = 0
+    while head < len(queue) and exhausted == BUDGET_NONE:
+        var state = queue[head].copy()
+        head += 1
+        var key = state.key()
+        if key in index:
+            continue
+        if len(states) >= max_states:
+            exhausted = BUDGET_STATES
+            break
+        if state.length() > max_length:
+            exhausted = BUDGET_LENGTH
+            break
+        if state.length() > longest:
+            longest = state.length()
+        index[key] = len(states)
+        states.append(state.copy())
+        if state.is_coincidence():
+            continue
+        var cs = children(sigma, state)
+        for i in range(len(cs)):
+            queue.append(cs[i].copy())
+    var adj = List[List[Int]]()
+    for _ in range(len(states)):
+        adj.append(List[Int]())
+    return BoundedAutomaton(Automaton(states, adj, exhausted != BUDGET_NONE, sigma.size), exhausted, longest)
+
+
+def growing_cases() raises -> List[Substitution]:
+    """Pisot cases plus substitutions whose balanced pairs grow without bound."""
+    return [
+        tribonacci(),
+        fibonacci(),
+        four_letter(),
+        tau_sigma(),
+        sub([[0, 1, 1], [1, 0]]),
+        sub([[0, 0, 1], [1, 1, 0, 0]]),
+        sub([[0, 1, 2, 2], [2, 0], [1, 1, 0]]),
+    ]
+
+
+def test_bounded_children_is_the_in_budget_prefix_of_children() raises:
+    var cases = growing_cases()
+    for c in range(len(cases)):
+        ref sigma = cases[c]
+        var reach = materialising_build_bounded(sigma, 60, 40)
+        for s in range(len(reach.graph.states)):
+            ref p = reach.graph.states[s]
+            if p.is_coincidence():
+                continue
+            var full = children(sigma, p)
+            for max_length in range(1, 50):
+                var got = bounded_children(sigma, p, max_length)
+                var expected = List[Pair]()
+                var over = False
+                for i in range(len(full)):
+                    if full[i].length() > max_length:
+                        over = True
+                        break
+                    expected.append(full[i].copy())
+                assert_equal(got.over_budget, over)
+                assert_equal(len(got.children), len(expected))
+                for i in range(len(expected)):
+                    assert_equal(got.children[i].key(), expected[i].key())
+
+
+def test_bounded_builder_agrees_with_the_materialising_one() raises:
+    var cases = growing_cases()
+    for c in range(len(cases)):
+        for max_states in [1, 2, 3, 5, 8, 13, 40, 400]:
+            for max_length in [1, 2, 3, 4, 5, 7, 10, 16, 30, 400]:
+                var got = build_bounded(cases[c], max_states, max_length)
+                var want = materialising_build_bounded(cases[c], max_states, max_length)
+                assert_equal(got.exhausted, want.exhausted)
+                assert_equal(got.longest_state, want.longest_state)
+                assert_equal(got.graph.capped, want.graph.capped)
+                assert_equal(got.graph.size(), want.graph.size())
+                for i in range(want.graph.size()):
+                    assert_equal(got.graph.states[i].key(), want.graph.states[i].key())
+
+
+def test_an_over_budget_child_is_never_materialised() raises:
+    # sigma(0) = 0^N, sigma(1) = 1^N: the seed (01, 10) inflates to the single
+    # irreducible block (0^N 1^N, 1^N 0^N) of length 2N. With max_length = 2 the
+    # bounded inflation reads max_length + 1 letters per side and stops; it
+    # never builds the 2N-letter child.
+    var n = 1 << 21
+    var zeros = List[Int](length=n, fill=0)
+    var ones = List[Int](length=n, fill=1)
+    var sigma = sub([zeros^, ones^])
+    var seed = normalise(seed_states(2)[0])
+    var cs = bounded_children(sigma, seed, 2)
+    assert_true(cs.over_budget)
+    assert_equal(len(cs.children), 0)
+    assert_equal(cs.letters_read, 3)
+    var bounded = build_bounded(sigma, 100, 2)
+    assert_equal(bounded.exhausted, BUDGET_LENGTH)
+    assert_true(bounded.graph.capped)
+    assert_equal(bounded.graph.size(), 1)
+    assert_equal(bounded.longest_state, 2)
+    # Same answer when the state budget is the one that is already spent.
+    assert_equal(build_bounded(sigma, 1, 2).exhausted, BUDGET_STATES)
+
+
 def main() raises:
     test_the_numeration_automaton_is_the_fixed_point()
     print("[PASS] test_the_numeration_automaton_is_the_fixed_point")
@@ -331,4 +456,10 @@ def main() raises:
     print("[PASS] test_barge_class_other_alphabets")
     test_bounded_builder_matches_the_canonical_one()
     print("[PASS] test_bounded_builder_matches_the_canonical_one")
-    print("9 numeration, Barge-class and bounded-builder Mojo tests passed.")
+    test_bounded_children_is_the_in_budget_prefix_of_children()
+    print("[PASS] test_bounded_children_is_the_in_budget_prefix_of_children")
+    test_bounded_builder_agrees_with_the_materialising_one()
+    print("[PASS] test_bounded_builder_agrees_with_the_materialising_one")
+    test_an_over_budget_child_is_never_materialised()
+    print("[PASS] test_an_over_budget_child_is_never_materialised")
+    print("12 numeration, Barge-class and bounded-builder Mojo tests passed.")

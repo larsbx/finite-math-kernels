@@ -947,7 +947,7 @@
       "source_path": "substitution_dynamics/automaton.mojo"
     },
     "kernel/substitution_dynamics/balanced_pair_algorithm.mojo": {
-      "blob": "e6c8cb0023c11cfacdd33d8b19034fbf15ab035c",
+      "blob": "9223a7b8018416c9e8fb2a0989b9930e50112b2a",
       "relation": "authored"
     },
     "kernel/substitution_dynamics/balanced_pairs.mojo": {
@@ -1677,7 +1677,7 @@
       "relation": "authored"
     },
     "tests/substitution_dynamics/test_dumont_thomas.mojo": {
-      "blob": "629f3ed9c57ada0a4a20fd7e6be46fd522f788c9",
+      "blob": "c751d181339e1a8e030773d5f66c4a7946301020",
       "relation": "authored"
     },
     "tests/substitution_dynamics/test_return_lattice.mojo": {
