@@ -1384,7 +1384,7 @@
       "relation": "authored"
     },
     "tests/vendoring/test_check_vendored_sync.py": {
-      "blob": "7aa38d7e84d767da91bf7bff6ab110e46c5e35e5",
+      "blob": "6fb37838a432eb0b9acc58a0f2cecfe3746d6a9b",
       "relation": "authored"
     },
     "tests/weighted_graph/test_cycle_gain.mojo": {
@@ -1553,7 +1553,7 @@
       "relation": "authored"
     },
     "tools/vendoring/check_vendored_sync.py": {
-      "blob": "f5c97d04d768ecf09ff51127ed35cbae407b85d7",
+      "blob": "c9aa1623c9e3724d63382e22fda2411637d0f1b2",
       "relation": "modified",
       "source": "finite_mandelbrot_research",
       "source_blob": "76ddda76a2cc3dea8221ac8b8192fe3d7e4f14c4",
