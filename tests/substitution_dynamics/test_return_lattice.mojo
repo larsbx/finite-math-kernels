@@ -124,6 +124,62 @@ def test_a_rank_drop_raises_on_both_routes() raises:
     assert_true(dropped > 0)
 
 
+def refuses_factor_set(sigma: Substitution, m: Int) -> Bool:
+    try:
+        _ = factor_set(sigma, m)
+    except:
+        return True
+    return False
+
+
+def refuses_sampled(sigma: Substitution, n: Int, min_length: Int) -> Bool:
+    try:
+        _ = sampled_return_index(sigma, n, min_length)
+    except:
+        return True
+    return False
+
+
+def test_a_seed_that_never_grows_or_never_covers_is_refused() raises:
+    """Applying `sigma` must make progress toward a seed; where it provably
+    never does, the module refuses at once instead of looping."""
+    var fixed = Substitution.checked([[0]])  # primitive, and its image never grows
+    assert_equal(len(factor_set(fixed, 1)), 1)
+    assert_true(refuses_factor_set(fixed, 2))
+    var refused = False
+    try:
+        _ = return_lattice(fixed, 1)
+    except:
+        refused = True
+    assert_true(refused)
+    assert_true(refuses_sampled(fixed, 1, 10))
+    # A letter permutation alternates [0], [1]: no seed carries both letters.
+    assert_true(refuses_factor_set(Substitution.checked([[1], [0]]), 1))
+    # Not primitive: 1 never occurs in sigma^k(0).
+    assert_true(refuses_factor_set(Substitution.checked([[0, 0], [1]]), 2))
+    # Growing but not primitive, and the seed still covers: answered.
+    assert_equal(len(factor_set(Substitution.checked([[0, 1], [1]]), 2)), 2)
+
+
+def test_covering_level_refuses_a_length_that_stops_short() raises:
+    assert_equal(covering_level(Substitution.checked([[0]]), 1), 0)
+    assert_equal(covering_level(Substitution.checked([[0]]), 2), -1)
+    # Letter 1 grows without bound; letter 0 never does.
+    var stuck = Substitution.checked([[0], [1, 1]])
+    assert_equal(covering_level(stuck, 2), -1)
+    var refused = False
+    try:
+        verify_index_profile(stuck, 2, [1, 1])
+    except:
+        refused = True
+    assert_true(refused)
+
+
+def test_the_sampled_route_refuses_factor_lengths_outside_its_keys() raises:
+    assert_true(refuses_sampled(tribonacci(), 0, 100))
+    assert_true(refuses_sampled(tribonacci(), max_factor_length(3) + 1, 100))
+
+
 def main() raises:
     test_hermite_form_index()
     print("[PASS] test_hermite_form_index")
@@ -133,4 +189,10 @@ def main() raises:
     print("[PASS] test_other_alphabets_agree_with_the_sampled_route")
     test_a_rank_drop_raises_on_both_routes()
     print("[PASS] test_a_rank_drop_raises_on_both_routes")
-    print("4 return-lattice Mojo tests passed.")
+    test_a_seed_that_never_grows_or_never_covers_is_refused()
+    print("[PASS] test_a_seed_that_never_grows_or_never_covers_is_refused")
+    test_covering_level_refuses_a_length_that_stops_short()
+    print("[PASS] test_covering_level_refuses_a_length_that_stops_short")
+    test_the_sampled_route_refuses_factor_lengths_outside_its_keys()
+    print("[PASS] test_the_sampled_route_refuses_factor_lengths_outside_its_keys")
+    print("7 return-lattice Mojo tests passed.")

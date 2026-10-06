@@ -140,9 +140,60 @@ def _window(w: List[Int], start: Int, length: Int) -> List[Int]:
     return out^
 
 
-def _seed_word(sigma: Substitution, min_length: Int) -> List[Int]:
+def _letters_of_images(sigma: Substitution, letters: List[Bool]) -> List[Bool]:
+    """The letters of `sigma(w)`, from the letters of `w`."""
+    var out = List[Bool](length=sigma.size, fill=False)
+    for a in range(sigma.size):
+        if letters[a]:
+            ref image = sigma.images[a]
+            for i in range(len(image)):
+                out[image[i]] = True
+    return out^
+
+
+def _letters_key(letters: List[Bool]) -> String:
+    var key = String("")
+    for a in range(len(letters)):
+        key += "1" if letters[a] else "0"
+    return key
+
+
+def _require_seed(sigma: Substitution, min_length: Int) raises:
+    """Refuse when no `sigma^k(0)` is both `min_length` long and carries every
+    letter, so `_seed_word` never loops.
+
+    The letter sets of `sigma^k(0)` follow a map on subsets of the alphabet, so
+    they enter a cycle. A seed exists exactly when the full alphabet lies on
+    that cycle and, unless one letter suffices, some image is longer than one
+    letter: a word carrying every letter then grows at its next application,
+    and the full alphabet recurs."""
+    var letters = List[Bool](length=sigma.size, fill=False)
+    letters[0] = True
+    var at = Dict[String, Int]()
+    var path = List[List[Bool]]()
+    while _letters_key(letters) not in at:
+        at[_letters_key(letters)] = len(path)
+        path.append(letters.copy())
+        letters = _letters_of_images(sigma, letters)
+    var covers = False
+    for k in range(at[_letters_key(letters)], len(path)):
+        var full = True
+        for a in range(sigma.size):
+            full = full and path[k][a]
+        covers = covers or full
+    if not covers:
+        raise Error("no power of the substitution at 0 carries every letter: no seed word")
+    var grows = False
+    for a in range(sigma.size):
+        grows = grows or len(sigma.images[a]) > 1
+    if not grows and min_length > 1:
+        raise Error("every image is one letter: the language has no factor of length " + String(min_length))
+
+
+def _seed_word(sigma: Substitution, min_length: Int) raises -> List[Int]:
     """`sigma^k(0)` for the least `k` at which it is at least `min_length` long
-    and carries every letter."""
+    and carries every letter; refused where no such `k` exists."""
+    _require_seed(sigma, min_length)
     var w: List[Int] = [0]
     while True:
         var seen = List[Bool](length=sigma.size, fill=False)
@@ -265,6 +316,9 @@ def sampled_return_index(sigma: Substitution, n: Int, min_length: Int) raises ->
     """The index of the lattice spanned by the returns seen in a prefix of
     `sigma^k(0)` of length at least `min_length`: a multiple of the exact
     `[Z^d : Lambda_n]`, and an independent route to it."""
+    var cap = max_factor_length(sigma.size)
+    if n < 1 or n > cap:
+        raise Error("factor length " + String(n) + " outside 1.." + String(cap))
     var w = _seed_word(sigma, min_length)
     var prefix = List[List[Int]]()
     prefix.append(List[Int](length=sigma.size, fill=0))
@@ -300,8 +354,11 @@ def verify_index_profile(sigma: Substitution, det: Int, profile: List[Int]) rais
                 "return-lattice chain broken at order " + String(n) + ": "
                 + String(profile[n - 2]) + " does not divide " + String(index)
             )
+        var level = covering_level(sigma, n)
+        if level < 0:
+            raise Error("no power of the substitution covers order " + String(n) + ": some image stops growing")
         var bound = profile[0]
-        for _ in range(covering_level(sigma, n)):
+        for _ in range(level):
             bound = checked_mul(bound, det)
         if bound % index != 0:
             raise Error(
@@ -311,11 +368,15 @@ def verify_index_profile(sigma: Substitution, det: Int, profile: List[Int]) rais
 
 
 def covering_level(sigma: Substitution, n: Int) -> Int:
-    """The least `K` with `|sigma^K(a)| >= n` for every letter `a`.
+    """The least `K` with `|sigma^K(a)| >= n` for every letter `a`, or `-1`
+    when some letter's image stops short of `n` for ever.
 
     Returns of a length-`n` factor contain `M^K` times every return of a
     letter, so `M^K Lambda_1 <= Lambda_n` and `[Z^d : Lambda_n]` divides
-    `|det M|^K [Z^d : Lambda_1]`."""
+    `|det M|^K [Z^d : Lambda_1]`. Lengths are counted saturated at `n`: they
+    never decrease, so the saturated vector stops changing after finitely many
+    steps, and a step that leaves it unchanged leaves it unchanged for ever --
+    no loop and no overflow."""
     var lengths = List[Int](length=sigma.size, fill=1)
     var level = 0
     while True:
@@ -326,11 +387,18 @@ def covering_level(sigma: Substitution, n: Int) -> Int:
         if shortest >= n:
             return level
         var longer = List[Int]()
+        var changed = False
         for a in range(sigma.size):
             var s = 0
             ref image = sigma.images[a]
             for i in range(len(image)):
                 s += lengths[image[i]]
+                if s >= n:
+                    s = n
+                    break
+            changed = changed or s != lengths[a]
             longer.append(s)
+        if not changed:
+            return -1
         lengths = longer^
         level += 1
