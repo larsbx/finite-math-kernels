@@ -65,7 +65,7 @@
       "relation": "authored"
     },
     "README.md": {
-      "blob": "6b3595f239ce1077b191a89a749abefbd2b0e274",
+      "blob": "81a92ba8edd94baf87f29162228b6b1f4b06b352",
       "relation": "authored"
     },
     "conformance/certified_records_v1.txt": {
@@ -632,7 +632,7 @@
       "source_path": "finite_linear_algebra/w3.mojo"
     },
     "kernel/finite_polynomial/__init__.mojo": {
-      "blob": "94b09901c32caf4c9ea2d7bd1c45ff90424d753a",
+      "blob": "e5a594ffa9b14c35943400765540c2ed024de8af",
       "relation": "authored"
     },
     "kernel/finite_polynomial/cyclotomic_field.mojo": {
@@ -643,12 +643,32 @@
       "blob": "ef22a1f99121d8eece2130dc042915c648d91142",
       "relation": "authored"
     },
+    "kernel/finite_polynomial/distinct_degree.mojo": {
+      "blob": "57a0604ab6633a779624d6b56e7a9d2369a14a1c",
+      "relation": "authored"
+    },
+    "kernel/finite_polynomial/hensel_lifting.mojo": {
+      "blob": "6e608caf10b15f15130ddbb9f07c7dec884e6c5b",
+      "relation": "authored"
+    },
+    "kernel/finite_polynomial/miller_rabin.mojo": {
+      "blob": "797b78999eea1bc311446bbef04645ca10a55c3b",
+      "relation": "authored"
+    },
+    "kernel/finite_polynomial/polynomial_fp.mojo": {
+      "blob": "b274f256e638e637fe1afc180b769711cc2a51f9",
+      "relation": "authored"
+    },
     "kernel/finite_polynomial/polynomial_z.mojo": {
       "blob": "13f8a2b2984cce80aa8dcc9297d97721ed37a55c",
       "relation": "authored"
     },
     "kernel/finite_polynomial/quadratic_germ.mojo": {
       "blob": "9bd63372d9eca72bb3495c60b9f84afcbe65fd79",
+      "relation": "authored"
+    },
+    "kernel/finite_polynomial/rabin_irreducibility.mojo": {
+      "blob": "5df2bc9a3bc31297316fc66e6c7925c6d62f8cca",
       "relation": "authored"
     },
     "kernel/mojo_smoke/__init__.mojo": {
@@ -894,7 +914,7 @@
       "relation": "authored"
     },
     "pixi.toml": {
-      "blob": "8f00de8cf3b5b9bfb8d09b6d5a9a9b2690c8fe8f",
+      "blob": "4eaa6a9ae2b1a59ee028db1617c852d6c42095ac",
       "relation": "authored"
     },
     "policy/estate-audits/0833929ed82d42cf3674a1565681625a9622827b.py": {
@@ -922,6 +942,10 @@
     },
     "reference/orbit_census_reference.py": {
       "blob": "7f8e2eabbd05ceded2010e741f6c5115e965bfac",
+      "relation": "authored"
+    },
+    "reference/polynomial_fp_reference.py": {
+      "blob": "286fbc3bdeed908dd3682ca19e3329e7d4836e97",
       "relation": "authored"
     },
     "reference/projective_limits_reference.py": {
@@ -1199,6 +1223,14 @@
     },
     "tests/finite_polynomial/test_cyclotomic_specimens.py": {
       "blob": "b88d3007afdbc9bab4e9079af12937b2bb5941d8",
+      "relation": "authored"
+    },
+    "tests/finite_polynomial/test_polynomial_fp.mojo": {
+      "blob": "ee4ce248b88a4ce855f588bfc328cf8e63ba0401",
+      "relation": "authored"
+    },
+    "tests/finite_polynomial/test_polynomial_fp_reference.py": {
+      "blob": "b2fad2f13261ccf0406b5d6d0540a8617bcd578c",
       "relation": "authored"
     },
     "tests/finite_polynomial/test_polynomial_z.mojo": {
