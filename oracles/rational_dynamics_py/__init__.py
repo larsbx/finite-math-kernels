@@ -17,7 +17,11 @@ package name (and so a ``vendored.toml`` entry) with the Mojo package.
 It is non-authoritative in this repository's sense (``oracles/``): the Mojo
 ``rational_dynamics`` and ``angle_doubling`` packages under ``kernel/`` are
 canonical where the two overlap, and the R1 functions here are their
-independent Python reference.
+independent Python reference, as are ``order_of_two``, ``preperiod``,
+``period``, ``exact_type``, ``exact_type_count``, ``binary_digits``,
+``binary_block`` and ``moebius`` for the Mojo ``rational_dynamics.doubling``,
+``.multiplicative_order`` and ``.moebius`` modules
+(``tests/rational_dynamics/test_doubling_twin.py``).
 
 Modules:
 
@@ -25,9 +29,14 @@ Modules:
     reduced addresses (R1), continued fractions, units, mediants, Farey
     sequences and Farey parents.
 ``doubling``
-    preperiod and period in closed form, binary expansions, rotation cycles,
-    mechanical words, characteristic arcs (wakes), rotation numbers, doubling
+    preperiod and period in closed form, the number of angles of each exact
+    type, binary expansions, rotation cycles, mechanical words, characteristic
+    arcs (wakes), rotation numbers, doubling
     orbits.
+``multiplicative_order``
+    ``order_of_two``, the multiplicative order of two (Gauss, 1801).
+``carmichael``
+    ``carmichael_lambda``, the Carmichael function (Carmichael, 1910).
 ``arithmetic``
     Moebius, Dedekind sums by reciprocity, Ramanujan sums as divisor sums.
 
@@ -60,20 +69,22 @@ difference is deliberate and stated in the function's docstring:
 from __future__ import annotations
 
 from .arithmetic import dedekind_sum, moebius, ramanujan_sum
+from .carmichael import carmichael_lambda
 from .doubling import (
     binary_block,
     binary_digits,
     binary_expansion,
     doubling_orbit,
     exact_type,
+    exact_type_count,
     mechanical_word,
-    order_of_two,
     period,
     preperiod,
     rotation_cycle,
     rotation_number,
     wake,
 )
+from .multiplicative_order import order_of_two
 from .farey import (
     Address,
     address,
@@ -99,12 +110,14 @@ __all__ = [
     "binary_block",
     "binary_digits",
     "binary_expansion",
+    "carmichael_lambda",
     "continued_fraction",
     "convergents",
     "dedekind_sum",
     "double_mod_one",
     "doubling_orbit",
     "exact_type",
+    "exact_type_count",
     "farey_adjacent",
     "farey_determinant",
     "farey_parents",

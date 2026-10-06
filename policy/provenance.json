@@ -65,7 +65,7 @@
       "relation": "authored"
     },
     "README.md": {
-      "blob": "6b3595f239ce1077b191a89a749abefbd2b0e274",
+      "blob": "191a7927a1bc60d47ae8bc0f4bccccccf80f111e",
       "relation": "authored"
     },
     "conformance/certified_records_v1.txt": {
@@ -286,7 +286,7 @@
       "relation": "authored"
     },
     "docs/tuning-substitutions-spec.md": {
-      "blob": "a9a6078ce56a52b4f5b0102ae274919c6624785f",
+      "blob": "9db00ab626af40f1da3cd6f8b7edd0b002fe4b1a",
       "relation": "authored"
     },
     "docs/typed-proof-graph-normative-contract.md": {
@@ -781,7 +781,27 @@
       "relation": "authored"
     },
     "kernel/rational_dynamics/__init__.mojo": {
-      "blob": "02c525febbc75a3610b60d40a434da844bb8a322",
+      "blob": "5569321163058a02a2a886d0f3a7ba6dc43bc8f1",
+      "relation": "authored"
+    },
+    "kernel/rational_dynamics/carmichael.mojo": {
+      "blob": "617c92b533224edb08ebcfa730af7e2ada76faba",
+      "relation": "authored"
+    },
+    "kernel/rational_dynamics/doubling.mojo": {
+      "blob": "4088dde55101de85fb3a1be51c32b2706ffa73ca",
+      "relation": "authored"
+    },
+    "kernel/rational_dynamics/integers.mojo": {
+      "blob": "7d953a0d8c77eabc9a2346b0a0ff5c4d3e35795b",
+      "relation": "authored"
+    },
+    "kernel/rational_dynamics/moebius.mojo": {
+      "blob": "7d8ffd3bb09c572b8bd426fb5bc45038db8cce58",
+      "relation": "authored"
+    },
+    "kernel/rational_dynamics/multiplicative_order.mojo": {
+      "blob": "423f6d9c19c2d7ba83615f7d8b27311c0d6c9e95",
       "relation": "authored"
     },
     "kernel/rational_dynamics/rational.mojo": {
@@ -789,7 +809,7 @@
       "relation": "authored"
     },
     "kernel/substitution_dynamics/__init__.mojo": {
-      "blob": "76f83f038f0df80fc776202b5a5d52f8c18677e4",
+      "blob": "88ae88d7722f0f9df7b4e83513d1678185411909",
       "relation": "modified",
       "source": "substitution_dynamics",
       "source_blob": "39630ebf50177ba3e2cdd73b6b5ed1898b76324a",
@@ -820,6 +840,10 @@
       "source_blob": "04f6f0d04f3320397c1f1c16bde2d038260d994e",
       "source_path": "substitution_dynamics/discrepancy.mojo"
     },
+    "kernel/substitution_dynamics/internal_address.mojo": {
+      "blob": "0a6f24be06fde66560940aa53e879a2dee6b509b",
+      "relation": "authored"
+    },
     "kernel/substitution_dynamics/sadic.mojo": {
       "blob": "32dd9c575c15047fbd83fb1f49f9e0f39bffa864",
       "relation": "authored"
@@ -832,7 +856,7 @@
       "source_path": "substitution_dynamics/substitution.mojo"
     },
     "kernel/substitution_dynamics/tuning.mojo": {
-      "blob": "c3cd6101d34bc10823b1ecaa6dea2bc11d1cd5f4",
+      "blob": "2c4e89d3c29a3816e7ea2865a036d632c99d9bdf",
       "relation": "authored"
     },
     "kernel/substitution_dynamics/words.mojo": {
@@ -878,23 +902,31 @@
       "source_path": "tools/property_oracle.py"
     },
     "oracles/rational_dynamics_py/__init__.py": {
-      "blob": "79422556525d8add2973b8fefd60850511681aad",
+      "blob": "a80af4d26f4a3229fe2cee95b887c047d426cc96",
       "relation": "authored"
     },
     "oracles/rational_dynamics_py/arithmetic.py": {
       "blob": "5bf376f81d5b8246fcd8149dbe9f5acdb8617873",
       "relation": "authored"
     },
+    "oracles/rational_dynamics_py/carmichael.py": {
+      "blob": "07ee828867af90c9107a9402cc2359f88dcacdfe",
+      "relation": "authored"
+    },
     "oracles/rational_dynamics_py/doubling.py": {
-      "blob": "b9335b031ef3b512edd3de8e33feae679f6ed4d1",
+      "blob": "dcad886c3b9da15ad49e1d53908547c639600b1c",
       "relation": "authored"
     },
     "oracles/rational_dynamics_py/farey.py": {
       "blob": "d00700598a327c441e2036dfcb4e17b732dc756a",
       "relation": "authored"
     },
+    "oracles/rational_dynamics_py/multiplicative_order.py": {
+      "blob": "0dd43bcd67f3b935276baf26db6c361c799a112d",
+      "relation": "authored"
+    },
     "pixi.toml": {
-      "blob": "8f00de8cf3b5b9bfb8d09b6d5a9a9b2690c8fe8f",
+      "blob": "b6b8228d9b27b74e373fdabc363c707642518db3",
       "relation": "authored"
     },
     "policy/estate-audits/0833929ed82d42cf3674a1565681625a9622827b.py": {
@@ -920,6 +952,10 @@
       "blob": "af727635754608924b7386ed20ed637ad7631b27",
       "relation": "authored"
     },
+    "reference/internal_address_reference.py": {
+      "blob": "66a9f8937ff02d5e0463c08f973d77e8b628a853",
+      "relation": "authored"
+    },
     "reference/orbit_census_reference.py": {
       "blob": "7f8e2eabbd05ceded2010e741f6c5115e965bfac",
       "relation": "authored"
@@ -937,7 +973,7 @@
       "relation": "authored"
     },
     "reference/tuning_reference.py": {
-      "blob": "d5dc33f644d2ba735fed1b71d4ccc1b562bcc8e4",
+      "blob": "7c5f7c470416d6749880159dbaba20e579f222c0",
       "relation": "authored"
     },
     "schemas/polyglot-boundary-envelope-v1.json": {
@@ -1336,12 +1372,24 @@
       "blob": "4e8b27a493d5856618a9715e912ce88e76251a95",
       "relation": "authored"
     },
+    "tests/rational_dynamics/doubling_transcript.mojo": {
+      "blob": "b7b45a5666615af2116b0fc5b92fffd7714aef6e",
+      "relation": "authored"
+    },
+    "tests/rational_dynamics/test_doubling.mojo": {
+      "blob": "f1efa0b79f083d02c4310136165c3c816cbcc071",
+      "relation": "authored"
+    },
+    "tests/rational_dynamics/test_doubling_twin.py": {
+      "blob": "9e08cebf0676ef1e78ab08c96f4332206d3a7cca",
+      "relation": "authored"
+    },
     "tests/rational_dynamics/test_rational_dynamics.mojo": {
       "blob": "316e8f4a17b56dc7a63d3b90f0aef6773eaadba1",
       "relation": "authored"
     },
     "tests/rational_dynamics/test_rational_dynamics_oracle.py": {
-      "blob": "928ad6b269648cdec67d44166404fd77b10da49d",
+      "blob": "7b7660a51200768344da188af5cd3c5cc0fca071",
       "relation": "authored"
     },
     "tests/rational_dynamics/test_rational_dynamics_reference.py": {
@@ -1364,11 +1412,11 @@
       "source_path": "tests/test_substitution_dynamics.mojo"
     },
     "tests/substitution_dynamics/test_tuning.mojo": {
-      "blob": "5d0cc9914266f6f9d6440775dfc02ffad8e9b999",
+      "blob": "8903aaf196815588ec9281496040a325a5756e6a",
       "relation": "authored"
     },
     "tests/substitution_dynamics/test_tuning_reference.py": {
-      "blob": "7d5cf3e7cd1f67618205d7cbcded87b3472f3015",
+      "blob": "7fcf6c930d22e6b0a4fe42e103c9eab8e1fac8df",
       "relation": "authored"
     },
     "tests/test_proof_graph_normalization_vectors.py": {

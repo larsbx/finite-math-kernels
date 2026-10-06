@@ -29,6 +29,7 @@ from rational_dynamics_py import (
     dedekind_sum,
     doubling_orbit,
     exact_type,
+    exact_type_count,
     farey_parents,
     farey_sequence,
     from_continued_fraction,
@@ -230,6 +231,27 @@ def test_order_of_two_refuses_a_non_unit():
     for m in (0, -3, 2, 12):
         with pytest.raises(ValueError):
             order_of_two(m)
+
+
+def test_exact_type_count_is_the_enumeration():
+    """Every angle of exact type ``(l, k)`` lies over ``2^l (2^k - 1)``; counting
+    them there is the Mandelbrot catalogue's angle-count regression, here for
+    ``l = 0`` (periodic) as well."""
+    for l in range(0, 5):
+        for k in range(1, 8):
+            den = 2**l * (2**k - 1)
+            enumerated = sum(1 for p in range(den) if exact_type(F(p, den)) == (l, k))
+            assert exact_type_count(l, k) == enumerated, (l, k)
+    assert [exact_type_count(1, k) for k in (1, 2, 3)] == [1, 2, 6]
+    assert exact_type_count(2, 3) == 12 and exact_type_count(3, 3) == 24
+    # Past Int64: (2^64 - 1) - (2^32 - 1) periodic angles of exact period 64.
+    assert exact_type_count(0, 64) == 2**64 - 2**32
+
+
+@pytest.mark.parametrize("bad", [(-1, 1), (0, 0), (2, -3)])
+def test_exact_type_count_refuses_a_type_that_does_not_exist(bad):
+    with pytest.raises(ValueError):
+        exact_type_count(*bad)
 
 
 def test_floats_are_refused_not_converted():
