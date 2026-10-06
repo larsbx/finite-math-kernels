@@ -6,7 +6,9 @@
 from __future__ import annotations
 
 import ast
+import io
 import re
+import tokenize
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -21,9 +23,9 @@ ROW_RE = re.compile(r"^\s*\|(?P<cells>.+)\|\s*$")
 #: The three ways a module reaches a layer, each possibly indented: ``from
 #: finite_exact.M import ...``, ``import finite_exact.M [as alias]`` and ``from
 #: finite_exact import M[, N]`` (parenthesised over several lines included).
-FROM_MODULE_RE = re.compile(r"^\s*from\s+finite_exact\.(\w+)\s+import\b", re.M)
-IMPORT_MODULE_RE = re.compile(r"^\s*import\s+([^\n#]+)", re.M)
-FROM_PACKAGE_RE = re.compile(r"^\s*from\s+finite_exact\s+import\s+(\([^)]*\)|[^\n#]+)", re.M)
+FROM_MODULE_RE = re.compile(r"(?:^|;)\s*from\s+finite_exact\.(\w+)(?:\.\w+)*\s+import\b", re.M)
+IMPORT_MODULE_RE = re.compile(r"(?:^|;)\s*import\s+([^\n;]+)", re.M)
+FROM_PACKAGE_RE = re.compile(r"(?:^|;)\s*from\s+finite_exact\s+import\s+(\([^)]*\)|[^\n;]+)", re.M)
 
 #: Criterion C1, lexically: a floating-point type name, a SIMD float dtype, or
 #: a decimal floating literal in any Mojo or Python spelling (``1.5``, ``2.``,
@@ -155,15 +157,41 @@ def scanned_files(root: Path, policy: Policy) -> list[str]:
 
 
 def imported_layers(text: str) -> set[str | None]:
-    """The ``finite_exact`` modules a source imports; ``None`` is the whole package."""
+    """Imported ``finite_exact`` layers; ``None`` means the package or a wildcard.
+
+    Python's syntax tree handles aliases, continuations and compound lines.
+    Mojo uses the lexical fallback, with comments and literal text masked.
+    """
+    try:
+        tree = ast.parse(text)
+    except SyntaxError:
+        tree = None
+    if tree is not None:
+        layers: set[str | None] = set()
+        for node in ast.walk(tree):
+            if isinstance(node, ast.Import):
+                for alias in node.names:
+                    if alias.name == "finite_exact" or alias.name.startswith("finite_exact."):
+                        layers.add(alias.name.partition(".")[2].split(".")[0] or None)
+            elif isinstance(node, ast.ImportFrom) and node.level == 0:
+                if node.module == "finite_exact":
+                    layers.update(None if alias.name == "*" else alias.name for alias in node.names)
+                elif node.module and node.module.startswith("finite_exact."):
+                    layers.add(node.module.split(".")[1])
+        return layers
+
+    text = re.sub(r"\\\r?\n", " ", mask_comments_and_strings(text))
     names: list[str | None] = list(FROM_MODULE_RE.findall(text))
     for clause in IMPORT_MODULE_RE.findall(text):
         for item in clause.split(","):
-            dotted = item.split(" as ")[0].strip()
+            dotted = re.split(r"\s+as\s+", item.strip(), maxsplit=1)[0]
             if dotted == "finite_exact" or dotted.startswith("finite_exact."):
                 names.append(dotted.partition(".")[2].split(".")[0] or None)
     for clause in FROM_PACKAGE_RE.findall(text):
-        names += [item.split(" as ")[0].strip() for item in clause.strip("()").split(",") if item.strip()]
+        for item in clause.strip("()").split(","):
+            name = re.split(r"\s+as\s+", item.strip(), maxsplit=1)[0]
+            if name:
+                names.append(None if name == "*" else name)
     return set(names)
 
 
@@ -171,14 +199,14 @@ def arithmetic_consumers(root: Path, policy: Policy) -> set[str]:
     """Scanned files that import the exact-arithmetic layers directly, by any spelling.
 
     Importing the package itself reaches every layer, so it counts whatever
-    the policy's ``arithmetic_modules`` are. Imports are read from the source
-    with comments and strings masked, so a comment inside a parenthesised
-    import cannot hide a layer and an import quoted in a docstring is not one.
+    the policy's ``arithmetic_modules`` are. The syntax tree, or masked Mojo
+    fallback, ensures a comment inside a parenthesised import cannot hide a
+    layer and an import quoted in a docstring is not one.
     """
     wanted = policy.arithmetic_modules
     return {
         rel for rel in scanned_files(root, policy)
-        if any(wanted is None or name is None or name in wanted for name in imported_layers(mask_comments_and_strings(_read(root, rel))))
+        if any(wanted is None or name is None or name in wanted for name in imported_layers(_read(root, rel)))
     }
 
 
@@ -188,22 +216,34 @@ def citation_exempt(root: Path, policy: Policy) -> tuple[frozenset[str], tuple[s
     return policy.citation_exempt, prefixes
 
 
-def _fstring_lines(text: str) -> set[int] | None:
-    """Lines whose f-string interpolations are floating point; ``None`` if unparseable.
+def _python_float_lines(text: str) -> set[int] | None:
+    """Python lines holding float tokens or f-string fields; ``None`` if unparseable.
 
-    Masking blanks a whole string literal, and an f-string's ``{...}`` fields
-    are executable code, not text. They are read back from the syntax tree and
-    scanned in their unparsed form, so the answer does not depend on how the
-    source spelled them.
+    Python's tokenizer distinguishes literal text from executable code even
+    when an f-string field reuses the outer quote. On Python 3.11 it masks
+    whole f-strings, so the syntax tree supplies their executable fields.
+    Nested f-strings have their own fields and are scanned in turn.
     """
     try:
         tree = ast.parse(text)
     except SyntaxError:
         return None
-    return {
-        node.lineno for node in ast.walk(tree)
-        if isinstance(node, ast.FormattedValue) and FLOAT_RE.search(ast.unparse(node.value))
+    tokens = [token for token in tokenize.generate_tokens(io.StringIO(text).readline)
+              if token.type not in (tokenize.COMMENT, tokenize.NL, tokenize.NEWLINE,
+                                    tokenize.INDENT, tokenize.DEDENT, tokenize.ENDMARKER)]
+    hits = {token.start[0] for token in tokens
+            if token.type in (tokenize.NAME, tokenize.NUMBER) and FLOAT_RE.search(token.string)}
+    for index, token in enumerate(tokens):
+        if (index >= 2 and token.type == tokenize.NAME
+                and tokens[index - 2].string == "DType" and tokens[index - 1].string == "."
+                and FLOAT_RE.search("DType." + token.string)):
+            hits.add(token.start[0])
+    hits |= {
+        node.value.lineno for node in ast.walk(tree)
+        if isinstance(node, ast.FormattedValue)
+        and FLOAT_RE.search(mask_comments_and_strings(ast.unparse(node.value)))
     }
+    return hits
 
 
 def floating_point(root: Path, rel: str) -> list[str]:
@@ -214,13 +254,13 @@ def floating_point(root: Path, rel: str) -> list[str]:
     """
     text = _read(root, rel)
     lines = text.splitlines()
-    hits = {lineno for lineno, line in enumerate(mask_comments_and_strings(text).splitlines(), start=1)
-            if FLOAT_RE.search(line)}
     if rel.endswith(".py"):
-        fstrings = _fstring_lines(text)
-        if fstrings is None:
+        hits = _python_float_lines(text)
+        if hits is None:
             return [f"{rel}: cannot parse for the f-string scan (C1)"]
-        hits |= fstrings
+    else:
+        hits = {lineno for lineno, line in enumerate(mask_comments_and_strings(text).splitlines(), start=1)
+                if FLOAT_RE.search(line)}
     return [f"{rel}:{lineno}: floating point in kernel scope (C1): {lines[lineno - 1].strip()}" for lineno in sorted(hits)]
 
 

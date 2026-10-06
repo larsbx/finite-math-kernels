@@ -27,6 +27,20 @@ from closed_interval import (
     significant_bits,
 )
 
+
+@pytest.mark.parametrize("bad", [1.5, 3.0, True, False, F(3), "3", None])
+@pytest.mark.parametrize("call", [
+    lambda p: scale_for(F(1, 3), p),
+    lambda p: round_down(F(1, 3), p), lambda p: round_down(0, p),
+    lambda p: round_up(F(1, 3), p), lambda p: round_up(0, p),
+    lambda p: round_outward(0, 0, p),
+    lambda p: round_interval(IQ.singleton(0), p),
+    lambda p: round_interval(IQ.refused(), p),
+])
+def test_dyadic_precision_requires_a_non_boolean_integer(call, bad):
+    with pytest.raises(TypeError):
+        call(bad)
+
 # --- the pinned Mojo examples ------------------------------------------------------
 
 

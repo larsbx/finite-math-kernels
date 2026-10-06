@@ -855,7 +855,7 @@
       "relation": "authored"
     },
     "oracles/closed_interval/dyadic.py": {
-      "blob": "2a4126b4c690916cd41a1772cc5b3c6c2b8fd732",
+      "blob": "b1247239adb5959f3553d4264b2c4ef37ea82e46",
       "relation": "authored"
     },
     "oracles/closed_interval/interval.py": {
@@ -878,7 +878,7 @@
       "source_path": "tools/property_oracle.py"
     },
     "oracles/rational_dynamics_py/__init__.py": {
-      "blob": "0d91d45ddb472efc0e2097dc1358c141edb63ca1",
+      "blob": "fa4d6dc5ca1e2d2109e3a4bc023664cf1b91a7c8",
       "relation": "authored"
     },
     "oracles/rational_dynamics_py/arithmetic.py": {
@@ -890,7 +890,7 @@
       "relation": "authored"
     },
     "oracles/rational_dynamics_py/farey.py": {
-      "blob": "9f4ded8ae6b37dfeab6229c83eb98d1c3f22eae2",
+      "blob": "9909f1649224c8e685b375c06387eaead133bd64",
       "relation": "authored"
     },
     "pixi.toml": {
@@ -1047,7 +1047,7 @@
       "relation": "authored"
     },
     "tests/closed_interval/test_closed_interval.py": {
-      "blob": "0d7fe705ffd73140bb804093f08d43efc2e8ed81",
+      "blob": "ae9931ba0bdd67cb86512a4c24705b81d241a33d",
       "relation": "authored"
     },
     "tests/closed_interval/test_closed_q_twin.py": {
@@ -1067,7 +1067,7 @@
       "relation": "authored"
     },
     "tests/exact_arithmetic_audit/test_exact_arithmetic_audit.py": {
-      "blob": "02fd1a39e51b6c08837b69f6542ee83412b79fdc",
+      "blob": "8814f6ec0cec1706d160fa975fdf52d794bad0e8",
       "relation": "authored"
     },
     "tests/facades/test_stable_facades.mojo": {
@@ -1341,7 +1341,7 @@
       "relation": "authored"
     },
     "tests/rational_dynamics/test_rational_dynamics_oracle.py": {
-      "blob": "d8c672f59545f022cec768b2c4f5e70d333e7080",
+      "blob": "5da4343fd3060f50824d0282ffb4a7c32c6de356",
       "relation": "authored"
     },
     "tests/rational_dynamics/test_rational_dynamics_reference.py": {
@@ -1491,11 +1491,11 @@
       "source_path": "claim_governance/runner.py"
     },
     "tools/exact_arithmetic_audit/__init__.py": {
-      "blob": "6fbab44b3ebe77193f8a9e25ed477851795d9329",
+      "blob": "46948a0ae432907e19d5153c1a426ee0ff565f10",
       "relation": "authored"
     },
     "tools/exact_arithmetic_audit/audit.py": {
-      "blob": "c0ffd604c330862bd394ef20ddabb910ff7fa1c8",
+      "blob": "0983f49ea0a0020ea19034120709f979557bc60f",
       "relation": "authored"
     },
     "tools/make_cyclotomic_field_vectors.py": {

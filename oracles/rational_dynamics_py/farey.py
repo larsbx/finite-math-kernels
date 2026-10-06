@@ -28,10 +28,13 @@ from math import gcd
 
 @dataclass(frozen=True, slots=True)
 class Address:
-    """``numerator / denominator`` in lowest terms, both non-negative."""
+    """``numerator / denominator`` in lowest terms, with non-boolean integer fields."""
 
     numerator: int
     denominator: int
+
+    def __post_init__(self) -> None:
+        require_int(self.numerator, self.denominator)
 
 
 def require_int(*values: object) -> None:

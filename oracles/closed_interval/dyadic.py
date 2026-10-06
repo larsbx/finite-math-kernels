@@ -15,7 +15,8 @@ rounded interval contains the one it came from.
 Ported from larsbx/finite-julia-set-research reference/dyadic.py with its
 names and its convention that a ``precision`` below one means "do not round"
 (the identity, which is exact and therefore sound). Different here: a float
-argument is refused with ``TypeError`` rather than converted, and
+argument is refused with ``TypeError`` rather than converted. Precision must
+be a non-boolean ``int``, including on zero and rejected-interval paths, and
 ``round_outward`` refuses a reversed pair ``lo > hi`` with ``ValueError``
 rather than returning a reversed pair.
 
@@ -35,6 +36,11 @@ from .interval import IQ, Scalar, exact
 DEFAULT_PRECISION = 53
 
 
+def _require_precision(precision: object) -> None:
+    if isinstance(precision, bool) or not isinstance(precision, int):
+        raise TypeError("dyadic precision must be an integer")
+
+
 def significant_bits(x: Scalar) -> int:
     """The bit length of the numerator of ``x`` in lowest terms, or ``0``."""
     x = exact(x)
@@ -43,6 +49,7 @@ def significant_bits(x: Scalar) -> int:
 
 def scale_for(x: Fraction, precision: int) -> int:
     """The exponent ``s`` making ``x * 2^s`` an integer of about ``precision`` bits."""
+    _require_precision(precision)
     x = exact(x)
     exponent = abs(x.numerator).bit_length() - abs(x.denominator).bit_length()
     return precision - 1 - exponent
@@ -51,6 +58,7 @@ def scale_for(x: Fraction, precision: int) -> int:
 def round_down(x: Scalar, precision: int = DEFAULT_PRECISION) -> Fraction:
     """The largest dyadic of that precision at most ``x`` (``x`` itself when
     ``precision < 1``)."""
+    _require_precision(precision)
     x = exact(x)
     if x == 0 or precision < 1:
         return x
@@ -62,12 +70,14 @@ def round_down(x: Scalar, precision: int = DEFAULT_PRECISION) -> Fraction:
 def round_up(x: Scalar, precision: int = DEFAULT_PRECISION) -> Fraction:
     """The smallest dyadic of that precision at least ``x`` (``x`` itself when
     ``precision < 1``)."""
+    _require_precision(precision)
     return -round_down(-exact(x), precision)
 
 
 def round_outward(lo: Scalar, hi: Scalar, precision: int = DEFAULT_PRECISION) -> tuple[Fraction, Fraction]:
     """``(round_down(lo), round_up(hi))``: an interval of that precision
     containing ``[lo, hi]``, never narrower. A reversed pair is refused."""
+    _require_precision(precision)
     lo, hi = exact(lo), exact(hi)
     if lo > hi:
         raise ValueError("round_outward needs lo <= hi")
@@ -76,6 +86,7 @@ def round_outward(lo: Scalar, hi: Scalar, precision: int = DEFAULT_PRECISION) ->
 
 def round_interval(value: IQ, precision: int = DEFAULT_PRECISION) -> IQ:
     """``value`` rounded outward; a rejected interval stays rejected."""
+    _require_precision(precision)
     if not value.accepted():
         return IQ.refused()
     return IQ.of(*round_outward(value.lo, value.hi, precision))

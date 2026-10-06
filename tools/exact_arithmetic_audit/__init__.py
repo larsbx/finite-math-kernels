@@ -19,12 +19,15 @@ It checks, in order, stopping early where a later check would be noise:
    the consumer's vendored.toml vendors (read through the ``vendoring``
    package, so vendoring a package and widening the exemption are one step);
 4. every scanned module that imports a ``finite_exact`` arithmetic module
-   has a binding row;
+   has a binding row, including direct, aliased and multiline imports;
+   importing the package or a wildcard counts as reaching every layer;
 5. the allowlist's list items and the quarantined rows are the same set, in
    both directions, so a quarantine cannot be granted or forgotten silently;
 6. no floating-point type, SIMD float dtype or decimal float literal appears
-   in a scanned file outside comments and string literals (criterion C1),
+   in a scanned file outside comments and literal string text (criterion C1),
    except allowlisted files and the policy's exempt prefixes.
+   Python f-string interpolations, including nested format fields, are
+   executable code and are scanned; unparseable Python files are reported.
 
 It is unified from the two diverged copies in larsbx/finite-julia-set-research
 and larsbx/finite-mandelbrot-research (tools/audit_exact_arithmetic.py in

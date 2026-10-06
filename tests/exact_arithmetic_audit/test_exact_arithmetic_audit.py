@@ -13,6 +13,7 @@ from __future__ import annotations
 
 from dataclasses import replace
 from pathlib import Path
+import sys
 
 import pytest
 
@@ -327,20 +328,56 @@ def test_a_missing_binding_document_is_named(tmp_path):
 
 
 @BOTH
+@pytest.mark.parametrize("suffix", [".mojo", ".py"])
 @pytest.mark.parametrize("spelling", ["import finite_exact.rat_q as rational", "import finite_exact.rat_q",
                                       "from finite_exact import rat_q", "from finite_exact import (\n    rat_q,\n)",
-                                      "def f():\n    from finite_exact.rat_q import Q"])
-def test_every_import_spelling_makes_an_arithmetic_consumer(tmp_path, policy, spelling):
+                                      "def f():\n    from finite_exact.rat_q import Q",
+                                      "x = 1; import finite_exact.rat_q as rational",
+                                      "if enabled: import finite_exact.rat_q",
+                                      "import os, \\\n    finite_exact.rat_q as rational",
+                                      "from finite_exact import (\n    # layer\n    rat_q as rational,\n)",
+                                      "from finite_exact import *", "import finite_exact",
+                                      "import finite_exact.rat_q\tas\trational"])
+def test_every_import_spelling_makes_an_arithmetic_consumer(tmp_path, policy, suffix, spelling):
+    policy = replace(policy, suffixes=(".mojo", ".py"))
     root = build(tmp_path, policy)
-    write(root, "src/stray.mojo", HEADER + spelling + "\n")
-    assert audit(root, policy) == ["arithmetic consumer lacks binding row: src/stray.mojo"]
-
-
-PY = ("src",)
+    rel = "src/stray" + suffix
+    write(root, rel, HEADER + spelling + "\n")
+    assert audit(root, policy) == [f"arithmetic consumer lacks binding row: {rel}"]
 
 
 @BOTH
-@pytest.mark.parametrize("expression", ['f"{0.5}"', 'f"{float(3)}"', 'f"{x!r:{1.5}}"', "rf'{2e3}'"])
+def test_a_direct_python_import_requires_the_c7_citation(tmp_path, policy):
+    policy = replace(policy, suffixes=(".mojo", ".py"))
+    root = build(tmp_path, policy)
+    bind(root, policy, row("src/kernel.mojo", "DEMO"), row("src/stray.py", "DEMO"))
+    write(root, "src/stray.py", "import finite_exact.rat_q as rational\n")
+    assert audit(root, policy) == [f"src/stray.py does not cite {SPEC} (C7)"]
+
+
+@BOTH
+@pytest.mark.parametrize("suffix", [".mojo", ".py"])
+def test_an_import_in_a_comment_or_string_is_not_a_consumer(tmp_path, policy, suffix):
+    policy = replace(policy, suffixes=(".mojo", ".py"))
+    root = build(tmp_path, policy)
+    write(root, "src/prose" + suffix, '# import finite_exact.rat_q\n"""\nimport finite_exact.rat_q\n"""\n')
+    assert audit(root, policy) == []
+
+
+@BOTH
+@pytest.mark.parametrize("spelling", ["import finite_exact.rat_q\tas\trational",
+                                      "import os, \\\n    finite_exact.rat_q as rational",
+                                      "from finite_exact import (\n    # layer\n    rat_q,\n)",
+                                      "from finite_exact import *"])
+def test_mojo_imports_are_read_when_python_cannot_parse_the_file(tmp_path, policy, spelling):
+    root = build(tmp_path, policy)
+    write(root, "src/stray.mojo", HEADER + 'var text = "0.5"\n' + spelling + "\n")
+    assert audit(root, policy) == ["arithmetic consumer lacks binding row: src/stray.mojo"]
+
+
+@BOTH
+@pytest.mark.parametrize("expression", ['f"{0.5}"', 'f"{float(3)}"', 'f"{x!r:{1.5}}"', "rf'{2e3}'",
+                                         'f"{f\'{0.5}\'}"', 'f"{float(\'3\')}"'])
 def test_an_executable_f_string_expression_is_scanned(tmp_path, policy, expression):
     python = replace(policy, suffixes=(".mojo", ".py"))
     root = build(tmp_path, python)
@@ -349,12 +386,27 @@ def test_an_executable_f_string_expression_is_scanned(tmp_path, policy, expressi
 
 
 @BOTH
-@pytest.mark.parametrize("clean", ['f"value {x} is 0.5"', 'f"{x:.3}"', 'f"{{0.5}}"'])
+@pytest.mark.parametrize("clean", ['f"value {x} is 0.5"', 'f"{x:.3}"', 'f"{{0.5}}"',
+                                  'f"{\'0.5\'}"', 'f"{len(\'float\')}"',
+                                  'f"{f\'value {x} is 0.5\'}"',
+                                  pytest.param('f"{"0.5"}"', marks=pytest.mark.skipif(
+                                      sys.version_info < (3, 12), reason="same-quote f-string fields require Python 3.12"))])
 def test_literal_f_string_text_is_not_a_violation(tmp_path, policy, clean):
     python = replace(policy, suffixes=(".mojo", ".py"))
     root = build(tmp_path, python)
     write(root, "src/report.py", f"x = 1\nmessage = {clean}\n")
     assert audit(root, python) == []
+
+
+@BOTH
+def test_multiline_f_string_fields_keep_the_expression_line_numbers(tmp_path, policy):
+    python = replace(policy, suffixes=(".mojo", ".py"))
+    root = build(tmp_path, python)
+    write(root, "src/report.py", 'message = f"""literal 0.5\n{0.5}\n{float(3)}\n"""\n')
+    assert audit(root, python) == [
+        "src/report.py:2: floating point in kernel scope (C1): {0.5}",
+        "src/report.py:3: floating point in kernel scope (C1): {float(3)}",
+    ]
 
 
 @BOTH

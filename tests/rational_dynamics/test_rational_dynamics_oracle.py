@@ -495,3 +495,17 @@ def test_ramanujan_sum_is_von_sterneck():
 def test_a_non_integer_where_an_integer_is_required_is_refused(call):
     with pytest.raises(TypeError):
         call()
+
+
+@pytest.mark.parametrize("bad", [4.5, 3.0, True, False, F(3), "3", None])
+@pytest.mark.parametrize("field", ["numerator", "denominator"])
+def test_direct_address_construction_refuses_non_integer_fields(bad, field):
+    fields = {"numerator": 1, "denominator": 3, field: bad}
+    with pytest.raises(TypeError):
+        rd.Address(**fields)
+
+
+def test_direct_integer_addresses_keep_exact_arithmetic():
+    value = rd.Address(1, 3)
+    assert rd.continued_fraction(value) == (0, 3)
+    assert rd.farey_determinant(value, rd.Address(1, 2)) == -1
