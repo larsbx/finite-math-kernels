@@ -9,7 +9,7 @@ therefore fails here even when the implementation-module tests pass.
 
 from std.testing import assert_equal, assert_false, assert_true
 
-from finite_exact.closed_interval import ComplexIQ, IQ, IQBoolResult, IQSignResult, bigq_interval_conformance_smoke, demo_complex_quadrance_point, demo_interval_mul
+from finite_exact.closed_interval import ComplexIQ, IQ, IQBoolResult, IQSignResult, bigq_interval_conformance_smoke, complex_box, demo_complex_quadrance_point, demo_interval_mul, gaussian_singleton
 from finite_exact.rational import Q, QCanonicalBytes, bigq_storage_smoke, demo_q_normalization, demo_q_order, q_cancellation_smoke, q_canonical_bytes, q_from_bigz, q_max, q_min, q_rejected
 from finite_linear_algebra.matrix import in_span, is_zero_vec, matvec, nullspace, q_int, q_is_zero, q_vec, rank, rref
 from finite_linear_algebra.matrix3 import Mat3, has_rational_root, identity3
@@ -52,6 +52,9 @@ def test_closed_interval_facade() raises:
     var z = ComplexIQ.singleton(Q(3, 1), Q(4, 1))
     assert_true(z.quadrance().lo.eq(Q(25, 1)))
     assert_true(z.accepted())
+    assert_true(z.singleton_eq(gaussian_singleton(3, 1, 4, 1)))
+    assert_true(complex_box(1, 3, 0, 0, 2).re.subset_of(box).value)
+    assert_false(complex_box(1, 3, 0, 0, 2).is_singleton())
     assert_true(bigq_interval_conformance_smoke())
     assert_true(demo_complex_quadrance_point())
     assert_true(demo_interval_mul())

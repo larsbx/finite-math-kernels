@@ -7,7 +7,7 @@ larsbx/finite_exact:docs/rational-interval-arithmetic-spec.md sections 2.2 to 2.
 """
 
 from finite_exact.rat_q import Q
-from finite_exact.closed_interval import IQ, ComplexIQ, bigq_interval_conformance_smoke, demo_complex_quadrance_point, demo_interval_mul
+from finite_exact.closed_interval import IQ, ComplexIQ, bigq_interval_conformance_smoke, complex_box, demo_complex_quadrance_point, demo_interval_mul, gaussian_singleton
 
 
 def test_interval_enclosure_laws() -> Bool:
@@ -64,6 +64,29 @@ def test_three_valued_sign_and_fail_closed_reciprocal() -> Bool:
     )
 
 
+def test_box_constructors_and_singleton_predicates() -> Bool:
+    # A box over a common denominator, a Gaussian-rational singleton, and the
+    # exact point predicates on them. A refusal is not a point, and two equal
+    # boxes that are not singletons are not the same point.
+    var quarter = complex_box(-1, 1, -1, 1, 4)
+    var point = gaussian_singleton(3, 5, -4, 5)
+    var rejected = ComplexIQ.singleton(Q(1, 0), Q(1, 0))
+    return (
+        quarter.re.lo.eq(Q(-1, 4)) and quarter.re.hi.eq(Q(1, 4)) and
+        quarter.im.lo.eq(Q(-1, 4)) and quarter.im.hi.eq(Q(1, 4)) and
+        not complex_box(1, -1, 0, 0, 1).accepted() and not complex_box(0, 1, 0, 1, 0).accepted() and
+        point.re.lo.eq(Q(3, 5)) and point.im.hi.eq(Q(-4, 5)) and
+        not gaussian_singleton(1, 0, 0, 1).accepted() and
+        IQ.singleton(Q(2, 3)).is_singleton() and not IQ(Q(0, 1), Q(1, 1)).is_singleton() and
+        not IQ(Q(1, 1), Q(0, 1)).is_singleton() and
+        point.is_singleton() and not quarter.is_singleton() and not rejected.is_singleton() and
+        point.singleton_eq(gaussian_singleton(6, 10, -8, 10)) and
+        not point.singleton_eq(gaussian_singleton(3, 5, 4, 5)) and
+        not quarter.singleton_eq(quarter) and
+        not rejected.singleton_eq(rejected) and not point.singleton_eq(rejected)
+    )
+
+
 def main() raises:
     if not bigq_interval_conformance_smoke() or not demo_interval_mul() or not demo_complex_quadrance_point():
         raise Error("IQ smoke failed")
@@ -73,4 +96,6 @@ def main() raises:
         raise Error("complex square is not the sharp form")
     if not test_three_valued_sign_and_fail_closed_reciprocal():
         raise Error("IQ sign and rejection semantics failed")
+    if not test_box_constructors_and_singleton_predicates():
+        raise Error("box constructors or singleton predicates failed")
     print("interval_q smoke and law checks passed.")

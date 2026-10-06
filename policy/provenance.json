@@ -65,7 +65,7 @@
       "relation": "authored"
     },
     "README.md": {
-      "blob": "6b3595f239ce1077b191a89a749abefbd2b0e274",
+      "blob": "a834b30ef65236681a9ceed4fbdc7d729bbf4f96",
       "relation": "authored"
     },
     "conformance/certified_records_v1.txt": {
@@ -474,7 +474,7 @@
       "relation": "authored"
     },
     "kernel/finite_exact/__init__.mojo": {
-      "blob": "43e10572c97ee486c515bbe9b4ef25f69e6c6abc",
+      "blob": "e197d9cb1b42117512f6e80f5edb2d72782f8c07",
       "relation": "modified",
       "source": "finite_exact",
       "source_blob": "113139f4e0f1ecce72126472bb0f7ea5ef239fe4",
@@ -492,18 +492,18 @@
       "relation": "authored"
     },
     "kernel/finite_exact/closed_interval.mojo": {
-      "blob": "929d8d1c87718310a904eb27228c3d1774b0fa7f",
+      "blob": "4aee0439614453fe96daef50d33a4f69a32747a1",
       "relation": "facade"
     },
     "kernel/finite_exact/closed_q.mojo": {
-      "blob": "28c07e6a893ee5ea9962da4eee9c6093a097c0f9",
+      "blob": "3611199d451878835e7dfd1046feb6a3e299d31e",
       "relation": "modified",
       "source": "interval_q",
       "source_blob": "d622ed1eee2881e01705ec09f60bacf6b35c26ea",
       "source_path": "interval_q/closed_q.mojo"
     },
     "kernel/finite_exact/enclosure_width.mojo": {
-      "blob": "72766a8f53de932d0c84fa7499ad0de83449e6f0",
+      "blob": "6e4468ea489ad59bbe7b01ae64ab7bc478fcd67b",
       "relation": "authored"
     },
     "kernel/finite_exact/exact_decimal.mojo": {
@@ -759,7 +759,7 @@
       "relation": "authored"
     },
     "kernel/quadratic_orbit/__init__.mojo": {
-      "blob": "0332cbc21cd95daedccfaa50c5ad29108b48fefd",
+      "blob": "fcad69f7454f4c93fb74a57948f44c5a0fb617e5",
       "relation": "authored"
     },
     "kernel/quadratic_orbit/collision.mojo": {
@@ -768,6 +768,14 @@
       "source": "finite_mandelbrot_research",
       "source_blob": "53544fff8ade511fc7ffd4f7bb1de879a7bede1e",
       "source_path": "src/interval_orbit.mojo"
+    },
+    "kernel/quadratic_orbit/escape_criterion.mojo": {
+      "blob": "33d1cfc23aa5fffb1b00c5bfe8aa8231af002701",
+      "relation": "authored"
+    },
+    "kernel/quadratic_orbit/multiplier_classification.mojo": {
+      "blob": "7e0f6cb098b4c72a4d1a409cb1ee642349017f71",
+      "relation": "authored"
     },
     "kernel/quadratic_orbit/orbit.mojo": {
       "blob": "04f462c7735de243efc1217bd55522210fba4311",
@@ -859,7 +867,7 @@
       "relation": "authored"
     },
     "oracles/closed_interval/interval.py": {
-      "blob": "01efe10daa7fe09c71e35e3090d755c378fa25df",
+      "blob": "317567cf22c8eb5f2a3308805b11b5f45812bcc1",
       "relation": "authored"
     },
     "oracles/madic_oracle.py": {
@@ -894,7 +902,7 @@
       "relation": "authored"
     },
     "pixi.toml": {
-      "blob": "8f00de8cf3b5b9bfb8d09b6d5a9a9b2690c8fe8f",
+      "blob": "146c917990668cfbca181971b5481ef530dfc01a",
       "relation": "authored"
     },
     "policy/estate-audits/0833929ed82d42cf3674a1565681625a9622827b.py": {
@@ -1043,7 +1051,7 @@
       "relation": "authored"
     },
     "tests/closed_interval/closed_q_transcript.mojo": {
-      "blob": "6a8372de519a9649deb1bf86a1e78cfdc6b9492d",
+      "blob": "12a1d4cd7abafa15c455af5dbc5abe6f6b735db2",
       "relation": "authored"
     },
     "tests/closed_interval/test_closed_interval.py": {
@@ -1051,7 +1059,7 @@
       "relation": "authored"
     },
     "tests/closed_interval/test_closed_q_twin.py": {
-      "blob": "43535aa621a17cb9b4731378a5578b2188a774b3",
+      "blob": "a50120f024e75b469f03d6d5765d7c0a7ad6f322",
       "relation": "authored"
     },
     "tests/conftest.py": {
@@ -1071,7 +1079,7 @@
       "relation": "authored"
     },
     "tests/facades/test_stable_facades.mojo": {
-      "blob": "35bf8dcf9403f339848bfb0b48b8c9ad89af4598",
+      "blob": "7d234759ca2bd3a693f52b059be8f2fa2aa2781b",
       "relation": "authored"
     },
     "tests/finite_automata/test_dfa.mojo": {
@@ -1090,7 +1098,7 @@
       "source_path": "tests/property_probe.mojo"
     },
     "tests/finite_exact/test_finite_exact.mojo": {
-      "blob": "669aa4f8233d029320ff5db6cba3025bb193b70c",
+      "blob": "087b9a0ed49497fbbeb18edf87b7d56ce159f81e",
       "relation": "modified",
       "source": "finite_exact",
       "source_blob": "faa1a65bf55875a1097cd8ef7a9ad9eb89212955",
@@ -1222,7 +1230,7 @@
       "relation": "authored"
     },
     "tests/interval/test_interval_q.mojo": {
-      "blob": "61c5366189688e6db7d1c5633fe6a27c95699534",
+      "blob": "c10095eef5d21225fba08e08cb5077ff08906c05",
       "relation": "modified",
       "source": "interval_q",
       "source_blob": "0ee6e90f0e5c2f13faee3fe2c63b97aa9653f166",
@@ -1330,6 +1338,18 @@
     },
     "tests/provenance/test_provenance.py": {
       "blob": "3bb3f097ba263f6d89a5c771b8c58ad67410cf23",
+      "relation": "authored"
+    },
+    "tests/quadratic_orbit/escape_criterion_transcript.mojo": {
+      "blob": "fa47dc88635941c53be3a2845a3b3af1beb3d243",
+      "relation": "authored"
+    },
+    "tests/quadratic_orbit/test_escape_criterion.mojo": {
+      "blob": "7c40d66ebf16972ce320323165b49979f7effea2",
+      "relation": "authored"
+    },
+    "tests/quadratic_orbit/test_escape_criterion_oracle.py": {
+      "blob": "dd220703cc7c51c4d98a60f9b8db60ab63d090be",
       "relation": "authored"
     },
     "tests/quadratic_orbit/test_quadratic_orbit.mojo": {
