@@ -9,6 +9,9 @@
 #                        the Galois action, trace and norm to Q.
 #   CyclotomicField[q]   the finite_exact.field.ExactField over Cyc[q], so
 #                        projective_limits and its rotor module run over Q(zeta_q).
+#   CyclotomicRing       Q(zeta_n) for a conductor known only at run time, as a
+#                        coefficient_ring.CoefficientField over CyclotomicQ, so
+#                        truncated jets run over it.
 #
 # The compiler checks deg Phi_q = phi(q) for every conductor instantiated.
 # Rejection is sticky, and == is False whenever either side is rejected. No
@@ -18,6 +21,7 @@ from finite_exact.exact_decimal import q_decimal
 from finite_exact.field import ExactField
 from finite_exact.bigint_z import bigz_eq, bigz_from_i64, bigz_gcd
 from finite_exact.rat_q import Q, q_rejected
+from finite_polynomial.coefficient_ring import CoefficientField
 from finite_polynomial.cyclotomic_q import (
     CyclotomicCanonicalBytes,
     CyclotomicQ,
@@ -31,8 +35,10 @@ from finite_polynomial.cyclotomic_q import (
     cyclotomic_is_zero,
     cyclotomic_mul,
     cyclotomic_neg,
+    cyclotomic_one,
     cyclotomic_pow,
     cyclotomic_sub,
+    cyclotomic_zero,
     rejected_cyclotomic,
     zeta,
 )
@@ -239,3 +245,47 @@ struct CyclotomicField[q: Int](ExactField):
     @staticmethod
     def eq(a: Cyc[Self.q], b: Cyc[Self.q]) -> Bool:
         return a == b
+
+
+struct CyclotomicRing(CoefficientField):
+    """Q(zeta_n), n fixed at run time, over CyclotomicQ.
+
+    An element of another conductor is not accepted here, and every operation
+    on one is rejected; a conductor below 1 accepts nothing.
+    """
+
+    comptime Element = CyclotomicQ
+    var conductor: Int
+
+    def __init__(out self, conductor: Int):
+        self.conductor = conductor
+
+    def zero(self) -> CyclotomicQ:
+        return cyclotomic_zero(self.conductor)
+
+    def one(self) -> CyclotomicQ:
+        return cyclotomic_one(self.conductor)
+
+    def rejected(self) -> CyclotomicQ:
+        return rejected_cyclotomic()
+
+    def accepted(self, a: CyclotomicQ) -> Bool:
+        return a.accepted() and a.conductor == self.conductor
+
+    def is_zero(self, a: CyclotomicQ) -> Bool:
+        return self.accepted(a) and cyclotomic_is_zero(a)
+
+    def _own(self, a: CyclotomicQ) -> CyclotomicQ:
+        return a.copy() if self.accepted(a) else rejected_cyclotomic()
+
+    def add(self, a: CyclotomicQ, b: CyclotomicQ) -> CyclotomicQ:
+        return self._own(cyclotomic_add(a, b))
+
+    def sub(self, a: CyclotomicQ, b: CyclotomicQ) -> CyclotomicQ:
+        return self._own(cyclotomic_sub(a, b))
+
+    def mul(self, a: CyclotomicQ, b: CyclotomicQ) -> CyclotomicQ:
+        return self._own(cyclotomic_mul(a, b))
+
+    def inverse(self, a: CyclotomicQ) -> CyclotomicQ:
+        return self._own(cyclotomic_inverse(a))
