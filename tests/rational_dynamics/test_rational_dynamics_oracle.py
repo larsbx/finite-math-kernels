@@ -477,3 +477,21 @@ def test_ramanujan_sum_is_von_sterneck():
             assert ramanujan_sum(q, m) * phi(q // g) == moebius(q // g) * phi(q)
     with pytest.raises(ValueError):
         ramanujan_sum(0, 1)
+
+
+# --- the integer domain is enforced, never coerced ---------------------------------------
+
+
+@pytest.mark.parametrize("call", [
+    lambda: rd.moebius(4.5), lambda: rd.moebius(3.0), lambda: rd.moebius(True),
+    lambda: rd.dedekind_sum(1.0, 3), lambda: rd.dedekind_sum(1, 3.0),
+    lambda: rd.ramanujan_sum(3.0, 1), lambda: rd.ramanujan_sum(3, 1.5),
+    lambda: rd.units(4.0), lambda: rd.farey_sequence(3.0), lambda: rd.order_of_two(3.0),
+    lambda: rd.binary_digits(F(1, 3), 2.0), lambda: rd.mechanical_word(1, 3, 0.0),
+    lambda: rd.rotation_cycle(1.0, 3), lambda: rd.wake(1, 3.0), lambda: rd.doubling_orbit(1, 7.0),
+    lambda: rd.rotation_number([1.0, 2], 7), lambda: rd.rotation_number([1, 2], 7.0),
+    lambda: rd.address(1.0, 2), lambda: rd.address(1, True),
+])
+def test_a_non_integer_where_an_integer_is_required_is_refused(call):
+    with pytest.raises(TypeError):
+        call()

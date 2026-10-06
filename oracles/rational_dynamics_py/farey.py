@@ -34,9 +34,17 @@ class Address:
     denominator: int
 
 
+def require_int(*values: object) -> None:
+    """Refuse anything that is not an ``int`` (``bool`` included) instead of coercing it."""
+    for value in values:
+        if isinstance(value, bool) or not isinstance(value, int):
+            raise TypeError(f"expected an integer, got {type(value).__name__}")
+
+
 def address(numerator: int, denominator: int) -> Address:
     """The reduced address of ``numerator / denominator``; refuses a negative
     numerator and a non-positive denominator."""
+    require_int(numerator, denominator)
     if numerator < 0:
         raise ValueError("numerator must be nonnegative")
     if denominator <= 0:
@@ -144,6 +152,7 @@ def units(q: int) -> tuple[int, ...]:
     particular ``units(1) == (0,)``. For ``q >= 2`` this is the bulbs
     ``coprime_numerators(q)``; at ``q == 1`` that returned ``()``.
     """
+    require_int(q)
     if q < 1:
         raise ValueError("the modulus must be positive")
     return tuple(p for p in range(q) if gcd(p, q) == 1)
@@ -164,6 +173,7 @@ def farey_sequence(n: int, *, interior: bool = False) -> tuple[Fraction, ...]:
     the next-term recurrence, so each term costs a constant number of integer
     operations. ``n < 1`` is refused.
     """
+    require_int(n)
     if n < 1:
         raise ValueError("the order must be positive")
     a, b, c, d = 0, 1, 1, n

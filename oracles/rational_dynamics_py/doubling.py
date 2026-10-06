@@ -32,7 +32,7 @@ from collections.abc import Iterable
 from fractions import Fraction
 from math import gcd, lcm
 
-from .farey import Address, as_fraction
+from .farey import Address, as_fraction, require_int
 
 #: Below this many steps the order of two is found by direct powering.
 _DIRECT_STEPS = 1 << 12
@@ -77,6 +77,7 @@ def order_of_two(m: int) -> int:
     ``m == 1`` gives ``1``. An even or non-positive ``m`` is refused: two is
     not a unit there.
     """
+    require_int(m)
     if m < 1 or m % 2 == 0:
         raise ValueError("the order of two needs an odd positive modulus")
     if m == 1:
@@ -123,6 +124,7 @@ def binary_digits(value: Fraction | int | Address, n: int) -> str:
     which is the orbit of doubling: digit ``i`` is ``1`` exactly when
     ``2^i t mod 1 >= 1/2``.
     """
+    require_int(n)
     if n < 0:
         raise ValueError("a digit count cannot be negative")
     t = _angle(value)
@@ -166,6 +168,7 @@ def mechanical_word(p: int, q: int, r: int) -> int:
     word ``rotation_cycle`` starts from, doubling sends ``c(r)`` to ``c(r + p)``,
     and the sorted cycle is ``c(0) < c(1) < ... < c(q - 1)``. Bulbs ``mechanical``.
     """
+    require_int(p, q, r)
     _reduced(p, q)
     return int("".join("1" if (r + k * p) % q >= q - p else "0" for k in range(q)), 2)
 
@@ -176,6 +179,7 @@ def rotation_cycle(p: int, q: int) -> tuple[Fraction, ...]:
     Every ``x_i`` has denominator dividing ``2^q - 1`` and doubling maps ``x_i``
     to ``x_{i+p mod q}``. Refuses anything but ``0 < p < q`` coprime.
     """
+    require_int(p, q)
     _reduced(p, q)
     big = 2**q - 1
     return tuple(Fraction(mechanical_word(p, q, r), big) for r in range(q))
@@ -189,6 +193,7 @@ def wake(p: int, q: int) -> tuple[Fraction, Fraction]:
     Mandelbrot ``rotation_angles`` computes the same pair by enumerating every
     cycle (and returns ``(0, 0)`` at ``r = 0``, which is refused here).
     """
+    require_int(p, q)
     cycle = rotation_cycle(p, q)
     return cycle[p - 1], cycle[p]
 
@@ -201,6 +206,7 @@ def doubling_orbit(j: int, modulus: int) -> tuple[int, ...]:
     looped on. With ``M = 2^q - 1`` these are the numerators of the angles
     ``j / (2^q - 1)`` of period dividing ``q``. Bulbs ``_orbit``.
     """
+    require_int(j, modulus)
     if modulus < 1 or modulus % 2 == 0:
         raise ValueError("the modulus must be odd and positive")
     start = j % modulus
@@ -220,6 +226,8 @@ def rotation_number(angles: Iterable[int], modulus: int) -> Fraction | None:
     has rotation number ``0``. Bulbs ``rotation_number``, which raised
     ``KeyError`` on a set not closed under doubling.
     """
+    angles = tuple(angles)
+    require_int(*angles, modulus)
     if modulus < 1:
         raise ValueError("the modulus must be positive")
     ordered = sorted(a % modulus for a in angles)

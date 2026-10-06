@@ -19,12 +19,15 @@ from __future__ import annotations
 from fractions import Fraction
 from math import gcd
 
+from .farey import require_int
+
 
 def moebius(n: int) -> int:
     """``mu(n)`` for ``n >= 1``: ``0`` if a square divides ``n``, else ``(-1)^(number of primes)``.
 
     ``n < 1`` is refused; the Mandelbrot reference returned ``0`` there.
     """
+    require_int(n)
     if n < 1:
         raise ValueError("the Moebius function is defined on positive integers")
     rest, sign, factor = n, 1, 2
@@ -48,6 +51,7 @@ def dedekind_sum(h: int, k: int) -> Fraction:
     ``gcd(h, k)`` (``s(dh, dk) = s(h, k)``), so it costs a Euclidean
     algorithm, not ``k`` terms. ``k < 1`` is refused.
     """
+    require_int(h, k)
     if k < 1:
         raise ValueError("the modulus of a Dedekind sum must be positive")
     common = gcd(h, k)
@@ -66,6 +70,7 @@ def ramanujan_sum(q: int, m: int) -> int:
     so ``c_q(1) = mu(q)`` and ``c_q(0) = c_q(q) = phi(q)``. ``q < 1`` is
     refused; ``m`` is any integer.
     """
+    require_int(q, m)
     if q < 1:
         raise ValueError("the modulus of a Ramanujan sum must be positive")
     g = gcd(q, m)

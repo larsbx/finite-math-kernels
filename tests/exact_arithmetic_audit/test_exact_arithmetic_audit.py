@@ -321,3 +321,45 @@ def test_a_missing_binding_document_is_named(tmp_path):
     root = build(tmp_path, JULIA)
     (root / BINDING).unlink()
     assert audit(root, JULIA) == [f"missing {BINDING}"]
+
+
+# --- import spellings and executable f-string expressions --------------------------------
+
+
+@BOTH
+@pytest.mark.parametrize("spelling", ["import finite_exact.rat_q as rational", "import finite_exact.rat_q",
+                                      "from finite_exact import rat_q", "from finite_exact import (\n    rat_q,\n)",
+                                      "def f():\n    from finite_exact.rat_q import Q"])
+def test_every_import_spelling_makes_an_arithmetic_consumer(tmp_path, policy, spelling):
+    root = build(tmp_path, policy)
+    write(root, "src/stray.mojo", HEADER + spelling + "\n")
+    assert audit(root, policy) == ["arithmetic consumer lacks binding row: src/stray.mojo"]
+
+
+PY = ("src",)
+
+
+@BOTH
+@pytest.mark.parametrize("expression", ['f"{0.5}"', 'f"{float(3)}"', 'f"{x!r:{1.5}}"', "rf'{2e3}'"])
+def test_an_executable_f_string_expression_is_scanned(tmp_path, policy, expression):
+    python = replace(policy, suffixes=(".mojo", ".py"))
+    root = build(tmp_path, python)
+    write(root, "src/report.py", f"message = {expression}\n")
+    assert audit(root, python) == [f"src/report.py:1: floating point in kernel scope (C1): message = {expression}"]
+
+
+@BOTH
+@pytest.mark.parametrize("clean", ['f"value {x} is 0.5"', 'f"{x:.3}"', 'f"{{0.5}}"'])
+def test_literal_f_string_text_is_not_a_violation(tmp_path, policy, clean):
+    python = replace(policy, suffixes=(".mojo", ".py"))
+    root = build(tmp_path, python)
+    write(root, "src/report.py", f"x = 1\nmessage = {clean}\n")
+    assert audit(root, python) == []
+
+
+@BOTH
+def test_an_unparseable_python_file_is_named_not_skipped(tmp_path, policy):
+    python = replace(policy, suffixes=(".mojo", ".py"))
+    root = build(tmp_path, python)
+    write(root, "src/broken.py", "def f(:\n")
+    assert audit(root, python) == ["src/broken.py: cannot parse for the f-string scan (C1)"]

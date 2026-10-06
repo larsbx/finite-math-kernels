@@ -5,6 +5,7 @@
 
 from __future__ import annotations
 
+import ast
 import re
 from dataclasses import dataclass
 from pathlib import Path
@@ -17,7 +18,12 @@ CLASSES = ("CONFORMS-CHECKED", "CONFORMS", "DEMO", "QUARANTINED")
 
 PATH_RE = re.compile(r"`([A-Za-z0-9_./-]+\.(?:mojo|py))`")
 ROW_RE = re.compile(r"^\s*\|(?P<cells>.+)\|\s*$")
-IMPORT_RE = re.compile(r"^from\s+finite_exact\.(?P<module>\w+)\s+import\b", re.M)
+#: The three ways a module reaches a layer, each possibly indented: ``from
+#: finite_exact.M import ...``, ``import finite_exact.M [as alias]`` and ``from
+#: finite_exact import M[, N]`` (parenthesised over several lines included).
+FROM_MODULE_RE = re.compile(r"^\s*from\s+finite_exact\.(\w+)\s+import\b", re.M)
+IMPORT_MODULE_RE = re.compile(r"^\s*import\s+([^\n#]+)", re.M)
+FROM_PACKAGE_RE = re.compile(r"^\s*from\s+finite_exact\s+import\s+(\([^)]*\)|[^\n#]+)", re.M)
 
 #: Criterion C1, lexically: a floating-point type name, a SIMD float dtype, or
 #: a decimal floating literal in any Mojo or Python spelling (``1.5``, ``2.``,
@@ -148,12 +154,29 @@ def scanned_files(root: Path, policy: Policy) -> list[str]:
     return sorted(out)
 
 
+def imported_layers(text: str) -> set[str | None]:
+    """The ``finite_exact`` modules a source imports; ``None`` is the whole package."""
+    names: list[str | None] = list(FROM_MODULE_RE.findall(text))
+    for clause in IMPORT_MODULE_RE.findall(text):
+        for item in clause.split(","):
+            dotted = item.split(" as ")[0].strip()
+            if dotted == "finite_exact" or dotted.startswith("finite_exact."):
+                names.append(dotted.partition(".")[2].split(".")[0] or None)
+    for clause in FROM_PACKAGE_RE.findall(text):
+        names += [item.split(" as ")[0].strip() for item in clause.strip("()").split(",") if item.strip()]
+    return set(names)
+
+
 def arithmetic_consumers(root: Path, policy: Policy) -> set[str]:
-    """Scanned files that import the exact-arithmetic layers directly."""
+    """Scanned files that import the exact-arithmetic layers directly, by any spelling.
+
+    Importing the package itself reaches every layer, so it counts whatever
+    the policy's ``arithmetic_modules`` are.
+    """
     wanted = policy.arithmetic_modules
     return {
         rel for rel in scanned_files(root, policy)
-        if any(wanted is None or m["module"] in wanted for m in IMPORT_RE.finditer(_read(root, rel)))
+        if any(wanted is None or name is None or name in wanted for name in imported_layers(_read(root, rel)))
     }
 
 
@@ -163,14 +186,40 @@ def citation_exempt(root: Path, policy: Policy) -> tuple[frozenset[str], tuple[s
     return policy.citation_exempt, prefixes
 
 
+def _fstring_lines(text: str) -> set[int] | None:
+    """Lines whose f-string interpolations are floating point; ``None`` if unparseable.
+
+    Masking blanks a whole string literal, and an f-string's ``{...}`` fields
+    are executable code, not text. They are read back from the syntax tree and
+    scanned in their unparsed form, so the answer does not depend on how the
+    source spelled them.
+    """
+    try:
+        tree = ast.parse(text)
+    except SyntaxError:
+        return None
+    return {
+        node.lineno for node in ast.walk(tree)
+        if isinstance(node, ast.FormattedValue) and FLOAT_RE.search(ast.unparse(node.value))
+    }
+
+
 def floating_point(root: Path, rel: str) -> list[str]:
-    """``rel:line: ...`` for every C1 hit outside comments and string literals."""
-    masked = mask_comments_and_strings(_read(root, rel))
-    return [
-        f"{rel}:{lineno}: floating point in kernel scope (C1): {line.strip()}"
-        for lineno, line in enumerate(masked.splitlines(), start=1)
-        if FLOAT_RE.search(line)
-    ]
+    """``rel:line: ...`` for every C1 hit outside comments and literal string text.
+
+    In Python the interpolated fields of an f-string are code and are scanned;
+    a Python file that cannot be parsed is reported rather than skipped.
+    """
+    text = _read(root, rel)
+    lines = text.splitlines()
+    hits = {lineno for lineno, line in enumerate(mask_comments_and_strings(text).splitlines(), start=1)
+            if FLOAT_RE.search(line)}
+    if rel.endswith(".py"):
+        fstrings = _fstring_lines(text)
+        if fstrings is None:
+            return [f"{rel}: cannot parse for the f-string scan (C1)"]
+        hits |= fstrings
+    return [f"{rel}:{lineno}: floating point in kernel scope (C1): {lines[lineno - 1].strip()}" for lineno in sorted(hits)]
 
 
 def audit(root: Path, policy: Policy) -> list[str]:
