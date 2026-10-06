@@ -38,14 +38,18 @@ from substitution_dynamics.substitution import Substitution
 
 
 def max_factor_length(size: Int) -> Int:
-    """The longest factor whose base-`size` key fits a machine integer
-    (`39` on three letters)."""
+    """The longest factor whose base-`size` key fits a machine integer: the
+    largest `L` with `size^L - 1 <= Int.MAX` (`39` on three letters, `63` on
+    two). On one letter every key is `0`, so no length is refused for its key.
+
+    Accumulating a key as `k * size + letter` never passes its final value, so
+    no step of `_key` overflows at a length this admits."""
     if size < 2:
-        return 64
+        return Int.MAX
     var length = 0
-    var place = 1
-    while place <= Int.MAX // size:
-        place *= size
+    var largest = 0  # size^length - 1, the largest key of that length
+    while largest <= (Int.MAX - (size - 1)) // size:
+        largest = largest * size + (size - 1)
         length += 1
     return length
 

@@ -12,7 +12,7 @@ zero. Run with
 `pixi run test-substitution`.
 """
 
-from std.testing import assert_equal, assert_raises, assert_true
+from std.testing import assert_equal, assert_false, assert_raises, assert_true
 
 from substitution_dynamics.return_lattice import (
     TriangularLattice,
@@ -96,7 +96,7 @@ def test_other_alphabets_agree_with_the_sampled_route() raises:
     for n in range(1, 11):
         assert_equal(len(factor_set(cases[0], n)), n + 1)
     assert_equal(return_index_profile(cases[0], 6), [1, 1, 1, 1, 1, 1])
-    assert_equal(max_factor_length(2), 62)
+    assert_equal(max_factor_length(2), 63)
     assert_equal(max_factor_length(4), 31)
 
 
@@ -182,6 +182,22 @@ def test_the_sampled_route_refuses_factor_lengths_outside_its_keys() raises:
     assert_true(refuses_sampled(tribonacci(), max_factor_length(3) + 1, 100))
 
 
+def test_factor_keys_reach_the_last_representable_length() raises:
+    """A key of length `L` over `d` letters is at most `d^L - 1`, so binary
+    keys fit through length 63 and unary keys (always 0) at any length."""
+    assert_equal(max_factor_length(2), 63)
+    assert_equal(max_factor_length(8), 21)  # 8^21 - 1 = Int.MAX
+    assert_equal(max_factor_length(1), Int.MAX)
+    var fibonacci = Substitution.checked([[0, 1], [0]])
+    assert_equal(len(factor_set(fibonacci, 63)), 64)  # Sturmian: n + 1 factors
+    assert_true(refuses_factor_set(fibonacci, 64))
+    assert_false(refuses_sampled(fibonacci, 63, 400))
+    assert_true(refuses_sampled(fibonacci, 64, 400))
+    var unary = Substitution.checked([[0, 0]])
+    assert_equal(len(factor_set(unary, 65)), 1)
+    assert_false(refuses_sampled(unary, 65, 200))
+
+
 def main() raises:
     test_hermite_form_index()
     print("[PASS] test_hermite_form_index")
@@ -197,4 +213,6 @@ def main() raises:
     print("[PASS] test_covering_level_refuses_a_length_that_stops_short")
     test_the_sampled_route_refuses_factor_lengths_outside_its_keys()
     print("[PASS] test_the_sampled_route_refuses_factor_lengths_outside_its_keys")
-    print("7 return-lattice Mojo tests passed.")
+    test_factor_keys_reach_the_last_representable_length()
+    print("[PASS] test_factor_keys_reach_the_last_representable_length")
+    print("8 return-lattice Mojo tests passed.")
