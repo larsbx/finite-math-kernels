@@ -270,7 +270,7 @@
       "source_path": "docs/rational-interval-arithmetic-spec.md"
     },
     "docs/root-isolation-spec.md": {
-      "blob": "49a51c5ba272c332bb94a22724faad5b853ac9b1",
+      "blob": "a47f9c013526d4167072e62f65946522a3a334eb",
       "relation": "authored"
     },
     "docs/survey-assessment-2026-10-05.md": {
@@ -763,7 +763,7 @@
       "relation": "authored"
     },
     "kernel/quadratic_orbit/__init__.mojo": {
-      "blob": "9cdd89d661853ccd6890602dcfe1eeb157835196",
+      "blob": "2405997aa3e2ed2f0e0f2e724eb60052d0de5704",
       "relation": "authored"
     },
     "kernel/quadratic_orbit/collision.mojo": {
@@ -773,6 +773,10 @@
       "source_blob": "53544fff8ade511fc7ffd4f7bb1de879a7bede1e",
       "source_path": "src/interval_orbit.mojo"
     },
+    "kernel/quadratic_orbit/krawczyk_operator.mojo": {
+      "blob": "837f2b8e8b4bb8f14556ef2fa0822c98d327fc6a",
+      "relation": "authored"
+    },
     "kernel/quadratic_orbit/orbit.mojo": {
       "blob": "04f462c7735de243efc1217bd55522210fba4311",
       "relation": "modified",
@@ -781,7 +785,7 @@
       "source_path": "src/interval_orbit.mojo"
     },
     "kernel/quadratic_orbit/preperiodic.mojo": {
-      "blob": "7d7e1ffed03c68f16aa46f51d89d2b1181c5efbc",
+      "blob": "da1e9280dfce6a620af888715f4fc7134db36749",
       "relation": "authored"
     },
     "kernel/rational_dynamics/__init__.mojo": {

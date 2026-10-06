@@ -7,11 +7,13 @@
 #   collision   which index pairs an (ell, period) orbit type intends to
 #               collide and which it forbids, and how many of each there are
 #               below a horizon.
-#   preperiodic the preperiodic residual and its derivative along the orbit,
-#               and its exclusion and Krawczyk-isolation tests on a box. The
-#               operator is `root_isolation.krawczyk`
-#               (docs/root-isolation-spec.md), so the two packages are vendored
-#               together.
+#   preperiodic the preperiodic residual along the orbit and its exclusion
+#               certificate on a box; re-exports krawczyk_operator.
+#   krawczyk_operator  the Krawczyk operator of the residual and its strict-
+#               inclusion test, the Krawczyk-Moore hypothesis (Krawczyk 1969;
+#               Moore 1977): the z^2 + c application of the generic
+#               `root_isolation` operator (docs/root-isolation-spec.md), so
+#               the two packages are vendored together.
 #
 # Both planes of the quadratic family use the same orbit. The parameter plane
 # iterates the critical orbit `z_0 = 0` over a parameter box `c`; the

@@ -25,12 +25,16 @@
 # is an import and is gated by the consumer. Compare the trap certificate of
 # `larsbx/finite-julia-set-research`, which asks only for inclusion because it
 # claims only boundedness.
+#
+# The operator and that test, `krawczyk_image` and `isolates_preperiodic_point`,
+# live in krawczyk_operator.mojo, which applies the generic `root_isolation`
+# operator to this residual; both are re-exported here.
 
 from finite_exact.closed_interval import ComplexIQ, IQ, IQBoolResult
 from finite_exact.rat_q import Q
 from quadratic_orbit.orbit import complex_excludes_zero, orbit_term, quadratic_step
-from root_isolation import centre, exact_inverse, rejected_box, strictly_inside
-from root_isolation import krawczyk_image as krawczyk_operator
+from root_isolation import centre, exact_inverse, rejected_box
+from quadratic_orbit.krawczyk_operator import isolates_preperiodic_point, krawczyk_image
 
 
 def one_box() -> ComplexIQ:
@@ -94,33 +98,6 @@ def singleton_reciprocal(w: ComplexIQ) -> ComplexIQ:
     operator inherits no error from it. A vanishing quadrance is refused.
     """
     return exact_inverse(w)
-
-
-def krawczyk_image(z: ComplexIQ, c: ComplexIQ, l: Int, k: Int) -> ComplexIQ:
-    """`K(Z) = m - Y R(m) + (1 - Y R'(Z))(Z - m)`, with `Y = 1/R'(m)`.
-
-    The operator of docs/root-isolation-spec.md section 2, with the residual
-    and its derivative as the enclosures; a refused `Y` refuses the image.
-    """
-    var m = centre(z)
-    var y = exact_inverse(preperiodic_residual_derivative(m, c, l, k))
-    if not y.accepted():
-        return rejected_box()
-    return krawczyk_operator(z, m, y, preperiodic_residual(m, c, l, k), preperiodic_residual_derivative(z, c, l, k))
-
-
-def isolates_preperiodic_point(z: ComplexIQ, c: ComplexIQ, l: Int, k: Int) -> Bool:
-    """Does `Z` contain exactly one point of preperiod `l` and period `k`?
-
-    The hypothesis of the Krawczyk-Moore theorem, checked exactly: strict
-    inclusion of `K(Z)` in `Z` (docs/root-isolation-spec.md sections 3-4).
-    The theorem itself is an import, and the consumer is responsible for
-    naming and gating it -- this returns the hypothesis, not the conclusion.
-    """
-    if l < 0 or k < 1 or not (z.accepted() and c.accepted()):
-        return False
-    var inside = strictly_inside(krawczyk_image(z, c, l, k), z)
-    return inside.value and not inside.rejected
 
 
 def preperiodic_smoke() -> Bool:

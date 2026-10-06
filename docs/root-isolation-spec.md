@@ -144,7 +144,7 @@ Seeds, Newton steps, box radii, precision choices, subdivision depth and the ord
 
 ## 8. Inventory of the implementations this replaces (2026-10-06)
 
-| | Julia `reference/preperiodic.py` | FMK `quadratic_orbit/preperiodic.mojo` (Julia's Mojo twin) | bulbs `kernel/bulbford/certify.py` | bulbs `kernel/bulbford/antipode.py` | Mandelbrot `certificates/krawczyk_witness.mojo` |
+| | Julia `reference/preperiodic.py` | FMK `quadratic_orbit/preperiodic.mojo`, now `quadratic_orbit/krawczyk_operator.mojo` (Julia's Mojo twin) | bulbs `kernel/bulbford/certify.py` | bulbs `kernel/bulbford/antipode.py` | Mandelbrot `certificates/krawczyk_witness.mojo` |
 | --- | --- | --- | --- | --- | --- |
 | box type | `closed_interval.ComplexBox` (vendored) | `finite_exact.ComplexIQ` (BigQ) | local `Box` of local `I` (Fraction) | local `Box`; `(Box, Box)` for `n = 2` | `finite_exact.ComplexIQ` (BigQ) |
 | map | `R^c_{l,k}(z)` in the dynamical plane | same | `Q_{l+k}(c) - Q_l(c)` in the parameter plane | `X^q - 1` (`n = 1`); `(f_c^q(z) - z, (f_c^q)'(z) + 1)` in `(z, c)` (`n = 2`) | `P_{2,1}(C) = C(C + 2)`, one fixed box at `-2` |
@@ -157,6 +157,8 @@ Seeds, Newton steps, box radii, precision choices, subdivision depth and the ord
 | refusal | `False`/`UNKNOWN`; rejected boxes poison | rejected boxes poison; `Bool` | `ValueError` on bad `(l, k, H)`; `INCONCLUSIVE` otherwise | `ValueError` when a root-of-unity box fails; `Blowup` maps to inclusion false | `BigQKrawczykResult(contraction, rejected)` |
 
 **Verdict.** All five compute the operator of section 2 with an exact centre and decide strict-interior inclusion, and all read it as "exactly one zero, simple" -- the theorem of section 4, whose hypothesis (H4) admits every preconditioner above. The differences are arithmetic (exact vs fixed-point outward rounding, both covered by section 5), the preconditioner policy (1.4), and refusal conventions (section 6, which keeps each consumer's distinction). One specification covers them without changing any consumer's claim, and the zero-derivative difference is a non-difference: bulbs' `C = 0` makes `K = X`, which fails strict inclusion, the same verdict as a refusal.
+
+**One home for the operator.** The generic, map-agnostic operator and test live here; `quadratic_orbit/krawczyk_operator` is their `z^2 + c` application (the residual `R^c_{l,k}`, its chain-rule derivative, the exact preconditioner) and keeps its names, re-exported from `quadratic_orbit/preperiodic`. The reverse would put a map-agnostic kernel, also used for `P_{2,1}` in Mandelbrot and for `X^q - 1` and a two-variable system in bulbs, inside the quadratic-family package.
 
 **Not covered, and staying local.** Mandelbrot `certificates/checked_krawczyk_witness.mojo` is the same `P_{2,1}` operator over the checked `Int64` backend, a different arithmetic regime kept as a rejection-aware demonstration; Julia `reference/scaled.py` (separated-exponent boxes) is an orbit enclosure for itineraries, not a root certificate, and has one consumer; the orbit-type layers (forbidden pairs, exact type, completeness) are listed in section 0.
 
