@@ -850,6 +850,18 @@
       "blob": "42912704b518a1ed6116050fce0a067865240da7",
       "relation": "authored"
     },
+    "oracles/closed_interval/__init__.py": {
+      "blob": "b687d5084f8c4cfca7fa1739b8949de0ef3b3210",
+      "relation": "authored"
+    },
+    "oracles/closed_interval/dyadic.py": {
+      "blob": "2a4126b4c690916cd41a1772cc5b3c6c2b8fd732",
+      "relation": "authored"
+    },
+    "oracles/closed_interval/interval.py": {
+      "blob": "01efe10daa7fe09c71e35e3090d755c378fa25df",
+      "relation": "authored"
+    },
     "oracles/madic_oracle.py": {
       "blob": "de9fd611d94f2252bc5ac06e6e54d86fb37f5198",
       "relation": "authored"
@@ -882,7 +894,7 @@
       "relation": "authored"
     },
     "pixi.toml": {
-      "blob": "0ccf41722ce8820eea56bfff0be4da8019106f06",
+      "blob": "f86c90cb2721b44b15153a0c7ea23acdb5a73ae0",
       "relation": "authored"
     },
     "policy/estate-audits/0833929ed82d42cf3674a1565681625a9622827b.py": {
@@ -1028,6 +1040,18 @@
     },
     "tests/certified_records/test_certified_records.py": {
       "blob": "ecbb96621ec875fb95b5f278fe24458eb7dae842",
+      "relation": "authored"
+    },
+    "tests/closed_interval/closed_q_transcript.mojo": {
+      "blob": "6a8372de519a9649deb1bf86a1e78cfdc6b9492d",
+      "relation": "authored"
+    },
+    "tests/closed_interval/test_closed_interval.py": {
+      "blob": "0d7fe705ffd73140bb804093f08d43efc2e8ed81",
+      "relation": "authored"
+    },
+    "tests/closed_interval/test_closed_q_twin.py": {
+      "blob": "43535aa621a17cb9b4731378a5578b2188a774b3",
       "relation": "authored"
     },
     "tests/conftest.py": {
