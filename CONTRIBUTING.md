@@ -85,7 +85,8 @@ the pull request template has a place for exactly that.
 
 - Never change a package facade without saying so in the PR: downstream pins
   it by digest and must re-vendor and re-pin with the vendored checker
-  (`check_vendored_sync.py pin NAME COMMIT`, from `tools/vendoring/`).
+  (`python tools/vendoring/check_vendored_sync.py pin NAME COMMIT`, with the
+  path of the consumer's vendored `vendoring/` package).
 - Never substitute a floating approximation for an exact predicate. Optimize
   the exact algorithm instead.
 - Never let a claim's status surface drift from its proof record; the audit
