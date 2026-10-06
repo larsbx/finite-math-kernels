@@ -61,11 +61,11 @@
       "relation": "authored"
     },
     "ESTATE.toml": {
-      "blob": "1e3edb2bb54d9b1003fde67bb2f90fc585983e77",
+      "blob": "4abe6406a7db3af9e30e70c6bac4c62e0c5e6ace",
       "relation": "authored"
     },
     "README.md": {
-      "blob": "a08cebaae03d6542e154ab2f4200ac3da570c4a5",
+      "blob": "6b3595f239ce1077b191a89a749abefbd2b0e274",
       "relation": "authored"
     },
     "conformance/certified_records_v1.txt": {
@@ -298,7 +298,7 @@
       "relation": "authored"
     },
     "docs/vendoring-candidates-2026-10-05.md": {
-      "blob": "ab3602714fb9f1708f092928d4d6c652debfd01f",
+      "blob": "41e8087d706bc0a9df8d4aea863dd484cfde9981",
       "relation": "authored"
     },
     "docs/weighted-cycle-gain-research-scaffold.md": {
@@ -850,6 +850,18 @@
       "blob": "42912704b518a1ed6116050fce0a067865240da7",
       "relation": "authored"
     },
+    "oracles/closed_interval/__init__.py": {
+      "blob": "b687d5084f8c4cfca7fa1739b8949de0ef3b3210",
+      "relation": "authored"
+    },
+    "oracles/closed_interval/dyadic.py": {
+      "blob": "b1247239adb5959f3553d4264b2c4ef37ea82e46",
+      "relation": "authored"
+    },
+    "oracles/closed_interval/interval.py": {
+      "blob": "01efe10daa7fe09c71e35e3090d755c378fa25df",
+      "relation": "authored"
+    },
     "oracles/madic_oracle.py": {
       "blob": "de9fd611d94f2252bc5ac06e6e54d86fb37f5198",
       "relation": "authored"
@@ -865,8 +877,24 @@
       "source_blob": "fd1aaef547d8ed6c659c98785cf41865ec859fcf",
       "source_path": "tools/property_oracle.py"
     },
+    "oracles/rational_dynamics_py/__init__.py": {
+      "blob": "79422556525d8add2973b8fefd60850511681aad",
+      "relation": "authored"
+    },
+    "oracles/rational_dynamics_py/arithmetic.py": {
+      "blob": "5bf376f81d5b8246fcd8149dbe9f5acdb8617873",
+      "relation": "authored"
+    },
+    "oracles/rational_dynamics_py/doubling.py": {
+      "blob": "b9335b031ef3b512edd3de8e33feae679f6ed4d1",
+      "relation": "authored"
+    },
+    "oracles/rational_dynamics_py/farey.py": {
+      "blob": "d00700598a327c441e2036dfcb4e17b732dc756a",
+      "relation": "authored"
+    },
     "pixi.toml": {
-      "blob": "0ccf41722ce8820eea56bfff0be4da8019106f06",
+      "blob": "8f00de8cf3b5b9bfb8d09b6d5a9a9b2690c8fe8f",
       "relation": "authored"
     },
     "policy/estate-audits/0833929ed82d42cf3674a1565681625a9622827b.py": {
@@ -905,7 +933,7 @@
       "relation": "authored"
     },
     "reference/rational_dynamics_reference.py": {
-      "blob": "8fc015487f3601598d6f4bf801f42348056a08dd",
+      "blob": "dc1cf753678e42be27f052fb4d81c328d7970840",
       "relation": "authored"
     },
     "reference/tuning_reference.py": {
@@ -1014,6 +1042,18 @@
       "blob": "ecbb96621ec875fb95b5f278fe24458eb7dae842",
       "relation": "authored"
     },
+    "tests/closed_interval/closed_q_transcript.mojo": {
+      "blob": "6a8372de519a9649deb1bf86a1e78cfdc6b9492d",
+      "relation": "authored"
+    },
+    "tests/closed_interval/test_closed_interval.py": {
+      "blob": "ae9931ba0bdd67cb86512a4c24705b81d241a33d",
+      "relation": "authored"
+    },
+    "tests/closed_interval/test_closed_q_twin.py": {
+      "blob": "43535aa621a17cb9b4731378a5578b2188a774b3",
+      "relation": "authored"
+    },
     "tests/conftest.py": {
       "blob": "780e4451eabbb5663c0ab4124251e811b459a7b2",
       "relation": "authored"
@@ -1024,6 +1064,10 @@
     },
     "tests/cyclotomic/test_cyclotomic_reference.py": {
       "blob": "8c09602ab7f0ae15a0e2887a9186edb22eed704e",
+      "relation": "authored"
+    },
+    "tests/exact_arithmetic_audit/test_exact_arithmetic_audit.py": {
+      "blob": "d9a1dc06c9e7c2b0b89c3fb399f79635e8596eff",
       "relation": "authored"
     },
     "tests/facades/test_stable_facades.mojo": {
@@ -1296,6 +1340,10 @@
       "blob": "316e8f4a17b56dc7a63d3b90f0aef6773eaadba1",
       "relation": "authored"
     },
+    "tests/rational_dynamics/test_rational_dynamics_oracle.py": {
+      "blob": "928ad6b269648cdec67d44166404fd77b10da49d",
+      "relation": "authored"
+    },
     "tests/rational_dynamics/test_rational_dynamics_reference.py": {
       "blob": "30a2e5c34e3fe0c1f54c3c76087de14563ddccb4",
       "relation": "authored"
@@ -1336,7 +1384,7 @@
       "relation": "authored"
     },
     "tests/vendoring/test_check_vendored_sync.py": {
-      "blob": "c112398aed04c5def31ebd94a1d49c23f007980d",
+      "blob": "7aa38d7e84d767da91bf7bff6ab110e46c5e35e5",
       "relation": "authored"
     },
     "tests/weighted_graph/test_cycle_gain.mojo": {
@@ -1442,6 +1490,14 @@
       "source_blob": "992c82396e57c304169341877af45c38e9e67d3f",
       "source_path": "claim_governance/runner.py"
     },
+    "tools/exact_arithmetic_audit/__init__.py": {
+      "blob": "cd9985253b0936caf6ace73c522788112d900af5",
+      "relation": "authored"
+    },
+    "tools/exact_arithmetic_audit/audit.py": {
+      "blob": "88bb5d898bdc64604fbdd755e0b48484985c7502",
+      "relation": "authored"
+    },
     "tools/make_cyclotomic_field_vectors.py": {
       "blob": "2347dda7d1399f67d8a700669b26511bceef74ca",
       "relation": "authored"
@@ -1497,7 +1553,7 @@
       "relation": "authored"
     },
     "tools/vendoring/check_vendored_sync.py": {
-      "blob": "e7f3ca8bd82ec8a7e9dbea83eaf9792fb859afd5",
+      "blob": "f5c97d04d768ecf09ff51127ed35cbae407b85d7",
       "relation": "modified",
       "source": "finite_mandelbrot_research",
       "source_blob": "76ddda76a2cc3dea8221ac8b8192fe3d7e4f14c4",

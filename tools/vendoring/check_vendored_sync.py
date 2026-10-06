@@ -41,7 +41,7 @@ import json
 import re
 import sys
 import tomllib
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 
 MANIFEST_NAME = "vendored.toml"
 ESTATE = "ESTATE.toml"
@@ -75,6 +75,27 @@ def sha256(path: Path) -> str:
 def load(manifest: Path | None = None) -> list[dict]:
     manifest = manifest or repo_root() / MANIFEST_NAME
     return tomllib.loads(manifest.read_text(encoding="utf-8")).get("package", [])
+
+
+def vendored_directories(root: Path | None = None, manifest: Path | None = None) -> tuple[str, ...]:
+    """The package directories the manifest vendors, as sorted repo-relative paths.
+
+    Each is ``root/name`` of a ``[[package]]`` entry (``name`` alone when the
+    entry's root is ``.``), with no trailing slash. A consumer that exempts
+    vendored files from its own checks reads the boundary here instead of
+    re-parsing the manifest. With no manifest, nothing is vendored and the
+    answer is empty: the fail-closed direction, since an empty exemption
+    exempts nothing. A manifest entry without ``name`` or ``root`` is
+    skipped here; ``check`` reports it.
+    """
+    root = root or repo_root()
+    manifest = manifest or root / MANIFEST_NAME
+    if not manifest.exists():
+        return ()
+    return tuple(sorted({
+        (PurePosixPath(pkg["root"]) / pkg["name"]).as_posix()
+        for pkg in load(manifest) if "root" in pkg and "name" in pkg
+    }))
 
 
 def check_package(pkg: dict, root: Path) -> list[str]:

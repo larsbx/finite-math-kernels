@@ -152,3 +152,22 @@ def test_a_commented_dep_header_is_still_rewritten(tmp_path):
     estate.write_text(ESTATE_TEMPLATE.format(commit=COMMIT, pin="stale").replace("[[dep]]\n", "[[dep]]   # vendored packages\n"), encoding="utf-8")
     assert checker.write_estate_pins(tmp_path) == []
     assert checker.check(tmp_path) == []
+
+
+def test_vendored_directories_are_read_from_the_manifest(tmp_path):
+    build_consumer(tmp_path)
+    assert checker.vendored_directories(tmp_path) == ("src/widget",)
+
+
+def test_vendored_directories_normalise_a_root_at_the_repository_root(tmp_path):
+    (tmp_path / "vendored.toml").write_text(
+        '[[package]]\nname = "b"\nroot = "."\n\n[[package]]\nname = "a"\nroot = "vendor/python"\n'
+        '\n[[package]]\nroot = "nameless"\n',
+        encoding="utf-8",
+    )
+    assert checker.vendored_directories(tmp_path) == ("b", "vendor/python/a")
+
+
+def test_no_manifest_vendors_nothing(tmp_path):
+    """The fail-closed direction: an absent manifest exempts nothing."""
+    assert checker.vendored_directories(tmp_path) == ()
