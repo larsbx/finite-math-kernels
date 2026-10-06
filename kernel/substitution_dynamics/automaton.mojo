@@ -5,6 +5,13 @@ and returns `capped = True` with no edges; a capped automaton is an
 incomplete prefix of the graph, so `sccs`, `recurrent_noncoincident_sccs`,
 and `nonproductive_states` raise on it instead of turning the cap into
 evidence. Component routines are iterative and index-based.
+
+References: the balanced-pair algorithm, A. N. Livshits, "On the spectra of
+adic transformations of Markov compacta", Russian Math. Surveys 42 (1987)
+222-223; V. F. Sirvent and B. Solomyak, "Pure discrete spectrum for one-
+dimensional substitution systems of Pisot type", Canad. Math. Bull. 45 (2002)
+697-710. Which termination or coincidence statement a consumer reads from the
+automaton is its import.
 """
 
 from substitution_dynamics.balanced_pairs import children, normalise, seed_states

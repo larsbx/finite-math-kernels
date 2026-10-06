@@ -18,6 +18,9 @@
 # angle, trigonometric function or floating-point number appears.
 #
 # Specification: docs/rational-interval-arithmetic-spec.md (coefficients are Q).
+# Euler's totient and the Moebius function live in euler_totient.mojo and
+# moebius_function.mojo, which cite them; `euler_phi` and `mobius_mu` are
+# re-exported here unchanged.
 
 from finite_exact.exact_decimal import q_decimal
 from finite_exact.field import ExactField
@@ -45,6 +48,8 @@ from finite_polynomial.cyclotomic_q import (
     zeta,
 )
 from finite_polynomial.polynomial_z import cyclotomic_degree
+from finite_polynomial.euler_totient import euler_phi
+from finite_polynomial.moebius_function import mobius_mu
 
 
 def _coprime(a: Int, b: Int) -> Bool:
@@ -54,29 +59,6 @@ def _coprime(a: Int, b: Int) -> Bool:
         bigz_gcd(bigz_from_i64(Int64(a)), bigz_from_i64(Int64(b))),
         bigz_from_i64(1),
     )
-
-
-def euler_phi(n: Int) -> Int:
-    var count = 0
-    for k in range(1, n + 1):
-        if _coprime(k, n):
-            count += 1
-    return count
-
-
-def mobius_mu(n: Int) -> Int:
-    """mu(n): 0 if a square divides n, else (-1)^(number of prime factors)."""
-    var m = n
-    var sign = 1
-    var p = 2
-    while p * p <= m:
-        if m % p == 0:
-            m //= p
-            if m % p == 0:
-                return 0
-            sign = -sign
-        p += 1
-    return -sign if m > 1 else sign
 
 
 def units(q: Int) -> List[Int]:

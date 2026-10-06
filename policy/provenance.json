@@ -65,7 +65,7 @@
       "relation": "authored"
     },
     "README.md": {
-      "blob": "f9f892523f238c5a8963317b86e4c2d069477a97",
+      "blob": "2e74f81bc5e30b6adccb7106618b3cef417729cc",
       "relation": "authored"
     },
     "conformance/certified_records_v1.txt": {
@@ -466,11 +466,19 @@
       "relation": "authored"
     },
     "kernel/finite_automata/__init__.mojo": {
-      "blob": "b84e30d651a6d93be9d7781d96d7bc7fe3c92584",
+      "blob": "e0e8da94f4339cc6cc3f13f0ad9e9fb9a2be8a1f",
       "relation": "authored"
     },
     "kernel/finite_automata/dfa.mojo": {
-      "blob": "ecbaae8e9347bb6a503b58d4681830e873e856e7",
+      "blob": "7d9d1b1e7667aecccf62668c6fcbedd92d5b2305",
+      "relation": "authored"
+    },
+    "kernel/finite_automata/moore_minimisation.mojo": {
+      "blob": "955032b2d59764e5559322b73ad9f882d946e0cd",
+      "relation": "authored"
+    },
+    "kernel/finite_automata/subset_construction.mojo": {
+      "blob": "9cc0e01833d1cacbc2499ae1faf2a689ee58a956",
       "relation": "authored"
     },
     "kernel/finite_exact/__init__.mojo": {
@@ -519,7 +527,7 @@
       "relation": "authored"
     },
     "kernel/finite_exact/integer_gcd.mojo": {
-      "blob": "370efdbaf61565cf4998a921a29e57e12653b678",
+      "blob": "27e4e00b8c28596d549719032b1be656f7793f9b",
       "relation": "authored"
     },
     "kernel/finite_exact/rat_q.mojo": {
@@ -542,34 +550,46 @@
       "relation": "authored"
     },
     "kernel/finite_graph/__init__.mojo": {
-      "blob": "f06509693e491f0a101c12c6dc85d89b02681278",
+      "blob": "74259f675b30ab317de1461a8a5122d430fc05b2",
       "relation": "authored"
     },
     "kernel/finite_graph/scc.mojo": {
-      "blob": "79d4d248de8111a9c742f91545b09761e7eb5d22",
+      "blob": "c382c1fb73fac75edbe47d4644e8956709752da1",
       "relation": "authored"
     },
     "kernel/finite_graph/signing.mojo": {
-      "blob": "570c2a9827814d78d1f8f4e552ecd3511fdab431",
+      "blob": "b93a285a4916150aff70b9c4086f5be8b03af2b9",
       "relation": "authored"
     },
     "kernel/finite_graph/union_find.mojo": {
-      "blob": "57d925b541f8ad73c4d6d45d46966a325badb440",
+      "blob": "035a65e3dba59daeb4b6ac1414f4b50a3b9f6ad6",
       "relation": "authored"
     },
     "kernel/finite_linear_algebra/__init__.mojo": {
-      "blob": "7161aecdb66ad9c8ce40eabd9b7127634f1c81f2",
+      "blob": "38c05672dbb84f803c9474b077295fa6135dc3bb",
       "relation": "modified",
       "source": "finite_linear_algebra",
       "source_blob": "5cefbb9810a7919dfd37a6cf4360d60e87e7b12e",
       "source_path": "finite_linear_algebra/__init__.mojo"
     },
+    "kernel/finite_linear_algebra/cauchy_bound.mojo": {
+      "blob": "5cf650729af02606582e0735400858c06312aad6",
+      "relation": "authored"
+    },
+    "kernel/finite_linear_algebra/faddeev_leverrier.mojo": {
+      "blob": "5c1e7a4a1a6ebbed674a9f49ba66c462c307688a",
+      "relation": "authored"
+    },
+    "kernel/finite_linear_algebra/hermite_normal_form.mojo": {
+      "blob": "1a0bae8e43c48fdc2158a26dcb341508cc695229",
+      "relation": "authored"
+    },
     "kernel/finite_linear_algebra/integer_matrix.mojo": {
-      "blob": "7cad71be686e3a348284ec87d50f15bcad98f8f0",
+      "blob": "86458112b22e84261b0387acb7c9bba1fa953d8d",
       "relation": "authored"
     },
     "kernel/finite_linear_algebra/integer_module.mojo": {
-      "blob": "85b5b17e1a7dee9520c90a419389979534919a6f",
+      "blob": "aa83afc946dd0ef6a783e5e830cb4d870cc023be",
       "relation": "authored"
     },
     "kernel/finite_linear_algebra/integer_vector.mojo": {
@@ -577,7 +597,7 @@
       "relation": "authored"
     },
     "kernel/finite_linear_algebra/madic_ball.mojo": {
-      "blob": "558c8435d1dcde825f6ad8217e7788731ca2c8e5",
+      "blob": "31b686c61d20db50b7256be14acb964ea5d322c3",
       "relation": "authored"
     },
     "kernel/finite_linear_algebra/mat3.mojo": {
@@ -603,7 +623,7 @@
       "source_path": "finite_linear_algebra/qlinalg.mojo"
     },
     "kernel/finite_linear_algebra/qpoly.mojo": {
-      "blob": "bc8ee229f9bc9da97f2a3cb25604adf379d599c1",
+      "blob": "c9696d72595608356fe3626619259484507c94ad",
       "relation": "authored"
     },
     "kernel/finite_linear_algebra/rational_elimination.mojo": {
@@ -616,6 +636,14 @@
       "source": "finite_linear_algebra",
       "source_blob": "a997c2dc3c21581ad51be43fb5087dd5622f0110",
       "source_path": "finite_linear_algebra/scalar.mojo"
+    },
+    "kernel/finite_linear_algebra/smith_normal_form.mojo": {
+      "blob": "7202ae1d1a4f966800d5deb00e9b3fcfcf7ab724",
+      "relation": "authored"
+    },
+    "kernel/finite_linear_algebra/sturm_sequence.mojo": {
+      "blob": "7ab8191d611802e6363690b6b8f5bfc58213e0ce",
+      "relation": "authored"
     },
     "kernel/finite_linear_algebra/tensor3.mojo": {
       "blob": "e720ec1b811297314afa12b022d63d206c1f483b",
@@ -631,8 +659,12 @@
       "source_blob": "17b306e1f70173110abaf148e035805209a913b8",
       "source_path": "finite_linear_algebra/w3.mojo"
     },
+    "kernel/finite_linear_algebra/wielandt_bound.mojo": {
+      "blob": "527ff78b942ab2a3ad77b69bd0c90de47254c8d0",
+      "relation": "authored"
+    },
     "kernel/finite_polynomial/__init__.mojo": {
-      "blob": "436d50e52d65386b14f13afb7007aa8a6cc10c72",
+      "blob": "f8806c1f6293817e1c088bf37aded44681a15205",
       "relation": "authored"
     },
     "kernel/finite_polynomial/coefficient_ring.mojo": {
@@ -640,7 +672,11 @@
       "relation": "authored"
     },
     "kernel/finite_polynomial/cyclotomic_field.mojo": {
-      "blob": "b2d5a04cada179369ab0be97b48252355daaec92",
+      "blob": "498b79788da9913b950ba1da9a50fbb9fb6c93d7",
+      "relation": "authored"
+    },
+    "kernel/finite_polynomial/cyclotomic_polynomial.mojo": {
+      "blob": "5a8234f8c573e7e816a772e21b57dd8d33800299",
       "relation": "authored"
     },
     "kernel/finite_polynomial/cyclotomic_q.mojo": {
@@ -651,6 +687,10 @@
       "blob": "57a0604ab6633a779624d6b56e7a9d2369a14a1c",
       "relation": "authored"
     },
+    "kernel/finite_polynomial/euler_totient.mojo": {
+      "blob": "479c6f0a3768255305c29030aefde1ef7bf07509",
+      "relation": "authored"
+    },
     "kernel/finite_polynomial/hensel_lifting.mojo": {
       "blob": "6e608caf10b15f15130ddbb9f07c7dec884e6c5b",
       "relation": "authored"
@@ -659,12 +699,16 @@
       "blob": "797b78999eea1bc311446bbef04645ca10a55c3b",
       "relation": "authored"
     },
+    "kernel/finite_polynomial/moebius_function.mojo": {
+      "blob": "7cd82b63e200e46d2a6369ca9a49d78f8043e87b",
+      "relation": "authored"
+    },
     "kernel/finite_polynomial/polynomial_fp.mojo": {
       "blob": "b274f256e638e637fe1afc180b769711cc2a51f9",
       "relation": "authored"
     },
     "kernel/finite_polynomial/polynomial_z.mojo": {
-      "blob": "13f8a2b2984cce80aa8dcc9297d97721ed37a55c",
+      "blob": "f217842a2fe2bdcb7e7d1c9838b303a676da6004",
       "relation": "authored"
     },
     "kernel/finite_polynomial/quadratic_germ.mojo": {
@@ -719,7 +763,7 @@
       "relation": "authored"
     },
     "kernel/projective_limits/__init__.mojo": {
-      "blob": "9575a346f9ac941d57237fc65f4298c32927ef41",
+      "blob": "0a6897cd1ce13e36aadc2bd985f4b34ebbdd91ba",
       "relation": "authored"
     },
     "kernel/projective_limits/limits.mojo": {
@@ -727,11 +771,19 @@
       "relation": "authored"
     },
     "kernel/projective_limits/line.mojo": {
-      "blob": "c5f89097e91a5c1a22594f87ce38d743ddd257ea",
+      "blob": "18f83f1de050fe5180979bca037c72928403ee64",
+      "relation": "authored"
+    },
+    "kernel/projective_limits/mobius_transformation.mojo": {
+      "blob": "14c07aa8cfdebfece67424153a6e89ca97ea4b95",
       "relation": "authored"
     },
     "kernel/projective_limits/rotor.mojo": {
-      "blob": "df6ba67d86f5ce4f91ef2211598d1534f59b6d8c",
+      "blob": "8e8968012623123ab8cbfa928e79eb9734e2cd8b",
+      "relation": "authored"
+    },
+    "kernel/projective_limits/spread_polynomial.mojo": {
+      "blob": "fd7010030e5a0bb2eb63dcf9d6a1a362ae691586",
       "relation": "authored"
     },
     "kernel/proof_records/ProofArchitecture.tla": {
@@ -783,7 +835,7 @@
       "relation": "authored"
     },
     "kernel/proof_records/sha256.mojo": {
-      "blob": "d8438abb884b5d03d2c4715fcbec66fe721432b9",
+      "blob": "c2c6a8ce74d9761e24c6e2425d891254a61a139c",
       "relation": "authored"
     },
     "kernel/proof_records/vocabularies.py": {
@@ -791,7 +843,7 @@
       "relation": "authored"
     },
     "kernel/quadratic_orbit/__init__.mojo": {
-      "blob": "fcad69f7454f4c93fb74a57948f44c5a0fb617e5",
+      "blob": "3df63267b7cb66dda1d0399d6d53f9f134909128",
       "relation": "authored"
     },
     "kernel/quadratic_orbit/collision.mojo": {
@@ -803,6 +855,10 @@
     },
     "kernel/quadratic_orbit/escape_criterion.mojo": {
       "blob": "33d1cfc23aa5fffb1b00c5bfe8aa8231af002701",
+      "relation": "authored"
+    },
+    "kernel/quadratic_orbit/krawczyk_operator.mojo": {
+      "blob": "d126be03aed10c0bccdd9970a8b5f99894a6c73e",
       "relation": "authored"
     },
     "kernel/quadratic_orbit/multiplier_classification.mojo": {
@@ -817,15 +873,23 @@
       "source_path": "src/interval_orbit.mojo"
     },
     "kernel/quadratic_orbit/preperiodic.mojo": {
-      "blob": "dc72cbf6a77627b9dc16a4210fb7813c647258bc",
+      "blob": "97060e294a12a0266461cb4b37c808b888d7099d",
       "relation": "authored"
     },
     "kernel/rational_dynamics/__init__.mojo": {
-      "blob": "02c525febbc75a3610b60d40a434da844bb8a322",
+      "blob": "f91127517e9826bec05891d837afa90726095943",
+      "relation": "authored"
+    },
+    "kernel/rational_dynamics/continued_fractions.mojo": {
+      "blob": "fc9775898b79314f1e4c37cd044c604caac5b8a1",
+      "relation": "authored"
+    },
+    "kernel/rational_dynamics/farey.mojo": {
+      "blob": "12ed491638841e21b44e9112943dac9e4a852e78",
       "relation": "authored"
     },
     "kernel/rational_dynamics/rational.mojo": {
-      "blob": "484b0a299f77586ebd431ddc70cbf99fec326ea3",
+      "blob": "e2e987a8bf40eaaced65208a838b0ece52726751",
       "relation": "authored"
     },
     "kernel/substitution_dynamics/__init__.mojo": {
@@ -836,7 +900,7 @@
       "source_path": "substitution_dynamics/__init__.mojo"
     },
     "kernel/substitution_dynamics/automaton.mojo": {
-      "blob": "22f9627d5777fcd74bbeb2471a22a104b9ab02a9",
+      "blob": "ac1b2f7a2e53969b6f503a2e43ed89ba4dc1770e",
       "relation": "modified",
       "source": "substitution_dynamics",
       "source_blob": "e94d702a03badeeeb1af97fa9808fdcdc35a7e12",
@@ -850,18 +914,18 @@
       "source_path": "substitution_dynamics/balanced_pairs.mojo"
     },
     "kernel/substitution_dynamics/coincidence.mojo": {
-      "blob": "8ecfc0aa53d94bae4a9d6135220734fb12f5887f",
+      "blob": "ee79d491dfb367b0393b2fb8d87ea391dfef3de6",
       "relation": "authored"
     },
     "kernel/substitution_dynamics/discrepancy.mojo": {
-      "blob": "a49285daf40e70fee074e3d0abd48f1d4acbc62c",
+      "blob": "ece52f45f39f569a03553f343336a67c4e4575e9",
       "relation": "modified",
       "source": "substitution_dynamics",
       "source_blob": "04f6f0d04f3320397c1f1c16bde2d038260d994e",
       "source_path": "substitution_dynamics/discrepancy.mojo"
     },
     "kernel/substitution_dynamics/sadic.mojo": {
-      "blob": "32dd9c575c15047fbd83fb1f49f9e0f39bffa864",
+      "blob": "409a6a1a3029c74a8f73b63563a4b71979be390c",
       "relation": "authored"
     },
     "kernel/substitution_dynamics/substitution.mojo": {
@@ -872,7 +936,7 @@
       "source_path": "substitution_dynamics/substitution.mojo"
     },
     "kernel/substitution_dynamics/tuning.mojo": {
-      "blob": "c3cd6101d34bc10823b1ecaa6dea2bc11d1cd5f4",
+      "blob": "0b0caf315b132429611d7d241cd2a641b3361f05",
       "relation": "authored"
     },
     "kernel/substitution_dynamics/words.mojo": {
@@ -887,7 +951,7 @@
       "relation": "authored"
     },
     "kernel/weighted_graph/cycle_gain.mojo": {
-      "blob": "42912704b518a1ed6116050fce0a067865240da7",
+      "blob": "22f54097cad188067e583f901c5a2315833ae75d",
       "relation": "authored"
     },
     "oracles/closed_interval/__init__.py": {
@@ -918,23 +982,55 @@
       "source_path": "tools/property_oracle.py"
     },
     "oracles/rational_dynamics_py/__init__.py": {
-      "blob": "79422556525d8add2973b8fefd60850511681aad",
+      "blob": "87e4d830f6f50ca4f4b49d8943b84dd0c89907a1",
+      "relation": "authored"
+    },
+    "oracles/rational_dynamics_py/addresses.py": {
+      "blob": "1fff1b0ae9dc0307de902ea16623475845ca762a",
       "relation": "authored"
     },
     "oracles/rational_dynamics_py/arithmetic.py": {
-      "blob": "5bf376f81d5b8246fcd8149dbe9f5acdb8617873",
+      "blob": "63d547b6a1454c99b38b0e5c267c004ca69254d4",
+      "relation": "authored"
+    },
+    "oracles/rational_dynamics_py/continued_fractions.py": {
+      "blob": "2c611b909a7669b2e681a4b14e185f7f5f730209",
+      "relation": "authored"
+    },
+    "oracles/rational_dynamics_py/dedekind_sums.py": {
+      "blob": "fd91265c7bc9a4984a107c4867ec253ea5b14bfd",
       "relation": "authored"
     },
     "oracles/rational_dynamics_py/doubling.py": {
-      "blob": "b9335b031ef3b512edd3de8e33feae679f6ed4d1",
+      "blob": "8ab37395cecbe333e40a6dc1d50c793ac43477ba",
       "relation": "authored"
     },
     "oracles/rational_dynamics_py/farey.py": {
-      "blob": "d00700598a327c441e2036dfcb4e17b732dc756a",
+      "blob": "8db7bba0c7641be8a40febd730f0bc755b743957",
+      "relation": "authored"
+    },
+    "oracles/rational_dynamics_py/mechanical_words.py": {
+      "blob": "b74db4bb4ed66bbc0f81ec60bf9568f616272592",
+      "relation": "authored"
+    },
+    "oracles/rational_dynamics_py/moebius_function.py": {
+      "blob": "f13c46921d3b60ce74decd06bdbd9d4c7a4d28fd",
+      "relation": "authored"
+    },
+    "oracles/rational_dynamics_py/ramanujan_sums.py": {
+      "blob": "1af77feb56e87a47fa0d5c7590d4663760261627",
+      "relation": "authored"
+    },
+    "oracles/rational_dynamics_py/rotation_sets.py": {
+      "blob": "518a9b9d4eedd2d5061c3132b1a54547d6f188d2",
+      "relation": "authored"
+    },
+    "oracles/rational_dynamics_py/wakes.py": {
+      "blob": "73297575f41e86e2d10e51ff0443e81c4a1785ec",
       "relation": "authored"
     },
     "pixi.toml": {
-      "blob": "f08c9e4d92fcfe452fe83f06beb9e9f90616e674",
+      "blob": "975f2a8dfaea5587546e9691a9b83fae1a4749c2",
       "relation": "authored"
     },
     "policy/estate-audits/0833929ed82d42cf3674a1565681625a9622827b.py": {
@@ -1120,6 +1216,10 @@
     },
     "tests/exact_arithmetic_audit/test_exact_arithmetic_audit.py": {
       "blob": "d9a1dc06c9e7c2b0b89c3fb399f79635e8596eff",
+      "relation": "authored"
+    },
+    "tests/facades/test_named_modules.mojo": {
+      "blob": "e005e3e89ab3d7b13c579d2572ea77c33f8b1405",
       "relation": "authored"
     },
     "tests/facades/test_stable_facades.mojo": {
@@ -1414,6 +1514,10 @@
     },
     "tests/quadratic_orbit/test_quadratic_orbit.mojo": {
       "blob": "4e8b27a493d5856618a9715e912ce88e76251a95",
+      "relation": "authored"
+    },
+    "tests/rational_dynamics/test_named_modules.py": {
+      "blob": "e27968a412d1e4d169553a73b5f198f567520f8d",
       "relation": "authored"
     },
     "tests/rational_dynamics/test_rational_dynamics.mojo": {

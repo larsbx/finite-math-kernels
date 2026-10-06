@@ -7,6 +7,9 @@
 # This is the shared foundation for exact cyclotomic arithmetic.  It does not
 # interpret a polynomial root, certify a domain theorem, or perform numerical
 # approximation.
+#
+# The cyclotomic polynomials Phi_n live in cyclotomic_polynomial.mojo, which
+# cites them; its three names are re-exported here unchanged.
 
 from finite_exact.bigint_z import (
     BigZ,
@@ -17,6 +20,11 @@ from finite_exact.bigint_z import (
     bigz_mul,
     bigz_sub,
     bigz_zero,
+)
+from finite_polynomial.cyclotomic_polynomial import (
+    cyclotomic_degree,
+    cyclotomic_polynomial,
+    cyclotomic_product_identity,
 )
 
 
@@ -226,41 +234,3 @@ def poly_div_exact_monic(dividend: PolyZ, divisor: PolyZ) -> PolyDivResult:
     if out.quotient.rejected:
         out.rejected = True
     return out^
-
-
-def cyclotomic_polynomial(conductor: Int) -> PolyZ:
-    """Phi_n by x^n-1 = product_(d|n) Phi_d, built bottom-up exactly."""
-    if conductor < 1:
-        return rejected_poly()
-
-    var table = List[PolyZ]()
-    for n in range(1, conductor + 1):
-        var current = poly_xn_minus_one(n)
-        for divisor in range(1, n):
-            if n % divisor == 0:
-                var division = poly_div_exact_monic(current, table[divisor - 1])
-                if division.rejected:
-                    return rejected_poly()
-                current = division.quotient.copy()
-        if not poly_is_monic(current):
-            return rejected_poly()
-        table.append(current.copy())
-    return table[conductor - 1].copy()
-
-
-def cyclotomic_degree(conductor: Int) -> Int:
-    var value = cyclotomic_polynomial(conductor)
-    return value.degree()
-
-
-def cyclotomic_product_identity(conductor: Int) -> Bool:
-    """Check product_(d|n) Phi_d = x^n - 1 exactly."""
-    if conductor < 1:
-        return False
-    var product = poly_one()
-    for divisor in range(1, conductor + 1):
-        if conductor % divisor == 0:
-            product = poly_mul(product, cyclotomic_polynomial(divisor))
-            if product.rejected:
-                return False
-    return poly_equal(product, poly_xn_minus_one(conductor))

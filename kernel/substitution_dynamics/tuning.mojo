@@ -13,6 +13,13 @@ finite combinatorics only. The star product is defined so that
 whatever their twists, and both twist rules are closed under it.
 
 Reference oracle: `reference/tuning_reference.py`.
+
+References: B. Derrida, A. Gervois and Y. Pomeau, "Iteration of endomorphisms
+on the real axis and representation of numbers", Ann. Inst. H. Poincare A 29
+(1978) 305-356 (the parity twist and the star product); A. Douady and J. H.
+Hubbard, "On the dynamics of polynomial-like mappings", Ann. Sci. Ecole Norm.
+Sup. (4) 18 (1985) 287-343 (tuning); J. Milnor and W. Thurston, "On iterated
+maps of the interval", Lecture Notes in Math. 1342 (1988) 465-563 (kneading).
 """
 
 from substitution_dynamics.substitution import Substitution

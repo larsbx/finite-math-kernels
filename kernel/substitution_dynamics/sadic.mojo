@@ -7,6 +7,9 @@ that composite on a word without forming it. Nothing here asserts a limit,
 a primitivity property, or any theorem about the S-adic system.
 
 Reference oracle: `reference/tuning_reference.py`.
+
+Reference: V. Berthe and V. Delecroix, "Beyond substitutive dynamical systems:
+S-adic expansions", RIMS Kokyuroku Bessatsu B46 (2014) 81-123.
 """
 
 from substitution_dynamics.substitution import Substitution
