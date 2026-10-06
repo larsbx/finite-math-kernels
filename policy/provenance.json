@@ -894,7 +894,7 @@
       "relation": "authored"
     },
     "pixi.toml": {
-      "blob": "f86c90cb2721b44b15153a0c7ea23acdb5a73ae0",
+      "blob": "8f00de8cf3b5b9bfb8d09b6d5a9a9b2690c8fe8f",
       "relation": "authored"
     },
     "policy/estate-audits/0833929ed82d42cf3674a1565681625a9622827b.py": {
@@ -1064,6 +1064,10 @@
     },
     "tests/cyclotomic/test_cyclotomic_reference.py": {
       "blob": "8c09602ab7f0ae15a0e2887a9186edb22eed704e",
+      "relation": "authored"
+    },
+    "tests/exact_arithmetic_audit/test_exact_arithmetic_audit.py": {
+      "blob": "980103e72033e65718230f65870b908e96ff2d7f",
       "relation": "authored"
     },
     "tests/facades/test_stable_facades.mojo": {
@@ -1380,7 +1384,7 @@
       "relation": "authored"
     },
     "tests/vendoring/test_check_vendored_sync.py": {
-      "blob": "c112398aed04c5def31ebd94a1d49c23f007980d",
+      "blob": "7aa38d7e84d767da91bf7bff6ab110e46c5e35e5",
       "relation": "authored"
     },
     "tests/weighted_graph/test_cycle_gain.mojo": {
@@ -1486,6 +1490,14 @@
       "source_blob": "992c82396e57c304169341877af45c38e9e67d3f",
       "source_path": "claim_governance/runner.py"
     },
+    "tools/exact_arithmetic_audit/__init__.py": {
+      "blob": "6fbab44b3ebe77193f8a9e25ed477851795d9329",
+      "relation": "authored"
+    },
+    "tools/exact_arithmetic_audit/audit.py": {
+      "blob": "1ac101ef74da0e1357c14507d5b4d694f93e45da",
+      "relation": "authored"
+    },
     "tools/make_cyclotomic_field_vectors.py": {
       "blob": "2347dda7d1399f67d8a700669b26511bceef74ca",
       "relation": "authored"
@@ -1541,7 +1553,7 @@
       "relation": "authored"
     },
     "tools/vendoring/check_vendored_sync.py": {
-      "blob": "e7f3ca8bd82ec8a7e9dbea83eaf9792fb859afd5",
+      "blob": "f5c97d04d768ecf09ff51127ed35cbae407b85d7",
       "relation": "modified",
       "source": "finite_mandelbrot_research",
       "source_blob": "76ddda76a2cc3dea8221ac8b8192fe3d7e4f14c4",
