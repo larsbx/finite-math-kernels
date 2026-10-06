@@ -6,9 +6,9 @@ twist rules are shipped: the parity twist of Derrida, Gervois, and Pomeau
 (`dgp`), the real-line kneading convention, and the continuation twist
 (`continuation`), the general rule under which the image of `1` is the
 periodic continuation of the prefix whose internal address contains the
-period. They differ already on the prefix `11`. The package treats both as
-finite combinatorics only. The star product is defined so that
-`star_product(a, b).substitution()` equals
+period, read off `internal_address` (its own module). They differ already on the prefix
+`11`. The package treats both as finite combinatorics only. The star product
+is defined so that `star_product(a, b).substitution()` equals
 `compose(a.substitution(), b.substitution())` for every pair of patterns,
 whatever their twists, and both twist rules are closed under it.
 
@@ -22,6 +22,7 @@ Sup. (4) 18 (1985) 287-343 (tuning); J. Milnor and W. Thurston, "On iterated
 maps of the interval", Lecture Notes in Math. 1342 (1988) 465-563 (kneading).
 """
 
+from substitution_dynamics.internal_address import internal_address
 from substitution_dynamics.substitution import Substitution
 
 
@@ -84,24 +85,13 @@ def dgp_twist(prefix: List[Int]) -> Bool:
 
 
 def continuation_twist(prefix: List[Int]) raises -> Bool:
-    """`A'_(n - S)` for `n = len(prefix) + 1` and `S` the last defined term of
-    `1, rho(1), rho(rho(1)), ...` with `rho(m) = min {k in (m, n-1] : A'_k != A'_(k-m)}`
-    (1-indexed). Spec 1.3: exactly one periodic continuation of `A' *` has `n`
-    in its internal address, namely the one whose last letter is `1 - A'_(n-S)`."""
-    var n = len(prefix) + 1
-    if n < 2:
-        raise Error("tuning prefix must be non-empty (period at least 2)")
-    var s = 1
-    while True:
-        var r = 0
-        for k in range(s + 1, n):
-            if prefix[k - 1] != prefix[k - s - 1]:
-                r = k
-                break
-        if r == 0:
-            break
-        s = r
-    return prefix[n - s - 1] == 1
+    """`A'_(n - S)` for `n = len(prefix) + 1` and `S` the last entry of
+    `internal_address(prefix)`, that is the last defined term of
+    `1, rho(1), rho(rho(1)), ...` with `rho(m) = min {k in (m, n-1] : A'_k != A'_(k-m)}`.
+    Spec 1.3: exactly one periodic continuation of `A' *` has `n` in its
+    internal address, namely the one whose last letter is `1 - A'_(n-S)`."""
+    var address = internal_address(prefix)
+    return prefix[len(prefix) - address[len(address) - 1]] == 1
 
 
 def star_product(a: TuningPattern, b: TuningPattern) -> TuningPattern:

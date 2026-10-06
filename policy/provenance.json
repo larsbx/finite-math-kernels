@@ -65,7 +65,7 @@
       "relation": "authored"
     },
     "README.md": {
-      "blob": "d62d2da22150787e6955faa107b46b19e112183e",
+      "blob": "6c6590a25752262fd6e272861e3fe3fbcbc7a1e7",
       "relation": "authored"
     },
     "conformance/certified_records_v1.txt": {
@@ -286,7 +286,7 @@
       "relation": "authored"
     },
     "docs/tuning-substitutions-spec.md": {
-      "blob": "a9a6078ce56a52b4f5b0102ae274919c6624785f",
+      "blob": "9db00ab626af40f1da3cd6f8b7edd0b002fe4b1a",
       "relation": "authored"
     },
     "docs/typed-proof-graph-normative-contract.md": {
@@ -664,7 +664,7 @@
       "relation": "authored"
     },
     "kernel/finite_polynomial/__init__.mojo": {
-      "blob": "f8806c1f6293817e1c088bf37aded44681a15205",
+      "blob": "8ebbd5b47d8340bf5e70daa6a45e4206484e5638",
       "relation": "authored"
     },
     "kernel/finite_polynomial/coefficient_ring.mojo": {
@@ -700,7 +700,7 @@
       "relation": "authored"
     },
     "kernel/finite_polynomial/moebius_function.mojo": {
-      "blob": "7cd82b63e200e46d2a6369ca9a49d78f8043e87b",
+      "blob": "ba5a391f9b189412d2f50d411f0da868695afae7",
       "relation": "authored"
     },
     "kernel/finite_polynomial/polynomial_fp.mojo": {
@@ -877,15 +877,35 @@
       "relation": "authored"
     },
     "kernel/rational_dynamics/__init__.mojo": {
-      "blob": "f91127517e9826bec05891d837afa90726095943",
+      "blob": "d31d6b6a8a5d9a51110d02e6c930418030812e9e",
+      "relation": "authored"
+    },
+    "kernel/rational_dynamics/carmichael.mojo": {
+      "blob": "617c92b533224edb08ebcfa730af7e2ada76faba",
       "relation": "authored"
     },
     "kernel/rational_dynamics/continued_fractions.mojo": {
       "blob": "fc9775898b79314f1e4c37cd044c604caac5b8a1",
       "relation": "authored"
     },
+    "kernel/rational_dynamics/doubling.mojo": {
+      "blob": "4088dde55101de85fb3a1be51c32b2706ffa73ca",
+      "relation": "authored"
+    },
     "kernel/rational_dynamics/farey.mojo": {
       "blob": "12ed491638841e21b44e9112943dac9e4a852e78",
+      "relation": "authored"
+    },
+    "kernel/rational_dynamics/integers.mojo": {
+      "blob": "7d953a0d8c77eabc9a2346b0a0ff5c4d3e35795b",
+      "relation": "authored"
+    },
+    "kernel/rational_dynamics/moebius.mojo": {
+      "blob": "15afac5d48d9192f80a06218b0460563c6c41f75",
+      "relation": "authored"
+    },
+    "kernel/rational_dynamics/multiplicative_order.mojo": {
+      "blob": "423f6d9c19c2d7ba83615f7d8b27311c0d6c9e95",
       "relation": "authored"
     },
     "kernel/rational_dynamics/rational.mojo": {
@@ -893,7 +913,7 @@
       "relation": "authored"
     },
     "kernel/substitution_dynamics/__init__.mojo": {
-      "blob": "76f83f038f0df80fc776202b5a5d52f8c18677e4",
+      "blob": "88ae88d7722f0f9df7b4e83513d1678185411909",
       "relation": "modified",
       "source": "substitution_dynamics",
       "source_blob": "39630ebf50177ba3e2cdd73b6b5ed1898b76324a",
@@ -924,6 +944,10 @@
       "source_blob": "04f6f0d04f3320397c1f1c16bde2d038260d994e",
       "source_path": "substitution_dynamics/discrepancy.mojo"
     },
+    "kernel/substitution_dynamics/internal_address.mojo": {
+      "blob": "0a6f24be06fde66560940aa53e879a2dee6b509b",
+      "relation": "authored"
+    },
     "kernel/substitution_dynamics/sadic.mojo": {
       "blob": "409a6a1a3029c74a8f73b63563a4b71979be390c",
       "relation": "authored"
@@ -936,7 +960,7 @@
       "source_path": "substitution_dynamics/substitution.mojo"
     },
     "kernel/substitution_dynamics/tuning.mojo": {
-      "blob": "0b0caf315b132429611d7d241cd2a641b3361f05",
+      "blob": "b66cb6eeeebb664904f84bd955b064a90433fbd1",
       "relation": "authored"
     },
     "kernel/substitution_dynamics/words.mojo": {
@@ -982,7 +1006,7 @@
       "source_path": "tools/property_oracle.py"
     },
     "oracles/rational_dynamics_py/__init__.py": {
-      "blob": "87e4d830f6f50ca4f4b49d8943b84dd0c89907a1",
+      "blob": "e9c5e7e7c33586a148e32c20166200b431e9e50c",
       "relation": "authored"
     },
     "oracles/rational_dynamics_py/addresses.py": {
@@ -991,6 +1015,10 @@
     },
     "oracles/rational_dynamics_py/arithmetic.py": {
       "blob": "63d547b6a1454c99b38b0e5c267c004ca69254d4",
+      "relation": "authored"
+    },
+    "oracles/rational_dynamics_py/carmichael.py": {
+      "blob": "7456668d539c12b56c5f542172159fdd716ebaaf",
       "relation": "authored"
     },
     "oracles/rational_dynamics_py/continued_fractions.py": {
@@ -1002,7 +1030,7 @@
       "relation": "authored"
     },
     "oracles/rational_dynamics_py/doubling.py": {
-      "blob": "8ab37395cecbe333e40a6dc1d50c793ac43477ba",
+      "blob": "c86fe7ff9adf8ff67b3eaae4a8e9d432d9ef4348",
       "relation": "authored"
     },
     "oracles/rational_dynamics_py/farey.py": {
@@ -1015,6 +1043,10 @@
     },
     "oracles/rational_dynamics_py/moebius_function.py": {
       "blob": "f13c46921d3b60ce74decd06bdbd9d4c7a4d28fd",
+      "relation": "authored"
+    },
+    "oracles/rational_dynamics_py/multiplicative_order.py": {
+      "blob": "e2d1edcd962205339329cf380fc61b0d931e21f2",
       "relation": "authored"
     },
     "oracles/rational_dynamics_py/ramanujan_sums.py": {
@@ -1030,7 +1062,7 @@
       "relation": "authored"
     },
     "pixi.toml": {
-      "blob": "7c88f098fa1437a94cd51e71715dbb5cff51abd7",
+      "blob": "1e4d6e1c00941aab9d5c1ba13981b8559af6ebc3",
       "relation": "authored"
     },
     "policy/estate-audits/0833929ed82d42cf3674a1565681625a9622827b.py": {
@@ -1054,6 +1086,10 @@
     },
     "reference/cyclotomic_reference.py": {
       "blob": "af727635754608924b7386ed20ed637ad7631b27",
+      "relation": "authored"
+    },
+    "reference/internal_address_reference.py": {
+      "blob": "66a9f8937ff02d5e0463c08f973d77e8b628a853",
       "relation": "authored"
     },
     "reference/orbit_census_reference.py": {
@@ -1085,7 +1121,7 @@
       "relation": "authored"
     },
     "reference/tuning_reference.py": {
-      "blob": "d5dc33f644d2ba735fed1b71d4ccc1b562bcc8e4",
+      "blob": "7c5f7c470416d6749880159dbaba20e579f222c0",
       "relation": "authored"
     },
     "schemas/polyglot-boundary-envelope-v1.json": {
@@ -1219,7 +1255,7 @@
       "relation": "authored"
     },
     "tests/facades/test_named_modules.mojo": {
-      "blob": "e005e3e89ab3d7b13c579d2572ea77c33f8b1405",
+      "blob": "9427a6d68bf36fb81d51d22d59a3fb53ee3e9d4b",
       "relation": "authored"
     },
     "tests/facades/test_stable_facades.mojo": {
@@ -1524,8 +1560,20 @@
       "blob": "4e8b27a493d5856618a9715e912ce88e76251a95",
       "relation": "authored"
     },
+    "tests/rational_dynamics/doubling_transcript.mojo": {
+      "blob": "b7b45a5666615af2116b0fc5b92fffd7714aef6e",
+      "relation": "authored"
+    },
+    "tests/rational_dynamics/test_doubling.mojo": {
+      "blob": "f1efa0b79f083d02c4310136165c3c816cbcc071",
+      "relation": "authored"
+    },
+    "tests/rational_dynamics/test_doubling_twin.py": {
+      "blob": "9e08cebf0676ef1e78ab08c96f4332206d3a7cca",
+      "relation": "authored"
+    },
     "tests/rational_dynamics/test_named_modules.py": {
-      "blob": "e27968a412d1e4d169553a73b5f198f567520f8d",
+      "blob": "104eec21907639d9015c6a80c8bfd05432ed76aa",
       "relation": "authored"
     },
     "tests/rational_dynamics/test_rational_dynamics.mojo": {
@@ -1533,7 +1581,7 @@
       "relation": "authored"
     },
     "tests/rational_dynamics/test_rational_dynamics_oracle.py": {
-      "blob": "928ad6b269648cdec67d44166404fd77b10da49d",
+      "blob": "7b7660a51200768344da188af5cd3c5cc0fca071",
       "relation": "authored"
     },
     "tests/rational_dynamics/test_rational_dynamics_reference.py": {
@@ -1556,11 +1604,11 @@
       "source_path": "tests/test_substitution_dynamics.mojo"
     },
     "tests/substitution_dynamics/test_tuning.mojo": {
-      "blob": "5d0cc9914266f6f9d6440775dfc02ffad8e9b999",
+      "blob": "8903aaf196815588ec9281496040a325a5756e6a",
       "relation": "authored"
     },
     "tests/substitution_dynamics/test_tuning_reference.py": {
-      "blob": "7d5cf3e7cd1f67618205d7cbcded87b3472f3015",
+      "blob": "7fcf6c930d22e6b0a4fe42e103c9eab8e1fac8df",
       "relation": "authored"
     },
     "tests/test_proof_graph_normalization_vectors.py": {

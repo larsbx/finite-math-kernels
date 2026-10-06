@@ -20,6 +20,8 @@ from __future__ import annotations
 from collections import deque
 from collections.abc import Sequence
 
+from internal_address_reference import internal_address
+
 Word = tuple[int, ...]
 Images = tuple[Word, ...]
 Pattern = tuple[Word, bool]
@@ -50,16 +52,12 @@ def dgp_pattern(prefix: Sequence[int]) -> Pattern:
 
 
 def continuation_twist(prefix: Sequence[int]) -> bool:
-    """General twist (spec 1.3): ``A'_(n-S)`` with ``S`` the last defined term of
-    ``1, rho(1), rho(rho(1)), ...``, ``rho(m) = min {k in (m, n-1] : A'_k != A'_(k-m)}``."""
-    p = tuple(prefix)
-    n = len(p) + 1
-    if not p:
-        raise ValueError("tuning prefix must be non-empty (period at least 2)")
-    s = 1
-    while (r := next((k for k in range(s + 1, n) if p[k - 1] != p[k - s - 1]), None)) is not None:
-        s = r
-    return p[n - s - 1] == 1
+    """General twist (spec 1.3): ``A'_(n-S)`` with ``n = len(prefix) + 1`` and
+    ``S`` the last entry of ``internal_address(prefix)``, that is the last
+    defined term of ``1, rho(1), rho(rho(1)), ...`` with
+    ``rho(m) = min {k in (m, n-1] : A'_k != A'_(k-m)}``."""
+    p = checked_pattern(prefix, False)[0]
+    return p[len(p) - internal_address(p)[-1]] == 1
 
 
 def continuation_pattern(prefix: Sequence[int]) -> Pattern:

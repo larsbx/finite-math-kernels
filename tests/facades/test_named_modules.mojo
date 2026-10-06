@@ -89,6 +89,7 @@ from finite_polynomial.polynomial_z import (
 )
 from finite_polynomial.euler_totient import euler_phi
 from finite_polynomial.moebius_function import mobius_mu
+from rational_dynamics.moebius import moebius
 from finite_polynomial.cyclotomic_field import euler_phi as old_euler_phi, mobius_mu as old_mobius_mu
 
 from finite_automata.dfa import Dfa, minimised as old_minimised, project as old_project, same_language
@@ -215,6 +216,14 @@ def test_finite_polynomial_named_modules() raises:
         assert_true(cyclotomic_product_identity(n) and old_cyclotomic_product_identity(n))
         assert_equal(euler_phi(n), old_euler_phi(n))
         assert_equal(mobius_mu(n), old_mobius_mu(n))
+        assert_equal(mobius_mu(n), moebius(n))
+    # One implementation: mobius_mu is rational_dynamics.moebius and refuses n < 1.
+    var refused = False
+    try:
+        _ = mobius_mu(0)
+    except:
+        refused = True
+    assert_true(refused)
 
 
 def test_finite_automata_named_modules() raises:

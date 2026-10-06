@@ -14,7 +14,8 @@
 #                     CyclotomicRing (run-time conductor); re-exports the two
 #                     arithmetic functions below.
 #   euler_totient     Euler's phi (Euler 1763).
-#   moebius_function  the Moebius function mu (Moebius 1832).
+#   moebius_function  the Moebius function mu (Moebius 1832), re-exported
+#                     from rational_dynamics.moebius, its one implementation.
 #   coefficient_ring  CoefficientRing and CoefficientField, rings as values;
 #                     FieldRing[K] adapts any finite_exact ExactField;
 #                     ComplexBoxRing, closed_q boxes as an enclosure ring.

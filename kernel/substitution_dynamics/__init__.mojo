@@ -9,3 +9,7 @@
 # boundary (`Substitution.checked`, `checked_pair`, `validate_word`); the
 # kernels below that boundary trust their inputs. A capped automaton build is
 # inconclusive, never evidence. See README.md at the repository root.
+#
+# Named objects have their own modules: tuning (tuning patterns and the star
+# product of Derrida, Gervois and Pomeau, 1978) and internal_address (the
+# internal address of a kneading sequence, Lau and Schleicher, 1994).

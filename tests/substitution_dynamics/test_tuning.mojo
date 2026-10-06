@@ -10,6 +10,7 @@ from std.testing import assert_equal, assert_false, assert_true
 from substitution_dynamics.coincidence import CoincidenceWitness, column_coincidence, constant_length, is_constant_length
 from substitution_dynamics.sadic import apply_directive, compose, directive_composite
 from substitution_dynamics.substitution import Substitution
+from substitution_dynamics.internal_address import internal_address
 from substitution_dynamics.tuning import TuningPattern, continuation_twist, dgp_twist, kneading_prefix, star_product
 
 
@@ -214,6 +215,55 @@ def test_continuation_twist_pinned_values_and_disagreement_with_parity() raises:
     assert_true(caught)
 
 
+def _contains(xs: List[Int], x: Int) -> Bool:
+    for i in range(len(xs)):
+        if xs[i] == x:
+            return True
+    return False
+
+
+def test_internal_address_pinned_values_and_boundary() raises:
+    # The basilica 1 -> 2, the rabbit 1 -> 3, the airplane 1 -> 2 -> 3, and the
+    # satellite period-4 continuation 1011 is 1 -> 2 -> 4.
+    var basilica: List[Int] = [1, 0]
+    var rabbit: List[Int] = [1, 1, 0]
+    var airplane: List[Int] = [1, 0, 0]
+    var satellite: List[Int] = [1, 0, 1, 1]
+    var constant: List[Int] = [1, 1, 1]
+    assert_equal(internal_address(basilica), [1, 2])
+    assert_equal(internal_address(rabbit), [1, 3])
+    assert_equal(internal_address(airplane), [1, 2, 3])
+    assert_equal(internal_address(satellite), [1, 2, 4])
+    assert_equal(internal_address(constant), [1])
+    var caught = False
+    try:
+        _ = internal_address(List[Int]())
+    except:
+        caught = True
+    assert_true(caught)
+    var bad: List[Int] = [1, 2]
+    caught = False
+    try:
+        _ = internal_address(bad)
+    except:
+        caught = True
+    assert_true(caught)
+
+
+def test_continuation_is_the_unique_continuation_with_the_period_in_its_internal_address() raises:
+    """Spec 1.3, characterization, replayed for every prefix of length at most 10."""
+    for length in range(1, 11):
+        for w in range(1 << length):
+            var prefix = List[Int]()
+            for i in range(length):
+                prefix.append((w >> i) & 1)
+            var image = TuningPattern.continuation(prefix).substitution().image(1)
+            var other = prefix.copy()
+            other.append(1 - image[length])
+            assert_true(_contains(internal_address(image), length + 1))
+            assert_false(_contains(internal_address(other), length + 1))
+
+
 def test_every_tuning_substitution_has_a_coincidence_in_its_first_column() raises:
     var p: List[Int] = [0, 1, 1, 0]
     var w = column_coincidence(TuningPattern.checked(p, True).substitution())
@@ -273,6 +323,10 @@ def main() raises:
     print("[PASS] test_kneading_prefix_is_a_prefix_of_every_tuning_image")
     test_continuation_twist_pinned_values_and_disagreement_with_parity()
     print("[PASS] test_continuation_twist_pinned_values_and_disagreement_with_parity")
+    test_internal_address_pinned_values_and_boundary()
+    print("[PASS] test_internal_address_pinned_values_and_boundary")
+    test_continuation_is_the_unique_continuation_with_the_period_in_its_internal_address()
+    print("[PASS] test_continuation_is_the_unique_continuation_with_the_period_in_its_internal_address")
     test_every_tuning_substitution_has_a_coincidence_in_its_first_column()
     print("[PASS] test_every_tuning_substitution_has_a_coincidence_in_its_first_column")
     test_thue_morse_has_no_column_coincidence()
@@ -281,4 +335,4 @@ def main() raises:
     print("[PASS] test_three_letter_example_needs_depth_two")
     test_non_constant_length_is_rejected()
     print("[PASS] test_non_constant_length_is_rejected")
-    print("12 tuning Mojo tests passed.")
+    print("14 tuning Mojo tests passed.")

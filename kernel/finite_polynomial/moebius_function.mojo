@@ -9,19 +9,13 @@
 # Numbers* (1938; 6th ed., Oxford, 2008), section 16.3. The independent Python
 # twin is the moebius_function module of oracles/rational_dynamics_py.
 #
+# The one Mojo implementation is `moebius` in rational_dynamics/moebius.mojo
+# (rational_dynamics depends only on finite_exact, so this edge adds no cycle
+# and no further package). This module re-exports it under both names:
+# `mobius_mu` is the same function as `moebius`. Like it, `mobius_mu` refuses
+# n < 1 (it raises); before the two were merged it returned 1 there.
+#
 # `mobius_mu` was previously in cyclotomic_field.mojo, which still re-exports it.
 
-
-def mobius_mu(n: Int) -> Int:
-    """mu(n): 0 if a square divides n, else (-1)^(number of prime factors)."""
-    var m = n
-    var sign = 1
-    var p = 2
-    while p * p <= m:
-        if m % p == 0:
-            m //= p
-            if m % p == 0:
-                return 0
-            sign = -sign
-        p += 1
-    return -sign if m > 1 else sign
+from rational_dynamics.moebius import moebius
+from rational_dynamics.moebius import moebius as mobius_mu

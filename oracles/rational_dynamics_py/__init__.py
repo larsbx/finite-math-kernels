@@ -17,7 +17,11 @@ package name (and so a ``vendored.toml`` entry) with the Mojo package.
 It is non-authoritative in this repository's sense (``oracles/``): the Mojo
 ``rational_dynamics`` and ``angle_doubling`` packages under ``kernel/`` are
 canonical where the two overlap, and the R1 functions here are their
-independent Python reference.
+independent Python reference, as are ``order_of_two``, ``preperiod``,
+``period``, ``exact_type``, ``exact_type_count``, ``binary_digits``,
+``binary_block`` and ``moebius`` for the Mojo ``rational_dynamics.doubling``,
+``.multiplicative_order`` and ``.moebius`` modules
+(``tests/rational_dynamics/test_doubling_twin.py``).
 
 Modules. Each named object of the literature has a module named after it,
 whose docstring cites its source; the generic helpers have their own module.
@@ -30,7 +34,12 @@ whose docstring cites its source; the generic helpers have their own module.
     Farey determinants and adjacency, mediants, Farey sequences and Farey
     (Stern-Brocot) parents (Farey 1816; Hardy-Wright III).
 ``doubling``
-    preperiod and period in closed form, binary expansions, doubling orbits.
+    preperiod and period in closed form, the number of angles of each exact
+    type, binary expansions, doubling orbits.
+``multiplicative_order``
+    ``order_of_two``, the multiplicative order of two (Gauss, 1801).
+``carmichael``
+    ``carmichael_lambda``, the Carmichael function (Carmichael, 1910).
 ``mechanical_words``
     the mechanical words of a rational rotation (Morse-Hedlund 1940).
 ``rotation_sets``
@@ -42,8 +51,8 @@ whose docstring cites its source; the generic helpers have their own module.
     Rademacher-Grosswald 1972), Ramanujan sums as divisor sums (1918).
 
 ``arithmetic`` (Moebius, Dedekind, Ramanujan) and the moved names of
-``farey`` and ``doubling`` remain importable from their old modules, which
-re-export the same objects.
+``farey`` and ``doubling`` (``order_of_two`` among them) remain importable
+from their old modules, which re-export the same objects.
 
 Where the consumers' copies this was ported from differ from it, the
 difference is deliberate and stated in the function's docstring:
@@ -74,6 +83,7 @@ difference is deliberate and stated in the function's docstring:
 from __future__ import annotations
 
 from .addresses import Address, address, as_fraction, double_mod_one, mod_inverse, signed_mod_inverse, units
+from .carmichael import carmichael_lambda
 from .continued_fractions import continued_fraction, convergents, from_continued_fraction
 from .dedekind_sums import dedekind_sum
 from .doubling import (
@@ -82,13 +92,14 @@ from .doubling import (
     binary_expansion,
     doubling_orbit,
     exact_type,
-    order_of_two,
+    exact_type_count,
     period,
     preperiod,
 )
 from .farey import farey_adjacent, farey_determinant, farey_parents, farey_sequence, mediant
 from .mechanical_words import mechanical_word
 from .moebius_function import moebius
+from .multiplicative_order import order_of_two
 from .ramanujan_sums import ramanujan_sum
 from .rotation_sets import rotation_cycle, rotation_number
 from .wakes import wake
@@ -100,12 +111,14 @@ __all__ = [
     "binary_block",
     "binary_digits",
     "binary_expansion",
+    "carmichael_lambda",
     "continued_fraction",
     "convergents",
     "dedekind_sum",
     "double_mod_one",
     "doubling_orbit",
     "exact_type",
+    "exact_type_count",
     "farey_adjacent",
     "farey_determinant",
     "farey_parents",

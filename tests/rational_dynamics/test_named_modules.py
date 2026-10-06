@@ -33,6 +33,7 @@ MOVED = {
         "rotation_cycle": "rotation_sets",
         "rotation_number": "rotation_sets",
         "wake": "wakes",
+        "order_of_two": "multiplicative_order",
     },
 }
 CASES = [(old, name, new) for old, names in MOVED.items() for name, new in names.items()]

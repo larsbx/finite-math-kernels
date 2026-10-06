@@ -108,6 +108,27 @@ def test_continuation_is_the_unique_continuation_with_the_period_in_its_internal
             assert tr.tuning_substitution(tr.continuation_pattern(prefix))[1] == prefix + (qualifying[0],)
 
 
+def test_internal_address_pinned_values_and_boundary():
+    assert tr.internal_address((1, 0)) == (1, 2)
+    assert tr.internal_address((1, 1, 0)) == (1, 3)
+    assert tr.internal_address((1, 0, 0)) == (1, 2, 3)
+    assert tr.internal_address((1, 0, 1, 1)) == (1, 2, 4)
+    assert tr.internal_address((1, 1, 1)) == (1,)
+    with pytest.raises(ValueError):
+        tr.internal_address(())
+    with pytest.raises(ValueError):
+        tr.internal_address((1, 2))
+
+
+def test_internal_address_is_the_brute_force_one_over_the_periodic_extension():
+    """The kernel reads ``rho`` inside the word; the brute force above reads it
+    over the periodic extension with a wide window. Exhaustive to length 12."""
+    from itertools import product
+    for length in range(1, 13):
+        for nu in product((0, 1), repeat=length):
+            assert list(tr.internal_address(nu)) == _internal_address(list(nu)), nu
+
+
 def test_continuation_twist_is_closed_under_the_star_product():
     from itertools import product
     for la in range(1, 6):
