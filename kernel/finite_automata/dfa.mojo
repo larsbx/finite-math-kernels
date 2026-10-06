@@ -18,9 +18,15 @@ system would need. What that procedure additionally requires -- recognisability
 of addition in the numeration -- is an imported theorem, gated in that
 repository's automatic-sequence literature gate, and nothing here
 supplies it.
+
+The two named constructions live in modules named after them, which cite
+them, and are re-exported here unchanged: `subset_construction.mojo`
+(`project`, Rabin-Scott) and `moore_minimisation.mojo` (`minimised`, Moore).
 """
 
 from finite_exact.bigint_z import BigZ, bigz_add, bigz_from_i64, bigz_zero
+from finite_automata.moore_minimisation import minimised
+from finite_automata.subset_construction import project
 
 
 
@@ -155,151 +161,6 @@ def witness(a: Dfa) raises -> Witness:
 
 def is_empty(a: Dfa) raises -> Bool:
     return witness(a).empty
-
-
-def _subset_index(mut index: Dict[String, Int], mut sets: List[List[Int]], key: String,
-                  members: List[Int]) raises -> Int:
-    """Index a subset by its key, appending it when it is new.
-
-    The index is a hash map, not a scanned list: the subset construction asks
-    this question once per (state, letter), so a linear scan makes the
-    determinisation quadratic in the number of subsets. Subsets are still
-    numbered by first encounter, so the automaton this returns is the one the
-    scan returned, not merely one with the same language."""
-    if key in index:
-        return index[key]
-    var at = len(sets)
-    index[key] = at
-    sets.append(members.copy())
-    return at
-
-
-def project(a: Dfa, tracks: Int, track: Int) raises -> Dfa:
-    """Existential quantification over one track of a product alphabet.
-
-    A letter of `a` is a tuple of `tracks` digits packed in base `radix`, digit
-    `track` least significant by position `track`. Dropping that track leaves a
-    nondeterministic automaton -- several values of the quantified digit may be
-    read -- which the subset construction determinises. The result accepts a
-    word exactly when some value of the dropped track completes it, which is
-    what `exists` means on a track.
-    """
-    if tracks < 1 or track < 0 or track >= tracks:
-        raise Error("track outside the product alphabet")
-    var radix = 1
-    while radix ** tracks < a.letters:
-        radix += 1
-    if radix ** tracks != a.letters:
-        raise Error("alphabet is not a power of a radix")
-    var out_letters = radix ** (tracks - 1)
-
-    var index = Dict[String, Int]()
-    var sets = List[List[Int]]()
-    var start: List[Int] = [0]
-    _ = _subset_index(index, sets, String("0"), start)
-    var delta = List[Int]()
-    var accepting = List[Bool]()
-    var done = 0
-    while done < len(sets):
-        var members = sets[done].copy()
-        var accepts = False
-        for i in range(len(members)):
-            if a.accepting[members[i]]:
-                accepts = True
-        accepting.append(accepts)
-        for letter in range(out_letters):
-            # rebuild the full letter by reinserting every value of `track`
-            var reached = List[Bool](length=a.states(), fill=False)
-            var image = List[Int]()
-            for value in range(radix):
-                var full = 0
-                var rest = letter
-                for position in range(tracks):
-                    var digit = value
-                    if position != track:
-                        digit = rest % radix
-                        rest = rest // radix
-                    full += digit * (radix ** position)
-                for i in range(len(members)):
-                    var next = a.step(members[i], full)
-                    if not reached[next]:
-                        reached[next] = True
-                        image.append(next)
-            sort(image)
-            var key = String("")
-            for i in range(len(image)):
-                key += String(image[i]) + ","
-            delta.append(_subset_index(index, sets, key, image))
-        done += 1
-    return Dfa(out_letters, delta, accepting)
-
-
-def minimised(a: Dfa) raises -> Dfa:
-    """Moore refinement from the accepting/rejecting split, over the reachable
-    part. Two automata with the same language have the same minimal automaton,
-    so this is also how two constructions are compared for equality."""
-    # reachable states first: unreachable ones would survive refinement as
-    # classes of their own and make the result depend on how it was built.
-    var seen = List[Bool](length=a.states(), fill=False)
-    var order = List[Int]()
-    var queue: List[Int] = [0]
-    seen[0] = True
-    var head = 0
-    while head < len(queue):
-        var state = queue[head]
-        head += 1
-        order.append(state)
-        for c in range(a.letters):
-            var next = a.step(state, c)
-            if not seen[next]:
-                seen[next] = True
-                queue.append(next)
-
-    var block = List[Int](length=a.states(), fill=-1)
-    for i in range(len(order)):
-        block[order[i]] = 1 if a.accepting[order[i]] else 0
-    var blocks = 2
-    while True:
-        # the signature -> class map is a hash index: scanning it would make
-        # every refinement round quadratic in the number of classes
-        var classes = Dict[String, Int]()
-        var next_block = List[Int](length=a.states(), fill=-1)
-        for i in range(len(order)):
-            var state = order[i]
-            var key = String(block[state]) + "|"
-            for c in range(a.letters):
-                key += String(block[a.step(state, c)]) + ","
-            var at: Int
-            if key in classes:
-                at = classes[key]
-            else:
-                at = len(classes)
-                classes[key] = at
-            next_block[state] = at
-        for i in range(len(order)):
-            block[order[i]] = next_block[order[i]]
-        if len(classes) == blocks:
-            break
-        blocks = len(classes)
-
-    # renumber so the start block is 0, which `Dfa` requires
-    var relabel = List[Int](length=blocks, fill=-1)
-    relabel[block[0]] = 0
-    var used = 1
-    for i in range(len(order)):
-        var b = block[order[i]]
-        if relabel[b] < 0:
-            relabel[b] = used
-            used += 1
-    var delta = List[Int](length=used * a.letters, fill=0)
-    var accepting = List[Bool](length=used, fill=False)
-    for i in range(len(order)):
-        var state = order[i]
-        var b = relabel[block[state]]
-        accepting[b] = a.accepting[state]
-        for c in range(a.letters):
-            delta[b * a.letters + c] = relabel[block[a.step(state, c)]]
-    return Dfa(a.letters, delta, accepting)
 
 
 def same_language(a: Dfa, b: Dfa) raises -> Bool:

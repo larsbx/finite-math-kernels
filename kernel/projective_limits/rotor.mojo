@@ -17,9 +17,13 @@
 # half-turn 1/2 -> infinity is the same for every generator, and nothing
 # here measures an angle or uses pi. The spread of a rotor is sin^2(theta),
 # and s(n theta) = S_n(s(theta)) for the spread polynomials S_n.
+#
+# The spread polynomials S_n live in spread_polynomial.mojo, which cites them
+# (Wildberger); `spread_polynomial` is re-exported here unchanged.
 
 from finite_exact.field import ExactField, QField
 from finite_exact.fp import FpField
+from projective_limits.spread_polynomial import spread_polynomial
 from projective_limits.line import (
     MobiusOver,
     P1Over,
@@ -150,23 +154,6 @@ def rotor_spread[K: ExactField](a: P1Over[K]) -> K.Element:
     var n = _norm(a)
     var xy = K.mul(a.x, a.y)
     return K.div(K.mul(K.from_int(4), K.mul(xy, xy)), K.mul(n, n))
-
-
-def spread_polynomial[K: ExactField = QField](n: Int, s: K.Element) -> K.Element:
-    """S_n(s): S_0 = 0, S_1 = s, S_{k+1} = 2 (1 - 2 s) S_k - S_{k-1} + 2 s; S_{-n} = S_n."""
-    var m = n if n >= 0 else -n
-    if m == 0:
-        return K.zero()
-    var two = K.from_int(2)
-    var step = K.mul(two, K.sub(K.one(), K.mul(two, s)))
-    var lift = K.mul(two, s)
-    var prev = K.zero()
-    var cur = s.copy()
-    for _ in range(1, m):
-        var next = K.add(K.sub(K.mul(step, cur), prev), lift)
-        prev = cur^
-        cur = next^
-    return cur^
 
 
 def rotor_group_order_fp(p: Int64) -> Int64:

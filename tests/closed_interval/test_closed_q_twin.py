@@ -45,6 +45,11 @@ def pred(value: bool, *operands) -> str:
     return "1" if value else "0"
 
 
+def flag(value: bool) -> str:
+    """A point predicate is plain: false on a refusal, so no `R` token."""
+    return "1" if value else "0"
+
+
 def expected() -> list[str]:
     n = len(CORPUS)
     lines = ["HEADER closed-q-twin 1"]
@@ -78,6 +83,13 @@ def expected() -> list[str]:
                     iq(product.re), iq(product.im), iq(total.re), iq(total.im),
                     pred(z.subset_of(w), z, w), pred(z.strict_subset_of(w), z, w),
                 ]))
+    for i in range(n):
+        for j in range(n):
+            z = ComplexIQ(interval(i), interval(j))
+            w = ComplexIQ(interval(j), interval(i))
+            lines.append(" ".join([
+                "S1", iq(z.re), iq(z.im), flag(z.is_singleton()), flag(z.singleton_eq(z)), flag(z.singleton_eq(w)),
+            ]))
     lines.append("END")
     return lines
 
@@ -104,3 +116,5 @@ def test_the_transcript_is_not_vacuous():
     assert any(line.startswith("I1") and line.split()[4] == "rejected" and line.split()[1] != "rejected" for line in lines)
     assert {line.split()[5] for line in lines if line.startswith("I1")} == {"-1", "0", "1", "R"}
     assert any(line.startswith("I2") and line.split()[-1] == "1" for line in lines)
+    assert any(line.startswith("S1") and line.split()[-1] == "1" for line in lines)
+    assert any(line.startswith("S1 rejected") for line in lines)

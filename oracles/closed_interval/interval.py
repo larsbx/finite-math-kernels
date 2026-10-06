@@ -23,9 +23,9 @@ Where this differs from the Julia copy, deliberately and fail-closed:
 - The dataclass constructor itself rejects reversed endpoints, as the Mojo
   constructor does; the Julia copy did so only in ``IQ.of``.
 
-Added beyond the Julia copy: ``IQ.excludes_zero`` and ``IQ.sign`` (from
-``closed_q.mojo``), ``ComplexIQ.neg``, ``conjugate``, ``contains_zero`` and
-``midpoint``.
+Added beyond the Julia copy: ``IQ.excludes_zero``, ``IQ.sign``,
+``is_singleton`` and ``ComplexIQ.singleton_eq`` (from ``closed_q.mojo``),
+``ComplexIQ.neg``, ``conjugate``, ``contains_zero`` and ``midpoint``.
 
 What is claimed: every result encloses the exact image of its operands, and
 the square is the sharp one (spec section 2.5). What is not: tightness of any
@@ -78,6 +78,10 @@ class IQ:
 
     def accepted(self) -> bool:
         return not self.rejected
+
+    def is_singleton(self) -> bool:
+        """``[x, x]``; ``False`` for a rejected interval."""
+        return self.accepted() and self.lo == self.hi
 
     def add(self, other: "IQ") -> "IQ":
         if self.rejected or other.rejected:
@@ -180,6 +184,15 @@ class ComplexIQ:
 
     def accepted(self) -> bool:
         return self.re.accepted() and self.im.accepted()
+
+    def is_singleton(self) -> bool:
+        """One exact point; ``False`` when rejected."""
+        return self.re.is_singleton() and self.im.is_singleton()
+
+    def singleton_eq(self, other: "ComplexIQ") -> bool:
+        """The same exact point. Two equal boxes that are not singletons, or a
+        rejected one, answer ``False``: equality of points, not of boxes."""
+        return self.is_singleton() and other.is_singleton() and (self.re.lo, self.im.lo) == (other.re.lo, other.im.lo)
 
     def add(self, other: "ComplexIQ") -> "ComplexIQ":
         return ComplexIQ(self.re.add(other.re), self.im.add(other.im))

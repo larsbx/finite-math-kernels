@@ -7,6 +7,10 @@ each component lists its vertices in the order they left the stack.
 
 Every consumer that walks a finite automaton for its recurrent part needs the
 same two facts, so they live here once rather than beside each automaton type.
+
+Reference: R. E. Tarjan, "Depth-first search and linear graph algorithms",
+SIAM J. Comput. 1 (1972) 146-160. The module is named after the object it
+computes; the algorithm is Tarjan's, made iterative.
 """
 
 

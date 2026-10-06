@@ -165,6 +165,30 @@ def test_bytecode_caches_are_neither_pinned_nor_drift(tmp_path):
     assert ".pyc" not in manifest.read_text()
 
 
+def _single_file_package(tmp_path: Path) -> Path:
+    """A package pinned as one file under its root, with no directory named after it."""
+    (tmp_path / "proof").mkdir()
+    (tmp_path / "proof" / "Spec.tla").write_text("---- MODULE Spec ----\n", encoding="utf-8")
+    manifest = tmp_path / "vendored.toml"
+    manifest.write_text("\n".join([
+        "[[package]]", 'name = "spec"', 'repository = "larsbx/finite-math-kernels"',
+        f'commit = "{COMMIT}"', 'root = "proof"', "", "[package.files]", '"Spec.tla" = "0"', ""]), encoding="utf-8")
+    return manifest
+
+
+def test_pin_keeps_a_listed_file_outside_the_package_directory(tmp_path):
+    manifest = _single_file_package(tmp_path)
+    assert checker.pin("spec", "a" * 40, tmp_path, manifest) == []
+    assert '"Spec.tla"' in manifest.read_text()
+    assert checker.check(tmp_path, manifest) == []
+
+
+def test_pin_refuses_a_listed_file_outside_the_package_directory_that_is_gone(tmp_path):
+    manifest = _single_file_package(tmp_path)
+    (tmp_path / "proof" / "Spec.tla").unlink()
+    assert checker.pin("spec", "a" * 40, tmp_path, manifest) == ["spec: cannot pin missing file Spec.tla"]
+
+
 def test_pin_refuses_a_short_commit(tmp_path):
     build_consumer(tmp_path)
     manifest = tmp_path / "vendored.toml"
@@ -231,3 +255,15 @@ def test_vendored_directories_normalise_a_root_at_the_repository_root(tmp_path):
 def test_no_manifest_vendors_nothing(tmp_path):
     """The fail-closed direction: an absent manifest exempts nothing."""
     assert checker.vendored_directories(tmp_path) == ()
+    assert checker.vendored_files(tmp_path) == ()
+
+
+def test_vendored_files_include_files_pinned_beside_the_package(tmp_path):
+    (tmp_path / "vendored.toml").write_text(
+        '[[package]]\nname = "proof_architecture"\nroot = "proof"\n\n'
+        '[package.files]\n"Spec.tla" = "00"\n"proof_architecture/Model.tla" = "00"\n\n'
+        '[[package]]\nname = "b"\nroot = "."\n\n[package.files]\n"b/x.py" = "00"\n'
+        '\n[[package]]\nroot = "nameless"\n',
+        encoding="utf-8",
+    )
+    assert checker.vendored_files(tmp_path) == ("b/x.py", "proof/Spec.tla", "proof/proof_architecture/Model.tla")

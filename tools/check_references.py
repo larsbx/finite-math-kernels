@@ -40,6 +40,9 @@ EXTERNAL: dict[str, str] = {
     # The manifest the vendoring checker reads lives in whichever repository
     # vendors these packages, never here: this monorepo is the upstream.
     "vendored.toml": "each consumer repository that vendors packages from this monorepo",
+    # Likewise the facts `polyglot_envelope` renders from: this repository's
+    # own rendering is checked by tests/polyglot instead.
+    "polyglot.manifest.toml": "each consumer repository that vendors polyglot_envelope",
     "src/C1_theorem_tag_import_ledger.mojo": NLAP,
     "src/C1_theorem_tag_assumption_payloads.mojo": NLAP,
     "src/C1_final_proof_block_ledger.mojo": NLAP,
@@ -68,6 +71,20 @@ EXTERNAL: dict[str, str] = {
     "docs/scaled-boxes.md": "larsbx/finite-julia-set-research, which implemented the E = F endpoints of section 2.1",
     "docs/tiling-connections-2026-09-20.md": "larsbx/finite-julia-set-research, whose item 2 asked for the general-size characteristic polynomial and the root isolation of docs/exact-polynomial-root-isolation-spec.md",
     "kernel/integer_vector_bench.mojo": PSC,
+    "certificates/checked_krawczyk_witness.mojo": f"{NLAP}, under kernel/mojo; the checked-Int64 Krawczyk witness docs/root-isolation-spec.md section 8 leaves local",
+    "reference/scaled.py": "larsbx/finite-julia-set-research; the separated-exponent boxes docs/root-isolation-spec.md section 8 leaves local",
+    "certificates/krawczyk_witness.mojo": f"{NLAP}, under kernel/mojo; inventoried in docs/root-isolation-spec.md section 8",
+    "kernel/bulbford/certify.py": "larsbx/mandelbrot-bulbs-and-ford-circles-research; inventoried in docs/root-isolation-spec.md section 8",
+    "kernel/bulbford/antipode.py": "larsbx/mandelbrot-bulbs-and-ford-circles-research; inventoried in docs/root-isolation-spec.md section 8",
+    "reference/preperiodic.py": "larsbx/finite-julia-set-research; inventoried in docs/root-isolation-spec.md section 8",
+    "docs/literature-gate-2026-09-20-krawczyk.md": "larsbx/finite-julia-set-research, which gated KrawczykMooreUniqueness (docs/root-isolation-spec.md section 4)",
+    "kernel/tests/test_census_library.mojo": PSC,
+    "kernel/tests/test_endpoint_core.mojo": PSC,
+    "kernel/tests/test_automata.mojo": PSC,
+    "kernel/tests/test_barge_class.mojo": PSC,
+    "kernel/tests/test_boundary_sync.mojo": PSC,
+    "kernel/tests/test_return_lattice.mojo": PSC,
+    "kernel/psc/coincidence_formula.mojo": PSC,
     "interval_q/closed_q.mojo": "larsbx/interval_q at the commit pinned in policy/provenance.json",
 }
 

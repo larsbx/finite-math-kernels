@@ -11,14 +11,13 @@ Run with `pixi run test-cyclotomic-field`.
 
 from finite_exact.bigint_z import BigZ, bigz_abs_mul_small, bigz_add, bigz_from_i64, bigz_neg
 from finite_exact.exact_decimal import bigz_decimal
-from finite_polynomial.cyclotomic_field import Cyc
+from finite_polynomial.cyclotomic_field import Cyc, CyclotomicRing
 from finite_polynomial.polynomial_z import cyclotomic_polynomial, poly_coefficient
 from finite_polynomial.quadratic_germ import (
-    jet_seed,
-    jet_sub,
     quadratic_germ_index_coefficient,
     quadratic_germ_iterate,
 )
+from finite_polynomial.truncated_jet import jet_seed, jet_sub
 from finite_exact.rat_q import Q, q_from_bigz
 
 comptime FIXTURE = "conformance/cyclotomic_field_v1.txt"
@@ -86,7 +85,8 @@ def replay[q: Int](cols: List[String]) raises:
         # P(0) is the coefficient of w^(q+1) in w - g^q(w), from the kernel's jets.
         var p = Int(cols[2])
         var order = 2 * q + 1
-        var residual = jet_sub(jet_seed(q, order), quadratic_germ_iterate(Cyc[q].zeta(p).value, q, order))
+        var ring = CyclotomicRing(q)
+        var residual = jet_sub(jet_seed(ring, ring.zero(), order), quadratic_germ_iterate(Cyc[q].zeta(p).value, q, order))
         if not residual.accepted():
             raise Error(label + ": germ iterate refused")
         expect[q](label, Cyc[q](residual.coeffs[q + 1]), cols[3])

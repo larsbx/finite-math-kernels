@@ -51,6 +51,10 @@ def bool_token(result: IQBoolResult) -> String:
     return String("1") if result.value else String("0")
 
 
+def flag_token(value: Bool) -> String:
+    return String("1") if value else String("0")
+
+
 def main():
     print("HEADER closed-q-twin 1")
     var n = count()
@@ -87,4 +91,12 @@ def main():
                     iq_token(product.re), iq_token(product.im), iq_token(total.re), iq_token(total.im),
                     bool_token(z.subset_of(w)), bool_token(z.strict_subset_of(w)),
                 )
+    for i in range(n):
+        for j in range(n):
+            var z = ComplexIQ(interval(i), interval(j))
+            var w = ComplexIQ(interval(j), interval(i))
+            print(
+                "S1", iq_token(z.re), iq_token(z.im), flag_token(z.is_singleton()),
+                flag_token(z.singleton_eq(z)), flag_token(z.singleton_eq(w)),
+            )
     print("END")

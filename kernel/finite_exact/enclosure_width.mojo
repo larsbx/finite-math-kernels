@@ -14,7 +14,7 @@
 # layer rather than in any one consumer's dynamics.
 
 from finite_exact.closed_q import ComplexIQ
-from finite_exact.rat_q import Q, q_max
+from finite_exact.rat_q import Q, q_abs, q_max
 
 
 def sup_radius(box: ComplexIQ) -> Q:
@@ -23,6 +23,22 @@ def sup_radius(box: ComplexIQ) -> Q:
         return Q(0, 0)
     var widths = q_max(box.re.hi.sub(box.re.lo), box.im.hi.sub(box.im.lo))
     return widths.div(Q(2, 1))
+
+
+def sup_magnitude(box: ComplexIQ) -> Q:
+    """The largest coordinate magnitude the box reaches: the `M` of a
+    confining square `[-M, M]^2`. A refusal has none and is rejected."""
+    if not box.accepted():
+        return Q(0, 0)
+    var real = q_max(q_abs(box.re.lo), q_abs(box.re.hi))
+    var imaginary = q_max(q_abs(box.im.lo), q_abs(box.im.hi))
+    return q_max(real, imaginary)
+
+
+def within(box: ComplexIQ, bound: Q) -> Bool:
+    """Does the box lie in the square of half-side `bound`? False on a refusal."""
+    var magnitude = sup_magnitude(box)
+    return magnitude.accepted() and bound.accepted() and magnitude.le(bound)
 
 
 def iterated_radius_bound(factor: Q, steps: Int, radius: Q) -> Q:
