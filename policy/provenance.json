@@ -1,7 +1,7 @@
 {
   "files": {
     ".claude/skills/steward/SKILL.md": {
-      "blob": "350231c8aadeb1356a04a7cdb0136845cff80898",
+      "blob": "47e1006db4476c7ebbf608c1cada85e8ba1aea31",
       "relation": "authored"
     },
     ".forgejo/PULL_REQUEST_TEMPLATE.md": {
@@ -49,7 +49,7 @@
       "relation": "authored"
     },
     "AGENTS.md": {
-      "blob": "5670e05268743e8ccb33f680c726a7cfa6cf59c2",
+      "blob": "743c55fcd1e70c008508659f023d2a61e23cdc06",
       "relation": "authored"
     },
     "ARCHITECTURE.md": {
@@ -57,7 +57,7 @@
       "relation": "authored"
     },
     "CONTRIBUTING.md": {
-      "blob": "42861b37d65eb4238c984446c988c7763330c7d6",
+      "blob": "eb1188a01c0a3c7790e39c60db2a6349712f728a",
       "relation": "authored"
     },
     "ESTATE.toml": {
