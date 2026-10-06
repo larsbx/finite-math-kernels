@@ -3,8 +3,8 @@
 The three-letter fixtures (Tribonacci, `0 -> 1, 1 -> 021, 2 -> 001`, the
 catch-up-free `0 -> 1, 1 -> 22, 2 -> 012`, the plastic substitution) carry the
 expected values the PSC research kernel
-(`larsbx/pisot-substitution-conjecture-research`, `kernel/tests/
-test_automata.mojo`, `test_barge_class.mojo`, `test_boundary_sync.mojo`) pins
+(`larsbx/pisot-substitution-conjecture-research`, `kernel/tests/test_automata.mojo`,
+`kernel/tests/test_barge_class.mojo`, `kernel/tests/test_boundary_sync.mojo`) pins
 on its alphabet-3 views, so the generic modules reproduce them exactly. The
 two- and four-letter cases check what is new: the numeration against the
 fixed point and the incidence matrix on the Fibonacci and a four-letter

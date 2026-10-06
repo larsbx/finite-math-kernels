@@ -1,8 +1,9 @@
 """Regressions for `substitution_dynamics.symmetry` and `.endpoint_maps`.
 
 The three-letter fixtures are the ones the PSC research kernel
-(`larsbx/pisot-substitution-conjecture-research`, `kernel/tests/
-test_census_library.mojo` and `test_endpoint_core.mojo`) pins on its own
+(`larsbx/pisot-substitution-conjecture-research`,
+`kernel/tests/test_census_library.mojo` and
+`kernel/tests/test_endpoint_core.mojo`) pins on its own
 alphabet-3 views of these modules, with identical expected values, so the
 generalisation cannot have moved an alphabet-3 answer. The other alphabets
 check what the generalisation adds: conjugacy class counts of self-maps of

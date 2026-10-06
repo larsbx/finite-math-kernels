@@ -1385,7 +1385,7 @@
       "relation": "authored"
     },
     "tests/substitution_dynamics/test_dumont_thomas.mojo": {
-      "blob": "446d67b33e68974eabb0606381339abe62991f62",
+      "blob": "ee61f92dad89b8a8a5b5cd97b0018042277a25e4",
       "relation": "authored"
     },
     "tests/substitution_dynamics/test_return_lattice.mojo": {
@@ -1404,7 +1404,7 @@
       "source_path": "tests/test_substitution_dynamics.mojo"
     },
     "tests/substitution_dynamics/test_symmetry.mojo": {
-      "blob": "a30d56d45e3f81064c78104788cda136a618b5e9",
+      "blob": "617bfab5da67e7129a968cde819ebcb106b9eccb",
       "relation": "authored"
     },
     "tests/substitution_dynamics/test_tuning.mojo": {
@@ -1436,7 +1436,7 @@
       "relation": "authored"
     },
     "tools/check_references.py": {
-      "blob": "bc926420ee6ba4b5f6d7973563db1f273966bd65",
+      "blob": "acaa7f06a4ecea5a0339fb80c4e201a993614e90",
       "relation": "authored"
     },
     "tools/claim_governance/__init__.py": {
