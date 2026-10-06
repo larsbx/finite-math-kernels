@@ -20,28 +20,26 @@
 #   uniqueness  `K(Z)` strictly inside `Z` => exactly one, counted simply
 #
 # The strictness in the second is not decoration. It is the contraction
-# hypothesis of the Krawczyk-Moore theorem (specification section 2.4), which
+# hypothesis of the Krawczyk-Moore theorem (docs/root-isolation-spec.md
+# section 4, which `root_isolation` computes and this module instantiates), which
 # is an import and is gated by the consumer. Compare the trap certificate of
 # `larsbx/finite-julia-set-research`, which asks only for inclusion because it
 # claims only boundedness.
 #
 # The operator and that test, `krawczyk_image` and `isolates_preperiodic_point`,
-# live in krawczyk_operator.mojo, which cites them; both are re-exported here.
+# live in krawczyk_operator.mojo, which applies the generic `root_isolation`
+# operator to this residual; both are re-exported here.
 
 from finite_exact.closed_interval import ComplexIQ, IQ, IQBoolResult
 from finite_exact.rat_q import Q
 from quadratic_orbit.orbit import complex_excludes_zero, orbit_term, quadratic_step
+from root_isolation import centre, exact_inverse, rejected_box
 from quadratic_orbit.krawczyk_operator import isolates_preperiodic_point, krawczyk_image
 
 
 def one_box() -> ComplexIQ:
     """The multiplicative identity, as a singleton enclosure."""
     return ComplexIQ.singleton(Q(1, 1), Q.zero())
-
-
-def rejected_box() -> ComplexIQ:
-    """A refusal that is a value: every consumer sees `accepted() == False`."""
-    return ComplexIQ.singleton(Q(1, 0), Q(1, 0))
 
 
 def orbit_derivative(seed: ComplexIQ, c: ComplexIQ, steps: Int) -> ComplexIQ:
@@ -86,15 +84,12 @@ def excludes_preperiodic_point(z: ComplexIQ, c: ComplexIQ, l: Int, k: Int) -> IQ
 
 
 def midpoint_box(z: ComplexIQ) -> ComplexIQ:
-    """The singleton at the centre of a box, exactly."""
-    if not z.accepted():
-        return rejected_box()
-    var two = Q(2, 1)
-    return ComplexIQ.singleton(z.re.lo.add(z.re.hi).div(two), z.im.lo.add(z.im.hi).div(two))
+    """The singleton at the centre of a box, exactly (`root_isolation.centre`)."""
+    return centre(z)
 
 
 def singleton_reciprocal(w: ComplexIQ) -> ComplexIQ:
-    """`1/w` for a singleton `w`, exactly, or a refusal.
+    """`1/w` for a singleton `w`, exactly, or a refusal (`root_isolation.exact_inverse`).
 
     The exact regime spends no width here. The Krawczyk operator is usually
     written with an *approximate* inverse of the derivative at the centre,
@@ -102,16 +97,7 @@ def singleton_reciprocal(w: ComplexIQ) -> ComplexIQ:
     of a singleton is another singleton, `(a - bi) / (a^2 + b^2)`, and the
     operator inherits no error from it. A vanishing quadrance is refused.
     """
-    if not w.accepted():
-        return rejected_box()
-    if not (w.re.lo.eq(w.re.hi) and w.im.lo.eq(w.im.hi)):
-        return rejected_box()
-    var a = w.re.lo.copy()
-    var b = w.im.lo.copy()
-    var quadrance = a.square().add(b.square())
-    if quadrance.eq(Q.zero()) or not quadrance.accepted():
-        return rejected_box()
-    return ComplexIQ.singleton(a.div(quadrance), b.neg().div(quadrance))
+    return exact_inverse(w)
 
 
 def preperiodic_smoke() -> Bool:

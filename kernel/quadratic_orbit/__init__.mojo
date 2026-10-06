@@ -18,7 +18,9 @@
 #               certificate on a box; re-exports krawczyk_operator.
 #   krawczyk_operator  the Krawczyk operator of the residual and its strict-
 #               inclusion test, the Krawczyk-Moore hypothesis (Krawczyk 1969;
-#               Moore 1977).
+#               Moore 1977): the z^2 + c application of the generic
+#               `root_isolation` operator (docs/root-isolation-spec.md), so
+#               the two packages are vendored together.
 #
 # Both planes of the quadratic family use the same orbit. The parameter plane
 # iterates the critical orbit `z_0 = 0` over a parameter box `c`; the

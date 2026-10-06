@@ -41,6 +41,7 @@ test-tuning = "mojo run -I kernel tests/substitution_dynamics/test_tuning.mojo"
 test-facades = "mojo run -I kernel tests/facades/test_stable_facades.mojo"
 test-named-modules = "mojo run -I kernel tests/facades/test_named_modules.mojo"
 test-quadratic-orbit = "mojo run -I kernel tests/quadratic_orbit/test_quadratic_orbit.mojo && mojo run -I kernel tests/quadratic_orbit/test_escape_criterion.mojo"
+test-root-isolation = "mojo run -I kernel tests/root_isolation/test_root_isolation.mojo"
 test-rational-dynamics = "mojo run -I kernel tests/rational_dynamics/test_rational_dynamics.mojo && mojo run -I kernel tests/rational_dynamics/test_doubling.mojo"
 test-projective-limits = "mojo run -I kernel tests/projective_limits/test_projective_limits.mojo && mojo run -I kernel tests/projective_limits/test_reference_vectors.mojo && mojo run -I kernel tests/projective_limits/test_field_generic.mojo && mojo run -I kernel tests/projective_limits/test_rotor.mojo"
 projective-limits-vectors = "python tools/make_projective_limits_vectors.py"
@@ -63,7 +64,7 @@ test-weighted-cycle = "mojo run -I kernel tests/weighted_graph/test_cycle_gain.m
 test-vendoring = "python -m pytest -q tests/vendoring"
 test-proof-records = "python -m pytest -q tests/proof_records"
 vocabularies = "python -m pytest -q tests/proof_records/test_vocabularies.py"
-test-python = { cmd = "python -m pytest -q tests/toolchain tests/finite_exact tests/certified_records tests/proof_records tests/substitution_dynamics tests/rational_dynamics tests/closed_interval tests/quadratic_orbit tests/projective_limits tests/cyclotomic tests/finite_polynomial tests/polyglot", depends-on = ["build-certified-records-py"] }
+test-python = { cmd = "python -m pytest -q tests/toolchain tests/finite_exact tests/certified_records tests/proof_records tests/substitution_dynamics tests/rational_dynamics tests/closed_interval tests/root_isolation tests/quadratic_orbit tests/projective_limits tests/cyclotomic tests/finite_polynomial tests/polyglot", depends-on = ["build-certified-records-py"] }
 cyclotomic-vectors = "python tools/make_cyclotomic_vectors.py --check"
 cyclotomic-field-vectors = "python tools/make_cyclotomic_field_vectors.py --check"
 test-cyclotomic-field = "mojo run -I kernel tests/finite_polynomial/test_cyclotomic_field.mojo && mojo run -I kernel tests/finite_polynomial/test_cyclotomic_field_vectors.mojo"
@@ -78,7 +79,7 @@ bench-frontier = "python experiments/frontier/harness.py run ff_orbit_census --c
 distribution = "python oracles/property_oracle.py --layers zq --distribution"
 references = "python tools/check_references.py"
 mojo-issue-evidence = "python experiments/mojo_issues/uninit_associated_type/evidence.py"
-test = { depends-on = ["test-finite-exact", "test-interval", "test-linear-algebra", "test-finite-polynomial", "test-polynomial-fp", "test-cyclotomic-q", "test-quadratic-germ", "test-truncated-jet", "test-cyclotomic-field", "test-integer-module", "test-madic", "test-madic-oracle", "test-qpoly", "test-qpoly-oracle", "test-substitution", "test-tuning", "test-facades", "test-named-modules", "test-quadratic-orbit", "test-rational-dynamics", "test-projective-limits", "test-certified-records", "test-orbit-census", "test-orbit-reference", "test-angle-doubling", "test-projective", "test-machine-int", "test-integer-matrix", "test-integer-vector", "test-finite-automata", "test-finite-graph", "test-claims", "test-mojo-smoke", "test-parallel-fold", "test-weighted-cycle", "test-vendoring", "test-proof-records", "test-python", "test-audit", "test-provenance", "test-references", "test-exact-arithmetic-audit", "test-lexical-audit", "test-refinement", "test-frontier", "cyclotomic-vectors", "cyclotomic-field-vectors", "property"] }
+test = { depends-on = ["test-finite-exact", "test-interval", "test-linear-algebra", "test-finite-polynomial", "test-polynomial-fp", "test-cyclotomic-q", "test-quadratic-germ", "test-truncated-jet", "test-cyclotomic-field", "test-integer-module", "test-madic", "test-madic-oracle", "test-qpoly", "test-qpoly-oracle", "test-substitution", "test-tuning", "test-facades", "test-named-modules", "test-quadratic-orbit", "test-root-isolation", "test-rational-dynamics", "test-projective-limits", "test-certified-records", "test-orbit-census", "test-orbit-reference", "test-angle-doubling", "test-projective", "test-machine-int", "test-integer-matrix", "test-integer-vector", "test-finite-automata", "test-finite-graph", "test-claims", "test-mojo-smoke", "test-parallel-fold", "test-weighted-cycle", "test-vendoring", "test-proof-records", "test-python", "test-audit", "test-provenance", "test-references", "test-exact-arithmetic-audit", "test-lexical-audit", "test-refinement", "test-frontier", "cyclotomic-vectors", "cyclotomic-field-vectors", "property"] }
 
 # The polyglot lane of docs/polyglot-orbit-census-design.md. Separate from the
 # default environment so the authoritative gates above neither gain nor lose a

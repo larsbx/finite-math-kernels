@@ -61,11 +61,11 @@
       "relation": "authored"
     },
     "ESTATE.toml": {
-      "blob": "ed03472c2b3e490e9a09b8c5809fcc912f437b2e",
+      "blob": "ba54959ccc29dacf30dc53bcaa1187480fa51bb9",
       "relation": "authored"
     },
     "README.md": {
-      "blob": "6c6590a25752262fd6e272861e3fe3fbcbc7a1e7",
+      "blob": "2423e22a9dbdc624236c3ca014c3a2cc22e17f44",
       "relation": "authored"
     },
     "conformance/certified_records_v1.txt": {
@@ -268,6 +268,10 @@
       "source": "finite_exact",
       "source_blob": "86478aa8777903f6c605d4bcfd7d899ac51a74fa",
       "source_path": "docs/rational-interval-arithmetic-spec.md"
+    },
+    "docs/root-isolation-spec.md": {
+      "blob": "a47f9c013526d4167072e62f65946522a3a334eb",
+      "relation": "authored"
     },
     "docs/survey-assessment-2026-10-05.md": {
       "blob": "14ff975d4e6d4a007a141dd2fd4b2ae304e1a0f4",
@@ -843,7 +847,7 @@
       "relation": "authored"
     },
     "kernel/quadratic_orbit/__init__.mojo": {
-      "blob": "3df63267b7cb66dda1d0399d6d53f9f134909128",
+      "blob": "301f0616737fd3efd0e963dccf42468366c7cc92",
       "relation": "authored"
     },
     "kernel/quadratic_orbit/collision.mojo": {
@@ -858,7 +862,7 @@
       "relation": "authored"
     },
     "kernel/quadratic_orbit/krawczyk_operator.mojo": {
-      "blob": "d126be03aed10c0bccdd9970a8b5f99894a6c73e",
+      "blob": "837f2b8e8b4bb8f14556ef2fa0822c98d327fc6a",
       "relation": "authored"
     },
     "kernel/quadratic_orbit/multiplier_classification.mojo": {
@@ -873,7 +877,7 @@
       "source_path": "src/interval_orbit.mojo"
     },
     "kernel/quadratic_orbit/preperiodic.mojo": {
-      "blob": "97060e294a12a0266461cb4b37c808b888d7099d",
+      "blob": "da1e9280dfce6a620af888715f4fc7134db36749",
       "relation": "authored"
     },
     "kernel/rational_dynamics/__init__.mojo": {
@@ -910,6 +914,22 @@
     },
     "kernel/rational_dynamics/rational.mojo": {
       "blob": "e2e987a8bf40eaaced65208a838b0ece52726751",
+      "relation": "authored"
+    },
+    "kernel/root_isolation/__init__.mojo": {
+      "blob": "ec0f5e170712775cbe380967006bb30e6fe2ef7e",
+      "relation": "authored"
+    },
+    "kernel/root_isolation/boxes.mojo": {
+      "blob": "b1c7b484a3b0b69545e64a7f4e99cc1537389439",
+      "relation": "authored"
+    },
+    "kernel/root_isolation/krawczyk.mojo": {
+      "blob": "f5513de5efa3d3f571f14aee443235097b157922",
+      "relation": "authored"
+    },
+    "kernel/root_isolation/krawczyk_moore.mojo": {
+      "blob": "7e4f8055e9ca442017b8957e9ffbc1e513d071fd",
       "relation": "authored"
     },
     "kernel/substitution_dynamics/__init__.mojo": {
@@ -1061,8 +1081,24 @@
       "blob": "73297575f41e86e2d10e51ff0443e81c4a1785ec",
       "relation": "authored"
     },
+    "oracles/root_isolation_py/__init__.py": {
+      "blob": "0968a7fd5a49acdaa2633988f2b1b6cae5540cb7",
+      "relation": "authored"
+    },
+    "oracles/root_isolation_py/boxes.py": {
+      "blob": "ece2760822b91e6d02ff435834b1ac1998c00854",
+      "relation": "authored"
+    },
+    "oracles/root_isolation_py/krawczyk.py": {
+      "blob": "34c1e76e948d8304c16896132c762337fb8bb506",
+      "relation": "authored"
+    },
+    "oracles/root_isolation_py/krawczyk_moore.py": {
+      "blob": "3dbea094100bce8c5d09082407bde67942c2f073",
+      "relation": "authored"
+    },
     "pixi.toml": {
-      "blob": "1e4d6e1c00941aab9d5c1ba13981b8559af6ebc3",
+      "blob": "e5880bf66120acc48df64fb4fe00d130bddc5245",
       "relation": "authored"
     },
     "policy/estate-audits/0833929ed82d42cf3674a1565681625a9622827b.py": {
@@ -1596,6 +1632,22 @@
       "blob": "20aa21e30f1f306a34d67b531042afff70887cf5",
       "relation": "authored"
     },
+    "tests/root_isolation/krawczyk_transcript.mojo": {
+      "blob": "9a7961d085ffffc76867bee87ad08be41c347faf",
+      "relation": "authored"
+    },
+    "tests/root_isolation/test_krawczyk_twin.py": {
+      "blob": "f1b5a78600f197440f7abc3449cb9bea15fb88e1",
+      "relation": "authored"
+    },
+    "tests/root_isolation/test_root_isolation.mojo": {
+      "blob": "935bf740fcfbfaeb508ed4af21b32b1c66c65b2e",
+      "relation": "authored"
+    },
+    "tests/root_isolation/test_root_isolation.py": {
+      "blob": "35b1ce8cea6b26f51f9568c0801d45675e9b2611",
+      "relation": "authored"
+    },
     "tests/substitution_dynamics/test_substitution_dynamics.mojo": {
       "blob": "fe5fd6549e66fc6dda87aa6871f4bfd2b5168336",
       "relation": "modified",
@@ -1632,7 +1684,7 @@
       "relation": "authored"
     },
     "tools/check_references.py": {
-      "blob": "105204f6ab65b2b962e4cb6d0f8d2fbe2c8be9f2",
+      "blob": "6f0ee965839c00f338e639564db6274ec1951603",
       "relation": "authored"
     },
     "tools/claim_governance/__init__.py": {

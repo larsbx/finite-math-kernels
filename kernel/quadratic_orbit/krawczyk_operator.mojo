@@ -1,6 +1,7 @@
 # krawczyk_operator.mojo
 #
-# Specification: docs/rational-interval-arithmetic-spec.md, section 2.4.
+# Specification: docs/rational-interval-arithmetic-spec.md, section 2.4;
+# docs/root-isolation-spec.md, sections 2-4.
 #
 # The Krawczyk operator of the preperiodic residual R^c_{l,k}, over complex
 # rational boxes, and the strict-inclusion test that is the hypothesis of the
@@ -16,43 +17,41 @@
 # inclusion); A. Neumaier, *Interval Methods for Systems of Equations*
 # (Cambridge, 1990), chapter 5.
 #
-# Previously in preperiodic.mojo, which builds the residual and its derivative
-# and still re-exports both names. The theorem is an import, and the consumer
-# names and gates it: this module returns the hypothesis, not the conclusion.
+# This is the z^2 + c application: the generic, map-agnostic operator and test
+# are `root_isolation.krawczyk` and `root_isolation.krawczyk_moore`; this
+# module supplies the residual, its chain-rule derivative and the exact
+# preconditioner. Previously in preperiodic.mojo, which re-exports both names.
+# The theorem is an import, and the consumer names and gates it: this module
+# returns the hypothesis, not the conclusion.
 
 from finite_exact.closed_interval import ComplexIQ
-from quadratic_orbit.preperiodic import (
-    midpoint_box,
-    one_box,
-    preperiodic_residual,
-    preperiodic_residual_derivative,
-    rejected_box,
-    singleton_reciprocal,
-)
+from quadratic_orbit.preperiodic import preperiodic_residual, preperiodic_residual_derivative
+from root_isolation import centre, exact_inverse, rejected_box, strictly_inside
+from root_isolation import krawczyk_image as krawczyk_operator
 
 
 def krawczyk_image(z: ComplexIQ, c: ComplexIQ, l: Int, k: Int) -> ComplexIQ:
-    """`K(Z) = m - Y R(m) + (1 - Y R'(Z))(Z - m)`, with `Y = 1/R'(m)`."""
-    var m = midpoint_box(z)
-    var y = singleton_reciprocal(preperiodic_residual_derivative(m, c, l, k))
+    """`K(Z) = m - Y R(m) + (1 - Y R'(Z))(Z - m)`, with `Y = 1/R'(m)`.
+
+    The operator of docs/root-isolation-spec.md section 2, with the residual
+    and its derivative as the enclosures; a refused `Y` refuses the image.
+    """
+    var m = centre(z)
+    var y = exact_inverse(preperiodic_residual_derivative(m, c, l, k))
     if not y.accepted():
         return rejected_box()
-    var slope = one_box().sub(y.mul(preperiodic_residual_derivative(z, c, l, k)))
-    return m.sub(y.mul(preperiodic_residual(m, c, l, k))).add(slope.mul(z.sub(m)))
+    return krawczyk_operator(z, m, y, preperiodic_residual(m, c, l, k), preperiodic_residual_derivative(z, c, l, k))
 
 
 def isolates_preperiodic_point(z: ComplexIQ, c: ComplexIQ, l: Int, k: Int) -> Bool:
     """Does `Z` contain exactly one point of preperiod `l` and period `k`?
 
     The hypothesis of the Krawczyk-Moore theorem, checked exactly: strict
-    inclusion of `K(Z)` in `Z`. The theorem itself is an import, and the
-    consumer is responsible for naming and gating it -- this returns the
-    hypothesis, not the conclusion.
+    inclusion of `K(Z)` in `Z` (docs/root-isolation-spec.md sections 3-4).
+    The theorem itself is an import, and the consumer is responsible for
+    naming and gating it -- this returns the hypothesis, not the conclusion.
     """
     if l < 0 or k < 1 or not (z.accepted() and c.accepted()):
         return False
-    var image = krawczyk_image(z, c, l, k)
-    if not image.accepted():
-        return False
-    var inside = image.strict_subset_of(z)
+    var inside = strictly_inside(krawczyk_image(z, c, l, k), z)
     return inside.value and not inside.rejected
