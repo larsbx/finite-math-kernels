@@ -64,7 +64,7 @@ def test_gpu_lane_without_a_runner_is_a_row_not_an_omission(tmp_path):
     assert [r["status"] for r in rows] == ["no_runner"]
 
 
-TOOLCHAINS = {"mojo": "mojo", "rust": "cargo", "bend": "bend"}
+TOOLCHAINS = {"mojo": "mojo", "rust": "cargo", "bend": "bend", "julia": "julia"}
 
 
 def installed(env: dict[str, str] | None = None) -> set[str]:
@@ -79,15 +79,17 @@ def installed(env: dict[str, str] | None = None) -> set[str]:
 
 def test_a_required_toolchain_that_is_missing_fails_rather_than_skips(monkeypatch):
     monkeypatch.setattr(shutil, "which", lambda tool: None if tool == "bend" else "/bin/" + tool)
-    assert installed({}) == {"mojo", "rust"}
+    assert installed({}) == set(TOOLCHAINS) - {"bend"}
     with pytest.raises(AssertionError, match=r"missing: \['bend'\]"):
         installed({"FRONTIER_REQUIRE": "rust,bend"})
     with pytest.raises(AssertionError, match="unknown kernels"):
         installed({"FRONTIER_REQUIRE": "fortran"})
 
 
-def test_julia_is_registered_as_not_implemented_rather_than_omitted():
-    assert harness.load_registry("ff_orbit_census")["julia"] == {"status": "not_implemented"}
+def test_every_candidate_implementation_is_runnable_and_has_a_toolchain_check():
+    registry = harness.load_registry("ff_orbit_census")
+    assert set(registry) == set(harness.candidate("ff_orbit_census")["implementations"]) == set(TOOLCHAINS)
+    assert not [name for name, impl in registry.items() if "status" in impl]
 
 
 def test_every_installed_kernel_agrees_with_the_oracle_on_the_regression_corpus(tmp_path):

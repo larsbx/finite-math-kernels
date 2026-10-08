@@ -174,8 +174,12 @@ corpus, and so does Bend 2 (`cpu_single` and `cpu_all`, via its runtime's
 only reduction Bend can afford, so the lanes compare languages rather than
 modular-reduction strategies. Mojo `cpu_all` runs on MAX's task runtime
 through `parallel_fold`, whose in-order fold keeps the record identical at
-every thread count; the Mojo std itself has no CPU task runtime. Julia is
-recorded as not implemented, and GPU lanes as having no runner. On the first
+every thread count; the Mojo std itself has no CPU task runtime. Julia 1.11
+(`experiments/frontier/ff_orbit_census/julia/census.jl`, both CPU lanes via
+`--threads`) agrees byte for byte too. It is a performance kernel on its own
+code path, separate from the pinned Julia oracle. It compiles just in time, so
+its `kernel_ns` is a warm run and its wall time carries compilation. GPU lanes
+are recorded as having no runner. On the first
 container run the Rust baseline was the slowest single-thread kernel, so it
 needs a tuning pass before any speedup against it is claimed.
 

@@ -33,7 +33,7 @@
       "relation": "authored"
     },
     ".github/workflows/ci.yml": {
-      "blob": "aefb279ec79b8e2e2c2a5265dd944c01d1c0dc09",
+      "blob": "e8958d41cb92e23c5a503bb25605db262e476375",
       "relation": "authored"
     },
     ".github/workflows/frontier-polyglot.yml": {
@@ -45,7 +45,7 @@
       "relation": "authored"
     },
     ".gitignore": {
-      "blob": "54b2cbb916777d47ed4479af6dad9d7505a0cfa3",
+      "blob": "becca7114a69bab730fb672295235959399f5183",
       "relation": "authored"
     },
     "AGENTS.md": {
@@ -212,7 +212,7 @@
       "relation": "authored"
     },
     "docs/frontier-math-compute-candidates.md": {
-      "blob": "5cd666db9f0bb483670c958047f219c682aa9fdb",
+      "blob": "bb5f17151dec1c9dc7de5c9584987aee7f15f5bb",
       "relation": "authored"
     },
     "docs/generator-refinement-spec.md": {
@@ -342,7 +342,11 @@
       "relation": "authored"
     },
     "experiments/frontier/ff_orbit_census/implementations.toml": {
-      "blob": "1664afc8fead0934b36c25f3f278c2fc1a2408ad",
+      "blob": "15c7c3985e0361488932411b1c594ed327b01842",
+      "relation": "authored"
+    },
+    "experiments/frontier/ff_orbit_census/julia/census.jl": {
+      "blob": "3ed2c42023bb369af763e81e84fb5aa36034280f",
       "relation": "authored"
     },
     "experiments/frontier/ff_orbit_census/mojo/census.mojo": {
@@ -1486,7 +1490,7 @@
       "relation": "authored"
     },
     "tests/frontier/test_harness.py": {
-      "blob": "71ce7b6856f78c85203b3fa6f63ef1d9853c5d71",
+      "blob": "d724e8a939dc68ba890fd45a9854562ca8eb7db3",
       "relation": "authored"
     },
     "tests/interval/test_interval_q.mojo": {
