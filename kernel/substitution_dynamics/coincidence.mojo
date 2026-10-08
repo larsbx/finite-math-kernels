@@ -12,6 +12,10 @@ spectrum (Dekking's theorem, with its height hypothesis) is the consumer's
 imported theorem, not this module's claim.
 
 Reference oracle: `reference/tuning_reference.py`.
+
+Reference: F. M. Dekking, "The spectrum of dynamical systems arising from
+substitutions of constant length", Z. Wahrscheinlichkeitstheorie verw. Gebiete
+41 (1978) 221-239 (the coincidence condition and the height).
 """
 
 from substitution_dynamics.substitution import Substitution

@@ -12,6 +12,7 @@ import pytest
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "tools"))
 
+from certified_records import codec  # noqa: E402
 from orbit_census_reference import (  # noqa: E402
     EMPTY, FIELDS, Agg, Block, census, decode, digest, encode, leaf, merge, replay_verdict, rho, tamper, trajectory,
     tree_census,
@@ -22,8 +23,7 @@ SMALL_PRIMES = (2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 101)
 
 
 def vector_cases(kind: str) -> list[list[str]]:
-    rows = [line.split("\t") for line in VECTORS.read_text(encoding="utf-8").splitlines() if not line.startswith("#")]
-    return [row[1:] for row in rows if row[0] == kind]
+    return codec.vector_cases(VECTORS.read_text(encoding="utf-8"), kind)
 
 
 def by_definition(p: int, c: int, cap: int, seed: int) -> tuple[int, int] | None:

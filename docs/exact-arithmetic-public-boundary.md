@@ -18,7 +18,7 @@ Result carriers `BigZDivModResult`, `BigZExactDivisionResult`, `BigZCanonicalByt
 1. **Exactness.** Every operation on accepted inputs returns the mathematically exact result. There is no rounding, saturation, or wraparound at any magnitude.
 2. **Canonical form.** An accepted `BigZ` has `sign` in `{-1, 0, 1}`, no leading zero limb, and every limb below `10^9`; zero has no limbs. An accepted `Q` has a canonical numerator, a canonical strictly positive denominator, and `gcd(|num|, den) = 1`.
 3. **Values are constructor-produced.** `BigZ.sign` and `BigZ.limbs` are storage, not an interface: a value whose fields a consumer has assigned directly is outside this boundary, and the `BigZ` operations neither detect nor reject it (they assume canonical operands, as the specification's invariant I3 places normalization in constructors). The validating entry into the rational layer is `q_from_bigz`, which rejects a non-canonical `BigZ` through `bigz_is_canonical`; a consumer that assembles `BigZ` values by hand tests `bigz_is_canonical` before any other operation.
-4. **Rejection is explicit and sticky.** Invalid construction (non-canonical limbs, zero denominator), division by zero, and non-exact division produce a carrier whose `rejected` flag is true. Every operation with a rejected operand returns a rejected carrier. `eq`, `lt`, and `le` return `False` on a rejected operand; a consumer must test `rejected` before reading a value. Nothing in the package raises or aborts.
+4. **Rejection is explicit and sticky.** Invalid construction (non-canonical limbs, zero denominator), division by zero, and non-exact division produce a carrier whose `rejected` flag is true. Every operation with a rejected operand returns a rejected carrier. `eq`, `lt`, and `le` return `False` on a rejected operand; a consumer must test `rejected` before reading a value. The unbounded carriers in section 1 do not raise or abort. Machine-integer helpers use the separate raising contract in section 6.
 5. **Division convention.** `bigz_divmod` truncates toward zero: the remainder has the sign of the dividend and `|remainder| < |divisor|`. `bigz_div_exact` rejects unless the remainder is zero. `bigz_gcd` is non-negative and `bigz_gcd(0, 0) = 0`.
 6. **Order agrees with value.** `Q.lt` and `Q.le` decide the rational order exactly; `Q.eq` is structural equality of canonical forms and coincides with rational equality.
 7. **Encodings are injective and total on accepted values.** `bigz_canonical_bytes` is `Z(sign_code, byte_len, big_endian_magnitude)` with sign codes `0, 1, 2` for zero, positive, negative, an unsigned 64-bit big-endian length, and a magnitude with no leading zero byte. `q_canonical_bytes` is the concatenation of the numerator and denominator encodings. Equal values have equal bytes and distinct values have distinct bytes. Rejected values have no encoding.
@@ -40,3 +40,21 @@ Result carriers `BigZDivModResult`, `BigZExactDivisionResult`, `BigZCanonicalByt
 ## 5. Stability promise
 
 Names and semantics in sections 1 and 2 change only with a note in this file, a matching change in `docs/rational-interval-arithmetic-spec.md`, and a passing property probe. Names outside section 1 carry no promise. Consumers pin a commit of this repository (`docs/audit/CONSOLIDATION_PROVENANCE.md`); a change here reaches a consumer only when it moves its pin.
+
+## 6. Machine-integer helpers (October 5, 2026)
+
+`checked_int` operations raise when an operation leaves the signed `Int`
+range. `checked_mul` accepts every representable product, including
+`Int.MIN * 1` in either order and negative products with magnitude `2^63`.
+`gcd_int`, `gcd_i64` and `gcd_i64_or_one` now raise on an unrepresentable
+nonnegative GCD (a signed minimum with zero or the same minimum); signed
+minimum inputs with a representable GCD succeed. The zero-to-one policy
+applies only to a zero GCD and never masks an arithmetic refusal.
+
+`finite_linear_algebra.integer_matrix.matmul` checks products and accumulated
+sums, and raises on overflow or incompatible square dimensions. Its
+`is_primitive` computes exact Boolean support powers under Wielandt's bound:
+large nonnegative weights cannot corrupt its decision. `matmul`,
+`is_primitive` and `wielandt_bound` now have raising signatures; callers must
+propagate refusal. The focused regressions are `test_machine_int.mojo` and
+`test_integer_matrix.mojo` under their existing aggregate-suite tasks.

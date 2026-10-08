@@ -9,6 +9,11 @@
 #
 # No operation in this package measures an angle or interprets a fraction as
 # a dynamical object. Consumers own those meanings.
+#
+# The named objects built on ReducedFraction live in modules named after them,
+# each citing its source, and are re-exported here unchanged:
+# continued_fractions.mojo (continued fractions and convergents) and
+# farey.mojo (the Farey determinant and adjacency).
 
 from finite_exact.bigint_z import (
     BigZ,
@@ -25,6 +30,15 @@ from finite_exact.bigint_z import (
     bigz_sub,
     bigz_zero,
 )
+from rational_dynamics.continued_fractions import (
+    ContinuedFractionResult,
+    ConvergentsResult,
+    continued_fraction,
+    convergents,
+    rejected_cf,
+    rejected_convergents,
+)
+from rational_dynamics.farey import farey_adjacent, farey_determinant
 
 
 struct ReducedFraction(Copyable):
@@ -61,32 +75,6 @@ struct SignedFraction(Copyable):
         return not self.rejected
 
 
-struct ContinuedFractionResult(Copyable, Movable):
-    var terms: List[BigZ]
-    var rejected: Bool
-
-    def __init__(out self):
-        self.terms = List[BigZ]()
-        self.rejected = False
-
-    def accepted(self) -> Bool:
-        return not self.rejected
-
-
-struct ConvergentsResult(Copyable, Movable):
-    var numerators: List[BigZ]
-    var denominators: List[BigZ]
-    var rejected: Bool
-
-    def __init__(out self):
-        self.numerators = List[BigZ]()
-        self.denominators = List[BigZ]()
-        self.rejected = False
-
-    def accepted(self) -> Bool:
-        return not self.rejected
-
-
 struct BigZResult(Copyable):
     var value: BigZ
     var rejected: Bool
@@ -107,18 +95,6 @@ def rejected_fraction() -> ReducedFraction:
 
 def rejected_signed_fraction() -> SignedFraction:
     var out = SignedFraction()
-    out.rejected = True
-    return out^
-
-
-def rejected_cf() -> ContinuedFractionResult:
-    var out = ContinuedFractionResult()
-    out.rejected = True
-    return out^
-
-
-def rejected_convergents() -> ConvergentsResult:
-    var out = ConvergentsResult()
     out.rejected = True
     return out^
 
@@ -233,70 +209,3 @@ def signed_mod_inverse(value: ReducedFraction) -> SignedFraction:
     out.num = centered.copy()
     out.den = inverse.den.copy()
     return out^
-
-
-def continued_fraction(value: ReducedFraction) -> ContinuedFractionResult:
-    """Canonical simple continued fraction of a nonnegative reduced rational."""
-    if value.rejected:
-        return rejected_cf()
-
-    var out = ContinuedFractionResult()
-    var a = value.num.copy()
-    var b = value.den.copy()
-    while not b.is_zero():
-        var division = bigz_divmod(a, b)
-        if division.rejected or division.remainder.sign < 0:
-            return rejected_cf()
-        out.terms.append(division.quotient.copy())
-        a = b.copy()
-        b = division.remainder.copy()
-    return out^
-
-
-def convergents(value: ReducedFraction) -> ConvergentsResult:
-    """All convergents of the canonical simple continued fraction."""
-    var expansion = continued_fraction(value)
-    if expansion.rejected:
-        return rejected_convergents()
-
-    var out = ConvergentsResult()
-    var h_minus_two = bigz_zero()
-    var h_minus_one = bigz_from_i64(1)
-    var k_minus_two = bigz_from_i64(1)
-    var k_minus_one = bigz_zero()
-
-    for index in range(len(expansion.terms)):
-        var coefficient = expansion.terms[index].copy()
-        var h = bigz_add(bigz_mul(coefficient, h_minus_one), h_minus_two)
-        var k = bigz_add(bigz_mul(coefficient, k_minus_one), k_minus_two)
-        out.numerators.append(h.copy())
-        out.denominators.append(k.copy())
-        h_minus_two = h_minus_one.copy()
-        h_minus_one = h.copy()
-        k_minus_two = k_minus_one.copy()
-        k_minus_one = k.copy()
-    return out^
-
-
-def farey_determinant(
-    left: ReducedFraction,
-    right: ReducedFraction,
-) -> BigZResult:
-    """p*s - q*r for p/q and r/s."""
-    if left.rejected or right.rejected:
-        return rejected_bigz_result()
-    var out = BigZResult()
-    out.value = bigz_sub(
-        bigz_mul(left.num, right.den),
-        bigz_mul(left.den, right.num),
-    )
-    return out^
-
-
-def farey_adjacent(left: ReducedFraction, right: ReducedFraction) -> Bool:
-    """Whether the exact Farey determinant has absolute value one."""
-    var determinant = farey_determinant(left, right)
-    return (
-        not determinant.rejected and
-        bigz_eq(bigz_abs(determinant.value), bigz_from_i64(1))
-    )

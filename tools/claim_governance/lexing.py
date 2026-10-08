@@ -29,23 +29,23 @@ def mask_comments_and_strings(source: str, *, keep_strings: bool = False) -> str
         if quote is not None:
             if char == "\n":
                 out.append("\n")
-                if not triple:
-                    quote, escaped = None, False
+                if not triple and not escaped:
+                    quote = None
+                escaped = False
                 index += 1
                 continue
-            if triple and source.startswith(quote * 3, index):
+            if triple and not escaped and source.startswith(quote * 3, index):
                 out.extend(quote * 3 if keep_strings else "   ")
                 index += 3
                 quote, triple = None, False
                 continue
             out.append(char if keep_strings else " ")
-            if not triple:
-                if escaped:
-                    escaped = False
-                elif char == "\\":
-                    escaped = True
-                elif char == quote:
-                    quote = None
+            if escaped:
+                escaped = False
+            elif char == "\\":
+                escaped = True
+            elif not triple and char == quote:
+                quote = None
             index += 1
             continue
         if char == "#":
@@ -64,6 +64,50 @@ def mask_comments_and_strings(source: str, *, keep_strings: bool = False) -> str
         out.append(char)
         index += 1
     return "".join(out)
+
+
+def mask_zig_comments_and_strings(source: str) -> str:
+    """Blank Zig line comments, quoted literals and ``\\\\`` multiline-string
+    lines, preserving every character offset and newline."""
+    out = list(source)
+    index = 0
+    while index < len(source):
+        if source.startswith("//", index) or source.startswith("\\\\", index):
+            end = source.find("\n", index)
+            if end == -1:
+                end = len(source)
+        elif source[index] in _STRING_QUOTES:
+            quote = source[index]
+            end = index + 1
+            while end < len(source) and source[end] != "\n":
+                if source[end] == "\\":
+                    end += min(2, len(source) - end)
+                elif source[end] == quote:
+                    end += 1
+                    break
+                else:
+                    end += 1
+        else:
+            index += 1
+            continue
+        for pos in range(index, end):
+            if source[pos] != "\n":
+                out[pos] = " "
+        index = end
+    return "".join(out)
+
+
+def declaration_code(path_suffix: str, source: str) -> str:
+    """Executable-source view for coverage; unknown languages credit nothing.
+
+    Unlike the general documentation maskers, this view always preserves
+    character offsets and excludes all comments and literal bodies.
+    """
+    if path_suffix in {".py", ".mojo"}:
+        return mask_comments_and_strings(source)
+    if path_suffix == ".zig":
+        return mask_zig_comments_and_strings(source)
+    return "".join("\n" if char == "\n" else " " for char in source)
 
 
 def mask_tex_comments(source: str) -> str:

@@ -44,7 +44,7 @@ SOURCES = {
     "finite_proof_records": ("larsbx/finite_proof_records", ("finite_proof_records",)),
     "claim_governance_tools": ("larsbx/claim_governance_tools", ("claim_governance",)),
     "finite_mandelbrot_research": ("larsbx/finite-mandelbrot-research", ("src", "tools")),
-    "estate_governance": ("larsbx/estate-governance", ("kernel", "docs")),
+    "estate_governance": ("larsbx/estate-governance", ("kernel",)),
 }
 
 
@@ -67,8 +67,11 @@ def test_imported_packages_are_copies_or_declared_modifications():
             assert entry["relation"] in {"copy", "modified", "facade", "authored"}, path
     assert {p for p, e in files.items() if e["relation"] == "facade"} == FACADES
     copies = {p for p, e in files.items() if e["relation"] == "copy"}
-    assert {"kernel/finite_exact/bigint_z.mojo", "kernel/finite_exact/rat_q.mojo", "kernel/finite_exact/closed_q.mojo", "kernel/finite_linear_algebra/qlinalg.mojo",
+    assert {"kernel/finite_exact/bigint_z.mojo", "kernel/finite_exact/rat_q.mojo", "kernel/finite_linear_algebra/qlinalg.mojo",
             "kernel/substitution_dynamics/words.mojo", "tools/claim_governance/findings.py"} <= copies
+    # The complex square was sharpened to the coordinate-square form of
+    # specification section 2.5, which the source repository did not carry.
+    assert files["kernel/finite_exact/closed_q.mojo"]["relation"] == "modified"
     # The coverage check is new here, so the two files that register and configure it have diverged from the retired source repository.
     assert {files[p]["relation"] for p in ("tools/claim_governance/runner.py", "tools/claim_governance/policy.py")} == {"modified"}
     assert files["tools/claim_governance/checks/coverage.py"]["relation"] == "authored"

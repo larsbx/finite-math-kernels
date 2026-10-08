@@ -15,8 +15,15 @@ jobs:
       - uses: julia-actions/setup-julia@v2
         with:
           version: '1.11.7'
-      - name: Audit estate repository architecture
-        run: pixi run estate-audit
+      - name: Estate audit (pinned public artifact)
+        run: |
+          set -eu
+          rev=$(python3 -c 'import tomllib; print(next(d["rev"] for d in tomllib.load(open("ESTATE.toml", "rb"))["dep"] if d["id"] == "estate-governance"))')
+          pin=$(python3 -c 'import tomllib; print(next(d["pin"] for d in tomllib.load(open("ESTATE.toml", "rb"))["dep"] if d["id"] == "estate-governance"))')
+          test "$rev" = "0833929ed82d42cf3674a1565681625a9622827b"
+          curl --fail --location --proto '=https' --tlsv1.2 --output /tmp/estate-audit.py "https://raw.githubusercontent.com/larsbx/finite-math-kernels/4485675c1ed5da52beafad98c5118dc0ffc22456/policy/estate-audits/$rev.py"
+          printf '%s  %s\n' "${pin#sha256:}" /tmp/estate-audit.py | sha256sum --check --strict -
+          python3 /tmp/estate-audit.py --root .
       - run: pixi run test
         env:
           # every frontier kernel must run here; a missing toolchain fails, never skips

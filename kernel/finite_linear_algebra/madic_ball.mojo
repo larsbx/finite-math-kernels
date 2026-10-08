@@ -7,6 +7,13 @@ canonical determinant-two substitution `Z^3 / M^2 Z^3` is `Z/2 x Z/2` while a
 scalar `Z_2` ball at precision two is `Z/4` -- the same order and a different
 group. `quotient_invariants` is the function that reports which.
 
+**The generators are the columns.** `M` is given row-major, `entries[n*i + j]`
+is `M[i][j]`, and `M^k Z^n` is the span of the *columns* of `M^k` -- the
+convention of the substitution incidence matrix, whose column `j` is the
+abelianisation of `sigma(j)`. The row span `Z^n M^k` is a different lattice in
+general: a carrier reading the generators off the rows answers membership for
+the transpose, and for the canonical substitution the two part at level four.
+
 **The contract is the closed interval's, transposed.** Two points in the same
 coset at level `k` are *unknown*: membership of their difference in `M^k Z^n`
 does not make them equal, and refining the level can still separate them. Two
@@ -22,14 +29,17 @@ rather than a bound. The lift has to come first, not merely happen somewhere --
 a difference formed in `Int` and lifted afterwards can wrap, and a wrapped
 difference changes the membership answer.
 
-The specification is `docs/madic-ball-arithmetic-spec.md`.
+The specification is `docs/madic-ball-arithmetic-spec.md`. The invariant
+factors come from `smith_normal_form.mojo` (Smith 1861, by determinantal
+divisors), whose `minor_gcds` and `smith_invariants` are re-exported here.
 """
 
 from std.os import abort
 
-from finite_exact.bigint_z import BigZ, bigz_divmod, bigz_from_i64, bigz_gcd, bigz_neg
+from finite_exact.bigint_z import BigZ, bigz_neg
 from finite_exact.rat_q import Q
 from finite_linear_algebra.scalar import q_int, q_is_zero
+from finite_linear_algebra.smith_normal_form import minor_gcds, smith_invariants
 
 # Minor enumeration is `C(n, s)^2` per size, so the dimension is bounded and a
 # larger one is refused rather than silently made slow.
@@ -44,7 +54,9 @@ def q_is_integer(x: Q) -> Bool:
 
 
 def lift_square(entries: List[Int], n: Int) -> List[List[Q]]:
-    """Row-major integer entries, `entries[n*i + j]`, lifted into `Q`."""
+    """Row-major integer entries, `entries[n*i + j] = M[i][j]`, lifted into `Q`.
+
+    Storage order only: the lattice generators are the columns of `M`."""
     if n < 1 or n > MAX_DIMENSION:
         abort("M-adic dimension outside the supported range")
     if len(entries) != n * n:
@@ -173,49 +185,6 @@ def q_integer_numerator(x: Q) -> BigZ:
     return x.num.copy()
 
 
-def minor_gcds(a: List[List[Q]]) -> List[BigZ]:
-    """`D_s`, the gcd of every `s x s` minor, for `s = 0 .. n`, with `D_0 = 1`."""
-    var n = len(a)
-    if n < 1 or n > MAX_DIMENSION:
-        abort("M-adic dimension outside the supported range")
-    var out = List[BigZ]()
-    out.append(bigz_from_i64(1))
-    for size in range(1, n + 1):
-        var acc = bigz_from_i64(0)
-        var row_sets = index_subsets(n, size)
-        var col_sets = index_subsets(n, size)
-        for r in range(len(row_sets)):
-            for c in range(len(col_sets)):
-                var block = submatrix(a, row_sets[r], col_sets[c])
-                acc = bigz_gcd(acc, q_integer_numerator(qmat_det(block)))
-        out.append(acc^)
-    return out^
-
-
-def smith_invariants(a: List[List[Q]]) -> List[BigZ]:
-    """Invariant factors `d_1 | d_2 | ... | d_n` of an integer matrix over `Q`.
-
-    `Z^n / A Z^n` is the direct sum of the `Z / d_i`, so this reports the group
-    *structure* of the quotient and not only its order.
-
-    Computed from the determinantal divisors, `d_i = D_i / D_{i-1}`. That
-    characterisation is classical and terminates by construction; a hand-rolled
-    elimination sweep does not, and the first draft of the Python oracle used
-    one and failed to terminate on `M^4` for the canonical substitution.
-    """
-    var divisors = minor_gcds(a)
-    var out = List[BigZ]()
-    for i in range(1, len(divisors)):
-        if divisors[i].is_zero():
-            out.append(bigz_from_i64(0))      # the lattice degenerates here
-            continue
-        var division = bigz_divmod(divisors[i], divisors[i - 1])
-        if division.rejected or not division.remainder.is_zero():
-            abort("determinantal divisors must form a divisibility chain")
-        out.append(division.quotient.copy())
-    return out^
-
-
 def quotient_invariants(entries: List[Int], n: Int, level: Int) -> List[BigZ]:
     """Invariant factors of `Z^n / M^k Z^n`, trivial factors included."""
     return smith_invariants(qmat_pow(lift_square(entries, n), level))
@@ -233,7 +202,8 @@ def quotient_order(entries: List[Int], n: Int, level: Int) -> BigZ:
 def contains_exact(entries: List[Int], n: Int, level: Int, delta: List[Q]) -> Bool:
     """Whether the exact vector `delta` lies in the lattice `M^k Z^n`.
 
-    Solves `M^k x = delta` over `Q` and asks whether `x` is integral.
+    Solves `M^k x = delta` over `Q` and asks whether `x` is integral: `delta` is
+    an integer combination of the columns of `M^k`, never of its rows.
 
     The determinant of the *original* `M` is checked before exponentiation, not
     after. At `level = 0` the power is the identity whatever `M` was, so a

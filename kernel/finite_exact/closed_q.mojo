@@ -50,6 +50,10 @@ struct IQ(Copyable):
         # is introduced (larsbx/NLAP-JT:docs/no-points-invariant.md).
         return IQ(x, x)
 
+    def is_singleton(self) -> Bool:
+        """Is this the single point `[x, x]`? False for a refusal."""
+        return self.accepted() and self.lo.eq(self.hi)
+
     def contains_zero(self) -> IQBoolResult:
         if self.rejected:
             return IQBoolResult(False, True)
@@ -138,6 +142,21 @@ struct ComplexIQ(Copyable):
         # point is introduced (larsbx/NLAP-JT:docs/no-points-invariant.md).
         return ComplexIQ(IQ.singleton(re), IQ.singleton(im))
 
+    def is_singleton(self) -> Bool:
+        """Is this box one exact point? False for a refusal."""
+        return self.re.is_singleton() and self.im.is_singleton()
+
+    def singleton_eq(self, other: ComplexIQ) -> Bool:
+        """Are both boxes the same exact point?
+
+        Equality of points, not of boxes: two equal boxes that are not
+        singletons enclose points that may differ, so they answer false, and
+        so does a refusal on either side.
+        """
+        if not (self.is_singleton() and other.is_singleton()):
+            return False
+        return self.re.lo.eq(other.re.lo) and self.im.lo.eq(other.im.lo)
+
     def add(self, other: ComplexIQ) -> ComplexIQ:
         return ComplexIQ(self.re.add(other.re), self.im.add(other.im))
 
@@ -150,7 +169,18 @@ struct ComplexIQ(Copyable):
         return ComplexIQ(real_part, imag_part)
 
     def square(self) -> ComplexIQ:
-        return self.mul(self)
+        """`(X + iY)^2 = (X^2 - Y^2, 2 X Y)`, with the sharp coordinate square.
+
+        Not `self.mul(self)`. The expanded product treats the two occurrences
+        of each coordinate as independent, so `X * X` is wider than `X^2`
+        whenever `0` is in `X` -- the dependency problem of specification
+        section 2.5, which `IQ.square` already avoids and which the complex
+        square was not using. The imaginary part has no repeated occurrence
+        and is the same either way.
+        """
+        var real_part = self.re.square().sub(self.im.square())
+        var cross = self.re.mul(self.im)
+        return ComplexIQ(real_part, cross.add(cross))
 
     def quadrance(self) -> IQ:
         return self.re.square().add(self.im.square())
@@ -168,6 +198,20 @@ struct ComplexIQ(Copyable):
         if re_result.rejected or im_result.rejected:
             return IQBoolResult(False, True)
         return IQBoolResult(re_result.value and im_result.value, False)
+
+
+def complex_box(re_lo: Int64, re_hi: Int64, im_lo: Int64, im_hi: Int64, den: Int64) -> ComplexIQ:
+    """`[re_lo, re_hi] x [im_lo, im_hi]`, every endpoint over the one denominator.
+
+    The dyadic and grid boxes certificates are stated on. Reversed endpoints
+    and a zero denominator are rejected by the constructors, not repaired.
+    """
+    return ComplexIQ(IQ(Q(re_lo, den), Q(re_hi, den)), IQ(Q(im_lo, den), Q(im_hi, den)))
+
+
+def gaussian_singleton(re_num: Int64, re_den: Int64, im_num: Int64, im_den: Int64) -> ComplexIQ:
+    """The Gaussian rational `re_num/re_den + i im_num/im_den` as a singleton box."""
+    return ComplexIQ.singleton(Q(re_num, re_den), Q(im_num, im_den))
 
 
 def demo_interval_mul() -> Bool:

@@ -18,7 +18,6 @@ depends on `test-provenance`).
 | `larsbx/finite_proof_records` | `claude/extract-psc-nlap-packages-v5l1zl` | `746b550877149edf512d4d2a81889aeb5c3da9c3` | `finite_proof_records/` | `1f54d3075c7d4cfad8b4a1d01eb047b0a5922fe9` |
 | `larsbx/claim_governance_tools` | `claude/mojo-finite-proof-records-zrimg2` | `b084303cdb9df2f5c3a166c5e5297536efde30db` | `claim_governance/` | `a04df88d10b1ecbeb6da265fac4270db6d046b19` |
 | `larsbx/finite-mandelbrot-research` | `main` | `cea36ccba8a2a4d5e3c08ecce05c95f6c2bbb351` | `src/`, `tools/` | `58daaf3a6295d0f3076c3c976d6b43b06191253b`, `ce44d6ed7ed9d66b39594c334884bf42a159f604` |
-| `larsbx/estate-governance` | `claude/estate-template-scaffolding-nxpvm2` | `283b6955395ea17f022412aa1539db7aa0448e08` | `kernel/`, `docs/` | `d252943a78b1c2a778003c2b73e42c0178f1b58a`, `89bfbe9ce4ad85ca63400b8ea21ffdefeb345863` |
 
 Subtree ids are git tree ids at the pinned commit (`git rev-parse <commit>:<path>`
 in the source repository). `policy/provenance.json` also records the tree id
@@ -42,7 +41,6 @@ of consolidation; the code-bearing branches are the snapshots above.
 | `kernel/quadratic_orbit/` | `finite_mandelbrot_research` | `src/interval_orbit.mojo` |
 | `kernel/mojo_smoke/` | `finite_mandelbrot_research` | `src/smoke_report.mojo` |
 | `tools/vendoring/` | `finite_mandelbrot_research` | `tools/check_vendored_sync.py` |
-| `tools/audit_estate_layout.py`, `docs/architecture/estate-repository-template-v1.md` | `estate_governance` | `kernel/audit_estate_layout.py`, `docs/architecture/estate-repository-template-v1.md` |
 
 The last three destinations run the other way from the first six. They were
 not extracted from a library repository into the monorepo; they grew inside a

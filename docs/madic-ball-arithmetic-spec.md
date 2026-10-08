@@ -40,6 +40,30 @@ Level `0` is the whole of `Z^n` in one coset, and the filtration is monotone: a
 pair separated at level `k` is separated at every deeper level, because
 `M^(k+1) Z^n ⊆ M^k Z^n`.
 
+### 1.1 The generators are the columns
+
+`M` is supplied row-major: `entries[n*i + j] = M[i][j]`. The lattice is
+
+```text
+M^k Z^n = { M^k x : x ∈ Z^n },
+```
+
+the integer span of the **columns** of `M^k`. This is the convention of the
+substitution incidence matrix (`kernel/substitution_dynamics/substitution.mojo`), whose
+`M[i][j]` counts letter `i` in `sigma(j)`, so column `j` is the abelianisation of
+`sigma(j)` and `M` acts on column vectors.
+
+The row span `Z^n M^k = (M^T)^k Z^n` has the same index and the same invariant
+factors, since both are transpose-invariant, but it is a different lattice in
+general, so membership, and with it every separation certificate, depends on
+the choice. `[[2,1],[0,1]]` is the smallest witness: its column `(2,0)` is a
+member at level one and its row `(2,1)` is not. The canonical matrix of section
+3 is a weaker one: its row and column lattices coincide at levels `0` to `3` and
+differ from level `4`, where the first column `(5,7,3)` of `M^4` is a member
+and the first row `(5,13,11)` is not. Every membership value pinned before the
+contract was written lay at level three or below, so all of them held under
+either reading; the convention was assumed rather than enforced.
+
 Inputs are machine integers, matching the `Mat3` convention of the consumers,
 and **every coordinate is lifted into `Q` before any arithmetic touches it**.
 Nothing overflows: the entries of `M^k` grow like the spectral radius to the `k`,
@@ -164,6 +188,7 @@ productivity, separation, or tiling.
 
 - `pixi run test-madic` runs `tests/finite_linear_algebra/test_madic_ball.mojo`, which pins the table of section 3, the contract of section 2, and the refusals of section 5.
 - `pixi run test-madic-oracle` runs `tests/finite_linear_algebra/test_madic_oracle.py`, which asserts the same pinned values against `oracles/madic_oracle.py` and adds the enumeration properties: the number of distinct cosets equals `|det M^k|`, the lattice columns are members at their own level, and separation is monotone in the level.
+- The column contract of section 1.1 is pinned on both sides at witness levels where the row and column lattices differ. The oracle suite also runs the contract against a row-convention mutant, which must fail it, and declares `rows span another lattice` as a class the corpus must reach (`docs/generator-refinement-spec.md`), so that a corpus which cannot tell the two readings apart fails the run instead of passing silently.
 - Both are in `pixi run test`, so CI runs them.
 
 The oracle is written from the definitions in this document rather than

@@ -22,17 +22,17 @@ ResultSet == {
 }
 
 RequiresDef == [r \in ResultSet |->
-    CASE r = "Census" -> {}
-      [] r = "Conditional" -> {"Lemma", "Galois"}
-      [] r = "Density" -> {}
-      [] r = "Galois" -> {}
-      [] r = "Lemma" -> {"Census", "Density"}
-      [] r = "OnRetracted" -> {"Retracted"}
-      [] r = "Proof" -> {}
-      [] r = "Retracted" -> {}
-      [] r = "Sweep" -> {}
-      [] r = "Theorem" -> {"Lemma", "Proof"}
-      [] r = "WithinSweep" -> {"Sweep"}]
+    CASE r = "Census" -> {{}}
+      [] r = "Conditional" -> {{"Lemma", "Galois"}}
+      [] r = "Density" -> {{}}
+      [] r = "Galois" -> {{}}
+      [] r = "Lemma" -> {{"Census", "Density"}}
+      [] r = "OnRetracted" -> {{"Retracted"}}
+      [] r = "Proof" -> {{}}
+      [] r = "Retracted" -> {{}}
+      [] r = "Sweep" -> {{}}
+      [] r = "Theorem" -> {{"Lemma", "Proof"}}
+      [] r = "WithinSweep" -> {{"Sweep"}}]
 
 ProvedDef == {
     "Census",
