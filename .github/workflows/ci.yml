@@ -15,6 +15,10 @@ jobs:
       - uses: julia-actions/setup-julia@v2
         with:
           version: '1.11.7'
+      - name: Set up MetaTest CI
+        uses: ./tools/external/metatest-ci
+      - name: Validate MetaTest CI inventory
+        run: metatest-ci validate-manifest metatest.ci.json
       - name: Estate audit (pinned public artifact)
         run: |
           set -eu
@@ -24,7 +28,15 @@ jobs:
           curl --fail --location --proto '=https' --tlsv1.2 --output /tmp/estate-audit.py "https://raw.githubusercontent.com/larsbx/finite-math-kernels/4485675c1ed5da52beafad98c5118dc0ffc22456/policy/estate-audits/$rev.py"
           printf '%s  %s\n' "${pin#sha256:}" /tmp/estate-audit.py | sha256sum --check --strict -
           python3 /tmp/estate-audit.py --root .
-      - run: pixi run test
+      - name: Run full test suite through MetaTest
+        run: metatest-ci run-manifest --manifest metatest.ci.json --lane core-tests
         env:
           # every frontier kernel must run here; a missing toolchain fails, never skips
           FRONTIER_REQUIRE: mojo,rust,bend,julia
+      - name: Upload MetaTest receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: metatest-core-tests
+          path: .metatest/receipts/core-tests.json
+          if-no-files-found: error
