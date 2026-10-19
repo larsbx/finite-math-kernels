@@ -26,9 +26,11 @@ runs:
       working-directory: ${{ github.action_path }}
       run: |
         set -euo pipefail
+        BUILD_DIR="$(mktemp -d "$RUNNER_TEMP/metatest-ci-build.XXXXXX")"
+        trap 'rm -rf "$BUILD_DIR"' EXIT
         cabal update
-        cabal build exe:metatest-ci
-        BIN="$(cabal list-bin exe:metatest-ci)"
+        cabal build --builddir="$BUILD_DIR" exe:metatest-ci
+        BIN="$(cabal list-bin --builddir="$BUILD_DIR" exe:metatest-ci)"
         INSTALL_DIR="$RUNNER_TEMP/metatest-ci/bin"
         mkdir -p "$INSTALL_DIR"
         cp "$BIN" "$INSTALL_DIR/metatest-ci"
