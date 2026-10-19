@@ -1,0 +1,36 @@
+{
+  "schema": "metatest-ci/v1",
+  "repository": "larsbx/finite-math-kernels",
+  "lanes": [
+    {
+      "id": "core-tests",
+      "level": "execution",
+      "command": [
+        "pixi",
+        "run",
+        "test"
+      ],
+      "timeout_seconds": 3600
+    },
+    {
+      "id": "frontier-polyglot-tests",
+      "level": "execution",
+      "command": [
+        "pixi",
+        "run",
+        "test-polyglot"
+      ],
+      "timeout_seconds": 2400
+    },
+    {
+      "id": "julia-zq-differential",
+      "level": "execution",
+      "command": [
+        "/bin/sh",
+        "-c",
+        "pixi run mojo run -I kernel tests/finite_exact/property_probe.mojo > zq-transcript.txt && pixi run python oracles/property_oracle.py --layers zq zq-transcript.txt && julia --project=../julia-oracle-lab ../julia-oracle-lab/bin/exact_arithmetic_oracle.jl zq-transcript.txt"
+      ],
+      "timeout_seconds": 1800
+    }
+  ]
+}
