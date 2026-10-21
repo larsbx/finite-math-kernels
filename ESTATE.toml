@@ -14,7 +14,8 @@ inv = []                      # INV families: registration pending
 default_branch = "main"
 
 [origin]
-decided_by = "stated"         # adopted by the owner: larsbx/estate-governance DR-0001
+decided_by = "stated"
+decision = "DR-0001"          # larsbx/estate-governance docs/decisions
 chats = []
 artifacts = []
 
