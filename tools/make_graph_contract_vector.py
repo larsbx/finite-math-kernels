@@ -11,6 +11,36 @@ SOURCE = ROOT / "conformance/ledger/relationship-graph.json"
 EXPECTED = ROOT / "conformance/oracle/typed-proof-graph-normalization-v1.json"
 
 
+def _edge_identity(edge: dict) -> tuple[str, str, str, str, str]:
+    return (
+        edge["type"],
+        edge["source"],
+        edge["target"],
+        edge["provenance"],
+        edge.get("use_site", ""),
+    )
+
+
+def _normalize_edges(edges: list[dict], edge_rank: dict[str, int]) -> list[dict]:
+    by_identity: dict[tuple[str, str, str, str, str], dict] = {}
+    for edge in edges:
+        identity = _edge_identity(edge)
+        previous = by_identity.get(identity)
+        if previous is not None and previous != edge:
+            raise ValueError(f"conflicting edges share canonical identity: {identity!r}")
+        by_identity[identity] = edge
+    return sorted(
+        by_identity.values(),
+        key=lambda edge: (
+            edge_rank[edge["type"]],
+            edge["source"],
+            edge["target"],
+            edge["provenance"],
+            edge.get("use_site", ""),
+        ),
+    )
+
+
 def normalize(value: dict) -> dict:
     edge_rank = {name: index for index, name in enumerate(value["edge_types"])}
     node_rank = {"claim": 0, "alias": 1, "assumption_set": 2}
@@ -20,15 +50,7 @@ def normalize(value: dict) -> dict:
         if key not in {"generated", "nodes", "edges"}
     } | {
         "nodes": sorted(value["nodes"], key=lambda node: (node_rank[node["kind"]], node["id"])),
-        "edges": sorted(
-            value["edges"],
-            key=lambda edge: (
-                edge_rank[edge["type"]],
-                edge["source"],
-                edge["target"],
-                edge.get("use_site", ""),
-            ),
-        ),
+        "edges": _normalize_edges(value["edges"], edge_rank),
     }
 
 
