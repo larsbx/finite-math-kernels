@@ -298,7 +298,7 @@
       "relation": "authored"
     },
     "docs/typed-relationship-graph-spec.md": {
-      "blob": "6b484e2bb4fb3d68655d6d795b2f31f17cefa94d",
+      "blob": "756adfeca65340a372fda57296eec19f59dcd4a5",
       "relation": "authored"
     },
     "docs/vendoring-candidates-2026-10-05.md": {
@@ -817,7 +817,7 @@
       "relation": "authored"
     },
     "kernel/proof_records/graph.py": {
-      "blob": "0f740f779ae16b1e79577e540233bcaed8f56853",
+      "blob": "d64482d4e0e53a43e8bc39b2d625086047e81734",
       "relation": "authored"
     },
     "kernel/proof_records/known_answers.py": {
@@ -1572,7 +1572,7 @@
       "relation": "authored"
     },
     "tests/proof_records/test_graph.py": {
-      "blob": "da8ceb0930401cf3e9a0e0f8a493029e5b62f379",
+      "blob": "8be76e9a37396964bf0534987196650db395078a",
       "relation": "authored"
     },
     "tests/proof_records/test_graph_contract.py": {
