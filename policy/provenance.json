@@ -1201,7 +1201,7 @@
       "relation": "authored"
     },
     "schemas/typed-proof-graph-normalization-v1.json": {
-      "blob": "2d57a1bf36f9f760ec721fc86bc747f3d94f33c9",
+      "blob": "2ee853c3b09577a6ebe49d560b7429f326af89e5",
       "relation": "authored"
     },
     "tests/__init__.py": {
