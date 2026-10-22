@@ -27,9 +27,9 @@ Both were read at those commits rather than transcribed from the round-two audit
 | `Transferable clean release` | `verified_finite_computation` | `accepted` | `bounded`, `open` | a clean committed candidate built twice from identical declared inputs, byte-identical archives and receipts, validated against destination inventory |
 | `UNEXECUTED` | `pending_dependency` | `open` | `accepted`, `bounded` | dependency or setup prevented execution: neither PASS nor implementation FAIL, hence an open premise and never a rejection |
 | `red` | `pending_dependency` | `open` | `accepted`, `bounded` | a recorded failing test is an open obligation, not a malformed record; the package has no `refuted` state and section 1 of `docs/proof-records-specification.md` directs a consumer to record one as pending |
-| `green` | `verified_finite_computation` | `accepted` | `bounded`, `open` | a green row is admitted only after a red row for the same test and only under `--run`, so it carries a command, an exit code, and the manifest digest of the tree it ran against |
+| `green` | `verified_finite_computation` | `accepted` | `bounded`, `open` | a green row is admitted only after a red row for the same test and only under `--run`; the row carries the replay command and exit code, while translation to a verified proof record additionally requires the caller to supply a digest identifying the exact tree/input state |
 
-Required evidence follows the kind: `replay` and `digest` for a verified computation, `domain` for a bounded experiment, `reason` for a pending dependency. `translate` refuses a receipt that does not supply them, so a translation never yields a record with less evidence than its class asserts.
+Required evidence follows the kind: `replay` and `digest` for a verified computation, `domain` for a bounded experiment, `reason` for a pending dependency. For crypto-composer, `tdd_ledger.zig` currently records the executed command and exit code but does not itself store a manifest/tree digest; the translator therefore requires that digest as caller-supplied evidence rather than claiming it came from the ledger row. `translate` refuses a receipt that does not supply them, so a translation never yields a record with less evidence than its class asserts.
 
 ### Kinds with no external image
 
