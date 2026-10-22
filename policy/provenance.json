@@ -93,7 +93,7 @@
       "relation": "authored"
     },
     "conformance/ledger/proof-graph-normalization-v1.json": {
-      "blob": "6b00722695ac50d0e25cadf3f8a5cb73199f19c3",
+      "blob": "2db8fdb0b730f0ac879a21f9e121106d8ee8c5b7",
       "relation": "authored"
     },
     "conformance/ledger/relationship-graph.json": {
@@ -298,7 +298,7 @@
       "relation": "authored"
     },
     "docs/typed-relationship-graph-spec.md": {
-      "blob": "c1d16ec5c2d555eac7b510efe6a49eba3e653aae",
+      "blob": "6b484e2bb4fb3d68655d6d795b2f31f17cefa94d",
       "relation": "authored"
     },
     "docs/vendoring-candidates-2026-10-05.md": {
@@ -817,7 +817,7 @@
       "relation": "authored"
     },
     "kernel/proof_records/graph.py": {
-      "blob": "c59fe5ae234b90aeaa56bbdbbdc269cf6f3582c7",
+      "blob": "0f740f779ae16b1e79577e540233bcaed8f56853",
       "relation": "authored"
     },
     "kernel/proof_records/known_answers.py": {
@@ -1201,7 +1201,7 @@
       "relation": "authored"
     },
     "schemas/typed-proof-graph-normalization-v1.json": {
-      "blob": "c2cc235ef3dcc15e7eefbf4bc510588b722d92bf",
+      "blob": "2d57a1bf36f9f760ec721fc86bc747f3d94f33c9",
       "relation": "authored"
     },
     "tests/__init__.py": {
@@ -1572,11 +1572,11 @@
       "relation": "authored"
     },
     "tests/proof_records/test_graph.py": {
-      "blob": "f5f607fc7c34587518c74a16bcad21410db32f9f",
+      "blob": "da8ceb0930401cf3e9a0e0f8a493029e5b62f379",
       "relation": "authored"
     },
     "tests/proof_records/test_graph_contract.py": {
-      "blob": "61495ea85dde3e842daa251e93cd0f9fa8cbe31b",
+      "blob": "454b0040320f493a08f3833ff447f962520a3471",
       "relation": "authored"
     },
     "tests/proof_records/test_mojo_replay.py": {
@@ -1712,7 +1712,7 @@
       "relation": "authored"
     },
     "tests/test_proof_graph_normalization_vectors.py": {
-      "blob": "94539209782e32e0cbe003b1c345a53daf1799ef",
+      "blob": "d69c695ddc1fdcc6fed4fd31c319ed564f1c2cad",
       "relation": "authored"
     },
     "tests/toolchain/__init__.py": {
@@ -1855,7 +1855,7 @@
       "relation": "authored"
     },
     "tools/make_graph_contract_vector.py": {
-      "blob": "be2dee57b016e228aa820a91c4398ee20369eb27",
+      "blob": "a71babcaa2104e2d3c3f78092389de76b50d0b6d",
       "relation": "authored"
     },
     "tools/make_ledger_example.py": {
