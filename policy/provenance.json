@@ -93,7 +93,7 @@
       "relation": "authored"
     },
     "conformance/ledger/proof-graph-normalization-v1.json": {
-      "blob": "42099396d382cdfd7fac8f807b4e32cd8fb3e679",
+      "blob": "2db8fdb0b730f0ac879a21f9e121106d8ee8c5b7",
       "relation": "authored"
     },
     "conformance/ledger/relationship-graph.json": {
@@ -294,11 +294,11 @@
       "relation": "authored"
     },
     "docs/typed-proof-graph-normative-contract.md": {
-      "blob": "51e18dd06c15755109fe0a5254f3196585d9cdb0",
+      "blob": "510d157f4aad0a634fe75aa0966d79e6d023c69d",
       "relation": "authored"
     },
     "docs/typed-relationship-graph-spec.md": {
-      "blob": "5bb74e7173a5c88d3ee346ff62f0110324667077",
+      "blob": "756adfeca65340a372fda57296eec19f59dcd4a5",
       "relation": "authored"
     },
     "docs/vendoring-candidates-2026-10-05.md": {
@@ -817,7 +817,7 @@
       "relation": "authored"
     },
     "kernel/proof_records/graph.py": {
-      "blob": "eb9cca823b0d4ba74355bfd3cb5b1f37e2132a55",
+      "blob": "9e3c1feb883ab330fce87ab2886d25453badb9c4",
       "relation": "authored"
     },
     "kernel/proof_records/known_answers.py": {
@@ -1201,7 +1201,7 @@
       "relation": "authored"
     },
     "schemas/typed-proof-graph-normalization-v1.json": {
-      "blob": "688a9843e7a236915f031b9301aff539aafe907a",
+      "blob": "2ee853c3b09577a6ebe49d560b7429f326af89e5",
       "relation": "authored"
     },
     "tests/__init__.py": {
@@ -1572,11 +1572,11 @@
       "relation": "authored"
     },
     "tests/proof_records/test_graph.py": {
-      "blob": "8b207e700857befbf332f00f5c3eb635ffd15c6f",
+      "blob": "41efbfb3809e2a0b4ce65249b7f2884598c7acfa",
       "relation": "authored"
     },
     "tests/proof_records/test_graph_contract.py": {
-      "blob": "6dcb689774567783904e5accc63d045fe220c982",
+      "blob": "454b0040320f493a08f3833ff447f962520a3471",
       "relation": "authored"
     },
     "tests/proof_records/test_mojo_replay.py": {
@@ -1712,7 +1712,7 @@
       "relation": "authored"
     },
     "tests/test_proof_graph_normalization_vectors.py": {
-      "blob": "d745f65589068e2b4bb56753bd59f0fb19821b9a",
+      "blob": "d69c695ddc1fdcc6fed4fd31c319ed564f1c2cad",
       "relation": "authored"
     },
     "tests/toolchain/__init__.py": {
@@ -1855,7 +1855,7 @@
       "relation": "authored"
     },
     "tools/make_graph_contract_vector.py": {
-      "blob": "69c12b5f11eb64ad7f99809969667720e1d87982",
+      "blob": "a71babcaa2104e2d3c3f78092389de76b50d0b6d",
       "relation": "authored"
     },
     "tools/make_ledger_example.py": {
