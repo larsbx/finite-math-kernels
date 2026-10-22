@@ -70,3 +70,24 @@ def test_exact_duplicate_edges_collapse_but_conflicting_identity_payloads_refuse
     conflicting["edges"] = [edge, changed]
     with pytest.raises(ValueError, match="conflicting edges share canonical identity"):
         tool.normalize(conflicting)
+
+
+@pytest.mark.parametrize("bad", [True, 1.0])
+def test_contract_normalizer_rejects_non_integer_certainty(bad) -> None:
+    tool = load_vector_tool()
+    source = json.loads((ROOT / "conformance/oracle/typed-proof-graph-minimal-v1.input.json").read_text())
+    source["edges"][0]["certainty"] = bad
+    with pytest.raises(ValueError, match="certainty must be exactly the integer 1"):
+        tool.normalize(source)
+
+
+def test_numeric_payload_spellings_do_not_collapse_as_exact_duplicates() -> None:
+    tool = load_vector_tool()
+    source = json.loads((ROOT / "conformance/oracle/typed-proof-graph-minimal-v1.input.json").read_text())
+    edge = dict(source["edges"][0])
+    edge["payload_number"] = 1
+    changed = dict(edge)
+    changed["payload_number"] = 1.0
+    source["edges"] = [edge, changed]
+    with pytest.raises(ValueError, match="conflicting edges share canonical identity"):
+        tool.normalize(source)
