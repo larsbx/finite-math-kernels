@@ -14,15 +14,16 @@ The existing `proof_records` package remains the generic evidence substrate.
 
 ## Ownership boundary
 
-`finite-math-kernels/proof_records` owns:
+`finite-math-kernels/kernel/proof_records` owns:
 
 - finite proof/evidence record kinds and required metadata;
 - canonical serialization;
 - content-derived record identity;
 - identity-bearing dependency edges;
-- generic closure validation;
+- generic closure validation, including declared dependency alternatives;
 - evidence-vocabulary translation;
-- typed relationship-graph export.
+- typed relationship-graph export;
+- the domain-owned typed proof-graph normalization contract and canonical vectors.
 
 It continues to treat statements and scopes as opaque.
 
@@ -61,7 +62,7 @@ crypto-composer proof/check result
           │
           │ translate to/from declared evidence vocabulary
           ▼
-finite-math-kernels/proof_records
+finite-math-kernels/kernel/proof_records
           │
           ├── canonical identity
           ├── dependency closure
@@ -86,7 +87,7 @@ No generic translation step is allowed to promote evidence authority.
 
 ## Stable interface expectations
 
-The future adapter should rely only on stable generic concepts:
+The adapter should rely only on stable generic concepts:
 
 - record identifier;
 - record kind/outcome;
@@ -106,7 +107,7 @@ Dep–Proof-specific fields such as:
 - leakage models,
 - probabilistic-independence models,
 
-must remain consumer payloads or consumer-owned structures unless they are later generalized independently for more than one domain.
+must remain consumer payloads or consumer-owned structures unless they are later generalized independently for more than one domain. The current typed proof-graph normalization contract remains representation semantics only and explicitly excludes mathematical proof and certificate acceptance.
 
 ## Review invariant
 
