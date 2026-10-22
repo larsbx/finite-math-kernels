@@ -183,6 +183,12 @@ def test_an_unknown_edge_type_or_provenance_is_refused():
     assert [r.split(": ")[-1] for r in tg.refusals(broken)] == ["unknown edge type", "unknown provenance 'hunch'"]
 
 
+def test_an_unknown_node_kind_is_refused():
+    first = GRAPH.nodes[0]
+    broken = replace(GRAPH, nodes=(replace(first, kind="mystery"), *GRAPH.nodes[1:]))
+    assert any("unknown node kind 'mystery'" in reason for reason in tg.refusals(broken))
+
+
 
 
 def test_conflicting_edges_with_one_canonical_identity_are_refused():
