@@ -28,7 +28,8 @@
       "use_site"
     ],
     "duplicate_policy": "collapse_exact_duplicates_reject_conflicting_identity_payloads",
-    "payload_policy": "preserve_provenance_scope_source_and_leaks"
+    "payload_policy": "preserve_provenance_scope_source_and_leaks",
+    "certainty": "exact_json_integer_1"
   },
   "vectors": [
     {
