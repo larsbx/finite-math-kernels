@@ -192,11 +192,12 @@ def test_conflicting_edges_with_one_canonical_identity_are_refused():
     assert any("conflicting edges share canonical identity" in r for r in tg.refusals(broken))
 
 
-def test_edge_certainty_must_be_exactly_one():
+@pytest.mark.parametrize("bad", [2, True, 1.0])
+def test_edge_certainty_must_be_exactly_the_integer_one(bad):
     base = next(e for e in GRAPH.edges if e.type == tg.IMPLICATIVE)
-    uncertain = replace(base, certainty=2)
+    uncertain = replace(base, certainty=bad)
     broken = replace(GRAPH, edges=tuple(uncertain if e == base else e for e in GRAPH.edges))
-    assert any("certainty must be exactly 1" in r for r in tg.refusals(broken))
+    assert any("certainty must be exactly the integer 1" in r for r in tg.refusals(broken))
 
 
 def test_an_edge_to_nothing_is_refused():
