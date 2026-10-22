@@ -211,6 +211,8 @@ def refusals(graph: Graph) -> list[str]:
     if len(sourced) != len(graph.nodes):
         problems.append("two nodes share an identifier: " + ", ".join(sorted({n.id for n in graph.nodes if sum(m.id == n.id for m in graph.nodes) > 1})))
     for node in graph.nodes:
+        if node.kind not in {CLAIM, ALIAS, ASSUMPTION_SET}:
+            problems.append(f"{node.id}: unknown node kind {node.kind!r}")
         if node.provenance not in PROVENANCE:
             problems.append(f"{node.id}: unknown provenance {node.provenance!r}")
         if node.kind == ALIAS and node.id in claims:
