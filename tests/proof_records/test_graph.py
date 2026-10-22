@@ -183,6 +183,22 @@ def test_an_unknown_edge_type_or_provenance_is_refused():
     assert [r.split(": ")[-1] for r in tg.refusals(broken)] == ["unknown edge type", "unknown provenance 'hunch'"]
 
 
+
+
+def test_conflicting_edges_with_one_canonical_identity_are_refused():
+    base = next(e for e in GRAPH.edges if e.type == tg.IMPLICATIVE)
+    conflicting = replace(base, leaks="different semantic payload")
+    broken = replace(GRAPH, edges=(*GRAPH.edges, conflicting))
+    assert any("conflicting edges share canonical identity" in r for r in tg.refusals(broken))
+
+
+def test_edge_certainty_must_be_exactly_one():
+    base = next(e for e in GRAPH.edges if e.type == tg.IMPLICATIVE)
+    uncertain = replace(base, certainty=2)
+    broken = replace(GRAPH, edges=tuple(uncertain if e == base else e for e in GRAPH.edges))
+    assert any("certainty must be exactly 1" in r for r in tg.refusals(broken))
+
+
 def test_an_edge_to_nothing_is_refused():
     broken = replace(GRAPH, edges=(*GRAPH.edges, tg.Edge(tg.IMPLICATIVE, "Nowhere", "Nothing", "open")))
     assert sorted(r.split(": ")[-1] for r in tg.refusals(broken)) == ["source is not a node", "target is not a node"]
