@@ -11,7 +11,13 @@ SOURCE = ROOT / "conformance/ledger/relationship-graph.json"
 EXPECTED = ROOT / "conformance/oracle/typed-proof-graph-normalization-v1.json"
 
 
+def _canonical_payload(value: dict) -> str:
+    return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+
+
 def _edge_identity(edge: dict) -> tuple[str, str, str, str, str]:
+    if type(edge.get("certainty")) is not int or edge["certainty"] != 1:
+        raise ValueError("edge certainty must be exactly the integer 1")
     return (
         edge["type"],
         edge["source"],
@@ -26,7 +32,7 @@ def _normalize_edges(edges: list[dict], edge_rank: dict[str, int]) -> list[dict]
     for edge in edges:
         identity = _edge_identity(edge)
         previous = by_identity.get(identity)
-        if previous is not None and previous != edge:
+        if previous is not None and _canonical_payload(previous) != _canonical_payload(edge):
             raise ValueError(f"conflicting edges share canonical identity: {identity!r}")
         by_identity[identity] = edge
     return sorted(
