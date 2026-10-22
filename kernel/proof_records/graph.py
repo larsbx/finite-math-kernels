@@ -229,8 +229,8 @@ def refusals(graph: Graph) -> list[str]:
             problems.append(f"{where}: unknown edge type")
         if edge.provenance not in PROVENANCE:
             problems.append(f"{where}: unknown provenance {edge.provenance!r}")
-        if edge.certainty != CERTAIN:
-            problems.append(f"{where}: certainty must be exactly 1")
+        if type(edge.certainty) is not int or edge.certainty != CERTAIN:
+            problems.append(f"{where}: certainty must be exactly the integer 1")
         if edge.target not in sourced:
             problems.append(f"{where}: target is not a node")
         if edge.source not in sourced:
