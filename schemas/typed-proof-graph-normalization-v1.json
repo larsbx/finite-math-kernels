@@ -33,7 +33,7 @@
     "node identifiers are unique",
     "edge endpoints name nodes",
     "edge types and provenance classes are declared by the input vocabulary",
-    "certainty is exactly 1",
+    "certainty is exactly the JSON integer 1; booleans and floating-point 1.0 are invalid",
     "theorem-backed implicative, synonymous, and part-whole edges name backing source evidence",
     "canonical edge identities (type, source, target, provenance, use_site) are unique after exact-duplicate collapse"
   ],
