@@ -7,7 +7,7 @@
   "authority_scope": "typed-proof-record-graph-v1",
   "source": {
     "repository": "larsbx/finite-math-kernels",
-    "commit": "99f473626ace4fa2726ffc2bde24ff77e27ffee3",
+    "commit": "9b7c26dfbdf73bdc6e2050f829610166cf13d08c",
     "paths": [
       "kernel/proof_records/graph.py",
       "kernel/proof_records/records.py",
