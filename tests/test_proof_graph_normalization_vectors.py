@@ -13,13 +13,19 @@ EXCLUDED = {
 
 def test_proof_graph_normalization_vectors_are_domain_owned_and_fail_closed():
     payload = json.loads(VECTOR.read_text())
-    assert payload["contract_id"] == "finite-proof-graph-normalization"
-    assert payload["contract_version"] == 1
+    assert payload["contract_id"] == "finite-proof-graph.normalization"
+    assert payload["contract_version"] == "1.0.1"
     assert payload["owner"] == "finite-math-kernels proof-record replay"
     assert set(payload["authority"]["excludes"]) == EXCLUDED
     assert "certificate_acceptance" not in payload["authority"]["includes"]
     assert payload["normalization"]["payload_policy"] == (
         "preserve_provenance_scope_source_and_leaks"
+    )
+    assert payload["normalization"]["edge_key"] == [
+        "type", "source", "target", "provenance", "use_site"
+    ]
+    assert payload["normalization"]["duplicate_policy"] == (
+        "collapse_exact_duplicates_reject_conflicting_identity_payloads"
     )
     assert {vector["id"] for vector in payload["vectors"]} == {
         "unordered-independent-records",
