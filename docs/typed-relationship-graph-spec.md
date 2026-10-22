@@ -84,7 +84,7 @@ A node's `source` is the evidence its kind requires, mirroring `REQUIRED_EVIDENC
 
 ## 6. Fail closed
 
-`build` refuses the graph, naming every reason, when: two nodes share an identifier; an alias collides with a claim name; a node or edge carries a provenance outside section 3; an edge carries a type outside the nine; an edge endpoint is not a node; an edge certainty is not exactly the JSON integer `1` (booleans and floating-point `1.0` are invalid); two non-identical edges share the canonical semantic identity `(type, source, target, provenance, use_site)`; or the source rule of section 4 is broken. A refused graph renders nothing and, through the generator, exits 2.
+`build` refuses the graph, naming every reason, when: two nodes share an identifier; a node kind is outside `claim`, `alias`, `assumption_set`; an alias collides with a claim name; a node or edge carries a provenance outside section 3; an edge carries a type outside the nine; an edge endpoint is not a node; an edge certainty is not exactly the JSON integer `1` (booleans and floating-point `1.0` are invalid); two non-identical edges share the canonical semantic identity `(type, source, target, provenance, use_site)`; or the source rule of section 4 is broken. A refused graph renders nothing and, through the generator, exits 2.
 
 ## 7. The rendered surface
 
