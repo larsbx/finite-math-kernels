@@ -27,6 +27,7 @@ def test_proof_graph_normalization_vectors_are_domain_owned_and_fail_closed():
     assert payload["normalization"]["duplicate_policy"] == (
         "collapse_exact_duplicates_reject_conflicting_identity_payloads"
     )
+    assert payload["normalization"]["certainty"] == "exact_json_integer_1"
     assert {vector["id"] for vector in payload["vectors"]} == {
         "unordered-independent-records",
         "provenance-is-semantic",
