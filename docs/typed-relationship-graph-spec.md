@@ -38,7 +38,7 @@ The nine edge types of the `tui-story` graph are declared in the surface (`edge_
 
 A dependency on a withdrawn result yields both an `implicative` edge and a `contradictory` edge: the dependency is still what the ledger records, and the contradiction is what an audit wants to query. Nothing is inferred beyond these four: `hierarchical`, `evolutionary`, `analogous`, `antonymous` and `causal` have no registry to read them from, and this export does not guess them.
 
-Every edge carries `certainty`, which is the integer `1` and means *declared, not estimated*. A graph whose edges come from a registry has no scores to model; the field exists so that an importing `tui-story` graph can hold both kinds of edge without conflating them, and the exact integer is deliberate — an exact certainty is not a rounded one.
+Every edge carries `certainty`, which is **exactly the JSON integer `1`** and means *declared, not estimated*. A graph whose edges come from a registry has no scores to model; the field exists so that an importing `tui-story` graph can hold both kinds of edge without conflating them, and the exact integer is deliberate — an exact certainty is not a rounded one.
 
 The canonical semantic identity of an edge is
 `(type, source, target, provenance, use_site)`. Provenance is deliberately
@@ -84,7 +84,7 @@ A node's `source` is the evidence its kind requires, mirroring `REQUIRED_EVIDENC
 
 ## 6. Fail closed
 
-`build` refuses the graph, naming every reason, when: two nodes share an identifier; an alias collides with a claim name; a node or edge carries a provenance outside section 3; an edge carries a type outside the nine; an edge endpoint is not a node; an edge certainty is not exactly `1`; two non-identical edges share the canonical semantic identity `(type, source, target, provenance, use_site)`; or the source rule of section 4 is broken. A refused graph renders nothing and, through the generator, exits 2.
+`build` refuses the graph, naming every reason, when: two nodes share an identifier; an alias collides with a claim name; a node or edge carries a provenance outside section 3; an edge carries a type outside the nine; an edge endpoint is not a node; an edge certainty is not exactly the JSON integer `1` (booleans and floating-point `1.0` are invalid); two non-identical edges share the canonical semantic identity `(type, source, target, provenance, use_site)`; or the source rule of section 4 is broken. A refused graph renders nothing and, through the generator, exits 2.
 
 ## 7. The rendered surface
 
