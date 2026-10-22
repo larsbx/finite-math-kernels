@@ -107,3 +107,12 @@ def test_the_document_states_the_authority_rule_and_the_red_unexecuted_asymmetry
     assert "preserves or lowers authority, never raises it" in body
     assert "a red row ran and failed, an unexecuted step never ran" in body
     assert "c211ff6" in body and "6b8ee2c" in body
+
+
+def test_crypto_composer_green_requires_external_digest_evidence():
+    rule = VOCABULARY["green"]
+    assert rule.evidence == ("replay", "digest")
+    assert "caller to supply a digest" in rule.rationale
+    body = DOC.read_text(encoding="utf-8")
+    assert "does not itself store a manifest/tree digest" in body
+    assert "caller-supplied evidence" in body
