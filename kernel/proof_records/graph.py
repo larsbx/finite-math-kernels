@@ -168,6 +168,19 @@ def edge_sort_key(edge: Edge) -> tuple[int, str, str, str, str]:
     return (EDGE_TYPES.index(edge.type), edge.source, edge.target, edge.provenance, edge.use_site)
 
 
+def edge_payload_bytes(edge: Edge) -> bytes:
+    """Canonical payload bytes for exact-duplicate/conflict decisions.
+
+    Python/dataclass equality is intentionally insufficient here: values such
+    as 1 and 1.0 compare equal even though their canonical JSON encodings are
+    distinct and therefore must not collapse under the representation
+    contract.
+    """
+    return json.dumps(
+        asdict(edge), sort_keys=True, separators=(",", ":"), ensure_ascii=False
+    ).encode("utf-8")
+
+
 def edges(analysis) -> tuple[Edge, ...]:
     """Dependencies as implicative edges from premise to conclusion, aliases
     as synonymous edges, assumption-set membership as part-whole edges, and a
@@ -223,7 +236,7 @@ def refusals(graph: Graph) -> list[str]:
         if edge.type in EDGE_TYPES:
             key = edge_identity_key(edge)
             previous = seen_edge_keys.get(key)
-            if previous is not None and previous != edge:
+            if previous is not None and edge_payload_bytes(previous) != edge_payload_bytes(edge):
                 problems.append(f"{where}: conflicting edges share canonical identity")
             else:
                 seen_edge_keys[key] = edge
