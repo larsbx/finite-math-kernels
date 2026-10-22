@@ -189,7 +189,7 @@
       "source_path": "docs/canonical-encoding.md"
     },
     "docs/dep-proof-consumer-boundary.md": {
-      "blob": "1e71928a598be077049f1974f13afd475b77074a",
+      "blob": "60f4b554a4400a7beef23fd801b01ab059720be0",
       "relation": "authored"
     },
     "docs/embedded-module-normal-form-spec.md": {
@@ -197,7 +197,7 @@
       "relation": "authored"
     },
     "docs/evidence-vocabulary-map.md": {
-      "blob": "479e1b2d504d760d965f1eaac7b9ff55a363d473",
+      "blob": "2e67e95ce7614d3ed85b90dd5edaf5f5ea148374",
       "relation": "authored"
     },
     "docs/exact-arithmetic-public-boundary.md": {
@@ -847,7 +847,7 @@
       "relation": "authored"
     },
     "kernel/proof_records/vocabularies.py": {
-      "blob": "8b68b61b91d2d45c3394bae801368378c384f137",
+      "blob": "a3120ec0720db52522ce7a320bc270afaa902149",
       "relation": "authored"
     },
     "kernel/quadratic_orbit/__init__.mojo": {
@@ -1605,7 +1605,7 @@
       "source_path": "tests/test_vectors.py"
     },
     "tests/proof_records/test_vocabularies.py": {
-      "blob": "66f3b97fa66664f08b94d9812c84cbcb60a9880e",
+      "blob": "edf912c9a73f7d8da22cc7fa634dbbd18c7f836b",
       "relation": "authored"
     },
     "tests/provenance/test_provenance.py": {

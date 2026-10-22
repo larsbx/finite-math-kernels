@@ -14,15 +14,16 @@ The existing `proof_records` package remains the generic evidence substrate.
 
 ## Ownership boundary
 
-`finite-math-kernels/proof_records` owns:
+`finite-math-kernels/kernel/proof_records` owns:
 
 - finite proof/evidence record kinds and required metadata;
 - canonical serialization;
 - content-derived record identity;
 - identity-bearing dependency edges;
-- generic closure validation;
+- generic closure validation, including declared dependency alternatives;
 - evidence-vocabulary translation;
-- typed relationship-graph export.
+- typed relationship-graph export;
+- the domain-owned typed proof-graph normalization contract and canonical vectors.
 
 It continues to treat statements and scopes as opaque.
 
@@ -48,7 +49,7 @@ Proof(Sat(S,D))
 
 by this repository.
 
-A complete closure means only that all named records are structurally valid, satisfy identity/edge/scope/outcome requirements, and are accepted by the supplied consumer policy.
+A complete closure means only that every record **reached by the closure route being certified** is structurally valid, satisfies the applicable identity/edge/scope/outcome requirements, and is accepted by the supplied consumer policy. When a record declares dependency alternatives, a successful selected route need not reach or close dependencies that occur only in unselected branches; those records may remain pending without making the selected route incomplete.
 
 The consumer remains responsible for proving that those records are adequate evidence for its proposition.
 
@@ -61,7 +62,7 @@ crypto-composer proof/check result
           │
           │ translate to/from declared evidence vocabulary
           ▼
-finite-math-kernels/proof_records
+finite-math-kernels/kernel/proof_records
           │
           ├── canonical identity
           ├── dependency closure
@@ -86,7 +87,7 @@ No generic translation step is allowed to promote evidence authority.
 
 ## Stable interface expectations
 
-The future adapter should rely only on stable generic concepts:
+The adapter should rely only on stable generic concepts:
 
 - record identifier;
 - record kind/outcome;
@@ -106,7 +107,7 @@ Dep–Proof-specific fields such as:
 - leakage models,
 - probabilistic-independence models,
 
-must remain consumer payloads or consumer-owned structures unless they are later generalized independently for more than one domain.
+must remain consumer payloads or consumer-owned structures unless they are later generalized independently for more than one domain. The current typed proof-graph normalization contract remains representation semantics only and explicitly excludes mathematical proof and certificate acceptance.
 
 ## Review invariant
 
