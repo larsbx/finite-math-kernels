@@ -49,7 +49,7 @@ Proof(Sat(S,D))
 
 by this repository.
 
-A complete closure means only that all named records are structurally valid, satisfy identity/edge/scope/outcome requirements, and are accepted by the supplied consumer policy.
+A complete closure means only that every record **reached by the closure route being certified** is structurally valid, satisfies the applicable identity/edge/scope/outcome requirements, and is accepted by the supplied consumer policy. When a record declares dependency alternatives, a successful selected route need not reach or close dependencies that occur only in unselected branches; those records may remain pending without making the selected route incomplete.
 
 The consumer remains responsible for proving that those records are adequate evidence for its proposition.
 
