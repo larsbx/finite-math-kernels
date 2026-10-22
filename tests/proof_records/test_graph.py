@@ -198,6 +198,15 @@ def test_conflicting_edges_with_one_canonical_identity_are_refused():
     assert any("conflicting edges share canonical identity" in r for r in tg.refusals(broken))
 
 
+def test_json_distinct_numeric_payloads_do_not_collapse_under_dataclass_equality():
+    base = next(e for e in GRAPH.edges if e.type == tg.IMPLICATIVE)
+    integer_payload = replace(base, leaks=1)
+    float_payload = replace(base, leaks=1.0)
+    assert integer_payload == float_payload  # Python numeric equality is too weak for this contract.
+    broken = replace(GRAPH, edges=(integer_payload, float_payload))
+    assert any("conflicting edges share canonical identity" in r for r in tg.refusals(broken))
+
+
 @pytest.mark.parametrize("bad", [2, True, 1.0])
 def test_edge_certainty_must_be_exactly_the_integer_one(bad):
     base = next(e for e in GRAPH.edges if e.type == tg.IMPLICATIVE)
