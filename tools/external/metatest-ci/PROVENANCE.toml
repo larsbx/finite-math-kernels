@@ -1,0 +1,27 @@
+schema = "metatest-ci-distribution/v1"
+source_repository = "larsbx/meta_test"
+source_commit = "7ce4eb371318b1e4bcc1cef61e60ef96e4c00b94"
+
+[[source]]
+path = "src/MetaTest/Core.hs"
+blob = "1eac562a1706607bd6b33dd3547487217b1c7b6c"
+
+[[source]]
+path = "src/MetaTest/Outcome.hs"
+blob = "bd96e34eafb9aef2f6589e42cedbfac80d0c1798"
+
+[[source]]
+path = "src/MetaTest/Observation.hs"
+blob = "e4e7ccffc284594e3aa790de34b7f118fb545438"
+
+[[source]]
+path = "src/MetaTest/Execution.hs"
+blob = "8c0a4b44890d1b9babe6815367680713bfc475cc"
+
+[[source]]
+path = "src/MetaTest/CI.hs"
+blob = "2bb0664d64e9fba8f9285ca9de197ac2904566d6"
+
+[[source]]
+path = "app-ci/Main.hs"
+blob = "4161bfa93f759059b0e124835a7f9179f2c5fd51"

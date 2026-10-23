@@ -33,15 +33,15 @@
       "relation": "authored"
     },
     ".github/workflows/ci.yml": {
-      "blob": "cac5b457f6efb38651bb057c21159dc865468938",
+      "blob": "38a082f7484fc043fd32057b6538b97054d05a36",
       "relation": "authored"
     },
     ".github/workflows/frontier-polyglot.yml": {
-      "blob": "571bc65b049d9522ad0ac1f602ccac7865defb8a",
+      "blob": "4a4b51ea74755937f16daa173610ae7423ff84fb",
       "relation": "authored"
     },
     ".github/workflows/julia-oracle.yml": {
-      "blob": "8b66b6e3c5e66ed4e6da8085281dfc42aaeac54c",
+      "blob": "a34a675de90408349c202a964da3b612d8e8155d",
       "relation": "authored"
     },
     ".gitignore": {
@@ -1368,7 +1368,7 @@
       "source_path": "tests/test_property_oracle.py"
     },
     "tests/finite_exact/test_public_boundary.py": {
-      "blob": "1ee65e22eb8c866b300e846e1de0f7c66b7f6e4e",
+      "blob": "88d05ed5d66f285669191d62d4b6979e220cae93",
       "relation": "modified",
       "source": "finite_exact",
       "source_blob": "104f44c18f72b320f5c1a5357b51fd1a6ed0ce33",
@@ -1922,6 +1922,50 @@
       "source": "finite_mandelbrot_research",
       "source_blob": "76ddda76a2cc3dea8221ac8b8192fe3d7e4f14c4",
       "source_path": "tools/check_vendored_sync.py"
+    },
+    "metatest.ci.json": {
+      "blob": "75ab0a1adb6ccb4a557aaad81d4caa2308549b28",
+      "relation": "authored"
+    },
+    "tools/external/metatest-ci/PROVENANCE.toml": {
+      "blob": "0fc72afbf0068c96a399b96753dde637933a1293",
+      "relation": "authored"
+    },
+    "tools/external/metatest-ci/action.yml": {
+      "blob": "bc5787ea05e21714ecdb6e7de062df8223dd55b5",
+      "relation": "authored"
+    },
+    "tools/external/metatest-ci/app/Main.hs": {
+      "blob": "4161bfa93f759059b0e124835a7f9179f2c5fd51",
+      "relation": "authored"
+    },
+    "tools/external/metatest-ci/cabal.project": {
+      "blob": "e6fdbadb4398bc0e333947b5fb8021778310d943",
+      "relation": "authored"
+    },
+    "tools/external/metatest-ci/metatest-ci-bundle.cabal": {
+      "blob": "f0522810e1269b5172951aeb10901bf56cdc46e2",
+      "relation": "authored"
+    },
+    "tools/external/metatest-ci/src/MetaTest/CI.hs": {
+      "blob": "2bb0664d64e9fba8f9285ca9de197ac2904566d6",
+      "relation": "authored"
+    },
+    "tools/external/metatest-ci/src/MetaTest/Core.hs": {
+      "blob": "1eac562a1706607bd6b33dd3547487217b1c7b6c",
+      "relation": "authored"
+    },
+    "tools/external/metatest-ci/src/MetaTest/Execution.hs": {
+      "blob": "8c0a4b44890d1b9babe6815367680713bfc475cc",
+      "relation": "authored"
+    },
+    "tools/external/metatest-ci/src/MetaTest/Observation.hs": {
+      "blob": "e4e7ccffc284594e3aa790de34b7f118fb545438",
+      "relation": "authored"
+    },
+    "tools/external/metatest-ci/src/MetaTest/Outcome.hs": {
+      "blob": "bd96e34eafb9aef2f6589e42cedbfac80d0c1798",
+      "relation": "authored"
     }
   },
   "format": "finite-math-kernels provenance 1",

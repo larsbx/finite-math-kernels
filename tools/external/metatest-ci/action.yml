@@ -1,0 +1,41 @@
+name: Setup vendored MetaTest CI
+description: Build and install the pinned MetaTest CI bundle vendored in this repository.
+
+inputs:
+  ghc-version:
+    description: GHC version used to build metatest-ci.
+    required: false
+    default: "9.14.1"
+  cabal-version:
+    description: cabal-install version used to build metatest-ci.
+    required: false
+    default: "3.16.1.0"
+
+runs:
+  using: composite
+  steps:
+    - name: Set up Haskell for MetaTest CI
+      uses: haskell-actions/setup@v2
+      with:
+        ghc-version: ${{ inputs.ghc-version }}
+        cabal-version: ${{ inputs.cabal-version }}
+        cabal-update: false
+
+    - name: Build vendored MetaTest CI runner
+      shell: bash
+      run: |
+        set -euo pipefail
+        SOURCE_DIR="$(mktemp -d "$RUNNER_TEMP/metatest-ci-source.XXXXXX")"
+        BUILD_DIR="$(mktemp -d "$RUNNER_TEMP/metatest-ci-build.XXXXXX")"
+        trap 'rm -rf "$SOURCE_DIR" "$BUILD_DIR"' EXIT
+        cp -R "${{ github.action_path }}/." "$SOURCE_DIR/"
+        cd "$SOURCE_DIR"
+        cabal update
+        cabal build --builddir="$BUILD_DIR" exe:metatest-ci
+        BIN="$(cabal list-bin --builddir="$BUILD_DIR" exe:metatest-ci)"
+        INSTALL_DIR="$RUNNER_TEMP/metatest-ci/bin"
+        mkdir -p "$INSTALL_DIR"
+        cp "$BIN" "$INSTALL_DIR/metatest-ci"
+        chmod +x "$INSTALL_DIR/metatest-ci"
+        echo "$INSTALL_DIR" >> "$GITHUB_PATH"
+        echo "METATEST_TOOL_REVISION=7ce4eb371318b1e4bcc1cef61e60ef96e4c00b94" >> "$GITHUB_ENV"
