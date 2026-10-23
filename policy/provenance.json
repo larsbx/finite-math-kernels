@@ -33,7 +33,7 @@
       "relation": "authored"
     },
     ".github/workflows/ci.yml": {
-      "blob": "0adcfbe5bee5a118d2cfe7dbd1fc4ce4b1e5c84f",
+      "blob": "38a082f7484fc043fd32057b6538b97054d05a36",
       "relation": "authored"
     },
     ".github/workflows/frontier-polyglot.yml": {
@@ -61,7 +61,7 @@
       "relation": "authored"
     },
     "ESTATE.toml": {
-      "blob": "ba54959ccc29dacf30dc53bcaa1187480fa51bb9",
+      "blob": "46119699652cb7af26c6d183f33f8c7801ac110b",
       "relation": "authored"
     },
     "README.md": {
@@ -1030,10 +1030,6 @@
       "blob": "22f54097cad188067e583f901c5a2315833ae75d",
       "relation": "authored"
     },
-    "metatest.ci.json": {
-      "blob": "75ab0a1adb6ccb4a557aaad81d4caa2308549b28",
-      "relation": "authored"
-    },
     "oracles/closed_interval/__init__.py": {
       "blob": "b687d5084f8c4cfca7fa1739b8949de0ef3b3210",
       "relation": "authored"
@@ -1372,7 +1368,7 @@
       "source_path": "tests/test_property_oracle.py"
     },
     "tests/finite_exact/test_public_boundary.py": {
-      "blob": "1ee65e22eb8c866b300e846e1de0f7c66b7f6e4e",
+      "blob": "88d05ed5d66f285669191d62d4b6979e220cae93",
       "relation": "modified",
       "source": "finite_exact",
       "source_blob": "104f44c18f72b320f5c1a5357b51fd1a6ed0ce33",
@@ -1842,46 +1838,6 @@
       "blob": "88bb5d898bdc64604fbdd755e0b48484985c7502",
       "relation": "authored"
     },
-    "tools/external/metatest-ci/PROVENANCE.toml": {
-      "blob": "0fc72afbf0068c96a399b96753dde637933a1293",
-      "relation": "authored"
-    },
-    "tools/external/metatest-ci/action.yml": {
-      "blob": "500e2e83c261dc6cb4ab7f6a90ab853e814fb574",
-      "relation": "authored"
-    },
-    "tools/external/metatest-ci/app/Main.hs": {
-      "blob": "4161bfa93f759059b0e124835a7f9179f2c5fd51",
-      "relation": "authored"
-    },
-    "tools/external/metatest-ci/cabal.project": {
-      "blob": "e6fdbadb4398bc0e333947b5fb8021778310d943",
-      "relation": "authored"
-    },
-    "tools/external/metatest-ci/metatest-ci-bundle.cabal": {
-      "blob": "f0522810e1269b5172951aeb10901bf56cdc46e2",
-      "relation": "authored"
-    },
-    "tools/external/metatest-ci/src/MetaTest/CI.hs": {
-      "blob": "2bb0664d64e9fba8f9285ca9de197ac2904566d6",
-      "relation": "authored"
-    },
-    "tools/external/metatest-ci/src/MetaTest/Core.hs": {
-      "blob": "1eac562a1706607bd6b33dd3547487217b1c7b6c",
-      "relation": "authored"
-    },
-    "tools/external/metatest-ci/src/MetaTest/Execution.hs": {
-      "blob": "8c0a4b44890d1b9babe6815367680713bfc475cc",
-      "relation": "authored"
-    },
-    "tools/external/metatest-ci/src/MetaTest/Observation.hs": {
-      "blob": "e4e7ccffc284594e3aa790de34b7f118fb545438",
-      "relation": "authored"
-    },
-    "tools/external/metatest-ci/src/MetaTest/Outcome.hs": {
-      "blob": "bd96e34eafb9aef2f6589e42cedbfac80d0c1798",
-      "relation": "authored"
-    },
     "tools/lexical_audit/__init__.py": {
       "blob": "52cef15815e1d96d5f0fa5b326e35bc86d865b8e",
       "relation": "authored"
@@ -1966,6 +1922,50 @@
       "source": "finite_mandelbrot_research",
       "source_blob": "76ddda76a2cc3dea8221ac8b8192fe3d7e4f14c4",
       "source_path": "tools/check_vendored_sync.py"
+    },
+    "metatest.ci.json": {
+      "blob": "75ab0a1adb6ccb4a557aaad81d4caa2308549b28",
+      "relation": "authored"
+    },
+    "tools/external/metatest-ci/PROVENANCE.toml": {
+      "blob": "0fc72afbf0068c96a399b96753dde637933a1293",
+      "relation": "authored"
+    },
+    "tools/external/metatest-ci/action.yml": {
+      "blob": "bc5787ea05e21714ecdb6e7de062df8223dd55b5",
+      "relation": "authored"
+    },
+    "tools/external/metatest-ci/app/Main.hs": {
+      "blob": "4161bfa93f759059b0e124835a7f9179f2c5fd51",
+      "relation": "authored"
+    },
+    "tools/external/metatest-ci/cabal.project": {
+      "blob": "e6fdbadb4398bc0e333947b5fb8021778310d943",
+      "relation": "authored"
+    },
+    "tools/external/metatest-ci/metatest-ci-bundle.cabal": {
+      "blob": "f0522810e1269b5172951aeb10901bf56cdc46e2",
+      "relation": "authored"
+    },
+    "tools/external/metatest-ci/src/MetaTest/CI.hs": {
+      "blob": "2bb0664d64e9fba8f9285ca9de197ac2904566d6",
+      "relation": "authored"
+    },
+    "tools/external/metatest-ci/src/MetaTest/Core.hs": {
+      "blob": "1eac562a1706607bd6b33dd3547487217b1c7b6c",
+      "relation": "authored"
+    },
+    "tools/external/metatest-ci/src/MetaTest/Execution.hs": {
+      "blob": "8c0a4b44890d1b9babe6815367680713bfc475cc",
+      "relation": "authored"
+    },
+    "tools/external/metatest-ci/src/MetaTest/Observation.hs": {
+      "blob": "e4e7ccffc284594e3aa790de34b7f118fb545438",
+      "relation": "authored"
+    },
+    "tools/external/metatest-ci/src/MetaTest/Outcome.hs": {
+      "blob": "bd96e34eafb9aef2f6589e42cedbfac80d0c1798",
+      "relation": "authored"
     }
   },
   "format": "finite-math-kernels provenance 1",
