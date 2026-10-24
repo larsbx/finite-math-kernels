@@ -69,7 +69,7 @@ def spreads_batched[K: ExactField](
             var d = K.mul(K.from_int(4), K.mul(nx, ny))
             good = K.accepted(d) and not K.is_zero(d)
             if good:
-                denominators.append(d)
+                denominators.append(d^)
                 var b = polar8[K](xs[i], ys[i])
                 numerators.append(K.mul(b, b))
         if not good:
