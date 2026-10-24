@@ -1216,6 +1216,10 @@
       "blob": "7c5f7c470416d6749880159dbaba20e579f222c0",
       "relation": "authored"
     },
+    "schemas/hyperbolic_rt_contract_v1.json": {
+      "blob": "8352e61907a5c480b071d8a4ed2d606a030d9e8f",
+      "relation": "authored"
+    },
     "schemas/polyglot-boundary-envelope-v1.json": {
       "blob": "46cb8fa918abbd5d5cfbc640384227ce252ee766",
       "relation": "authored"
@@ -1570,6 +1574,10 @@
     },
     "tests/projective_limits/test_hyperbolic_rt_batch.mojo": {
       "blob": "84254dbff77baae1307ab288e038a3370c2d41a5",
+      "relation": "authored"
+    },
+    "tests/projective_limits/test_hyperbolic_rt_contract_schema.py": {
+      "blob": "27a7e95922ad91a257b96844fc124605e241fab5",
       "relation": "authored"
     },
     "tests/projective_limits/test_hyperbolic_rt_max.mojo": {
