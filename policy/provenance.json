@@ -69,7 +69,7 @@
       "relation": "authored"
     },
     "README.md": {
-      "blob": "07fb3edd955aeb8246cb5b95afee0c8c8d87c8b7",
+      "blob": "65280a80f6bdd3d1ff699841b29532f53cf64fcc",
       "relation": "authored"
     },
     "conformance/certified_records_v1.txt": {
@@ -195,6 +195,10 @@
       "source": "finite_exact",
       "source_blob": "0e3f8f4b3dedc597d7a779a1f2f216f7fc5e8700",
       "source_path": "docs/canonical-encoding.md"
+    },
+    "docs/chromogeometry.md": {
+      "blob": "15b7061f424aa484b100d4a51fbea96f2360d08e",
+      "relation": "authored"
     },
     "docs/dep-proof-consumer-boundary.md": {
       "blob": "1e71928a598be077049f1974f13afd475b77074a",
@@ -483,6 +487,14 @@
     },
     "kernel/certified_records/python_binding.mojo": {
       "blob": "c3fc73244f09cff3df6c734f909cf1e2ab635af6",
+      "relation": "authored"
+    },
+    "kernel/chromogeometry/__init__.mojo": {
+      "blob": "7731087b3c23ffe5a663b057f83c965493e997e2",
+      "relation": "authored"
+    },
+    "kernel/chromogeometry/chromatic.mojo": {
+      "blob": "84dbf81716716cc8b52a734ca943afa31af930f0",
       "relation": "authored"
     },
     "kernel/finite_automata/__init__.mojo": {
@@ -1154,7 +1166,7 @@
       "relation": "authored"
     },
     "pixi.toml": {
-      "blob": "c13362563aa982c90ff08b25ae1c806a90579798",
+      "blob": "261815dded1e05d1fa96084e9d77460a8259b1d0",
       "relation": "authored"
     },
     "policy/estate-audits/0833929ed82d42cf3674a1565681625a9622827b.py": {
@@ -1324,6 +1336,10 @@
     },
     "tests/certified_records/test_certified_records.py": {
       "blob": "ecbb96621ec875fb95b5f278fe24458eb7dae842",
+      "relation": "authored"
+    },
+    "tests/chromogeometry/test_chromogeometry.mojo": {
+      "blob": "687bdac9e1cb81c64cc64d8277c690e9d0d12106",
       "relation": "authored"
     },
     "tests/closed_interval/closed_q_transcript.mojo": {
