@@ -80,6 +80,10 @@
       "blob": "f25997f6aa72d83bee15c189b03db9cbe7344805",
       "relation": "authored"
     },
+    "conformance/hyperbolic_rt_v1.txt": {
+      "blob": "9dc55c38af391e71deb2f2b2f0c898e7084c8cad",
+      "relation": "authored"
+    },
     "conformance/ledger/example.json": {
       "blob": "9035e65722af1f215ad3bb2ee33c06f93cd3d216",
       "relation": "authored"
@@ -244,7 +248,7 @@
       "relation": "authored"
     },
     "docs/projective-limits-over-exact-fields.md": {
-      "blob": "1d04b5bea8f70485efb81d9b6628bae8d6ec7f00",
+      "blob": "8b200dcc0479a21053f746b6ec8b05b248b47d5d",
       "relation": "authored"
     },
     "docs/proof-records-specification.md": {
@@ -287,6 +291,10 @@
     },
     "docs/templates/DECISION.md": {
       "blob": "baee2329180b0fbc4d8d51b2dda7d7e440469bd9",
+      "relation": "authored"
+    },
+    "docs/theorems/hyperbolic-rt-contract.md": {
+      "blob": "7fad2f26800e3fb64178b632d4a7ebba6fbf1b40",
       "relation": "authored"
     },
     "docs/tuning-substitutions-spec.md": {
@@ -771,11 +779,19 @@
       "relation": "authored"
     },
     "kernel/projective_limits/__init__.mojo": {
-      "blob": "2d6e5c22c8a5b9883e182f77763ad073a05e8bbb",
+      "blob": "e141cd8486b950acf8c0530cf391295cd41c9a10",
       "relation": "authored"
     },
     "kernel/projective_limits/hyperbolic_rt.mojo": {
       "blob": "11c4196c7bf62e25285bc21f1d09e94f3f5fa10b",
+      "relation": "authored"
+    },
+    "kernel/projective_limits/hyperbolic_rt_batch.mojo": {
+      "blob": "86de404acedcfb13d0fc93b8d057a8b949c8d18c",
+      "relation": "authored"
+    },
+    "kernel/projective_limits/hyperbolic_rt_max.mojo": {
+      "blob": "d9e03b8be094d20e0143ebebcb47524c3257d3ae",
       "relation": "authored"
     },
     "kernel/projective_limits/limits.mojo": {
@@ -1134,7 +1150,7 @@
       "relation": "authored"
     },
     "pixi.toml": {
-      "blob": "3bd103afdcf3c16ed538511eb0466aec6738077c",
+      "blob": "56169c44af40bf8f86c7b0724925a551d030631c",
       "relation": "authored"
     },
     "policy/estate-audits/0833929ed82d42cf3674a1565681625a9622827b.py": {
@@ -1158,6 +1174,10 @@
     },
     "reference/cyclotomic_reference.py": {
       "blob": "af727635754608924b7386ed20ed637ad7631b27",
+      "relation": "authored"
+    },
+    "reference/hyperbolic_rt_reference.py": {
+      "blob": "9e35200399408efcb45ff92f8be5019460446544",
       "relation": "authored"
     },
     "reference/internal_address_reference.py": {
@@ -1548,6 +1568,22 @@
       "blob": "f4648d2c889985f477fdd57bbf543d9ca6cf4dd0",
       "relation": "authored"
     },
+    "tests/projective_limits/test_hyperbolic_rt_batch.mojo": {
+      "blob": "84254dbff77baae1307ab288e038a3370c2d41a5",
+      "relation": "authored"
+    },
+    "tests/projective_limits/test_hyperbolic_rt_max.mojo": {
+      "blob": "db560d13e8c19c64fae342b32ee01019b9b046ff",
+      "relation": "authored"
+    },
+    "tests/projective_limits/test_hyperbolic_rt_vectors.mojo": {
+      "blob": "e25c5c365d331aeffb8770271b4edd693ed8b379",
+      "relation": "authored"
+    },
+    "tests/projective_limits/test_hyperbolic_rt_vectors.py": {
+      "blob": "8d9a5a7d8e6788bab511ffc4a08f92feb5a8643d",
+      "relation": "authored"
+    },
     "tests/projective_limits/test_projective_limits.mojo": {
       "blob": "593dc182500e9edb8f190e7c9f13d6428b150df4",
       "relation": "authored"
@@ -1864,6 +1900,10 @@
     },
     "tools/make_graph_contract_vector.py": {
       "blob": "69c12b5f11eb64ad7f99809969667720e1d87982",
+      "relation": "authored"
+    },
+    "tools/make_hyperbolic_rt_vectors.py": {
+      "blob": "016843aedcaa9af2e88fe44ed8234a5723dfa252",
       "relation": "authored"
     },
     "tools/make_ledger_example.py": {
