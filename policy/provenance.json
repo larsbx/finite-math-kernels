@@ -44,6 +44,10 @@
       "blob": "8b66b6e3c5e66ed4e6da8085281dfc42aaeac54c",
       "relation": "authored"
     },
+    ".github/workflows/rt-exact.yml": {
+      "blob": "6684ed0f65f57de6e929b1c07826302c4563e058",
+      "relation": "authored"
+    },
     ".gitignore": {
       "blob": "becca7114a69bab730fb672295235959399f5183",
       "relation": "authored"
@@ -65,7 +69,7 @@
       "relation": "authored"
     },
     "README.md": {
-      "blob": "0b1a3e12c1393cbb24f5b2f35d06848a9b9dd33c",
+      "blob": "65280a80f6bdd3d1ff699841b29532f53cf64fcc",
       "relation": "authored"
     },
     "conformance/certified_records_v1.txt": {
@@ -78,6 +82,10 @@
     },
     "conformance/cyclotomic_germ_v1.json": {
       "blob": "f25997f6aa72d83bee15c189b03db9cbe7344805",
+      "relation": "authored"
+    },
+    "conformance/hyperbolic_rt_v1.txt": {
+      "blob": "9dc55c38af391e71deb2f2b2f0c898e7084c8cad",
       "relation": "authored"
     },
     "conformance/ledger/example.json": {
@@ -188,6 +196,10 @@
       "source_blob": "0e3f8f4b3dedc597d7a779a1f2f216f7fc5e8700",
       "source_path": "docs/canonical-encoding.md"
     },
+    "docs/chromogeometry.md": {
+      "blob": "15b7061f424aa484b100d4a51fbea96f2360d08e",
+      "relation": "authored"
+    },
     "docs/dep-proof-consumer-boundary.md": {
       "blob": "1e71928a598be077049f1974f13afd475b77074a",
       "relation": "authored"
@@ -244,7 +256,7 @@
       "relation": "authored"
     },
     "docs/projective-limits-over-exact-fields.md": {
-      "blob": "8cc884f96dc0a765b4686ad3c818750ea861bac3",
+      "blob": "8b200dcc0479a21053f746b6ec8b05b248b47d5d",
       "relation": "authored"
     },
     "docs/proof-records-specification.md": {
@@ -287,6 +299,10 @@
     },
     "docs/templates/DECISION.md": {
       "blob": "baee2329180b0fbc4d8d51b2dda7d7e440469bd9",
+      "relation": "authored"
+    },
+    "docs/theorems/hyperbolic-rt-contract.md": {
+      "blob": "7fad2f26800e3fb64178b632d4a7ebba6fbf1b40",
       "relation": "authored"
     },
     "docs/tuning-substitutions-spec.md": {
@@ -471,6 +487,14 @@
     },
     "kernel/certified_records/python_binding.mojo": {
       "blob": "c3fc73244f09cff3df6c734f909cf1e2ab635af6",
+      "relation": "authored"
+    },
+    "kernel/chromogeometry/__init__.mojo": {
+      "blob": "7731087b3c23ffe5a663b057f83c965493e997e2",
+      "relation": "authored"
+    },
+    "kernel/chromogeometry/chromatic.mojo": {
+      "blob": "84dbf81716716cc8b52a734ca943afa31af930f0",
       "relation": "authored"
     },
     "kernel/finite_automata/__init__.mojo": {
@@ -771,7 +795,19 @@
       "relation": "authored"
     },
     "kernel/projective_limits/__init__.mojo": {
-      "blob": "0a6897cd1ce13e36aadc2bd985f4b34ebbdd91ba",
+      "blob": "e141cd8486b950acf8c0530cf391295cd41c9a10",
+      "relation": "authored"
+    },
+    "kernel/projective_limits/hyperbolic_rt.mojo": {
+      "blob": "11c4196c7bf62e25285bc21f1d09e94f3f5fa10b",
+      "relation": "authored"
+    },
+    "kernel/projective_limits/hyperbolic_rt_batch.mojo": {
+      "blob": "f33fb2d395c46e6fabf8710d2a9e4245b4f4fd4d",
+      "relation": "authored"
+    },
+    "kernel/projective_limits/hyperbolic_rt_max.mojo": {
+      "blob": "d9e03b8be094d20e0143ebebcb47524c3257d3ae",
       "relation": "authored"
     },
     "kernel/projective_limits/limits.mojo": {
@@ -1130,7 +1166,7 @@
       "relation": "authored"
     },
     "pixi.toml": {
-      "blob": "ebfb8ab838f9d525ddcd686cd81eb1172bd22333",
+      "blob": "261815dded1e05d1fa96084e9d77460a8259b1d0",
       "relation": "authored"
     },
     "policy/estate-audits/0833929ed82d42cf3674a1565681625a9622827b.py": {
@@ -1154,6 +1190,10 @@
     },
     "reference/cyclotomic_reference.py": {
       "blob": "af727635754608924b7386ed20ed637ad7631b27",
+      "relation": "authored"
+    },
+    "reference/hyperbolic_rt_reference.py": {
+      "blob": "9e35200399408efcb45ff92f8be5019460446544",
       "relation": "authored"
     },
     "reference/internal_address_reference.py": {
@@ -1190,6 +1230,10 @@
     },
     "reference/tuning_reference.py": {
       "blob": "7c5f7c470416d6749880159dbaba20e579f222c0",
+      "relation": "authored"
+    },
+    "schemas/hyperbolic_rt_contract_v1.json": {
+      "blob": "8352e61907a5c480b071d8a4ed2d606a030d9e8f",
       "relation": "authored"
     },
     "schemas/polyglot-boundary-envelope-v1.json": {
@@ -1292,6 +1336,10 @@
     },
     "tests/certified_records/test_certified_records.py": {
       "blob": "ecbb96621ec875fb95b5f278fe24458eb7dae842",
+      "relation": "authored"
+    },
+    "tests/chromogeometry/test_chromogeometry.mojo": {
+      "blob": "687bdac9e1cb81c64cc64d8277c690e9d0d12106",
       "relation": "authored"
     },
     "tests/closed_interval/closed_q_transcript.mojo": {
@@ -1538,6 +1586,30 @@
     },
     "tests/projective_limits/test_field_generic.mojo": {
       "blob": "71caf7751a63f0811e9557b9c9bbf28fbf7137fa",
+      "relation": "authored"
+    },
+    "tests/projective_limits/test_hyperbolic_rt.mojo": {
+      "blob": "f4648d2c889985f477fdd57bbf543d9ca6cf4dd0",
+      "relation": "authored"
+    },
+    "tests/projective_limits/test_hyperbolic_rt_batch.mojo": {
+      "blob": "afe3b5e2c54944dd3a8b96a5997280621cff3942",
+      "relation": "authored"
+    },
+    "tests/projective_limits/test_hyperbolic_rt_contract_schema.py": {
+      "blob": "27a7e95922ad91a257b96844fc124605e241fab5",
+      "relation": "authored"
+    },
+    "tests/projective_limits/test_hyperbolic_rt_max.mojo": {
+      "blob": "a549f5fd842ab4ba15de3f6f5bc9bf29f922d72a",
+      "relation": "authored"
+    },
+    "tests/projective_limits/test_hyperbolic_rt_vectors.mojo": {
+      "blob": "e25c5c365d331aeffb8770271b4edd693ed8b379",
+      "relation": "authored"
+    },
+    "tests/projective_limits/test_hyperbolic_rt_vectors.py": {
+      "blob": "8d9a5a7d8e6788bab511ffc4a08f92feb5a8643d",
       "relation": "authored"
     },
     "tests/projective_limits/test_projective_limits.mojo": {
@@ -1858,6 +1930,10 @@
       "blob": "69c12b5f11eb64ad7f99809969667720e1d87982",
       "relation": "authored"
     },
+    "tools/make_hyperbolic_rt_vectors.py": {
+      "blob": "016843aedcaa9af2e88fe44ed8234a5723dfa252",
+      "relation": "authored"
+    },
     "tools/make_ledger_example.py": {
       "blob": "5be82768818eabbfa69008b4dfb21f21566d7f7b",
       "relation": "authored"
@@ -1922,22 +1998,6 @@
       "source": "finite_mandelbrot_research",
       "source_blob": "76ddda76a2cc3dea8221ac8b8192fe3d7e4f14c4",
       "source_path": "tools/check_vendored_sync.py"
-    },
-    "kernel/chromogeometry/__init__.mojo": {
-      "blob": "7731087b3c23ffe5a663b057f83c965493e997e2",
-      "relation": "authored"
-    },
-    "kernel/chromogeometry/chromatic.mojo": {
-      "blob": "84dbf81716716cc8b52a734ca943afa31af930f0",
-      "relation": "authored"
-    },
-    "tests/chromogeometry/test_chromogeometry.mojo": {
-      "blob": "687bdac9e1cb81c64cc64d8277c690e9d0d12106",
-      "relation": "authored"
-    },
-    "docs/chromogeometry.md": {
-      "blob": "15b7061f424aa484b100d4a51fbea96f2360d08e",
-      "relation": "authored"
     }
   },
   "format": "finite-math-kernels provenance 1",

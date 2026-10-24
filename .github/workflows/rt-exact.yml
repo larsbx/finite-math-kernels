@@ -1,0 +1,32 @@
+name: Exact RT (Mojo/MAX)
+
+on:
+  pull_request:
+    paths:
+      - 'kernel/projective_limits/**'
+      - 'tests/projective_limits/**'
+      - 'reference/hyperbolic_rt_reference.py'
+      - 'tools/make_hyperbolic_rt_vectors.py'
+      - 'conformance/hyperbolic_rt_v1.txt'
+      - 'schemas/hyperbolic_rt_contract_v1.json'
+      - 'pixi.toml'
+      - '.github/workflows/rt-exact.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'kernel/projective_limits/**'
+      - 'tests/projective_limits/**'
+      - 'conformance/hyperbolic_rt_v1.txt'
+      - 'pixi.toml'
+jobs:
+  exact:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: prefix-dev/setup-pixi@v0.9.1
+      - name: Check independent dataset and schema
+        run: |
+          pixi run hyperbolic-rt-vectors
+          pixi run python -m pytest -q tests/projective_limits/test_hyperbolic_rt_vectors.py tests/projective_limits/test_hyperbolic_rt_contract_schema.py
+      - name: Verify exact Mojo/ MAX kernels (not GPU)
+        run: pixi run test-projective-limits

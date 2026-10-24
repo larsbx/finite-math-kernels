@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "contract_id": "finite-exact-hyperbolic-rt-v1",
+  "authority": "mathematical-contract-not-proof-record",
+  "characteristics": {
+    "base": "ExactField",
+    "assume": "characteristic != 2",
+    "executable": "Fp[p], p odd and p < 2^31",
+    "split_dimension": 8,
+    "witt_index": 4
+  },
+  "quadratic_form": {
+    "formula": "N(x) = 2 * sum_{i=0..3}(x[i] * x[i+4])",
+    "polarization": "B2(x,y) = N(x+y)-N(x)-N(y)"
+  },
+  "theorems": [
+    {
+      "name": "projective_spread",
+      "kind": "elementary_derivation",
+      "domain": [
+        "N(x) != 0",
+        "N(y) != 0"
+      ],
+      "value": "s = 1 - B2(x,y)^2 / (4*N(x)*N(y))",
+      "polynomial": "4*N(x)*N(y)*(1-s) = B2(x,y)^2",
+      "evidence": "docs/theorems/hyperbolic-rt-contract.md#1-exact-quadratic-and-projective-contract"
+    },
+    {
+      "name": "orthogonal_reflection",
+      "kind": "classical",
+      "domain": [
+        "N(a) != 0"
+      ],
+      "value": "r_a(x) = x - B2(x,a)/N(a)*a",
+      "polynomial": "N(a)*r_a(x) = N(a)*x-B2(x,a)*a",
+      "evidence": "docs/theorems/hyperbolic-rt-contract.md#1-exact-quadratic-and-projective-contract"
+    },
+    {
+      "name": "two_reflection_transport",
+      "kind": "elementary_derivation",
+      "domain": [
+        "N(u) = N(v) != 0"
+      ],
+      "value": "N(u-v) != 0 ? r_(u-v)(u) : r_v(r_(u+v)(u)) = v",
+      "evidence": "docs/theorems/hyperbolic-rt-contract.md#1-exact-quadratic-and-projective-contract"
+    },
+    {
+      "name": "nonzero_norm_shell_count",
+      "kind": "classical_count",
+      "domain": [
+        "F = F_q",
+        "q odd",
+        "c != 0"
+      ],
+      "value": "#(N(x)=c) = q^3*(q^4-1)",
+      "evidence": "docs/theorems/hyperbolic-rt-contract.md#2-a-closed-form-finite-norm-shell-count"
+    },
+    {
+      "name": "batch_inverse",
+      "kind": "classical_algorithm",
+      "domain": [
+        "all a_i != 0"
+      ],
+      "value": "prefix products; one inversion of total product; backward recovery",
+      "evidence": "docs/theorems/hyperbolic-rt-contract.md#3-one-checked-inversion-for-a-batch"
+    }
+  ],
+  "falsifiers": [
+    {
+      "name": "triple_spread_nonplanar",
+      "inputs": "three independent pairwise B2-orthogonal nonnull rays",
+      "expected": "triple_spread_defect = -1 mod p"
+    },
+    {
+      "name": "finite_zero_function",
+      "inputs": "t^p-t over F_p",
+      "expected": "zero on all field elements but nonzero formal polynomial"
+    }
+  ],
+  "implementation": {
+    "scalar": "kernel/projective_limits/hyperbolic_rt.mojo",
+    "batch": "kernel/projective_limits/hyperbolic_rt_batch.mojo",
+    "max": "kernel/projective_limits/hyperbolic_rt_max.mojo",
+    "golden_vectors": "conformance/hyperbolic_rt_v1.txt",
+    "generator": "tools/make_hyperbolic_rt_vectors.py",
+    "reference": "reference/hyperbolic_rt_reference.py",
+    "constraints": [
+      "exact accepted field elements",
+      "checked inverses only",
+      "no real-valued order",
+      "MAX parallel exact integer reduction",
+      "MAX tensor GPU unimplemented"
+    ],
+    "replay_command": "pixi run test-projective-limits"
+  },
+  "claim_boundary": "No field-generic theorem verification, independent review, uniqueness or novelty is certified by finite tests."
+}

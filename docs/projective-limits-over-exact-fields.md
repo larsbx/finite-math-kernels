@@ -135,3 +135,63 @@ as in Q.
 `larsbx/finite_exact`, as `policy/provenance.json` requires. Keeping the
 field apart from its elements is what lets `QField` adapt `Q` without editing
 that copy.
+
+## Split hyperbolic eight-space (exact RT)
+
+`projective_limits.hyperbolic_rt` uses the **same** `ExactField` interface
+and thus inherits the canonical `FpField[p]` and `QField` arithmetic. For an
+8-vector \(x\) define \(N(x)=2\sum_{i=0}^3 x_i x_{i+4}\) and its doubled
+polarization. The field-generic `norm8`, `polar8`, `quadrance8`, and
+`spread8` preserve the familiar human-readable expressions; projective
+spread is rejected for null inputs and needs no choice of order on the field.
+
+The projective fraction and its polynomial certificate are equivalent *only*
+on \(N(x)N(y)\ne0\):
+
+\[
+s([x],[y])=1-\\frac{B_2(x,y)^2}{4N(x)N(y)},\qquad
+4N(x)N(y)(1-s)=B_2(x,y)^2.
+\]
+
+For \(N(x)=N(v)\ne0\), `norm_shell_transport8` applies the exact
+one-reflection formula in normal \(x-v\) when non-null; if \(N(x-v)=0\)
+it applies reflections in \(x+v\) and then \(v\). This requires no
+search or random choice, and every inverse is guarded. Rejected vectors are
+represented by **eight rejected field elements**, not an ambiguous empty
+container. The operations are defined over any exact field satisfying
+\(2\ne0\); the Fp test suite checks F3/F5/F7 and fully enumerates the norm-one
+shell in F3^8. These are implementation checks, not proofs of novelty.
+
+The standard triple-spread identity holds only in the appropriate **planar**
+configuration: three independent pairwise-orthogonal directions in dimension
+8 have spreads (1,1,1), which falsifies an unrestricted eight-dimensional
+triple-spread claim. The upstream module is **not** a Cayley algebra product,
+and it is not a replacement for any consumer's multiplication convention.
+
+## Performance and evidence: split eight-space RT
+
+- `hyperbolic_rt_batch.spreads_batched` computes a list of independent
+  projective spreads with **one checked field inversion** for all accepted
+  denominators (and O(k) exact products), using the classical prefix-product
+  batch inversion algorithm. A null ray is rejected in its own slot without
+  forcing the entire batch to reject. It is compared with the scalar field-
+  generic contract over F3, F5 and F7. This is an operation-count benefit;
+  no wall-clock speedup is asserted without an independent benchmark.
+- `hyperbolic_rt_max.norm_one_count_max` reuses the estate's
+  `parallel_fold.map_fold` implementation over the **MAX thread pool**, with
+  pure map steps, associative integral counts and deterministic reduction.
+  Its exhaustive domain is capped at 1,000,000 points (F3 and F5 pass the
+  cap; F7 rejects). Workers below 1 reject. This is an exact CPU parallel
+  kernel; it is **not** a MAX Tensor, GPU, or floating-point path.
+- `conformance/hyperbolic_rt_v1.txt` has 48 unambiguous finite-field cases,
+  written by `tools/make_hyperbolic_rt_vectors.py` from the *independent*
+  Python Gram-matrix oracle in `reference/`. Both the Mojo replay and the
+  Python generator `--check` run under the projective-limits / test gates.
+- Mathematical identities and guard hypotheses are documented separately in
+  `docs/theorems/hyperbolic-rt-contract.md`. This is a classical theorem
+  package and **not** a novelty or proof-review claim. The tests verify
+  the implementations' behavior on finite cases.
+
+Any proposed MAX Tensor/GPU path must retain canonical residues, guarded
+inversion and exact integer bounds: an ordinary floating-point MAX matmul
+cannot certify a finite-field result.
