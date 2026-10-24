@@ -135,3 +135,35 @@ as in Q.
 `larsbx/finite_exact`, as `policy/provenance.json` requires. Keeping the
 field apart from its elements is what lets `QField` adapt `Q` without editing
 that copy.
+
+## Split hyperbolic eight-space (exact RT)
+
+`projective_limits.hyperbolic_rt` uses the **same** `ExactField` interface
+and thus inherits the canonical `FpField[p]` and `QField` arithmetic. For an
+8-vector \(x\) define \(N(x)=2\sum_{i=0}^3 x_i x_{i+4}\) and its doubled
+polarization. The field-generic `norm8`, `polar8`, `quadrance8`, and
+`spread8` preserve the familiar human-readable expressions; projective
+spread is rejected for null inputs and needs no choice of order on the field.
+
+The projective fraction and its polynomial certificate are equivalent *only*
+on \(N(x)N(y)\ne0\):
+
+\[
+s([x],[y])=1-\\frac{B_2(x,y)^2}{4N(x)N(y)},\qquad
+4N(x)N(y)(1-s)=B_2(x,y)^2.
+\]
+
+For \(N(x)=N(v)\ne0\), `norm_shell_transport8` applies the exact
+one-reflection formula in normal \(x-v\) when non-null; if \(N(x-v)=0\)
+it applies reflections in \(x+v\) and then \(v\). This requires no
+search or random choice, and every inverse is guarded. Rejected vectors are
+represented by **eight rejected field elements**, not an ambiguous empty
+container. The operations are defined over any exact field satisfying
+\(2\ne0\); the Fp test suite checks F3/F5/F7 and fully enumerates the norm-one
+shell in F3^8. These are implementation checks, not proofs of novelty.
+
+The standard triple-spread identity holds only in the appropriate **planar**
+configuration: three independent pairwise-orthogonal directions in dimension
+8 have spreads (1,1,1), which falsifies an unrestricted eight-dimensional
+triple-spread claim. The upstream module is **not** a Cayley algebra product,
+and it is not a replacement for any consumer's multiplication convention.
