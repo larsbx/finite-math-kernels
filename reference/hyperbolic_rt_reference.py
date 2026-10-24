@@ -19,7 +19,7 @@ def norm(p: int, x: tuple[int, ...]) -> int:
 
 def polar(p: int, x: tuple[int, ...], y: tuple[int, ...]) -> int:
     x, y = _coords(p, x), _coords(p, y)
-    return sum(x[i] * y[i+4] + x[i+4] * y[i] for i in range(4)) % p
+    return (2 * sum(x[i] * y[i+4] + x[i+4] * y[i] for i in range(4))) % p
 
 def spread(p: int, x: tuple[int, ...], y: tuple[int, ...]) -> int | None:
     nx, ny = norm(p, x), norm(p, y)
