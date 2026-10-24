@@ -65,7 +65,7 @@
       "relation": "authored"
     },
     "README.md": {
-      "blob": "91787f6441e7a97d016af897d2a9df0e6964d4e0",
+      "blob": "0b1a3e12c1393cbb24f5b2f35d06848a9b9dd33c",
       "relation": "authored"
     },
     "conformance/certified_records_v1.txt": {
@@ -1130,7 +1130,7 @@
       "relation": "authored"
     },
     "pixi.toml": {
-      "blob": "361462f266b6a131abfe2ba358a31b80759c9bd8",
+      "blob": "ebfb8ab838f9d525ddcd686cd81eb1172bd22333",
       "relation": "authored"
     },
     "policy/estate-audits/0833929ed82d42cf3674a1565681625a9622827b.py": {
@@ -1922,6 +1922,22 @@
       "source": "finite_mandelbrot_research",
       "source_blob": "76ddda76a2cc3dea8221ac8b8192fe3d7e4f14c4",
       "source_path": "tools/check_vendored_sync.py"
+    },
+    "kernel/chromogeometry/__init__.mojo": {
+      "blob": "7731087b3c23ffe5a663b057f83c965493e997e2",
+      "relation": "authored"
+    },
+    "kernel/chromogeometry/chromatic.mojo": {
+      "blob": "84dbf81716716cc8b52a734ca943afa31af930f0",
+      "relation": "authored"
+    },
+    "tests/chromogeometry/test_chromogeometry.mojo": {
+      "blob": "687bdac9e1cb81c64cc64d8277c690e9d0d12106",
+      "relation": "authored"
+    },
+    "docs/chromogeometry.md": {
+      "blob": "15b7061f424aa484b100d4a51fbea96f2360d08e",
+      "relation": "authored"
     }
   },
   "format": "finite-math-kernels provenance 1",
