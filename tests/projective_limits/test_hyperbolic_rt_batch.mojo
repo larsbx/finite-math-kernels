@@ -14,7 +14,7 @@ def basis[p: Int64](i: Int, partner: Int64) -> List[Fp[p]]:
 
 def check[p: Int64]() raises:
     var nums = List[Fp[p]]()
-    for v in (1, 2, 3, 4):
+    for v in range(1, 5):
         nums.append(Fp[p](Int64(v % Int(p) if v % Int(p) != 0 else 1)))
     var invs = invert_batch_nonzero[FpField[p]](nums)
     for i in range(len(nums)):
