@@ -244,7 +244,7 @@
       "relation": "authored"
     },
     "docs/projective-limits-over-exact-fields.md": {
-      "blob": "8cc884f96dc0a765b4686ad3c818750ea861bac3",
+      "blob": "1d04b5bea8f70485efb81d9b6628bae8d6ec7f00",
       "relation": "authored"
     },
     "docs/proof-records-specification.md": {
@@ -771,7 +771,11 @@
       "relation": "authored"
     },
     "kernel/projective_limits/__init__.mojo": {
-      "blob": "0a6897cd1ce13e36aadc2bd985f4b34ebbdd91ba",
+      "blob": "2d6e5c22c8a5b9883e182f77763ad073a05e8bbb",
+      "relation": "authored"
+    },
+    "kernel/projective_limits/hyperbolic_rt.mojo": {
+      "blob": "11c4196c7bf62e25285bc21f1d09e94f3f5fa10b",
       "relation": "authored"
     },
     "kernel/projective_limits/limits.mojo": {
@@ -1130,7 +1134,7 @@
       "relation": "authored"
     },
     "pixi.toml": {
-      "blob": "361462f266b6a131abfe2ba358a31b80759c9bd8",
+      "blob": "3bd103afdcf3c16ed538511eb0466aec6738077c",
       "relation": "authored"
     },
     "policy/estate-audits/0833929ed82d42cf3674a1565681625a9622827b.py": {
@@ -1538,6 +1542,10 @@
     },
     "tests/projective_limits/test_field_generic.mojo": {
       "blob": "71caf7751a63f0811e9557b9c9bbf28fbf7137fa",
+      "relation": "authored"
+    },
+    "tests/projective_limits/test_hyperbolic_rt.mojo": {
+      "blob": "f4648d2c889985f477fdd57bbf543d9ca6cf4dd0",
       "relation": "authored"
     },
     "tests/projective_limits/test_projective_limits.mojo": {
