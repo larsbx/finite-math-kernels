@@ -167,3 +167,31 @@ configuration: three independent pairwise-orthogonal directions in dimension
 8 have spreads (1,1,1), which falsifies an unrestricted eight-dimensional
 triple-spread claim. The upstream module is **not** a Cayley algebra product,
 and it is not a replacement for any consumer's multiplication convention.
+
+## Performance and evidence: split eight-space RT
+
+- `hyperbolic_rt_batch.spreads_batched` computes a list of independent
+  projective spreads with **one checked field inversion** for all accepted
+  denominators (and O(k) exact products), using the classical prefix-product
+  batch inversion algorithm. A null ray is rejected in its own slot without
+  forcing the entire batch to reject. It is compared with the scalar field-
+  generic contract over F3, F5 and F7. This is an operation-count benefit;
+  no wall-clock speedup is asserted without an independent benchmark.
+- `hyperbolic_rt_max.norm_one_count_max` reuses the estate's
+  `parallel_fold.map_fold` implementation over the **MAX thread pool**, with
+  pure map steps, associative integral counts and deterministic reduction.
+  Its exhaustive domain is capped at 1,000,000 points (F3 and F5 pass the
+  cap; F7 rejects). Workers below 1 reject. This is an exact CPU parallel
+  kernel; it is **not** a MAX Tensor, GPU, or floating-point path.
+- `conformance/hyperbolic_rt_v1.txt` has 48 unambiguous finite-field cases,
+  written by `tools/make_hyperbolic_rt_vectors.py` from the *independent*
+  Python Gram-matrix oracle in `reference/`. Both the Mojo replay and the
+  Python generator `--check` run under the projective-limits / test gates.
+- Mathematical identities and guard hypotheses are documented separately in
+  `docs/theorems/hyperbolic-rt-contract.md`. This is a classical theorem
+  package and **not** a novelty or proof-review claim. The tests verify
+  the implementations' behavior on finite cases.
+
+Any proposed MAX Tensor/GPU path must retain canonical residues, guarded
+inversion and exact integer bounds: an ordinary floating-point MAX matmul
+cannot certify a finite-field result.
