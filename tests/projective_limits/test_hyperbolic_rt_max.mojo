@@ -10,7 +10,7 @@ from projective_limits.hyperbolic_rt_max import (
 
 
 def test_parallel_exact_shells() raises:
-    for workers in (1, 2, 4):
+    for workers in range(1, 5):
         assert_equal(norm_one_count_max[3](workers), 2160)
         assert_equal(norm_one_count_max[3](workers), norm_one_count_formula[3]())
     assert_equal(norm_one_count_max[5](1), 78000)
