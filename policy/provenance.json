@@ -227,6 +227,10 @@
       "blob": "c15132b95d9139552e888f205369a02aacc2d536",
       "relation": "authored"
     },
+    "docs/exact-power-residue-prefix.md": {
+      "blob": "9c0b6ccc93457a3634570fa1c815571d16dd07cb",
+      "relation": "authored"
+    },
     "docs/frontier-math-compute-candidates.md": {
       "blob": "bb5f17151dec1c9dc7de5c9584987aee7f15f5bb",
       "relation": "authored"
@@ -743,6 +747,10 @@
       "blob": "ba5a391f9b189412d2f50d411f0da868695afae7",
       "relation": "authored"
     },
+    "kernel/finite_polynomial/pair_power_residue.mojo": {
+      "blob": "78fe4be905402d215c2331d10054ed4ecd80fede",
+      "relation": "authored"
+    },
     "kernel/finite_polynomial/polynomial_fp.mojo": {
       "blob": "1f8a06f5888263460365499c2339c387b1c3bb63",
       "relation": "authored"
@@ -1178,7 +1186,7 @@
       "relation": "authored"
     },
     "pixi.toml": {
-      "blob": "06511db2e1ecef9a1538863619e51f9170e1ba25",
+      "blob": "1995a0d5b7faf8afe51ed0e5b0374f698d8051f8",
       "relation": "authored"
     },
     "policy/estate-audits/0833929ed82d42cf3674a1565681625a9622827b.py": {
@@ -1523,6 +1531,14 @@
     },
     "tests/finite_polynomial/test_cyclotomic_specimens.py": {
       "blob": "b88d3007afdbc9bab4e9079af12937b2bb5941d8",
+      "relation": "authored"
+    },
+    "tests/finite_polynomial/test_pair_power_residue.mojo": {
+      "blob": "d56f6fd60b21e8b394d8758aeb1bbe31d143044d",
+      "relation": "authored"
+    },
+    "tests/finite_polynomial/test_pair_power_residue_reference.py": {
+      "blob": "395beebc07414ea988136023112fedea73f2e84a",
       "relation": "authored"
     },
     "tests/finite_polynomial/test_polynomial_fp.mojo": {
