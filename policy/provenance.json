@@ -45,7 +45,7 @@
       "relation": "authored"
     },
     ".github/workflows/rt-exact.yml": {
-      "blob": "980b1992967d3bccde87bf507356718cddef7ac9",
+      "blob": "750ed6852d81eeda86dc0e0396d7303e6cae97b3",
       "relation": "authored"
     },
     ".gitignore": {
@@ -1248,6 +1248,10 @@
       "blob": "7c5f7c470416d6749880159dbaba20e579f222c0",
       "relation": "authored"
     },
+    "schemas/gram_geometry_contract_v1.json": {
+      "blob": "c2d0988517b00c21f38b0c9bdd58e74fb4885746",
+      "relation": "authored"
+    },
     "schemas/hyperbolic_rt_contract_v1.json": {
       "blob": "8352e61907a5c480b071d8a4ed2d606a030d9e8f",
       "relation": "authored"
@@ -1606,6 +1610,10 @@
     },
     "tests/projective_limits/test_gram_geometry.mojo": {
       "blob": "e1b238ab385a73b9ceccc6d67da6dc93bd39485d",
+      "relation": "authored"
+    },
+    "tests/projective_limits/test_gram_geometry_contract_schema.py": {
+      "blob": "860bd82025f92ba0cf2ba49dc5d085d4c6f1606d",
       "relation": "authored"
     },
     "tests/projective_limits/test_gram_geometry_vectors.mojo": {
