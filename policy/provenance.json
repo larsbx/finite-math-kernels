@@ -45,7 +45,7 @@
       "relation": "authored"
     },
     ".github/workflows/rt-exact.yml": {
-      "blob": "6684ed0f65f57de6e929b1c07826302c4563e058",
+      "blob": "980b1992967d3bccde87bf507356718cddef7ac9",
       "relation": "authored"
     },
     ".gitignore": {
@@ -69,7 +69,7 @@
       "relation": "authored"
     },
     "README.md": {
-      "blob": "65280a80f6bdd3d1ff699841b29532f53cf64fcc",
+      "blob": "1e1f3a3874a52521e77d3ff97590c4ee56dde0ac",
       "relation": "authored"
     },
     "conformance/certified_records_v1.txt": {
@@ -82,6 +82,10 @@
     },
     "conformance/cyclotomic_germ_v1.json": {
       "blob": "f25997f6aa72d83bee15c189b03db9cbe7344805",
+      "relation": "authored"
+    },
+    "conformance/gram_geometry_v1.txt": {
+      "blob": "bd33bd5b82077a7a70a5a65f372809ea54a1f6ce",
       "relation": "authored"
     },
     "conformance/hyperbolic_rt_v1.txt": {
@@ -256,7 +260,7 @@
       "relation": "authored"
     },
     "docs/projective-limits-over-exact-fields.md": {
-      "blob": "8b200dcc0479a21053f746b6ec8b05b248b47d5d",
+      "blob": "60aa8dcaf780709ffa4519a2bcbd8e5511a77c7c",
       "relation": "authored"
     },
     "docs/proof-records-specification.md": {
@@ -299,6 +303,10 @@
     },
     "docs/templates/DECISION.md": {
       "blob": "baee2329180b0fbc4d8d51b2dda7d7e440469bd9",
+      "relation": "authored"
+    },
+    "docs/theorems/gram-minor-rt-contract.md": {
+      "blob": "23bddf8a505c51184cbec878d5035ef964fad0de",
       "relation": "authored"
     },
     "docs/theorems/hyperbolic-rt-contract.md": {
@@ -795,7 +803,11 @@
       "relation": "authored"
     },
     "kernel/projective_limits/__init__.mojo": {
-      "blob": "e141cd8486b950acf8c0530cf391295cd41c9a10",
+      "blob": "486522d1af04e0a7e58571da6f1c572b3f8d356b",
+      "relation": "authored"
+    },
+    "kernel/projective_limits/gram_geometry.mojo": {
+      "blob": "b4b1cde6534f5e1423c6fc6e9a509762e851af3f",
       "relation": "authored"
     },
     "kernel/projective_limits/hyperbolic_rt.mojo": {
@@ -1166,7 +1178,7 @@
       "relation": "authored"
     },
     "pixi.toml": {
-      "blob": "261815dded1e05d1fa96084e9d77460a8259b1d0",
+      "blob": "06511db2e1ecef9a1538863619e51f9170e1ba25",
       "relation": "authored"
     },
     "policy/estate-audits/0833929ed82d42cf3674a1565681625a9622827b.py": {
@@ -1190,6 +1202,10 @@
     },
     "reference/cyclotomic_reference.py": {
       "blob": "af727635754608924b7386ed20ed637ad7631b27",
+      "relation": "authored"
+    },
+    "reference/gram_geometry_reference.py": {
+      "blob": "f74b8baa4635b576870c56ee8842054830e957a3",
       "relation": "authored"
     },
     "reference/hyperbolic_rt_reference.py": {
@@ -1588,6 +1604,18 @@
       "blob": "71caf7751a63f0811e9557b9c9bbf28fbf7137fa",
       "relation": "authored"
     },
+    "tests/projective_limits/test_gram_geometry.mojo": {
+      "blob": "e1b238ab385a73b9ceccc6d67da6dc93bd39485d",
+      "relation": "authored"
+    },
+    "tests/projective_limits/test_gram_geometry_vectors.mojo": {
+      "blob": "2f60afd55b938b984a11355974ef1a3c153a90da",
+      "relation": "authored"
+    },
+    "tests/projective_limits/test_gram_geometry_vectors.py": {
+      "blob": "d65273600cea4fbe345c5165b3d25d49cf3d5574",
+      "relation": "authored"
+    },
     "tests/projective_limits/test_hyperbolic_rt.mojo": {
       "blob": "f4648d2c889985f477fdd57bbf543d9ca6cf4dd0",
       "relation": "authored"
@@ -1924,6 +1952,10 @@
     },
     "tools/make_cyclotomic_vectors.py": {
       "blob": "3618b08f39200dcd0265f109fa63f1f88d683637",
+      "relation": "authored"
+    },
+    "tools/make_gram_geometry_vectors.py": {
+      "blob": "49315473e2b288a5b06d4a378da126bb3526195b",
       "relation": "authored"
     },
     "tools/make_graph_contract_vector.py": {
