@@ -27,7 +27,7 @@ def gram_pair8[K: ExactField](
             result,
             K.add(K.mul(x[i], y[i + 4]), K.mul(x[i + 4], y[i]))
         )
-    return result
+    return result^
 
 
 def gram2_determinant8[K: ExactField](
