@@ -27,6 +27,7 @@ jobs:
       - name: Check independent dataset and schema
         run: |
           pixi run hyperbolic-rt-vectors
+          pixi run gram-geometry-vectors
           pixi run python -m pytest -q tests/projective_limits/test_hyperbolic_rt_vectors.py tests/projective_limits/test_hyperbolic_rt_contract_schema.py
       - name: Verify exact Mojo/ MAX kernels (not GPU)
         run: pixi run test-projective-limits
