@@ -9,6 +9,7 @@ on:
       - 'tools/make_hyperbolic_rt_vectors.py'
       - 'conformance/hyperbolic_rt_v1.txt'
       - 'schemas/hyperbolic_rt_contract_v1.json'
+      - 'schemas/gram_geometry_contract_v1.json'
       - 'pixi.toml'
       - '.github/workflows/rt-exact.yml'
   push:
@@ -28,6 +29,6 @@ jobs:
         run: |
           pixi run hyperbolic-rt-vectors
           pixi run gram-geometry-vectors
-          pixi run python -m pytest -q tests/projective_limits/test_hyperbolic_rt_vectors.py tests/projective_limits/test_hyperbolic_rt_contract_schema.py
+          pixi run python -m pytest -q tests/projective_limits/test_hyperbolic_rt_vectors.py tests/projective_limits/test_hyperbolic_rt_contract_schema.py tests/projective_limits/test_gram_geometry_contract_schema.py
       - name: Verify exact Mojo/ MAX kernels (not GPU)
         run: pixi run test-projective-limits
