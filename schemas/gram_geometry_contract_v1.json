@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "contract": "finite-projective-gram-geometry-v1",
+  "status": "classical-formula-and-implementation-contract; no reviewed proof or novelty",
+  "base": {
+    "field": "ExactField (p odd for scalar normalizations)",
+    "vector_dimension": 8,
+    "norm": "2 * sum(x_i*x_(i+4), i=0..3)",
+    "polarization": "B2 = N(x+y)-N(x)-N(y)",
+    "gram_pair": "B2/2 = sum(x_i*y_(i+4) + x_(i+4)*y_i, i=0..3)"
+  },
+  "operations": [
+    {
+      "name": "gram2_determinant8",
+      "domain": [
+        "valid 8-vectors"
+      ],
+      "formula": "N(x)*N(y)-gram_pair(x,y)^2",
+      "failure": "rejected",
+      "evidence": "docs/theorems/gram-minor-rt-contract.md#4-degenerate-cayleyklein-absolute-intersections"
+    },
+    {
+      "name": "gram3_determinant8",
+      "domain": [
+        "valid 8-vectors"
+      ],
+      "formula": "Nx*Ny*Nz+2*a*b*c-Nx*c*c-Ny*b*b-Nz*a*a",
+      "failure": "rejected",
+      "evidence": "docs/theorems/gram-minor-rt-contract.md#1-the-coordinate-and-gram-tensors-are-different-certificates"
+    },
+    {
+      "name": "normalized_gram3_determinant8",
+      "domain": [
+        "valid 8-vectors",
+        "Nx*Ny*Nz != 0"
+      ],
+      "formula": "gram3_determinant8/(Nx*Ny*Nz)",
+      "failure": "rejected",
+      "evidence": "docs/theorems/gram-minor-rt-contract.md#1-the-coordinate-and-gram-tensors-are-different-certificates"
+    },
+    {
+      "name": "rank_le_two8",
+      "domain": [
+        "valid 8-vectors"
+      ],
+      "formula": "all 56 coordinate 3x3 minors vanish iff rank<=2",
+      "result": "Fp(1) if rank<=2; Fp(0) if rank=3; rejected for invalid",
+      "evidence": "docs/theorems/gram-minor-rt-contract.md#2-exterior-rank-not-a-gram-determinant-decides-planarity"
+    },
+    {
+      "name": "planar_triple_spread_defect8",
+      "domain": [
+        "valid 8-vectors",
+        "coordinate rank <= 2",
+        "all three norms nonzero"
+      ],
+      "formula": "triple_spread_defect(spread(x,y),spread(y,z),spread(z,x))",
+      "failure": "rejected",
+      "evidence": "docs/theorems/gram-minor-rt-contract.md#3-a-guarded-planar-triple-spread-entry-point"
+    }
+  ],
+  "counterexamples": [
+    {
+      "id": "gram_radical_false_planarity",
+      "input": "x=e0+f0/2; y=e1+f1/2; z=x+y+e2",
+      "expected": "gram3=0, rank_le_two=0, all norms !=0"
+    },
+    {
+      "id": "absolute_tangent_line",
+      "input": "x=e0+f0/2; y=x+e2",
+      "expected": "norms !=0, rays distinct, gram2=0, ordinary distinct-root crossratio undefined"
+    },
+    {
+      "id": "orthogonal_nonplanar",
+      "input": "x,y,z pairwise orthogonal norm-one",
+      "expected": "rank_le_two=0, triple spread defect not zero"
+    }
+  ],
+  "evidence": {
+    "source": "kernel/projective_limits/gram_geometry.mojo",
+    "independent_reference": "reference/gram_geometry_reference.py",
+    "dataset": "conformance/gram_geometry_v1.txt",
+    "generator": "tools/make_gram_geometry_vectors.py",
+    "mojo_replay": "tests/projective_limits/test_gram_geometry_vectors.mojo",
+    "mojo_tests": "tests/projective_limits/test_gram_geometry.mojo",
+    "python_drift_check": "tests/projective_limits/test_gram_geometry_vectors.py",
+    "replay": "pixi run test-projective-limits; pixi run gram-geometry-vectors"
+  },
+  "authority": "dataset and computational tests establish finite implementation conformance, not formal field-generic proof or novel mathematics"
+}
