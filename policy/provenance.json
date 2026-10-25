@@ -807,7 +807,7 @@
       "relation": "authored"
     },
     "kernel/projective_limits/gram_geometry.mojo": {
-      "blob": "b4b1cde6534f5e1423c6fc6e9a509762e851af3f",
+      "blob": "e2011c8df485b6d1620d478e5d341a7986129b59",
       "relation": "authored"
     },
     "kernel/projective_limits/hyperbolic_rt.mojo": {
