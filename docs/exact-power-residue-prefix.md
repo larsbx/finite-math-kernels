@@ -47,7 +47,7 @@ benchmarks, and decision to reject a candidate.
 
 ## Conformance
 
-`pixi run --locked test-pair-power-residue` executes the native Mojo
+`pixi run test-pair-power-residue` executes the native Mojo
 program and independently reconstructs every reported prefix
 cardinality and exact decimal fold in Python. The native probe also
 checks every small positive pair and rejection of invalid inputs.
