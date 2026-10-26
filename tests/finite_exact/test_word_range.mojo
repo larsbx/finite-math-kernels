@@ -48,6 +48,16 @@ def test_products_at_the_word_edge() raises:
     assert_equal(sq.hi, 2147395600)
 
 
+def test_clamp_holds_any_operand() raises:
+    var c = WordRange.word(32).clamp(WordRange(32, 0, 1000000))
+    assert_equal(c.lo, 0)
+    assert_equal(c.hi, 1000000)
+    var below = WordRange(32, -9, -5).clamp(WordRange(32, 0, 10))
+    assert_equal(below.lo, 0)
+    assert_equal(below.hi, 0)
+    assert_false(WordRange.word(32).clamp(WordRange(32, 5, 4)).accepted())
+
+
 def cell(width: Int, s: String) raises -> WordRange:
     if s == "refused":
         return WordRange.refused(width)
@@ -66,6 +76,8 @@ def apply(op: String, a: WordRange, b: WordRange) raises -> WordRange:
         return a.hull(b)
     if op == "neg":
         return a.neg()
+    if op == "clamp":
+        return a.clamp(b)
     raise Error("unknown word-range operation " + op)
 
 
@@ -100,6 +112,7 @@ def main() raises:
     test_wrap_is_tfhe_overflow()
     test_refusal_is_sticky()
     test_products_at_the_word_edge()
+    test_clamp_holds_any_operand()
     var n = replay()
     assert_true(n > 1000)
-    print(n, "word-range vectors replayed; 4 edge tests passed.")
+    print(n, "word-range vectors replayed; 5 edge tests passed.")

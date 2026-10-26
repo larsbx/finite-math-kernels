@@ -5,8 +5,8 @@ A machine word of width `w` holds `[word_min(w), word_max(w)] =
 reduction, the arithmetic of a homomorphic integer such as TFHE `FheInt32`,
 which cannot observe an overflow. `WordRange` is the natural interval
 extension over Z (Moore, *Interval Analysis*, 1966) of `+`, `-`, `*`,
-negation and the hull, with every result refused unless it lies inside the
-word.
+negation, the hull and clamping, with every result refused unless it lies
+inside the word.
 
 What this module decides is finite: an accepted range is an exact enclosure
 of every value its operation can take on operands inside its operands'
@@ -123,6 +123,22 @@ struct WordRange(Copyable, Writable):
         if not self._joint(other):
             return Self.refused(self.width)
         return Self(self.width, min(self.lo, other.lo), max(self.hi, other.hi))
+
+    def clamp(self, bounds: Self) -> Self:
+        """The image of `x -> max(lo, min(x, hi))` for `bounds = [lo, hi]`.
+
+        Clamping is monotone, so the image of `[a, b]` is exactly
+        `[clamp(a), clamp(b)]`, and it lies in `bounds` whatever the operand:
+        a homomorphic min/max, which cannot overflow, enforces a declared
+        range on a value nobody vouches for.
+        """
+        if not self._joint(bounds):
+            return Self.refused(self.width)
+        return Self(
+            self.width,
+            max(bounds.lo, min(self.lo, bounds.hi)),
+            max(bounds.lo, min(self.hi, bounds.hi)),
+        )
 
     def write_to(self, mut writer: Some[Writer]):
         if self.rejected:

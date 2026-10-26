@@ -45,6 +45,8 @@ OPS = {
     "hull": lambda w, a, b: None if a is None or b is None
     else make(w, min(a[0], b[0]), max(a[1], b[1])),
     "neg": lambda w, a, _b: None if a is None else make(w, -a[1], -a[0]),
+    "clamp": lambda w, a, b: None if a is None or b is None
+    else make(w, max(b[0], min(a[0], b[1])), max(b[0], min(a[1], b[1]))),
 }
 
 
@@ -62,6 +64,9 @@ def enumerated(op: str, width: int, a: Range, b: Range) -> Range:
         "add": lambda x, y: [x + y], "sub": lambda x, y: [x - y],
         "mul": lambda x, y: [x * y], "neg": lambda x, _y: [-x],
         "hull": lambda x, y: [x, y],
+        "clamp": lambda x, _y: [max(b[0], min(x, b[1]))],
     }[op]
+    if op == "clamp":
+        ys = [0]
     values = [v for x in xs for y in ys for v in image(x, y)]
     return make(width, min(values), max(values))

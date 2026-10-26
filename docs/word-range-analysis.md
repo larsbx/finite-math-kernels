@@ -20,6 +20,7 @@ public information: a range for every input.
 | `wrap_word(x, w)` | the representative of `x mod 2^w` in `W_w`, exact for every 64-bit `x` |
 | `WordRange(w, lo, hi)` | `[lo, hi] ⊆ W_w`, rejected unless `lo <= hi` and both lie in `W_w` |
 | `add`, `sub`, `mul`, `neg`, `hull` | the natural interval extension (Moore 1966) over `Z`, rejected unless the result lies in `W_w` |
+| `clamp(bounds)` | the image of `x ↦ max(lo, min(x, hi))`: exactly `[clamp(a), clamp(b)]` by monotonicity, and inside `bounds` whatever the operand |
 
 For accepted ranges `A`, `B` and an operation `∘`,
 
@@ -32,6 +33,11 @@ range is sticky: every operation on it is rejected. Mixing widths is rejected.
 Nothing raises (the `finite_exact` convention apart from `checked_int`).
 Since `|bound| <= 2^31`, every bound product fits a 64-bit `Int`, so a
 rejection means exactly "leaves the word".
+
+Clamping is what makes a declared range enforceable on data nobody vouches
+for: a `w`-bit ciphertext holds some value of `W_w`, and `W_w.clamp([lo, hi])`
+is `[lo, hi]`, so a homomorphic `min`/`max` (which cannot overflow) establishes
+the range instead of assuming it.
 
 ## What the module does not claim
 
@@ -58,6 +64,6 @@ pixi run test-word-range      # the Mojo kernel replays every row exactly
 ```
 
 Rows are tab-separated: `make W LO HI RESULT`, `wrap W X RESULT`, and
-`range OP W A B RESULT`, where a range is `LO,HI` or `refused`, and `B` is `-`
-for `neg`. Both tasks are part of `pixi run test`. Consumers replay the file
-byte-for-byte and pin it by SHA-256.
+`range OP W A B RESULT`, where a range is `LO,HI` or `refused`, `B` is `-` for
+`neg`, and for `clamp` `B` is the bounds. Both tasks are part of
+`pixi run test`. Consumers replay the file byte-for-byte and pin it by SHA-256.
