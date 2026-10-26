@@ -69,7 +69,7 @@
       "relation": "authored"
     },
     "README.md": {
-      "blob": "1e1f3a3874a52521e77d3ff97590c4ee56dde0ac",
+      "blob": "02af5fae7d439d3e95c2ca3d5f90f7449afc2420",
       "relation": "authored"
     },
     "conformance/certified_records_v1.txt": {
@@ -170,6 +170,10 @@
       "blob": "ac459b6280c847831c3f274831cfe1b8fed4bfe5",
       "generator": "tools/make_vectors.py",
       "relation": "generated"
+    },
+    "conformance/word_range_v1.txt": {
+      "blob": "8854fbf19cbb8dfdfe5db0a7e77b6c3739194ef0",
+      "relation": "authored"
     },
     "docs/audit/CONSOLIDATION_PROVENANCE.md": {
       "blob": "34d52b9cd92ca1d8d40f508e7edc8d9fbc9301e5",
@@ -335,6 +339,10 @@
     },
     "docs/weighted-cycle-gain-research-scaffold.md": {
       "blob": "4dae1c37a8b4bf4225fd48c9a2ca5cf5df8b8503",
+      "relation": "authored"
+    },
+    "docs/word-range-analysis.md": {
+      "blob": "c06739ae53b2d706b264b6bd2e1fbec2b43a3efe",
       "relation": "authored"
     },
     "experiments/frontier/FrontierCensus.cfg": {
@@ -526,7 +534,7 @@
       "relation": "authored"
     },
     "kernel/finite_exact/__init__.mojo": {
-      "blob": "e197d9cb1b42117512f6e80f5edb2d72782f8c07",
+      "blob": "3a855e20707431d75196543df9b00ec49325d503",
       "relation": "modified",
       "source": "finite_exact",
       "source_blob": "113139f4e0f1ecce72126472bb0f7ea5ef239fe4",
@@ -584,6 +592,10 @@
     "kernel/finite_exact/rational.mojo": {
       "blob": "eca0fd2d1a097b629afd8faeaa286562df572329",
       "relation": "facade"
+    },
+    "kernel/finite_exact/word_range.mojo": {
+      "blob": "2720fa20d8cb1bfaecebdd0e538924a8143c2d05",
+      "relation": "authored"
     },
     "kernel/finite_field_orbit/__init__.mojo": {
       "blob": "9c7082d35d900cda58fcec5819f21e49dcd746aa",
@@ -1186,7 +1198,7 @@
       "relation": "authored"
     },
     "pixi.toml": {
-      "blob": "1995a0d5b7faf8afe51ed0e5b0374f698d8051f8",
+      "blob": "5152f316a9e37b449986e89f100ba9ca8d3001db",
       "relation": "authored"
     },
     "policy/estate-audits/0833929ed82d42cf3674a1565681625a9622827b.py": {
@@ -1254,6 +1266,10 @@
     },
     "reference/tuning_reference.py": {
       "blob": "7c5f7c470416d6749880159dbaba20e579f222c0",
+      "relation": "authored"
+    },
+    "reference/word_range_reference.py": {
+      "blob": "75b4a8ac0092dbcd32c3aeb46dd2f28da89ee718",
       "relation": "authored"
     },
     "schemas/gram_geometry_contract_v1.json": {
@@ -1449,6 +1465,10 @@
       "source": "finite_exact",
       "source_blob": "104f44c18f72b320f5c1a5357b51fd1a6ed0ce33",
       "source_path": "tests/test_public_boundary.py"
+    },
+    "tests/finite_exact/test_word_range.mojo": {
+      "blob": "a0dc735e31d4949c30eee17a131a67f394b29c20",
+      "relation": "authored"
     },
     "tests/finite_field_orbit/census_sums.bend": {
       "blob": "7ccfa0b723e9c1f5d9603b85afffe38e9714f217",
@@ -2008,6 +2028,10 @@
       "source": "finite_proof_records",
       "source_blob": "dc86359eff444feb288cb63e35dad6b5849f9869",
       "source_path": "tools/make_vectors.py"
+    },
+    "tools/make_word_range_vectors.py": {
+      "blob": "6a92005f6a8a131cdbfd4f835340948c0162e7ad",
+      "relation": "authored"
     },
     "tools/polyglot_envelope/__init__.py": {
       "blob": "6b9ce01b9a4257818e1527d6a65e2eb79ca3252d",
