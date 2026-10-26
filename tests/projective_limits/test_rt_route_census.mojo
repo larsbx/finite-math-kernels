@@ -24,15 +24,15 @@ def direction6(label: Int) -> List[Fp[5]]:
     var half = Fp[5](1) / Fp[5](2)
     if label < 4:
         v[label] = Fp[5](1)
-        v[label + 4] = half
+        v[label + 4] = half.copy()
     elif label == 4:
         v[0] = Fp[5](1)
         v[4] = Fp[5](-3)  # -1/2 over F5 = 2
     else:
         v[2] = Fp[5](1)
         v[3] = Fp[5](1)
-        v[6] = half
-        v[7] = half
+        v[6] = half.copy()
+        v[7] = half.copy()
     return v^
 
 
