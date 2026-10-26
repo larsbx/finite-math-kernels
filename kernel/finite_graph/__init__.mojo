@@ -9,3 +9,7 @@
 #
 # The package computes finite graph facts. It assigns no meaning to a vertex,
 # an edge, or a component; that is the consumer's.
+
+#   permutohedral_cells  Exact integer ordered-partition P_n face poset,
+#                  immediate ordered facets, oriented signed incidences,
+#                  bounded P2-P6 cellular chain checks (no real geometry).
