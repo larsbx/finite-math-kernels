@@ -144,3 +144,13 @@ supply an independent exact oracle.
 The literature for these elementary calculations is standard quadratic
 form, finite geometry and batch-field arithmetic; any originality claim
 requires a separate bounded prior-art check and human-reviewed evidence.
+
+## 7. Downstream tensor-direction and training-route experiment (not a kernel feature)
+
+The research prototype in [tensor-multiplication-research](https://github.com/larsbx/tensor-multiplication-research/blob/main/research/training-route-audit-experiment.md) uses exact rational quadrance, guarded projective spread, and exterior-rank Gram determinants to compare alternative **training update schedules**. Its mathematical direction adapter is parameterized: rank 1 uses an update displacement, while rank 2 uses recorded factor spans, with a separate check that the factors reconstruct the displacement.
+
+**Ownership boundary:** the training-state graph, optimizer updates, probabilistic schedule semantics, direction-adapter selection, local diamond policy, certificate format, and higher-cell interpretation all belong to the research consumer. This library owns only reusable **field/ring arithmetic**, existing guarded RT operations, and future proven/accepted exterior Gram kernels. Its current `gram_geometry` and `hyperbolic_rt` functions are not by themselves an optimizer verifier.
+
+The research prototype distinguishes an exact commuting diamond (`U_j(U_i(A))=U_i(U_j(A))`) from a **bounded local discrepancy**, even when both direction spreads pass. The latter is *not* a topological 2-cell, route equivalence proof, or certificate of LLM training correctness. The quadratic spread squares its pairing and cannot distinguish antiparallel directions without an additional orientation-sensitive policy.
+
+Any subsequent Mojo addition must pass: (1) exact rational and finite-field domain contracts; (2) nonzero Gram/denominator guards; (3) factor reconstruction and rank checking; (4) independent Python/Mojo conformance vectors including noncommuting and null negative controls; and (5) field-correct threshold policy (ordered comparisons over `Q`, not `Fp`). Move no consumer-specific optimizer or probability logic into shared math kernels. A documented experiment is not evidence of a merged production Mojo implementation.
