@@ -31,7 +31,7 @@ def affine_step8[K: ExactField](
     var n = norm8[K](offset)
     if not K.accepted(n) or K.is_zero(n):
         return rejected8[K]()
-    var coordinate_value = state[coordinate]
+    var coordinate_value = state[coordinate].copy()
     var amplitude = K.add(K.one(), K.mul(gain, coordinate_value))
     var first = add8[K](state, scale8[K](amplitude, offset))
     return add8[K](first, scale8[K](coordinate_value, shear))
