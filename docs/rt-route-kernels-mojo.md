@@ -25,6 +25,8 @@ This **reuses** `hyperbolic_rt.mojo` and `gram_geometry.mojo`. Scalar pairs are 
 - Guarded rank-two Grassmann basis changes, null/degenerate frame refusal and invalid probe refusal.
 - F5 and F7 specialization using the canonical `FpField[p]` implementation.
 
+A second Mojo program, `tests/projective_limits/test_rt_route_census.mojo`, exhaustively constructs all **720 six-event permutations** and replays their **1800 adjacent-swap contexts** at actual prefix states. It tests F5 frozen translations (1800 equal), scalar state coupling (1680 equal), a nonzero isotropic residual model (1680 equal with 120 nonzero-null residuals), and rank-two geometric gating on all 1800 frozen updates. This is a bounded independent Mojo differential check against the existing Python consumer experiment, **not** a signed receipt parser or P6 cellular homology port.
+
 Mojo CI evidence must be taken from an actually run workflow. A test written in a PR does not by itself establish compilation or success.
 
 ## What explicitly remains outside upstream mathematical authority
