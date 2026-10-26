@@ -189,7 +189,7 @@ def determinant(matrix: List[List[Int]]) -> Int:
             for j in range(i + 1, n):
                 if p[i] > p[j]:
                     inversions += 1
-        var term = -1 if inversions % 2 else 1
+        var term = -1 if inversions % 2 != 0 else 1
         for i in range(n):
             term *= matrix[i][p[i]]
         total += term
