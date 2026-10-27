@@ -27,3 +27,6 @@
 # certifies nonexistence of a limit; a search that finds none is inconclusive.
 #   gram_geometry  exact Gram/exterior minors, faithful planarity guards,
 #                  normalized Gram ratios and tangent-line degeneracy.
+
+#   grassmann_k_spread  Exact bounded k=1..4 nondegenerate plane Gram spread;
+#                   basis invariant, finite-field guarded and independent of R.
