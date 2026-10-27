@@ -27,3 +27,7 @@
 # certifies nonexistence of a limit; a search that finds none is inconclusive.
 #   gram_geometry  exact Gram/exterior minors, faithful planarity guards,
 #                  normalized Gram ratios and tangent-line degeneracy.
+
+#   rt_route  ExactField split-eight affine update steps, local whole-vector
+#             swap residual/equality, and guarded ray/2-plane spread gates.
+#             These do not authorize higher permutohedral cells by themselves.
