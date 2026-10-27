@@ -606,7 +606,7 @@
       "relation": "authored"
     },
     "kernel/finite_graph/__init__.mojo": {
-      "blob": "74259f675b30ab317de1461a8a5122d430fc05b2",
+      "blob": "a2d3779b404272c8ebf6c337cd9645cf53e406dc",
       "relation": "authored"
     },
     "kernel/finite_graph/scc.mojo": {
@@ -1198,7 +1198,7 @@
       "relation": "authored"
     },
     "pixi.toml": {
-      "blob": "546f023c03915fb73494b62d3504f3991020c285",
+      "blob": "6c4d6f9658f10472c3f8791c608b8cda377d7606",
       "relation": "authored"
     },
     "policy/estate-audits/0833929ed82d42cf3674a1565681625a9622827b.py": {
@@ -2079,13 +2079,25 @@
       "source_blob": "76ddda76a2cc3dea8221ac8b8192fe3d7e4f14c4",
       "source_path": "tools/check_vendored_sync.py"
     },
+    "docs/mojo-permutohedral-cell-kernel.md": {
+      "relation": "authored",
+      "blob": "48d0be9f2324bbf02e9d840759961c7581119b3b"
+    },
     "docs/rt-route-kernels-mojo.md": {
       "relation": "authored",
       "blob": "0a1b0667391673385780bc8c1226993622c5a162"
     },
+    "kernel/finite_graph/permutohedral_cells.mojo": {
+      "relation": "authored",
+      "blob": "ccb93e93dcc437ab49cb3fb7c86fca28df204bd5"
+    },
     "kernel/projective_limits/rt_route.mojo": {
       "relation": "authored",
       "blob": "ab7961189aabc8a1f0c58451e309e375bc92fbb0"
+    },
+    "tests/finite_graph/test_permutohedral_cells.mojo": {
+      "relation": "authored",
+      "blob": "85487f8b4bb36decc255900aa6e348673724c023"
     },
     "tests/projective_limits/test_rt_route.mojo": {
       "relation": "authored",
