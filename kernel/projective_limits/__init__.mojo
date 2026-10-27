@@ -31,3 +31,6 @@
 #   rt_route  ExactField split-eight affine update steps, local whole-vector
 #             swap residual/equality, and guarded ray/2-plane spread gates.
 #             These do not authorize higher permutohedral cells by themselves.
+
+#   grassmann_k_spread  Exact bounded k=1..4 nondegenerate plane Gram spread;
+#                   basis invariant, finite-field guarded and independent of R.

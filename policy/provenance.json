@@ -823,7 +823,7 @@
       "relation": "authored"
     },
     "kernel/projective_limits/__init__.mojo": {
-      "blob": "c2b3c47644bf9b8a483c4ef7bc4cb3689f9b4710",
+      "blob": "ac41f934da51333345ab6e87df2f22253dd05d27",
       "relation": "authored"
     },
     "kernel/projective_limits/gram_geometry.mojo": {
@@ -1198,7 +1198,7 @@
       "relation": "authored"
     },
     "pixi.toml": {
-      "blob": "546f023c03915fb73494b62d3504f3991020c285",
+      "blob": "8b85a5ad537429fc6695c6bebaa9c12c86ac3ca2",
       "relation": "authored"
     },
     "policy/estate-audits/0833929ed82d42cf3674a1565681625a9622827b.py": {
@@ -2094,6 +2094,18 @@
     "tests/projective_limits/test_rt_route_census.mojo": {
       "relation": "authored",
       "blob": "15d32d0651b61dc01c1f980f8562390240a211f8"
+    },
+    "kernel/projective_limits/grassmann_k_spread.mojo": {
+      "relation": "authored",
+      "blob": "685977b0e29cd459e121e780fee6a9ed072eb7b7"
+    },
+    "tests/projective_limits/test_grassmann_k_spread.mojo": {
+      "relation": "authored",
+      "blob": "22a9fa1af2828203633cb9cf9415936049da175b"
+    },
+    "docs/exact-grassmann-k-spread.md": {
+      "relation": "authored",
+      "blob": "a7960945753dc37efc36ba8c0dce1659f8867ba2"
     }
   },
   "format": "finite-math-kernels provenance 1",
