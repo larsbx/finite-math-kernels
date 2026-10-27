@@ -823,7 +823,7 @@
       "relation": "authored"
     },
     "kernel/projective_limits/__init__.mojo": {
-      "blob": "b1f3804f2e06f25aee97ec31caa110de16f573d9",
+      "blob": "ac41f934da51333345ab6e87df2f22253dd05d27",
       "relation": "authored"
     },
     "kernel/projective_limits/gram_geometry.mojo": {
@@ -1198,7 +1198,7 @@
       "relation": "authored"
     },
     "pixi.toml": {
-      "blob": "5cd2229b9f72cca1496f6c94d19b735c224e03fa",
+      "blob": "8b85a5ad537429fc6695c6bebaa9c12c86ac3ca2",
       "relation": "authored"
     },
     "policy/estate-audits/0833929ed82d42cf3674a1565681625a9622827b.py": {
@@ -2078,6 +2078,22 @@
       "source": "finite_mandelbrot_research",
       "source_blob": "76ddda76a2cc3dea8221ac8b8192fe3d7e4f14c4",
       "source_path": "tools/check_vendored_sync.py"
+    },
+    "docs/rt-route-kernels-mojo.md": {
+      "relation": "authored",
+      "blob": "0a1b0667391673385780bc8c1226993622c5a162"
+    },
+    "kernel/projective_limits/rt_route.mojo": {
+      "relation": "authored",
+      "blob": "ab7961189aabc8a1f0c58451e309e375bc92fbb0"
+    },
+    "tests/projective_limits/test_rt_route.mojo": {
+      "relation": "authored",
+      "blob": "309502acaa167cbd5e9d354bc84c7fb821cae3a3"
+    },
+    "tests/projective_limits/test_rt_route_census.mojo": {
+      "relation": "authored",
+      "blob": "15d32d0651b61dc01c1f980f8562390240a211f8"
     },
     "kernel/projective_limits/grassmann_k_spread.mojo": {
       "relation": "authored",
