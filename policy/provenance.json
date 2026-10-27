@@ -297,6 +297,10 @@
       "blob": "a47f9c013526d4167072e62f65946522a3a334eb",
       "relation": "authored"
     },
+    "docs/rt-route-kernels-mojo.md": {
+      "relation": "authored",
+      "blob": "0a1b0667391673385780bc8c1226993622c5a162"
+    },
     "docs/survey-assessment-2026-10-05.md": {
       "blob": "14ff975d4e6d4a007a141dd2fd4b2ae304e1a0f4",
       "relation": "authored"
@@ -312,6 +316,10 @@
     "docs/templates/DECISION.md": {
       "blob": "baee2329180b0fbc4d8d51b2dda7d7e440469bd9",
       "relation": "authored"
+    },
+    "docs/theorems/coxeter-gated-rt-contract.md": {
+      "relation": "authored",
+      "blob": "d2623e2429ec51042b1823e86e4d7bfdc3efffc7"
     },
     "docs/theorems/gram-minor-rt-contract.md": {
       "blob": "23bddf8a505c51184cbec878d5035ef964fad0de",
@@ -823,8 +831,12 @@
       "relation": "authored"
     },
     "kernel/projective_limits/__init__.mojo": {
-      "blob": "c2b3c47644bf9b8a483c4ef7bc4cb3689f9b4710",
+      "blob": "dbcd75214b3ec92a058c786c7d6ae9d34c3bc748",
       "relation": "authored"
+    },
+    "kernel/projective_limits/coxeter_gate.mojo": {
+      "relation": "authored",
+      "blob": "f350dcc67eaabe720cdcfd5a7fb860fffc60824b"
     },
     "kernel/projective_limits/gram_geometry.mojo": {
       "blob": "e2011c8df485b6d1620d478e5d341a7986129b59",
@@ -857,6 +869,10 @@
     "kernel/projective_limits/rotor.mojo": {
       "blob": "8e8968012623123ab8cbfa928e79eb9734e2cd8b",
       "relation": "authored"
+    },
+    "kernel/projective_limits/rt_route.mojo": {
+      "relation": "authored",
+      "blob": "ab7961189aabc8a1f0c58451e309e375bc92fbb0"
     },
     "kernel/projective_limits/spread_polynomial.mojo": {
       "blob": "fd7010030e5a0bb2eb63dcf9d6a1a362ae691586",
@@ -1198,7 +1214,7 @@
       "relation": "authored"
     },
     "pixi.toml": {
-      "blob": "546f023c03915fb73494b62d3504f3991020c285",
+      "blob": "45986bb46a8484444bedfcc5f21b81fd898a6ecf",
       "relation": "authored"
     },
     "policy/estate-audits/0833929ed82d42cf3674a1565681625a9622827b.py": {
@@ -1640,6 +1656,10 @@
       "blob": "e6ccedb5ba65fb777e0debf6915b9a542521e1c8",
       "relation": "authored"
     },
+    "tests/projective_limits/test_coxeter_gate.mojo": {
+      "relation": "authored",
+      "blob": "f39c9695266bc852e0bcc030ff8409184e27ba9c"
+    },
     "tests/projective_limits/test_field_generic.mojo": {
       "blob": "71caf7751a63f0811e9557b9c9bbf28fbf7137fa",
       "relation": "authored"
@@ -1699,6 +1719,14 @@
     "tests/projective_limits/test_rotor.mojo": {
       "blob": "1cf0c346794732c2d47a2b58a20a685605646623",
       "relation": "authored"
+    },
+    "tests/projective_limits/test_rt_route.mojo": {
+      "relation": "authored",
+      "blob": "309502acaa167cbd5e9d354bc84c7fb821cae3a3"
+    },
+    "tests/projective_limits/test_rt_route_census.mojo": {
+      "relation": "authored",
+      "blob": "15d32d0651b61dc01c1f980f8562390240a211f8"
     },
     "tests/proof_records/replay_vectors.mojo": {
       "blob": "46b956f66877379f5a87e2dd9b562e27f744f316",
@@ -2078,22 +2106,6 @@
       "source": "finite_mandelbrot_research",
       "source_blob": "76ddda76a2cc3dea8221ac8b8192fe3d7e4f14c4",
       "source_path": "tools/check_vendored_sync.py"
-    },
-    "docs/rt-route-kernels-mojo.md": {
-      "relation": "authored",
-      "blob": "0a1b0667391673385780bc8c1226993622c5a162"
-    },
-    "kernel/projective_limits/rt_route.mojo": {
-      "relation": "authored",
-      "blob": "ab7961189aabc8a1f0c58451e309e375bc92fbb0"
-    },
-    "tests/projective_limits/test_rt_route.mojo": {
-      "relation": "authored",
-      "blob": "309502acaa167cbd5e9d354bc84c7fb821cae3a3"
-    },
-    "tests/projective_limits/test_rt_route_census.mojo": {
-      "relation": "authored",
-      "blob": "15d32d0651b61dc01c1f980f8562390240a211f8"
     }
   },
   "format": "finite-math-kernels provenance 1",

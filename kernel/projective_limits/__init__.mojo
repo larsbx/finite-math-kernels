@@ -31,3 +31,6 @@
 #   rt_route  ExactField split-eight affine update steps, local whole-vector
 #             swap residual/equality, and guarded ray/2-plane spread gates.
 #             These do not authorize higher permutohedral cells by themselves.
+
+#   coxeter_gate  Source-permutation-specific spread gate checks for square and
+#                 hexagon boundary edges. Does not assert effect equality.
