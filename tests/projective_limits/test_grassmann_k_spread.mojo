@@ -65,7 +65,7 @@ def check_k_planes[p: Int64]() raises:
     assert_true(k_plane_spread8[FpField[p]](u_changed, v_changed) == value)
 
     var gate = List[Fp[p]]()
-    gate.append(expected)
+    gate.append(expected.copy())
     assert_true(guarded_k_plane_spread8[FpField[p]](u, v, gate))
     var rejects = List[Fp[p]]()
     rejects.append(Fp[p](0))
