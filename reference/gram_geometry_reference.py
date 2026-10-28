@@ -71,3 +71,26 @@ def planar_defect(p: int, x: tuple[int, ...], y: tuple[int, ...], z: tuple[int, 
         return None
     a,b,c = ss
     return ((a+b+c)**2 - 2*(a*a+b*b+c*c) - 4*a*b*c) % p
+
+
+
+def unrestricted_defect(p: int, x: tuple[int, ...],
+                        y: tuple[int, ...], z: tuple[int, ...]) -> int | None:
+    """Triple-spread defect WITHOUT the planar rank guard."""
+    ss = (spread(p, x, y), spread(p, y, z), spread(p, z, x))
+    if any(s is None for s in ss):
+        return None
+    a, b, c = ss
+    return ((a+b+c)**2 - 2*(a*a+b*b+c*c) - 4*a*b*c) % p
+
+
+def gram_predicted_defect(p: int, x: tuple[int, ...],
+                          y: tuple[int, ...], z: tuple[int, ...]) -> int | None:
+    """Independent Gram-side expression, not the spread expansion."""
+    a, b, c = norm(p, x), norm(p, y), norm(p, z)
+    if a == 0 or b == 0 or c == 0:
+        return None
+    u, v, w = gram(p, x, y), gram(p, y, z), gram(p, z, x)
+    d = gram3(p, x, y, z)
+    product = a*b*c % p
+    return (d * (4*u*v*w-d) * pow(product*product % p, -1, p)) % p

@@ -150,3 +150,23 @@ unrestricted proof. Existing RT and Cayley results retain their imported
 or independently reviewed statuses. Future Aschbacher / tensor-stabilizer /
 spread-controlled complex use may consume these exact rank and Gram tools
 without acquiring a new interpretation of them.
+
+
+## 6. Unrestricted three-ray Gram defect (separate guarded operation)
+
+The **planar** function above retains its coordinate-rank guard. The new
+[three-ray Gram-defect contract](three-ray-gram-defect.md) records the
+field-generic cleared-denominator identity
+`(N(x)N(y)N(z))² * triple_defect =
+  detGram3 * (4*<x,y>*<y,z>*<z,x> - detGram3)`
+on the non-null domain. The associated `unrestricted_triple_spread_defect8`
+and independent `gram_triple_spread_defect8` functions agree without a
+planarity assumption, but **their shared value is not always zero**.
+The contract includes a nonplanar, nonsingular-Gram *zero-defect*
+example, so a vanishing triple-defect test must never replace the 56
+coordinate 3-minors used by `rank_le_two8`.
+
+Wildberger (2017), §“Cross matrices, cross and det-cross”, already
+develops higher-rank normalized-trace cross/spread and determinant cross
+(doi:10.31896/k.21.2). This prior art is explicit in the companion note;
+no novelty claim follows from implementing these elementary identities.

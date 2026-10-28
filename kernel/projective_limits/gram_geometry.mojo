@@ -131,3 +131,49 @@ def planar_triple_spread_defect8[K: ExactField](
     if not (K.accepted(sxy) and K.accepted(syz) and K.accepted(szx)):
         return K.rejected()
     return triple_spread_defect[K](sxy, syz, szx)
+
+
+def unrestricted_triple_spread_defect8[K: ExactField](
+    x: List[K.Element], y: List[K.Element], z: List[K.Element]
+) -> K.Element:
+    """The triple-spread polynomial on ANY non-null triple, not just planar.
+
+    This is a defect, not a zero identity for independent directions.
+    A null ray or malformed field element is rejected.
+    """
+    var sxy = spread8[K](x, y)
+    var syz = spread8[K](y, z)
+    var szx = spread8[K](z, x)
+    if not (K.accepted(sxy) and K.accepted(syz) and K.accepted(szx)):
+        return K.rejected()
+    return triple_spread_defect[K](sxy, syz, szx)
+
+
+def gram_triple_spread_defect8[K: ExactField](
+    x: List[K.Element], y: List[K.Element], z: List[K.Element]
+) -> K.Element:
+    """Independent Gram-side expression for the unrestricted defect.
+
+    D*(4*u*v*w-D)/(N(x)*N(y)*N(z))^2, where D is the
+    3x3 half-polarization Gram determinant and u,v,w are its
+    off-diagonal entries. Works for nonplanar, Gram-null and planar
+    non-null triples; no coordinate-rank guard is imposed.
+    """
+    var nx = norm8[K](x)
+    var ny = norm8[K](y)
+    var nz = norm8[K](z)
+    if not (K.accepted(nx) and K.accepted(ny) and K.accepted(nz)):
+        return K.rejected()
+    if K.is_zero(nx) or K.is_zero(ny) or K.is_zero(nz):
+        return K.rejected()
+    var u = gram_pair8[K](x, y)
+    var v = gram_pair8[K](y, z)
+    var w = gram_pair8[K](z, x)
+    var d = gram3_determinant8[K](x, y, z)
+    if not (K.accepted(u) and K.accepted(v) and K.accepted(w)
+            and K.accepted(d)):
+        return K.rejected()
+    var abc = K.mul(K.mul(nx, ny), nz)
+    var fouruvw = K.mul(K.from_int(4), K.mul(K.mul(u, v), w))
+    var numerator = K.mul(d, K.sub(fouruvw, d))
+    return K.div(numerator, K.mul(abc, abc))
