@@ -69,7 +69,7 @@
       "relation": "authored"
     },
     "README.md": {
-      "blob": "02af5fae7d439d3e95c2ca3d5f90f7449afc2420",
+      "blob": "e0a88e1b07e62ae69816e11e04bf369e8e53c1a0",
       "relation": "authored"
     },
     "conformance/certified_records_v1.txt": {
@@ -172,7 +172,7 @@
       "relation": "generated"
     },
     "conformance/word_range_v1.txt": {
-      "blob": "b3ab06225378acf00d31e88a9b3c5e48cbbc3f27",
+      "blob": "a87cbcfc1ffa6901e4586c6b5eeabde83238da72",
       "relation": "authored"
     },
     "docs/audit/CONSOLIDATION_PROVENANCE.md": {
@@ -354,7 +354,7 @@
       "relation": "authored"
     },
     "docs/word-range-analysis.md": {
-      "blob": "403efdc306bebc81baa690b2d2b22f0243c4530e",
+      "blob": "59351291fd45d2a20e1d215f0dbe55397278ee14",
       "relation": "authored"
     },
     "experiments/frontier/FrontierCensus.cfg": {
@@ -546,7 +546,7 @@
       "relation": "authored"
     },
     "kernel/finite_exact/__init__.mojo": {
-      "blob": "3a855e20707431d75196543df9b00ec49325d503",
+      "blob": "e14a89e00bb4b37dda4267392334ee68033d8cdf",
       "relation": "modified",
       "source": "finite_exact",
       "source_blob": "113139f4e0f1ecce72126472bb0f7ea5ef239fe4",
@@ -606,7 +606,7 @@
       "relation": "facade"
     },
     "kernel/finite_exact/word_range.mojo": {
-      "blob": "052d92474a50d1556b5ddc6bfea707b7ec8a5a3f",
+      "blob": "cc5f74c8299a96e634c8ff0146c4315fc495b898",
       "relation": "authored"
     },
     "kernel/finite_field_orbit/__init__.mojo": {
@@ -1289,7 +1289,7 @@
       "relation": "authored"
     },
     "reference/word_range_reference.py": {
-      "blob": "fc4eae9d81a7658b14220ed80fe1e86ff4514e20",
+      "blob": "ce40a0f65f50f389ccf20684daab15a7a9c41d12",
       "relation": "authored"
     },
     "schemas/gram_geometry_contract_v1.json": {
@@ -1487,7 +1487,7 @@
       "source_path": "tests/test_public_boundary.py"
     },
     "tests/finite_exact/test_word_range.mojo": {
-      "blob": "2a494ac4c32da95297b97569579fe8dc5e27c17e",
+      "blob": "71abe68a5e070825cce77489215c4b945c308f18",
       "relation": "authored"
     },
     "tests/finite_field_orbit/census_sums.bend": {
@@ -2066,7 +2066,7 @@
       "source_path": "tools/make_vectors.py"
     },
     "tools/make_word_range_vectors.py": {
-      "blob": "6a92005f6a8a131cdbfd4f835340948c0162e7ad",
+      "blob": "cad5ba3d72ea70dfd56839c84d20fd9fe6921283",
       "relation": "authored"
     },
     "tools/polyglot_envelope/__init__.py": {

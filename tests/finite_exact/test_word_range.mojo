@@ -48,6 +48,28 @@ def test_products_at_the_word_edge() raises:
     assert_equal(sq.hi, 2147395600)
 
 
+def test_the_64_bit_word_is_int() raises:
+    # FheInt64: the word is Int itself, so wrapping is the identity and a
+    # bound that leaves Int is refused, never wrapped.
+    assert_equal(word_min(64), Int.MIN)
+    assert_equal(word_max(64), Int.MAX)
+    assert_equal(wrap_word(Int.MIN, 64), Int.MIN)
+    assert_true(WordRange.word(64).accepted())
+    assert_false(WordRange.point(64, Int.MIN).neg().accepted())
+    assert_false(WordRange.point(64, Int.MIN).mul(WordRange.point(64, -1)).accepted())
+    assert_false(WordRange.point(64, Int.MAX).add(WordRange.point(64, 1)).accepted())
+    # Bounds that cancel are exact: no corner leaves Int.
+    var sum = WordRange.point(64, Int.MIN).add(WordRange.point(64, Int.MAX))
+    assert_equal(sum.lo, -1)
+    assert_equal(sum.hi, -1)
+    # floor(sqrt(2^63 - 1)) = 3037000499: its square fits, the next does not.
+    var root = WordRange(64, -3037000499, 3037000499)
+    var sq = root.mul(root)
+    assert_true(sq.accepted())
+    assert_equal(sq.hi, 9223372030926249001)
+    assert_false(WordRange(64, 0, 3037000500).mul(WordRange(64, 0, 3037000500)).accepted())
+
+
 def test_clamp_holds_any_operand() raises:
     var c = WordRange.word(32).clamp(WordRange(32, 0, 1000000))
     assert_equal(c.lo, 0)
@@ -112,7 +134,8 @@ def main() raises:
     test_wrap_is_tfhe_overflow()
     test_refusal_is_sticky()
     test_products_at_the_word_edge()
+    test_the_64_bit_word_is_int()
     test_clamp_holds_any_operand()
     var n = replay()
-    assert_true(n > 1000)
-    print(n, "word-range vectors replayed; 5 edge tests passed.")
+    assert_true(n > 2000)
+    print(n, "word-range vectors replayed; 6 edge tests passed.")
