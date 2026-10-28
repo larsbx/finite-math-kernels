@@ -2,8 +2,8 @@
 
 A machine word of width `w` holds `[word_min(w), word_max(w)] =
 [-2^(w-1), 2^(w-1) - 1]` and computes modulo `2^w`: `wrap_word` is that
-reduction, the arithmetic of a homomorphic integer such as TFHE `FheInt32`,
-which cannot observe an overflow. `WordRange` is the natural interval
+reduction, the arithmetic of a homomorphic integer such as TFHE `FheInt32`
+or `FheInt64`, which cannot observe an overflow. `WordRange` is the natural interval
 extension over Z (Moore, *Interval Analysis*, 1966) of `+`, `-`, `*`,
 negation, the hull and clamping, with every result refused unless it lies
 inside the word.
@@ -14,13 +14,18 @@ ranges, and lies inside the word. That wrapped evaluation then equals exact
 evaluation (`wrap_word(x, w) == x` on the word, and `wrap_word` is a ring
 homomorphism Z -> Z/2^w) is the consumer's theorem, not this module's.
 
-Widths are `1 <= w <= 32`, so every bound product fits a 64-bit `Int` and
-a refusal means exactly "leaves the word", never "the enclosure overflowed".
-Like the rest of `finite_exact` apart from `checked_int`, nothing here
-raises: invalid input and refused results carry a sticky `rejected` flag.
+Widths are `1 <= w <= 64`, so every word lies inside the 64-bit `Int`.
+Bounds are combined with `checked_int`: a sum, difference or product of
+bounds that leaves `Int` leaves every word, so the result it bounds is
+refused, and a refusal still means exactly "leaves the word", never "the
+enclosure overflowed". Like the rest of `finite_exact` apart from
+`checked_int`, nothing here raises: invalid input and refused results carry
+a sticky `rejected` flag.
 """
 
-comptime WORD_RANGE_MAX_WIDTH = 32
+from finite_exact.checked_int import checked_add, checked_mul, checked_neg, checked_sub
+
+comptime WORD_RANGE_MAX_WIDTH = 64
 
 
 def word_width_ok(width: Int) -> Bool:
@@ -29,20 +34,23 @@ def word_width_ok(width: Int) -> Bool:
 
 def word_min(width: Int) -> Int:
     """`-2^(width-1)`; meaningful when `word_width_ok(width)`."""
-    return -(1 << (width - 1))
+    return Int.MIN if width == 64 else -(1 << (width - 1))
 
 
 def word_max(width: Int) -> Int:
     """`2^(width-1) - 1`; meaningful when `word_width_ok(width)`."""
-    return (1 << (width - 1)) - 1
+    return Int.MAX if width == 64 else (1 << (width - 1)) - 1
 
 
 def wrap_word(x: Int, width: Int) -> Int:
     """The representative of `x mod 2^width` in the signed word.
 
-    Exact for every 64-bit `x`: the residue is taken with a non-negative
-    remainder before re-centring, so no intermediate leaves `Int`.
+    Exact for every 64-bit `x`: the 64-bit word is `Int` itself, and below it
+    the residue is taken with a non-negative remainder before re-centring, so
+    no intermediate leaves `Int`.
     """
+    if width == 64:
+        return x
     var modulus = 1 << width
     var r = x % modulus
     if r < 0:
@@ -96,27 +104,44 @@ struct WordRange(Copyable, Writable):
     def add(self, other: Self) -> Self:
         if not self._joint(other):
             return Self.refused(self.width)
-        return Self(self.width, self.lo + other.lo, self.hi + other.hi)
+        try:
+            return Self(
+                self.width, checked_add(self.lo, other.lo), checked_add(self.hi, other.hi)
+            )
+        except:
+            return Self.refused(self.width)
 
     def sub(self, other: Self) -> Self:
         if not self._joint(other):
             return Self.refused(self.width)
-        return Self(self.width, self.lo - other.hi, self.hi - other.lo)
+        try:
+            return Self(
+                self.width, checked_sub(self.lo, other.hi), checked_sub(self.hi, other.lo)
+            )
+        except:
+            return Self.refused(self.width)
 
     def neg(self) -> Self:
         if self.rejected:
             return Self.refused(self.width)
-        return Self(self.width, -self.hi, -self.lo)
+        try:
+            return Self(self.width, checked_neg(self.hi), checked_neg(self.lo))
+        except:
+            return Self.refused(self.width)
 
     def mul(self, other: Self) -> Self:
-        """The four bound products; each fits `Int` since `|bound| <= 2^31`."""
+        """The hull of the four bound products. Each product is a value the
+        result takes, so one that leaves `Int` leaves the word: refused."""
         if not self._joint(other):
             return Self.refused(self.width)
-        var a = self.lo * other.lo
-        var b = self.lo * other.hi
-        var c = self.hi * other.lo
-        var d = self.hi * other.hi
-        return Self(self.width, min(min(a, b), min(c, d)), max(max(a, b), max(c, d)))
+        try:
+            var a = checked_mul(self.lo, other.lo)
+            var b = checked_mul(self.lo, other.hi)
+            var c = checked_mul(self.hi, other.lo)
+            var d = checked_mul(self.hi, other.hi)
+            return Self(self.width, min(min(a, b), min(c, d)), max(max(a, b), max(c, d)))
+        except:
+            return Self.refused(self.width)
 
     def hull(self, other: Self) -> Self:
         """The least range containing both: an oblivious select's result."""

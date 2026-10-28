@@ -11,13 +11,13 @@ from __future__ import annotations
 
 from itertools import product
 
-MAX_WIDTH = 32
+MAX_WIDTH = 64
 Range = tuple[int, int] | None  # None: refused
 
 
 def bounds(width: int) -> tuple[int, int]:
     if type(width) is not int or not 1 <= width <= MAX_WIDTH:
-        raise ValueError("word width outside 1..32")
+        raise ValueError("word width outside 1..64")
     return -(1 << (width - 1)), (1 << (width - 1)) - 1
 
 

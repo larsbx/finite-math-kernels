@@ -13,7 +13,7 @@
 #             enclosures (spec section 2.5); a refused box is never measured.
 #   integer_gcd      gcd on machine Int and Int64.
 #   checked_int      machine-Int add, sub, mul, neg, abs that raise on overflow.
-#   word_range       closed integer ranges inside a signed w-bit word (w <= 32):
+#   word_range       closed integer ranges inside a signed w-bit word (w <= 64):
 #             the natural interval extension of + - * neg and hull, refused
 #             outside the word, and the two's-complement reduction wrap_word.
 #   exact_decimal    base-ten rendering of BigZ and Q.
