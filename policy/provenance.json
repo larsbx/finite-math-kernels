@@ -298,8 +298,8 @@
       "relation": "authored"
     },
     "docs/rt-route-kernels-mojo.md": {
-      "relation": "authored",
-      "blob": "0a1b0667391673385780bc8c1226993622c5a162"
+      "blob": "0a1b0667391673385780bc8c1226993622c5a162",
+      "relation": "authored"
     },
     "docs/survey-assessment-2026-10-05.md": {
       "blob": "14ff975d4e6d4a007a141dd2fd4b2ae304e1a0f4",
@@ -318,15 +318,19 @@
       "relation": "authored"
     },
     "docs/theorems/coxeter-gated-rt-contract.md": {
-      "relation": "authored",
-      "blob": "d2623e2429ec51042b1823e86e4d7bfdc3efffc7"
+      "blob": "d2623e2429ec51042b1823e86e4d7bfdc3efffc7",
+      "relation": "authored"
     },
     "docs/theorems/gram-minor-rt-contract.md": {
-      "blob": "23bddf8a505c51184cbec878d5035ef964fad0de",
+      "blob": "5c8a2c802851fae4f2453e75b0cd3b86a3315ddf",
       "relation": "authored"
     },
     "docs/theorems/hyperbolic-rt-contract.md": {
       "blob": "a0903cd7ab839ca350dbf37895b51d09b882e073",
+      "relation": "authored"
+    },
+    "docs/theorems/three-ray-gram-defect.md": {
+      "blob": "bcc17f26b71206d43f38e3229d28a225cde1ca30",
       "relation": "authored"
     },
     "docs/tuning-substitutions-spec.md": {
@@ -835,11 +839,11 @@
       "relation": "authored"
     },
     "kernel/projective_limits/coxeter_gate.mojo": {
-      "relation": "authored",
-      "blob": "f350dcc67eaabe720cdcfd5a7fb860fffc60824b"
+      "blob": "f350dcc67eaabe720cdcfd5a7fb860fffc60824b",
+      "relation": "authored"
     },
     "kernel/projective_limits/gram_geometry.mojo": {
-      "blob": "e2011c8df485b6d1620d478e5d341a7986129b59",
+      "blob": "72de267985d8606297699b4bd3c4481bbd08ead9",
       "relation": "authored"
     },
     "kernel/projective_limits/hyperbolic_rt.mojo": {
@@ -871,8 +875,8 @@
       "relation": "authored"
     },
     "kernel/projective_limits/rt_route.mojo": {
-      "relation": "authored",
-      "blob": "ab7961189aabc8a1f0c58451e309e375bc92fbb0"
+      "blob": "ab7961189aabc8a1f0c58451e309e375bc92fbb0",
+      "relation": "authored"
     },
     "kernel/projective_limits/spread_polynomial.mojo": {
       "blob": "fd7010030e5a0bb2eb63dcf9d6a1a362ae691586",
@@ -1241,7 +1245,7 @@
       "relation": "authored"
     },
     "reference/gram_geometry_reference.py": {
-      "blob": "f74b8baa4635b576870c56ee8842054830e957a3",
+      "blob": "11b8432acad14796ed3520fc1b30b47d4b9972df",
       "relation": "authored"
     },
     "reference/hyperbolic_rt_reference.py": {
@@ -1657,15 +1661,15 @@
       "relation": "authored"
     },
     "tests/projective_limits/test_coxeter_gate.mojo": {
-      "relation": "authored",
-      "blob": "f39c9695266bc852e0bcc030ff8409184e27ba9c"
+      "blob": "f39c9695266bc852e0bcc030ff8409184e27ba9c",
+      "relation": "authored"
     },
     "tests/projective_limits/test_field_generic.mojo": {
       "blob": "71caf7751a63f0811e9557b9c9bbf28fbf7137fa",
       "relation": "authored"
     },
     "tests/projective_limits/test_gram_geometry.mojo": {
-      "blob": "e1b238ab385a73b9ceccc6d67da6dc93bd39485d",
+      "blob": "c4f95ea87973ccf7bc81bbe1368ff7843eb25791",
       "relation": "authored"
     },
     "tests/projective_limits/test_gram_geometry_contract_schema.py": {
@@ -1678,6 +1682,10 @@
     },
     "tests/projective_limits/test_gram_geometry_vectors.py": {
       "blob": "d65273600cea4fbe345c5165b3d25d49cf3d5574",
+      "relation": "authored"
+    },
+    "tests/projective_limits/test_gram_triple_defect_reference.py": {
+      "blob": "18fca244798a35bace1415be378ec355420ae524",
       "relation": "authored"
     },
     "tests/projective_limits/test_hyperbolic_rt.mojo": {
@@ -1721,12 +1729,12 @@
       "relation": "authored"
     },
     "tests/projective_limits/test_rt_route.mojo": {
-      "relation": "authored",
-      "blob": "309502acaa167cbd5e9d354bc84c7fb821cae3a3"
+      "blob": "309502acaa167cbd5e9d354bc84c7fb821cae3a3",
+      "relation": "authored"
     },
     "tests/projective_limits/test_rt_route_census.mojo": {
-      "relation": "authored",
-      "blob": "15d32d0651b61dc01c1f980f8562390240a211f8"
+      "blob": "15d32d0651b61dc01c1f980f8562390240a211f8",
+      "relation": "authored"
     },
     "tests/proof_records/replay_vectors.mojo": {
       "blob": "46b956f66877379f5a87e2dd9b562e27f744f316",
