@@ -16,8 +16,8 @@ Then run lean /tmp/LeanMaxDemo.lean (actual independent Lean gate).
 
 The Python tests invoke Lean only if the binary is installed. The pinned Modular toolchain does not supply Lean; passing Python tests alone does not establish a Lean-accepted theorem.
 
-## Unimplemented acceptance gates
-1. Pin a real Lean 4 toolchain and require generated-source checking in a focused hosted CI job; negative proof mutation must be rejected.
+## Acceptance gates
+1. **Authored, hosted result pending:** pinned Lean 4.35.0 focused workflow checks generated source and rejects a mutated Lean proof; verify its exact-head GitHub Actions outcome before claiming Lean acceptance.
 2. Define a compact device IR with bounded indices, canonical serialization and rejection of aliasing, overflow and malformed references.
 3. Implement Mojo CPU candidate enumeration with byte-for-byte equivalent replayable records and deterministic tests across generated corpora.
 4. Implement an opt-in Mojo/MAX GPU batch-matching kernel on a genuine GPU runner. MAX CPU threads do not count as GPU execution. Do not trust GPU output.
