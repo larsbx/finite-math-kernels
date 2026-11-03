@@ -1,0 +1,10 @@
+{
+  "atoms": ["a", "b", "c"],
+  "functions": ["f"],
+  "terms": [
+    {"atom": "a"}, {"atom": "b"}, {"atom": "c"},
+    {"fn": "f", "arg": 0}, {"fn": "f", "arg": 1}, {"fn": "f", "arg": 2}
+  ],
+  "premises": [[0, 1], [1, 2]],
+  "goal": [3, 5]
+}
