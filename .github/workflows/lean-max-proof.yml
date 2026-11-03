@@ -1,0 +1,59 @@
+name: Lean-MAX independent Lean gate
+
+on:
+  pull_request:
+    paths:
+      - "experiments/frontier/lean_max/**"
+      - "tests/frontier/test_lean_max.py"
+      - ".github/workflows/lean-max-proof.yml"
+  push:
+    branches: [main]
+    paths:
+      - "experiments/frontier/lean_max/**"
+      - "tests/frontier/test_lean_max.py"
+      - ".github/workflows/lean-max-proof.yml"
+
+jobs:
+  check-derived-proof:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean 4
+        uses: leanprover/lean-action@v1
+        with:
+          lake-package-directory: experiments/frontier/lean_max
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: false
+      - name: Generate and kernel-check the exact reconstructed proof
+        shell: bash
+        run: |
+          set -euo pipefail
+          lean --version
+          python3 experiments/frontier/lean_max/reference.py experiments/frontier/lean_max/demo.json --lean-out /tmp/LeanMaxDemo.lean > /tmp/LeanMaxDemo.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          result = json.loads(Path("/tmp/LeanMaxDemo.json").read_text())
+          if result["status"] != "derived":
+              raise SystemExit("solver did not derive sample")
+          if Path("/tmp/LeanMaxDemo.lean").read_text() != Path("experiments/frontier/lean_max/Demo.lean").read_text():
+              raise SystemExit("tracked fixture diverged from generated Lean")
+          PY
+          lean /tmp/LeanMaxDemo.lean
+      - name: Lean must reject an invalid reconstructed proof
+        shell: bash
+        run: |
+          set -euo pipefail
+          sed 's/congrArg f p2/Eq.refl (f a)/' /tmp/LeanMaxDemo.lean > /tmp/LeanMaxForged.lean
+          if cmp -s /tmp/LeanMaxForged.lean /tmp/LeanMaxDemo.lean; then
+            echo "negative mutation was not applied" >&2
+            exit 1
+          fi
+          if lean /tmp/LeanMaxForged.lean; then
+            echo "Lean unexpectedly accepted forged proof" >&2
+            exit 1
+          fi
