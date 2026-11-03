@@ -16,6 +16,9 @@ on:
 jobs:
   check-derived-proof:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: experiments/frontier/lean_max
     steps:
       - uses: actions/checkout@v4
       - name: Install pinned Lean 4
@@ -33,14 +36,14 @@ jobs:
         run: |
           set -euo pipefail
           lean --version
-          python3 experiments/frontier/lean_max/reference.py experiments/frontier/lean_max/demo.json --lean-out /tmp/LeanMaxDemo.lean > /tmp/LeanMaxDemo.json
+          python3 reference.py demo.json --lean-out /tmp/LeanMaxDemo.lean > /tmp/LeanMaxDemo.json
           python3 - <<'PY'
           import json
           from pathlib import Path
           result = json.loads(Path("/tmp/LeanMaxDemo.json").read_text())
           if result["status"] != "derived":
               raise SystemExit("solver did not derive sample")
-          if Path("/tmp/LeanMaxDemo.lean").read_text() != Path("experiments/frontier/lean_max/Demo.lean").read_text():
+          if Path("/tmp/LeanMaxDemo.lean").read_text() != Path("Demo.lean").read_text():
               raise SystemExit("tracked fixture diverged from generated Lean")
           PY
           lean /tmp/LeanMaxDemo.lean
