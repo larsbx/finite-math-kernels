@@ -44,6 +44,14 @@
       "blob": "8b66b6e3c5e66ed4e6da8085281dfc42aaeac54c",
       "relation": "authored"
     },
+    ".github/workflows/lean-max-mojo-cpu.yml": {
+      "blob": "00f0de321ed44639f1c92a7711142c0d73640cfc",
+      "relation": "authored"
+    },
+    ".github/workflows/lean-max-proof.yml": {
+      "blob": "49d10ba7cb344616135f7c376b30fd0e2459c830",
+      "relation": "authored"
+    },
     ".github/workflows/rt-exact.yml": {
       "blob": "750ed6852d81eeda86dc0e0396d7303e6cae97b3",
       "relation": "authored"
@@ -419,6 +427,42 @@
     },
     "experiments/frontier/harness.py": {
       "blob": "4e24fb53268e92d82de4d8607143aa74f626a7c4",
+      "relation": "authored"
+    },
+    "experiments/frontier/lean_max/CONTRACT.md": {
+      "blob": "50d76ea8b0cd39f9c611583d473b941b7d93c2e4",
+      "relation": "authored"
+    },
+    "experiments/frontier/lean_max/Demo.lean": {
+      "blob": "51e147697d7e58c3c19d71a3f6086c8fe3b9cc0a",
+      "relation": "authored"
+    },
+    "experiments/frontier/lean_max/MOJO_CPU.md": {
+      "blob": "449e82a16b4a637b05e1a309b663f2a881824db5",
+      "relation": "authored"
+    },
+    "experiments/frontier/lean_max/cpu_bridge.py": {
+      "blob": "11f5fd7d463da47b261ec3ae89f148cbe86da65f",
+      "relation": "authored"
+    },
+    "experiments/frontier/lean_max/demo.json": {
+      "blob": "c44edd8a4ae295aa2adba00e0033d4c8522c5d0c",
+      "relation": "authored"
+    },
+    "experiments/frontier/lean_max/lakefile.toml": {
+      "blob": "8f99b198fa5944e8ad76509f7cc8d539838d4222",
+      "relation": "authored"
+    },
+    "experiments/frontier/lean_max/lean-toolchain": {
+      "blob": "a6aff065db2882c535684f8c5bcd4f16e9a23915",
+      "relation": "authored"
+    },
+    "experiments/frontier/lean_max/mojo/candidates.mojo": {
+      "blob": "611e737922b09291ff983ee9742e504ad0ac50ef",
+      "relation": "authored"
+    },
+    "experiments/frontier/lean_max/reference.py": {
+      "blob": "613a95eb88c569947fe4565e7f553c2f5f73ef59",
       "relation": "authored"
     },
     "experiments/frontier/orchestrator/.formatter.exs": {
@@ -1615,6 +1659,14 @@
     },
     "tests/frontier/test_harness.py": {
       "blob": "d724e8a939dc68ba890fd45a9854562ca8eb7db3",
+      "relation": "authored"
+    },
+    "tests/frontier/test_lean_max.py": {
+      "blob": "d5a8497c072c528b1628bcab0e6e468ffa39f92a",
+      "relation": "authored"
+    },
+    "tests/frontier/test_lean_max_cpu.py": {
+      "blob": "938a8fd2c83912691d10cd97a925925a91f21ff3",
       "relation": "authored"
     },
     "tests/interval/test_interval_q.mojo": {
