@@ -1,0 +1,27 @@
+name: Lean-MAX Mojo CPU parity
+
+on:
+  pull_request:
+    paths:
+      - "experiments/frontier/lean_max/**"
+      - "tests/frontier/test_lean_max_cpu.py"
+      - ".github/workflows/lean-max-mojo-cpu.yml"
+  push:
+    branches: [main]
+    paths:
+      - "experiments/frontier/lean_max/**"
+      - "tests/frontier/test_lean_max_cpu.py"
+      - ".github/workflows/lean-max-mojo-cpu.yml"
+
+jobs:
+  cpu-candidate-parity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: prefix-dev/setup-pixi@v0.9.1
+      - name: Compile actual Mojo candidate generator
+        run: pixi run mojo build -O3 experiments/frontier/lean_max/mojo/candidates.mojo -o /tmp/lean-max-candidates
+      - name: Reference parity, negative cases, reconstructed proof
+        env:
+          LEAN_MAX_CPU_RUNNER: /tmp/lean-max-candidates
+        run: pixi run python -m pytest -q tests/frontier/test_lean_max_cpu.py
