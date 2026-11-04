@@ -5,12 +5,14 @@ on:
     paths:
       - "experiments/frontier/lean_max/**"
       - "tests/frontier/test_lean_max.py"
+      - "tests/frontier/test_lean_max_trace.py"
       - ".github/workflows/lean-max-proof.yml"
   push:
     branches: [main]
     paths:
       - "experiments/frontier/lean_max/**"
       - "tests/frontier/test_lean_max.py"
+      - "tests/frontier/test_lean_max_trace.py"
       - ".github/workflows/lean-max-proof.yml"
 
 jobs:
@@ -36,15 +38,21 @@ jobs:
         run: |
           set -euo pipefail
           lake env lean --version
-          python3 reference.py demo.json --lean-out /tmp/LeanMaxDemo.lean > /tmp/LeanMaxDemo.json
+          python3 ../../../tests/frontier/test_lean_max_trace.py
           python3 - <<'PY'
           import json
           from pathlib import Path
-          result = json.loads(Path("/tmp/LeanMaxDemo.json").read_text())
-          if result["status"] != "derived":
-              raise SystemExit("solver did not derive sample")
-          if Path("/tmp/LeanMaxDemo.lean").read_text() != Path("Demo.lean").read_text():
+          import reference as ref
+          from trace_codec import decode_trace, encode_trace
+
+          problem = ref.Problem.parse(json.loads(Path("demo.json").read_text()))
+          trace = encode_trace(problem, ref.construct(problem))
+          trace_file = Path("/tmp/LeanMaxDemo.trace")
+          trace_file.write_bytes(trace)
+          reconstructed = ref.lean_source(problem, decode_trace(problem, trace_file.read_bytes()))
+          if reconstructed != Path("Demo.lean").read_text():
               raise SystemExit("tracked fixture diverged from generated Lean")
+          Path("/tmp/LeanMaxDemo.lean").write_text(reconstructed)
           PY
           lake env lean /tmp/LeanMaxDemo.lean
       - name: Lean must reject an invalid reconstructed proof

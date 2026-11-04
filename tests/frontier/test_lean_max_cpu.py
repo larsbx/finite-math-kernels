@@ -15,6 +15,7 @@ BASE = Path(__file__).resolve().parents[2] / "experiments/frontier/lean_max"
 sys.path.insert(0, str(BASE))
 ref = importlib.import_module("reference")
 cpu = importlib.import_module("cpu_bridge")
+codec = importlib.import_module("trace_codec")
 
 RUNNER = os.environ.get("LEAN_MAX_CPU_RUNNER")
 pytestmark = pytest.mark.skipif(not RUNNER, reason="experimental Mojo CPU binary not configured")
@@ -30,8 +31,11 @@ def test_mojo_constructs_same_replayable_proof():
     independent = ref.construct(problem, max_records=64, max_rounds=32)
     assert constructed == independent
     assert constructed["status"] == "derived"
-    ref.replay(problem, constructed)
-    assert ref.lean_source(problem, constructed) == (BASE / "Demo.lean").read_text()
+    trace = codec.encode_trace(problem, constructed)
+    assert trace == codec.encode_trace(problem, independent)
+    decoded = codec.decode_trace(problem, trace)
+    assert decoded == constructed
+    assert ref.lean_source(problem, decoded) == (BASE / "Demo.lean").read_text()
 
 
 def test_mojo_batch_matches_python_reference():
@@ -46,7 +50,7 @@ def test_mojo_batch_matches_python_reference():
 
 def test_randomized_bounded_term_dags():
     rng = random.Random(20261103)
-    for _ in range(30):
+    for case in range(30):
         n_atoms = rng.randrange(1, 5)
         n_functions = rng.randrange(0, 4)
         terms = [{"atom": chr(97 + i)} for i in range(n_atoms)]
@@ -65,15 +69,24 @@ def test_randomized_bounded_term_dags():
                 terms.append({"fn": fn, "arg": child})
                 used.add((fn, child))
         premises = [rng.choices(range(len(terms)), k=2) for _ in range(4)]
+        goal = premises[0][::-1] if case % 2 == 0 else rng.choices(range(len(terms)), k=2)
         p = ref.Problem.parse({
             "atoms": [chr(97 + i) for i in range(n_atoms)],
             "functions": functions,
             "terms": terms,
             "premises": premises,
-            "goal": [0, 0],
+            "goal": goal,
         })
         steps = [ref.Step(a, b, "hyp", data=i) for i, (a, b) in enumerate(p.premises)]
-        assert cpu.read_candidates(p, steps, Path(RUNNER)) == cpu.expected_candidates(p, steps)
+        runner = Path(RUNNER)
+        assert cpu.read_candidates(p, steps, runner) == cpu.expected_candidates(p, steps)
+        constructed = cpu.construct_with_mojo(p, runner)
+        independent = ref.construct(p, max_records=64, max_rounds=32)
+        assert constructed == independent
+        if constructed["status"] == "derived":
+            trace = codec.encode_trace(p, constructed)
+            assert trace == codec.encode_trace(p, independent)
+            assert codec.decode_trace(p, trace) == independent
 
 
 def test_invalid_runner_output_is_rejected(tmp_path):
