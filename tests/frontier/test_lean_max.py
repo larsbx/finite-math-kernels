@@ -1,5 +1,4 @@
 """Contract and negative tests for experimental equational derivations."""
-import importlib.util
 import json
 from pathlib import Path
 import shutil
@@ -7,13 +6,9 @@ import subprocess
 
 import pytest
 
-ROOT = Path(__file__).resolve().parents[2]
-BASE = ROOT / "experiments/frontier/lean_max"
-spec = importlib.util.spec_from_file_location("lean_max_ref", BASE / "reference.py")
-ref = importlib.util.module_from_spec(spec)
-import sys
-sys.modules[spec.name] = ref
-spec.loader.exec_module(ref)
+from experiments.frontier.lean_max import reference as ref
+
+BASE = Path(__file__).resolve().parents[2] / "experiments/frontier/lean_max"
 
 
 def problem():

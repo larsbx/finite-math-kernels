@@ -4,14 +4,12 @@ from hashlib import sha256
 import json
 from pathlib import Path
 import struct
-import sys
 import unittest
 
-BASE = Path(__file__).resolve().parents[2] / "experiments/frontier/lean_max"
-sys.path.insert(0, str(BASE))
+from experiments.frontier.lean_max import reference as ref
+from experiments.frontier.lean_max.trace_codec import decode_trace, encode_trace
 
-import reference as ref
-from trace_codec import decode_trace, encode_trace
+BASE = Path(__file__).resolve().parents[2] / "experiments/frontier/lean_max"
 
 
 class TestTrace(unittest.TestCase):

@@ -38,12 +38,12 @@ jobs:
         run: |
           set -euo pipefail
           lake env lean --version
-          python3 ../../../tests/frontier/test_lean_max_trace.py
-          python3 - <<'PY'
+          PYTHONPATH=../../.. python3 ../../../tests/frontier/test_lean_max_trace.py
+          PYTHONPATH=../../.. python3 - <<'PY'
           import json
           from pathlib import Path
-          import reference as ref
-          from trace_codec import decode_trace, encode_trace
+          from experiments.frontier.lean_max import reference as ref
+          from experiments.frontier.lean_max.trace_codec import decode_trace, encode_trace
 
           problem = ref.Problem.parse(json.loads(Path("demo.json").read_text()))
           trace = encode_trace(problem, ref.construct(problem))

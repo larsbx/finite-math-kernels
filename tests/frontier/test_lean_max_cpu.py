@@ -2,20 +2,18 @@
 
 A skipped test in the default Python suite is NOT evidence of Mojo compilation.
 """
-import importlib
 import json
 import os
 from pathlib import Path
 import random
-import sys
 
 import pytest
 
+from experiments.frontier.lean_max import cpu_bridge as cpu
+from experiments.frontier.lean_max import reference as ref
+from experiments.frontier.lean_max import trace_codec as codec
+
 BASE = Path(__file__).resolve().parents[2] / "experiments/frontier/lean_max"
-sys.path.insert(0, str(BASE))
-ref = importlib.import_module("reference")
-cpu = importlib.import_module("cpu_bridge")
-codec = importlib.import_module("trace_codec")
 
 RUNNER = os.environ.get("LEAN_MAX_CPU_RUNNER")
 pytestmark = pytest.mark.skipif(not RUNNER, reason="experimental Mojo CPU binary not configured")

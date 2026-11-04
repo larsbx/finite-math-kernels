@@ -3,7 +3,7 @@ from hashlib import sha256
 import json
 import struct
 
-import reference as ref
+from . import reference as ref
 
 _HEADER = struct.Struct("<8s32sHH")
 _RECORD = struct.Struct("<6H")
