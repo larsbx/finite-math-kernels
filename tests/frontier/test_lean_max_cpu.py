@@ -50,22 +50,29 @@ def test_randomized_bounded_term_dags():
         n_atoms = rng.randrange(1, 5)
         n_functions = rng.randrange(0, 4)
         terms = [{"atom": chr(97 + i)} for i in range(n_atoms)]
-        # Generate distinct topologically ordered application nodes.
-        choices = [(f"f{i}", j) for i in range(len(terms)) for j in range(n_functions)]
-        rng.shuffle(choices)
-        used = set()
-        for f, c in choices[:7]:
-            if (f, c) not in used:
-                terms.append({"fn": f, "arg": c})
-                used.add((f, c))
+        functions = [f"f{i}" for i in range(n_functions)]
+        # Each new term can reference atoms and previously added applications.
+        if functions:
+            used = set()
+            for _ in range(7):
+                choices = [
+                    (fn, child)
+                    for fn in functions
+                    for child in range(len(terms))
+                    if (fn, child) not in used
+                ]
+                fn, child = rng.choice(choices)
+                terms.append({"fn": fn, "arg": child})
+                used.add((fn, child))
+        premises = [rng.choices(range(len(terms)), k=2) for _ in range(4)]
         p = ref.Problem.parse({
             "atoms": [chr(97 + i) for i in range(n_atoms)],
-            "functions": [f"f{i}" for i in range(n_functions)],
+            "functions": functions,
             "terms": terms,
-            "premises": [],
+            "premises": premises,
             "goal": [0, 0],
         })
-        steps = [ref.Step(rng.randrange(len(terms)), rng.randrange(len(terms)), "refl") for _ in range(4)]
+        steps = [ref.Step(a, b, "hyp", data=i) for i, (a, b) in enumerate(p.premises)]
         assert cpu.read_candidates(p, steps, Path(RUNNER)) == cpu.expected_candidates(p, steps)
 
 

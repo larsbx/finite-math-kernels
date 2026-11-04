@@ -49,6 +49,22 @@ def test_forged_trace_fails():
         ref.replay(p, forged)
 
 
+def test_valid_intermediate_does_not_establish_goal():
+    p = problem()
+    steps = [
+        ref.Step(0, 1, "hyp", data=0),
+        ref.Step(1, 2, "hyp", data=1),
+        ref.Step(0, 2, "trans", (0, 1)),
+    ]
+    ref.check_step(p, steps, 2)
+    with pytest.raises(ref.InvalidProblem, match="proof does not establish goal"):
+        ref.replay(p, {"status": "derived", "goal_step": 2, "steps": [s.json() for s in steps]})
+
+    steps[2] = ref.Step(0, 2, "trans", (1, 0))
+    with pytest.raises(ref.InvalidProblem, match="transitivity chain mismatch"):
+        ref.check_step(p, steps, 2)
+
+
 def test_unsolved_and_capped():
     d = json.loads((BASE / "demo.json").read_text())
     d["premises"] = []
@@ -60,6 +76,9 @@ def test_unsolved_and_capped():
 
 @pytest.mark.parametrize("edit", [
     lambda d: d["terms"].append({"fn": "f", "arg": 99}),
+    lambda d: d["terms"].append({"fn": "g", "arg": 0}),
+    lambda d: d["terms"].append({"fn": "f", "arg": len(d["terms"])}),
+    lambda d: d["terms"].append({"fn": "f", "arg": True}),
     lambda d: d["terms"].append({"atom": "a"}),
     lambda d: d.update({"goal": [True, 2]}),
     lambda d: d.update({"functions": ["f", "f"]}),

@@ -49,7 +49,7 @@
       "relation": "authored"
     },
     ".github/workflows/lean-max-proof.yml": {
-      "blob": "49d10ba7cb344616135f7c376b30fd0e2459c830",
+      "blob": "bf198c6a4910313691844070ab803d6061948faa",
       "relation": "authored"
     },
     ".github/workflows/rt-exact.yml": {
@@ -442,11 +442,15 @@
       "relation": "authored"
     },
     "experiments/frontier/lean_max/cpu_bridge.py": {
-      "blob": "11f5fd7d463da47b261ec3ae89f148cbe86da65f",
+      "blob": "dd8a0a77d1c87c9b21a6c6ede15ab5b9ea8b236a",
       "relation": "authored"
     },
     "experiments/frontier/lean_max/demo.json": {
       "blob": "c44edd8a4ae295aa2adba00e0033d4c8522c5d0c",
+      "relation": "authored"
+    },
+    "experiments/frontier/lean_max/lake-manifest.json": {
+      "blob": "e71bdb6b9e5977a0cce423690d85faba9c0385fb",
       "relation": "authored"
     },
     "experiments/frontier/lean_max/lakefile.toml": {
@@ -462,7 +466,7 @@
       "relation": "authored"
     },
     "experiments/frontier/lean_max/reference.py": {
-      "blob": "613a95eb88c569947fe4565e7f553c2f5f73ef59",
+      "blob": "f54037a1b3a3e011d0748794703c9af791a8e836",
       "relation": "authored"
     },
     "experiments/frontier/orchestrator/.formatter.exs": {
@@ -1662,11 +1666,11 @@
       "relation": "authored"
     },
     "tests/frontier/test_lean_max.py": {
-      "blob": "d5a8497c072c528b1628bcab0e6e468ffa39f92a",
+      "blob": "4f522d6a89720feb126feb8c8027493b3a8ff1d5",
       "relation": "authored"
     },
     "tests/frontier/test_lean_max_cpu.py": {
-      "blob": "938a8fd2c83912691d10cd97a925925a91f21ff3",
+      "blob": "16ec7abbba0cb78ddd934c0e370aff0977975caf",
       "relation": "authored"
     },
     "tests/interval/test_interval_q.mojo": {

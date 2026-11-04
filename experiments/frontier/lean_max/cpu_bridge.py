@@ -136,7 +136,7 @@ def construct_with_mojo(
             for candidate in candidates:
                 # Check EVERY proposed inference independently before allowing
                 # it to influence search (not only the final proof).
-                ref.check(problem, steps + [candidate], len(steps))
+                ref.check_step(problem, steps + [candidate], len(steps))
                 changed |= add(candidate)
                 if problem.goal in known:
                     return ref._result(problem, steps, known[problem.goal])

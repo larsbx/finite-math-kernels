@@ -97,39 +97,45 @@ class BudgetReached(Exception):
     pass
 
 
+def check_step(problem: Problem, steps: list[Step], i: int) -> None:
+    """Validate one inference whose earlier references have been checked."""
+    s = steps[i]
+    if type(s.lhs) is not int or type(s.rhs) is not int or not 0 <= s.lhs < len(problem.terms) or not 0 <= s.rhs < len(problem.terms):
+        raise InvalidProblem("step endpoint outside term table")
+    if any(type(r) is not int or not 0 <= r < i for r in s.refs):
+        raise InvalidProblem("future or invalid reference")
+    if s.rule == "hyp":
+        if s.refs or type(s.data) is not int or not 0 <= s.data < len(problem.premises) or (s.lhs, s.rhs) != problem.premises[s.data]:
+            raise InvalidProblem("unbound hypothesis")
+    elif s.rule == "refl":
+        if s.refs or s.data is not None or s.lhs != s.rhs:
+            raise InvalidProblem("invalid reflexivity")
+    elif s.rule == "symm":
+        if len(s.refs) != 1 or s.data is not None or (s.lhs, s.rhs) != (steps[s.refs[0]].rhs, steps[s.refs[0]].lhs):
+            raise InvalidProblem("invalid symmetry")
+    elif s.rule == "congr":
+        if len(s.refs) != 1 or not isinstance(s.data, str) or s.data not in problem.functions:
+            raise InvalidProblem("invalid congruence")
+        a, b = problem.terms[s.lhs], problem.terms[s.rhs]
+        sub = steps[s.refs[0]]
+        if a.kind != "app" or b.kind != "app" or a.name != s.data or b.name != s.data or (a.child, b.child) != (sub.lhs, sub.rhs):
+            raise InvalidProblem("congruence children mismatch")
+    elif s.rule == "trans":
+        if len(s.refs) != 2 or s.data is not None:
+            raise InvalidProblem("invalid transitivity")
+        a, b = (steps[r] for r in s.refs)
+        if (s.lhs, s.rhs) != (a.lhs, b.rhs) or a.rhs != b.lhs:
+            raise InvalidProblem("transitivity chain mismatch")
+    else:
+        raise InvalidProblem("unknown proof rule")
+
+
 def check(problem: Problem, steps: list[Step], goal_id: int) -> None:
     """Replay rules independently of the search path, rejecting forged steps."""
     if type(goal_id) is not int or not 0 <= goal_id < len(steps):
         raise InvalidProblem("invalid goal index")
-    for i, s in enumerate(steps):
-        if type(s.lhs) is not int or type(s.rhs) is not int or not 0 <= s.lhs < len(problem.terms) or not 0 <= s.rhs < len(problem.terms):
-            raise InvalidProblem("step endpoint outside term table")
-        if any(type(r) is not int or not 0 <= r < i for r in s.refs):
-            raise InvalidProblem("future or invalid reference")
-        if s.rule == "hyp":
-            if s.refs or type(s.data) is not int or not 0 <= s.data < len(problem.premises) or (s.lhs, s.rhs) != problem.premises[s.data]:
-                raise InvalidProblem("unbound hypothesis")
-        elif s.rule == "refl":
-            if s.refs or s.data is not None or s.lhs != s.rhs:
-                raise InvalidProblem("invalid reflexivity")
-        elif s.rule == "symm":
-            if len(s.refs) != 1 or s.data is not None or (s.lhs, s.rhs) != (steps[s.refs[0]].rhs, steps[s.refs[0]].lhs):
-                raise InvalidProblem("invalid symmetry")
-        elif s.rule == "congr":
-            if len(s.refs) != 1 or not isinstance(s.data, str) or s.data not in problem.functions:
-                raise InvalidProblem("invalid congruence")
-            a, b = problem.terms[s.lhs], problem.terms[s.rhs]
-            sub = steps[s.refs[0]]
-            if a.kind != "app" or b.kind != "app" or a.name != s.data or b.name != s.data or (a.child, b.child) != (sub.lhs, sub.rhs):
-                raise InvalidProblem("congruence children mismatch")
-        elif s.rule == "trans":
-            if len(s.refs) != 2 or s.data is not None:
-                raise InvalidProblem("invalid transitivity")
-            a, b = (steps[r] for r in s.refs)
-            if (s.lhs, s.rhs) != (a.lhs, b.rhs) or a.rhs != b.lhs:
-                raise InvalidProblem("transitivity chain mismatch")
-        else:
-            raise InvalidProblem("unknown proof rule")
+    for i in range(len(steps)):
+        check_step(problem, steps, i)
     if (steps[goal_id].lhs, steps[goal_id].rhs) != problem.goal:
         raise InvalidProblem("proof does not establish goal")
 

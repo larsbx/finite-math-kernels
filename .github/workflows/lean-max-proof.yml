@@ -35,7 +35,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          lean --version
+          lake env lean --version
           python3 reference.py demo.json --lean-out /tmp/LeanMaxDemo.lean > /tmp/LeanMaxDemo.json
           python3 - <<'PY'
           import json
@@ -46,7 +46,7 @@ jobs:
           if Path("/tmp/LeanMaxDemo.lean").read_text() != Path("Demo.lean").read_text():
               raise SystemExit("tracked fixture diverged from generated Lean")
           PY
-          lean /tmp/LeanMaxDemo.lean
+          lake env lean /tmp/LeanMaxDemo.lean
       - name: Lean must reject an invalid reconstructed proof
         shell: bash
         run: |
@@ -56,7 +56,7 @@ jobs:
             echo "negative mutation was not applied" >&2
             exit 1
           fi
-          if lean /tmp/LeanMaxForged.lean; then
+          if lake env lean /tmp/LeanMaxForged.lean; then
             echo "Lean unexpectedly accepted forged proof" >&2
             exit 1
           fi
