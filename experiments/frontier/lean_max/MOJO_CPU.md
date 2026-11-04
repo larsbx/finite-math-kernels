@@ -1,6 +1,6 @@
 # Lean-MAX stage 1: bounded Mojo CPU inference candidate enumeration
 
-This stage adds a **CPU-only** Mojo executable, `mojo/candidates.mojo`. It is an accelerator *candidate producer*, not a proof checker, and not a GPU result. The Python `cpu_bridge.py` runs Mojo each frontier round, compares the complete candidate list against an independent CPU Python enumerator, checks each candidate before admission, and independently replays the resulting proof and reconstructs a Lean 4 proof script. This deliberate reference-parity overhead makes the implementation a correctness/conformance experiment, NOT a performance benchmark.
+This stage adds a **CPU-only** Mojo executable, `experiments/frontier/lean_max/mojo/candidates.mojo`. It is an accelerator *candidate producer*, not a proof checker, and not a GPU result. The Python `cpu_bridge.py` runs Mojo each frontier round, compares the complete candidate list against an independent CPU Python enumerator, checks each candidate before admission, and independently replays the resulting proof and reconstructs a Lean 4 proof script. This deliberate reference-parity overhead makes the implementation a correctness/conformance experiment, NOT a performance benchmark.
 
 ## Canonical CLI
 

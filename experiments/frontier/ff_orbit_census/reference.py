@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Spec oracle for ``u32-prime-field-orbit-v1`` (see ``CONTRACT.md`` here).
+"""Spec oracle for ``u32-prime-field-orbit-v1`` (see ``experiments/frontier/ff_orbit_census/CONTRACT.md``).
 
 Written for clarity, not speed: it is the executable reading of the contract
 and the replay predicate, never a timed baseline.
