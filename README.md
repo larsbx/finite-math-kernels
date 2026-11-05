@@ -78,6 +78,12 @@ older module names (`rat_q`, `mat3`, `qlinalg`, …) remain for compatibility.
 
 See `ARCHITECTURE.md` for layout rules and `CONTRIBUTING.md` for workflow.
 
+The experimental [Lean-MAX GPU candidate prototype](experiments/frontier/lean_max/GPU_PROTOTYPE.md)
+adds bounded device-kernel source, deterministic candidate validation and an
+opt-in comparison against Python, Mojo CPU and Lean grind. Offline conformance
+is tested; Mojo GPU compilation and hardware validation remain pending. It is
+not a verified GPU prover or an acceleration result.
+
 ## Verification
 
 ```bash
