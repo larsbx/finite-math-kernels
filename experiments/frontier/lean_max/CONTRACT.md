@@ -2,6 +2,10 @@
 
 Status: NON-AUTHORITATIVE CPU reference, not a Mojo/MAX GPU prover, not a Lean kernel and not an acceleration claim. Owner: finite-math-kernels/experiments/frontier.
 
+The [bounded GPU candidate prototype](GPU_PROTOTYPE.md) supplies opt-in device
+source and offline conformance coverage. Compilation and genuine device
+validation remain pending; this does not promote the CPU or GPU implementation.
+
 ## Restricted domain
 One uninterpreted sort (alpha), atoms, and explicitly listed unary function applications. Terms form a topologically ordered duplicate-free DAG. Premises are named equalities; a goal is an equality. Symbols accept only ASCII alphanumeric identifiers beginning with a letter. Arbitrary Lean expressions are not accepted.
 

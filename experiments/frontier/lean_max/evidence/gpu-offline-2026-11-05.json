@@ -1,0 +1,111 @@
+{
+  "authority": "conformance_only_no_speedup_claim",
+  "budgets": {
+    "construction_timeout_s": 40,
+    "grind_heartbeats": 100000,
+    "lean_timeout_s": 30,
+    "max_records": 64,
+    "max_rounds": 32
+  },
+  "build_status": {
+    "mojo_cpu": "unavailable",
+    "mojo_gpu": "unavailable"
+  },
+  "compiler_status": {
+    "lean": "unavailable",
+    "mojo": "unavailable"
+  },
+  "corpus_sha256": "c21b0cb4215c490a825d7972db4efef3a176b8ecffff0ee7d84c535b0f891aa3",
+  "derived_trace_sha256": {
+    "0": "91251e163c26a5963a78be36471b3028f63a70cf935044b0d617916f2508ebf6",
+    "1": "f3bcdc47a3d95e6745aee5fa3252bb63b2946146eed2f88d5bba09512c2fa8f7",
+    "10": "1c675214e3f6e75b1862746c56ee4de076d713dbf6b95b6db50e0d8e048f072f",
+    "11": "ab8d4f5f86f4f4fae58b6564fb27b4107fa69d7cb566e12619ad0688fab3a053",
+    "12": "33603d7e56088fa5eed5cf09a8ee1699a8cb63b6e89ad6ded5057d31cb872ea9",
+    "13": "1ea0de854e4844c30426a4e91fd514b7c8804127c6bda718b209cb5d3664fee3",
+    "14": "9fa02386db70091b6fcf2e27b5e27d3ad25e27bb37ff2fd3f6c1c978e728dae1",
+    "15": "2a3d5f4ff0dd4b3869d86f57550eaef0eef9719d417b5af7cc88cf6da1c2f00f",
+    "16": "b555ef2441f9dcb56545be115ada6a473e5ad8226b88294156601516c3367405",
+    "18": "566db2d8e410cd3382bf083c4bd04366cd4718743b978e9ca1437d1e52ca78b9",
+    "19": "2c30027ca19e508a109a687c00ffc496386719dfa16bb775f22e6a55d74ed2ce",
+    "2": "a6f3aa1a1d76cd0ad8faa7f8a5c6e04015dd53b42b17f6872dcfa45359b76422",
+    "20": "3220b78b27fc7cf831c2c28b42ca7b0b594febf8bc0bc650473279dab276405d",
+    "22": "fa8f53f7b492600e55e0d5b8682c13b6ad9a291d888765a3fa62652f19097123",
+    "24": "32b9bca2819ab8133561c0ed31b6a9bd2fce5f4205cc2147439dc60cffff1149",
+    "25": "aebf3fd14bd846c786bb61dd22b88a393a43d98f086714edc0161ed635b62d44",
+    "26": "7747a8ce6dd6baac1bd7a94b048cc6f8d1da242f15c68ff9dfdfbd412b626107",
+    "28": "05703830f93cbb91d52d126a801ae0eec0886bb5e12cdc57e8bee5fde21e62f0",
+    "29": "d3accd97363fdda23d577d6041a30935778f51d441363e1f4ac7dfa7f854669c",
+    "30": "3b4e4fb79ba578eaee5c9b544dd1ac05b3e0412230425e59a1ce2d97b1aa6ad0",
+    "31": "fdd0266bd1ba4d4839a9528f4f7d9b57797b5519184da148858af8a448372cca",
+    "32": "cacc37e38ccdeda3e16becd7b96b3256e9f90e6740d5130b6dd177d19fe1aea9",
+    "33": "01d93100655c247acce538cb11cb43fb0abf55f2707ea6b84b392aff0ab216be",
+    "4": "96f66114d87e29f363bf5476d944d40786ceeb783bc85457b1f12629d3f0caf6",
+    "5": "5a1c99ab92730a2314975cac41b41dce370e5494941483d20cb66abe64877a0a",
+    "6": "f4cdbc0603bc5adb7edbde2461c9349a08b0dc938734dffaa5a1e3e019eca1f6",
+    "7": "2b2a57a66d29ee881814969c43a9752a8e2ded68acdbbb1c797119a0ecdbde56",
+    "8": "09bdb26bf85402a9cace78798a0f86bbe676a3bdcdc737b99334e6e97f433bd2"
+  },
+  "schema": "lean-max-comparison-receipt-v1",
+  "source_sha256": {
+    "experiments/frontier/lean_max/benchmark.py": "ad5659b620d8cdf22abc082fb1d3cdaa1d6a76481da9f420b222f1dd50ed0e8e",
+    "experiments/frontier/lean_max/corpus.py": "5ef58136b615b983fb913ed099724c43d5826d7c5bb279da2e1077086d7513e2",
+    "experiments/frontier/lean_max/cpu_bridge.py": "7afd44d90b7bfa34a273a53c0d9013a21cdac256859816a32f323f696a03c9c8",
+    "experiments/frontier/lean_max/gpu_bridge.py": "d122a5db0567dc8c80a250f5330fd7224135bc6f34c8eb7f9d3daf9f9ef127e3",
+    "experiments/frontier/lean_max/mojo/candidates.mojo": "6102d3c385d73017484dd20323534678baa770aeb2df5dfdd98420366af3cc1f",
+    "experiments/frontier/lean_max/mojo/gpu_candidates.mojo": "8eaa7e4c23315f465766b1fad1f86e10b1cc200a8ab946762f924b002e3765a9",
+    "experiments/frontier/lean_max/reference.py": "506bf88f6141f96264f312f5afe1845d804972ced247afcbadaa9b276ab2d5c4",
+    "experiments/frontier/lean_max/trace_codec.py": "6fef5700df389bf61c890943bd6f279760f5302913fcdd05be98bf8e5e8fa60a"
+  },
+  "summary": {
+    "lean_grind": {
+      "accepted_constructions": 0,
+      "accepted_proofs_per_second_including_failures": 0.0,
+      "attempts": 34,
+      "gpu_assisted_accepted_constructions": 0,
+      "lean_baseline_accepted": 0,
+      "outcomes": {
+        "lean_unavailable": 34
+      },
+      "p50_time_to_valid_proof_ns": null,
+      "p95_time_to_valid_proof_ns": null
+    },
+    "mojo_cpu": {
+      "accepted_constructions": 0,
+      "accepted_proofs_per_second_including_failures": null,
+      "attempts": 34,
+      "gpu_assisted_accepted_constructions": 0,
+      "lean_baseline_accepted": 0,
+      "outcomes": {
+        "no_runner": 34
+      },
+      "p50_time_to_valid_proof_ns": null,
+      "p95_time_to_valid_proof_ns": null
+    },
+    "mojo_gpu": {
+      "accepted_constructions": 0,
+      "accepted_proofs_per_second_including_failures": null,
+      "attempts": 34,
+      "gpu_assisted_accepted_constructions": 0,
+      "lean_baseline_accepted": 0,
+      "outcomes": {
+        "no_runner": 34
+      },
+      "p50_time_to_valid_proof_ns": null,
+      "p95_time_to_valid_proof_ns": null
+    },
+    "python": {
+      "accepted_constructions": 0,
+      "accepted_proofs_per_second_including_failures": 0.0,
+      "attempts": 34,
+      "gpu_assisted_accepted_constructions": 0,
+      "lean_baseline_accepted": 0,
+      "outcomes": {
+        "lean_unavailable": 28,
+        "not_derived": 6
+      },
+      "p50_time_to_valid_proof_ns": null,
+      "p95_time_to_valid_proof_ns": null
+    }
+  }
+}
