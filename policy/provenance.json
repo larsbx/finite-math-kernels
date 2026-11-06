@@ -44,6 +44,10 @@
       "blob": "8b66b6e3c5e66ed4e6da8085281dfc42aaeac54c",
       "relation": "authored"
     },
+    ".github/workflows/kernel-lean.yml": {
+      "blob": "fa5a3be2eff34df88932ee4f2aca96cac53009c4",
+      "relation": "authored"
+    },
     ".github/workflows/lean-max-mojo-cpu.yml": {
       "blob": "00f0de321ed44639f1c92a7711142c0d73640cfc",
       "relation": "authored"
@@ -57,7 +61,7 @@
       "relation": "authored"
     },
     ".gitignore": {
-      "blob": "becca7114a69bab730fb672295235959399f5183",
+      "blob": "0eb61951db5e8bf67b0e8957d393ebf6150019f9",
       "relation": "authored"
     },
     "AGENTS.md": {
@@ -77,7 +81,7 @@
       "relation": "authored"
     },
     "README.md": {
-      "blob": "074a4f9e1fd541b05dd4f7455eacab5e88be393c",
+      "blob": "13261457320d6b741843c1a563bc73005d8862d3",
       "relation": "authored"
     },
     "conformance/certified_records_v1.txt": {
@@ -98,6 +102,50 @@
     },
     "conformance/hyperbolic_rt_v1.txt": {
       "blob": "9dc55c38af391e71deb2f2b2f0c898e7084c8cad",
+      "relation": "authored"
+    },
+    "conformance/lean/axioms-326ac959.log": {
+      "blob": "cafd8e7e17294d76d6e2d1cb776d636d3d665db2",
+      "generator": "tools/run_kernel_lean_verification.py",
+      "relation": "generated"
+    },
+    "conformance/lean/known-counterexample-326ac959.log": {
+      "blob": "d03ea119f4cc6e1c1a7c1b130c715b6427c49741",
+      "generator": "tools/run_kernel_lean_verification.py",
+      "relation": "generated"
+    },
+    "conformance/lean/native-326ac959.jsonl": {
+      "blob": "124b9416fe296e2b8e7cfbfcc9da8ea72b7eebb9",
+      "generator": "tests/lean/native_transcript.mojo",
+      "relation": "generated"
+    },
+    "conformance/lean/negative-noncanonical-326ac959.log": {
+      "blob": "f2bfd11f3a4910c381ae393c3714c8a2334998d0",
+      "generator": "tools/run_kernel_lean_verification.py",
+      "relation": "generated"
+    },
+    "conformance/lean/negative-overflow-326ac959.log": {
+      "blob": "031403045143c5c4e51858f44decda4cbf7b005e",
+      "generator": "tools/run_kernel_lean_verification.py",
+      "relation": "generated"
+    },
+    "conformance/lean/negative-rejection-326ac959.log": {
+      "blob": "f5667ac4de1981a8a0fb2efca7009443a65af2de",
+      "generator": "tools/run_kernel_lean_verification.py",
+      "relation": "generated"
+    },
+    "conformance/lean/negative-word-326ac959.log": {
+      "blob": "9fd6f8854b4524a9fbab6fb2088dd1005eea7be7",
+      "generator": "tools/run_kernel_lean_verification.py",
+      "relation": "generated"
+    },
+    "conformance/lean/receipt-326ac959.json": {
+      "blob": "891c3ceaa7ef81f53367cd7509fa1863847cb3ac",
+      "generator": "tools/run_kernel_lean_verification.py",
+      "relation": "generated"
+    },
+    "conformance/lean/runtime-context-326ac959.json": {
+      "blob": "1c8cda4adc6a1efab6a3c952fe08fa1e672a189e",
       "relation": "authored"
     },
     "conformance/ledger/example.json": {
@@ -257,6 +305,10 @@
     },
     "docs/julia-oracle-migration.md": {
       "blob": "d3d89ae766fc7a489635bb8bf22d09d77b6649fb",
+      "relation": "authored"
+    },
+    "docs/lean-verification.md": {
+      "blob": "993b68ca11275997371ee93ef55c1db9dc2eb802",
       "relation": "authored"
     },
     "docs/ledger-generation-spec.md": {
@@ -1307,7 +1359,7 @@
       "relation": "authored"
     },
     "pixi.toml": {
-      "blob": "45986bb46a8484444bedfcc5f21b81fd898a6ecf",
+      "blob": "7843f21a88eb50b86f47de23ba0ec3fe373e1f8b",
       "relation": "authored"
     },
     "policy/estate-audits/0833929ed82d42cf3674a1565681625a9622827b.py": {
@@ -1741,6 +1793,58 @@
       "source_blob": "0ee6e90f0e5c2f13faee3fe2c63b97aa9653f166",
       "source_path": "tests/test_interval_q.mojo"
     },
+    "tests/lean/FiniteMathKernels.lean": {
+      "blob": "58ce23694329006fee69bda35d31526ba85e38f3",
+      "relation": "authored"
+    },
+    "tests/lean/FiniteMathKernels/AcceptedField.lean": {
+      "blob": "73af7ca8562458ae883c1fa2cf5a15c32e66ebaf",
+      "relation": "authored"
+    },
+    "tests/lean/FiniteMathKernels/CheckedInt.lean": {
+      "blob": "f133e300444cf801ff3322f842529326a3339697",
+      "relation": "authored"
+    },
+    "tests/lean/FiniteMathKernels/Conformance.lean": {
+      "blob": "c9681795fa997fc2b8ea57741a5d244a8a588ad6",
+      "relation": "authored"
+    },
+    "tests/lean/FiniteMathKernels/CounterBounds.lean": {
+      "blob": "5b950895568ab39b05a69b37c9dace5151e943bc",
+      "relation": "authored"
+    },
+    "tests/lean/FiniteMathKernels/Words.lean": {
+      "blob": "832a4239218e317f12b43ddae697d46e04db495a",
+      "relation": "authored"
+    },
+    "tests/lean/coverage.json": {
+      "blob": "182a264671d99a33cf0c7d3de5b7d3fb1d7faec0",
+      "relation": "authored"
+    },
+    "tests/lean/lake-manifest.json": {
+      "blob": "72003a5a060fc1f6b629905cdd49c0885f0082f8",
+      "relation": "authored"
+    },
+    "tests/lean/lakefile.toml": {
+      "blob": "51a72eb8b9b33c61edee2721ce6003f1edc52d4c",
+      "relation": "authored"
+    },
+    "tests/lean/lean-toolchain": {
+      "blob": "b814d987e0c93cb99938be934d9b277778495ba1",
+      "relation": "authored"
+    },
+    "tests/lean/native_transcript.mojo": {
+      "blob": "0aa4f288773aedc92215ea0e0beb576d31754f0d",
+      "relation": "authored"
+    },
+    "tests/lean/test_bridge.py": {
+      "blob": "51e7da8eaafa302fe9e63590fdac1c68d43f07d3",
+      "relation": "authored"
+    },
+    "tests/lean/word_counter_overflow.mojo": {
+      "blob": "a57ca0918f8bd7378401f1a001744d1aeaaf6428",
+      "relation": "authored"
+    },
     "tests/lexical_audit/test_lexical_audit.py": {
       "blob": "0c5564e8b19daa90ff24c067eef5f62eb8d524ae",
       "relation": "authored"
@@ -2135,6 +2239,14 @@
       "blob": "88bb5d898bdc64604fbdd755e0b48484985c7502",
       "relation": "authored"
     },
+    "tools/kernel_lean_conformance.py": {
+      "blob": "52236c7134d0be598ef92fc7babf46083f775655",
+      "relation": "authored"
+    },
+    "tools/kernel_lean_inventory.py": {
+      "blob": "2b916b8ce84cfa3a36302dc3bdbb564df97aec1b",
+      "relation": "authored"
+    },
     "tools/lexical_audit/__init__.py": {
       "blob": "52cef15815e1d96d5f0fa5b326e35bc86d865b8e",
       "relation": "authored"
@@ -2220,6 +2332,14 @@
       "source": "finite_proof_records",
       "source_blob": "8d3744bdb731f8cff72f6379f52dbc50d27bec6e",
       "source_path": "tools/replay_mojo.py"
+    },
+    "tools/run_kernel_lean_verification.py": {
+      "blob": "dcefc63c93497cb9a635e50ecb9577650f264ef1",
+      "relation": "authored"
+    },
+    "tools/setup_kernel_lean.sh": {
+      "blob": "cc83ddd51c6cb8c7c34cd51a6f1181ccc59b7612",
+      "relation": "authored"
     },
     "tools/vendoring/__init__.py": {
       "blob": "6054f0efff1b5418185fed776d1c76421df844f6",

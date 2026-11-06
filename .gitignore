@@ -8,3 +8,4 @@ experiments/frontier/.build/
 experiments/frontier/results/
 experiments/frontier/ff_orbit_census/rust/target/
 .build/
+tests/lean/.lake/

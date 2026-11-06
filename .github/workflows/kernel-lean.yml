@@ -1,0 +1,48 @@
+name: Kernel Lean proofs and native conformance
+on:
+  pull_request:
+    paths: ['tests/lean/**', 'kernel/**', 'tools/*lean*', 'docs/lean-verification.md', '.github/workflows/kernel-lean.yml']
+  push:
+    branches: [main, verification/lean-foundations-2026-11-06]
+    paths: ['tests/lean/**', 'kernel/**', 'tools/*lean*', '.github/workflows/kernel-lean.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: kernel-lean-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+jobs:
+  exact-kernel-lean:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Verify exact clean head
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          test -z "$(git status --porcelain)"
+      - uses: prefix-dev/setup-pixi@v0.9.1
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.elan
+            tests/lean/.lake/packages
+          key: kernel-lean-${{ runner.os }}-${{ hashFiles('tests/lean/lean-toolchain', 'tests/lean/lake-manifest.json') }}
+      - name: Provision pinned Lean and Mathlib
+        run: |
+          bash tools/setup_kernel_lean.sh
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Prove models and independently check native transcript
+        run: python3 tools/run_kernel_lean_verification.py --expected-revision "$(git rev-parse HEAD)" --output "$RUNNER_TEMP/kernel-lean"
+      - name: Check coverage inventory and admission controls
+        run: python3 -m unittest discover -s tests/lean -p 'test_*.py'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: kernel-lean-${{ github.event.pull_request.head.sha || github.sha }}
+          path: ${{ runner.temp }}/kernel-lean
+          if-no-files-found: warn

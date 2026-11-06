@@ -1,0 +1,3 @@
+/tmp/fmk-lean-326/negative-noncanonical.lean:3:58: error: Tactic `decide` proved that the proposition
+  1 = 8 ∧ 8 < 7
+is false
