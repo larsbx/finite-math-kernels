@@ -81,7 +81,7 @@ theorem pairs_snoc (w : Word α) (c i j : α) :
   induction w with
   | nil => simp [pairs]
   | cons a w ih =>
-    simp only [List.cons_append,pairs,ih,parikh_append,parikh_singleton,parikh_cons]
+    simp only [List.cons_append,pairs,ih,parikh_append,parikh_singleton,parikh_cons,parikh_nil,Nat.zero_add]
     split_ifs <;> omega
 theorem triples_snoc (w : Word α) (c i j k : α) :
     triples (w ++ [c]) i j k = triples w i j k + if c = k then pairs w i j else 0 := by

@@ -40,7 +40,7 @@ def run_gate(expected, destination):
         inputs = [ROOT / p for p in paths if p.endswith((".lean", ".mojo"))
                   or p.startswith("tools/") and "lean" in p
                   or p in ["tests/lean/lean-toolchain", "tests/lean/lakefile.toml",
-                           "tests/lean/lake-manifest.json", "pixi.toml"]]
+                           "tests/lean/lake-manifest.json", "tests/lean/coverage.json", "pixi.toml"]]
         digest = lambda: {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest() for p in inputs}
         receipt["source_sha256"] = digest()
         pin = (PROJECT / "lean-toolchain").read_text().strip()
@@ -87,14 +87,21 @@ def run_gate(expected, destination):
             shutil.copytree(PROJECT / "FiniteMathKernels", work / "FiniteMathKernels")
             (work / ".lake").mkdir()
             (work / ".lake/packages").symlink_to((PROJECT / ".lake/packages").resolve(), target_is_directory=True)
-            files = sorted((work / "FiniteMathKernels").glob("*.lean"))
+            files = [work / "FiniteMathKernels.lean"] + sorted((work / "FiniteMathKernels").glob("*.lean"))
             names = []
             for p in files:
                 source = p.read_text()
                 if re.search(r"\b(sorry|admit|axiom|native_decide|unsafe)\b", source):
                     raise ValueError("proof escape in " + p.name)
-                namespace = re.search(r"^namespace (\S+)$", source, re.M)[1]
-                names += [namespace + "." + n for n in re.findall(r"^(?:@\[[^\n]*\]\s*)?theorem\s+(\w+)", source, re.M)]
+                namespace = re.search(r"^namespace (\S+)$", source, re.M)
+                declarations = re.findall(r"^(?:@\[[^\n]*\]\s*)?theorem\s+(\w+)", source, re.M)
+                if declarations and namespace is None:
+                    raise ValueError("proof declarations without an audited namespace")
+                names += [namespace[1] + "." + n for n in declarations]
+            coverage = json.loads((PROJECT / "coverage.json").read_text())
+            bindings = {n for entry in coverage["modules"] for n in entry["model_declarations"]}
+            if not bindings <= set(names):
+                raise ValueError("coverage inventory binds a missing Lean declaration")
             execute("build", ["elan", "run", pin, "lake", "build"], work)
             execute("native-lean", ["elan", "run", pin, "lake", "env", "lean", str(destination / "NativeReplay.lean")], work)
             # Audit mathematical model declarations independently of the finite cases.

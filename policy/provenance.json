@@ -1705,7 +1705,7 @@
       "relation": "authored"
     },
     "tests/lean/FiniteMathKernels/Words.lean": {
-      "blob": "9b8482fda206e38667b1303dc7b6a1d354129b8a",
+      "blob": "782916ec7fdd17e5de4280ffd8629f1d50485254",
       "relation": "authored"
     },
     "tests/lean/coverage.json": {
@@ -2127,7 +2127,7 @@
       "relation": "authored"
     },
     "tools/kernel_lean_conformance.py": {
-      "blob": "05742247658217576697b19fab33121ed8ee7f13",
+      "blob": "db2eb2d9d86b85d8f54351282aab22472a731b83",
       "relation": "authored"
     },
     "tools/kernel_lean_inventory.py": {
@@ -2221,7 +2221,7 @@
       "source_path": "tools/replay_mojo.py"
     },
     "tools/run_kernel_lean_verification.py": {
-      "blob": "160806e2d44346cb73931c25e6fe1d434c7bacd4",
+      "blob": "b94df94c4693b07829e5b4dd71f1e047116349ff",
       "relation": "authored"
     },
     "tools/setup_kernel_lean.sh": {

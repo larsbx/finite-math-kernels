@@ -126,5 +126,6 @@ def generate(text):
         statements.append(f"theorem native_case_{i:04d} : {proposition(r)} := by decide")
     code = ("import FiniteMathKernels\nset_option maxRecDepth 100000\n"
             "set_option maxHeartbeats 4000000\nnamespace FiniteMathKernels.NativeReplay\n"
+            "local instance : Fact (Nat.Prime 7) := ⟨by decide⟩\n"
             + "\n".join(statements) + "\nend FiniteMathKernels.NativeReplay\n")
     return code, len(records)
