@@ -81,15 +81,15 @@ theorem pairs_snoc (w : Word α) (c i j : α) :
   induction w with
   | nil => simp [pairs]
   | cons a w ih =>
-    by_cases ha : a = i <;> by_cases hc : c = j <;>
-      simp [pairs,ih,parikh_append,parikh_cons,ha,hc] <;> omega
+    simp only [List.cons_append,pairs,ih,parikh_append,parikh_singleton,parikh_cons]
+    split_ifs <;> omega
 theorem triples_snoc (w : Word α) (c i j k : α) :
     triples (w ++ [c]) i j k = triples w i j k + if c = k then pairs w i j else 0 := by
   induction w with
   | nil => simp [triples,pairs]
   | cons a w ih =>
-    by_cases ha : a = i <;> by_cases hc : c = k <;>
-      simp [triples,pairs_snoc,pairs,ih,ha,hc] <;> omega
+    simp only [List.cons_append,triples,ih,pairs_snoc,pairs]
+    split_ifs <;> omega
 
 @[ext] structure Summary (α : Type*) where
   letters : α → ℕ

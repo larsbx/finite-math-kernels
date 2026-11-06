@@ -14,7 +14,8 @@ theorem accept_exact (lo hi x y : ℤ) (h : accept lo hi x = some y) :
   · simp_all [Fits]
   · contradiction
 theorem accept_complete (lo hi x : ℤ) (h : Fits lo hi x) : accept lo hi x = some x := by
-  simp [accept,Fits] at *
+  unfold accept
+  exact if_pos h
 theorem accept_refuses_iff (lo hi x : ℤ) : accept lo hi x = none ↔ ¬ Fits lo hi x := by
   simp [accept,Fits]
 

@@ -28,7 +28,7 @@ theorem division_cancel (a b : K) (hb : b ≠ 0) :
     mul (div (some a) (some b)) (some b) = some a := by
   simp [div,mul,inverse_nonzero b hb,mul_assoc,hb]
 theorem rejection_compares_false : eqAccepted (none : Option K) none = false := rfl
-theorem rejected_not_runtime_reflexive : eqAccepted (none : Option K) none ≠ true := by decide
+theorem rejected_not_runtime_reflexive : eqAccepted (none : Option K) none ≠ true := by simp [eqAccepted]
 theorem accepted_equality (a b : K) : eqAccepted (some a) (some b) = true ↔ a = b := by
   simp [eqAccepted]
 theorem zero_does_not_mask_rejection : mul (some (0 : K)) none = none := rfl
