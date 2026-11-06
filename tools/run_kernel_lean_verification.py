@@ -13,6 +13,7 @@ import subprocess
 import tempfile
 
 from kernel_lean_conformance import generate
+from word_counter_oracle import check_transcript, lean_replay
 
 ROOT = Path(__file__).resolve().parents[1]
 PROJECT = ROOT / "tests/lean"
@@ -51,7 +52,7 @@ def run_gate(expected, destination):
         receipt["revision"] = revision
         paths = output(["git", "ls-files"]).splitlines()
         inputs = [ROOT / p for p in paths if p.endswith((".lean", ".mojo"))
-                  or p.startswith("tools/") and "lean" in p
+                  or p.startswith("tools/") and ("lean" in p or p == "tools/word_counter_oracle.py")
                   or p in ["tests/lean/lean-toolchain", "tests/lean/lakefile.toml",
                            "tests/lean/lake-manifest.json", "tests/lean/coverage.json", "pixi.toml"]]
         digest = lambda: {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest() for p in inputs}
@@ -92,14 +93,15 @@ def run_gate(expected, destination):
         (destination / "NativeReplay.lean").write_text(lean)
         receipt["finite_native_cases"] = cases
         receipt["native_transcript_sha256"] = hashlib.sha256(native.encode()).hexdigest()
-        observed = execute("known-counterexample", ["pixi", "run", "mojo", "run", "-I", "kernel", "tests/lean/word_counter_overflow.mojo"]).strip()
-        if observed != "-7780085407041551616":
-            raise ValueError("known native counterexample changed; review its status explicitly")
-        receipt["known_native_counterexample"] = {
+        observed = execute("counter-boundaries", ["pixi", "run", "mojo", "run", "-I", "kernel", "tests/lean/word_counter_overflow.mojo"])
+        counter_rows = check_transcript(observed)
+        (destination / "CounterReplay.lean").write_text(lean_replay(counter_rows))
+        receipt["native_counter_regressions"] = {
             "source": "kernel/substitution_dynamics/words.mojo", "operation": "n3",
-            "input": "4000000 copies of 0, alphabet size 1",
-            "observed": observed, "exact": "10666658666668000000",
-            "classification": "unconditional native exactness refuted; fitting precondition required"}
+            "cases": len(counter_rows),
+            "transcript_sha256": hashlib.sha256(observed.encode()).hexdigest(),
+            "historical_counterexample_revision": "4fea04f7c2f88707bca8642d01711331dbeac792",
+            "classification": "checked refusal; exact on successful fitting intermediates; unbounded model is separate"}
         with tempfile.TemporaryDirectory(prefix="fmk-lean-") as temporary:
             work = Path(temporary)
             for p in PROJECT.iterdir():
@@ -125,6 +127,7 @@ def run_gate(expected, destination):
                 raise ValueError("coverage inventory binds a missing Lean declaration")
             execute("build", ["elan", "run", pin, "lake", "build"], work)
             execute("native-lean", ["elan", "run", pin, "lake", "env", "lean", str(destination / "NativeReplay.lean")], work)
+            execute("counter-lean", ["elan", "run", pin, "lake", "env", "lean", str(destination / "CounterReplay.lean")], work)
             # Audit mathematical model declarations independently of the finite cases.
             audit = "import FiniteMathKernels\n" + "\n".join("#print axioms " + n for n in names) + "\n"
             (destination / "AxiomAudit.lean").write_text(audit)

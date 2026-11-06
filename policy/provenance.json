@@ -45,7 +45,7 @@
       "relation": "authored"
     },
     ".github/workflows/kernel-lean.yml": {
-      "blob": "fa5a3be2eff34df88932ee4f2aca96cac53009c4",
+      "blob": "ae3c2efbbafdcfb41e5a368c55b2e85ce5b7ff9d",
       "relation": "authored"
     },
     ".github/workflows/lean-max-mojo-cpu.yml": {
@@ -81,7 +81,7 @@
       "relation": "authored"
     },
     "README.md": {
-      "blob": "13261457320d6b741843c1a563bc73005d8862d3",
+      "blob": "25ebac9877e934e8b568c8161fa9545cc960902a",
       "relation": "authored"
     },
     "conformance/certified_records_v1.txt": {
@@ -227,6 +227,14 @@
       "generator": "tools/make_vectors.py",
       "relation": "generated"
     },
+    "conformance/word-counter-fix/psc-callers.json": {
+      "blob": "3b18669af135a1f72982a07245c4e337a3cb52cc",
+      "relation": "authored"
+    },
+    "conformance/word-counter-fix/psc-wrapper-effect-probe.log": {
+      "blob": "d2290451c4d1de01682b03d3091cda7ef6ed4a61",
+      "relation": "authored"
+    },
     "conformance/word_range_v1.txt": {
       "blob": "a87cbcfc1ffa6901e4586c6b5eeabde83238da72",
       "relation": "authored"
@@ -308,7 +316,7 @@
       "relation": "authored"
     },
     "docs/lean-verification.md": {
-      "blob": "993b68ca11275997371ee93ef55c1db9dc2eb802",
+      "blob": "89636ee3876852b3e371f91585bab2820cac1d2e",
       "relation": "authored"
     },
     "docs/ledger-generation-spec.md": {
@@ -411,6 +419,10 @@
     },
     "docs/weighted-cycle-gain-research-scaffold.md": {
       "blob": "4dae1c37a8b4bf4225fd48c9a2ca5cf5df8b8503",
+      "relation": "authored"
+    },
+    "docs/word-counter-bounds.md": {
+      "blob": "af290cc2189db15921bd33bc7a8d32c3599f273c",
       "relation": "authored"
     },
     "docs/word-range-analysis.md": {
@@ -1166,7 +1178,7 @@
       "relation": "authored"
     },
     "kernel/substitution_dynamics/__init__.mojo": {
-      "blob": "0a54c1a9b1f98a4aebbb4e2a0bcbc09f8ed86906",
+      "blob": "54bbe14419e8c757a8c2482208f23ce8968c93b8",
       "relation": "modified",
       "source": "substitution_dynamics",
       "source_blob": "39630ebf50177ba3e2cdd73b6b5ed1898b76324a",
@@ -1245,8 +1257,8 @@
       "relation": "authored"
     },
     "kernel/substitution_dynamics/words.mojo": {
-      "blob": "7666617cfd592d99f1c15c88dbb47deca6f82277",
-      "relation": "copy",
+      "blob": "295eb389ef5e3a785b73aa700ade240276d352c2",
+      "relation": "modified",
       "source": "substitution_dynamics",
       "source_blob": "7666617cfd592d99f1c15c88dbb47deca6f82277",
       "source_path": "substitution_dynamics/words.mojo"
@@ -1794,7 +1806,7 @@
       "source_path": "tests/test_interval_q.mojo"
     },
     "tests/lean/FiniteMathKernels.lean": {
-      "blob": "58ce23694329006fee69bda35d31526ba85e38f3",
+      "blob": "57a9aa685d43b77f37d33caf34ee8548ef0f4ca1",
       "relation": "authored"
     },
     "tests/lean/FiniteMathKernels/AcceptedField.lean": {
@@ -1810,7 +1822,11 @@
       "relation": "authored"
     },
     "tests/lean/FiniteMathKernels/CounterBounds.lean": {
-      "blob": "5b950895568ab39b05a69b37c9dace5151e943bc",
+      "blob": "e7f2af3fce89b6b483e2c25c41e659d4a06398b1",
+      "relation": "authored"
+    },
+    "tests/lean/FiniteMathKernels/MachineWords.lean": {
+      "blob": "5636646b2fb11b9ac2956be4854c9740ceef8b3b",
       "relation": "authored"
     },
     "tests/lean/FiniteMathKernels/Words.lean": {
@@ -1818,7 +1834,7 @@
       "relation": "authored"
     },
     "tests/lean/coverage.json": {
-      "blob": "182a264671d99a33cf0c7d3de5b7d3fb1d7faec0",
+      "blob": "b97245399ff0bdecdc43bda137df92ec660ffeee",
       "relation": "authored"
     },
     "tests/lean/lake-manifest.json": {
@@ -1834,15 +1850,15 @@
       "relation": "authored"
     },
     "tests/lean/native_transcript.mojo": {
-      "blob": "0aa4f288773aedc92215ea0e0beb576d31754f0d",
+      "blob": "9374f3a05536957f6659a4f68c2af7ced804fdd6",
       "relation": "authored"
     },
     "tests/lean/test_bridge.py": {
-      "blob": "51e7da8eaafa302fe9e63590fdac1c68d43f07d3",
+      "blob": "1f2387ba4e25118ac32c5f74e1fa4615f6efa85f",
       "relation": "authored"
     },
     "tests/lean/word_counter_overflow.mojo": {
-      "blob": "a57ca0918f8bd7378401f1a001744d1aeaaf6428",
+      "blob": "429c24fa16cd0aaba04884aa13c402972b8846e5",
       "relation": "authored"
     },
     "tests/lexical_audit/test_lexical_audit.py": {
@@ -2010,7 +2026,7 @@
       "relation": "authored"
     },
     "tests/provenance/test_provenance.py": {
-      "blob": "3bb3f097ba263f6d89a5c771b8c58ad67410cf23",
+      "blob": "6e7a799b45965a48dd4e9b8c47ed4445c6d1eeb4",
       "relation": "authored"
     },
     "tests/quadratic_orbit/escape_criterion_transcript.mojo": {
@@ -2110,6 +2126,10 @@
     },
     "tests/substitution_dynamics/test_tuning_reference.py": {
       "blob": "7fcf6c930d22e6b0a4fe42e103c9eab8e1fac8df",
+      "relation": "authored"
+    },
+    "tests/substitution_dynamics/test_word_counter_overflow.py": {
+      "blob": "9463640ac02d63b8f2074d5121a5a40886add180",
       "relation": "authored"
     },
     "tests/test_proof_graph_normalization_vectors.py": {
@@ -2244,7 +2264,7 @@
       "relation": "authored"
     },
     "tools/kernel_lean_inventory.py": {
-      "blob": "2b916b8ce84cfa3a36302dc3bdbb564df97aec1b",
+      "blob": "07bc881649a28a4f66926331ba2901d03ff28053",
       "relation": "authored"
     },
     "tools/lexical_audit/__init__.py": {
@@ -2334,7 +2354,7 @@
       "source_path": "tools/replay_mojo.py"
     },
     "tools/run_kernel_lean_verification.py": {
-      "blob": "dcefc63c93497cb9a635e50ecb9577650f264ef1",
+      "blob": "bf474e9dfddcef9d0c6a03ad835fb0c1c71d4af9",
       "relation": "authored"
     },
     "tools/setup_kernel_lean.sh": {
@@ -2351,6 +2371,10 @@
       "source": "finite_mandelbrot_research",
       "source_blob": "76ddda76a2cc3dea8221ac8b8192fe3d7e4f14c4",
       "source_path": "tools/check_vendored_sync.py"
+    },
+    "tools/word_counter_oracle.py": {
+      "blob": "3f77f0b2cb8be8dbd578e6483d3a19e087da36d8",
+      "relation": "authored"
     }
   },
   "format": "finite-math-kernels provenance 1",

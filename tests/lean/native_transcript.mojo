@@ -15,7 +15,7 @@ def ints(xs: List[Int]) -> String:
     return out + "]"
 
 
-def word_case(w: List[Int], size: Int):
+def word_case(w: List[Int], size: Int) raises:
     print('{"kind":"word","size":' + String(size) + ',"input":' + ints(w)
           + ',"parikh":' + ints(parikh(w, size)) + ',"pairs":' + ints(n2(w, size))
           + ',"triples":' + ints(n3(w, size)) + '}')
