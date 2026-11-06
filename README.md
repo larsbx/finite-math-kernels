@@ -83,3 +83,10 @@ See `ARCHITECTURE.md` for layout rules and `CONTRIBUTING.md` for workflow.
 ```bash
 pixi run test
 ```
+
+The [Lean verification layer](docs/lean-verification.md) adds deductive models
+for word/substitution primitives, checked integer guards and accepted field
+operations, plus a separate native-to-Lean conformance gate. Its complete
+[coverage inventory](tests/lean/coverage.json) records every canonical Mojo
+module and its remaining proof obligations. A model proof or finite conformance
+pass does not establish full Mojo implementation refinement.

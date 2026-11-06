@@ -1,0 +1,1410 @@
+{
+  "format": "finite-math-kernels-lean-coverage-v1",
+  "scope": "all canonical Mojo module files",
+  "authority": "Inventory only. Acceptance requires an exact-revision successful Lean receipt; no implementation is declared fully verified.",
+  "model_source": "tests/lean/FiniteMathKernels",
+  "modules": [
+    {
+      "source": "kernel/angle_doubling/__init__.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "package-specific semantic model, guards and source refinement; no coverage claimed"
+      ]
+    },
+    {
+      "source": "kernel/angle_doubling/angle.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "package-specific semantic model, guards and source refinement; no coverage claimed"
+      ]
+    },
+    {
+      "source": "kernel/certified_records/__init__.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "parser totality, canonicality and malformed/mismatch distinctions"
+      ]
+    },
+    {
+      "source": "kernel/certified_records/codec.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "parser totality, canonicality and malformed/mismatch distinctions"
+      ]
+    },
+    {
+      "source": "kernel/certified_records/python_binding.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "parser totality, canonicality and malformed/mismatch distinctions"
+      ]
+    },
+    {
+      "source": "kernel/chromogeometry/__init__.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "package-specific semantic model, guards and source refinement; no coverage claimed"
+      ]
+    },
+    {
+      "source": "kernel/chromogeometry/chromatic.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "package-specific semantic model, guards and source refinement; no coverage claimed"
+      ]
+    },
+    {
+      "source": "kernel/finite_automata/__init__.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "language semantics, total transition validation",
+        "subset construction and Boolean operations",
+        "minimisation equivalence, counting and resource refusals"
+      ]
+    },
+    {
+      "source": "kernel/finite_automata/dfa.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "language semantics, total transition validation",
+        "subset construction and Boolean operations",
+        "minimisation equivalence, counting and resource refusals"
+      ]
+    },
+    {
+      "source": "kernel/finite_automata/moore_minimisation.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "language semantics, total transition validation",
+        "subset construction and Boolean operations",
+        "minimisation equivalence, counting and resource refusals"
+      ]
+    },
+    {
+      "source": "kernel/finite_automata/subset_construction.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "language semantics, total transition validation",
+        "subset construction and Boolean operations",
+        "minimisation equivalence, counting and resource refusals"
+      ]
+    },
+    {
+      "source": "kernel/finite_exact/__init__.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "BigZ limb denotation, carry/borrow, canonicality and division convention",
+        "Q normalisation, gcd/cross-cancellation and rejected carrier refinement",
+        "closed interval/box enclosure and singular guards",
+        "machine arithmetic intermediate bounds and signed/unsigned multiplication binding",
+        "Fp primality checker, modular reduction and Euclidean inverse loop"
+      ]
+    },
+    {
+      "source": "kernel/finite_exact/bigint_z.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "BigZ limb denotation, carry/borrow, canonicality and division convention",
+        "Q normalisation, gcd/cross-cancellation and rejected carrier refinement",
+        "closed interval/box enclosure and singular guards",
+        "machine arithmetic intermediate bounds and signed/unsigned multiplication binding",
+        "Fp primality checker, modular reduction and Euclidean inverse loop"
+      ]
+    },
+    {
+      "source": "kernel/finite_exact/checked_int.mojo",
+      "model_declarations": [
+        "FiniteMathKernels.CheckedInt.accept_exact",
+        "FiniteMathKernels.CheckedInt.add_guard_exact",
+        "FiniteMathKernels.CheckedInt.sub_guard_exact",
+        "FiniteMathKernels.CheckedInt.neg_guard_exact",
+        "FiniteMathKernels.CheckedInt.abs_guard_exact",
+        "FiniteMathKernels.CheckedInt.magnitude_guard_exact"
+      ],
+      "finite_native_lane": true,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "BigZ limb denotation, carry/borrow, canonicality and division convention",
+        "Q normalisation, gcd/cross-cancellation and rejected carrier refinement",
+        "closed interval/box enclosure and singular guards",
+        "machine arithmetic intermediate bounds and signed/unsigned multiplication binding",
+        "Fp primality checker, modular reduction and Euclidean inverse loop"
+      ]
+    },
+    {
+      "source": "kernel/finite_exact/closed_interval.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "BigZ limb denotation, carry/borrow, canonicality and division convention",
+        "Q normalisation, gcd/cross-cancellation and rejected carrier refinement",
+        "closed interval/box enclosure and singular guards",
+        "machine arithmetic intermediate bounds and signed/unsigned multiplication binding",
+        "Fp primality checker, modular reduction and Euclidean inverse loop"
+      ]
+    },
+    {
+      "source": "kernel/finite_exact/closed_q.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "BigZ limb denotation, carry/borrow, canonicality and division convention",
+        "Q normalisation, gcd/cross-cancellation and rejected carrier refinement",
+        "closed interval/box enclosure and singular guards",
+        "machine arithmetic intermediate bounds and signed/unsigned multiplication binding",
+        "Fp primality checker, modular reduction and Euclidean inverse loop"
+      ]
+    },
+    {
+      "source": "kernel/finite_exact/enclosure_width.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "BigZ limb denotation, carry/borrow, canonicality and division convention",
+        "Q normalisation, gcd/cross-cancellation and rejected carrier refinement",
+        "closed interval/box enclosure and singular guards",
+        "machine arithmetic intermediate bounds and signed/unsigned multiplication binding",
+        "Fp primality checker, modular reduction and Euclidean inverse loop"
+      ]
+    },
+    {
+      "source": "kernel/finite_exact/exact_decimal.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "BigZ limb denotation, carry/borrow, canonicality and division convention",
+        "Q normalisation, gcd/cross-cancellation and rejected carrier refinement",
+        "closed interval/box enclosure and singular guards",
+        "machine arithmetic intermediate bounds and signed/unsigned multiplication binding",
+        "Fp primality checker, modular reduction and Euclidean inverse loop"
+      ]
+    },
+    {
+      "source": "kernel/finite_exact/field.mojo",
+      "model_declarations": [
+        "FiniteMathKernels.AcceptedField.inverse_sound",
+        "FiniteMathKernels.AcceptedField.division_cancel"
+      ],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "BigZ limb denotation, carry/borrow, canonicality and division convention",
+        "Q normalisation, gcd/cross-cancellation and rejected carrier refinement",
+        "closed interval/box enclosure and singular guards",
+        "machine arithmetic intermediate bounds and signed/unsigned multiplication binding",
+        "Fp primality checker, modular reduction and Euclidean inverse loop"
+      ]
+    },
+    {
+      "source": "kernel/finite_exact/fp.mojo",
+      "model_declarations": [
+        "FiniteMathKernels.AcceptedField.prime_field_inverse",
+        "FiniteMathKernels.AcceptedField.rejection_compares_false"
+      ],
+      "finite_native_lane": true,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "BigZ limb denotation, carry/borrow, canonicality and division convention",
+        "Q normalisation, gcd/cross-cancellation and rejected carrier refinement",
+        "closed interval/box enclosure and singular guards",
+        "machine arithmetic intermediate bounds and signed/unsigned multiplication binding",
+        "Fp primality checker, modular reduction and Euclidean inverse loop"
+      ]
+    },
+    {
+      "source": "kernel/finite_exact/integer_gcd.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "BigZ limb denotation, carry/borrow, canonicality and division convention",
+        "Q normalisation, gcd/cross-cancellation and rejected carrier refinement",
+        "closed interval/box enclosure and singular guards",
+        "machine arithmetic intermediate bounds and signed/unsigned multiplication binding",
+        "Fp primality checker, modular reduction and Euclidean inverse loop"
+      ]
+    },
+    {
+      "source": "kernel/finite_exact/rat_q.mojo",
+      "model_declarations": [
+        "FiniteMathKernels.AcceptedField.rational_inverse",
+        "FiniteMathKernels.AcceptedField.rejection_compares_false"
+      ],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "BigZ limb denotation, carry/borrow, canonicality and division convention",
+        "Q normalisation, gcd/cross-cancellation and rejected carrier refinement",
+        "closed interval/box enclosure and singular guards",
+        "machine arithmetic intermediate bounds and signed/unsigned multiplication binding",
+        "Fp primality checker, modular reduction and Euclidean inverse loop"
+      ]
+    },
+    {
+      "source": "kernel/finite_exact/rational.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "BigZ limb denotation, carry/borrow, canonicality and division convention",
+        "Q normalisation, gcd/cross-cancellation and rejected carrier refinement",
+        "closed interval/box enclosure and singular guards",
+        "machine arithmetic intermediate bounds and signed/unsigned multiplication binding",
+        "Fp primality checker, modular reduction and Euclidean inverse loop"
+      ]
+    },
+    {
+      "source": "kernel/finite_exact/word_range.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "BigZ limb denotation, carry/borrow, canonicality and division convention",
+        "Q normalisation, gcd/cross-cancellation and rejected carrier refinement",
+        "closed interval/box enclosure and singular guards",
+        "machine arithmetic intermediate bounds and signed/unsigned multiplication binding",
+        "Fp primality checker, modular reduction and Euclidean inverse loop"
+      ]
+    },
+    {
+      "source": "kernel/finite_field_orbit/__init__.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "package-specific semantic model, guards and source refinement; no coverage claimed"
+      ]
+    },
+    {
+      "source": "kernel/finite_field_orbit/census.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "package-specific semantic model, guards and source refinement; no coverage claimed"
+      ]
+    },
+    {
+      "source": "kernel/finite_graph/__init__.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "SCC partition, reachability and maximality",
+        "union-find partition refinement",
+        "signing and period/cyclic-class witnesses"
+      ]
+    },
+    {
+      "source": "kernel/finite_graph/scc.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "SCC partition, reachability and maximality",
+        "union-find partition refinement",
+        "signing and period/cyclic-class witnesses"
+      ]
+    },
+    {
+      "source": "kernel/finite_graph/signing.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "SCC partition, reachability and maximality",
+        "union-find partition refinement",
+        "signing and period/cyclic-class witnesses"
+      ]
+    },
+    {
+      "source": "kernel/finite_graph/union_find.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "SCC partition, reachability and maximality",
+        "union-find partition refinement",
+        "signing and period/cyclic-class witnesses"
+      ]
+    },
+    {
+      "source": "kernel/finite_linear_algebra/__init__.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "matrix/vector dimensions, exact operations and overflow refusal",
+        "elimination, rank and normal-form certificates",
+        "Sturm and M-adic hypotheses and enclosures"
+      ]
+    },
+    {
+      "source": "kernel/finite_linear_algebra/cauchy_bound.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "matrix/vector dimensions, exact operations and overflow refusal",
+        "elimination, rank and normal-form certificates",
+        "Sturm and M-adic hypotheses and enclosures"
+      ]
+    },
+    {
+      "source": "kernel/finite_linear_algebra/faddeev_leverrier.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "matrix/vector dimensions, exact operations and overflow refusal",
+        "elimination, rank and normal-form certificates",
+        "Sturm and M-adic hypotheses and enclosures"
+      ]
+    },
+    {
+      "source": "kernel/finite_linear_algebra/hermite_normal_form.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "matrix/vector dimensions, exact operations and overflow refusal",
+        "elimination, rank and normal-form certificates",
+        "Sturm and M-adic hypotheses and enclosures"
+      ]
+    },
+    {
+      "source": "kernel/finite_linear_algebra/integer_matrix.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "matrix/vector dimensions, exact operations and overflow refusal",
+        "elimination, rank and normal-form certificates",
+        "Sturm and M-adic hypotheses and enclosures"
+      ]
+    },
+    {
+      "source": "kernel/finite_linear_algebra/integer_module.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "matrix/vector dimensions, exact operations and overflow refusal",
+        "elimination, rank and normal-form certificates",
+        "Sturm and M-adic hypotheses and enclosures"
+      ]
+    },
+    {
+      "source": "kernel/finite_linear_algebra/integer_vector.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "matrix/vector dimensions, exact operations and overflow refusal",
+        "elimination, rank and normal-form certificates",
+        "Sturm and M-adic hypotheses and enclosures"
+      ]
+    },
+    {
+      "source": "kernel/finite_linear_algebra/madic_ball.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "matrix/vector dimensions, exact operations and overflow refusal",
+        "elimination, rank and normal-form certificates",
+        "Sturm and M-adic hypotheses and enclosures"
+      ]
+    },
+    {
+      "source": "kernel/finite_linear_algebra/mat3.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "matrix/vector dimensions, exact operations and overflow refusal",
+        "elimination, rank and normal-form certificates",
+        "Sturm and M-adic hypotheses and enclosures"
+      ]
+    },
+    {
+      "source": "kernel/finite_linear_algebra/matrix.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "matrix/vector dimensions, exact operations and overflow refusal",
+        "elimination, rank and normal-form certificates",
+        "Sturm and M-adic hypotheses and enclosures"
+      ]
+    },
+    {
+      "source": "kernel/finite_linear_algebra/matrix3.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "matrix/vector dimensions, exact operations and overflow refusal",
+        "elimination, rank and normal-form certificates",
+        "Sturm and M-adic hypotheses and enclosures"
+      ]
+    },
+    {
+      "source": "kernel/finite_linear_algebra/qlinalg.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "matrix/vector dimensions, exact operations and overflow refusal",
+        "elimination, rank and normal-form certificates",
+        "Sturm and M-adic hypotheses and enclosures"
+      ]
+    },
+    {
+      "source": "kernel/finite_linear_algebra/qpoly.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "matrix/vector dimensions, exact operations and overflow refusal",
+        "elimination, rank and normal-form certificates",
+        "Sturm and M-adic hypotheses and enclosures"
+      ]
+    },
+    {
+      "source": "kernel/finite_linear_algebra/rational_elimination.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "matrix/vector dimensions, exact operations and overflow refusal",
+        "elimination, rank and normal-form certificates",
+        "Sturm and M-adic hypotheses and enclosures"
+      ]
+    },
+    {
+      "source": "kernel/finite_linear_algebra/scalar.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "matrix/vector dimensions, exact operations and overflow refusal",
+        "elimination, rank and normal-form certificates",
+        "Sturm and M-adic hypotheses and enclosures"
+      ]
+    },
+    {
+      "source": "kernel/finite_linear_algebra/smith_normal_form.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "matrix/vector dimensions, exact operations and overflow refusal",
+        "elimination, rank and normal-form certificates",
+        "Sturm and M-adic hypotheses and enclosures"
+      ]
+    },
+    {
+      "source": "kernel/finite_linear_algebra/sturm_sequence.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "matrix/vector dimensions, exact operations and overflow refusal",
+        "elimination, rank and normal-form certificates",
+        "Sturm and M-adic hypotheses and enclosures"
+      ]
+    },
+    {
+      "source": "kernel/finite_linear_algebra/tensor3.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "matrix/vector dimensions, exact operations and overflow refusal",
+        "elimination, rank and normal-form certificates",
+        "Sturm and M-adic hypotheses and enclosures"
+      ]
+    },
+    {
+      "source": "kernel/finite_linear_algebra/w3.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "matrix/vector dimensions, exact operations and overflow refusal",
+        "elimination, rank and normal-form certificates",
+        "Sturm and M-adic hypotheses and enclosures"
+      ]
+    },
+    {
+      "source": "kernel/finite_linear_algebra/wielandt_bound.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "matrix/vector dimensions, exact operations and overflow refusal",
+        "elimination, rank and normal-form certificates",
+        "Sturm and M-adic hypotheses and enclosures"
+      ]
+    },
+    {
+      "source": "kernel/finite_polynomial/__init__.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "coefficient normalisation and polynomial operations",
+        "irreducibility, modular arithmetic and lifting hypotheses",
+        "cyclotomic, jet and Taylor enclosure refinement"
+      ]
+    },
+    {
+      "source": "kernel/finite_polynomial/coefficient_ring.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "coefficient normalisation and polynomial operations",
+        "irreducibility, modular arithmetic and lifting hypotheses",
+        "cyclotomic, jet and Taylor enclosure refinement"
+      ]
+    },
+    {
+      "source": "kernel/finite_polynomial/cyclotomic_field.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "coefficient normalisation and polynomial operations",
+        "irreducibility, modular arithmetic and lifting hypotheses",
+        "cyclotomic, jet and Taylor enclosure refinement"
+      ]
+    },
+    {
+      "source": "kernel/finite_polynomial/cyclotomic_polynomial.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "coefficient normalisation and polynomial operations",
+        "irreducibility, modular arithmetic and lifting hypotheses",
+        "cyclotomic, jet and Taylor enclosure refinement"
+      ]
+    },
+    {
+      "source": "kernel/finite_polynomial/cyclotomic_q.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "coefficient normalisation and polynomial operations",
+        "irreducibility, modular arithmetic and lifting hypotheses",
+        "cyclotomic, jet and Taylor enclosure refinement"
+      ]
+    },
+    {
+      "source": "kernel/finite_polynomial/distinct_degree.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "coefficient normalisation and polynomial operations",
+        "irreducibility, modular arithmetic and lifting hypotheses",
+        "cyclotomic, jet and Taylor enclosure refinement"
+      ]
+    },
+    {
+      "source": "kernel/finite_polynomial/euler_totient.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "coefficient normalisation and polynomial operations",
+        "irreducibility, modular arithmetic and lifting hypotheses",
+        "cyclotomic, jet and Taylor enclosure refinement"
+      ]
+    },
+    {
+      "source": "kernel/finite_polynomial/hensel_lifting.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "coefficient normalisation and polynomial operations",
+        "irreducibility, modular arithmetic and lifting hypotheses",
+        "cyclotomic, jet and Taylor enclosure refinement"
+      ]
+    },
+    {
+      "source": "kernel/finite_polynomial/miller_rabin.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "coefficient normalisation and polynomial operations",
+        "irreducibility, modular arithmetic and lifting hypotheses",
+        "cyclotomic, jet and Taylor enclosure refinement"
+      ]
+    },
+    {
+      "source": "kernel/finite_polynomial/moebius_function.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "coefficient normalisation and polynomial operations",
+        "irreducibility, modular arithmetic and lifting hypotheses",
+        "cyclotomic, jet and Taylor enclosure refinement"
+      ]
+    },
+    {
+      "source": "kernel/finite_polynomial/pair_power_residue.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "coefficient normalisation and polynomial operations",
+        "irreducibility, modular arithmetic and lifting hypotheses",
+        "cyclotomic, jet and Taylor enclosure refinement"
+      ]
+    },
+    {
+      "source": "kernel/finite_polynomial/polynomial_fp.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "coefficient normalisation and polynomial operations",
+        "irreducibility, modular arithmetic and lifting hypotheses",
+        "cyclotomic, jet and Taylor enclosure refinement"
+      ]
+    },
+    {
+      "source": "kernel/finite_polynomial/polynomial_z.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "coefficient normalisation and polynomial operations",
+        "irreducibility, modular arithmetic and lifting hypotheses",
+        "cyclotomic, jet and Taylor enclosure refinement"
+      ]
+    },
+    {
+      "source": "kernel/finite_polynomial/quadratic_germ.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "coefficient normalisation and polynomial operations",
+        "irreducibility, modular arithmetic and lifting hypotheses",
+        "cyclotomic, jet and Taylor enclosure refinement"
+      ]
+    },
+    {
+      "source": "kernel/finite_polynomial/rabin_irreducibility.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "coefficient normalisation and polynomial operations",
+        "irreducibility, modular arithmetic and lifting hypotheses",
+        "cyclotomic, jet and Taylor enclosure refinement"
+      ]
+    },
+    {
+      "source": "kernel/finite_polynomial/taylor_model.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "coefficient normalisation and polynomial operations",
+        "irreducibility, modular arithmetic and lifting hypotheses",
+        "cyclotomic, jet and Taylor enclosure refinement"
+      ]
+    },
+    {
+      "source": "kernel/finite_polynomial/truncated_jet.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "coefficient normalisation and polynomial operations",
+        "irreducibility, modular arithmetic and lifting hypotheses",
+        "cyclotomic, jet and Taylor enclosure refinement"
+      ]
+    },
+    {
+      "source": "kernel/mojo_smoke/__init__.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "receipt emission follows guarded assertions; no mathematical proof authority"
+      ]
+    },
+    {
+      "source": "kernel/mojo_smoke/claims.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "receipt emission follows guarded assertions; no mathematical proof authority"
+      ]
+    },
+    {
+      "source": "kernel/mojo_smoke/report.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "receipt emission follows guarded assertions; no mathematical proof authority"
+      ]
+    },
+    {
+      "source": "kernel/parallel_fold/__init__.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "order-preserving associativity assumptions, MAX execution parity and resource refusals"
+      ]
+    },
+    {
+      "source": "kernel/parallel_fold/map_fold.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "order-preserving associativity assumptions, MAX execution parity and resource refusals"
+      ]
+    },
+    {
+      "source": "kernel/projective/__init__.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "package-specific semantic model, guards and source refinement; no coverage claimed"
+      ]
+    },
+    {
+      "source": "kernel/projective/chart.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "package-specific semantic model, guards and source refinement; no coverage claimed"
+      ]
+    },
+    {
+      "source": "kernel/projective/homogeneous.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "package-specific semantic model, guards and source refinement; no coverage claimed"
+      ]
+    },
+    {
+      "source": "kernel/projective_limits/__init__.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "package-specific semantic model, guards and source refinement; no coverage claimed"
+      ]
+    },
+    {
+      "source": "kernel/projective_limits/coxeter_gate.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "package-specific semantic model, guards and source refinement; no coverage claimed"
+      ]
+    },
+    {
+      "source": "kernel/projective_limits/gram_geometry.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "package-specific semantic model, guards and source refinement; no coverage claimed"
+      ]
+    },
+    {
+      "source": "kernel/projective_limits/hyperbolic_rt.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "package-specific semantic model, guards and source refinement; no coverage claimed"
+      ]
+    },
+    {
+      "source": "kernel/projective_limits/hyperbolic_rt_batch.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "package-specific semantic model, guards and source refinement; no coverage claimed"
+      ]
+    },
+    {
+      "source": "kernel/projective_limits/hyperbolic_rt_max.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "package-specific semantic model, guards and source refinement; no coverage claimed"
+      ]
+    },
+    {
+      "source": "kernel/projective_limits/limits.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "package-specific semantic model, guards and source refinement; no coverage claimed"
+      ]
+    },
+    {
+      "source": "kernel/projective_limits/line.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "package-specific semantic model, guards and source refinement; no coverage claimed"
+      ]
+    },
+    {
+      "source": "kernel/projective_limits/mobius_transformation.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "package-specific semantic model, guards and source refinement; no coverage claimed"
+      ]
+    },
+    {
+      "source": "kernel/projective_limits/rotor.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "package-specific semantic model, guards and source refinement; no coverage claimed"
+      ]
+    },
+    {
+      "source": "kernel/projective_limits/rt_route.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "package-specific semantic model, guards and source refinement; no coverage claimed"
+      ]
+    },
+    {
+      "source": "kernel/projective_limits/spread_polynomial.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "package-specific semantic model, guards and source refinement; no coverage claimed"
+      ]
+    },
+    {
+      "source": "kernel/proof_records/__init__.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "canonical encoding and identity binding",
+        "typed dependency closure and promotion boundary"
+      ]
+    },
+    {
+      "source": "kernel/proof_records/records.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "canonical encoding and identity binding",
+        "typed dependency closure and promotion boundary"
+      ]
+    },
+    {
+      "source": "kernel/proof_records/sha256.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "canonical encoding and identity binding",
+        "typed dependency closure and promotion boundary"
+      ]
+    },
+    {
+      "source": "kernel/quadratic_orbit/__init__.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "package-specific semantic model, guards and source refinement; no coverage claimed"
+      ]
+    },
+    {
+      "source": "kernel/quadratic_orbit/collision.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "package-specific semantic model, guards and source refinement; no coverage claimed"
+      ]
+    },
+    {
+      "source": "kernel/quadratic_orbit/escape_criterion.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "package-specific semantic model, guards and source refinement; no coverage claimed"
+      ]
+    },
+    {
+      "source": "kernel/quadratic_orbit/krawczyk_operator.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "package-specific semantic model, guards and source refinement; no coverage claimed"
+      ]
+    },
+    {
+      "source": "kernel/quadratic_orbit/multiplier_classification.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "package-specific semantic model, guards and source refinement; no coverage claimed"
+      ]
+    },
+    {
+      "source": "kernel/quadratic_orbit/orbit.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "package-specific semantic model, guards and source refinement; no coverage claimed"
+      ]
+    },
+    {
+      "source": "kernel/quadratic_orbit/preperiodic.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "package-specific semantic model, guards and source refinement; no coverage claimed"
+      ]
+    },
+    {
+      "source": "kernel/rational_dynamics/__init__.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "package-specific semantic model, guards and source refinement; no coverage claimed"
+      ]
+    },
+    {
+      "source": "kernel/rational_dynamics/carmichael.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "package-specific semantic model, guards and source refinement; no coverage claimed"
+      ]
+    },
+    {
+      "source": "kernel/rational_dynamics/continued_fractions.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "package-specific semantic model, guards and source refinement; no coverage claimed"
+      ]
+    },
+    {
+      "source": "kernel/rational_dynamics/doubling.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "package-specific semantic model, guards and source refinement; no coverage claimed"
+      ]
+    },
+    {
+      "source": "kernel/rational_dynamics/farey.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "package-specific semantic model, guards and source refinement; no coverage claimed"
+      ]
+    },
+    {
+      "source": "kernel/rational_dynamics/integers.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "package-specific semantic model, guards and source refinement; no coverage claimed"
+      ]
+    },
+    {
+      "source": "kernel/rational_dynamics/moebius.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "package-specific semantic model, guards and source refinement; no coverage claimed"
+      ]
+    },
+    {
+      "source": "kernel/rational_dynamics/multiplicative_order.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "package-specific semantic model, guards and source refinement; no coverage claimed"
+      ]
+    },
+    {
+      "source": "kernel/rational_dynamics/rational.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "package-specific semantic model, guards and source refinement; no coverage claimed"
+      ]
+    },
+    {
+      "source": "kernel/root_isolation/__init__.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "package-specific semantic model, guards and source refinement; no coverage claimed"
+      ]
+    },
+    {
+      "source": "kernel/root_isolation/boxes.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "package-specific semantic model, guards and source refinement; no coverage claimed"
+      ]
+    },
+    {
+      "source": "kernel/root_isolation/krawczyk.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "package-specific semantic model, guards and source refinement; no coverage claimed"
+      ]
+    },
+    {
+      "source": "kernel/root_isolation/krawczyk_moore.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "package-specific semantic model, guards and source refinement; no coverage claimed"
+      ]
+    },
+    {
+      "source": "kernel/substitution_dynamics/__init__.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "array/list representation and valid alphabet indices",
+        "every machine Int count and intermediate must fit",
+        "decomposition completeness and minimal balanced cuts",
+        "bounded automaton refusal and sound search witnesses",
+        "address, symmetry, endpoint, tuning and return-lattice algorithms"
+      ]
+    },
+    {
+      "source": "kernel/substitution_dynamics/automaton.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "array/list representation and valid alphabet indices",
+        "every machine Int count and intermediate must fit",
+        "decomposition completeness and minimal balanced cuts",
+        "bounded automaton refusal and sound search witnesses",
+        "address, symmetry, endpoint, tuning and return-lattice algorithms"
+      ]
+    },
+    {
+      "source": "kernel/substitution_dynamics/balanced_pair_algorithm.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "array/list representation and valid alphabet indices",
+        "every machine Int count and intermediate must fit",
+        "decomposition completeness and minimal balanced cuts",
+        "bounded automaton refusal and sound search witnesses",
+        "address, symmetry, endpoint, tuning and return-lattice algorithms"
+      ]
+    },
+    {
+      "source": "kernel/substitution_dynamics/balanced_pairs.mojo",
+      "model_declarations": [
+        "FiniteMathKernels.Words.balanced_image_length",
+        "FiniteMathKernels.Words.witness_inflate"
+      ],
+      "finite_native_lane": true,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "array/list representation and valid alphabet indices",
+        "every machine Int count and intermediate must fit",
+        "decomposition completeness and minimal balanced cuts",
+        "bounded automaton refusal and sound search witnesses",
+        "address, symmetry, endpoint, tuning and return-lattice algorithms"
+      ]
+    },
+    {
+      "source": "kernel/substitution_dynamics/barge_class.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "array/list representation and valid alphabet indices",
+        "every machine Int count and intermediate must fit",
+        "decomposition completeness and minimal balanced cuts",
+        "bounded automaton refusal and sound search witnesses",
+        "address, symmetry, endpoint, tuning and return-lattice algorithms"
+      ]
+    },
+    {
+      "source": "kernel/substitution_dynamics/coincidence.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "array/list representation and valid alphabet indices",
+        "every machine Int count and intermediate must fit",
+        "decomposition completeness and minimal balanced cuts",
+        "bounded automaton refusal and sound search witnesses",
+        "address, symmetry, endpoint, tuning and return-lattice algorithms"
+      ]
+    },
+    {
+      "source": "kernel/substitution_dynamics/discrepancy.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "array/list representation and valid alphabet indices",
+        "every machine Int count and intermediate must fit",
+        "decomposition completeness and minimal balanced cuts",
+        "bounded automaton refusal and sound search witnesses",
+        "address, symmetry, endpoint, tuning and return-lattice algorithms"
+      ]
+    },
+    {
+      "source": "kernel/substitution_dynamics/dumont_thomas.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "array/list representation and valid alphabet indices",
+        "every machine Int count and intermediate must fit",
+        "decomposition completeness and minimal balanced cuts",
+        "bounded automaton refusal and sound search witnesses",
+        "address, symmetry, endpoint, tuning and return-lattice algorithms"
+      ]
+    },
+    {
+      "source": "kernel/substitution_dynamics/endpoint_maps.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "array/list representation and valid alphabet indices",
+        "every machine Int count and intermediate must fit",
+        "decomposition completeness and minimal balanced cuts",
+        "bounded automaton refusal and sound search witnesses",
+        "address, symmetry, endpoint, tuning and return-lattice algorithms"
+      ]
+    },
+    {
+      "source": "kernel/substitution_dynamics/internal_address.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "array/list representation and valid alphabet indices",
+        "every machine Int count and intermediate must fit",
+        "decomposition completeness and minimal balanced cuts",
+        "bounded automaton refusal and sound search witnesses",
+        "address, symmetry, endpoint, tuning and return-lattice algorithms"
+      ]
+    },
+    {
+      "source": "kernel/substitution_dynamics/return_lattice.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "array/list representation and valid alphabet indices",
+        "every machine Int count and intermediate must fit",
+        "decomposition completeness and minimal balanced cuts",
+        "bounded automaton refusal and sound search witnesses",
+        "address, symmetry, endpoint, tuning and return-lattice algorithms"
+      ]
+    },
+    {
+      "source": "kernel/substitution_dynamics/sadic.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "array/list representation and valid alphabet indices",
+        "every machine Int count and intermediate must fit",
+        "decomposition completeness and minimal balanced cuts",
+        "bounded automaton refusal and sound search witnesses",
+        "address, symmetry, endpoint, tuning and return-lattice algorithms"
+      ]
+    },
+    {
+      "source": "kernel/substitution_dynamics/strong_coincidence.mojo",
+      "model_declarations": [
+        "FiniteMathKernels.Words.witness_inflate",
+        "FiniteMathKernels.Words.witness_iterate"
+      ],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "array/list representation and valid alphabet indices",
+        "every machine Int count and intermediate must fit",
+        "decomposition completeness and minimal balanced cuts",
+        "bounded automaton refusal and sound search witnesses",
+        "address, symmetry, endpoint, tuning and return-lattice algorithms"
+      ]
+    },
+    {
+      "source": "kernel/substitution_dynamics/substitution.mojo",
+      "model_declarations": [
+        "FiniteMathKernels.Words.parikh_inflate",
+        "FiniteMathKernels.Words.balanced_iterate"
+      ],
+      "finite_native_lane": true,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "array/list representation and valid alphabet indices",
+        "every machine Int count and intermediate must fit",
+        "decomposition completeness and minimal balanced cuts",
+        "bounded automaton refusal and sound search witnesses",
+        "address, symmetry, endpoint, tuning and return-lattice algorithms"
+      ]
+    },
+    {
+      "source": "kernel/substitution_dynamics/symmetry.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "array/list representation and valid alphabet indices",
+        "every machine Int count and intermediate must fit",
+        "decomposition completeness and minimal balanced cuts",
+        "bounded automaton refusal and sound search witnesses",
+        "address, symmetry, endpoint, tuning and return-lattice algorithms"
+      ]
+    },
+    {
+      "source": "kernel/substitution_dynamics/tuning.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "array/list representation and valid alphabet indices",
+        "every machine Int count and intermediate must fit",
+        "decomposition completeness and minimal balanced cuts",
+        "bounded automaton refusal and sound search witnesses",
+        "address, symmetry, endpoint, tuning and return-lattice algorithms"
+      ]
+    },
+    {
+      "source": "kernel/substitution_dynamics/words.mojo",
+      "model_declarations": [
+        "FiniteMathKernels.Words.stream_correct",
+        "FiniteMathKernels.Words.balanced_iff_perm"
+      ],
+      "finite_native_lane": true,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "array/list representation and valid alphabet indices",
+        "every machine Int count and intermediate must fit",
+        "decomposition completeness and minimal balanced cuts",
+        "bounded automaton refusal and sound search witnesses",
+        "address, symmetry, endpoint, tuning and return-lattice algorithms"
+      ]
+    },
+    {
+      "source": "kernel/weighted_graph/__init__.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "package-specific semantic model, guards and source refinement; no coverage claimed"
+      ]
+    },
+    {
+      "source": "kernel/weighted_graph/cycle_gain.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "remaining_obligations": [
+        "package-specific semantic model, guards and source refinement; no coverage claimed"
+      ]
+    }
+  ]
+}

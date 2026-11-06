@@ -1,0 +1,15 @@
+name = "FiniteMathKernels"
+version = "0.1.0"
+defaultTargets = ["FiniteMathKernels"]
+
+[leanOptions]
+autoImplicit = false
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+git = "https://github.com/leanprover-community/mathlib4"
+rev = "4edb0dbaa3b3cf729d86d1e2f035474d5ae2ac09"
+
+[[lean_lib]]
+name = "FiniteMathKernels"

@@ -19,6 +19,7 @@ python = ">=3.11"
 pytest = "*"
 
 [tasks]
+test-lean-tools = "python -m unittest discover -s tests/lean -p 'test_*.py'"
 property = "python oracles/property_oracle.py --layers zq"
 replay = "python tools/replay_mojo.py"
 provenance = "python tools/provenance.py --update"
