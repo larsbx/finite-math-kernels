@@ -21,6 +21,32 @@ Natural-number word counts are unbounded mathematical values. The native
 unbounded guarantee: every relevant intermediate must fit. Native transcripts
 are finite differential controls, never a universal implementation proof.
 
+## Confirmed native counterexample
+
+[Issue #97](https://github.com/larsbx/finite-math-kernels/issues/97) records an
+executed counterexample at the unchanged native source revision
+4fea04f7c2f88707bca8642d01711331dbeac792:
+
+| Input / result | Value |
+| --- | --- |
+| Word | 4,000,000 copies of letter 0; alphabet size 1 |
+| Exact scattered triples | 10,666,658,666,668,000,000 |
+| Signed Int maximum | 9,223,372,036,854,775,807 |
+| Observed native N3 | -7,780,085,407,041,551,616 |
+
+The native routine returns a wrapped count without refusal. The general Lean
+constant-word lemmas derive the binomial count for arbitrary lengths; the
+closed stress case proves that this exact value cannot fit and that the observed
+negative integer cannot represent a scattered-triple count. Replay with
+`pixi run mojo run -I kernel tests/lean/word_counter_overflow.mojo`.
+
+The focused receipt records this as a known native counterexample, separately
+from accepted model proofs and the 373 small-input conformance cases. A green
+focused gate does not certify unconditional native exactness. Repairing the
+raising/exact-carrier contract and its callers is tracked separately in #97;
+this PR changes no canonical executable kernel. N2 and Parikh overflow examples
+are not claimed by this reproduction.
+
 ## Complete inventory and next obligations
 
 `tests/lean/coverage.json` lists every canonical Mojo module, including uncovered
@@ -55,7 +81,12 @@ into a fresh workspace, builds the models, and translates 373 fresh native
 records into closed Lean propositions checked by the kernel. All named model
 proofs have an axiom audit allowing only propext, Classical.choice and Quot.sound.
 Wrong Parikh counts, wrapped overflow and rejection-equals-true are separate
-negative Lean controls. Receipts retain exact versions, commands and logs.
+negative Lean controls. A fourth rejects a noncanonical field representative
+even when it is equal modulo p. Division candidates are checked by proving
+result times denominator equals numerator with a nonzero denominator; a generic
+field lemma supplies the division equality. This avoids trying to execute
+Mathlib's non-reducible field-inverse definition, and adds no proof assumption.
+Receipts retain exact versions, commands and logs.
 
 Pinned Lean/Mathlib and provisioned dependency artifacts are explicit trust
 inputs. The native compiler and fixture producer are not assumed mathematically

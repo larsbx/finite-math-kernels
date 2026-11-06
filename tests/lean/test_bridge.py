@@ -1,12 +1,15 @@
 import importlib.util
 import json
 from pathlib import Path
+import sys
 import unittest
 
 ROOT = Path(__file__).resolve().parents[2]
 SPEC = importlib.util.spec_from_file_location("bridge", ROOT / "tools/kernel_lean_conformance.py")
 bridge = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(bridge)
+sys.path.insert(0, str(ROOT / "tools"))
+from run_kernel_lean_verification import check_axiom_log
 
 
 class AdmissionControls(unittest.TestCase):
@@ -43,6 +46,17 @@ class AdmissionControls(unittest.TestCase):
         paths = {r["source"] for r in actual["modules"]}
         self.assertEqual(paths, {p.relative_to(ROOT).as_posix() for p in (ROOT / "kernel").rglob("*.mojo")})
         self.assertTrue(all(r["implementation_refinement"] == "open" for r in actual["modules"]))
+
+    def test_wrapped_standard_axioms_are_admitted(self):
+        check_axiom_log("'N.p' depends on axioms: [propext,\n Classical.choice, Quot.sound]\n", ["N.p"])
+
+    def test_wrapped_unapproved_axiom_refuses(self):
+        with self.assertRaisesRegex(ValueError, "unapproved"):
+            check_axiom_log("'N.p' depends on axioms: [propext,\n sorryAx]\n", ["N.p"])
+
+    def test_truncated_axiom_block_refuses(self):
+        with self.assertRaisesRegex(ValueError, "malformed"):
+            check_axiom_log("'N.p' depends on axioms: [propext,\n", ["N.p"])
 
 
 if __name__ == "__main__":

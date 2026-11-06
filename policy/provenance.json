@@ -81,7 +81,7 @@
       "relation": "authored"
     },
     "README.md": {
-      "blob": "262a66577d74d31ed05610d66aaa23a2d2a90caa",
+      "blob": "004c04ddf18208bd5876f8b096d51565ca2ee9e9",
       "relation": "authored"
     },
     "conformance/certified_records_v1.txt": {
@@ -264,7 +264,7 @@
       "relation": "authored"
     },
     "docs/lean-verification.md": {
-      "blob": "cf4c584a2e530c0b96ee811c405320ca1fa65a57",
+      "blob": "76ee191e8b86b51edb728c51a9d802ff6f2bd656",
       "relation": "authored"
     },
     "docs/ledger-generation-spec.md": {
@@ -1733,7 +1733,7 @@
       "relation": "authored"
     },
     "tests/lean/test_bridge.py": {
-      "blob": "eb6e4ac742bdd7fa380c94a02db50ce8fbaf55e7",
+      "blob": "51e7da8eaafa302fe9e63590fdac1c68d43f07d3",
       "relation": "authored"
     },
     "tests/lean/word_counter_overflow.mojo": {
@@ -2229,7 +2229,7 @@
       "source_path": "tools/replay_mojo.py"
     },
     "tools/run_kernel_lean_verification.py": {
-      "blob": "754f748948adc14bdebfa00fd213164446a9da3b",
+      "blob": "dcefc63c93497cb9a635e50ecb9577650f264ef1",
       "relation": "authored"
     },
     "tools/setup_kernel_lean.sh": {

@@ -90,3 +90,8 @@ operations, plus a separate native-to-Lean conformance gate. Its complete
 [coverage inventory](tests/lean/coverage.json) records every canonical Mojo
 module and its remaining proof obligations. A model proof or finite conformance
 pass does not establish full Mojo implementation refinement.
+
+Known native limitation: the N3 word counter can wrap without refusal on large
+words; [the executed counterexample](https://github.com/larsbx/finite-math-kernels/issues/97)
+is retained in the Lean verification lane. Unconditional count exactness is
+refuted at that source revision; the repair remains open.

@@ -23,6 +23,19 @@ def output(cmd, cwd=ROOT):
     return subprocess.check_output(cmd, cwd=cwd, text=True).strip()
 
 
+def check_axiom_log(audit_log, names):
+    for name in names:
+        if audit_log.count("'" + name + "'") != 1:
+            raise ValueError("incomplete or duplicate audit output: " + name)
+    blocks = re.findall(r"depends on axioms:\s*\[([^\]]*)\]", audit_log, re.S)
+    if len(blocks) != audit_log.count("depends on axioms:"):
+        raise ValueError("malformed axiom report")
+    for block in blocks:
+        axioms = {a.strip() for a in block.split(",") if a.strip()}
+        if axioms - STANDARD:
+            raise ValueError("unapproved proof assumption: " + block)
+
+
 def run_gate(expected, destination):
     destination = destination.resolve()
     destination.mkdir(parents=True, exist_ok=True)
@@ -116,14 +129,7 @@ def run_gate(expected, destination):
             audit = "import FiniteMathKernels\n" + "\n".join("#print axioms " + n for n in names) + "\n"
             (destination / "AxiomAudit.lean").write_text(audit)
             audit_log = execute("axioms", ["elan", "run", pin, "lake", "env", "lean", str(destination / "AxiomAudit.lean")], work)
-            for name in names:
-                if audit_log.count("'" + name + "'") != 1:
-                    raise ValueError("incomplete or duplicate audit output: " + name)
-            for line in audit_log.splitlines():
-                if "depends on axioms:" in line:
-                    axioms = set(filter(None, line.split("depends on axioms:", 1)[1].strip(" []").split(", ")))
-                    if axioms - STANDARD:
-                        raise ValueError("unapproved proof assumption: " + line)
+            check_axiom_log(audit_log, names)
             for label, proposition in {
                 "negative-word": "Conformance.parikhVector 2 [0] = [0,1]",
                 "negative-overflow": "CheckedInt.accept64 (CheckedInt.upper64+1) = some CheckedInt.lower64",
