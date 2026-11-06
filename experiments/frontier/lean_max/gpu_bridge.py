@@ -5,6 +5,8 @@ offline slot model is deliberately separate from cpu.expected_candidates.
 """
 from __future__ import annotations
 
+from hashlib import sha256
+import json
 import os
 from pathlib import Path
 import re
@@ -186,6 +188,10 @@ def read_candidates(problem: ref.Problem, snapshot: list[ref.Step], runner: Path
         proc.stdout.close()
         proc.stderr.close()
     metrics["runner_and_parity_ns"] = time.perf_counter_ns() - start
+    # Host observations, separate from the device driver's self-reported counters.
+    metrics.update(runner_pid=proc.pid, candidate_parity=True,
+                   input_sha256=sha256(json.dumps(cpu.arguments(problem, snapshot), separators=(",", ":")).encode()).hexdigest(),
+                   output_sha256=sha256(buffers["stdout"]).hexdigest())
     if telemetry is not None:
         telemetry.append(metrics)
     return candidates

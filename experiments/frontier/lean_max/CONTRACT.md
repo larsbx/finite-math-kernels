@@ -5,6 +5,9 @@ Status: NON-AUTHORITATIVE CPU reference, not a Mojo/MAX GPU prover, not a Lean k
 The [bounded GPU candidate prototype](GPU_PROTOTYPE.md) supplies opt-in device
 source and offline conformance coverage. Compilation and genuine device
 validation remain pending; this does not promote the CPU or GPU implementation.
+The [strict hardware acceptance mode](HARDWARE_ACCEPTANCE.md) rejects missing
+runners, skipped hardware tests, failed parity, incomplete Lean acceptance and
+missing independent device observations. Offline tests are not hardware evidence.
 
 ## Restricted domain
 One uninterpreted sort (alpha), atoms, and explicitly listed unary function applications. Terms form a topologically ordered duplicate-free DAG. Premises are named equalities; a goal is an equality. Symbols accept only ASCII alphanumeric identifiers beginning with a letter. Arbitrary Lean expressions are not accepted.

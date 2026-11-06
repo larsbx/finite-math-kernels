@@ -82,6 +82,11 @@ compile or execute the Mojo kernel.
 
 ## Reproduce on an approved GPU host
 
+For a fail-closed acceptance receipt, use the dedicated
+[hardware acceptance mode](HARDWARE_ACCEPTANCE.md). It requires fresh builds,
+complete replay and Lean acceptance, and independently profiled device launches.
+The ordinary opt-in tests below retain visible skips and are not that gate.
+
 No workflow or runner registration is added by this prototype. Run locally on
 an already authorized host with the pinned environment and an actual GPU:
 

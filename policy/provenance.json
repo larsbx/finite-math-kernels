@@ -77,7 +77,7 @@
       "relation": "authored"
     },
     "README.md": {
-      "blob": "2abe5c05a97981b784c3bd4f04ee2367489c8610",
+      "blob": "957baa7411f2db87f3abeb4c002d73451b17babe",
       "relation": "authored"
     },
     "conformance/certified_records_v1.txt": {
@@ -430,15 +430,23 @@
       "relation": "authored"
     },
     "experiments/frontier/lean_max/CONTRACT.md": {
-      "blob": "1e2e010e67e77e89b5cdfb59151e75c0cdbd86bc",
+      "blob": "81fd9e2b17457a2ef3669cd29e9b5a5730b93f0b",
       "relation": "authored"
     },
     "experiments/frontier/lean_max/Demo.lean": {
       "blob": "51e147697d7e58c3c19d71a3f6086c8fe3b9cc0a",
       "relation": "authored"
     },
+    "experiments/frontier/lean_max/GPU_CI_PROPOSAL.md": {
+      "blob": "b8ad4b10af1f7452d59b29e1d1de517fad333d85",
+      "relation": "authored"
+    },
     "experiments/frontier/lean_max/GPU_PROTOTYPE.md": {
-      "blob": "f4778a753834d6363018a0e2e6bb240650357ec6",
+      "blob": "8da8a4eb1efcd79811529af574a1670c20b3c433",
+      "relation": "authored"
+    },
+    "experiments/frontier/lean_max/HARDWARE_ACCEPTANCE.md": {
+      "blob": "b7d4089e894c0896b8ee0ee54bca1f81a4b36a16",
       "relation": "authored"
     },
     "experiments/frontier/lean_max/MOJO_CPU.md": {
@@ -467,7 +475,11 @@
       "relation": "generated"
     },
     "experiments/frontier/lean_max/gpu_bridge.py": {
-      "blob": "0e019ebf419f8c9aa5a1aa68b94cf30306a61fe2",
+      "blob": "c72806307e66504ce21148de71b0682af9e5e977",
+      "relation": "authored"
+    },
+    "experiments/frontier/lean_max/hardware_acceptance.py": {
+      "blob": "fa4962c51e75266ce9633dc1b05884e44aad4efc",
       "relation": "authored"
     },
     "experiments/frontier/lean_max/lake-manifest.json": {
@@ -1711,7 +1723,11 @@
       "relation": "authored"
     },
     "tests/frontier/test_lean_max_gpu_hardware.py": {
-      "blob": "d931f45a01671991c865bb3f3407ea611d34f2c5",
+      "blob": "44edf9fa2bfa1ed48fc5634d660dc6c83071b6de",
+      "relation": "authored"
+    },
+    "tests/frontier/test_lean_max_hardware_acceptance.py": {
+      "blob": "45a5390209fce7f7e2f681f5aa136215df297c1b",
       "relation": "authored"
     },
     "tests/frontier/test_lean_max_trace.py": {
