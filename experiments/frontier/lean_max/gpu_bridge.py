@@ -139,7 +139,8 @@ def parse_output(problem: ref.Problem, snapshot: list[ref.Step], output: bytes) 
 
 
 def read_candidates(problem: ref.Problem, snapshot: list[ref.Step], runner: Path,
-                    *, enabled: bool = False, telemetry: list | None = None) -> list[ref.Step]:
+                    *, enabled: bool = False, telemetry: list | None = None,
+                    output_path: Path | None = None) -> list[ref.Step]:
     if not enabled:
         raise ref.InvalidProblem("GPU execution requires explicit opt-in")
     validate_input(problem, snapshot)
@@ -174,6 +175,9 @@ def read_candidates(problem: ref.Problem, snapshot: list[ref.Step], runner: Path
             code = proc.wait(timeout=max(0.001, deadline - time.monotonic()))
         except subprocess.TimeoutExpired as exc:
             raise ref.InvalidProblem("GPU runner timeout") from exc
+        if output_path is not None:
+            output_path.write_bytes(buffers["stdout"])
+            output_path.with_suffix(".stderr").write_bytes(buffers["stderr"])
         if code:
             raise ref.InvalidProblem(f"GPU runner failed (exit {code}); no CPU fallback")
         candidates, metrics = parse_output(problem, snapshot, bytes(buffers["stdout"]))
@@ -192,7 +196,8 @@ def read_candidates(problem: ref.Problem, snapshot: list[ref.Step], runner: Path
 
 
 def construct(problem: ref.Problem, runner: Path, *, enabled: bool = False,
-              max_records: int = 64, max_rounds: int = 32, telemetry: list | None = None) -> dict:
+              max_records: int = 64, max_rounds: int = 32, telemetry: list | None = None,
+              candidate_reader=None) -> dict:
     if not enabled:
         raise ref.InvalidProblem("GPU execution requires explicit opt-in")
     if type(max_records) is not int or not 1 <= max_records <= 64 or type(max_rounds) is not int or not 0 <= max_rounds <= 32:
@@ -218,7 +223,8 @@ def construct(problem: ref.Problem, runner: Path, *, enabled: bool = False,
         if problem.goal in known:
             return ref._result(problem, steps, known[problem.goal])
         for _ in range(max_rounds):
-            proposals = read_candidates(problem, list(steps), runner, enabled=True, telemetry=telemetry)
+            proposals = (candidate_reader or read_candidates)(
+                problem, list(steps), runner, enabled=True, telemetry=telemetry)
             changed = False
             for step in proposals:
                 changed |= add(step)

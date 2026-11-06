@@ -82,7 +82,10 @@ The experimental [Lean-MAX GPU candidate prototype](experiments/frontier/lean_ma
 adds bounded device-kernel source, deterministic candidate validation and an
 opt-in comparison against Python, Mojo CPU and Lean grind. Offline conformance
 is tested; Mojo GPU compilation and hardware validation remain pending. It is
-not a verified GPU prover or an acceleration result.
+not a verified GPU prover or an acceleration result. A separate
+[fail-closed hardware acceptance command](experiments/frontier/lean_max/HARDWARE_ACCEPTANCE.md)
+requires an exact clean revision, fresh runner builds, profiler-observed device
+launches, full CPU parity and pinned Lean acceptance; it has not run on hardware.
 
 ## Verification
 

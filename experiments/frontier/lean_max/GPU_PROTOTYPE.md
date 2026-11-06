@@ -80,6 +80,15 @@ indices, forward references, duplicates, overflow, malformed data, ordering,
 missing proposals, runner errors, output caps and timeouts. These tests do not
 compile or execute the Mojo kernel.
 
+## Dedicated hardware acceptance
+
+Use [the fail-closed hardware acceptance mode](HARDWARE_ACCEPTANCE.md) when
+requesting acceptance. Its full-corpus command requires an explicitly configured
+GPU build destination, exact clean revision, profiler-observed launches, CPU
+parity, complete trace replay and pinned Lean checks. Offline fault tests are
+separate from hardware evidence. The [workflow proposal](GPU_WORKFLOW_PROPOSAL.md)
+is documentation only and requires approval before installation.
+
 ## Reproduce on an approved GPU host
 
 No workflow or runner registration is added by this prototype. Run locally on
@@ -95,6 +104,9 @@ candidate and trace parity, exercises the maximum slot count, and calls the
 compiled driver with malformed inputs. A configured but failing GPU runner
 fails tests; a missing runner is a visible skip. This suite establishes
 candidate parity only. Complete proof acceptance also requires Lean below.
+
+The pytest command above remains a development conformance check, not the
+dedicated acceptance mode. Only the latter can emit a hardware acceptance receipt.
 
 ## End-to-end comparison
 
