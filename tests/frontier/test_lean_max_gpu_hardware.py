@@ -12,7 +12,16 @@ from experiments.frontier.lean_max import trace_codec as codec
 from experiments.frontier.lean_max.corpus import problems
 
 RUNNER = os.environ.get("LEAN_MAX_GPU_RUNNER")
-pytestmark = pytest.mark.skipif(not RUNNER, reason="genuine GPU runner not configured")
+REQUIRED = os.environ.get("LEAN_MAX_GPU_REQUIRED") == "1"
+pytestmark = pytest.mark.skipif(not RUNNER and not REQUIRED, reason="genuine GPU runner not configured")
+
+
+@pytest.fixture(scope="module", autouse=True)
+def require_configured_runner():
+    if REQUIRED and not RUNNER:
+        pytest.fail("hardware acceptance requires LEAN_MAX_GPU_RUNNER; skips cannot satisfy acceptance")
+    if RUNNER and (not Path(RUNNER).is_file() or not os.access(RUNNER, os.X_OK)):
+        pytest.fail("configured GPU runner is missing or not executable")
 
 
 def test_device_parity_and_deterministic_trace_bytes():

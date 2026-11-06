@@ -83,6 +83,10 @@ adds bounded device-kernel source, deterministic candidate validation and an
 opt-in comparison against Python, Mojo CPU and Lean grind. Offline conformance
 is tested; Mojo GPU compilation and hardware validation remain pending. It is
 not a verified GPU prover or an acceleration result.
+Its dedicated [hardware acceptance mode](experiments/frontier/lean_max/HARDWARE_ACCEPTANCE.md)
+fails closed on missing runners, skipped hardware checks, parity failures,
+missing profiler launches or incomplete Lean acceptance. The implementation is
+covered by offline failure tests; real hardware acceptance remains pending.
 
 ## Verification
 
