@@ -122,7 +122,17 @@ def generate(text):
         # Comparing canonical JSON also distinguishes bool from integer inputs.
         if json.dumps(actual_input, sort_keys=True) != json.dumps(want, sort_keys=True):
             raise ValueError("native workload identity/order mismatch")
-        statements.append(f"theorem native_case_{i:04d} : {proposition(r)} := by decide")
+        proof = "by decide"
+        if r["kind"] == "field" and r["op"] == 2 and not r["reject"] and r["output"] is not None:
+            # Division's mathematical inverse need not reduce computationally.
+            # Verify the native candidate by multiplication and nonzeroness.
+            p = integer(r["p"], natural=True)
+            a = f"(({integer(r['a'])} : ℤ) : ZMod {p})"
+            b = f"(({integer(r['b'])} : ℤ) : ZMod {p})"
+            result = f"(({integer(r['output'], natural=True)} : ℕ) : ZMod {p})"
+            proof = (f"by exact ⟨AcceptedField.division_eq_of_mul {a} {b} {result} "
+                     "(by decide) (by decide), by decide, by decide⟩")
+        statements.append(f"theorem native_case_{i:04d} : {proposition(r)} := {proof}")
     code = ("import FiniteMathKernels\nset_option maxRecDepth 100000\n"
             "set_option maxHeartbeats 4000000\nnamespace FiniteMathKernels.NativeReplay\n"
             "local instance : Fact (Nat.Prime 7) := ⟨by decide⟩\n"

@@ -27,6 +27,12 @@ theorem division_zero (a : Option K) : div a (some 0) = none := by simp [div]
 theorem division_cancel (a b : K) (hb : b ≠ 0) :
     mul (div (some a) (some b)) (some b) = some a := by
   simp [div,mul,inverse_nonzero b hb,mul_assoc,hb]
+theorem division_eq_of_mul (a b r : K) (hb : b ≠ 0) (h : r*b = a) :
+    div (some a) (some b) = some r := by
+  have he : a*b⁻¹ = r := by
+    rw [← h]
+    simp [mul_assoc,hb]
+  simp [div,mul,inverse_nonzero b hb,he]
 theorem rejection_compares_false : eqAccepted (none : Option K) none = false := rfl
 theorem rejected_not_runtime_reflexive : eqAccepted (none : Option K) none ≠ true := by simp [eqAccepted]
 theorem accepted_equality (a b : K) : eqAccepted (some a) (some b) = true ↔ a = b := by
