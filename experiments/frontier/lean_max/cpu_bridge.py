@@ -9,7 +9,7 @@ from __future__ import annotations
 import subprocess
 from pathlib import Path
 
-import reference as ref
+from . import reference as ref
 
 MAX_INPUT_STEPS = 64
 MAX_ATOMS = 128

@@ -53,7 +53,7 @@
       "relation": "authored"
     },
     ".github/workflows/lean-max-proof.yml": {
-      "blob": "bf198c6a4910313691844070ab803d6061948faa",
+      "blob": "e7b24294295842c2b7f3d0fe8b433c0592c68bbb",
       "relation": "authored"
     },
     ".github/workflows/rt-exact.yml": {
@@ -81,7 +81,7 @@
       "relation": "authored"
     },
     "README.md": {
-      "blob": "004c04ddf18208bd5876f8b096d51565ca2ee9e9",
+      "blob": "13261457320d6b741843c1a563bc73005d8862d3",
       "relation": "authored"
     },
     "conformance/certified_records_v1.txt": {
@@ -482,23 +482,56 @@
       "relation": "authored"
     },
     "experiments/frontier/lean_max/CONTRACT.md": {
-      "blob": "50d76ea8b0cd39f9c611583d473b941b7d93c2e4",
+      "blob": "1e2e010e67e77e89b5cdfb59151e75c0cdbd86bc",
       "relation": "authored"
     },
     "experiments/frontier/lean_max/Demo.lean": {
       "blob": "51e147697d7e58c3c19d71a3f6086c8fe3b9cc0a",
       "relation": "authored"
     },
+    "experiments/frontier/lean_max/GPU_PROTOTYPE.md": {
+      "blob": "643390cd77dc90b71b382ebf89d4f4c9bc2f1415",
+      "relation": "authored"
+    },
+    "experiments/frontier/lean_max/GPU_WORKFLOW_PROPOSAL.md": {
+      "blob": "bef4d19b983a8ea85a30afb8188b81422f359863",
+      "relation": "authored"
+    },
+    "experiments/frontier/lean_max/HARDWARE_ACCEPTANCE.md": {
+      "blob": "de837384b6914c3b816f55f08b66721caa721f31",
+      "relation": "authored"
+    },
     "experiments/frontier/lean_max/MOJO_CPU.md": {
       "blob": "a0fd36f71bc05889fef6a5bbafa3ebd64eb25ce9",
       "relation": "authored"
     },
+    "experiments/frontier/lean_max/benchmark.py": {
+      "blob": "bb8eb8148344dd4d66e1d5da71d6615388e7f8a9",
+      "relation": "authored"
+    },
+    "experiments/frontier/lean_max/corpus.py": {
+      "blob": "0e27b50bdbbe2359b88eedeecf4a842573103780",
+      "relation": "authored"
+    },
     "experiments/frontier/lean_max/cpu_bridge.py": {
-      "blob": "dd8a0a77d1c87c9b21a6c6ede15ab5b9ea8b236a",
+      "blob": "579b6aecc51666f0e7677d86a60e00605554172d",
       "relation": "authored"
     },
     "experiments/frontier/lean_max/demo.json": {
       "blob": "c44edd8a4ae295aa2adba00e0033d4c8522c5d0c",
+      "relation": "authored"
+    },
+    "experiments/frontier/lean_max/evidence/gpu-offline-2026-11-05.json": {
+      "blob": "5d71c0e43b781ce84c1a946ba8d761010bc6674e",
+      "generator": "experiments/frontier/lean_max/benchmark.py",
+      "relation": "generated"
+    },
+    "experiments/frontier/lean_max/gpu_bridge.py": {
+      "blob": "e52f33f304308b6ee4d548769c479b35a96043a1",
+      "relation": "authored"
+    },
+    "experiments/frontier/lean_max/hardware_acceptance.py": {
+      "blob": "b672a1f7eff5cd33adbe3f7688d93585b87e32fa",
       "relation": "authored"
     },
     "experiments/frontier/lean_max/lake-manifest.json": {
@@ -517,8 +550,16 @@
       "blob": "611e737922b09291ff983ee9742e504ad0ac50ef",
       "relation": "authored"
     },
+    "experiments/frontier/lean_max/mojo/gpu_candidates.mojo": {
+      "blob": "58c119f77499ec665d9887e25df29e1c55ad6095",
+      "relation": "authored"
+    },
     "experiments/frontier/lean_max/reference.py": {
       "blob": "f54037a1b3a3e011d0748794703c9af791a8e836",
+      "relation": "authored"
+    },
+    "experiments/frontier/lean_max/trace_codec.py": {
+      "blob": "a0a03bdf89701dd0308c1cf6d2708f1cfd715862",
       "relation": "authored"
     },
     "experiments/frontier/orchestrator/.formatter.exs": {
@@ -1718,11 +1759,31 @@
       "relation": "authored"
     },
     "tests/frontier/test_lean_max.py": {
-      "blob": "4f522d6a89720feb126feb8c8027493b3a8ff1d5",
+      "blob": "e66a5e0a0fbf57d03bb152cf80548c79c7bee810",
+      "relation": "authored"
+    },
+    "tests/frontier/test_lean_max_benchmark.py": {
+      "blob": "733d14682f59dbb4da79dd35b90ee5bb8de1ff61",
       "relation": "authored"
     },
     "tests/frontier/test_lean_max_cpu.py": {
-      "blob": "16ec7abbba0cb78ddd934c0e370aff0977975caf",
+      "blob": "a35c4d427af8ac4fd4b10662a0beb23e916be0cf",
+      "relation": "authored"
+    },
+    "tests/frontier/test_lean_max_gpu.py": {
+      "blob": "ec0a30e71e65ba2630a9f302b4945db716ed5928",
+      "relation": "authored"
+    },
+    "tests/frontier/test_lean_max_gpu_hardware.py": {
+      "blob": "d931f45a01671991c865bb3f3407ea611d34f2c5",
+      "relation": "authored"
+    },
+    "tests/frontier/test_lean_max_hardware_acceptance.py": {
+      "blob": "1ef62b2f400e479929d7610a6eaedaa615368905",
+      "relation": "authored"
+    },
+    "tests/frontier/test_lean_max_trace.py": {
+      "blob": "beb45d9767f78d761c2ccd65d337232c934af687",
       "relation": "authored"
     },
     "tests/interval/test_interval_q.mojo": {
