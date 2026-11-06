@@ -29,10 +29,10 @@ class AdmissionControls(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "integer"):
             bridge.vector(["0]; example : False := by"])
 
-    def test_noncanonical_field_output_refuses(self):
-        with self.assertRaisesRegex(ValueError, "noncanonical"):
-            bridge.proposition(dict(kind="field", p=7, a=0, b=1, op=0, reject=False,
-                                    output=8, refusal_eq=False))
+    def test_noncanonical_field_output_reaches_an_impossible_lean_bound(self):
+        proposition = bridge.proposition(dict(kind="field", p=7, a=0, b=1, op=0, reject=False,
+                                             output=8, refusal_eq=False))
+        self.assertIn("(8 : ℕ) < 7", proposition)
 
     def test_coverage_inventory_is_current_and_complete(self):
         spec = importlib.util.spec_from_file_location("inventory", ROOT / "tools/kernel_lean_inventory.py")

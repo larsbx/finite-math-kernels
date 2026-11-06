@@ -96,13 +96,12 @@ def proposition(r):
         b = "none" if r["reject"] else f"some (({integer(r['b'])} : ℤ) : ZMod {p})"
         operation = ["add", "mul", "div"][r["op"]]
         expected = "none" if r["output"] is None else f"some (({integer(r['output'], natural=True)} : ℕ) : ZMod {p})"
-        # Canonical residue checks matter: equal ZMod values alone accept v+p.
-        if r["output"] is not None and not 0 <= r["output"] < r["p"]:
-            raise ValueError("noncanonical native field residue")
+        # The kernel, not a Python arithmetic check, must also reject v+p.
+        canonical = "True" if r["output"] is None else f"({integer(r['output'], natural=True)} : ℕ) < {p}"
         if type(r["refusal_eq"]) is not bool:
             raise ValueError("refusal equality must be boolean")
         eq = "true" if r["refusal_eq"] else "false"
-        return (f"AcceptedField.{operation} ({a}) ({b}) = {expected} ∧ "
+        return (f"AcceptedField.{operation} ({a}) ({b}) = {expected} ∧ ({canonical}) ∧ "
                 f"AcceptedField.eqAccepted (none : Option (ZMod {p})) none = {eq}")
     raise ValueError("unknown record kind")
 

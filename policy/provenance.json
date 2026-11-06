@@ -45,7 +45,7 @@
       "relation": "authored"
     },
     ".github/workflows/kernel-lean.yml": {
-      "blob": "f1603bfab7edac40f2c3dbdbda415deb1c9ea02c",
+      "blob": "fa5a3be2eff34df88932ee4f2aca96cac53009c4",
       "relation": "authored"
     },
     ".github/workflows/lean-max-mojo-cpu.yml": {
@@ -1729,7 +1729,7 @@
       "relation": "authored"
     },
     "tests/lean/test_bridge.py": {
-      "blob": "b72dd68476aaa249e92c8ca2adc29b70a92c4fa2",
+      "blob": "eb6e4ac742bdd7fa380c94a02db50ce8fbaf55e7",
       "relation": "authored"
     },
     "tests/lexical_audit/test_lexical_audit.py": {
@@ -2127,7 +2127,7 @@
       "relation": "authored"
     },
     "tools/kernel_lean_conformance.py": {
-      "blob": "db2eb2d9d86b85d8f54351282aab22472a731b83",
+      "blob": "a271b02f9fa7291a8549b882275d1a0ece7a92cd",
       "relation": "authored"
     },
     "tools/kernel_lean_inventory.py": {
@@ -2221,7 +2221,7 @@
       "source_path": "tools/replay_mojo.py"
     },
     "tools/run_kernel_lean_verification.py": {
-      "blob": "b94df94c4693b07829e5b4dd71f1e047116349ff",
+      "blob": "c232870a84ce05f191afa30e4b60319e3e9e16a8",
       "relation": "authored"
     },
     "tools/setup_kernel_lean.sh": {

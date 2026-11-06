@@ -3,7 +3,7 @@ on:
   pull_request:
     paths: ['tests/lean/**', 'kernel/**', 'tools/*lean*', 'docs/lean-verification.md', '.github/workflows/kernel-lean.yml']
   push:
-    branches: [main]
+    branches: [main, verification/lean-foundations-2026-11-06]
     paths: ['tests/lean/**', 'kernel/**', 'tools/*lean*', '.github/workflows/kernel-lean.yml']
   workflow_dispatch:
 permissions:
