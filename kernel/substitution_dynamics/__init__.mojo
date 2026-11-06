@@ -31,7 +31,10 @@
 # that boundary trust their inputs. A capped automaton build is inconclusive,
 # never evidence. `dumont_thomas` and `strong_coincidence` build on
 # `finite_automata` (and through it `finite_exact`); `return_lattice` uses
-# `finite_exact.checked_int`. This facade is an index, not a re-export:
+# `finite_exact.checked_int`. Word N2/N3 and K2/K3 now also depend on
+# `finite_exact.checked_int` and raise on dimension/counter overflow. They
+# return the same List[Int] on success; callers must propagate refusal.
+# Parikh counts fit the representable input length. This facade is an index, not a re-export:
 # importing it pulls in no module, so a consumer vendoring a subset of the
 # package never compiles a dependency it did not vendor.
 # See README.md at the repository root.

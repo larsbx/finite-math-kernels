@@ -11,10 +11,11 @@ is `size`, `size^2`, and `size^3`.
 """
 
 from substitution_dynamics.substitution import validate_word
+from finite_exact.checked_int import checked_add, checked_mul
 
 
 def parikh(w: List[Int], size: Int) -> List[Int]:
-    """`N_i(w)` for `i` in `0 .. size-1`."""
+    """`N_i(w)` for valid letters; every count is at most `len(w) <= Int.MAX`."""
     var out = List[Int]()
     for _ in range(size):
         out.append(0)
@@ -23,10 +24,14 @@ def parikh(w: List[Int], size: Int) -> List[Int]:
     return out^
 
 
-def n2(w: List[Int], size: Int) -> List[Int]:
-    """`N_{ij}(w)` flattened row-major into `Z^(size^2)`, streamed in O(n)."""
+def n2(w: List[Int], size: Int) raises -> List[Int]:
+    """Exact machine counts, or an error if any dimension/intermediate overflows.
+
+    Valid words/alphabet are trusted as before. Refusal is inconclusive.
+    """
     var out = List[Int]()
-    for _ in range(size * size):
+    var slots = checked_mul(size, size)
+    for _ in range(slots):
         out.append(0)
     var seen = List[Int]()
     for _ in range(size):
@@ -34,8 +39,8 @@ def n2(w: List[Int], size: Int) -> List[Int]:
     for p in range(len(w)):
         var j = w[p]
         for i in range(size):
-            out[size * i + j] += seen[i]
-        seen[j] += 1
+            out[size * i + j] = checked_add(out[size * i + j], seen[i])
+        seen[j] = checked_add(seen[j], 1)
     return out^
 
 
@@ -44,25 +49,34 @@ def idx3(a: Int, b: Int, c: Int, size: Int) -> Int:
     return (size * a + b) * size + c
 
 
-def n3(w: List[Int], size: Int) -> List[Int]:
-    """`N_{ijk}(w)` in lex coordinates of `Z^(size^3)`, streamed in O(n)."""
+def n3(w: List[Int], size: Int) raises -> List[Int]:
+    """Exact machine counts, or an error if any dimension/intermediate overflows.
+
+    Each triple, prefix pair and prefix letter addition is checked before
+    evaluation. No partial vector is returned. This is a bounded Int API,
+    not an unbounded integer carrier; even fitting final slots may be refused
+    if a prefix pair does not fit. Valid words/alphabet are trusted as before.
+    """
     var out = List[Int]()
-    for _ in range(size * size * size):
+    var pair_slots = checked_mul(size, size)
+    var triple_slots = checked_mul(pair_slots, size)
+    for _ in range(triple_slots):
         out.append(0)
     var seen = List[Int]()
     for _ in range(size):
         seen.append(0)
     var pairs = List[Int]()
-    for _ in range(size * size):
+    for _ in range(pair_slots):
         pairs.append(0)
     for p in range(len(w)):
         var k = w[p]
         for i in range(size):
             for j in range(size):
-                out[idx3(i, j, k, size)] += pairs[size * i + j]
+                var slot = idx3(i, j, k, size)
+                out[slot] = checked_add(out[slot], pairs[size * i + j])
         for i in range(size):
-            pairs[size * i + k] += seen[i]
-        seen[k] += 1
+            pairs[size * i + k] = checked_add(pairs[size * i + k], seen[i])
+        seen[k] = checked_add(seen[k], 1)
     return out^
 
 
@@ -145,10 +159,19 @@ def k1(p: Pair, size: Int) -> List[Int]:
     return diff(parikh(p.u, size), parikh(p.v, size))
 
 
-def k2(p: Pair, size: Int) -> List[Int]:
+def k2(p: Pair, size: Int) raises -> List[Int]:
+    """Exact difference if both N2 evaluations succeed; propagate refusal.
+
+    Successful coordinates lie in [0, Int.MAX], so their difference fits.
+    """
     return diff(n2(p.u, size), n2(p.v, size))
 
 
-def k3(p: Pair, size: Int) -> List[Int]:
+def k3(p: Pair, size: Int) raises -> List[Int]:
+    """Exact difference if both N3 evaluations succeed; propagate refusal.
+
+    Refusal is possible even when the mathematical difference would fit.
+    Successful coordinates lie in [0, Int.MAX], so their difference fits.
+    """
     return diff(n3(p.u, size), n3(p.v, size))
 

@@ -21,7 +21,7 @@ Natural-number word counts are unbounded mathematical values. The native
 unbounded guarantee: every relevant intermediate must fit. Native transcripts
 are finite differential controls, never a universal implementation proof.
 
-## Confirmed native counterexample
+## Historical counterexample and bounded correction
 
 [Issue #97](https://github.com/larsbx/finite-math-kernels/issues/97) records an
 executed counterexample at the unchanged native source revision
@@ -34,18 +34,32 @@ executed counterexample at the unchanged native source revision
 | Signed Int maximum | 9,223,372,036,854,775,807 |
 | Observed native N3 | -7,780,085,407,041,551,616 |
 
-The native routine returns a wrapped count without refusal. The general Lean
+At that historical revision the native routine returns a wrapped count without refusal. The general Lean
 constant-word lemmas derive the binomial count for arbitrary lengths; the
 closed stress case proves that this exact value cannot fit and that the observed
 negative integer cannot represent a scattered-triple count. Replay with
 `pixi run mojo run -I kernel tests/lean/word_counter_overflow.mojo`.
 
-The focused receipt records this as a known native counterexample, separately
-from accepted model proofs and the 373 small-input conformance cases. A green
-focused gate does not certify unconditional native exactness. Repairing the
-raising/exact-carrier contract and its callers is tracked separately in #97;
-this PR changes no canonical executable kernel. N2 and Parikh overflow examples
-are not claimed by this reproduction.
+The corrected native routine checks every triple/pair/letter addition and
+dimension product, propagating errors through K3. N2 has its own checked
+accumulation; Parikh counts are bounded by representable list length. See the
+[contract and affected callers](word-counter-bounds.md). The same probe path
+now emits 19 boundary, stress, dimension and propagated-refusal observations;
+the runner checks these against Python arbitrary-precision binomials and
+independently checks their translated propositions in Lean. It requires refusal
+at four million letters, not the historical wrapped value. Existing archived
+receipts and logs retain their original source revision and are not rewritten.
+
+`MachineWords.run` is a partial semantic model distinct from the unbounded
+`Words.stream`. `run_success_exact` and `stream_success_exact` establish that
+accepted summaries equal mathematical counts; `run_complete_iff` and
+`run_refuses_iff` expose the explicit `Within` precondition on every intermediate.
+`difference_fits` justifies subtraction of successful nonnegative operand
+counts. This model checks exact unbounded steps before admitting them; native
+code checks individual additions before execution. Relating those representations,
+imperative loops and compiler behavior is still an open refinement obligation.
+No N2 overflow execution is claimed; its large-input bound is a separate Lean
+calculation, and ordinary N2/Parikh results are checked by native controls.
 
 ## Complete inventory and next obligations
 
@@ -114,7 +128,8 @@ This is not a verified Mojo compiler or a proof of every kernel implementation.
 
 ## Scope and integration
 
-No package facade changes. No vendored bytes or downstream pins are changed.
+The word API signatures and dependency description change as documented in the
+caller audit. No vendored bytes or downstream pins are changed by this repair.
 No PSC family theorem or overlap certificate is imported upstream. The generic
 word model is alphabet-independent; downstream reuse and replacement of PSC's
 local generic lemmas is a later, explicit integration step.
