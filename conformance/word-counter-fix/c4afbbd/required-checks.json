@@ -1,0 +1,32 @@
+[
+  {
+    "task": "test-audit",
+    "revision": "c4afbbd5e7a069fe578aea45700820c272594cc8",
+    "exit_code": 0,
+    "log": "/tmp/n3-final-test-audit.log"
+  },
+  {
+    "task": "test-provenance",
+    "revision": "c4afbbd5e7a069fe578aea45700820c272594cc8",
+    "exit_code": 0,
+    "log": "/tmp/n3-final-test-provenance.log"
+  },
+  {
+    "task": "references",
+    "revision": "c4afbbd5e7a069fe578aea45700820c272594cc8",
+    "exit_code": 0,
+    "log": "/tmp/n3-final-references.log"
+  },
+  {
+    "task": "property",
+    "revision": "c4afbbd5e7a069fe578aea45700820c272594cc8",
+    "exit_code": 0,
+    "log": "/tmp/n3-final-property.log"
+  },
+  {
+    "task": "test-lean-tools",
+    "revision": "c4afbbd5e7a069fe578aea45700820c272594cc8",
+    "exit_code": 0,
+    "log": "/tmp/n3-final-test-lean-tools.log"
+  }
+]

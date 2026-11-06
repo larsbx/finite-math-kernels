@@ -227,6 +227,134 @@
       "generator": "tools/make_vectors.py",
       "relation": "generated"
     },
+    "conformance/word-counter-fix/c4afbbd/README.md": {
+      "blob": "d134ac53879506ecb64734e7bb76cf7eb4363a27",
+      "relation": "authored"
+    },
+    "conformance/word-counter-fix/c4afbbd/aggregate-receipt.json": {
+      "blob": "c339ecee3f7bc845be49f8888363771f777ce09b",
+      "relation": "authored"
+    },
+    "conformance/word-counter-fix/c4afbbd/aggregate.log": {
+      "blob": "568cfcc21f3ac28a5e3e414b0bf175813f32509d",
+      "relation": "authored"
+    },
+    "conformance/word-counter-fix/c4afbbd/lean/AxiomAudit.lean": {
+      "blob": "d22d8c79311601233ebcd599c5b30d592bcdba16",
+      "relation": "authored"
+    },
+    "conformance/word-counter-fix/c4afbbd/lean/CounterReplay.lean": {
+      "blob": "eff138e8586251b369a581ec17fc53e9a76857c9",
+      "relation": "authored"
+    },
+    "conformance/word-counter-fix/c4afbbd/lean/NativeReplay.lean": {
+      "blob": "5a6486536d49fac6974615963fb539fdfa7e3983",
+      "relation": "authored"
+    },
+    "conformance/word-counter-fix/c4afbbd/lean/axioms.log": {
+      "blob": "8e372a3f76e67809f6ec3b49b012e3f34905ef02",
+      "relation": "authored"
+    },
+    "conformance/word-counter-fix/c4afbbd/lean/build.log": {
+      "blob": "0fb3dcefafd0a042ba54cdf1cc01066290cdcc2c",
+      "relation": "authored"
+    },
+    "conformance/word-counter-fix/c4afbbd/lean/counter-boundaries.log": {
+      "blob": "f139a1ab2c15f5c99ac0c43e62fd2b2259f3eabc",
+      "relation": "authored"
+    },
+    "conformance/word-counter-fix/c4afbbd/lean/counter-lean.log": {
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "relation": "authored"
+    },
+    "conformance/word-counter-fix/c4afbbd/lean/native-lean.log": {
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "relation": "authored"
+    },
+    "conformance/word-counter-fix/c4afbbd/lean/native.log": {
+      "blob": "124b9416fe296e2b8e7cfbfcc9da8ea72b7eebb9",
+      "relation": "authored"
+    },
+    "conformance/word-counter-fix/c4afbbd/lean/native.stderr.log": {
+      "blob": "14344d73da2665daf83c509b46cbc442ec8939e8",
+      "relation": "authored"
+    },
+    "conformance/word-counter-fix/c4afbbd/lean/negative-noncanonical.lean": {
+      "blob": "b8f51f385facaa4e9f140dd4dc792c8a095c10f3",
+      "relation": "authored"
+    },
+    "conformance/word-counter-fix/c4afbbd/lean/negative-noncanonical.log": {
+      "blob": "bde339d0a7ae3c2d7364b1e757cfbb9ec6ad0ff1",
+      "relation": "authored"
+    },
+    "conformance/word-counter-fix/c4afbbd/lean/negative-overflow.lean": {
+      "blob": "0062d44654f25710329432474cf5fa1b376c9541",
+      "relation": "authored"
+    },
+    "conformance/word-counter-fix/c4afbbd/lean/negative-overflow.log": {
+      "blob": "67af0bec5312507842ca1f7b0af738b65fdeaa99",
+      "relation": "authored"
+    },
+    "conformance/word-counter-fix/c4afbbd/lean/negative-rejection.lean": {
+      "blob": "37c113421f7e8a51312246a30d888c481c7025fc",
+      "relation": "authored"
+    },
+    "conformance/word-counter-fix/c4afbbd/lean/negative-rejection.log": {
+      "blob": "ff3378e070a9e693cba52bbdf679d3236ba896a2",
+      "relation": "authored"
+    },
+    "conformance/word-counter-fix/c4afbbd/lean/negative-word.lean": {
+      "blob": "2556bfe053ee77598ca4188b8e121eed4360059d",
+      "relation": "authored"
+    },
+    "conformance/word-counter-fix/c4afbbd/lean/negative-word.log": {
+      "blob": "8414708a09c692369d3013e1dc8b9c1bca0c445a",
+      "relation": "authored"
+    },
+    "conformance/word-counter-fix/c4afbbd/lean/receipt.json": {
+      "blob": "b2739c099d9bbc460385129cf7c73e126d8b4cf0",
+      "relation": "authored"
+    },
+    "conformance/word-counter-fix/c4afbbd/polyglot-missing-bend.log": {
+      "blob": "4aca405901b7e42e7135c944da94c5a4ff5a013b",
+      "relation": "authored"
+    },
+    "conformance/word-counter-fix/c4afbbd/polyglot-receipt.json": {
+      "blob": "e1af7042b810b34e42cd67c272f471c5bbc1cd55",
+      "relation": "authored"
+    },
+    "conformance/word-counter-fix/c4afbbd/property.log": {
+      "blob": "2bef3481bfa4c5161b72fb80b4cbca989d70cb13",
+      "relation": "authored"
+    },
+    "conformance/word-counter-fix/c4afbbd/references.log": {
+      "blob": "aaf0a86a64834abee6dbbef9b950f3b5b4162a3c",
+      "relation": "authored"
+    },
+    "conformance/word-counter-fix/c4afbbd/required-checks.json": {
+      "blob": "95563f5911b2ef8b3aa4188978c0bbe5bbb3cb40",
+      "relation": "authored"
+    },
+    "conformance/word-counter-fix/c4afbbd/runtime-context.json": {
+      "blob": "10a9f8da600fd841f0b84146cca5493dbe421e0a",
+      "relation": "authored"
+    },
+    "conformance/word-counter-fix/c4afbbd/sha256.json": {
+      "blob": "67310fa35eff7a1e118e53c89bdf6e4ddd19c250",
+      "relation": "authored"
+    },
+    "conformance/word-counter-fix/c4afbbd/test-audit.log": {
+      "blob": "bf49485f49367663a3915c72e56f641a22970420",
+      "relation": "authored"
+    },
+    "conformance/word-counter-fix/c4afbbd/test-lean-tools.log": {
+      "blob": "a39a2bfd8ea78a4b839b51ca92f4c4935d67eb81",
+      "relation": "authored"
+    },
+    "conformance/word-counter-fix/c4afbbd/test-provenance.log": {
+      "blob": "b14ae778517f64e30c214a884d8111ea76ac332c",
+      "relation": "authored"
+    },
     "conformance/word-counter-fix/psc-callers.json": {
       "blob": "3b18669af135a1f72982a07245c4e337a3cb52cc",
       "relation": "authored"

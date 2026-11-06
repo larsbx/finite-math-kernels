@@ -1,0 +1,10 @@
+{
+  "revision": "c4afbbd5e7a069fe578aea45700820c272594cc8",
+  "command": [
+    "pixi",
+    "run",
+    "test"
+  ],
+  "exit_code": 0,
+  "clean_start_and_finish": true
+}

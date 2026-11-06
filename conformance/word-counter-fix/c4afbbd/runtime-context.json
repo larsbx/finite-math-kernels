@@ -1,0 +1,31 @@
+{
+  "format": "n3-overflow-fix-runtime-v1",
+  "revision": "c4afbbd5e7a069fe578aea45700820c272594cc8",
+  "acceptance": "local model proofs and finite native conformance; hosted pending",
+  "compatibility": {
+    "reason": "In this runtime, Lean IO.appPath readlink(/proc/<getpid>/exe) fails; /proc/self/exe works.",
+    "effect": "Only the current-process executable-path lookup is redirected to /proc/self/exe. Other readlink calls are forwarded. No Lean executable, mathematical kernel, proof source or dependency is modified.",
+    "variable": "LD_PRELOAD",
+    "source": "#define _GNU_SOURCE\n#include <unistd.h>\n#include <dlfcn.h>\n#include <stdio.h>\n#include <string.h>\nssize_t readlink(const char *path, char *buf, size_t size) {\n  static ssize_t (*actual)(const char *, char *, size_t) = 0;\n  if (!actual) actual = dlsym(RTLD_NEXT, \"readlink\");\n  char own[80];\n  snprintf(own, sizeof own, \"/proc/%ld/exe\", (long)getpid());\n  return actual(strcmp(path, own) == 0 ? \"/proc/self/exe\" : path, buf, size);\n}\n",
+    "source_sha256": "80dc447d8f0c00965de6c73fd11adff3fc84182c1be481891e2158a2e260c7ae",
+    "library_sha256": "3be97e3744398929e4229a061ce8df75c245519ed4421a2b6691d0f39362bb25",
+    "compile": [
+      "cc",
+      "-shared",
+      "-fPIC",
+      "proc-self.c",
+      "-ldl",
+      "-o",
+      "proc-self.so"
+    ]
+  },
+  "lean_executable_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+  "fresh_build": "The gate copies proof sources and pinned configuration to a new temporary workspace, with provisioned pinned dependency artifacts.",
+  "trusted_inputs": [
+    "pinned Lean 4.34.0-rc2",
+    "pinned Mathlib dependency artifacts",
+    "the disclosed current-process executable-path shim"
+  ],
+  "implementation_refinement": "open",
+  "known_downstream_audit_limit": "finite-julia-set-research unavailable; PSC and other three documented consumers inspected"
+}

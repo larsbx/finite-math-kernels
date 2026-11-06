@@ -1,0 +1,3 @@
+/tmp/n3-exact-c4afbbd/negative-noncanonical.lean:3:58: error: Tactic `decide` proved that the proposition
+  1 = 8 ∧ 8 < 7
+is false

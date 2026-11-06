@@ -1,0 +1,2 @@
+✨ Pixi task (references in default): python tools/check_references.py
+OK: every path and task reference in 457 files resolves.

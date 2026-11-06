@@ -1,0 +1,3 @@
+/workspace/scratch/cd35adeadcb8/finite-math-kernels/tests/lean/native_transcript.mojo:41:22: warning: assignment to 'result' was never used; assign to '_' instead?
+        var result = 0
+                     ^

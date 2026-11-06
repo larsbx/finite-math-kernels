@@ -1,0 +1,133 @@
+⚠ [3087/3094] Built FiniteMathKernels.Words (3.1s)
+warning: FiniteMathKernels/Words.lean:24:38: This simp argument is unused:
+  List.count_cons
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [parikh, h]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: FiniteMathKernels/Words.lean:27:8: automatically included section variable(s) unused in theorem `FiniteMathKernels.Words.inflate_nil`:
+  [DecidableEq α]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq α] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: FiniteMathKernels/Words.lean:28:8: automatically included section variable(s) unused in theorem `FiniteMathKernels.Words.inflate_cons`:
+  [DecidableEq α]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq α] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: FiniteMathKernels/Words.lean:30:8: automatically included section variable(s) unused in theorem `FiniteMathKernels.Words.inflate_singleton`:
+  [DecidableEq α]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq α] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: FiniteMathKernels/Words.lean:32:8: automatically included section variable(s) unused in theorem `FiniteMathKernels.Words.inflate_append`:
+  [DecidableEq α]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq α] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: FiniteMathKernels/Words.lean:34:8: automatically included section variable(s) unused in theorem `FiniteMathKernels.Words.iterate_nil`:
+  [DecidableEq α]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq α] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: FiniteMathKernels/Words.lean:39:0: automatically included section variable(s) unused in theorem `FiniteMathKernels.Words.iterate_add`:
+  [DecidableEq α]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq α] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: FiniteMathKernels/Words.lean:95:55: This simp argument is unused:
+  parikh_singleton
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [List.cons_append, pairs, ih, parikh_append, parikh_cons, parikh_nil, Nat.zero_add]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [3088/3094] Built FiniteMathKernels.CheckedInt (3.1s)
+warning: FiniteMathKernels/CheckedInt.lean:18:8: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: FiniteMathKernels/CheckedInt.lean:26:61: Variable name `hb` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hb
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: FiniteMathKernels/CheckedInt.lean:30:61: Variable name `hb` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hb
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+⚠ [3089/3094] Built FiniteMathKernels.AcceptedField (2.0s)
+warning: FiniteMathKernels/AcceptedField.lean:17:8: automatically included section variable(s) unused in theorem `FiniteMathKernels.AcceptedField.add_rejected_left`:
+  [DecidableEq K]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq K] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: FiniteMathKernels/AcceptedField.lean:18:8: automatically included section variable(s) unused in theorem `FiniteMathKernels.AcceptedField.mul_rejected_left`:
+  [DecidableEq K]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq K] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: FiniteMathKernels/AcceptedField.lean:19:8: automatically included section variable(s) unused in theorem `FiniteMathKernels.AcceptedField.add_rejected_right`:
+  [DecidableEq K]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq K] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: FiniteMathKernels/AcceptedField.lean:20:8: automatically included section variable(s) unused in theorem `FiniteMathKernels.AcceptedField.mul_rejected_right`:
+  [DecidableEq K]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq K] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: FiniteMathKernels/AcceptedField.lean:29:37: This simp argument is unused:
+  mul_assoc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [div, mul, inverse_nonzero b hb, hb]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: FiniteMathKernels/AcceptedField.lean:34:10: This simp argument is unused:
+  mul_assoc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hb]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: FiniteMathKernels/AcceptedField.lean:36:0: automatically included section variable(s) unused in theorem `FiniteMathKernels.AcceptedField.rejection_compares_false`:
+  [Field K]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Field K] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: FiniteMathKernels/AcceptedField.lean:37:0: automatically included section variable(s) unused in theorem `FiniteMathKernels.AcceptedField.rejected_not_runtime_reflexive`:
+  [Field K]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Field K] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: FiniteMathKernels/AcceptedField.lean:38:0: automatically included section variable(s) unused in theorem `FiniteMathKernels.AcceptedField.accepted_equality`:
+  [Field K]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Field K] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: FiniteMathKernels/AcceptedField.lean:40:0: automatically included section variable(s) unused in theorem `FiniteMathKernels.AcceptedField.zero_does_not_mask_rejection`:
+  [DecidableEq K]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq K] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [3090/3094] Built FiniteMathKernels.CounterBounds (1.0s)
+✔ [3091/3094] Built FiniteMathKernels.Conformance (2.3s)
+✔ [3092/3094] Built FiniteMathKernels.MachineWords (2.6s)
+✔ [3093/3094] Built FiniteMathKernels (1.6s)
+Build completed successfully (3094 jobs).

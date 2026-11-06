@@ -1,0 +1,4 @@
+✨ Pixi task (test-audit in default): PYTHONPATH=tools python -m pytest -q tests/audit
+........................................................................ [ 63%]
+..........................................                               [100%]
+114 passed in 0.22s

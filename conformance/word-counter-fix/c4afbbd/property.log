@@ -1,0 +1,3 @@
+✨ Pixi task (property in default): python oracles/property_oracle.py --layers zq
+OK: property probe agrees with the oracle on 300 integer, 200 rational, and 0 interval cases.
+OK: the corpus meets its declared refinement; classes it is declared to miss: random_int/zero, random_int/a unit, random_fraction/zero, random_fraction/integer-valued.

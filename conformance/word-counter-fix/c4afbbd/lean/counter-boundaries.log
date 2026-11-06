@@ -1,0 +1,19 @@
+{"kind":"constant","length":0,"letter":0,"size":1,"value":0,"error":"","n2":0,"parikh":0}
+{"kind":"constant","length":1,"letter":0,"size":1,"value":0,"error":"","n2":0,"parikh":1}
+{"kind":"constant","length":2,"letter":0,"size":1,"value":0,"error":"","n2":1,"parikh":2}
+{"kind":"constant","length":3810778,"letter":0,"size":1,"value":9223364155031292776,"error":"","n2":7261012577253,"parikh":3810778}
+{"kind":"constant","length":3810779,"letter":0,"size":1,"value":9223371416043870029,"error":"","n2":7261016388031,"parikh":3810779}
+{"kind":"constant","length":3810780,"letter":0,"size":1,"value":null,"error":"checked integer addition overflow","n2":7261020198810,"parikh":3810780}
+{"kind":"constant","length":4000000,"letter":0,"size":1,"value":null,"error":"checked integer addition overflow","n2":7999998000000,"parikh":4000000}
+{"kind":"constant","length":3810779,"letter":1,"size":2,"value":9223371416043870029,"error":"","n2":7261016388031,"parikh":3810779}
+{"kind":"constant","length":3810780,"letter":1,"size":2,"value":null,"error":"checked integer addition overflow","n2":7261020198810,"parikh":3810780}
+{"kind":"addition","a":9223372036854775805,"b":1,"value":9223372036854775806,"error":""}
+{"kind":"addition","a":9223372036854775806,"b":1,"value":9223372036854775807,"error":""}
+{"kind":"addition","a":9223372036854775807,"b":1,"value":null,"error":"checked integer addition overflow"}
+{"kind":"k3","length":3810779,"mode":0,"value":9223371416043870028,"error":""}
+{"kind":"k3","length":3810779,"mode":1,"value":-9223371416043870028,"error":""}
+{"kind":"k3","length":3810780,"mode":0,"value":null,"error":"checked integer addition overflow"}
+{"kind":"k3","length":3810780,"mode":1,"value":null,"error":"checked integer addition overflow"}
+{"kind":"k3","length":3810780,"mode":2,"value":null,"error":"checked integer addition overflow"}
+{"kind":"dimension","order":2,"value":null,"error":"checked integer multiplication overflow"}
+{"kind":"dimension","order":3,"value":null,"error":"checked integer multiplication overflow"}

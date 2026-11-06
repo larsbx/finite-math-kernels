@@ -1,0 +1,494 @@
+✨ Pixi task (test-finite-exact in default): mojo run -I kernel tests/finite_exact/test_finite_exact.mojo
+finite_exact smoke and law checks passed.
+
+✨ Pixi task (test-interval in default): mojo run -I kernel tests/interval/test_interval_q.mojo
+interval_q smoke and law checks passed.
+
+✨ Pixi task (test-linear-algebra in default): mojo run -I kernel tests/finite_linear_algebra/test_finite_linear_algebra.mojo
+[PASS] test_scalar_lifts
+[PASS] test_exact_nullspace_rank_and_span
+[PASS] test_mat3_adjugate_and_charpoly
+[PASS] test_levi_civita_and_tensor_action
+[PASS] test_w3_is_eight_dimensional_and_invariant
+5 finite_linear_algebra tests passed.
+
+✨ Pixi task (test-finite-polynomial in default): mojo run -I kernel tests/finite_polynomial/test_polynomial_z.mojo
+[PASS] test_exact_monic_division
+[PASS] test_known_cyclotomic_polynomials
+[PASS] test_cyclotomic_product_identity
+[PASS] test_cyclotomic_degrees
+[PASS] test_polynomial_coefficients_are_unbounded
+5 finite_polynomial Mojo tests passed.
+
+✨ Pixi task (test-polynomial-fp in default): mojo run -I kernel tests/finite_polynomial/test_polynomial_fp.mojo
+[PASS] test_moduli_and_residues
+[PASS] test_ring_operations
+[PASS] test_distinct_degree_factorization
+[PASS] test_frobenius_power_refuses_a_negative_count
+[PASS] test_irreducibility_certificate
+[PASS] test_hensel_step
+6 polynomial_fp Mojo tests passed.
+
+✨ Pixi task (test-pair-power-residue in default): python tests/finite_polynomial/test_pair_power_residue_reference.py
+Exact pair-power Mojo values match full independent Python oracle.
+
+✨ Pixi task (test-cyclotomic-q in default): mojo run -I kernel tests/finite_polynomial/test_cyclotomic_q.mojo
+[PASS] test_small_conductors_reduce_exactly
+[PASS] test_root_of_unity_identity
+[PASS] test_defining_cyclotomic_polynomial_is_zero
+[PASS] test_high_degree_input_reduces_canonically
+[PASS] test_rational_coefficients_remain_exact
+[PASS] test_field_inverse_is_exact
+[PASS] test_galois_action_is_exact
+[PASS] test_conductor_is_part_of_identity_and_encoding
+[PASS] test_invalid_conductor_and_rejected_coefficient_fail_closed
+9 cyclotomic quotient Mojo tests passed.
+
+✨ Pixi task (test-quadratic-germ in default): mojo run -I kernel tests/finite_polynomial/test_quadratic_germ.mojo
+[PASS] test_q1_q2_exact_values
+[PASS] test_q3_exact_value
+[PASS] test_q4_exact_value_and_conjugation
+[PASS] test_q5_exact_value_and_galois_transport
+[PASS] test_malformed_internal_fraction_refuses
+5 exact quadratic-germ coefficient tests passed.
+
+✨ Pixi task (test-truncated-jet in default): mojo run -I kernel tests/finite_polynomial/test_truncated_jet.mojo
+[PASS] test_q_jets_carry_every_derivative
+[PASS] test_reciprocal_is_the_fibonacci_series
+[PASS] test_reciprocal_over_f13_and_q_zeta5
+[PASS] test_refusals_are_sticky
+[PASS] test_gaussian_jets_agree_over_q_zeta4_and_singleton_boxes
+[PASS] test_multiplicities_of_the_quadratic_family
+[PASS] test_box_jets_enclose_point_jets
+[PASS] test_taylor_model_specimens
+[PASS] test_taylor_square_is_the_product_with_itself
+[PASS] test_taylor_enclosure_contains_the_orbit
+[PASS] test_taylor_refusals
+11 truncated-jet and Taylor-model tests passed.
+
+✨ Pixi task (test-cyclotomic-field in default): mojo run -I kernel tests/finite_polynomial/test_cyclotomic_field.mojo && mojo run -I kernel tests/finite_polynomial/test_cyclotomic_field_vectors.mojo
+[PASS] test_totient_and_mobius
+[PASS] test_zeta_has_exact_order_q
+[PASS] test_field_axioms
+[PASS] test_rejection_is_sticky
+[PASS] test_direct_construction_checks_the_conductor
+[PASS] test_reduction_modulo_phi
+[PASS] test_galois_action
+[PASS] test_trace_of_zeta_is_mobius
+[PASS] test_norm_of_one_minus_zeta
+[PASS] test_landing_over_q_zeta
+[PASS] test_turns_beyond_niven_have_exact_order
+[PASS] test_spread_of_an_eighth_turn_is_one_half
+12 cyclotomic-field Mojo tests passed.
+226 cyclotomic-field-v1 vectors agree with the Python reference.
+
+✨ Pixi task (test-integer-module in default): mojo run -I kernel tests/finite_linear_algebra/test_integer_module.mojo
+[PASS] test_generator_changes_do_not_change_embedded_lattice
+[PASS] test_equal_smith_shape_can_be_different_embedded_lattice
+[PASS] test_rank_deficient_and_zero_generators
+[PASS] test_negative_entries_reduce_canonically
+[PASS] test_generators_are_rows_not_columns
+5 embedded integer-module Mojo tests passed.
+
+✨ Pixi task (test-madic in default): mojo run -I kernel tests/finite_linear_algebra/test_madic_ball.mojo
+[PASS] test_quotient_order_is_the_absolute_determinant
+[PASS] test_the_quotient_need_not_be_cyclic
+[PASS] test_the_invariant_factors_change_shape_with_the_level
+[PASS] test_the_unit_branch_has_a_trivial_filtration
+[PASS] test_membership_of_the_lattice
+[PASS] test_the_generators_are_the_columns_not_the_rows
+[PASS] test_same_coset_is_the_unknown_answer_and_refinement_can_separate
+[PASS] test_separation_is_the_only_certificate
+[PASS] test_far_apart_coordinates_do_not_wrap
+[PASS] test_index_subsets_enumerates_each_subset_once
+10 M-adic ball Mojo tests passed.
+
+✨ Pixi task (test-madic-oracle in default): python -m pytest -q tests/finite_linear_algebra/test_madic_oracle.py
+....................                                                     [100%]
+20 passed in 1.07s
+
+✨ Pixi task (test-qpoly in default): mojo run -I kernel tests/finite_linear_algebra/test_qpoly.mojo
+[PASS] test_normalization_and_degree
+[PASS] test_division_is_exact_over_the_field
+[PASS] test_division_by_zero_refuses
+[PASS] test_gcd_is_monic_and_the_squarefree_part_simplifies
+[PASS] test_the_root_bound_is_rational_and_above_every_root
+[PASS] test_the_sturm_chain_and_its_variations
+[PASS] test_the_golden_and_tribonacci_brackets
+[PASS] test_the_chebyshev_transition_matrix_brackets_two
+[PASS] test_an_exact_rational_root_is_returned_as_itself
+[PASS] test_a_repeated_root_still_isolates
+[PASS] test_no_real_root_is_a_refusal_not_a_bracket
+[PASS] test_a_capped_bisection_refuses
+[PASS] test_the_general_charpoly_agrees_with_the_three_by_three_closed_form
+[PASS] test_the_general_charpoly_in_other_dimensions
+[PASS] test_the_matrix_satisfies_its_own_characteristic_polynomial_at_its_root
+15 qpoly tests passed.
+
+✨ Pixi task (test-qpoly-oracle in default): python -m pytest -q tests/finite_linear_algebra/test_qpoly_reference.py
+..............................                                           [100%]
+30 passed in 0.06s
+
+✨ Pixi task (test-substitution in default): mojo run -I kernel tests/substitution_dynamics/test_substitution_dynamics.mojo && mojo run -I kernel tests/substitution_dynamics/test_symmetry.mojo && mojo run -I kernel tests/substitution_dynamics/test_dumont_thomas.mojo && mojo run -I kernel tests/substitution_dynamics/test_return_lattice.mojo && mojo run -I kernel tests/substitution_dynamics/test_strong_coincidence.mojo
+[PASS] test_boundary_rejects_bad_letters_and_erasing_images
+[PASS] test_substitution_maps_and_incidence
+[PASS] test_generic_streaming_counts
+[PASS] test_pairs_and_invariants_over_two_letters
+[PASS] test_discrepancy_unrolled_sign_branches_match_full_scan
+[PASS] test_four_letter_boundaries_and_seeds
+[PASS] test_fibonacci_automaton_matches_oracle
+[PASS] test_four_letter_automaton_matches_oracle
+[PASS] test_tribonacci_agrees_with_the_alphabet3_kernel
+[PASS] test_capped_build_is_flagged_not_answered
+[PASS] test_keys_are_injective_on_large_alphabets
+11 substitution-dynamics Mojo tests passed.
+[PASS] test_alphabet3_normal_forms
+[PASS] test_other_alphabets
+[PASS] test_keys_are_injective_past_ten_letters
+[PASS] test_only_canonical_keys_parse
+[PASS] test_three_letter_maps_have_seven_conjugacy_classes
+[PASS] test_three_letter_cores_and_entry_times
+[PASS] test_class_counts_on_other_alphabets
+[PASS] test_endpoint_maps_read_the_image_ends
+8 symmetry and endpoint-map Mojo tests passed.
+[PASS] test_the_numeration_automaton_is_the_fixed_point
+[PASS] test_counts_are_image_lengths_and_incidence_entries
+[PASS] test_prolongable_points_are_the_first_letter_cycles
+[PASS] test_a_slowly_growing_fixed_point_is_read_past_any_fixed_level
+[PASS] test_an_unrelated_letter_cannot_overflow_a_query
+[PASS] test_levels_to_cover_is_the_level_of_the_digits_table
+[PASS] test_levels_to_cover_streams_over_a_large_alphabet
+[PASS] test_impossible_queries_are_refused
+[PASS] test_barge_class_alphabet3_fixtures
+[PASS] test_barge_class_other_alphabets
+[PASS] test_bounded_builder_matches_the_canonical_one
+[PASS] test_bounded_children_is_the_in_budget_prefix_of_children
+[PASS] test_bounded_builder_agrees_with_the_materialising_one
+[PASS] test_an_over_budget_child_is_never_materialised
+14 numeration, Barge-class and bounded-builder Mojo tests passed.
+[PASS] test_hermite_form_index
+[PASS] test_alphabet3_fixtures
+[PASS] test_other_alphabets_agree_with_the_sampled_route
+[PASS] test_a_rank_drop_raises_on_both_routes
+[PASS] test_a_seed_that_never_grows_or_never_covers_is_refused
+[PASS] test_covering_level_refuses_a_length_that_stops_short
+[PASS] test_the_sampled_route_refuses_factor_lengths_outside_its_keys
+[PASS] test_factor_keys_reach_the_last_representable_length
+8 return-lattice Mojo tests passed.
+[PASS] test_alphabet3_witnesses_and_sizes
+[PASS] test_merge_and_prefix_pair_fixtures
+[PASS] test_the_merge_bound_is_exact_on_small_alphabets
+[PASS] test_levels_match_the_definition_on_other_alphabets
+[PASS] test_elimination_is_the_direct_automaton
+[PASS] test_one_digit_paths_are_read
+[PASS] test_malformed_input_raises
+7 strong-coincidence Mojo tests passed.
+
+✨ Pixi task (test-tuning in default): mojo run -I kernel tests/substitution_dynamics/test_tuning.mojo
+[PASS] test_boundary_rejects_bad_prefixes
+[PASS] test_period_doubling_is_the_dgp_tuning_of_the_period_two_centre
+[PASS] test_star_product_of_period_doubling_with_itself
+[PASS] test_feigenbaum_kneading_prefix
+[PASS] test_star_product_is_composition_for_arbitrary_twists
+[PASS] test_directive_composite_and_application_agree
+[PASS] test_kneading_prefix_is_a_prefix_of_every_tuning_image
+[PASS] test_continuation_twist_pinned_values_and_disagreement_with_parity
+[PASS] test_internal_address_pinned_values_and_boundary
+[PASS] test_continuation_is_the_unique_continuation_with_the_period_in_its_internal_address
+[PASS] test_every_tuning_substitution_has_a_coincidence_in_its_first_column
+[PASS] test_thue_morse_has_no_column_coincidence
+[PASS] test_three_letter_example_needs_depth_two
+[PASS] test_non_constant_length_is_rejected
+14 tuning Mojo tests passed.
+
+✨ Pixi task (test-facades in default): mojo run -I kernel tests/facades/test_stable_facades.mojo
+stable facade checks passed.
+
+✨ Pixi task (test-named-modules in default): mojo run -I kernel tests/facades/test_named_modules.mojo
+[PASS] test_qpoly_named_modules
+[PASS] test_integer_matrix_and_module_named_modules
+[PASS] test_rational_dynamics_named_modules
+[PASS] test_krawczyk_named_module
+[PASS] test_finite_polynomial_named_modules
+[PASS] test_finite_automata_named_modules
+[PASS] test_projective_limits_named_modules
+7 named-module re-export tests passed.
+
+✨ Pixi task (test-quadratic-orbit in default): mojo run -I kernel tests/quadratic_orbit/test_quadratic_orbit.mojo && mojo run -I kernel tests/quadratic_orbit/test_escape_criterion.mojo
+quadratic_orbit laws passed.
+quadratic_orbit escape and multiplier laws passed.
+
+✨ Pixi task (test-root-isolation in default): mojo run -I kernel tests/root_isolation/test_root_isolation.mojo
+root_isolation laws passed.
+
+✨ Pixi task (test-rational-dynamics in default): mojo run -I kernel tests/rational_dynamics/test_rational_dynamics.mojo && mojo run -I kernel tests/rational_dynamics/test_doubling.mojo
+[PASS] test_reduction_is_exact_and_unbounded
+[PASS] test_doubling_is_explicitly_mod_one
+[PASS] test_modular_inverse_and_centered_representative
+[PASS] test_continued_fraction_and_convergents
+[PASS] test_farey_determinant_is_exact
+5 rational_dynamics Mojo tests passed.
+[PASS] test_closed_forms_agree_with_the_orbit
+[PASS] test_order_of_two_is_exact_and_uncapped
+[PASS] test_carmichael_lambda
+[PASS] test_types_past_the_fixed_width_cap
+[PASS] test_binary_digits_and_blocks
+[PASS] test_exact_type_count_is_the_enumeration
+[PASS] test_moebius_values_and_refusal
+[PASS] test_bigz_to_int_refuses_rather_than_truncates
+8 doubling Mojo tests passed.
+
+✨ Pixi task (test-projective-limits in default): mojo run -I kernel tests/projective_limits/test_projective_limits.mojo && mojo run -I kernel tests/projective_limits/test_reference_vectors.mojo && mojo run -I kernel tests/projective_limits/test_field_generic.mojo && mojo run -I kernel tests/projective_limits/test_rotor.mojo && mojo run -I kernel tests/projective_limits/test_hyperbolic_rt.mojo && mojo run -I kernel tests/projective_limits/test_hyperbolic_rt_batch.mojo && mojo run -I kernel tests/projective_limits/test_hyperbolic_rt_vectors.mojo && mojo run -I kernel tests/projective_limits/test_hyperbolic_rt_max.mojo && mojo run -I kernel tests/projective_limits/test_gram_geometry.mojo && mojo run -I kernel tests/projective_limits/test_gram_geometry_vectors.mojo && mojo run -I kernel tests/projective_limits/test_rt_route.mojo && mojo run -I kernel tests/projective_limits/test_rt_route_census.mojo && mojo run -I kernel tests/projective_limits/test_coxeter_gate.mojo
+[PASS] test_homogeneous_normal_form
+[PASS] test_continuity_at_regular_points
+[PASS] test_pole_is_continuity_into_infinity
+[PASS] test_degree_rule_at_infinity
+[PASS] test_infinity_maps_through_finite_image
+[PASS] test_rejected_coefficient_refuses_degree_rule
+[PASS] test_chordal_distance_squared
+[PASS] test_tangent_slope_smooth_vertical_and_cusp
+[PASS] test_oblique_and_horizontal_asymptotes
+[PASS] test_landing_is_lhopital
+[PASS] test_cancellation_law
+[PASS] test_cancellation_sweep_against_evaluation
+[PASS] test_directional_limits_on_the_divisor
+[PASS] test_path_dependence_witness_certifies_nonexistence
+[PASS] test_second_blow_up_along_a_parabola
+[PASS] test_negative_monomial_exponent_rejects
+[PASS] test_mobius_is_continuous_at_infinity
+[PASS] test_convergents_are_the_orbit_of_infinity
+18 projective_limits Mojo tests passed.
+466 projective-limits-v1 vectors agree with the Python reference.
+[PASS] test_prime_field_axioms
+[PASS] test_rejection_is_sticky
+[PASS] test_normal_form_over_fp
+[PASS] test_projective_line_has_p_plus_one_points
+[PASS] test_half_turn_is_an_involution
+[PASS] test_half_turn_over_q_has_no_fixed_points
+[PASS] test_chordal_quadrance_is_rotation_invariant
+[PASS] test_chordal_quadrance_is_four_spread
+[PASS] test_wilson_theorem_is_a_limit
+[PASS] test_landing_survives_where_lhopital_fails
+[PASS] test_degree_rule_at_infinity_over_fp
+[PASS] test_tangent_slope_and_asymptote_over_fp
+[PASS] test_path_dependence_over_fp
+13 projective_limits field-generic Mojo tests passed.
+[PASS] test_identity_and_half_turn
+[PASS] test_isotropic_points_are_not_rotors
+[PASS] test_group_law_is_composition_of_rotations
+[PASS] test_group_axioms
+[PASS] test_group_law_is_circle_multiplication
+[PASS] test_circle_is_the_rotor_group
+[PASS] test_rational_rotors
+[PASS] test_powers
+[PASS] test_orders_divide_the_group_order
+[PASS] test_half_turn_is_the_unique_involution
+[PASS] test_rational_torsion_is_niven
+[PASS] test_turns_are_a_homomorphism
+[PASS] test_turn_requires_the_generator_order_to_divide_order
+[PASS] test_quarter_turn_is_plus_or_minus_one
+[PASS] test_spread_polynomials
+[PASS] test_rotor_spread_is_s2_of_the_half_angle_spread
+[PASS] test_spread_of_a_power_is_a_spread_polynomial
+17 projective_limits rotor Mojo tests passed.
+[PASS] field-generic RT over F3/F5/F7
+[PASS] complete F3^8 norm-one shell
+[PASS] exact batch spread equals independent scalar, including null guards
+[PASS] 48 independent RT golden vectors (Mojo exact)
+[PASS] MAX parallel/serial exact F3/F5 shells
+[PASS] deterministic budget and worker refusal
+[PASS] Gram minors, tangent and radical falsifiers, exact planar guard
+[PASS] 18 exact independent Gram/rank conformance vectors
+[PASS] exact F5 updates, RT guards and null residual
+[PASS] rank-two guarded Gram direction adapter
+[PASS] field-generic F7 update specialization
+/workspace/scratch/cd35adeadcb8/finite-math-kernels/tests/projective_limits/test_rt_route_census.mojo:113:26: warning: assignment to 'passed' was never used; assign to '_' instead?
+            var passed = False
+                         ^
+[PASS] Mojo F5 720 routes / 1800 swaps: frozen, coupled, null residual
+[PASS] Mojo guarded rank-two geometry on all 1800 frozen swaps
+[PASS] F5 hexagon source-state gating and negative controls
+[PASS] F7 square/far-commutativity gating
+
+✨ Pixi task (test-chromogeometry in default): mojo run -I kernel tests/chromogeometry/test_chromogeometry.mojo
+Chromogeometry field-generic laws passed: F_7, F_13, Q.
+
+✨ Pixi task (test-certified-records in default): mojo run -I kernel tests/certified_records/test_certified_records.mojo
+certified_records laws passed on 23 vectors.
+
+✨ Pixi task (test-orbit-census in default): mojo run -I kernel tests/finite_field_orbit/test_orbit_census.mojo
+finite_field_orbit laws passed on 77 vectors.
+
+✨ Pixi task (build-certified-records-py in default): mkdir -p .build && mojo build -I kernel kernel/certified_records/python_binding.mojo --emit shared-lib -o .build/certified_records_ext.so
+
+✨ Pixi task (test-orbit-reference in default): python -m pytest -q tests/finite_field_orbit/test_orbit_reference.py
+.........................                                                [100%]
+25 passed in 6.56s
+
+✨ Pixi task (test-angle-doubling in default): mojo run -I kernel tests/angle_doubling/test_angle_doubling.mojo
+angle_doubling laws passed.
+
+✨ Pixi task (test-projective in default): mojo run -I kernel tests/projective/test_projective.mojo
+projective laws passed.
+
+✨ Pixi task (test-machine-int in default): mojo run -I kernel tests/finite_exact/test_machine_int.mojo
+[PASS] test_checked_arithmetic_is_exact_in_range
+[PASS] test_checked_arithmetic_refuses_past_the_range
+[PASS] test_gcd_ignores_signs_and_fixes_zero
+[PASS] test_decimal_rendering_is_exact
+[PASS] test_products_at_the_negative_boundary
+[PASS] test_gcd_signed_minima
+6 machine-integer tests passed.
+
+✨ Pixi task (test-word-range in default): mojo run -I kernel tests/finite_exact/test_word_range.mojo
+2060 word-range vectors replayed; 6 edge tests passed.
+
+✨ Pixi task (test-integer-matrix in default): mojo run -I kernel tests/finite_linear_algebra/test_integer_matrix.mojo
+[PASS] test_the_bound_is_attained_and_sufficient
+[PASS] test_irreducible_but_periodic_is_not_primitive
+[PASS] test_sign_predicates
+[PASS] test_matrix_products_refuse_overflow
+[PASS] test_primitivity_depends_only_on_support
+5 integer_matrix tests passed.
+
+✨ Pixi task (test-integer-vector in default): mojo run -I kernel tests/finite_linear_algebra/test_integer_vector.mojo
+[PASS] test_the_specialised_paths_agree_with_the_general_loop
+[PASS] test_a_dimension_that_does_not_agree_is_refused
+[PASS] test_an_intermediate_past_the_machine_range_raises_rather_than_wrapping
+3 integer_vector tests passed.
+
+✨ Pixi task (test-finite-automata in default): mojo run -I kernel tests/finite_automata/test_dfa.mojo
+[PASS] test_the_kernel_is_a_boolean_algebra_of_languages
+[PASS] test_emptiness_reports_the_instance_not_only_the_verdict
+[PASS] test_projection_discharges_one_existential_quantifier
+[PASS] test_minimisation_identifies_exactly_equal_languages
+[PASS] test_a_partial_table_is_completed_by_one_rejecting_sink
+[PASS] test_projection_over_three_tracks_eliminates_a_real_quantifier
+[PASS] test_two_quantifiers_eliminate_in_sequence
+[PASS] test_a_count_past_the_machine_range_is_still_exact
+[PASS] test_a_track_condition_enters_and_leaves_a_product
+9 finite_automata tests passed.
+
+✨ Pixi task (test-finite-graph in default): mojo run -I kernel tests/finite_graph/test_scc.mojo && mojo run -I kernel tests/finite_graph/test_signing.mojo
+[PASS] test_components_partition_the_vertices
+[PASS] test_a_long_path_does_not_recurse
+[PASS] test_union_find_merges_classes
+3 finite_graph tests passed.
+Imported from /workspace/scratch/cd35adeadcb8/finite-math-kernels/tests/finite_graph/test_signing.mojo:4:
+kernel/finite_graph/signing.mojo:194:39: warning: transfer from an owned value has no effect and can be removed
+                    return List[Int]()^
+                                      ^
+                                      
+Included from /workspace/scratch/cd35adeadcb8/finite-math-kernels/tests/finite_graph/test_signing.mojo:4:
+kernel/finite_graph/signing.mojo:144:9: warning: ref 'v' was never used, remove it?
+    for v in range(n):
+        ^
+[PASS] test_positive_loop_is_trivial_phase
+[PASS] test_negative_loop_is_half_phase
+[PASS] test_two_cycle_with_one_negative_edge_is_half_phase
+[PASS] test_two_cycle_with_two_negative_edges_switches_to_positive
+[PASS] test_mixed_self_loop_signs_are_perron_strict
+5 finite_graph signing tests passed.
+
+✨ Pixi task (test-claims in default): python -m pytest -q tests/mojo_smoke/test_claims_receipts.py
+.                                                                        [100%]
+1 passed in 3.07s
+
+✨ Pixi task (test-mojo-smoke in default): mojo run -I kernel tests/mojo_smoke/test_report.mojo
+mojo_smoke reporter checks passed.
+
+✨ Pixi task (test-parallel-fold in default): mojo run -I kernel tests/parallel_fold/test_map_fold.mojo
+5 parallel_fold laws passed.
+
+✨ Pixi task (test-weighted-cycle in default): mojo run -I kernel tests/weighted_graph/test_cycle_gain.mojo
+[PASS] test_triangle_gain
+[PASS] test_parallel_edges_preserve_multiplicity
+[PASS] test_self_loop_is_its_own_cycle
+[PASS] test_tree_has_no_cycle_generators
+[PASS] test_two_cycle_multigraph_is_deterministic
+[PASS] test_rejects_incomplete_and_malformed_inputs
+6 weighted cycle-gain Mojo tests passed.
+
+✨ Pixi task (test-vendoring in default): python -m pytest -q tests/vendoring
+............................                                             [100%]
+28 passed in 0.12s
+
+✨ Pixi task (test-proof-records in default): python -m pytest -q tests/proof_records
+...............s................s....................................... [ 60%]
+................................................                         [100%]
+118 passed, 2 skipped in 3.72s
+
+✨ Pixi task (test-python in default): python -m pytest -q tests/toolchain tests/finite_exact tests/certified_records tests/proof_records tests/substitution_dynamics tests/rational_dynamics tests/closed_interval tests/root_isolation tests/quadratic_orbit tests/projective_limits tests/cyclotomic tests/finite_polynomial tests/polyglot
+.............................................................s.......... [  3%]
+......s................................................................. [  7%]
+........................................................................ [ 11%]
+........................................................................ [ 15%]
+........................................................................ [ 19%]
+........................................................................ [ 23%]
+........................................................................ [ 27%]
+........................................................................ [ 31%]
+........................................................................ [ 35%]
+........................................................................ [ 39%]
+........................................................................ [ 43%]
+........................................................................ [ 47%]
+........................................................................ [ 51%]
+........................................................................ [ 55%]
+........................................................................ [ 59%]
+........................................................................ [ 63%]
+........................................................................ [ 67%]
+........................................................................ [ 71%]
+........................................................................ [ 75%]
+........................................................................ [ 79%]
+........................................................................ [ 83%]
+........................................................................ [ 87%]
+........................................................................ [ 91%]
+........................................................................ [ 95%]
+........................................................................ [ 99%]
+...............                                                          [100%]
+1813 passed, 2 skipped in 33.16s
+
+✨ Pixi task (test-audit in default): PYTHONPATH=tools python -m pytest -q tests/audit
+........................................................................ [ 63%]
+..........................................                               [100%]
+114 passed in 0.24s
+
+✨ Pixi task (test-provenance in default): python -m pytest -q tests/provenance
+.......                                                                  [100%]
+7 passed in 0.16s
+
+✨ Pixi task (test-references in default): python -m pytest -q tests/references
+...........                                                              [100%]
+11 passed in 0.28s
+
+✨ Pixi task (test-exact-arithmetic-audit in default): python -m pytest -q tests/exact_arithmetic_audit
+........................................................................ [ 37%]
+........................................................................ [ 75%]
+..............................................                           [100%]
+190 passed in 0.59s
+
+✨ Pixi task (test-lexical-audit in default): python -m pytest -q tests/lexical_audit
+...........................................                              [100%]
+43 passed in 0.08s
+
+✨ Pixi task (test-refinement in default): python -m pytest -q tests/oracle_refinement
+..............                                                           [100%]
+14 passed in 0.05s
+
+✨ Pixi task (test-frontier in default): python -m pytest -q tests/frontier
+....................................ssssss....................ssssssssss [ 57%]
+.....................................................    [100%]
+109 passed, 16 skipped, 16 subtests passed in 6.20s
+
+✨ Pixi task (cyclotomic-vectors in default): python tools/make_cyclotomic_vectors.py --check
+
+✨ Pixi task (cyclotomic-field-vectors in default): python tools/make_cyclotomic_field_vectors.py --check
+
+✨ Pixi task (hyperbolic-rt-vectors in default): python tools/make_hyperbolic_rt_vectors.py --check
+
+✨ Pixi task (gram-geometry-vectors in default): python tools/make_gram_geometry_vectors.py --check
+
+✨ Pixi task (word-range-vectors in default): python tools/make_word_range_vectors.py --check
+
+✨ Pixi task (property in default): python oracles/property_oracle.py --layers zq
+OK: property probe agrees with the oracle on 300 integer, 200 rational, and 0 interval cases.
+OK: the corpus meets its declared refinement; classes it is declared to miss: random_int/zero, random_int/a unit, random_fraction/zero, random_fraction/integer-valued.
