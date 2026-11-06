@@ -79,6 +79,14 @@ def run_gate(expected, destination):
         (destination / "NativeReplay.lean").write_text(lean)
         receipt["finite_native_cases"] = cases
         receipt["native_transcript_sha256"] = hashlib.sha256(native.encode()).hexdigest()
+        observed = execute("known-counterexample", ["pixi", "run", "mojo", "run", "-I", "kernel", "tests/lean/word_counter_overflow.mojo"]).strip()
+        if observed != "-7780085407041551616":
+            raise ValueError("known native counterexample changed; review its status explicitly")
+        receipt["known_native_counterexample"] = {
+            "source": "kernel/substitution_dynamics/words.mojo", "operation": "n3",
+            "input": "4000000 copies of 0, alphabet size 1",
+            "observed": observed, "exact": "10666658666668000000",
+            "classification": "unconditional native exactness refuted; fitting precondition required"}
         with tempfile.TemporaryDirectory(prefix="fmk-lean-") as temporary:
             work = Path(temporary)
             for p in PROJECT.iterdir():

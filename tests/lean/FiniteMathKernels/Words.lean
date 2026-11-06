@@ -1,4 +1,5 @@
 import Mathlib.Data.List.Perm.Basic
+import Mathlib.Data.Nat.Choose.Basic
 import Mathlib.Tactic
 
 /-! Alphabet-generic mathematical semantics. Native Mojo conformance is a
@@ -76,6 +77,16 @@ def pairs : Word α → α → α → ℕ
 def triples : Word α → α → α → α → ℕ
   | [], _, _, _ => 0
   | a :: w, i, j, k => triples w i j k + if a = i then pairs w j k else 0
+theorem parikh_replicate_self (a : α) (n : ℕ) : parikh (List.replicate n a) a = n := by
+  simp [parikh]
+theorem pairs_replicate_self (a : α) (n : ℕ) : pairs (List.replicate n a) a a = n.choose 2 := by
+  induction n with
+  | zero => simp [pairs]
+  | succ n ih => simp [List.replicate_succ,pairs,parikh,ih,Nat.choose_succ_succ,Nat.add_comm]
+theorem triples_replicate_self (a : α) (n : ℕ) : triples (List.replicate n a) a a a = n.choose 3 := by
+  induction n with
+  | zero => simp [triples]
+  | succ n ih => simp [List.replicate_succ,triples,ih,pairs_replicate_self,Nat.choose_succ_succ,Nat.add_comm]
 theorem pairs_snoc (w : Word α) (c i j : α) :
     pairs (w ++ [c]) i j = pairs w i j + if c = j then parikh w i else 0 := by
   induction w with

@@ -1689,7 +1689,7 @@
       "source_path": "tests/test_interval_q.mojo"
     },
     "tests/lean/FiniteMathKernels.lean": {
-      "blob": "99b12fb845485a610587d9169a88a8080356460e",
+      "blob": "58ce23694329006fee69bda35d31526ba85e38f3",
       "relation": "authored"
     },
     "tests/lean/FiniteMathKernels/AcceptedField.lean": {
@@ -1704,12 +1704,16 @@
       "blob": "c9681795fa997fc2b8ea57741a5d244a8a588ad6",
       "relation": "authored"
     },
+    "tests/lean/FiniteMathKernels/CounterBounds.lean": {
+      "blob": "5b950895568ab39b05a69b37c9dace5151e943bc",
+      "relation": "authored"
+    },
     "tests/lean/FiniteMathKernels/Words.lean": {
-      "blob": "782916ec7fdd17e5de4280ffd8629f1d50485254",
+      "blob": "832a4239218e317f12b43ddae697d46e04db495a",
       "relation": "authored"
     },
     "tests/lean/coverage.json": {
-      "blob": "0a5b128268b8058f4a68521901a7e5db67805274",
+      "blob": "182a264671d99a33cf0c7d3de5b7d3fb1d7faec0",
       "relation": "authored"
     },
     "tests/lean/lake-manifest.json": {
@@ -1730,6 +1734,10 @@
     },
     "tests/lean/test_bridge.py": {
       "blob": "eb6e4ac742bdd7fa380c94a02db50ce8fbaf55e7",
+      "relation": "authored"
+    },
+    "tests/lean/word_counter_overflow.mojo": {
+      "blob": "a57ca0918f8bd7378401f1a001744d1aeaaf6428",
       "relation": "authored"
     },
     "tests/lexical_audit/test_lexical_audit.py": {
@@ -2131,7 +2139,7 @@
       "relation": "authored"
     },
     "tools/kernel_lean_inventory.py": {
-      "blob": "647af0ed858c6f7b3ec38a2ce2ade8502f46be61",
+      "blob": "2b916b8ce84cfa3a36302dc3bdbb564df97aec1b",
       "relation": "authored"
     },
     "tools/lexical_audit/__init__.py": {
@@ -2221,7 +2229,7 @@
       "source_path": "tools/replay_mojo.py"
     },
     "tools/run_kernel_lean_verification.py": {
-      "blob": "c232870a84ce05f191afa30e4b60319e3e9e16a8",
+      "blob": "754f748948adc14bdebfa00fd213164446a9da3b",
       "relation": "authored"
     },
     "tools/setup_kernel_lean.sh": {
