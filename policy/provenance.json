@@ -104,6 +104,50 @@
       "blob": "9dc55c38af391e71deb2f2b2f0c898e7084c8cad",
       "relation": "authored"
     },
+    "conformance/lean/axioms-326ac959.log": {
+      "blob": "cafd8e7e17294d76d6e2d1cb776d636d3d665db2",
+      "generator": "tools/run_kernel_lean_verification.py",
+      "relation": "generated"
+    },
+    "conformance/lean/known-counterexample-326ac959.log": {
+      "blob": "d03ea119f4cc6e1c1a7c1b130c715b6427c49741",
+      "generator": "tools/run_kernel_lean_verification.py",
+      "relation": "generated"
+    },
+    "conformance/lean/native-326ac959.jsonl": {
+      "blob": "124b9416fe296e2b8e7cfbfcc9da8ea72b7eebb9",
+      "generator": "tests/lean/native_transcript.mojo",
+      "relation": "generated"
+    },
+    "conformance/lean/negative-noncanonical-326ac959.log": {
+      "blob": "f2bfd11f3a4910c381ae393c3714c8a2334998d0",
+      "generator": "tools/run_kernel_lean_verification.py",
+      "relation": "generated"
+    },
+    "conformance/lean/negative-overflow-326ac959.log": {
+      "blob": "031403045143c5c4e51858f44decda4cbf7b005e",
+      "generator": "tools/run_kernel_lean_verification.py",
+      "relation": "generated"
+    },
+    "conformance/lean/negative-rejection-326ac959.log": {
+      "blob": "f5667ac4de1981a8a0fb2efca7009443a65af2de",
+      "generator": "tools/run_kernel_lean_verification.py",
+      "relation": "generated"
+    },
+    "conformance/lean/negative-word-326ac959.log": {
+      "blob": "9fd6f8854b4524a9fbab6fb2088dd1005eea7be7",
+      "generator": "tools/run_kernel_lean_verification.py",
+      "relation": "generated"
+    },
+    "conformance/lean/receipt-326ac959.json": {
+      "blob": "891c3ceaa7ef81f53367cd7509fa1863847cb3ac",
+      "generator": "tools/run_kernel_lean_verification.py",
+      "relation": "generated"
+    },
+    "conformance/lean/runtime-context-326ac959.json": {
+      "blob": "1c8cda4adc6a1efab6a3c952fe08fa1e672a189e",
+      "relation": "authored"
+    },
     "conformance/ledger/example.json": {
       "blob": "9035e65722af1f215ad3bb2ee33c06f93cd3d216",
       "relation": "authored"
@@ -264,7 +308,7 @@
       "relation": "authored"
     },
     "docs/lean-verification.md": {
-      "blob": "76ee191e8b86b51edb728c51a9d802ff6f2bd656",
+      "blob": "993b68ca11275997371ee93ef55c1db9dc2eb802",
       "relation": "authored"
     },
     "docs/ledger-generation-spec.md": {

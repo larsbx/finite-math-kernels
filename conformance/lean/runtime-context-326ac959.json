@@ -1,0 +1,65 @@
+{
+  "format": "kernel-lean-runtime-context-v1",
+  "revision": "326ac9599e957c3d60286be23cec7c341565d581",
+  "acceptance": "local Lean kernel; standard hosted run remains queued",
+  "hosted_run": "https://github.com/larsbx/finite-math-kernels/actions/runs/42223221102",
+  "compatibility": {
+    "reason": "In this runtime, Lean IO.appPath readlink(/proc/<getpid>/exe) fails; /proc/self/exe works.",
+    "effect": "Only the current-process executable-path lookup is redirected to /proc/self/exe. Other readlink calls are forwarded. No Lean executable, mathematical kernel, proof source or dependency is modified.",
+    "variable": "LD_PRELOAD",
+    "source": "#define _GNU_SOURCE\n#include <unistd.h>\n#include <dlfcn.h>\n#include <stdio.h>\n#include <string.h>\nssize_t readlink(const char *path, char *buf, size_t size) {\n  static ssize_t (*actual)(const char *, char *, size_t) = 0;\n  if (!actual) actual = dlsym(RTLD_NEXT, \"readlink\");\n  char own[80];\n  snprintf(own, sizeof own, \"/proc/%ld/exe\", (long)getpid());\n  return actual(strcmp(path, own) == 0 ? \"/proc/self/exe\" : path, buf, size);\n}\n",
+    "source_sha256": "80dc447d8f0c00965de6c73fd11adff3fc84182c1be481891e2158a2e260c7ae",
+    "library_sha256": "3be97e3744398929e4229a061ce8df75c245519ed4421a2b6691d0f39362bb25",
+    "compile": [
+      "cc",
+      "-shared",
+      "-fPIC",
+      "proc-self.c",
+      "-ldl",
+      "-o",
+      "proc-self.so"
+    ]
+  },
+  "lean_executable_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+  "source_checkout": "clean detached Git worktree at the exact revision",
+  "fresh_build": "Proof sources/configuration copied to a new temporary workspace. No local FiniteMathKernels compiled artifact reused.",
+  "trusted_inputs": [
+    "pinned Lean 4.34.0-rc2",
+    "pinned Mathlib dependency artifacts",
+    "the disclosed current-process path shim"
+  ],
+  "broader_hosted_gates": {
+    "revision": "1e6212da5514181b9843727c1497e62ee3d71e46",
+    "aggregate_and_estate": {
+      "run": 42219264188,
+      "status": "success"
+    },
+    "frontier_polyglot": {
+      "run": 42219264240,
+      "status": "success"
+    },
+    "julia_oracle": {
+      "run": 42219264218,
+      "status": "success"
+    },
+    "exact_rt": {
+      "run": 42219264214,
+      "status": "success"
+    },
+    "limit": "These gates ran at the stated earlier revision, not at the final proof/evidence head. Native kernel source bytes were unchanged by this PR."
+  },
+  "local_repository_checks": {
+    "aggregate": "exit 0 with six optional frontier skips",
+    "audit": "114 passed",
+    "provenance": "7 passed",
+    "references": "passed",
+    "property": "300 integer and 200 rational cases passed",
+    "polyglot": "failed locally because Bend is absent; hosted earlier-revision lane passed"
+  },
+  "failed_development_runs": [
+    42218728517,
+    42219264336,
+    42220195553
+  ],
+  "kernel_implementation_refinement": "open; native N3 unconditional exactness refuted (issue #97)"
+}

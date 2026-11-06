@@ -62,10 +62,29 @@ untouched areas cannot disappear behind a green foundational gate.
 
 ## Replay and evidence
 
-Kernel acceptance is pending the first exact-head hosted run. The local runtime
-downloads the pinned release but its Lean launcher reports “failed to locate
-application”; no local Lean pass is claimed. A local Pixi installation attempt
-also hit a conda-forge HTTP 429 and is not evidence of native execution.
+**Local acceptance at exact revision `326ac9599e957c3d60286be23cec7c341565d581`:**
+61 named model proofs passed the Lean kernel and standard-axiom audit; all 373
+finite native records passed their Lean propositions; all four false controls
+were rejected. The known N3 overflow was separately reproduced and retained.
+
+Permanent evidence is in [the receipt](../conformance/lean/receipt-326ac959.json),
+[axiom output](../conformance/lean/axioms-326ac959.log),
+[native transcript](../conformance/lean/native-326ac959.jsonl), and
+[runtime context](../conformance/lean/runtime-context-326ac959.json).
+The local runtime needed the disclosed executable-path compatibility shim in
+that context record: it redirects only the current process's failed
+`/proc/<pid>/exe` lookup to `/proc/self/exe`. The Lean binary, kernel, proof
+sources and dependency versions are unchanged; the shim source, library hash
+and exact compiler invocation are retained for independent assessment.
+
+[Standard hosted run 42223221102](https://github.com/larsbx/finite-math-kernels/actions/runs/42223221102)
+remains queued. No hosted acceptance of this exact source is claimed.
+The earlier hosted aggregate, estate, polyglot, Julia and RT gates passed at
+`1e6212da5514181b9843727c1497e62ee3d71e46`; those are separately scoped in the
+runtime context. The local aggregate exited zero with six optional frontier
+skips; local polyglot failed because Bend is absent. Audit (114), provenance (7),
+reference checks, the 300-integer/200-rational property oracle and all ten new
+admission/inventory/report-parser tests passed.
 
 ```sh
 bash tools/setup_kernel_lean.sh
