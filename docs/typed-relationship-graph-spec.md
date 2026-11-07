@@ -38,7 +38,14 @@ The nine edge types of the `tui-story` graph are declared in the surface (`edge_
 
 A dependency on a withdrawn result yields both an `implicative` edge and a `contradictory` edge: the dependency is still what the ledger records, and the contradiction is what an audit wants to query. Nothing is inferred beyond these four: `hierarchical`, `evolutionary`, `analogous`, `antonymous` and `causal` have no registry to read them from, and this export does not guess them.
 
-Every edge carries `certainty`, which is the integer `1` and means *declared, not estimated*. A graph whose edges come from a registry has no scores to model; the field exists so that an importing `tui-story` graph can hold both kinds of edge without conflating them, and the exact integer is deliberate — an exact certainty is not a rounded one.
+Every edge carries `certainty`, which is **exactly the JSON integer `1`** and means *declared, not estimated*. A graph whose edges come from a registry has no scores to model; the field exists so that an importing `tui-story` graph can hold both kinds of edge without conflating them, and the exact integer is deliberate — an exact certainty is not a rounded one.
+
+The canonical semantic identity of an edge is
+`(type, source, target, provenance, use_site)`. Provenance is deliberately
+inside that key: the same endpoints and use-site under `open` and
+`theorem-backed` provenance are two different semantic relationships.
+Exact duplicate edges collapse in normalization. Two non-identical edges that
+share this identity are refused rather than ordered by undeclared payload.
 
 ## 3. Provenance
 
@@ -77,7 +84,7 @@ A node's `source` is the evidence its kind requires, mirroring `REQUIRED_EVIDENC
 
 ## 6. Fail closed
 
-`build` refuses the graph, naming every reason, when: two nodes share an identifier; an alias collides with a claim name; a node or edge carries a provenance outside section 3; an edge carries a type outside the nine; an edge endpoint is not a node; or the source rule of section 4 is broken. A refused graph renders nothing and, through the generator, exits 2.
+`build` refuses the graph, naming every reason, when: two nodes share an identifier; a node kind is outside `claim`, `alias`, `assumption_set`; an alias collides with a claim name; a node or edge carries a provenance outside section 3; an edge carries a type outside the nine; an edge endpoint is not a node; an edge certainty is not exactly the JSON integer `1` (booleans and floating-point `1.0` are invalid); two non-identical edges share the canonical semantic identity `(type, source, target, provenance, use_site)`; or the source rule of section 4 is broken. A refused graph renders nothing and, through the generator, exits 2.
 
 ## 7. The rendered surface
 
@@ -90,7 +97,7 @@ repository, source   the ledger's own
 edge_types           the nine types, in the tui-story order
 provenance_classes   the seven classes of section 3
 nodes, edges         sections 1 and 2, each sorted: nodes by kind group then id,
-                     edges by (type in edge_types order, source, target, use_site)
+                     edges by (type in edge_types order, source, target, provenance, use_site), with exact duplicates collapsed
 ```
 
 A consumer declares `graph_path` in its ledger (`docs/ledger-generation-spec.md`, section 1) and the graph becomes one more generated surface, current in CI under `--check` like every other. Without that key nothing is emitted.

@@ -1,17 +1,18 @@
 {
   "contract_id": "finite-proof-graph.normalization",
-  "contract_version": "1.0.0",
+  "contract_version": "1.0.1",
   "status": "approved",
   "owner": "larsbx/finite-math-kernels",
   "authority_mode": "normative_semantic",
   "authority_scope": "typed-proof-record-graph-v1",
   "source": {
     "repository": "larsbx/finite-math-kernels",
-    "commit": "cdb40f1166d9095f835f23520c04604ed08432b6",
+    "commit": "9b7c26dfbdf73bdc6e2050f829610166cf13d08c",
     "paths": [
       "kernel/proof_records/graph.py",
       "kernel/proof_records/records.py",
-      "docs/typed-relationship-graph-spec.md"
+      "docs/typed-relationship-graph-spec.md",
+      "tools/make_graph_contract_vector.py"
     ],
     "license_status": "repository-owned source; no third-party code is transferred"
   },
@@ -32,13 +33,14 @@
     "node identifiers are unique",
     "edge endpoints name nodes",
     "edge types and provenance classes are declared by the input vocabulary",
-    "certainty is exactly 1",
-    "theorem-backed implicative, synonymous, and part-whole edges name backing source evidence"
+    "certainty is exactly the JSON integer 1; booleans and floating-point 1.0 are invalid",
+    "theorem-backed implicative, synonymous, and part-whole edges name backing source evidence",
+    "canonical edge identities (type, source, target, provenance, use_site) are unique after exact-duplicate collapse"
   ],
   "normal_form": {
     "generated_field": "discarded as non-semantic provenance text",
     "nodes": "sorted by kind group (claim, alias, assumption_set), then identifier",
-    "edges": "sorted by declared edge-type order, source, target, and use_site",
+    "edges": "exact duplicates collapse; remaining edges are sorted by declared edge-type order, source, target, provenance, and use_site; conflicting payloads under one canonical edge identity are refused",
     "object_encoding": "canonical JSON with recursively lexicographic object keys"
   },
   "disagreement": "fail_closed",

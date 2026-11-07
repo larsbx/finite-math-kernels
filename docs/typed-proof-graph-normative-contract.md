@@ -1,6 +1,6 @@
 # Typed proof-graph normalization contract
 
-`finite-proof-graph.normalization@1.0.0` is the domain-owned registration for
+`finite-proof-graph.normalization@1.0.1` is the domain-owned registration for
 the executable semantics already specified by
 `docs/typed-relationship-graph-spec.md`. The registration and its vectors are
 owned here because this repository remains authoritative for the proof-record
@@ -9,7 +9,10 @@ questions named in the registration.
 
 The normalizer interprets a well-formed `finite typed relationship graph 1`,
 discards the non-semantic `generated` message, orders nodes and edges as the
-source specification requires, and emits canonical JSON. Refusal is part of
+source specification requires, and emits canonical JSON. Version 1.0.1 fixes
+edge semantic identity as `(type, source, target, provenance, use_site)`,
+collapses exact duplicates, refuses conflicting payloads under one identity,
+and requires certainty to be exactly the JSON integer `1`. Refusal is part of
 the contract: malformed input, unknown vocabulary, missing endpoints,
 duplicate node identifiers, non-exact certainty, or missing backing evidence
 produces no normal form.

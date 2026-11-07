@@ -154,10 +154,41 @@ def _unestablished(by_name: Mapping[str, object], entry) -> tuple[str, ...]:
                          and provenance(by_name[name]) != THEOREM_BACKED}))
 
 
+def edge_identity_key(edge: Edge) -> tuple[str, str, str, str, str]:
+    """Semantic identity used by the normalization contract.
+
+    Provenance is part of the key: two otherwise identical edges with different
+    provenance are distinct semantic relationships.  Fields outside this key
+    are payload and must agree for one identity.
+    """
+    return (edge.type, edge.source, edge.target, edge.provenance, edge.use_site)
+
+
+def edge_sort_key(edge: Edge) -> tuple[int, str, str, str, str]:
+    return (EDGE_TYPES.index(edge.type), edge.source, edge.target, edge.provenance, edge.use_site)
+
+
+def edge_payload_bytes(edge: Edge) -> bytes:
+    """Canonical payload bytes for exact-duplicate/conflict decisions.
+
+    Python/dataclass equality is intentionally insufficient here: values such
+    as 1 and 1.0 compare equal even though their canonical JSON encodings are
+    distinct and therefore must not collapse under the representation
+    contract.
+    """
+    return json.dumps(
+        asdict(edge), sort_keys=True, separators=(",", ":"), ensure_ascii=False
+    ).encode("utf-8")
+
+
 def edges(analysis) -> tuple[Edge, ...]:
     """Dependencies as implicative edges from premise to conclusion, aliases
     as synonymous edges, assumption-set membership as part-whole edges, and a
-    live result standing on a withdrawn one as a contradictory edge."""
+    live result standing on a withdrawn one as a contradictory edge.
+
+    Exact duplicates collapse; a later fail-closed validation rejects two
+    non-identical edges that claim one semantic identity.
+    """
     by_name = {e.name: e for e in analysis.entries}
     name_of = {e.record.id: e.name for e in analysis.entries}
     out: list[Edge] = []
@@ -179,7 +210,7 @@ def edges(analysis) -> tuple[Edge, ...]:
     for name, members in sorted(analysis.ledger.assumption_sets.items()):
         for member in sorted(members):
             out.append(Edge(PART_WHOLE, member, name, provenance(by_name[member]), CERTAIN, "assumption_sets"))
-    return tuple(sorted(out, key=lambda e: (EDGE_TYPES.index(e.type), e.source, e.target, e.use_site)))
+    return tuple(sorted(set(out), key=edge_sort_key))
 
 
 def refusals(graph: Graph) -> list[str]:
@@ -193,16 +224,28 @@ def refusals(graph: Graph) -> list[str]:
     if len(sourced) != len(graph.nodes):
         problems.append("two nodes share an identifier: " + ", ".join(sorted({n.id for n in graph.nodes if sum(m.id == n.id for m in graph.nodes) > 1})))
     for node in graph.nodes:
+        if node.kind not in {CLAIM, ALIAS, ASSUMPTION_SET}:
+            problems.append(f"{node.id}: unknown node kind {node.kind!r}")
         if node.provenance not in PROVENANCE:
             problems.append(f"{node.id}: unknown provenance {node.provenance!r}")
         if node.kind == ALIAS and node.id in claims:
             problems.append(f"{node.id}: alias collides with a claim name")
+    seen_edge_keys: dict[tuple[str, str, str, str, str], Edge] = {}
     for edge in graph.edges:
         where = f"{edge.type} {edge.source} -> {edge.target}"
+        if edge.type in EDGE_TYPES:
+            key = edge_identity_key(edge)
+            previous = seen_edge_keys.get(key)
+            if previous is not None and edge_payload_bytes(previous) != edge_payload_bytes(edge):
+                problems.append(f"{where}: conflicting edges share canonical identity")
+            else:
+                seen_edge_keys[key] = edge
         if edge.type not in EDGE_TYPES:
             problems.append(f"{where}: unknown edge type")
         if edge.provenance not in PROVENANCE:
             problems.append(f"{where}: unknown provenance {edge.provenance!r}")
+        if type(edge.certainty) is not int or edge.certainty != CERTAIN:
+            problems.append(f"{where}: certainty must be exactly the integer 1")
         if edge.target not in sourced:
             problems.append(f"{where}: target is not a node")
         if edge.source not in sourced:
