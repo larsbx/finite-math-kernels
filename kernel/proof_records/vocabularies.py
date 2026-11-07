@@ -73,8 +73,8 @@ VOCABULARY: Mapping[str, Translation] = {
         "docs/proof-records-specification.md section 1 directs a consumer to record one as a pending dependency"),
     "green": _t(
         CRYPTO_COMPOSER, "green", Kind.VERIFIED, ("replay", "digest"), (BOUNDED, OPEN),
-        "a green row is admitted only after a red row for the same test and only with `--run`, so it carries a command, "
-        "an exit code, and the manifest digest of the tree it ran against"),
+        "a green row is admitted only after a red row for the same test and only with `--run`; the row carries the "
+        "executed command and exit code, while translation requires the caller to supply a digest identifying the exact tree/input state"),
 }
 
 # Kinds with no faithful image in either external vocabulary. Neither system
