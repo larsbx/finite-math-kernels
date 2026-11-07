@@ -1,0 +1,47 @@
+cabal-version:      3.12
+name:               metatest-ci-bundle
+version:            0.1.0.0
+synopsis:           Pinned MetaTest CI distribution bundle
+license:            NONE
+build-type:         Simple
+tested-with:        GHC == 9.14.1
+
+common common-settings
+  default-language: GHC2024
+  ghc-options:
+    -Wall
+    -Wcompat
+    -Widentities
+    -Wincomplete-record-updates
+    -Wincomplete-uni-patterns
+    -Wmissing-export-lists
+    -Wpartial-fields
+
+library
+  import:            common-settings
+  hs-source-dirs:    src
+  exposed-modules:
+    MetaTest.Core
+    MetaTest.Outcome
+    MetaTest.Observation
+    MetaTest.Execution
+    MetaTest.CI
+  build-depends:
+    aeson >= 2.2 && < 2.3,
+    async >= 2.2 && < 3,
+    base >= 4.20 && < 5,
+    bytestring >= 0.12 && < 0.13,
+    directory >= 1.3 && < 1.4,
+    filepath >= 1.4 && < 1.6,
+    process >= 1.6 && < 1.7,
+    text >= 2.0 && < 3
+
+executable metatest-ci
+  import:            common-settings
+  hs-source-dirs:    app
+  main-is:           Main.hs
+  build-depends:
+    base >= 4.20 && < 5,
+    filepath >= 1.4 && < 1.6,
+    metatest-ci-bundle,
+    text >= 2.0 && < 3

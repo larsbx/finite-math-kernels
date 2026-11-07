@@ -56,9 +56,11 @@ def test_probe_and_smoke_are_wired_into_pixi_and_ci():
     manifest = tomllib.loads(text("pixi.toml"))
     assert manifest["tasks"]["property"] == "python oracles/property_oracle.py --layers zq"
     assert manifest["tasks"]["test-finite-exact"] == "mojo run -I kernel tests/finite_exact/test_finite_exact.mojo"
+    metatest = __import__("json").loads(text("metatest.ci.json"))
+    core_lane = next(lane for lane in metatest["lanes"] if lane["id"] == "core-tests")
+    assert core_lane["command"] == ["pixi", "run", "test"]
     workflow = text(".github/workflows/ci.yml")
-    for task in ["pixi run test"]:
-        assert task in workflow
+    assert "metatest-ci run-manifest --manifest metatest.ci.json --lane core-tests" in workflow
     probe = text("tests/finite_exact/property_probe.mojo")
     assert "from finite_exact.bigint_z import" in probe and "from finite_exact.rat_q import" in probe
     assert "interval_q" not in probe.split("\n\n", 1)[1].replace("interval_q probe", "")

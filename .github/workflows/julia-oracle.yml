@@ -25,17 +25,23 @@ jobs:
         with:
           manifest-path: finite-math-kernels/pixi.toml
 
+      - name: Set up MetaTest CI
+        uses: ./finite-math-kernels/tools/external/metatest-ci
+
       - uses: julia-actions/setup-julia@v2
         with:
           version: '1.11'
 
-      - name: Generate the authoritative Mojo transcript
-        working-directory: finite-math-kernels
-        run: pixi run mojo run -I kernel tests/finite_exact/property_probe.mojo > zq-transcript.txt
+      - name: Validate MetaTest CI inventory
+        run: metatest-ci validate-manifest finite-math-kernels/metatest.ci.json
 
-      - name: Preserve the existing Python differential path
-        working-directory: finite-math-kernels
-        run: pixi run python oracles/property_oracle.py --layers zq zq-transcript.txt
+      - name: Run Julia differential gate through MetaTest
+        run: metatest-ci run-manifest --manifest finite-math-kernels/metatest.ci.json --lane julia-zq-differential
 
-      - name: Require independent Julia agreement
-        run: julia --project=julia-oracle-lab julia-oracle-lab/bin/exact_arithmetic_oracle.jl finite-math-kernels/zq-transcript.txt
+      - name: Upload MetaTest receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: metatest-julia-zq-differential
+          path: .metatest/receipts/julia-zq-differential.json
+          if-no-files-found: error

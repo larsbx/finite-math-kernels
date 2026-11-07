@@ -22,9 +22,21 @@ jobs:
         with:
           environments: polyglot
       - uses: ./.github/actions/install-bend
+      - name: Set up MetaTest CI
+        uses: ./tools/external/metatest-ci
+      - name: Validate MetaTest CI inventory
+        run: metatest-ci validate-manifest metatest.ci.json
       - name: Fetch TLC (pinned release, checksummed)
         run: |
           mkdir -p .build
           curl -fsSL -o "$TLA_TOOLS" https://github.com/tlaplus/tlaplus/releases/download/v1.7.4/tla2tools.jar
           echo "936a262061c914694dfd669a543be24573c45d5aa0ff20a8b96b23d01e050e88  $TLA_TOOLS" | sha256sum -c
-      - run: pixi run test-polyglot
+      - name: Run polyglot tests through MetaTest
+        run: metatest-ci run-manifest --manifest metatest.ci.json --lane frontier-polyglot-tests
+      - name: Upload MetaTest receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: metatest-frontier-polyglot-tests
+          path: .metatest/receipts/frontier-polyglot-tests.json
+          if-no-files-found: error
