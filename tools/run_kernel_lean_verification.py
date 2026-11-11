@@ -130,23 +130,29 @@ def run_gate(expected, destination):
             (destination / "AxiomAudit.lean").write_text(audit)
             audit_log = execute("axioms", ["elan", "run", pin, "lake", "env", "lean", str(destination / "AxiomAudit.lean")], work)
             check_axiom_log(audit_log, names)
-            for label, proposition in {
+            negative_controls = {
                 "negative-word": "Conformance.parikhVector 2 [0] = [0,1]",
                 "negative-overflow": "CheckedInt.accept64 (CheckedInt.upper64+1) = some CheckedInt.lower64",
                 "negative-rejection": "AcceptedField.eqAccepted (none : Option (ZMod 7)) none = true",
                 "negative-noncanonical": "(1 : ZMod 7) = (8 : ZMod 7) ∧ (8 : ℕ) < 7",
-            }.items():
+                "negative-bigz-leading-zero": "BigZLimbs.Canonical 1000000000 1 [1, 0]",
+                "negative-bigz-lost-carry": "BigZLimbs.signedValue 1000000000 0 [] = "
+                    "BigZLimbs.signedValue 1000000000 1 [999999999] + BigZLimbs.signedValue 1000000000 1 [1]",
+            }
+            for label, proposition in negative_controls.items():
                 bad = "import FiniteMathKernels\nopen FiniteMathKernels\nexample : " + proposition + " := by decide\n"
                 bad_path = destination / (label + ".lean")
                 bad_path.write_text(bad)
-                execute(label, ["elan", "run", pin, "lake", "env", "lean", str(bad_path)], work, negative=True)
+                rejected = execute(label, ["elan", "run", pin, "lake", "env", "lean", str(bad_path)], work, negative=True)
+                if "is false" not in rejected:
+                    raise ValueError(label + " did not report a false proposition")
             for name in ["lean-toolchain", "lakefile.toml", "lake-manifest.json"]:
                 if (work / name).read_bytes() != (PROJECT / name).read_bytes():
                     raise ValueError("Lake altered pinned configuration")
         if receipt["source_sha256"] != digest() or output(["git", "status", "--porcelain"]) or output(["git", "rev-parse", "HEAD"]) != revision:
             raise ValueError("source changed during verification")
         receipt.update(status="passed", model_proofs=len(names), audited_names=names,
-                       permitted_axioms=sorted(STANDARD), negative_controls=4)
+                       permitted_axioms=sorted(STANDARD), negative_controls=len(negative_controls))
     except Exception as error:
         receipt["error"] = str(error)
         raise

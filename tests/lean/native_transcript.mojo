@@ -1,4 +1,5 @@
 """Finite native outputs for independent Lean checking; no expected values here."""
+from finite_exact.bigint_z import BigZ, bigz_add, bigz_sub
 from finite_exact.checked_int import checked_abs, checked_add, checked_mul, checked_neg, checked_sub
 from finite_exact.fp import Fp
 from substitution_dynamics.words import parikh, n2, n3
@@ -75,6 +76,34 @@ def field_case[p: Int64](a: Int64, b: Int64, op: Int, reject: Bool):
           + ',"refusal_eq":' + ("true" if Fp[p].rejected_value() == Fp[p].rejected_value() else "false") + '}')
 
 
+def bigz_json(value: BigZ) -> String:
+    var limbs = String("[")
+    for i in range(len(value.limbs)):
+        if i != 0:
+            limbs += ","
+        limbs += String(value.limbs[i])
+    return '{"sign":' + String(value.sign) + ',"limbs":' + limbs + ']}'
+
+
+def bigz_cases():
+    var magnitudes: List[List[UInt64]] = [
+        [1], [999999999], [0, 1], [999999999, 999999999], [0, 0, 0, 1]
+    ]
+    var operands = List[BigZ]()
+    operands.append(BigZ())
+    for magnitude in magnitudes:
+        for sign in [-1, 1]:
+            var value = BigZ()
+            value.sign = sign
+            value.limbs = magnitude.copy()
+            operands.append(value^)
+    for a in operands:
+        for b in operands:
+            print('{"kind":"bigz","a":' + bigz_json(a) + ',"b":' + bigz_json(b)
+                  + ',"sum":' + bigz_json(bigz_add(a, b))
+                  + ',"difference":' + bigz_json(bigz_sub(a, b)) + '}')
+
+
 def main() raises:
     for size in range(1, 5):
         var total = 1
@@ -112,3 +141,4 @@ def main() raises:
     var v: List[Int] = [1, 0, 0, 1]
     print('{"kind":"cuts","size":2,"u":' + ints(u) + ',"v":' + ints(v)
           + ',"output":' + ints(coincidence_boundaries(u, v, 2)) + '}')
+    bigz_cases()

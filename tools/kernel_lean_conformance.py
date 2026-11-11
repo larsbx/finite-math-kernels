@@ -14,6 +14,7 @@ SCHEMAS = {
     "substitution": ({"images", "input", "n"}, {"output", "incidence", "prefix_lengths"}),
     "integer": ({"op", "a", "b"}, {"output"}),
     "field": ({"p", "a", "b", "op", "reject"}, {"output", "refusal_eq"}),
+    "bigz": ({"a", "b"}, {"sum", "difference"}),
     "cuts": ({"size", "u", "v"}, {"output"}),
 }
 
@@ -40,6 +41,10 @@ def workloads():
         out.append(dict(kind="field", p=7, a=a, b=b, op=op, reject=False))
     out.extend(dict(kind="field", p=7, a=0, b=1, op=op, reject=True) for op in range(3))
     out.append(dict(kind="cuts", size=2, u=[0, 1, 1, 0], v=[1, 0, 0, 1]))
+    magnitudes = [[1], [999999999], [0, 1], [999999999, 999999999], [0, 0, 0, 1]]
+    operands = [dict(sign=0, limbs=[])] + [dict(sign=sign, limbs=digits)
+                 for digits in magnitudes for sign in [-1, 1]]
+    out.extend(dict(kind="bigz", a=a, b=b) for a, b in itertools.product(operands, repeat=2))
     return out
 
 
@@ -70,6 +75,15 @@ def option_int(value):
     return "none" if value is None else "some (" + integer(value) + ")"
 
 
+def bigz_terms(value):
+    if type(value) is not dict or set(value) != {"sign", "limbs"}:
+        raise ValueError("invalid BigZ carrier")
+    if type(value["limbs"]) is not list or len(value["limbs"]) > 8:
+        raise ValueError("invalid BigZ limb vector")
+    terms = f"1000000000 {integer(value['sign'])} {vector(value['limbs'])}"
+    return f"BigZLimbs.signedValue {terms}", f"BigZLimbs.Canonical {terms}"
+
+
 def proposition(r):
     kind = r["kind"]
     if kind == "word":
@@ -87,6 +101,12 @@ def proposition(r):
         a, b = integer(r["a"]), integer(r["b"])
         expr = [f"{a}+{b}", f"{a}-{b}", f"{a}*{b}", f"-{a}", f"|{a}|"][r["op"]]
         return f"CheckedInt.accept64 ({expr}) = {option_int(r['output'])}"
+    if kind == "bigz":
+        a, ca = bigz_terms(r["a"])
+        b, cb = bigz_terms(r["b"])
+        total, ct = bigz_terms(r["sum"])
+        difference, cd = bigz_terms(r["difference"])
+        return f"{ca} ∧ {cb} ∧ {ct} ∧ {cd} ∧ {total} = {a} + {b} ∧ {difference} = {a} - {b}"
     if kind == "cuts":
         return (f"Conformance.zeroReturns {integer(r['size'], natural=True)} "
                 f"{vector(r['u'])} {vector(r['v'])} = {vector(r['output'])}")
