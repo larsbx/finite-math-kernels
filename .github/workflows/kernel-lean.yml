@@ -1,7 +1,7 @@
 name: Kernel Lean proofs and native conformance
 on:
   pull_request:
-    paths: ['tests/lean/**', 'kernel/**', 'tools/*lean*', 'docs/lean-verification.md', '.github/workflows/kernel-lean.yml']
+    paths: ['tests/lean/**', 'kernel/**', 'tools/*lean*', 'tools/word_counter_oracle.py', 'docs/lean-verification.md', '.github/workflows/kernel-lean.yml']
   push:
     branches: [main, verification/lean-foundations-2026-11-06]
     paths: ['tests/lean/**', 'kernel/**', 'tools/*lean*', '.github/workflows/kernel-lean.yml']

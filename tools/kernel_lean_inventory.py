@@ -11,7 +11,7 @@ MODELS = {
     "finite_exact/fp.mojo": ["AcceptedField.prime_field_inverse", "AcceptedField.rejection_compares_false"],
     "finite_exact/rat_q.mojo": ["AcceptedField.rational_inverse", "AcceptedField.rejection_compares_false"],
     "finite_exact/field.mojo": ["AcceptedField.inverse_sound", "AcceptedField.division_cancel"],
-    "substitution_dynamics/words.mojo": ["Words.stream_correct", "Words.balanced_iff_perm", "Words.triples_replicate_self", "CounterBounds.stress_model_count", "CounterBounds.stress_count_does_not_fit"],
+    "substitution_dynamics/words.mojo": ["Words.stream_correct", "Words.balanced_iff_perm", "Words.triples_replicate_self", "CounterBounds.stress_model_count", "CounterBounds.stress_count_does_not_fit", "CounterBounds.last_constant_count_fits", "CounterBounds.next_constant_count_refused", "CounterBounds.n2_constant_boundary", "MachineWords.stream_success_exact", "MachineWords.run_complete_iff", "MachineWords.run_refuses_iff", "MachineWords.difference_fits"],
     "substitution_dynamics/substitution.mojo": ["Words.parikh_inflate", "Words.balanced_iterate"],
     "substitution_dynamics/balanced_pairs.mojo": ["Words.balanced_image_length", "Words.witness_inflate"],
     "substitution_dynamics/strong_coincidence.mojo": ["Words.witness_inflate", "Words.witness_iterate"],
@@ -50,7 +50,7 @@ def inventory():
                         "model_declarations": ["FiniteMathKernels." + n for n in MODELS.get(path, [])],
                         "finite_native_lane": path in NATIVE,
                         "implementation_refinement": "open",
-                        "known_counterexample": "n3([0]^4000000,1) wraps to -7780085407041551616 rather than 10666658666668000000; unconditional exactness is false" if path == "substitution_dynamics/words.mojo" else None,
+                        "known_counterexample": "Historical 4fea04f: n3([0]^4000000,1) wrapped. The corrected bounded API raises; unbounded exactness is not claimed." if path == "substitution_dynamics/words.mojo" else None,
                         "remaining_obligations": OBLIGATIONS.get(package, ["package-specific semantic model, guards and source refinement; no coverage claimed"])})
     return {"format": "finite-math-kernels-lean-coverage-v1", "scope": "all canonical Mojo module files",
             "authority": "Inventory only. Acceptance requires an exact-revision successful Lean receipt; no implementation is declared fully verified.",

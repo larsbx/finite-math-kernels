@@ -1,0 +1,218 @@
+[
+  {
+    "path": "kernel/degree3_catalog.mojo",
+    "line": 26,
+    "enclosing_signature": "def is_first_degree3_component(a: Automaton, comp: List[Int]) -> Bool:",
+    "call": "if not is_zero(k2(p)):"
+  },
+  {
+    "path": "kernel/degree3_catalog.mojo",
+    "line": 28,
+    "enclosing_signature": "def is_first_degree3_component(a: Automaton, comp: List[Int]) -> Bool:",
+    "call": "has_k3 = has_k3 or not is_zero(k3(p))"
+  },
+  {
+    "path": "kernel/psc/c4_physical_hub_area.mojo",
+    "line": 99,
+    "enclosing_signature": "def weighted_hub_profile(pair: Pair, hub: Int,",
+    "call": "var counts=k2(pair)"
+  },
+  {
+    "path": "kernel/psc/certificate.mojo",
+    "line": 89,
+    "enclosing_signature": "def run_all(corpus_bound: Int = 2) -> List[Check]:",
+    "call": "and is_zero(k1(seeds[k])) and is_zero(k2(seeds[k]))):"
+  },
+  {
+    "path": "kernel/psc/certificate.mojo",
+    "line": 97,
+    "enclosing_signature": "def run_all(corpus_bound: Int = 2) -> List[Check]:",
+    "call": "if not in_w3(k3(seeds[k])):"
+  },
+  {
+    "path": "kernel/psc/certificate.mojo",
+    "line": 104,
+    "enclosing_signature": "def run_all(corpus_bound: Int = 2) -> List[Check]:",
+    "call": "if theta(k3(seeds[k])) != Mat3(certA[k]):"
+  },
+  {
+    "path": "kernel/psc/certificate.mojo",
+    "line": 111,
+    "enclosing_signature": "def run_all(corpus_bound: Int = 2) -> List[Check]:",
+    "call": "var a = theta(k3(seeds[k]))"
+  },
+  {
+    "path": "kernel/psc/certificate.mojo",
+    "line": 132,
+    "enclosing_signature": "def run_all(corpus_bound: Int = 2) -> List[Check]:",
+    "call": "var x = k3(seeds[k])"
+  },
+  {
+    "path": "kernel/psc/certificate.mojo",
+    "line": 155,
+    "enclosing_signature": "def run_all(corpus_bound: Int = 2) -> List[Check]:",
+    "call": "if is_zero27(q_target1(corpus[i], k3(seeds[k]))):"
+  },
+  {
+    "path": "kernel/psc/defect_degree.mojo",
+    "line": 52,
+    "enclosing_signature": "def first_defect_degree(p: Pair) -> Int:",
+    "call": "if not is_zero(k2(p)):"
+  },
+  {
+    "path": "kernel/psc/defect_degree.mojo",
+    "line": 54,
+    "enclosing_signature": "def first_defect_degree(p: Pair) -> Int:",
+    "call": "if not is_zero(k3(p)):"
+  },
+  {
+    "path": "kernel/psc/defect_degree.mojo",
+    "line": 62,
+    "enclosing_signature": "def is_degree3(p: Pair) -> Bool:",
+    "call": "return is_zero(k2(p)) and not is_zero(k3(p))"
+  },
+  {
+    "path": "kernel/psc/degree3_taxonomy.mojo",
+    "line": 64,
+    "enclosing_signature": "def commutes_with_theta(m: Mat3, state: Pair) -> Bool:",
+    "call": "var a = theta(k3(state))"
+  },
+  {
+    "path": "kernel/psc/degree3_taxonomy.mojo",
+    "line": 151,
+    "enclosing_signature": "def __init__(out self, rows: List[Degree3Row]):",
+    "call": "var a = theta(k3(row.state))"
+  },
+  {
+    "path": "kernel/psc/words.mojo",
+    "line": 22,
+    "enclosing_signature": "def n2(w: List[Int]) -> List[Int]:",
+    "call": "return sd.n2(w, ALPHABET)"
+  },
+  {
+    "path": "kernel/psc/words.mojo",
+    "line": 27,
+    "enclosing_signature": "def n3(w: List[Int]) -> List[Int]:",
+    "call": "return sd.n3(w, ALPHABET)"
+  },
+  {
+    "path": "kernel/psc/words.mojo",
+    "line": 39,
+    "enclosing_signature": "def k2(p: Pair) -> List[Int]:",
+    "call": "return sd.k2(p, ALPHABET)"
+  },
+  {
+    "path": "kernel/psc/words.mojo",
+    "line": 43,
+    "enclosing_signature": "def k3(p: Pair) -> List[Int]:",
+    "call": "return sd.k3(p, ALPHABET)"
+  },
+  {
+    "path": "kernel/substitution_dynamics/words.mojo",
+    "line": 149,
+    "enclosing_signature": "def k2(p: Pair, size: Int) -> List[Int]:",
+    "call": "return diff(n2(p.u, size), n2(p.v, size))"
+  },
+  {
+    "path": "kernel/substitution_dynamics/words.mojo",
+    "line": 153,
+    "enclosing_signature": "def k3(p: Pair, size: Int) -> List[Int]:",
+    "call": "return diff(n3(p.u, size), n3(p.v, size))"
+  },
+  {
+    "path": "kernel/tests/test_c4_recurrent_flat_exits.mojo",
+    "line": 115,
+    "enclosing_signature": "def check_hub_prefix_area(pair: Pair, hub: Int, area: Int, crossing: Int) raises:",
+    "call": "var counts = k2(pair)"
+  },
+  {
+    "path": "kernel/tests/test_census_library.mojo",
+    "line": 213,
+    "enclosing_signature": "def test_the_defect_degree_is_the_first_nonvanishing_invariant() raises:",
+    "call": "assert_false(is_zero(k2(swap)))"
+  },
+  {
+    "path": "kernel/tests/test_census_library.mojo",
+    "line": 286,
+    "enclosing_signature": "def test_the_degree_three_taxonomy_reproduces_the_known_orbit() raises:",
+    "call": "assert_true(is_zero(k2(state)))"
+  },
+  {
+    "path": "kernel/tests/test_census_library.mojo",
+    "line": 287,
+    "enclosing_signature": "def test_the_degree_three_taxonomy_reproduces_the_known_orbit() raises:",
+    "call": "assert_false(is_zero(k3(state)))"
+  },
+  {
+    "path": "kernel/tests/test_kernel.mojo",
+    "line": 73,
+    "enclosing_signature": "def test_seeds_are_k2_zero_of_length_seven() raises:",
+    "call": "assert_true(is_zero(k2(seeds[k])))"
+  },
+  {
+    "path": "kernel/tests/test_kernel.mojo",
+    "line": 74,
+    "enclosing_signature": "def test_seeds_are_k2_zero_of_length_seven() raises:",
+    "call": "assert_true(in_w3(k3(seeds[k])))"
+  },
+  {
+    "path": "kernel/tests/test_kernel.mojo",
+    "line": 81,
+    "enclosing_signature": "def test_seed_matrices_match_certificate() raises:",
+    "call": "assert_true(theta(k3(seeds[k])) == Mat3(certA[k]))"
+  },
+  {
+    "path": "kernel/tests/test_kernel.mojo",
+    "line": 88,
+    "enclosing_signature": "def test_seed_matrix_invariants() raises:",
+    "call": "var a = theta(k3(seeds[k]))"
+  },
+  {
+    "path": "kernel/tests/test_kernel.mojo",
+    "line": 131,
+    "enclosing_signature": "def test_target1_on_tribonacci() raises:",
+    "call": "assert_false(is_zero27(q_target1(m, k3(seeds[k]))))"
+  },
+  {
+    "path": "kernel/tests/test_words_streaming.mojo",
+    "line": 22,
+    "enclosing_signature": "def test_streamed_n2_exact_coordinates() raises:",
+    "call": "assert_equal(n2(w), expected)"
+  },
+  {
+    "path": "kernel/tests/test_words_streaming.mojo",
+    "line": 23,
+    "enclosing_signature": "def test_streamed_n2_exact_coordinates() raises:",
+    "call": "assert_equal(_sum(n2(w)), 10)  # C(5,2)"
+  },
+  {
+    "path": "kernel/tests/test_words_streaming.mojo",
+    "line": 39,
+    "enclosing_signature": "def test_streamed_n3_exact_coordinates() raises:",
+    "call": "assert_equal(n3(w), expected)"
+  },
+  {
+    "path": "kernel/tests/test_words_streaming.mojo",
+    "line": 40,
+    "enclosing_signature": "def test_streamed_n3_exact_coordinates() raises:",
+    "call": "assert_equal(_sum(n3(w)), 10)  # C(5,3)"
+  },
+  {
+    "path": "kernel/tests/test_words_streaming.mojo",
+    "line": 45,
+    "enclosing_signature": "def test_repeated_letter_mass() raises:",
+    "call": "var pairs = n2(w)"
+  },
+  {
+    "path": "kernel/tests/test_words_streaming.mojo",
+    "line": 46,
+    "enclosing_signature": "def test_repeated_letter_mass() raises:",
+    "call": "var triples = n3(w)"
+  },
+  {
+    "path": "kernel/wedge_productivity_catalog.mojo",
+    "line": 20,
+    "enclosing_signature": "def has_nonzero_k2(a: Automaton, comp: List[Int]) -> Bool:",
+    "call": "if not is_zero(k2(a.states[comp[s]])):"
+  }
+]

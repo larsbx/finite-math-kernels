@@ -10,6 +10,7 @@ bridge = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(bridge)
 sys.path.insert(0, str(ROOT / "tools"))
 from run_kernel_lean_verification import check_axiom_log
+from word_counter_oracle import check_transcript, lean_replay
 
 
 class AdmissionControls(unittest.TestCase):
@@ -57,6 +58,22 @@ class AdmissionControls(unittest.TestCase):
     def test_truncated_axiom_block_refuses(self):
         with self.assertRaisesRegex(ValueError, "malformed"):
             check_axiom_log("'N.p' depends on axioms: [propext,\n", ["N.p"])
+
+    def test_counter_probe_omissions_refuse(self):
+        with self.assertRaisesRegex(ValueError, "missing"):
+            check_transcript("")
+
+    def test_counter_probe_duplicate_keys_refuse(self):
+        with self.assertRaisesRegex(ValueError, "duplicate"):
+            check_transcript('{"kind":"constant","kind":"addition"}')
+
+    def test_counter_replay_keeps_refusal_and_native_values(self):
+        # A wrapped observation must produce a false Lean proposition rather
+        # than being silently replaced by the oracle's mathematical answer.
+        replay = lean_replay([dict(kind="constant", length=4000000, value=-7780085407041551616,
+                                   n2=7999998000000, parikh=4000000)])
+        self.assertIn("choose 3) = some (-7780085407041551616", replay)
+        self.assertNotIn("10666658666668000000", replay)
 
 
 if __name__ == "__main__":

@@ -100,7 +100,10 @@ operations, plus a separate native-to-Lean conformance gate. Its complete
 module and its remaining proof obligations. A model proof or finite conformance
 pass does not establish full Mojo implementation refinement.
 
-Known native limitation: the N3 word counter can wrap without refusal on large
-words; [the executed counterexample](https://github.com/larsbx/finite-math-kernels/issues/97)
-is retained in the Lean verification lane. Unconditional count exactness is
-refuted at that source revision; the repair remains open.
+The native N2/N3 and K2/K3 word APIs return exact `List[Int]` results or raise
+on an unrepresentable dimension/intermediate; callers must propagate refusal.
+This changes their signatures to `raises`. The [overflow correction and caller
+audit](docs/word-counter-bounds.md) retain the historical four-million-letter
+counterexample and test the signed-machine boundary against independent
+arbitrary-precision and Lean checks. Unbounded mathematical counts are a
+separate model; full Mojo implementation refinement remains open.

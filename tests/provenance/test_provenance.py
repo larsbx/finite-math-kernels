@@ -68,7 +68,13 @@ def test_imported_packages_are_copies_or_declared_modifications():
     assert {p for p, e in files.items() if e["relation"] == "facade"} == FACADES
     copies = {p for p, e in files.items() if e["relation"] == "copy"}
     assert {"kernel/finite_exact/bigint_z.mojo", "kernel/finite_exact/rat_q.mojo", "kernel/finite_linear_algebra/qlinalg.mojo",
-            "kernel/substitution_dynamics/words.mojo", "tools/claim_governance/findings.py"} <= copies
+            "tools/claim_governance/findings.py"} <= copies
+    # Native word accumulation now refuses overflow instead of preserving the
+    # retired package's unchecked arithmetic; retain its source attribution.
+    words = files["kernel/substitution_dynamics/words.mojo"]
+    assert words["relation"] == "modified"
+    assert words["source"] == "substitution_dynamics"
+    assert words["source_blob"] == "7666617cfd592d99f1c15c88dbb47deca6f82277"
     # The complex square was sharpened to the coordinate-square form of
     # specification section 2.5, which the source repository did not carry.
     assert files["kernel/finite_exact/closed_q.mojo"]["relation"] == "modified"

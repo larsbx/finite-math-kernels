@@ -1505,11 +1505,18 @@
         "FiniteMathKernels.Words.balanced_iff_perm",
         "FiniteMathKernels.Words.triples_replicate_self",
         "FiniteMathKernels.CounterBounds.stress_model_count",
-        "FiniteMathKernels.CounterBounds.stress_count_does_not_fit"
+        "FiniteMathKernels.CounterBounds.stress_count_does_not_fit",
+        "FiniteMathKernels.CounterBounds.last_constant_count_fits",
+        "FiniteMathKernels.CounterBounds.next_constant_count_refused",
+        "FiniteMathKernels.CounterBounds.n2_constant_boundary",
+        "FiniteMathKernels.MachineWords.stream_success_exact",
+        "FiniteMathKernels.MachineWords.run_complete_iff",
+        "FiniteMathKernels.MachineWords.run_refuses_iff",
+        "FiniteMathKernels.MachineWords.difference_fits"
       ],
       "finite_native_lane": true,
       "implementation_refinement": "open",
-      "known_counterexample": "n3([0]^4000000,1) wraps to -7780085407041551616 rather than 10666658666668000000; unconditional exactness is false",
+      "known_counterexample": "Historical 4fea04f: n3([0]^4000000,1) wrapped. The corrected bounded API raises; unbounded exactness is not claimed.",
       "remaining_obligations": [
         "array/list representation and valid alphabet indices",
         "every machine Int count and intermediate must fit",
