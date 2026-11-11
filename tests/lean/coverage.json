@@ -129,7 +129,7 @@
       "implementation_refinement": "open",
       "known_counterexample": null,
       "remaining_obligations": [
-        "BigZ limb denotation, carry/borrow, canonicality and division convention",
+        "BigZ List/UInt64 refinement, signed dispatch, encoding and Algorithm D division",
         "Q normalisation, gcd/cross-cancellation and rejected carrier refinement",
         "closed interval/box enclosure and singular guards",
         "machine arithmetic intermediate bounds and signed/unsigned multiplication binding",
@@ -138,12 +138,24 @@
     },
     {
       "source": "kernel/finite_exact/bigint_z.mojo",
-      "model_declarations": [],
-      "finite_native_lane": false,
+      "model_declarations": [
+        "FiniteMathKernels.BigZLimbs.trim_preserves_magnitude",
+        "FiniteMathKernels.BigZLimbs.trim_normalizes_magnitude",
+        "FiniteMathKernels.BigZLimbs.zero_padding_preserves_magnitude",
+        "FiniteMathKernels.BigZLimbs.canonical_magnitude_unique",
+        "FiniteMathKernels.BigZLimbs.add_magnitude_exact",
+        "FiniteMathKernels.BigZLimbs.add_digits_bounded",
+        "FiniteMathKernels.BigZLimbs.sub_magnitude_balance",
+        "FiniteMathKernels.BigZLimbs.zero_final_borrow_iff",
+        "FiniteMathKernels.BigZLimbs.sub_magnitude_exact",
+        "FiniteMathKernels.BigZLimbs.native_addition_bound",
+        "FiniteMathKernels.BigZLimbs.native_borrow_bound"
+      ],
+      "finite_native_lane": true,
       "implementation_refinement": "open",
       "known_counterexample": null,
       "remaining_obligations": [
-        "BigZ limb denotation, carry/borrow, canonicality and division convention",
+        "BigZ List/UInt64 refinement, signed dispatch, encoding and Algorithm D division",
         "Q normalisation, gcd/cross-cancellation and rejected carrier refinement",
         "closed interval/box enclosure and singular guards",
         "machine arithmetic intermediate bounds and signed/unsigned multiplication binding",
@@ -164,7 +176,7 @@
       "implementation_refinement": "open",
       "known_counterexample": null,
       "remaining_obligations": [
-        "BigZ limb denotation, carry/borrow, canonicality and division convention",
+        "BigZ List/UInt64 refinement, signed dispatch, encoding and Algorithm D division",
         "Q normalisation, gcd/cross-cancellation and rejected carrier refinement",
         "closed interval/box enclosure and singular guards",
         "machine arithmetic intermediate bounds and signed/unsigned multiplication binding",
@@ -178,7 +190,7 @@
       "implementation_refinement": "open",
       "known_counterexample": null,
       "remaining_obligations": [
-        "BigZ limb denotation, carry/borrow, canonicality and division convention",
+        "BigZ List/UInt64 refinement, signed dispatch, encoding and Algorithm D division",
         "Q normalisation, gcd/cross-cancellation and rejected carrier refinement",
         "closed interval/box enclosure and singular guards",
         "machine arithmetic intermediate bounds and signed/unsigned multiplication binding",
@@ -192,7 +204,7 @@
       "implementation_refinement": "open",
       "known_counterexample": null,
       "remaining_obligations": [
-        "BigZ limb denotation, carry/borrow, canonicality and division convention",
+        "BigZ List/UInt64 refinement, signed dispatch, encoding and Algorithm D division",
         "Q normalisation, gcd/cross-cancellation and rejected carrier refinement",
         "closed interval/box enclosure and singular guards",
         "machine arithmetic intermediate bounds and signed/unsigned multiplication binding",
@@ -206,7 +218,7 @@
       "implementation_refinement": "open",
       "known_counterexample": null,
       "remaining_obligations": [
-        "BigZ limb denotation, carry/borrow, canonicality and division convention",
+        "BigZ List/UInt64 refinement, signed dispatch, encoding and Algorithm D division",
         "Q normalisation, gcd/cross-cancellation and rejected carrier refinement",
         "closed interval/box enclosure and singular guards",
         "machine arithmetic intermediate bounds and signed/unsigned multiplication binding",
@@ -220,7 +232,7 @@
       "implementation_refinement": "open",
       "known_counterexample": null,
       "remaining_obligations": [
-        "BigZ limb denotation, carry/borrow, canonicality and division convention",
+        "BigZ List/UInt64 refinement, signed dispatch, encoding and Algorithm D division",
         "Q normalisation, gcd/cross-cancellation and rejected carrier refinement",
         "closed interval/box enclosure and singular guards",
         "machine arithmetic intermediate bounds and signed/unsigned multiplication binding",
@@ -237,7 +249,7 @@
       "implementation_refinement": "open",
       "known_counterexample": null,
       "remaining_obligations": [
-        "BigZ limb denotation, carry/borrow, canonicality and division convention",
+        "BigZ List/UInt64 refinement, signed dispatch, encoding and Algorithm D division",
         "Q normalisation, gcd/cross-cancellation and rejected carrier refinement",
         "closed interval/box enclosure and singular guards",
         "machine arithmetic intermediate bounds and signed/unsigned multiplication binding",
@@ -254,7 +266,7 @@
       "implementation_refinement": "open",
       "known_counterexample": null,
       "remaining_obligations": [
-        "BigZ limb denotation, carry/borrow, canonicality and division convention",
+        "BigZ List/UInt64 refinement, signed dispatch, encoding and Algorithm D division",
         "Q normalisation, gcd/cross-cancellation and rejected carrier refinement",
         "closed interval/box enclosure and singular guards",
         "machine arithmetic intermediate bounds and signed/unsigned multiplication binding",
@@ -268,7 +280,7 @@
       "implementation_refinement": "open",
       "known_counterexample": null,
       "remaining_obligations": [
-        "BigZ limb denotation, carry/borrow, canonicality and division convention",
+        "BigZ List/UInt64 refinement, signed dispatch, encoding and Algorithm D division",
         "Q normalisation, gcd/cross-cancellation and rejected carrier refinement",
         "closed interval/box enclosure and singular guards",
         "machine arithmetic intermediate bounds and signed/unsigned multiplication binding",
@@ -285,7 +297,7 @@
       "implementation_refinement": "open",
       "known_counterexample": null,
       "remaining_obligations": [
-        "BigZ limb denotation, carry/borrow, canonicality and division convention",
+        "BigZ List/UInt64 refinement, signed dispatch, encoding and Algorithm D division",
         "Q normalisation, gcd/cross-cancellation and rejected carrier refinement",
         "closed interval/box enclosure and singular guards",
         "machine arithmetic intermediate bounds and signed/unsigned multiplication binding",
@@ -299,7 +311,7 @@
       "implementation_refinement": "open",
       "known_counterexample": null,
       "remaining_obligations": [
-        "BigZ limb denotation, carry/borrow, canonicality and division convention",
+        "BigZ List/UInt64 refinement, signed dispatch, encoding and Algorithm D division",
         "Q normalisation, gcd/cross-cancellation and rejected carrier refinement",
         "closed interval/box enclosure and singular guards",
         "machine arithmetic intermediate bounds and signed/unsigned multiplication binding",
@@ -313,7 +325,7 @@
       "implementation_refinement": "open",
       "known_counterexample": null,
       "remaining_obligations": [
-        "BigZ limb denotation, carry/borrow, canonicality and division convention",
+        "BigZ List/UInt64 refinement, signed dispatch, encoding and Algorithm D division",
         "Q normalisation, gcd/cross-cancellation and rejected carrier refinement",
         "closed interval/box enclosure and singular guards",
         "machine arithmetic intermediate bounds and signed/unsigned multiplication binding",

@@ -45,7 +45,7 @@
       "relation": "authored"
     },
     ".github/workflows/kernel-lean.yml": {
-      "blob": "fa5a3be2eff34df88932ee4f2aca96cac53009c4",
+      "blob": "6e063c02f73cb3e9df75616ac6fcd48c4b93fd84",
       "relation": "authored"
     },
     ".github/workflows/lean-max-mojo-cpu.yml": {
@@ -308,7 +308,7 @@
       "relation": "authored"
     },
     "docs/lean-verification.md": {
-      "blob": "993b68ca11275997371ee93ef55c1db9dc2eb802",
+      "blob": "f9e840c9424ad089e29751dc32b75b0efb411c8f",
       "relation": "authored"
     },
     "docs/ledger-generation-spec.md": {
@@ -1794,11 +1794,15 @@
       "source_path": "tests/test_interval_q.mojo"
     },
     "tests/lean/FiniteMathKernels.lean": {
-      "blob": "58ce23694329006fee69bda35d31526ba85e38f3",
+      "blob": "4c16c2d8d005e94355ed0238b06c59be7a31c43b",
       "relation": "authored"
     },
     "tests/lean/FiniteMathKernels/AcceptedField.lean": {
       "blob": "73af7ca8562458ae883c1fa2cf5a15c32e66ebaf",
+      "relation": "authored"
+    },
+    "tests/lean/FiniteMathKernels/BigZLimbs.lean": {
+      "blob": "e447869a7fc7f2b36a5dd2d7900b185f0e8013ce",
       "relation": "authored"
     },
     "tests/lean/FiniteMathKernels/CheckedInt.lean": {
@@ -1818,7 +1822,7 @@
       "relation": "authored"
     },
     "tests/lean/coverage.json": {
-      "blob": "182a264671d99a33cf0c7d3de5b7d3fb1d7faec0",
+      "blob": "33dd9ea68362ac1d955380f780e8ffc57bc14f71",
       "relation": "authored"
     },
     "tests/lean/lake-manifest.json": {
@@ -1834,11 +1838,11 @@
       "relation": "authored"
     },
     "tests/lean/native_transcript.mojo": {
-      "blob": "0aa4f288773aedc92215ea0e0beb576d31754f0d",
+      "blob": "56b93b9618c1ad18e8edb5efb514481282383649",
       "relation": "authored"
     },
     "tests/lean/test_bridge.py": {
-      "blob": "51e7da8eaafa302fe9e63590fdac1c68d43f07d3",
+      "blob": "ac4f361cd5f1e274b77da47b3611ac82f89363f3",
       "relation": "authored"
     },
     "tests/lean/word_counter_overflow.mojo": {
@@ -2027,6 +2031,10 @@
     },
     "tests/quadratic_orbit/test_quadratic_orbit.mojo": {
       "blob": "4e8b27a493d5856618a9715e912ce88e76251a95",
+      "relation": "authored"
+    },
+    "tests/quint/BigZLimbs.qnt": {
+      "blob": "ead5b5460016ddeb469beffa465981bf73782c90",
       "relation": "authored"
     },
     "tests/rational_dynamics/doubling_transcript.mojo": {
@@ -2240,11 +2248,11 @@
       "relation": "authored"
     },
     "tools/kernel_lean_conformance.py": {
-      "blob": "52236c7134d0be598ef92fc7babf46083f775655",
+      "blob": "cdd0d38201d9170cc3ac029f461a40d81eb53553",
       "relation": "authored"
     },
     "tools/kernel_lean_inventory.py": {
-      "blob": "2b916b8ce84cfa3a36302dc3bdbb564df97aec1b",
+      "blob": "e2dc01f2b99fba02b49ca350cd5f692786e23101",
       "relation": "authored"
     },
     "tools/lexical_audit/__init__.py": {
@@ -2334,7 +2342,7 @@
       "source_path": "tools/replay_mojo.py"
     },
     "tools/run_kernel_lean_verification.py": {
-      "blob": "dcefc63c93497cb9a635e50ecb9577650f264ef1",
+      "blob": "09f3ccd4bca3c5cad5a7076fe3a7845ef39ce268",
       "relation": "authored"
     },
     "tools/setup_kernel_lean.sh": {

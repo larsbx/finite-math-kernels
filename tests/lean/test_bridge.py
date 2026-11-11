@@ -14,7 +14,8 @@ from run_kernel_lean_verification import check_axiom_log
 
 class AdmissionControls(unittest.TestCase):
     def test_complete_workload_count(self):
-        self.assertEqual(len(bridge.workloads()), 373)
+        self.assertEqual(len(bridge.workloads()), 494)
+        self.assertEqual(sum(row["kind"] == "bigz" for row in bridge.workloads()), 121)
 
     def test_refuses_missing_case(self):
         with self.assertRaisesRegex(ValueError, "count"):
@@ -36,6 +37,17 @@ class AdmissionControls(unittest.TestCase):
         proposition = bridge.proposition(dict(kind="field", p=7, a=0, b=1, op=0, reject=False,
                                              output=8, refusal_eq=False))
         self.assertIn("(8 : ℕ) < 7", proposition)
+
+    def test_noncanonical_bigz_output_reaches_lean_without_normalization(self):
+        zero = dict(sign=0, limbs=[])
+        record = dict(kind="bigz", a=zero, b=zero, sum=dict(sign=1, limbs=[0]),
+                      difference=zero)
+        self.assertIn("BigZLimbs.Canonical 1000000000 1 [0]", bridge.proposition(record))
+
+    def test_bigz_schema_rejects_invalid_sign_and_nested_limb(self):
+        for carrier in [dict(sign=True, limbs=[]), dict(sign=1, limbs=[[0]])]:
+            with self.assertRaisesRegex(ValueError, "integer"):
+                bridge.bigz_terms(carrier)
 
     def test_coverage_inventory_is_current_and_complete(self):
         spec = importlib.util.spec_from_file_location("inventory", ROOT / "tools/kernel_lean_inventory.py")

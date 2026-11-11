@@ -14,6 +14,7 @@ governed claim status, or theorem dependency is promoted by adding proof source.
 | Substitutions | Concatenation, iteration, incidence/Parikh law, balance preservation, equal image lengths, nonerasing witness propagation | Literal inflation, row-major incidence and prefix lengths | Constructors, resource limits, all imperative loops and complete decomposition |
 | Checked integers | Accepted result exactness; addition/subtraction/negation/absolute-value guards; natural-magnitude division guard | All five operations on signed edge controls | Full signed/unsigned multiplication guard and compiler refinement |
 | Accepted fields | Sticky rejection, zero-division refusal, nonzero inverse/cancellation over any field; Rat and prime ZMod instances | Fp[7] operations, canonical residues, zero division and rejected equality | BigZ/Q representation, primality/modular/Euclidean algorithms |
+| BigZ magnitudes | Little-endian denotation, unique canonical magnitudes, normalization, carry/borrow and final-borrow criterion | 121 signed operand pairs through native addition and subtraction, with exact result and canonicality checks in Lean | Native list and machine-operation refinement, signed dispatch, multiplication, division and byte encoding |
 
 The streaming proof uses induction over arbitrary words and symbolic counters.
 Natural-number word counts are unbounded mathematical values. The native
@@ -54,11 +55,46 @@ ones, its model declaration bindings, native lane and explicit remaining
 obligations. Every implementation-refinement status remains open. Regenerate
 with `python3 tools/kernel_lean_inventory.py`; check with its `--check` option.
 
-The next milestones are BigZ denotation/canonicality and truncating division,
+The next milestones include BigZ native refinement and truncating division,
 Q normalisation, rational interval enclosure, integer/matrix guards, finite
 graph SCC certificates, and automata language/search soundness. The inventory
 also tracks polynomial, orbit, projective, record and parallel packages so
 untouched areas cannot disappear behind a green foundational gate.
+
+## BigZ limb arithmetic
+
+The Lean magnitude model uses `d + base × magnitude(tail)` for little-endian
+digits. Zero padding and removal of high zero digits preserve that value.
+Normalization yields canonical magnitudes, whose digits are unique for a given
+value at positive radix. The add proof uses aligned digit pairs and retains the
+final carry. The subtract proof retains the final borrow and proves the
+radix-power balance identity. Starting at zero borrow, the final borrow is zero
+exactly when the left magnitude is at least the right. At radix 10⁹, the
+modeled carry and borrow intermediates fit in unsigned 64 bits.
+
+The Mojo transcript now adds 121 ordered pairs over zero and both signs of five
+magnitudes. The fixtures cover unequal widths, cancellation, cascading carry
+and borrow, and values beyond signed machine range. Lean checks the observed
+signed sums and differences, with canonicality checks on the actual observed
+limbs. Two false controls exercise a retained high zero and a lost carry.
+The current gate checks 494 native records including the earlier 373.
+
+The [Quint model](../tests/quint/BigZLimbs.qnt) exhaustively evaluates all 4,889
+ordered pairs of three-limb magnitudes at radices 2, 3 and 4. It checks digit
+bounds and prefix conservation after every column, final borrow against
+magnitude order, and normalization. Separate tests require the same
+invariant to detect a lost carry and a lost borrow. The six tests use
+deterministic enumeration, with no sampled choice.
+
+```sh
+npx --yes --package @informalsystems/quint@0.33.1 quint typecheck tests/quint/BigZLimbs.qnt
+npx --yes --package @informalsystems/quint@0.33.1 quint test tests/quint/BigZLimbs.qnt --backend=typescript --max-samples=1
+```
+
+The universal model works on mathematical digit lists. The native transcript
+covers signed dispatch at finite inputs. The remaining obligations include
+refining native storage and loops to the model, multiplication and Algorithm D
+division, and the canonical byte encoder.
 
 ## Replay and evidence
 
@@ -96,12 +132,12 @@ python3 -m unittest discover -s tests/lean -p 'test_*.py'
 Lean and Mathlib are pinned, matching the accepted PSC source-word layer.
 The runner requires a clean matching revision and hashes mathematical sources,
 native sources and replay tooling. It copies only proof sources/configuration
-into a fresh workspace, builds the models, and translates 373 fresh native
+into a fresh workspace, builds the models, and translates 494 fresh native
 records into closed Lean propositions checked by the kernel. All named model
 proofs have an axiom audit allowing only propext, Classical.choice and Quot.sound.
-Wrong Parikh counts, wrapped overflow and rejection-equals-true are separate
-negative Lean controls. A fourth rejects a noncanonical field representative
-even when it is equal modulo p. Division candidates are checked by proving
+The six false controls cover Parikh counts, wrapped overflow, rejection
+equality, a noncanonical field representative, a BigZ leading zero and a lost
+carry. Division candidates are checked by proving
 result times denominator equals numerator with a nonzero denominator; a generic
 field lemma supplies the division equality. This avoids trying to execute
 Mathlib's non-reducible field-inverse definition, and adds no proof assumption.

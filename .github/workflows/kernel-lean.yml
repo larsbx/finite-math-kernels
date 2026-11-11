@@ -1,10 +1,10 @@
 name: Kernel Lean proofs and native conformance
 on:
   pull_request:
-    paths: ['tests/lean/**', 'kernel/**', 'tools/*lean*', 'docs/lean-verification.md', '.github/workflows/kernel-lean.yml']
+    paths: ['tests/lean/**', 'tests/quint/**', 'kernel/**', 'tools/*lean*', 'docs/lean-verification.md', '.github/workflows/kernel-lean.yml']
   push:
     branches: [main, verification/lean-foundations-2026-11-06]
-    paths: ['tests/lean/**', 'kernel/**', 'tools/*lean*', '.github/workflows/kernel-lean.yml']
+    paths: ['tests/lean/**', 'tests/quint/**', 'kernel/**', 'tools/*lean*', '.github/workflows/kernel-lean.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -12,6 +12,24 @@ concurrency:
   group: kernel-lean-${{ github.head_ref || github.ref_name }}
   cancel-in-progress: true
 jobs:
+  bounded-bigz-quint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check all three-limb input pairs and mutation controls
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          npm install --prefix "$RUNNER_TEMP/fmk-quint" --no-audit --no-fund --ignore-scripts @informalsystems/quint@0.33.1
+          "$RUNNER_TEMP/fmk-quint/node_modules/.bin/quint" typecheck tests/quint/BigZLimbs.qnt
+          "$RUNNER_TEMP/fmk-quint/node_modules/.bin/quint" test tests/quint/BigZLimbs.qnt --backend=typescript --max-samples=1
   exact-kernel-lean:
     runs-on: ubuntu-latest
     timeout-minutes: 35

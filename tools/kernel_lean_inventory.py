@@ -7,6 +7,14 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 TARGET = ROOT / "tests/lean/coverage.json"
 MODELS = {
+    "finite_exact/bigint_z.mojo": [
+        "BigZLimbs.trim_preserves_magnitude", "BigZLimbs.trim_normalizes_magnitude",
+        "BigZLimbs.zero_padding_preserves_magnitude", "BigZLimbs.canonical_magnitude_unique",
+        "BigZLimbs.add_magnitude_exact", "BigZLimbs.add_digits_bounded",
+        "BigZLimbs.sub_magnitude_balance", "BigZLimbs.zero_final_borrow_iff",
+        "BigZLimbs.sub_magnitude_exact", "BigZLimbs.native_addition_bound",
+        "BigZLimbs.native_borrow_bound",
+    ],
     "finite_exact/checked_int.mojo": ["CheckedInt.accept_exact", "CheckedInt.add_guard_exact", "CheckedInt.sub_guard_exact", "CheckedInt.neg_guard_exact", "CheckedInt.abs_guard_exact", "CheckedInt.magnitude_guard_exact"],
     "finite_exact/fp.mojo": ["AcceptedField.prime_field_inverse", "AcceptedField.rejection_compares_false"],
     "finite_exact/rat_q.mojo": ["AcceptedField.rational_inverse", "AcceptedField.rejection_compares_false"],
@@ -16,11 +24,11 @@ MODELS = {
     "substitution_dynamics/balanced_pairs.mojo": ["Words.balanced_image_length", "Words.witness_inflate"],
     "substitution_dynamics/strong_coincidence.mojo": ["Words.witness_inflate", "Words.witness_iterate"],
 }
-NATIVE = {"finite_exact/checked_int.mojo", "finite_exact/fp.mojo",
+NATIVE = {"finite_exact/bigint_z.mojo", "finite_exact/checked_int.mojo", "finite_exact/fp.mojo",
           "substitution_dynamics/words.mojo", "substitution_dynamics/substitution.mojo",
           "substitution_dynamics/balanced_pairs.mojo"}
 OBLIGATIONS = {
-    "finite_exact": ["BigZ limb denotation, carry/borrow, canonicality and division convention",
+    "finite_exact": ["BigZ List/UInt64 refinement, signed dispatch, encoding and Algorithm D division",
                      "Q normalisation, gcd/cross-cancellation and rejected carrier refinement",
                      "closed interval/box enclosure and singular guards",
                      "machine arithmetic intermediate bounds and signed/unsigned multiplication binding",
