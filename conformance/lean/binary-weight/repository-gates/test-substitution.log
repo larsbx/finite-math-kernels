@@ -1,0 +1,53 @@
+[PASS] test_boundary_rejects_bad_letters_and_erasing_images
+[PASS] test_substitution_maps_and_incidence
+[PASS] test_generic_streaming_counts
+[PASS] test_pairs_and_invariants_over_two_letters
+[PASS] test_discrepancy_unrolled_sign_branches_match_full_scan
+[PASS] test_four_letter_boundaries_and_seeds
+[PASS] test_fibonacci_automaton_matches_oracle
+[PASS] test_four_letter_automaton_matches_oracle
+[PASS] test_tribonacci_agrees_with_the_alphabet3_kernel
+[PASS] test_capped_build_is_flagged_not_answered
+[PASS] test_keys_are_injective_on_large_alphabets
+11 substitution-dynamics Mojo tests passed.
+[PASS] test_alphabet3_normal_forms
+[PASS] test_other_alphabets
+[PASS] test_keys_are_injective_past_ten_letters
+[PASS] test_only_canonical_keys_parse
+[PASS] test_three_letter_maps_have_seven_conjugacy_classes
+[PASS] test_three_letter_cores_and_entry_times
+[PASS] test_class_counts_on_other_alphabets
+[PASS] test_endpoint_maps_read_the_image_ends
+8 symmetry and endpoint-map Mojo tests passed.
+[PASS] test_the_numeration_automaton_is_the_fixed_point
+[PASS] test_counts_are_image_lengths_and_incidence_entries
+[PASS] test_prolongable_points_are_the_first_letter_cycles
+[PASS] test_a_slowly_growing_fixed_point_is_read_past_any_fixed_level
+[PASS] test_an_unrelated_letter_cannot_overflow_a_query
+[PASS] test_levels_to_cover_is_the_level_of_the_digits_table
+[PASS] test_levels_to_cover_streams_over_a_large_alphabet
+[PASS] test_impossible_queries_are_refused
+[PASS] test_barge_class_alphabet3_fixtures
+[PASS] test_barge_class_other_alphabets
+[PASS] test_bounded_builder_matches_the_canonical_one
+[PASS] test_bounded_children_is_the_in_budget_prefix_of_children
+[PASS] test_bounded_builder_agrees_with_the_materialising_one
+[PASS] test_an_over_budget_child_is_never_materialised
+14 numeration, Barge-class and bounded-builder Mojo tests passed.
+[PASS] test_hermite_form_index
+[PASS] test_alphabet3_fixtures
+[PASS] test_other_alphabets_agree_with_the_sampled_route
+[PASS] test_a_rank_drop_raises_on_both_routes
+[PASS] test_a_seed_that_never_grows_or_never_covers_is_refused
+[PASS] test_covering_level_refuses_a_length_that_stops_short
+[PASS] test_the_sampled_route_refuses_factor_lengths_outside_its_keys
+[PASS] test_factor_keys_reach_the_last_representable_length
+8 return-lattice Mojo tests passed.
+[PASS] test_alphabet3_witnesses_and_sizes
+[PASS] test_merge_and_prefix_pair_fixtures
+[PASS] test_the_merge_bound_is_exact_on_small_alphabets
+[PASS] test_levels_match_the_definition_on_other_alphabets
+[PASS] test_elimination_is_the_direct_automaton
+[PASS] test_one_digit_paths_are_read
+[PASS] test_malformed_input_raises
+7 strong-coincidence Mojo tests passed.

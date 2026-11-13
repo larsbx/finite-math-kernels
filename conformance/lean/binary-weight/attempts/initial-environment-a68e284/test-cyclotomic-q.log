@@ -1,0 +1,399 @@
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:1:1: error: unable to locate module 'std'
+"""Executable laws for exact Q[zeta_n] quotient arithmetic.
+^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:1:1: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+"""Executable laws for exact Q[zeta_n] quotient arithmetic.
+^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:6:6: error: unable to locate module 'std'
+from std.testing import assert_false, assert_true
+     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:8:
+kernel/finite_exact/__init__.mojo:34:1: error: unable to locate module 'std'
+
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:8:
+kernel/finite_exact/bigint_z.mojo:15:1: error: unable to locate module 'std'
+comptime BIGZ_BASE = UInt64(1000000000)
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:8:
+kernel/finite_exact/bigint_z.mojo:77:26: error: use of unknown declaration 'Int64'
+def bigz_from_i64(value: Int64) -> BigZ:
+                         ^~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:8:
+kernel/finite_exact/bigint_z.mojo:77:19: error: unable to locate module 'std'
+def bigz_from_i64(value: Int64) -> BigZ:
+                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:8:
+kernel/finite_exact/bigint_z.mojo:18:13: error: use of unknown declaration 'Copyable'
+struct BigZ(Copyable):
+            ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:8:
+kernel/finite_exact/bigint_z.mojo:77:36: error: unable to locate module 'std'
+def bigz_from_i64(value: Int64) -> BigZ:
+                                   ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:9:
+kernel/finite_exact/rat_q.mojo:13:1: error: unable to locate module 'std'
+from finite_exact.bigint_z import BigZ, bigz_add, bigz_canonical_bytes, bigz_div_exact, bigz_eq, bigz_from_i64, bigz_gcd, bigz_is_canonical, bigz_lt, bigz_mul, bigz_neg, bigz_sub, bigz_zero
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:9:
+kernel/finite_exact/rat_q.mojo:16:10: error: use of unknown declaration 'Copyable'
+struct Q(Copyable):
+         ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:9:
+kernel/finite_exact/rat_q.mojo:166:17: error: unable to locate module 'std'
+def q_from_bigz(n: BigZ, d: BigZ) -> Q:
+                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:9:
+kernel/finite_exact/rat_q.mojo:166:26: error: unable to locate module 'std'
+def q_from_bigz(n: BigZ, d: BigZ) -> Q:
+                         ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:9:
+kernel/finite_exact/rat_q.mojo:166:38: error: unable to locate module 'std'
+def q_from_bigz(n: BigZ, d: BigZ) -> Q:
+                                     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:10:
+kernel/finite_polynomial/__init__.mojo:42:1: error: unable to locate module 'std'
+from .taylor_model import (
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:10:
+kernel/finite_polynomial/polynomial_z.mojo:14:1: error: unable to locate module 'std'
+from finite_exact.bigint_z import (
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:10:
+Imported from kernel/finite_polynomial/polynomial_z.mojo:26:
+kernel/finite_polynomial/cyclotomic_polynomial.mojo:17:1: error: unable to locate module 'std'
+from finite_polynomial.polynomial_z import (
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:10:
+Imported from kernel/finite_polynomial/polynomial_z.mojo:26:
+kernel/finite_polynomial/cyclotomic_polynomial.mojo:29:38: error: use of unknown declaration 'Int'
+def cyclotomic_polynomial(conductor: Int) -> PolyZ:
+                                     ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:10:
+Imported from kernel/finite_polynomial/polynomial_z.mojo:26:
+kernel/finite_polynomial/cyclotomic_polynomial.mojo:29:27: error: unable to locate module 'std'
+def cyclotomic_polynomial(conductor: Int) -> PolyZ:
+                          ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:10:
+kernel/finite_polynomial/polynomial_z.mojo:31:14: error: use of unknown declaration 'Copyable'
+struct PolyZ(Copyable, Movable):
+             ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:10:
+Imported from kernel/finite_polynomial/polynomial_z.mojo:26:
+kernel/finite_polynomial/cyclotomic_polynomial.mojo:29:46: error: unable to locate module 'std'
+def cyclotomic_polynomial(conductor: Int) -> PolyZ:
+                                             ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:17:1: error: unable to locate module 'std'
+from finite_exact.integer_gcd import gcd_int
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:35:20: error: use of unknown declaration 'Copyable'
+struct CyclotomicQ(Copyable, Movable):
+                   ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:192:20: error: unable to locate module 'std'
+def cyclotomic_add(left: CyclotomicQ, right: CyclotomicQ) -> CyclotomicQ:
+                   ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:192:39: error: unable to locate module 'std'
+def cyclotomic_add(left: CyclotomicQ, right: CyclotomicQ) -> CyclotomicQ:
+                                      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:192:62: error: unable to locate module 'std'
+def cyclotomic_add(left: CyclotomicQ, right: CyclotomicQ) -> CyclotomicQ:
+                                                             ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:316:29: error: unable to locate module 'std'
+def cyclotomic_automorphism(value: CyclotomicQ, exponent: Int) -> CyclotomicQ:
+                            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:316:59: error: use of unknown declaration 'Int'
+def cyclotomic_automorphism(value: CyclotomicQ, exponent: Int) -> CyclotomicQ:
+                                                          ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:316:49: error: unable to locate module 'std'
+def cyclotomic_automorphism(value: CyclotomicQ, exponent: Int) -> CyclotomicQ:
+                                                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:316:67: error: unable to locate module 'std'
+def cyclotomic_automorphism(value: CyclotomicQ, exponent: Int) -> CyclotomicQ:
+                                                                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:52:33: error: use of unknown declaration 'Copyable'
+struct CyclotomicCanonicalBytes(Copyable, Movable):
+                                ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:378:5: error: unable to locate module 'std'
+    left: CyclotomicCanonicalBytes,
+    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:379:5: error: unable to locate module 'std'
+    right: CyclotomicCanonicalBytes,
+    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:380:6: error: use of unknown declaration 'Bool'
+) -> Bool:
+     ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:380:6: error: unable to locate module 'std'
+) -> Bool:
+     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:351:32: error: unable to locate module 'std'
+def cyclotomic_canonical_bytes(value: CyclotomicQ) -> CyclotomicCanonicalBytes:
+                               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:351:55: error: unable to locate module 'std'
+def cyclotomic_canonical_bytes(value: CyclotomicQ) -> CyclotomicCanonicalBytes:
+                                                      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:288:20: error: unable to locate module 'std'
+def cyclotomic_div(left: CyclotomicQ, right: CyclotomicQ) -> CyclotomicQ:
+                   ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:288:39: error: unable to locate module 'std'
+def cyclotomic_div(left: CyclotomicQ, right: CyclotomicQ) -> CyclotomicQ:
+                                      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:288:62: error: unable to locate module 'std'
+def cyclotomic_div(left: CyclotomicQ, right: CyclotomicQ) -> CyclotomicQ:
+                                                             ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:161:22: error: unable to locate module 'std'
+def cyclotomic_equal(left: CyclotomicQ, right: CyclotomicQ) -> Bool:
+                     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:161:41: error: unable to locate module 'std'
+def cyclotomic_equal(left: CyclotomicQ, right: CyclotomicQ) -> Bool:
+                                        ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:161:64: error: use of unknown declaration 'Bool'
+def cyclotomic_equal(left: CyclotomicQ, right: CyclotomicQ) -> Bool:
+                                                               ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:161:64: error: unable to locate module 'std'
+def cyclotomic_equal(left: CyclotomicQ, right: CyclotomicQ) -> Bool:
+                                                               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:238:24: error: unable to locate module 'std'
+def cyclotomic_inverse(value: CyclotomicQ) -> CyclotomicQ:
+                       ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:238:47: error: unable to locate module 'std'
+def cyclotomic_inverse(value: CyclotomicQ) -> CyclotomicQ:
+                                              ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:136:39: error: use of unknown declaration 'Int'
+def cyclotomic_from_coeffs(conductor: Int, coefficients: List[Q]) -> CyclotomicQ:
+                                      ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:136:28: error: unable to locate module 'std'
+def cyclotomic_from_coeffs(conductor: Int, coefficients: List[Q]) -> CyclotomicQ:
+                           ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:136:58: error: use of unknown declaration 'List'
+def cyclotomic_from_coeffs(conductor: Int, coefficients: List[Q]) -> CyclotomicQ:
+                                                         ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:136:44: error: unable to locate module 'std'
+def cyclotomic_from_coeffs(conductor: Int, coefficients: List[Q]) -> CyclotomicQ:
+                                           ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:136:70: error: unable to locate module 'std'
+def cyclotomic_from_coeffs(conductor: Int, coefficients: List[Q]) -> CyclotomicQ:
+                                                                     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:218:20: error: unable to locate module 'std'
+def cyclotomic_mul(left: CyclotomicQ, right: CyclotomicQ) -> CyclotomicQ:
+                   ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:218:39: error: unable to locate module 'std'
+def cyclotomic_mul(left: CyclotomicQ, right: CyclotomicQ) -> CyclotomicQ:
+                                      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:218:62: error: unable to locate module 'std'
+def cyclotomic_mul(left: CyclotomicQ, right: CyclotomicQ) -> CyclotomicQ:
+                                                             ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:147:31: error: use of unknown declaration 'Int'
+def cyclotomic_one(conductor: Int) -> CyclotomicQ:
+                              ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:147:20: error: unable to locate module 'std'
+def cyclotomic_one(conductor: Int) -> CyclotomicQ:
+                   ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:147:39: error: unable to locate module 'std'
+def cyclotomic_one(conductor: Int) -> CyclotomicQ:
+                                      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:297:20: error: unable to locate module 'std'
+def cyclotomic_pow(value: CyclotomicQ, exponent: Int) -> CyclotomicQ:
+                   ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:297:50: error: use of unknown declaration 'Int'
+def cyclotomic_pow(value: CyclotomicQ, exponent: Int) -> CyclotomicQ:
+                                                 ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:297:40: error: unable to locate module 'std'
+def cyclotomic_pow(value: CyclotomicQ, exponent: Int) -> CyclotomicQ:
+                                       ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:297:58: error: unable to locate module 'std'
+def cyclotomic_pow(value: CyclotomicQ, exponent: Int) -> CyclotomicQ:
+                                                         ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:141:32: error: use of unknown declaration 'Int'
+def cyclotomic_zero(conductor: Int) -> CyclotomicQ:
+                               ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:141:21: error: unable to locate module 'std'
+def cyclotomic_zero(conductor: Int) -> CyclotomicQ:
+                    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:141:40: error: unable to locate module 'std'
+def cyclotomic_zero(conductor: Int) -> CyclotomicQ:
+                                       ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:153:21: error: use of unknown declaration 'Int'
+def zeta(conductor: Int) -> CyclotomicQ:
+                    ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:153:10: error: unable to locate module 'std'
+def zeta(conductor: Int) -> CyclotomicQ:
+         ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:153:29: error: unable to locate module 'std'
+def zeta(conductor: Int) -> CyclotomicQ:
+                            ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:29:26: error: use of unknown declaration 'Int'
+def from_i64s(conductor: Int, values: List[Int64]) -> CyclotomicQ:
+                         ^~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:29:15: error: unable to locate module 'std'
+def from_i64s(conductor: Int, values: List[Int64]) -> CyclotomicQ:
+              ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:29:39: error: use of unknown declaration 'List'
+def from_i64s(conductor: Int, values: List[Int64]) -> CyclotomicQ:
+                                      ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:29:31: error: unable to locate module 'std'
+def from_i64s(conductor: Int, values: List[Int64]) -> CyclotomicQ:
+                              ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:29:55: error: unable to locate module 'std'
+def from_i64s(conductor: Int, values: List[Int64]) -> CyclotomicQ:
+                                                      ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:36:50: error: unable to locate module 'std'
+def test_small_conductors_reduce_exactly() raises:
+                                                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:59:41: error: unable to locate module 'std'
+def test_root_of_unity_identity() raises:
+                                        ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:60:22: error: use of unknown declaration 'range'
+    for conductor in range(1, 13):
+                     ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:71:57: error: unable to locate module 'std'
+def test_defining_cyclotomic_polynomial_is_zero() raises:
+                                                        ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:72:22: error: use of unknown declaration 'range'
+    for conductor in range(1, 13):
+                     ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:86:56: error: unable to locate module 'std'
+def test_high_degree_input_reduces_canonically() raises:
+                                                       ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:99:53: error: unable to locate module 'std'
+def test_rational_coefficients_remain_exact() raises:
+                                                    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:100:24: error: use of unknown declaration 'List'
+    var coefficients = List[Q]()
+                       ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:106:34: error: use of unknown declaration 'List'
+    var conjugate_coefficients = List[Q]()
+                                 ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:112:33: error: use of unknown declaration 'List'
+    var expected_coefficients = List[Q]()
+                                ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:122:41: error: unable to locate module 'std'
+def test_field_inverse_is_exact() raises:
+                                        ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:141:41: error: unable to locate module 'std'
+def test_galois_action_is_exact() raises:
+                                        ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:154:61: error: unable to locate module 'std'
+def test_conductor_is_part_of_identity_and_encoding() raises:
+                                                            ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:167:73: error: unable to locate module 'std'
+def test_invalid_conductor_and_rejected_coefficient_fail_closed() raises:
+                                                                        ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:169:24: error: use of unknown declaration 'List'
+    var coefficients = List[Q]()
+                       ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:174:18: error: unable to locate module 'std'
+def main() raises:
+                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:174:5: error: unable to locate module 'std'
+def main() raises:
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:174:9: error: 'builtin' does not refer to a nested package
+def main() raises:
+        ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:175:5: error: unable to locate module 'std'
+    test_small_conductors_reduce_exactly()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:176:5: error: use of unknown declaration 'print'
+    print("[PASS] test_small_conductors_reduce_exactly")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:177:5: error: unable to locate module 'std'
+    test_root_of_unity_identity()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:178:5: error: use of unknown declaration 'print'
+    print("[PASS] test_root_of_unity_identity")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:179:5: error: unable to locate module 'std'
+    test_defining_cyclotomic_polynomial_is_zero()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:180:5: error: use of unknown declaration 'print'
+    print("[PASS] test_defining_cyclotomic_polynomial_is_zero")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:181:5: error: unable to locate module 'std'
+    test_high_degree_input_reduces_canonically()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:182:5: error: use of unknown declaration 'print'
+    print("[PASS] test_high_degree_input_reduces_canonically")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:183:5: error: unable to locate module 'std'
+    test_rational_coefficients_remain_exact()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:184:5: error: use of unknown declaration 'print'
+    print("[PASS] test_rational_coefficients_remain_exact")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:185:5: error: unable to locate module 'std'
+    test_field_inverse_is_exact()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:186:5: error: use of unknown declaration 'print'
+    print("[PASS] test_field_inverse_is_exact")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:187:5: error: unable to locate module 'std'
+    test_galois_action_is_exact()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:188:5: error: use of unknown declaration 'print'
+    print("[PASS] test_galois_action_is_exact")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:189:5: error: unable to locate module 'std'
+    test_conductor_is_part_of_identity_and_encoding()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:190:5: error: use of unknown declaration 'print'
+    print("[PASS] test_conductor_is_part_of_identity_and_encoding")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:191:5: error: unable to locate module 'std'
+    test_invalid_conductor_and_rejected_coefficient_fail_closed()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:192:5: error: use of unknown declaration 'print'
+    print("[PASS] test_invalid_conductor_and_rejected_coefficient_fail_closed")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_cyclotomic_q.mojo:193:5: error: use of unknown declaration 'print'
+    print("9 cyclotomic quotient Mojo tests passed.")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/golden-ratio-normality-research/kernel/.pixi/envs/default/bin/mojo: error: failed to parse the provided Mojo source module

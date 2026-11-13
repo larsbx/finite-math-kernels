@@ -1,0 +1,289 @@
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:1:1: error: unable to locate module 'std'
+"""Regressions for exact weighted cycle-lattice gains."""
+^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:1:1: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+"""Regressions for exact weighted cycle-lattice gains."""
+^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:3:6: error: unable to locate module 'std'
+from std.testing import assert_equal, assert_false, assert_true
+     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:5:
+kernel/finite_exact/__init__.mojo:34:1: error: unable to locate module 'std'
+
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:5:
+kernel/finite_exact/rat_q.mojo:13:1: error: unable to locate module 'std'
+from finite_exact.bigint_z import BigZ, bigz_add, bigz_canonical_bytes, bigz_div_exact, bigz_eq, bigz_from_i64, bigz_gcd, bigz_is_canonical, bigz_lt, bigz_mul, bigz_neg, bigz_sub, bigz_zero
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:5:
+kernel/finite_exact/rat_q.mojo:16:10: error: use of unknown declaration 'Copyable'
+struct Q(Copyable):
+         ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:6:
+kernel/weighted_graph/__init__.mojo:5:1: error: unable to locate module 'std'
+
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:7:
+kernel/weighted_graph/cycle_gain.mojo:1:1: error: unable to locate module 'std'
+"""Exact additive gains on the integer cycle lattice of a finite directed graph.
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:7:
+kernel/weighted_graph/cycle_gain.mojo:29:21: error: use of unknown declaration 'Copyable'
+struct WeightedEdge(Copyable, Movable):
+                    ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:7:
+kernel/weighted_graph/cycle_gain.mojo:86:19: error: use of unknown declaration 'Int'
+    vertex_count: Int,
+                  ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:7:
+kernel/weighted_graph/cycle_gain.mojo:86:5: error: unable to locate module 'std'
+    vertex_count: Int,
+    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:7:
+kernel/weighted_graph/cycle_gain.mojo:87:12: error: use of unknown declaration 'List'
+    edges: List[WeightedEdge],
+           ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:7:
+kernel/weighted_graph/cycle_gain.mojo:87:5: error: unable to locate module 'std'
+    edges: List[WeightedEdge],
+    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:7:
+kernel/weighted_graph/cycle_gain.mojo:88:15: error: use of unknown declaration 'Bool'
+    complete: Bool = True,
+              ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:7:
+kernel/weighted_graph/cycle_gain.mojo:88:22: error: unable to locate module 'std'
+    complete: Bool = True,
+                     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:7:
+kernel/weighted_graph/cycle_gain.mojo:88:5: error: unable to locate module 'std'
+    complete: Bool = True,
+    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:7:
+kernel/weighted_graph/cycle_gain.mojo:40:24: error: use of unknown declaration 'Copyable'
+struct WeightedDigraph(Copyable, Movable):
+                       ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:7:
+kernel/weighted_graph/cycle_gain.mojo:89:13: error: unable to locate module 'std'
+) raises -> WeightedDigraph:
+            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:7:
+kernel/weighted_graph/cycle_gain.mojo:253:16: error: unable to locate module 'std'
+def cycle_gain(g: WeightedDigraph, c: SignedCycle) raises -> List[Q]:
+               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:7:
+kernel/weighted_graph/cycle_gain.mojo:59:20: error: use of unknown declaration 'Copyable'
+struct SignedCycle(Copyable, Movable):
+                   ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:7:
+kernel/weighted_graph/cycle_gain.mojo:253:36: error: unable to locate module 'std'
+def cycle_gain(g: WeightedDigraph, c: SignedCycle) raises -> List[Q]:
+                                   ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:7:
+kernel/weighted_graph/cycle_gain.mojo:253:62: error: use of unknown declaration 'List'
+def cycle_gain(g: WeightedDigraph, c: SignedCycle) raises -> List[Q]:
+                                                             ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:7:
+kernel/weighted_graph/cycle_gain.mojo:253:62: error: unable to locate module 'std'
+def cycle_gain(g: WeightedDigraph, c: SignedCycle) raises -> List[Q]:
+                                                             ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:7:
+kernel/weighted_graph/cycle_gain.mojo:273:29: error: unable to locate module 'std'
+def fundamental_cycle_gains(g: WeightedDigraph) raises -> CycleGainPresentation:
+                            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:7:
+kernel/weighted_graph/cycle_gain.mojo:72:30: error: use of unknown declaration 'Copyable'
+struct CycleGainPresentation(Copyable, Movable):
+                             ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:7:
+kernel/weighted_graph/cycle_gain.mojo:273:59: error: unable to locate module 'std'
+def fundamental_cycle_gains(g: WeightedDigraph) raises -> CycleGainPresentation:
+                                                          ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:7:
+kernel/weighted_graph/cycle_gain.mojo:201:24: error: unable to locate module 'std'
+def fundamental_cycles(g: WeightedDigraph) raises -> List[SignedCycle]:
+                       ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:7:
+kernel/weighted_graph/cycle_gain.mojo:201:54: error: use of unknown declaration 'List'
+def fundamental_cycles(g: WeightedDigraph) raises -> List[SignedCycle]:
+                                                     ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:7:
+kernel/weighted_graph/cycle_gain.mojo:201:54: error: unable to locate module 'std'
+def fundamental_cycles(g: WeightedDigraph) raises -> List[SignedCycle]:
+                                                     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:7:
+kernel/weighted_graph/cycle_gain.mojo:281:19: error: use of unknown declaration 'List'
+def gain_equal(a: List[Q], b: List[Q]) -> Bool:
+                  ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:7:
+kernel/weighted_graph/cycle_gain.mojo:281:16: error: unable to locate module 'std'
+def gain_equal(a: List[Q], b: List[Q]) -> Bool:
+               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:7:
+kernel/weighted_graph/cycle_gain.mojo:281:31: error: use of unknown declaration 'List'
+def gain_equal(a: List[Q], b: List[Q]) -> Bool:
+                              ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:7:
+kernel/weighted_graph/cycle_gain.mojo:281:28: error: unable to locate module 'std'
+def gain_equal(a: List[Q], b: List[Q]) -> Bool:
+                           ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:7:
+kernel/weighted_graph/cycle_gain.mojo:281:43: error: use of unknown declaration 'Bool'
+def gain_equal(a: List[Q], b: List[Q]) -> Bool:
+                                          ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:7:
+kernel/weighted_graph/cycle_gain.mojo:281:43: error: unable to locate module 'std'
+def gain_equal(a: List[Q], b: List[Q]) -> Bool:
+                                          ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:7:
+kernel/weighted_graph/cycle_gain.mojo:179:28: error: unable to locate module 'std'
+def signed_cycle_is_closed(g: WeightedDigraph, c: SignedCycle) -> Bool:
+                           ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:7:
+kernel/weighted_graph/cycle_gain.mojo:179:48: error: unable to locate module 'std'
+def signed_cycle_is_closed(g: WeightedDigraph, c: SignedCycle) -> Bool:
+                                               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:7:
+kernel/weighted_graph/cycle_gain.mojo:179:67: error: use of unknown declaration 'Bool'
+def signed_cycle_is_closed(g: WeightedDigraph, c: SignedCycle) -> Bool:
+                                                                  ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:7:
+kernel/weighted_graph/cycle_gain.mojo:179:67: error: unable to locate module 'std'
+def signed_cycle_is_closed(g: WeightedDigraph, c: SignedCycle) -> Bool:
+                                                                  ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:17:14: error: use of unknown declaration 'Int'
+def qvec1(a: Int) -> List[Q]:
+             ^~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:17:11: error: unable to locate module 'std'
+def qvec1(a: Int) -> List[Q]:
+          ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:17:22: error: use of unknown declaration 'List'
+def qvec1(a: Int) -> List[Q]:
+                     ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:17:22: error: unable to locate module 'std'
+def qvec1(a: Int) -> List[Q]:
+                     ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:21:14: error: use of unknown declaration 'Int'
+def qvec2(a: Int, b: Int) -> List[Q]:
+             ^~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:21:11: error: unable to locate module 'std'
+def qvec2(a: Int, b: Int) -> List[Q]:
+          ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:21:22: error: use of unknown declaration 'Int'
+def qvec2(a: Int, b: Int) -> List[Q]:
+                     ^~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:21:19: error: unable to locate module 'std'
+def qvec2(a: Int, b: Int) -> List[Q]:
+                  ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:21:30: error: use of unknown declaration 'List'
+def qvec2(a: Int, b: Int) -> List[Q]:
+                             ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:21:30: error: unable to locate module 'std'
+def qvec2(a: Int, b: Int) -> List[Q]:
+                             ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:25:32: error: unable to locate module 'std'
+def test_triangle_gain() raises:
+                               ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:26:17: error: use of unknown declaration 'List'
+    var edges = List[WeightedEdge]()
+                ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:37:55: error: unable to locate module 'std'
+def test_parallel_edges_preserve_multiplicity() raises:
+                                                      ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:38:17: error: use of unknown declaration 'List'
+    var edges = List[WeightedEdge]()
+                ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:48:45: error: unable to locate module 'std'
+def test_self_loop_is_its_own_cycle() raises:
+                                            ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:49:17: error: use of unknown declaration 'List'
+    var edges = List[WeightedEdge]()
+                ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:57:47: error: unable to locate module 'std'
+def test_tree_has_no_cycle_generators() raises:
+                                              ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:58:17: error: use of unknown declaration 'List'
+    var edges = List[WeightedEdge]()
+                ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:65:56: error: unable to locate module 'std'
+def test_two_cycle_multigraph_is_deterministic() raises:
+                                                       ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:66:17: error: use of unknown declaration 'List'
+    var edges = List[WeightedEdge]()
+                ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:79:58: error: unable to locate module 'std'
+def test_rejects_incomplete_and_malformed_inputs() raises:
+                                                         ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:80:17: error: use of unknown declaration 'List'
+    var edges = List[WeightedEdge]()
+                ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:84:18: error: unable to locate module 'std'
+    var caught = False
+                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:85:5: error: unable to locate module 'std'
+    try:
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:91:25: error: use of unknown declaration 'List'
+    var bad_dimension = List[WeightedEdge]()
+                        ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:95:5: error: unable to locate module 'std'
+    try:
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:101:22: error: use of unknown declaration 'List'
+    var bad_vertex = List[WeightedEdge]()
+                     ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:104:5: error: unable to locate module 'std'
+    try:
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:111:18: error: unable to locate module 'std'
+def main() raises:
+                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:111:5: error: unable to locate module 'std'
+def main() raises:
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:111:9: error: 'builtin' does not refer to a nested package
+def main() raises:
+        ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:112:5: error: unable to locate module 'std'
+    test_triangle_gain()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:113:5: error: use of unknown declaration 'print'
+    print("[PASS] test_triangle_gain")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:114:5: error: unable to locate module 'std'
+    test_parallel_edges_preserve_multiplicity()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:115:5: error: use of unknown declaration 'print'
+    print("[PASS] test_parallel_edges_preserve_multiplicity")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:116:5: error: unable to locate module 'std'
+    test_self_loop_is_its_own_cycle()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:117:5: error: use of unknown declaration 'print'
+    print("[PASS] test_self_loop_is_its_own_cycle")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:118:5: error: unable to locate module 'std'
+    test_tree_has_no_cycle_generators()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:119:5: error: use of unknown declaration 'print'
+    print("[PASS] test_tree_has_no_cycle_generators")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:120:5: error: unable to locate module 'std'
+    test_two_cycle_multigraph_is_deterministic()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:121:5: error: use of unknown declaration 'print'
+    print("[PASS] test_two_cycle_multigraph_is_deterministic")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:122:5: error: unable to locate module 'std'
+    test_rejects_incomplete_and_malformed_inputs()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:123:5: error: use of unknown declaration 'print'
+    print("[PASS] test_rejects_incomplete_and_malformed_inputs")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/weighted_graph/test_cycle_gain.mojo:124:5: error: use of unknown declaration 'print'
+    print("6 weighted cycle-gain Mojo tests passed.")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/golden-ratio-normality-research/kernel/.pixi/envs/default/bin/mojo: error: failed to parse the provided Mojo source module

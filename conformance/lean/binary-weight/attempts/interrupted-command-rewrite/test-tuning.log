@@ -1,0 +1,15 @@
+[PASS] test_boundary_rejects_bad_prefixes
+[PASS] test_period_doubling_is_the_dgp_tuning_of_the_period_two_centre
+[PASS] test_star_product_of_period_doubling_with_itself
+[PASS] test_feigenbaum_kneading_prefix
+[PASS] test_star_product_is_composition_for_arbitrary_twists
+[PASS] test_directive_composite_and_application_agree
+[PASS] test_kneading_prefix_is_a_prefix_of_every_tuning_image
+[PASS] test_continuation_twist_pinned_values_and_disagreement_with_parity
+[PASS] test_internal_address_pinned_values_and_boundary
+[PASS] test_continuation_is_the_unique_continuation_with_the_period_in_its_internal_address
+[PASS] test_every_tuning_substitution_has_a_coincidence_in_its_first_column
+[PASS] test_thue_morse_has_no_column_coincidence
+[PASS] test_three_letter_example_needs_depth_two
+[PASS] test_non_constant_length_is_rejected
+14 tuning Mojo tests passed.

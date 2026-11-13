@@ -1,0 +1,204 @@
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/interval/test_interval_q.mojo:1:1: error: unable to locate module 'std'
+"""Executable smoke and law checks for the interval_q package.
+^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/interval/test_interval_q.mojo:1:1: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+"""Executable smoke and law checks for the interval_q package.
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/interval/test_interval_q.mojo:9:
+kernel/finite_exact/__init__.mojo:34:1: error: unable to locate module 'std'
+
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/interval/test_interval_q.mojo:9:
+kernel/finite_exact/rat_q.mojo:13:1: error: unable to locate module 'std'
+from finite_exact.bigint_z import BigZ, bigz_add, bigz_canonical_bytes, bigz_div_exact, bigz_eq, bigz_from_i64, bigz_gcd, bigz_is_canonical, bigz_lt, bigz_mul, bigz_neg, bigz_sub, bigz_zero
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/interval/test_interval_q.mojo:9:
+kernel/finite_exact/rat_q.mojo:16:10: error: use of unknown declaration 'Copyable'
+struct Q(Copyable):
+         ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/interval/test_interval_q.mojo:10:
+kernel/finite_exact/closed_interval.mojo:1:1: error: unable to locate module 'std'
+"""Stable public entry point for closed exact-rational intervals."""
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/interval/test_interval_q.mojo:10:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:9:1: error: unable to locate module 'std'
+from finite_exact.rat_q import Q, q_min, q_max, q_rejected
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/interval/test_interval_q.mojo:10:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:32:11: error: use of unknown declaration 'Copyable'
+struct IQ(Copyable):
+          ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/interval/test_interval_q.mojo:10:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:128:18: error: use of unknown declaration 'Copyable'
+struct ComplexIQ(Copyable):
+                 ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/interval/test_interval_q.mojo:10:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:230:42: error: use of unknown declaration 'Bool'
+def bigq_interval_conformance_smoke() -> Bool:
+                                         ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/interval/test_interval_q.mojo:10:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:230:42: error: unable to locate module 'std'
+def bigq_interval_conformance_smoke() -> Bool:
+                                         ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/interval/test_interval_q.mojo:10:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:203:24: error: use of unknown declaration 'Int64'
+def complex_box(re_lo: Int64, re_hi: Int64, im_lo: Int64, im_hi: Int64, den: Int64) -> ComplexIQ:
+                       ^~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/interval/test_interval_q.mojo:10:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:203:17: error: unable to locate module 'std'
+def complex_box(re_lo: Int64, re_hi: Int64, im_lo: Int64, im_hi: Int64, den: Int64) -> ComplexIQ:
+                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/interval/test_interval_q.mojo:10:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:203:38: error: use of unknown declaration 'Int64'
+def complex_box(re_lo: Int64, re_hi: Int64, im_lo: Int64, im_hi: Int64, den: Int64) -> ComplexIQ:
+                                     ^~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/interval/test_interval_q.mojo:10:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:203:31: error: unable to locate module 'std'
+def complex_box(re_lo: Int64, re_hi: Int64, im_lo: Int64, im_hi: Int64, den: Int64) -> ComplexIQ:
+                              ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/interval/test_interval_q.mojo:10:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:203:52: error: use of unknown declaration 'Int64'
+def complex_box(re_lo: Int64, re_hi: Int64, im_lo: Int64, im_hi: Int64, den: Int64) -> ComplexIQ:
+                                                   ^~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/interval/test_interval_q.mojo:10:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:203:45: error: unable to locate module 'std'
+def complex_box(re_lo: Int64, re_hi: Int64, im_lo: Int64, im_hi: Int64, den: Int64) -> ComplexIQ:
+                                            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/interval/test_interval_q.mojo:10:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:203:66: error: use of unknown declaration 'Int64'
+def complex_box(re_lo: Int64, re_hi: Int64, im_lo: Int64, im_hi: Int64, den: Int64) -> ComplexIQ:
+                                                                 ^~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/interval/test_interval_q.mojo:10:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:203:59: error: unable to locate module 'std'
+def complex_box(re_lo: Int64, re_hi: Int64, im_lo: Int64, im_hi: Int64, den: Int64) -> ComplexIQ:
+                                                          ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/interval/test_interval_q.mojo:10:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:203:78: error: use of unknown declaration 'Int64'
+def complex_box(re_lo: Int64, re_hi: Int64, im_lo: Int64, im_hi: Int64, den: Int64) -> ComplexIQ:
+                                                                             ^~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/interval/test_interval_q.mojo:10:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:203:73: error: unable to locate module 'std'
+def complex_box(re_lo: Int64, re_hi: Int64, im_lo: Int64, im_hi: Int64, den: Int64) -> ComplexIQ:
+                                                                        ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/interval/test_interval_q.mojo:10:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:203:88: error: unable to locate module 'std'
+def complex_box(re_lo: Int64, re_hi: Int64, im_lo: Int64, im_hi: Int64, den: Int64) -> ComplexIQ:
+                                                                                       ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/interval/test_interval_q.mojo:10:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:224:39: error: use of unknown declaration 'Bool'
+def demo_complex_quadrance_point() -> Bool:
+                                      ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/interval/test_interval_q.mojo:10:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:224:39: error: unable to locate module 'std'
+def demo_complex_quadrance_point() -> Bool:
+                                      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/interval/test_interval_q.mojo:10:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:217:28: error: use of unknown declaration 'Bool'
+def demo_interval_mul() -> Bool:
+                           ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/interval/test_interval_q.mojo:10:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:217:28: error: unable to locate module 'std'
+def demo_interval_mul() -> Bool:
+                           ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/interval/test_interval_q.mojo:10:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:212:32: error: use of unknown declaration 'Int64'
+def gaussian_singleton(re_num: Int64, re_den: Int64, im_num: Int64, im_den: Int64) -> ComplexIQ:
+                               ^~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/interval/test_interval_q.mojo:10:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:212:24: error: unable to locate module 'std'
+def gaussian_singleton(re_num: Int64, re_den: Int64, im_num: Int64, im_den: Int64) -> ComplexIQ:
+                       ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/interval/test_interval_q.mojo:10:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:212:47: error: use of unknown declaration 'Int64'
+def gaussian_singleton(re_num: Int64, re_den: Int64, im_num: Int64, im_den: Int64) -> ComplexIQ:
+                                              ^~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/interval/test_interval_q.mojo:10:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:212:39: error: unable to locate module 'std'
+def gaussian_singleton(re_num: Int64, re_den: Int64, im_num: Int64, im_den: Int64) -> ComplexIQ:
+                                      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/interval/test_interval_q.mojo:10:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:212:62: error: use of unknown declaration 'Int64'
+def gaussian_singleton(re_num: Int64, re_den: Int64, im_num: Int64, im_den: Int64) -> ComplexIQ:
+                                                             ^~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/interval/test_interval_q.mojo:10:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:212:54: error: unable to locate module 'std'
+def gaussian_singleton(re_num: Int64, re_den: Int64, im_num: Int64, im_den: Int64) -> ComplexIQ:
+                                                     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/interval/test_interval_q.mojo:10:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:212:77: error: use of unknown declaration 'Int64'
+def gaussian_singleton(re_num: Int64, re_den: Int64, im_num: Int64, im_den: Int64) -> ComplexIQ:
+                                                                            ^~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/interval/test_interval_q.mojo:10:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:212:69: error: unable to locate module 'std'
+def gaussian_singleton(re_num: Int64, re_den: Int64, im_num: Int64, im_den: Int64) -> ComplexIQ:
+                                                                    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/interval/test_interval_q.mojo:10:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:212:87: error: unable to locate module 'std'
+def gaussian_singleton(re_num: Int64, re_den: Int64, im_num: Int64, im_den: Int64) -> ComplexIQ:
+                                                                                      ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/interval/test_interval_q.mojo:13:39: error: use of unknown declaration 'Bool'
+def test_interval_enclosure_laws() -> Bool:
+                                      ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/interval/test_interval_q.mojo:13:39: error: unable to locate module 'std'
+def test_interval_enclosure_laws() -> Bool:
+                                      ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/interval/test_interval_q.mojo:30:67: error: use of unknown declaration 'Bool'
+def test_the_complex_square_uses_the_sharp_coordinate_square() -> Bool:
+                                                                  ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/interval/test_interval_q.mojo:30:67: error: unable to locate module 'std'
+def test_the_complex_square_uses_the_sharp_coordinate_square() -> Bool:
+                                                                  ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/interval/test_interval_q.mojo:46:60: error: use of unknown declaration 'Bool'
+def test_three_valued_sign_and_fail_closed_reciprocal() -> Bool:
+                                                           ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/interval/test_interval_q.mojo:46:60: error: unable to locate module 'std'
+def test_three_valued_sign_and_fail_closed_reciprocal() -> Bool:
+                                                           ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/interval/test_interval_q.mojo:67:57: error: use of unknown declaration 'Bool'
+def test_box_constructors_and_singleton_predicates() -> Bool:
+                                                        ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/interval/test_interval_q.mojo:67:57: error: unable to locate module 'std'
+def test_box_constructors_and_singleton_predicates() -> Bool:
+                                                        ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/interval/test_interval_q.mojo:90:18: error: unable to locate module 'std'
+def main() raises:
+                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/interval/test_interval_q.mojo:90:5: error: unable to locate module 'std'
+def main() raises:
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/interval/test_interval_q.mojo:90:9: error: 'builtin' does not refer to a nested package
+def main() raises:
+        ^
+/workspace/scratch/gnr-next.qHyoM1/golden-ratio-normality-research/kernel/.pixi/envs/default/bin/mojo: error: failed to parse the provided Mojo source module

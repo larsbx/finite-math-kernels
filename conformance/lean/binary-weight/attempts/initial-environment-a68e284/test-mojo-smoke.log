@@ -1,0 +1,45 @@
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/mojo_smoke/test_report.mojo:1:1: error: unable to locate module 'std'
+"""The reporter's own self-test, run as a driver.
+^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/mojo_smoke/test_report.mojo:1:1: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+"""The reporter's own self-test, run as a driver.
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/mojo_smoke/test_report.mojo:7:
+kernel/mojo_smoke/__init__.mojo:10:1: error: unable to locate module 'std'
+
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/mojo_smoke/test_report.mojo:7:
+kernel/mojo_smoke/report.mojo:21:1: error: unable to locate module 'std'
+struct SmokeCase(ImplicitlyCopyable, Copyable, Movable):
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/mojo_smoke/test_report.mojo:7:
+kernel/mojo_smoke/report.mojo:32:20: error: use of unknown declaration 'Copyable'
+struct SmokeReport(Copyable, Movable):
+                   ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/mojo_smoke/test_report.mojo:7:
+kernel/mojo_smoke/report.mojo:79:29: error: use of unknown declaration 'Bool'
+def smoke_report_smoke() -> Bool:
+                            ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/mojo_smoke/test_report.mojo:7:
+kernel/mojo_smoke/report.mojo:79:29: error: unable to locate module 'std'
+def smoke_report_smoke() -> Bool:
+                            ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/mojo_smoke/test_report.mojo:10:58: error: use of unknown declaration 'Bool'
+def test_a_silent_report_counts_and_names_a_failure() -> Bool:
+                                                         ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/mojo_smoke/test_report.mojo:10:58: error: unable to locate module 'std'
+def test_a_silent_report_counts_and_names_a_failure() -> Bool:
+                                                         ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/mojo_smoke/test_report.mojo:17:18: error: unable to locate module 'std'
+def main() raises:
+                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/mojo_smoke/test_report.mojo:17:5: error: unable to locate module 'std'
+def main() raises:
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/mojo_smoke/test_report.mojo:17:9: error: 'builtin' does not refer to a nested package
+def main() raises:
+        ^
+/workspace/scratch/gnr-next.qHyoM1/golden-ratio-normality-research/kernel/.pixi/envs/default/bin/mojo: error: failed to parse the provided Mojo source module

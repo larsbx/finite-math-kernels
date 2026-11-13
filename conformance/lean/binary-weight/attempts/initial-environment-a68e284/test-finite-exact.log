@@ -1,0 +1,247 @@
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:1:1: error: unable to locate module 'std'
+"""Executable smoke and law checks for the finite_exact package.
+^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:1:1: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+"""Executable smoke and law checks for the finite_exact package.
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:9:
+kernel/finite_exact/__init__.mojo:34:1: error: unable to locate module 'std'
+
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:9:
+kernel/finite_exact/bigint_z.mojo:15:1: error: unable to locate module 'std'
+comptime BIGZ_BASE = UInt64(1000000000)
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:9:
+kernel/finite_exact/bigint_z.mojo:510:35: error: use of unknown declaration 'Bool'
+def bigint_z_phase_one_smoke() -> Bool:
+                                  ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:9:
+kernel/finite_exact/bigint_z.mojo:510:35: error: unable to locate module 'std'
+def bigint_z_phase_one_smoke() -> Bool:
+                                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:9:
+kernel/finite_exact/bigint_z.mojo:527:35: error: use of unknown declaration 'Bool'
+def bigint_z_phase_two_smoke() -> Bool:
+                                  ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:9:
+kernel/finite_exact/bigint_z.mojo:527:35: error: unable to locate module 'std'
+def bigint_z_phase_two_smoke() -> Bool:
+                                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:9:
+kernel/finite_exact/bigint_z.mojo:558:37: error: use of unknown declaration 'Bool'
+def bigint_z_phase_three_smoke() -> Bool:
+                                    ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:9:
+kernel/finite_exact/bigint_z.mojo:558:37: error: unable to locate module 'std'
+def bigint_z_phase_three_smoke() -> Bool:
+                                    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:9:
+kernel/finite_exact/bigint_z.mojo:590:35: error: use of unknown declaration 'Bool'
+def bigz_long_division_smoke() -> Bool:
+                                  ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:9:
+kernel/finite_exact/bigint_z.mojo:590:35: error: unable to locate module 'std'
+def bigz_long_division_smoke() -> Bool:
+                                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:10:
+kernel/finite_exact/closed_interval.mojo:1:1: error: unable to locate module 'std'
+"""Stable public entry point for closed exact-rational intervals."""
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:10:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:9:1: error: unable to locate module 'std'
+from finite_exact.rat_q import Q, q_min, q_max, q_rejected
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:10:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:203:24: error: use of unknown declaration 'Int64'
+def complex_box(re_lo: Int64, re_hi: Int64, im_lo: Int64, im_hi: Int64, den: Int64) -> ComplexIQ:
+                       ^~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:10:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:203:17: error: unable to locate module 'std'
+def complex_box(re_lo: Int64, re_hi: Int64, im_lo: Int64, im_hi: Int64, den: Int64) -> ComplexIQ:
+                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:10:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:203:38: error: use of unknown declaration 'Int64'
+def complex_box(re_lo: Int64, re_hi: Int64, im_lo: Int64, im_hi: Int64, den: Int64) -> ComplexIQ:
+                                     ^~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:10:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:203:31: error: unable to locate module 'std'
+def complex_box(re_lo: Int64, re_hi: Int64, im_lo: Int64, im_hi: Int64, den: Int64) -> ComplexIQ:
+                              ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:10:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:203:52: error: use of unknown declaration 'Int64'
+def complex_box(re_lo: Int64, re_hi: Int64, im_lo: Int64, im_hi: Int64, den: Int64) -> ComplexIQ:
+                                                   ^~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:10:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:203:45: error: unable to locate module 'std'
+def complex_box(re_lo: Int64, re_hi: Int64, im_lo: Int64, im_hi: Int64, den: Int64) -> ComplexIQ:
+                                            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:10:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:203:66: error: use of unknown declaration 'Int64'
+def complex_box(re_lo: Int64, re_hi: Int64, im_lo: Int64, im_hi: Int64, den: Int64) -> ComplexIQ:
+                                                                 ^~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:10:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:203:59: error: unable to locate module 'std'
+def complex_box(re_lo: Int64, re_hi: Int64, im_lo: Int64, im_hi: Int64, den: Int64) -> ComplexIQ:
+                                                          ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:10:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:203:78: error: use of unknown declaration 'Int64'
+def complex_box(re_lo: Int64, re_hi: Int64, im_lo: Int64, im_hi: Int64, den: Int64) -> ComplexIQ:
+                                                                             ^~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:10:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:203:73: error: unable to locate module 'std'
+def complex_box(re_lo: Int64, re_hi: Int64, im_lo: Int64, im_hi: Int64, den: Int64) -> ComplexIQ:
+                                                                        ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:10:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:128:18: error: use of unknown declaration 'Copyable'
+struct ComplexIQ(Copyable):
+                 ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:10:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:203:88: error: unable to locate module 'std'
+def complex_box(re_lo: Int64, re_hi: Int64, im_lo: Int64, im_hi: Int64, den: Int64) -> ComplexIQ:
+                                                                                       ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:11:
+kernel/finite_exact/enclosure_width.mojo:16:1: error: unable to locate module 'std'
+from finite_exact.closed_q import ComplexIQ
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:11:
+kernel/finite_exact/enclosure_width.mojo:80:32: error: use of unknown declaration 'Bool'
+def enclosure_width_smoke() -> Bool:
+                               ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:11:
+kernel/finite_exact/enclosure_width.mojo:80:32: error: unable to locate module 'std'
+def enclosure_width_smoke() -> Bool:
+                               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:11:
+kernel/finite_exact/enclosure_width.mojo:28:19: error: unable to locate module 'std'
+def sup_magnitude(box: ComplexIQ) -> Q:
+                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:11:
+Imported from kernel/finite_exact/enclosure_width.mojo:17:
+kernel/finite_exact/rat_q.mojo:13:1: error: unable to locate module 'std'
+from finite_exact.bigint_z import BigZ, bigz_add, bigz_canonical_bytes, bigz_div_exact, bigz_eq, bigz_from_i64, bigz_gcd, bigz_is_canonical, bigz_lt, bigz_mul, bigz_neg, bigz_sub, bigz_zero
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:11:
+kernel/finite_exact/enclosure_width.mojo:28:19: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+def sup_magnitude(box: ComplexIQ) -> Q:
+                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:11:
+Imported from kernel/finite_exact/enclosure_width.mojo:17:
+kernel/finite_exact/rat_q.mojo:16:10: error: use of unknown declaration 'Copyable'
+struct Q(Copyable):
+         ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:11:
+kernel/finite_exact/enclosure_width.mojo:28:38: error: unable to locate module 'std'
+def sup_magnitude(box: ComplexIQ) -> Q:
+                                     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:11:
+kernel/finite_exact/enclosure_width.mojo:20:16: error: unable to locate module 'std'
+def sup_radius(box: ComplexIQ) -> Q:
+               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:11:
+kernel/finite_exact/enclosure_width.mojo:20:35: error: unable to locate module 'std'
+def sup_radius(box: ComplexIQ) -> Q:
+                                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:11:
+kernel/finite_exact/enclosure_width.mojo:38:12: error: unable to locate module 'std'
+def within(box: ComplexIQ, bound: Q) -> Bool:
+           ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:11:
+kernel/finite_exact/enclosure_width.mojo:38:28: error: unable to locate module 'std'
+def within(box: ComplexIQ, bound: Q) -> Bool:
+                           ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:11:
+kernel/finite_exact/enclosure_width.mojo:38:41: error: use of unknown declaration 'Bool'
+def within(box: ComplexIQ, bound: Q) -> Bool:
+                                        ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:11:
+kernel/finite_exact/enclosure_width.mojo:38:41: error: unable to locate module 'std'
+def within(box: ComplexIQ, bound: Q) -> Bool:
+                                        ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:11:
+Imported from kernel/finite_exact/enclosure_width.mojo:17:
+kernel/finite_exact/rat_q.mojo:211:29: error: use of unknown declaration 'Bool'
+def bigq_storage_smoke() -> Bool:
+                            ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:11:
+Imported from kernel/finite_exact/enclosure_width.mojo:17:
+kernel/finite_exact/rat_q.mojo:211:29: error: unable to locate module 'std'
+def bigq_storage_smoke() -> Bool:
+                            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:11:
+Imported from kernel/finite_exact/enclosure_width.mojo:17:
+kernel/finite_exact/rat_q.mojo:229:31: error: use of unknown declaration 'Bool'
+def demo_q_normalization() -> Bool:
+                              ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:11:
+Imported from kernel/finite_exact/enclosure_width.mojo:17:
+kernel/finite_exact/rat_q.mojo:229:31: error: unable to locate module 'std'
+def demo_q_normalization() -> Bool:
+                              ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:11:
+Imported from kernel/finite_exact/enclosure_width.mojo:17:
+kernel/finite_exact/rat_q.mojo:233:23: error: use of unknown declaration 'Bool'
+def demo_q_order() -> Bool:
+                      ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:11:
+Imported from kernel/finite_exact/enclosure_width.mojo:17:
+kernel/finite_exact/rat_q.mojo:233:23: error: unable to locate module 'std'
+def demo_q_order() -> Bool:
+                      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:11:
+Imported from kernel/finite_exact/enclosure_width.mojo:17:
+kernel/finite_exact/rat_q.mojo:237:31: error: use of unknown declaration 'Bool'
+def q_cancellation_smoke() -> Bool:
+                              ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:11:
+Imported from kernel/finite_exact/enclosure_width.mojo:17:
+kernel/finite_exact/rat_q.mojo:237:31: error: unable to locate module 'std'
+def q_cancellation_smoke() -> Bool:
+                              ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:15:35: error: use of unknown declaration 'Bool'
+def test_rational_field_laws() -> Bool:
+                                  ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:15:35: error: unable to locate module 'std'
+def test_rational_field_laws() -> Bool:
+                                  ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:30:48: error: use of unknown declaration 'Bool'
+def test_rejection_is_explicit_and_sticky() -> Bool:
+                                               ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:30:48: error: unable to locate module 'std'
+def test_rejection_is_explicit_and_sticky() -> Bool:
+                                               ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:41:46: error: use of unknown declaration 'Bool'
+def test_a_rejected_box_is_not_measured() -> Bool:
+                                             ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:41:46: error: unable to locate module 'std'
+def test_a_rejected_box_is_not_measured() -> Bool:
+                                             ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:55:18: error: unable to locate module 'std'
+def main() raises:
+                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:55:5: error: unable to locate module 'std'
+def main() raises:
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_finite_exact.mojo:55:9: error: 'builtin' does not refer to a nested package
+def main() raises:
+        ^
+/workspace/scratch/gnr-next.qHyoM1/golden-ratio-normality-research/kernel/.pixi/envs/default/bin/mojo: error: failed to parse the provided Mojo source module

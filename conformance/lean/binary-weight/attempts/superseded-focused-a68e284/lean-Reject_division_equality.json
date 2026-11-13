@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "/workspace/scratch/gnr-next.qHyoM1/toolchains/lean-4.34.0-rc2-linux/bin/lean",
+    "-j1",
+    "--root=/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-acceptance",
+    "-DautoImplicit=false",
+    "-DwarningAsError=true",
+    "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-acceptance/Reject_division_equality.lean"
+  ],
+  "cwd": "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight",
+  "elapsed_seconds": 4.23473789000127,
+  "expected_returncode": 1,
+  "label": "lean-Reject_division_equality",
+  "returncode": 1,
+  "stderr": "",
+  "stdout": "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-acceptance/Reject_division_equality.lean:3:58: error: Tactic `decide` proved that the proposition\n  binaryWeight (7 / 2 ^ 2) = binaryWeight 7\nis false\n",
+  "timeout_seconds": 900
+}

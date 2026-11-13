@@ -1,0 +1,5 @@
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:15:
+kernel/parallel_fold/map_fold.mojo:28:6: error: unable to locate module 'max'
+from max.algorithm import parallelize
+     ^
+mojo: error: failed to parse the provided Mojo source module

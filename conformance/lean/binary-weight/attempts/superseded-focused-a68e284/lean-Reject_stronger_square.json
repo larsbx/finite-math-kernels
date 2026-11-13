@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "/workspace/scratch/gnr-next.qHyoM1/toolchains/lean-4.34.0-rc2-linux/bin/lean",
+    "-j1",
+    "--root=/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-acceptance",
+    "-DautoImplicit=false",
+    "-DwarningAsError=true",
+    "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-acceptance/Reject_stronger_square.lean"
+  ],
+  "cwd": "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight",
+  "elapsed_seconds": 3.3420675699999265,
+  "expected_returncode": 1,
+  "label": "lean-Reject_stronger_square",
+  "returncode": 1,
+  "stderr": "",
+  "stdout": "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-acceptance/Reject_stronger_square.lean:3:62: error: Tactic `decide` proved that the proposition\n  2 * binaryWeight (5 ^ 2) \u2264 binaryWeight 5 ^ 2\nis false\n",
+  "timeout_seconds": 900
+}

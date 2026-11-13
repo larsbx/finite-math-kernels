@@ -1,0 +1,15 @@
+[PASS] test_reduction_is_exact_and_unbounded
+[PASS] test_doubling_is_explicitly_mod_one
+[PASS] test_modular_inverse_and_centered_representative
+[PASS] test_continued_fraction_and_convergents
+[PASS] test_farey_determinant_is_exact
+5 rational_dynamics Mojo tests passed.
+[PASS] test_closed_forms_agree_with_the_orbit
+[PASS] test_order_of_two_is_exact_and_uncapped
+[PASS] test_carmichael_lambda
+[PASS] test_types_past_the_fixed_width_cap
+[PASS] test_binary_digits_and_blocks
+[PASS] test_exact_type_count_is_the_enumeration
+[PASS] test_moebius_values_and_refusal
+[PASS] test_bigz_to_int_refuses_rather_than_truncates
+8 doubling Mojo tests passed.

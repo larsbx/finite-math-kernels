@@ -1,0 +1,14 @@
+{
+  "argv": [
+    "/workspace/scratch/gnr-next.qHyoM1/toolchains/lean-4.34.0-rc2-linux/bin/lean",
+    "--version"
+  ],
+  "cwd": "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight",
+  "elapsed_seconds": 0.1412750990020868,
+  "expected_returncode": 0,
+  "label": "lean-version",
+  "returncode": 0,
+  "stderr": "",
+  "stdout": "Lean (version 4.34.0-rc2, x86_64-unknown-linux-gnu, commit 6a10ac8c22beadecabdbb0919c2b50214762f91d, Release)\n",
+  "timeout_seconds": 900
+}

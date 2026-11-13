@@ -1,0 +1,7 @@
+[PASS] test_moduli_and_residues
+[PASS] test_ring_operations
+[PASS] test_distinct_degree_factorization
+[PASS] test_frobenius_power_refuses_a_negative_count
+[PASS] test_irreducibility_certificate
+[PASS] test_hensel_step
+6 polynomial_fp Mojo tests passed.

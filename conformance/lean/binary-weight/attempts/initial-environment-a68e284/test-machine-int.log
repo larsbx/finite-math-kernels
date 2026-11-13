@@ -1,0 +1,444 @@
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:1:1: error: unable to locate module 'std'
+"""Machine-integer helpers of finite_exact: gcd, checked arithmetic, base ten.
+^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:1:1: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+"""Machine-integer helpers of finite_exact: gcd, checked arithmetic, base ten.
+^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:10:6: error: unable to locate module 'std'
+from std.testing import assert_equal, assert_true
+     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:12:
+kernel/finite_exact/__init__.mojo:34:1: error: unable to locate module 'std'
+
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:12:
+kernel/finite_exact/checked_int.mojo:1:1: error: unable to locate module 'std'
+"""Machine-integer arithmetic that refuses rather than wraps.
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:12:
+kernel/finite_exact/checked_int.mojo:15:20: error: use of unknown declaration 'Int'
+def checked_abs(x: Int) raises -> Int:
+                   ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:12:
+kernel/finite_exact/checked_int.mojo:15:17: error: unable to locate module 'std'
+def checked_abs(x: Int) raises -> Int:
+                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:12:
+kernel/finite_exact/checked_int.mojo:15:35: error: use of unknown declaration 'Int'
+def checked_abs(x: Int) raises -> Int:
+                                  ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:12:
+kernel/finite_exact/checked_int.mojo:15:35: error: unable to locate module 'std'
+def checked_abs(x: Int) raises -> Int:
+                                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:12:
+kernel/finite_exact/checked_int.mojo:27:20: error: use of unknown declaration 'Int'
+def checked_add(a: Int, b: Int) raises -> Int:
+                   ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:12:
+kernel/finite_exact/checked_int.mojo:27:17: error: unable to locate module 'std'
+def checked_add(a: Int, b: Int) raises -> Int:
+                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:12:
+kernel/finite_exact/checked_int.mojo:27:28: error: use of unknown declaration 'Int'
+def checked_add(a: Int, b: Int) raises -> Int:
+                           ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:12:
+kernel/finite_exact/checked_int.mojo:27:25: error: unable to locate module 'std'
+def checked_add(a: Int, b: Int) raises -> Int:
+                        ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:12:
+kernel/finite_exact/checked_int.mojo:27:43: error: use of unknown declaration 'Int'
+def checked_add(a: Int, b: Int) raises -> Int:
+                                          ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:12:
+kernel/finite_exact/checked_int.mojo:27:43: error: unable to locate module 'std'
+def checked_add(a: Int, b: Int) raises -> Int:
+                                          ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:12:
+kernel/finite_exact/checked_int.mojo:43:20: error: use of unknown declaration 'Int'
+def checked_mul(a: Int, b: Int) raises -> Int:
+                   ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:12:
+kernel/finite_exact/checked_int.mojo:43:17: error: unable to locate module 'std'
+def checked_mul(a: Int, b: Int) raises -> Int:
+                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:12:
+kernel/finite_exact/checked_int.mojo:43:28: error: use of unknown declaration 'Int'
+def checked_mul(a: Int, b: Int) raises -> Int:
+                           ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:12:
+kernel/finite_exact/checked_int.mojo:43:25: error: unable to locate module 'std'
+def checked_mul(a: Int, b: Int) raises -> Int:
+                        ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:12:
+kernel/finite_exact/checked_int.mojo:43:43: error: use of unknown declaration 'Int'
+def checked_mul(a: Int, b: Int) raises -> Int:
+                                          ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:12:
+kernel/finite_exact/checked_int.mojo:43:43: error: unable to locate module 'std'
+def checked_mul(a: Int, b: Int) raises -> Int:
+                                          ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:12:
+kernel/finite_exact/checked_int.mojo:21:20: error: use of unknown declaration 'Int'
+def checked_neg(a: Int) raises -> Int:
+                   ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:12:
+kernel/finite_exact/checked_int.mojo:21:17: error: unable to locate module 'std'
+def checked_neg(a: Int) raises -> Int:
+                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:12:
+kernel/finite_exact/checked_int.mojo:21:35: error: use of unknown declaration 'Int'
+def checked_neg(a: Int) raises -> Int:
+                                  ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:12:
+kernel/finite_exact/checked_int.mojo:21:35: error: unable to locate module 'std'
+def checked_neg(a: Int) raises -> Int:
+                                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:12:
+kernel/finite_exact/checked_int.mojo:35:20: error: use of unknown declaration 'Int'
+def checked_sub(a: Int, b: Int) raises -> Int:
+                   ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:12:
+kernel/finite_exact/checked_int.mojo:35:17: error: unable to locate module 'std'
+def checked_sub(a: Int, b: Int) raises -> Int:
+                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:12:
+kernel/finite_exact/checked_int.mojo:35:28: error: use of unknown declaration 'Int'
+def checked_sub(a: Int, b: Int) raises -> Int:
+                           ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:12:
+kernel/finite_exact/checked_int.mojo:35:25: error: unable to locate module 'std'
+def checked_sub(a: Int, b: Int) raises -> Int:
+                        ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:12:
+kernel/finite_exact/checked_int.mojo:35:43: error: use of unknown declaration 'Int'
+def checked_sub(a: Int, b: Int) raises -> Int:
+                                          ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:12:
+kernel/finite_exact/checked_int.mojo:35:43: error: unable to locate module 'std'
+def checked_sub(a: Int, b: Int) raises -> Int:
+                                          ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:13:
+kernel/finite_exact/exact_decimal.mojo:15:1: error: unable to locate module 'std'
+from finite_exact.bigint_z import BigZ
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:12:
+kernel/finite_exact/checked_int.mojo:35:43: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+def checked_sub(a: Int, b: Int) raises -> Int:
+                                          ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:13:
+kernel/finite_exact/exact_decimal.mojo:48:30: error: use of unknown declaration 'Bool'
+def exact_decimal_smoke() -> Bool:
+                             ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:13:
+kernel/finite_exact/exact_decimal.mojo:48:30: error: unable to locate module 'std'
+def exact_decimal_smoke() -> Bool:
+                             ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:14:
+kernel/finite_exact/integer_gcd.mojo:12:1: error: unable to locate module 'std'
+def gcd_int(a0: Int, b0: Int) raises -> Int:
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:14:
+kernel/finite_exact/integer_gcd.mojo:33:17: error: use of unknown declaration 'Int64'
+def gcd_i64(a0: Int64, b0: Int64) raises -> Int64:
+                ^~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:14:
+kernel/finite_exact/integer_gcd.mojo:33:13: error: unable to locate module 'std'
+def gcd_i64(a0: Int64, b0: Int64) raises -> Int64:
+            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:14:
+kernel/finite_exact/integer_gcd.mojo:33:28: error: use of unknown declaration 'Int64'
+def gcd_i64(a0: Int64, b0: Int64) raises -> Int64:
+                           ^~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:14:
+kernel/finite_exact/integer_gcd.mojo:33:24: error: unable to locate module 'std'
+def gcd_i64(a0: Int64, b0: Int64) raises -> Int64:
+                       ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:14:
+kernel/finite_exact/integer_gcd.mojo:33:45: error: use of unknown declaration 'Int64'
+def gcd_i64(a0: Int64, b0: Int64) raises -> Int64:
+                                            ^~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:14:
+kernel/finite_exact/integer_gcd.mojo:33:45: error: unable to locate module 'std'
+def gcd_i64(a0: Int64, b0: Int64) raises -> Int64:
+                                            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:14:
+kernel/finite_exact/integer_gcd.mojo:52:23: error: use of unknown declaration 'Int64'
+def gcd_i64_or_one(a: Int64, b: Int64) raises -> Int64:
+                      ^~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:14:
+kernel/finite_exact/integer_gcd.mojo:52:20: error: unable to locate module 'std'
+def gcd_i64_or_one(a: Int64, b: Int64) raises -> Int64:
+                   ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:14:
+kernel/finite_exact/integer_gcd.mojo:52:33: error: use of unknown declaration 'Int64'
+def gcd_i64_or_one(a: Int64, b: Int64) raises -> Int64:
+                                ^~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:14:
+kernel/finite_exact/integer_gcd.mojo:52:30: error: unable to locate module 'std'
+def gcd_i64_or_one(a: Int64, b: Int64) raises -> Int64:
+                             ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:14:
+kernel/finite_exact/integer_gcd.mojo:52:50: error: use of unknown declaration 'Int64'
+def gcd_i64_or_one(a: Int64, b: Int64) raises -> Int64:
+                                                 ^~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:14:
+kernel/finite_exact/integer_gcd.mojo:52:50: error: unable to locate module 'std'
+def gcd_i64_or_one(a: Int64, b: Int64) raises -> Int64:
+                                                 ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:14:
+kernel/finite_exact/integer_gcd.mojo:12:17: error: use of unknown declaration 'Int'
+def gcd_int(a0: Int, b0: Int) raises -> Int:
+                ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:14:
+kernel/finite_exact/integer_gcd.mojo:12:13: error: unable to locate module 'std'
+def gcd_int(a0: Int, b0: Int) raises -> Int:
+            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:14:
+kernel/finite_exact/integer_gcd.mojo:12:26: error: use of unknown declaration 'Int'
+def gcd_int(a0: Int, b0: Int) raises -> Int:
+                         ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:14:
+kernel/finite_exact/integer_gcd.mojo:12:22: error: unable to locate module 'std'
+def gcd_int(a0: Int, b0: Int) raises -> Int:
+                     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:14:
+kernel/finite_exact/integer_gcd.mojo:12:41: error: use of unknown declaration 'Int'
+def gcd_int(a0: Int, b0: Int) raises -> Int:
+                                        ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:14:
+kernel/finite_exact/integer_gcd.mojo:12:41: error: unable to locate module 'std'
+def gcd_int(a0: Int, b0: Int) raises -> Int:
+                                        ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:15:
+kernel/finite_linear_algebra/__init__.mojo:37:1: error: unable to locate module 'std'
+
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:15:
+kernel/finite_linear_algebra/integer_vector.mojo:1:1: error: unable to locate module 'std'
+"""Fixed-dimension integer vector arithmetic: the canonical kernel.
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:15:
+kernel/finite_linear_algebra/integer_vector.mojo:94:15: error: use of unknown declaration 'List'
+def matvec(m: List[List[Int]], v: List[Int]) raises -> List[Int]:
+              ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:15:
+kernel/finite_linear_algebra/integer_vector.mojo:94:12: error: unable to locate module 'std'
+def matvec(m: List[List[Int]], v: List[Int]) raises -> List[Int]:
+           ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:15:
+kernel/finite_linear_algebra/integer_vector.mojo:94:35: error: use of unknown declaration 'List'
+def matvec(m: List[List[Int]], v: List[Int]) raises -> List[Int]:
+                                  ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:15:
+kernel/finite_linear_algebra/integer_vector.mojo:94:32: error: unable to locate module 'std'
+def matvec(m: List[List[Int]], v: List[Int]) raises -> List[Int]:
+                               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:15:
+kernel/finite_linear_algebra/integer_vector.mojo:94:56: error: use of unknown declaration 'List'
+def matvec(m: List[List[Int]], v: List[Int]) raises -> List[Int]:
+                                                       ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:15:
+kernel/finite_linear_algebra/integer_vector.mojo:94:56: error: unable to locate module 'std'
+def matvec(m: List[List[Int]], v: List[Int]) raises -> List[Int]:
+                                                       ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:18:19: error: use of unknown declaration 'Int'
+def raises_add(a: Int, b: Int) -> Bool:
+                  ^~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:18:16: error: unable to locate module 'std'
+def raises_add(a: Int, b: Int) -> Bool:
+               ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:18:27: error: use of unknown declaration 'Int'
+def raises_add(a: Int, b: Int) -> Bool:
+                          ^~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:18:24: error: unable to locate module 'std'
+def raises_add(a: Int, b: Int) -> Bool:
+                       ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:18:35: error: use of unknown declaration 'Bool'
+def raises_add(a: Int, b: Int) -> Bool:
+                                  ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:18:35: error: unable to locate module 'std'
+def raises_add(a: Int, b: Int) -> Bool:
+                                  ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:26:19: error: use of unknown declaration 'Int'
+def raises_sub(a: Int, b: Int) -> Bool:
+                  ^~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:26:16: error: unable to locate module 'std'
+def raises_sub(a: Int, b: Int) -> Bool:
+               ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:26:27: error: use of unknown declaration 'Int'
+def raises_sub(a: Int, b: Int) -> Bool:
+                          ^~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:26:24: error: unable to locate module 'std'
+def raises_sub(a: Int, b: Int) -> Bool:
+                       ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:26:35: error: use of unknown declaration 'Bool'
+def raises_sub(a: Int, b: Int) -> Bool:
+                                  ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:26:35: error: unable to locate module 'std'
+def raises_sub(a: Int, b: Int) -> Bool:
+                                  ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:34:19: error: use of unknown declaration 'Int'
+def raises_mul(a: Int, b: Int) -> Bool:
+                  ^~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:34:16: error: unable to locate module 'std'
+def raises_mul(a: Int, b: Int) -> Bool:
+               ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:34:27: error: use of unknown declaration 'Int'
+def raises_mul(a: Int, b: Int) -> Bool:
+                          ^~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:34:24: error: unable to locate module 'std'
+def raises_mul(a: Int, b: Int) -> Bool:
+                       ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:34:35: error: use of unknown declaration 'Bool'
+def raises_mul(a: Int, b: Int) -> Bool:
+                                  ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:34:35: error: unable to locate module 'std'
+def raises_mul(a: Int, b: Int) -> Bool:
+                                  ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:42:19: error: use of unknown declaration 'Int'
+def raises_neg(a: Int) -> Bool:
+                  ^~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:42:16: error: unable to locate module 'std'
+def raises_neg(a: Int) -> Bool:
+               ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:42:27: error: use of unknown declaration 'Bool'
+def raises_neg(a: Int) -> Bool:
+                          ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:42:27: error: unable to locate module 'std'
+def raises_neg(a: Int) -> Bool:
+                          ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:50:19: error: use of unknown declaration 'Int'
+def raises_abs(a: Int) -> Bool:
+                  ^~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:50:16: error: unable to locate module 'std'
+def raises_abs(a: Int) -> Bool:
+               ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:50:27: error: use of unknown declaration 'Bool'
+def raises_abs(a: Int) -> Bool:
+                          ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:50:27: error: unable to locate module 'std'
+def raises_abs(a: Int) -> Bool:
+                          ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:58:19: error: use of unknown declaration 'Int'
+def raises_gcd(a: Int, b: Int) -> Bool:
+                  ^~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:58:16: error: unable to locate module 'std'
+def raises_gcd(a: Int, b: Int) -> Bool:
+               ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:58:27: error: use of unknown declaration 'Int'
+def raises_gcd(a: Int, b: Int) -> Bool:
+                          ^~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:58:24: error: unable to locate module 'std'
+def raises_gcd(a: Int, b: Int) -> Bool:
+                       ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:58:35: error: use of unknown declaration 'Bool'
+def raises_gcd(a: Int, b: Int) -> Bool:
+                                  ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:58:35: error: unable to locate module 'std'
+def raises_gcd(a: Int, b: Int) -> Bool:
+                                  ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:66:23: error: use of unknown declaration 'Int64'
+def raises_gcd_i64(a: Int64, b: Int64) -> Bool:
+                      ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:66:20: error: unable to locate module 'std'
+def raises_gcd_i64(a: Int64, b: Int64) -> Bool:
+                   ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:66:33: error: use of unknown declaration 'Int64'
+def raises_gcd_i64(a: Int64, b: Int64) -> Bool:
+                                ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:66:30: error: unable to locate module 'std'
+def raises_gcd_i64(a: Int64, b: Int64) -> Bool:
+                             ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:66:43: error: use of unknown declaration 'Bool'
+def raises_gcd_i64(a: Int64, b: Int64) -> Bool:
+                                          ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:66:43: error: unable to locate module 'std'
+def raises_gcd_i64(a: Int64, b: Int64) -> Bool:
+                                          ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:74:55: error: unable to locate module 'std'
+def test_checked_arithmetic_is_exact_in_range() raises:
+                                                      ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:82:60: error: unable to locate module 'std'
+def test_checked_arithmetic_refuses_past_the_range() raises:
+                                                           ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:96:51: error: unable to locate module 'std'
+def test_gcd_ignores_signs_and_fixes_zero() raises:
+                                                  ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:106:52: error: unable to locate module 'std'
+def test_products_at_the_negative_boundary() raises:
+                                                   ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:114:12: error: use of unknown declaration 'List'
+    var m: List[List[Int]] = [[1]]
+           ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:115:12: error: use of unknown declaration 'List'
+    var v: List[Int] = [Int.MIN]
+           ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:119:36: error: unable to locate module 'std'
+def test_gcd_signed_minima() raises:
+                                   ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:132:19: error: unable to locate module 'std'
+    var refused = False
+                  ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:133:5: error: unable to locate module 'std'
+    try:
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:140:45: error: unable to locate module 'std'
+def test_decimal_rendering_is_exact() raises:
+                                            ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:144:18: error: unable to locate module 'std'
+def main() raises:
+                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:144:5: error: unable to locate module 'std'
+def main() raises:
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:144:9: error: 'builtin' does not refer to a nested package
+def main() raises:
+        ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:145:5: error: unable to locate module 'std'
+    test_checked_arithmetic_is_exact_in_range()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:146:5: error: use of unknown declaration 'print'
+    print("[PASS] test_checked_arithmetic_is_exact_in_range")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:147:5: error: unable to locate module 'std'
+    test_checked_arithmetic_refuses_past_the_range()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:148:5: error: use of unknown declaration 'print'
+    print("[PASS] test_checked_arithmetic_refuses_past_the_range")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:149:5: error: unable to locate module 'std'
+    test_gcd_ignores_signs_and_fixes_zero()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:150:5: error: use of unknown declaration 'print'
+    print("[PASS] test_gcd_ignores_signs_and_fixes_zero")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:151:5: error: unable to locate module 'std'
+    test_decimal_rendering_is_exact()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:152:5: error: use of unknown declaration 'print'
+    print("[PASS] test_decimal_rendering_is_exact")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:153:5: error: unable to locate module 'std'
+    test_products_at_the_negative_boundary()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:154:5: error: use of unknown declaration 'print'
+    print("[PASS] test_products_at_the_negative_boundary")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:155:5: error: unable to locate module 'std'
+    test_gcd_signed_minima()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:156:5: error: use of unknown declaration 'print'
+    print("[PASS] test_gcd_signed_minima")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_machine_int.mojo:157:5: error: use of unknown declaration 'print'
+    print("6 machine-integer tests passed.")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/golden-ratio-normality-research/kernel/.pixi/envs/default/bin/mojo: error: failed to parse the provided Mojo source module

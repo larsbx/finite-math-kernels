@@ -1,0 +1,188 @@
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:1:1: error: unable to locate module 'std'
+"""Executable laws for the parallel_fold package.
+^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:1:1: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+"""Executable laws for the parallel_fold package.
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:15:
+kernel/parallel_fold/__init__.mojo:10:1: error: unable to locate module 'std'
+
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:15:
+kernel/parallel_fold/map_fold.mojo:28:1: error: unable to locate module 'std'
+from max.algorithm import parallelize
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:15:
+kernel/parallel_fold/map_fold.mojo:32:8: error: use of unknown declaration 'Copyable'
+    T: Copyable & Deinitable,
+       ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:15:
+kernel/parallel_fold/map_fold.mojo:32:19: error: use of unknown declaration 'Deinitable'
+    T: Copyable & Deinitable,
+                  ^~~~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:15:
+kernel/parallel_fold/map_fold.mojo:33:16: error: use of unknown declaration 'Int'
+    MapFn: def(Int) -> T,
+               ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:15:
+kernel/parallel_fold/map_fold.mojo:33:16: error: unable to locate module 'std'
+    MapFn: def(Int) -> T,
+               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:15:
+kernel/parallel_fold/map_fold.mojo:33:24: error: unable to locate module 'std'
+    MapFn: def(Int) -> T,
+                       ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:15:
+kernel/parallel_fold/map_fold.mojo:34:20: error: unable to locate module 'std'
+    CombineFn: def(T, T) -> T,
+                   ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:15:
+kernel/parallel_fold/map_fold.mojo:34:23: error: unable to locate module 'std'
+    CombineFn: def(T, T) -> T,
+                      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:15:
+kernel/parallel_fold/map_fold.mojo:34:29: error: unable to locate module 'std'
+    CombineFn: def(T, T) -> T,
+                            ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:17:18: error: unable to locate module 'std'
+comptime MAX_N = 40
+                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:18:24: error: unable to locate module 'std'
+comptime MAX_WORKERS = 9
+                       ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:21:18: error: use of unknown declaration 'Int'
+def singleton(i: Int) -> List[Int]:
+                 ^~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:21:15: error: unable to locate module 'std'
+def singleton(i: Int) -> List[Int]:
+              ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:21:26: error: use of unknown declaration 'List'
+def singleton(i: Int) -> List[Int]:
+                         ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:21:26: error: unable to locate module 'std'
+def singleton(i: Int) -> List[Int]:
+                         ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:25:15: error: use of unknown declaration 'List'
+def concat(a: List[Int], b: List[Int]) -> List[Int]:
+              ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:25:12: error: unable to locate module 'std'
+def concat(a: List[Int], b: List[Int]) -> List[Int]:
+           ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:25:29: error: use of unknown declaration 'List'
+def concat(a: List[Int], b: List[Int]) -> List[Int]:
+                            ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:25:26: error: unable to locate module 'std'
+def concat(a: List[Int], b: List[Int]) -> List[Int]:
+                         ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:25:43: error: use of unknown declaration 'List'
+def concat(a: List[Int], b: List[Int]) -> List[Int]:
+                                          ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:25:43: error: unable to locate module 'std'
+def concat(a: List[Int], b: List[Int]) -> List[Int]:
+                                          ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:31:15: error: use of unknown declaration 'Int'
+def square(i: Int) -> Int:
+              ^~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:31:12: error: unable to locate module 'std'
+def square(i: Int) -> Int:
+           ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:31:23: error: use of unknown declaration 'Int'
+def square(i: Int) -> Int:
+                      ^~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:31:23: error: unable to locate module 'std'
+def square(i: Int) -> Int:
+                      ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:35:12: error: use of unknown declaration 'Int'
+def add(a: Int, b: Int) -> Int:
+           ^~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:35:9: error: unable to locate module 'std'
+def add(a: Int, b: Int) -> Int:
+        ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:35:20: error: use of unknown declaration 'Int'
+def add(a: Int, b: Int) -> Int:
+                   ^~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:35:17: error: unable to locate module 'std'
+def add(a: Int, b: Int) -> Int:
+                ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:35:28: error: use of unknown declaration 'Int'
+def add(a: Int, b: Int) -> Int:
+                           ^~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:35:28: error: unable to locate module 'std'
+def add(a: Int, b: Int) -> Int:
+                           ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:39:18: error: use of unknown declaration 'List'
+def is_range(xs: List[Int], n: Int) -> Bool:
+                 ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:39:14: error: unable to locate module 'std'
+def is_range(xs: List[Int], n: Int) -> Bool:
+             ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:39:32: error: use of unknown declaration 'Int'
+def is_range(xs: List[Int], n: Int) -> Bool:
+                               ^~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:39:29: error: unable to locate module 'std'
+def is_range(xs: List[Int], n: Int) -> Bool:
+                            ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:39:40: error: use of unknown declaration 'Bool'
+def is_range(xs: List[Int], n: Int) -> Bool:
+                                       ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:39:40: error: unable to locate module 'std'
+def is_range(xs: List[Int], n: Int) -> Bool:
+                                       ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:48:70: error: use of unknown declaration 'Bool'
+def test_concatenation_returns_every_index_once_in_order() raises -> Bool:
+                                                                     ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:48:70: error: unable to locate module 'std'
+def test_concatenation_returns_every_index_once_in_order() raises -> Bool:
+                                                                     ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:59:55: error: use of unknown declaration 'Bool'
+def test_a_large_uneven_split_keeps_order() raises -> Bool:
+                                                      ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:59:55: error: unable to locate module 'std'
+def test_a_large_uneven_split_keeps_order() raises -> Bool:
+                                                      ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:64:61: error: use of unknown declaration 'Bool'
+def test_sum_of_squares_matches_the_closed_form() raises -> Bool:
+                                                            ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:64:61: error: unable to locate module 'std'
+def test_sum_of_squares_matches_the_closed_form() raises -> Bool:
+                                                            ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:73:53: error: use of unknown declaration 'Bool'
+def test_an_empty_range_is_the_identity() raises -> Bool:
+                                                    ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:73:53: error: unable to locate module 'std'
+def test_an_empty_range_is_the_identity() raises -> Bool:
+                                                    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:80:22: error: use of unknown declaration 'Int'
+def rejects(workers: Int) -> Bool:
+                     ^~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:80:13: error: unable to locate module 'std'
+def rejects(workers: Int) -> Bool:
+            ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:80:30: error: use of unknown declaration 'Bool'
+def rejects(workers: Int) -> Bool:
+                             ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:80:30: error: unable to locate module 'std'
+def rejects(workers: Int) -> Bool:
+                             ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:88:49: error: use of unknown declaration 'Bool'
+def test_fewer_than_one_worker_is_rejected() -> Bool:
+                                                ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:88:49: error: unable to locate module 'std'
+def test_fewer_than_one_worker_is_rejected() -> Bool:
+                                                ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:93:18: error: unable to locate module 'std'
+def main() raises:
+                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:93:5: error: unable to locate module 'std'
+def main() raises:
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:93:9: error: 'builtin' does not refer to a nested package
+def main() raises:
+        ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/parallel_fold/test_map_fold.mojo:94:18: error: use of unknown declaration 'List'
+    var failed = List[String]()
+                 ^~~~
+/workspace/scratch/gnr-next.qHyoM1/golden-ratio-normality-research/kernel/.pixi/envs/default/bin/mojo: error: failed to parse the provided Mojo source module

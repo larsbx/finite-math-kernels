@@ -1,0 +1,334 @@
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:1:1: error: unable to locate module 'std'
+"""Executable laws for the projective package.
+^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:1:1: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+"""Executable laws for the projective package.
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:12:
+kernel/finite_exact/__init__.mojo:34:1: error: unable to locate module 'std'
+
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:12:
+kernel/finite_exact/closed_interval.mojo:1:1: error: unable to locate module 'std'
+"""Stable public entry point for closed exact-rational intervals."""
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:12:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:9:1: error: unable to locate module 'std'
+from finite_exact.rat_q import Q, q_min, q_max, q_rejected
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:12:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:128:18: error: use of unknown declaration 'Copyable'
+struct ComplexIQ(Copyable):
+                 ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:12:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:32:11: error: use of unknown declaration 'Copyable'
+struct IQ(Copyable):
+          ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:13:
+kernel/finite_exact/rat_q.mojo:13:1: error: unable to locate module 'std'
+from finite_exact.bigint_z import BigZ, bigz_add, bigz_canonical_bytes, bigz_div_exact, bigz_eq, bigz_from_i64, bigz_gcd, bigz_is_canonical, bigz_lt, bigz_mul, bigz_neg, bigz_sub, bigz_zero
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:13:
+kernel/finite_exact/rat_q.mojo:16:10: error: use of unknown declaration 'Copyable'
+struct Q(Copyable):
+         ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:14:
+kernel/projective/__init__.mojo:23:1: error: unable to locate module 'std'
+
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:15:
+kernel/projective/chart.mojo:11:1: error: unable to locate module 'std'
+from finite_exact.closed_interval import ComplexIQ, IQ, IQBoolResult
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:15:
+Imported from kernel/projective/chart.mojo:13:
+kernel/projective/homogeneous.mojo:6:1: error: unable to locate module 'std'
+from finite_exact.closed_interval import ComplexIQ, IQ, IQBoolResult
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:15:
+Imported from kernel/projective/chart.mojo:13:
+kernel/projective/homogeneous.mojo:31:20: error: use of unknown declaration 'Copyable'
+struct Homogeneous(Copyable):
+                   ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:15:
+kernel/projective/chart.mojo:32:18: error: unable to locate module 'std'
+def affine_value(p: Homogeneous) -> ComplexIQ:
+                 ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:15:
+kernel/projective/chart.mojo:32:37: error: unable to locate module 'std'
+def affine_value(p: Homogeneous) -> ComplexIQ:
+                                    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:15:
+kernel/projective/chart.mojo:40:23: error: unable to locate module 'std'
+def chart_at_infinity(p: Homogeneous) -> ComplexIQ:
+                      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:15:
+kernel/projective/chart.mojo:40:42: error: unable to locate module 'std'
+def chart_at_infinity(p: Homogeneous) -> ComplexIQ:
+                                         ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:15:
+kernel/projective/chart.mojo:53:16: error: unable to locate module 'std'
+def chart_step(u: ComplexIQ, c: ComplexIQ) -> ComplexIQ:
+               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:15:
+kernel/projective/chart.mojo:53:30: error: unable to locate module 'std'
+def chart_step(u: ComplexIQ, c: ComplexIQ) -> ComplexIQ:
+                             ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:15:
+kernel/projective/chart.mojo:53:47: error: unable to locate module 'std'
+def chart_step(u: ComplexIQ, c: ComplexIQ) -> ComplexIQ:
+                                              ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:15:
+kernel/projective/chart.mojo:16:24: error: unable to locate module 'std'
+def complex_reciprocal(z: ComplexIQ) -> ComplexIQ:
+                       ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:15:
+kernel/projective/chart.mojo:16:41: error: unable to locate module 'std'
+def complex_reciprocal(z: ComplexIQ) -> ComplexIQ:
+                                        ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:15:
+kernel/projective/chart.mojo:75:21: error: unable to locate module 'std'
+def in_affine_chart(p: Homogeneous) -> IQBoolResult:
+                    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:12:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:12:21: error: use of unknown declaration 'Copyable'
+struct IQBoolResult(Copyable):
+                    ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:15:
+kernel/projective/chart.mojo:75:40: error: unable to locate module 'std'
+def in_affine_chart(p: Homogeneous) -> IQBoolResult:
+                                       ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:15:
+kernel/projective/chart.mojo:68:26: error: unable to locate module 'std'
+def in_chart_at_infinity(p: Homogeneous) -> IQBoolResult:
+                         ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:15:
+kernel/projective/chart.mojo:68:45: error: unable to locate module 'std'
+def in_chart_at_infinity(p: Homogeneous) -> IQBoolResult:
+                                            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:15:
+Imported from kernel/projective/chart.mojo:13:
+kernel/projective/homogeneous.mojo:105:17: error: unable to locate module 'std'
+def at_infinity(p: Homogeneous) -> IQBoolResult:
+                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:15:
+Imported from kernel/projective/chart.mojo:13:
+kernel/projective/homogeneous.mojo:105:36: error: unable to locate module 'std'
+def at_infinity(p: Homogeneous) -> IQBoolResult:
+                                   ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:15:
+Imported from kernel/projective/chart.mojo:13:
+kernel/projective/homogeneous.mojo:75:16: error: unable to locate module 'std'
+def degenerate(p: Homogeneous) -> IQBoolResult:
+               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:15:
+Imported from kernel/projective/chart.mojo:13:
+kernel/projective/homogeneous.mojo:75:35: error: unable to locate module 'std'
+def degenerate(p: Homogeneous) -> IQBoolResult:
+                                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:15:
+Imported from kernel/projective/chart.mojo:13:
+kernel/projective/homogeneous.mojo:58:11: error: unable to locate module 'std'
+def embed(z: ComplexIQ) -> Homogeneous:
+          ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:15:
+Imported from kernel/projective/chart.mojo:13:
+kernel/projective/homogeneous.mojo:58:28: error: unable to locate module 'std'
+def embed(z: ComplexIQ) -> Homogeneous:
+                           ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:15:
+Imported from kernel/projective/chart.mojo:13:
+kernel/projective/homogeneous.mojo:49:17: error: unable to locate module 'std'
+def homogeneous(z: ComplexIQ, w: ComplexIQ) -> Homogeneous:
+                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:15:
+Imported from kernel/projective/chart.mojo:13:
+kernel/projective/homogeneous.mojo:49:31: error: unable to locate module 'std'
+def homogeneous(z: ComplexIQ, w: ComplexIQ) -> Homogeneous:
+                              ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:15:
+Imported from kernel/projective/chart.mojo:13:
+kernel/projective/homogeneous.mojo:49:48: error: unable to locate module 'std'
+def homogeneous(z: ComplexIQ, w: ComplexIQ) -> Homogeneous:
+                                               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:15:
+Imported from kernel/projective/chart.mojo:13:
+kernel/projective/homogeneous.mojo:53:19: error: unable to locate module 'std'
+def infinity() -> Homogeneous:
+                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:15:
+Imported from kernel/projective/chart.mojo:13:
+kernel/projective/homogeneous.mojo:63:20: error: unable to locate module 'std'
+def quadratic_lift(p: Homogeneous, c: ComplexIQ) -> Homogeneous:
+                   ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:15:
+Imported from kernel/projective/chart.mojo:13:
+kernel/projective/homogeneous.mojo:63:36: error: unable to locate module 'std'
+def quadratic_lift(p: Homogeneous, c: ComplexIQ) -> Homogeneous:
+                                   ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:15:
+Imported from kernel/projective/chart.mojo:13:
+kernel/projective/homogeneous.mojo:63:53: error: unable to locate module 'std'
+def quadratic_lift(p: Homogeneous, c: ComplexIQ) -> Homogeneous:
+                                                    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:15:
+Imported from kernel/projective/chart.mojo:13:
+kernel/projective/homogeneous.mojo:92:23: error: unable to locate module 'std'
+def separated_classes(a: Homogeneous, b: Homogeneous) -> IQBoolResult:
+                      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:15:
+Imported from kernel/projective/chart.mojo:13:
+kernel/projective/homogeneous.mojo:92:39: error: unable to locate module 'std'
+def separated_classes(a: Homogeneous, b: Homogeneous) -> IQBoolResult:
+                                      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:15:
+Imported from kernel/projective/chart.mojo:13:
+kernel/projective/homogeneous.mojo:92:58: error: unable to locate module 'std'
+def separated_classes(a: Homogeneous, b: Homogeneous) -> IQBoolResult:
+                                                         ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:15:
+Imported from kernel/projective/chart.mojo:13:
+kernel/projective/homogeneous.mojo:10:19: error: unable to locate module 'std'
+def unit_box() -> ComplexIQ:
+                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:15:
+Imported from kernel/projective/chart.mojo:13:
+kernel/projective/homogeneous.mojo:15:19: error: unable to locate module 'std'
+def zero_box() -> ComplexIQ:
+                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:34:
+kernel/quadratic_orbit/__init__.mojo:36:1: error: unable to locate module 'std'
+from .escape_criterion import (
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:34:
+kernel/quadratic_orbit/orbit.mojo:6:1: error: unable to locate module 'std'
+from finite_exact.closed_interval import ComplexIQ, IQBoolResult
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:34:
+kernel/quadratic_orbit/orbit.mojo:15:20: error: unable to locate module 'std'
+def quadratic_step(z: ComplexIQ, c: ComplexIQ) -> ComplexIQ:
+                   ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:34:
+kernel/quadratic_orbit/orbit.mojo:15:34: error: unable to locate module 'std'
+def quadratic_step(z: ComplexIQ, c: ComplexIQ) -> ComplexIQ:
+                                 ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:34:
+kernel/quadratic_orbit/orbit.mojo:15:51: error: unable to locate module 'std'
+def quadratic_step(z: ComplexIQ, c: ComplexIQ) -> ComplexIQ:
+                                                  ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:37:19: error: use of unknown declaration 'Int64'
+def point(re_num: Int64, re_den: Int64, im_num: Int64, im_den: Int64) -> ComplexIQ:
+                  ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:37:11: error: unable to locate module 'std'
+def point(re_num: Int64, re_den: Int64, im_num: Int64, im_den: Int64) -> ComplexIQ:
+          ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:37:34: error: use of unknown declaration 'Int64'
+def point(re_num: Int64, re_den: Int64, im_num: Int64, im_den: Int64) -> ComplexIQ:
+                                 ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:37:26: error: unable to locate module 'std'
+def point(re_num: Int64, re_den: Int64, im_num: Int64, im_den: Int64) -> ComplexIQ:
+                         ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:37:49: error: use of unknown declaration 'Int64'
+def point(re_num: Int64, re_den: Int64, im_num: Int64, im_den: Int64) -> ComplexIQ:
+                                                ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:37:41: error: unable to locate module 'std'
+def point(re_num: Int64, re_den: Int64, im_num: Int64, im_den: Int64) -> ComplexIQ:
+                                        ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:37:64: error: use of unknown declaration 'Int64'
+def point(re_num: Int64, re_den: Int64, im_num: Int64, im_den: Int64) -> ComplexIQ:
+                                                               ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:37:56: error: unable to locate module 'std'
+def point(re_num: Int64, re_den: Int64, im_num: Int64, im_den: Int64) -> ComplexIQ:
+                                                       ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:37:74: error: unable to locate module 'std'
+def point(re_num: Int64, re_den: Int64, im_num: Int64, im_den: Int64) -> ComplexIQ:
+                                                                         ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:41:10: error: unable to locate module 'std'
+def same(a: ComplexIQ, b: ComplexIQ) -> Bool:
+         ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:41:24: error: unable to locate module 'std'
+def same(a: ComplexIQ, b: ComplexIQ) -> Bool:
+                       ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:41:41: error: use of unknown declaration 'Bool'
+def same(a: ComplexIQ, b: ComplexIQ) -> Bool:
+                                        ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:41:41: error: unable to locate module 'std'
+def same(a: ComplexIQ, b: ComplexIQ) -> Bool:
+                                        ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:47:48: error: use of unknown declaration 'Bool'
+def test_infinity_is_fixed_by_the_algebra() -> Bool:
+                                               ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:47:48: error: unable to locate module 'std'
+def test_infinity_is_fixed_by_the_algebra() -> Bool:
+                                               ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:55:51: error: use of unknown declaration 'Bool'
+def test_the_lift_agrees_with_the_affine_map() -> Bool:
+                                                  ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:55:51: error: unable to locate module 'std'
+def test_the_lift_agrees_with_the_affine_map() -> Bool:
+                                                  ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:63:42: error: use of unknown declaration 'Bool'
+def test_the_lift_has_no_base_point() -> Bool:
+                                         ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:63:42: error: unable to locate module 'std'
+def test_the_lift_has_no_base_point() -> Bool:
+                                         ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:76:46: error: use of unknown declaration 'Bool'
+def test_scaling_a_pair_keeps_the_class() -> Bool:
+                                             ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:76:46: error: unable to locate module 'std'
+def test_scaling_a_pair_keeps_the_class() -> Bool:
+                                             ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:85:39: error: use of unknown declaration 'Bool'
+def test_the_charts_have_domains() -> Bool:
+                                      ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:85:39: error: unable to locate module 'std'
+def test_the_charts_have_domains() -> Bool:
+                                      ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:99:60: error: use of unknown declaration 'Bool'
+def test_a_box_straddling_the_origin_leaves_the_chart() -> Bool:
+                                                           ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:99:60: error: unable to locate module 'std'
+def test_a_box_straddling_the_origin_leaves_the_chart() -> Bool:
+                                                           ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:107:51: error: use of unknown declaration 'Bool'
+def test_infinity_is_the_origin_of_its_chart() -> Bool:
+                                                  ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:107:51: error: unable to locate module 'std'
+def test_infinity_is_the_origin_of_its_chart() -> Bool:
+                                                  ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:112:50: error: use of unknown declaration 'Bool'
+def test_the_chart_inverts_the_affine_value() -> Bool:
+                                                 ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:112:50: error: unable to locate module 'std'
+def test_the_chart_inverts_the_affine_value() -> Bool:
+                                                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:118:44: error: use of unknown declaration 'Bool'
+def test_the_chart_conjugates_the_map() -> Bool:
+                                           ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:118:44: error: unable to locate module 'std'
+def test_the_chart_conjugates_the_map() -> Bool:
+                                           ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:127:54: error: use of unknown declaration 'Bool'
+def test_zero_is_fixed_in_the_chart_at_infinity() -> Bool:
+                                                     ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:127:54: error: unable to locate module 'std'
+def test_zero_is_fixed_in_the_chart_at_infinity() -> Bool:
+                                                     ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:133:18: error: unable to locate module 'std'
+def main() raises:
+                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:133:5: error: unable to locate module 'std'
+def main() raises:
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective/test_projective.mojo:133:9: error: 'builtin' does not refer to a nested package
+def main() raises:
+        ^
+/workspace/scratch/gnr-next.qHyoM1/golden-ratio-normality-research/kernel/.pixi/envs/default/bin/mojo: error: failed to parse the provided Mojo source module

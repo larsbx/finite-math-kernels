@@ -1,0 +1,4 @@
+[PASS] test_the_specialised_paths_agree_with_the_general_loop
+[PASS] test_a_dimension_that_does_not_agree_is_refused
+[PASS] test_an_intermediate_past_the_machine_range_raises_rather_than_wrapping
+3 integer_vector tests passed.

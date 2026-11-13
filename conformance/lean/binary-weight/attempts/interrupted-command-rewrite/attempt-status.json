@@ -1,0 +1,32 @@
+{
+  "status": "interrupted",
+  "observed_session_exit_code": 130,
+  "reason": "Executable substitution accidentally rewrote a .mojo suffix before a shell separator; stopped this harness and resumed only successful command-equivalent task records in a literal-command run. No repository-source failure is inferred from the malformed commands.",
+  "report_sha256": "03d3cd3df07d33144a7d34488e97a3cbbb74a481d417e80de18ec88f3dbcfd84",
+  "completed_task_count": 20,
+  "artifacts": {
+    "report.json": "03d3cd3df07d33144a7d34488e97a3cbbb74a481d417e80de18ec88f3dbcfd84",
+    "run_repository_gates.py": "4f7f6ea67cc3fd359b51d896b123c4c7a3f1c792918025207607debde6bbabbb",
+    "test-cyclotomic-field.log": "c3c4c15f89d3985d5022b0f70f4c2e06b8a0ff0eb539b28a9417a584bd9046d9",
+    "test-cyclotomic-q.log": "b3dcc7f346040ae18662198df9bb010b9be8edde5b6f239d8bb94ae04f44e86b",
+    "test-facades.log": "fb70f369c208185efc70df4aa699a25a57fac0ab25e0d261a3aa1eed267f71f5",
+    "test-finite-exact.log": "e7252955bc8ba53a4b8318f1902aacbe4ceea1ae8c4f09b015e08da102903c79",
+    "test-finite-polynomial.log": "5b9a79c71711679c758b3b9a773f9da2e6b04ea92bdbcea558806f7db4aa1eb0",
+    "test-integer-module.log": "0b73e5fee9168e34db25851f205e75506f23438a2d8a9d13cd2671299f5846bc",
+    "test-interval.log": "b9abefd805c8008cdf68648409c51bdf04107629fc160cc938ce3eac0efd478d",
+    "test-linear-algebra.log": "791a7a19e18b9161f20571aa81c1c3ca13c4fbd28d10a6dddf5aeee12ea8124a",
+    "test-madic-oracle.log": "721ebfbfdcc405876e79e1529c0bffcae160357c025dfcca4923709ec1b20eee",
+    "test-madic.log": "9385b65fbfe09b0cea72190b546a2cddad67b27199eb029edc785c415f2c75e0",
+    "test-named-modules.log": "1b567dc0d10ef244391c5663fb49b596d2f237f2ec99eee19b13bff5cba27e7a",
+    "test-pair-power-residue.log": "6c29c910efedfca5e4fa9a06f8d78700ea8c2c890a6b9c49f227dc813ceaf573",
+    "test-polynomial-fp.log": "5da8f871e823b88cb30d85b30cf18990b9e7c5943e55c6680ac69fa2f680b507",
+    "test-qpoly-oracle.log": "9709849b4c1db134ed701d9316c175ee1b226aef3025d6d45e31c5c869d6a15b",
+    "test-qpoly.log": "7dc628bcad70c94a8fb0eb4ddd55837ae367b912133aaa09e458761dac92d022",
+    "test-quadratic-germ.log": "5018059a510919d7b248005ca2fc29aefcbebfaeae77a97b3cc4be30b86a0c27",
+    "test-quadratic-orbit.log": "6ecdb22bfb0de89bd6dbccef6e046ba66e811dd38bd7a4d12aca4ea1bad929fe",
+    "test-root-isolation.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "test-substitution.log": "cb5b5f7ede56bc08fab781ccac89cf6da011115fdbb5a9dc178423f79d8c5ab5",
+    "test-truncated-jet.log": "7827f176185918a5245f15d1cd67c24b28ff486cdc7013aa82968eaf9afa0610",
+    "test-tuning.log": "a6942ba52a6398c34a09e0fea867d86cea2b30ec70b2ea0790efe2bba94521e8"
+  }
+}

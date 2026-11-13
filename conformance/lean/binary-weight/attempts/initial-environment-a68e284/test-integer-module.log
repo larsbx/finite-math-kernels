@@ -1,0 +1,306 @@
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:1:1: error: unable to locate module 'std'
+"""Regressions for canonical embedded integer-module normal form."""
+^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:1:1: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+"""Regressions for canonical embedded integer-module normal form."""
+^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:3:6: error: unable to locate module 'std'
+from std.testing import assert_equal, assert_false, assert_true
+     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:5:
+kernel/finite_exact/__init__.mojo:34:1: error: unable to locate module 'std'
+
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:5:
+kernel/finite_exact/bigint_z.mojo:15:1: error: unable to locate module 'std'
+comptime BIGZ_BASE = UInt64(1000000000)
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:5:
+kernel/finite_exact/bigint_z.mojo:18:13: error: use of unknown declaration 'Copyable'
+struct BigZ(Copyable):
+            ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:5:
+kernel/finite_exact/bigint_z.mojo:206:13: error: unable to locate module 'std'
+def bigz_eq(a: BigZ, b: BigZ) -> Bool:
+            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:5:
+kernel/finite_exact/bigint_z.mojo:206:22: error: unable to locate module 'std'
+def bigz_eq(a: BigZ, b: BigZ) -> Bool:
+                     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:5:
+kernel/finite_exact/bigint_z.mojo:206:34: error: use of unknown declaration 'Bool'
+def bigz_eq(a: BigZ, b: BigZ) -> Bool:
+                                 ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:5:
+kernel/finite_exact/bigint_z.mojo:206:34: error: unable to locate module 'std'
+def bigz_eq(a: BigZ, b: BigZ) -> Bool:
+                                 ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:5:
+kernel/finite_exact/bigint_z.mojo:77:26: error: use of unknown declaration 'Int64'
+def bigz_from_i64(value: Int64) -> BigZ:
+                         ^~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:5:
+kernel/finite_exact/bigint_z.mojo:77:19: error: unable to locate module 'std'
+def bigz_from_i64(value: Int64) -> BigZ:
+                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:5:
+kernel/finite_exact/bigint_z.mojo:77:36: error: unable to locate module 'std'
+def bigz_from_i64(value: Int64) -> BigZ:
+                                   ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:6:
+kernel/finite_linear_algebra/__init__.mojo:37:1: error: unable to locate module 'std'
+
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:7:
+kernel/finite_linear_algebra/integer_module.mojo:1:1: error: unable to locate module 'std'
+"""Canonical embedded integer-module normal form.
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:7:
+kernel/finite_linear_algebra/integer_module.mojo:160:21: error: use of unknown declaration 'List'
+def i64_row(values: List[Int64]) -> List[BigZ]:
+                    ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:7:
+kernel/finite_linear_algebra/integer_module.mojo:160:13: error: unable to locate module 'std'
+def i64_row(values: List[Int64]) -> List[BigZ]:
+            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:7:
+kernel/finite_linear_algebra/integer_module.mojo:160:37: error: use of unknown declaration 'List'
+def i64_row(values: List[Int64]) -> List[BigZ]:
+                                    ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:7:
+kernel/finite_linear_algebra/integer_module.mojo:160:37: error: unable to locate module 'std'
+def i64_row(values: List[Int64]) -> List[BigZ]:
+                                    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:7:
+Imported from kernel/finite_linear_algebra/integer_module.mojo:33:
+kernel/finite_linear_algebra/hermite_normal_form.mojo:1:1: error: unable to locate module 'std'
+"""The Hermite normal form of an integer row module.
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:7:
+kernel/finite_linear_algebra/integer_module.mojo:160:13: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+def i64_row(values: List[Int64]) -> List[BigZ]:
+            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:7:
+Imported from kernel/finite_linear_algebra/integer_module.mojo:33:
+kernel/finite_linear_algebra/hermite_normal_form.mojo:31:19: error: use of unknown declaration 'List'
+def row_hnf(rows: List[List[BigZ]], dimension: Int) raises -> List[List[BigZ]]:
+                  ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:7:
+Imported from kernel/finite_linear_algebra/integer_module.mojo:33:
+kernel/finite_linear_algebra/hermite_normal_form.mojo:31:13: error: unable to locate module 'std'
+def row_hnf(rows: List[List[BigZ]], dimension: Int) raises -> List[List[BigZ]]:
+            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:7:
+Imported from kernel/finite_linear_algebra/integer_module.mojo:33:
+kernel/finite_linear_algebra/hermite_normal_form.mojo:31:48: error: use of unknown declaration 'Int'
+def row_hnf(rows: List[List[BigZ]], dimension: Int) raises -> List[List[BigZ]]:
+                                               ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:7:
+Imported from kernel/finite_linear_algebra/integer_module.mojo:33:
+kernel/finite_linear_algebra/hermite_normal_form.mojo:31:37: error: unable to locate module 'std'
+def row_hnf(rows: List[List[BigZ]], dimension: Int) raises -> List[List[BigZ]]:
+                                    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:7:
+Imported from kernel/finite_linear_algebra/integer_module.mojo:33:
+kernel/finite_linear_algebra/hermite_normal_form.mojo:31:63: error: use of unknown declaration 'List'
+def row_hnf(rows: List[List[BigZ]], dimension: Int) raises -> List[List[BigZ]]:
+                                                              ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:7:
+Imported from kernel/finite_linear_algebra/integer_module.mojo:33:
+kernel/finite_linear_algebra/hermite_normal_form.mojo:31:63: error: unable to locate module 'std'
+def row_hnf(rows: List[List[BigZ]], dimension: Int) raises -> List[List[BigZ]]:
+                                                              ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:7:
+Imported from kernel/finite_linear_algebra/integer_module.mojo:33:
+kernel/finite_linear_algebra/hermite_normal_form.mojo:127:11: error: use of unknown declaration 'List'
+    left: List[List[BigZ]],
+          ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:7:
+Imported from kernel/finite_linear_algebra/integer_module.mojo:33:
+kernel/finite_linear_algebra/hermite_normal_form.mojo:127:5: error: unable to locate module 'std'
+    left: List[List[BigZ]],
+    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:7:
+Imported from kernel/finite_linear_algebra/integer_module.mojo:33:
+kernel/finite_linear_algebra/hermite_normal_form.mojo:128:12: error: use of unknown declaration 'List'
+    right: List[List[BigZ]],
+           ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:7:
+Imported from kernel/finite_linear_algebra/integer_module.mojo:33:
+kernel/finite_linear_algebra/hermite_normal_form.mojo:128:5: error: unable to locate module 'std'
+    right: List[List[BigZ]],
+    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:7:
+Imported from kernel/finite_linear_algebra/integer_module.mojo:33:
+kernel/finite_linear_algebra/hermite_normal_form.mojo:129:16: error: use of unknown declaration 'Int'
+    dimension: Int,
+               ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:7:
+Imported from kernel/finite_linear_algebra/integer_module.mojo:33:
+kernel/finite_linear_algebra/hermite_normal_form.mojo:129:5: error: unable to locate module 'std'
+    dimension: Int,
+    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:7:
+Imported from kernel/finite_linear_algebra/integer_module.mojo:33:
+kernel/finite_linear_algebra/hermite_normal_form.mojo:130:13: error: use of unknown declaration 'Bool'
+) raises -> Bool:
+            ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:7:
+Imported from kernel/finite_linear_algebra/integer_module.mojo:33:
+kernel/finite_linear_algebra/hermite_normal_form.mojo:130:13: error: unable to locate module 'std'
+) raises -> Bool:
+            ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:13:22: error: use of unknown declaration 'List'
+def rows_x_even() -> List[List[BigZ]]:
+                     ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:13:22: error: unable to locate module 'std'
+def rows_x_even() -> List[List[BigZ]]:
+                     ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:22:30: error: use of unknown declaration 'List'
+def rows_x_even_changed() -> List[List[BigZ]]:
+                             ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:22:30: error: unable to locate module 'std'
+def rows_x_even_changed() -> List[List[BigZ]]:
+                             ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:35:22: error: use of unknown declaration 'List'
+def rows_y_even() -> List[List[BigZ]]:
+                     ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:35:22: error: unable to locate module 'std'
+def rows_y_even() -> List[List[BigZ]]:
+                     ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:44:22: error: use of unknown declaration 'List'
+def assert_row2(row: List[BigZ], a: Int64, b: Int64) raises:
+                     ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:44:17: error: unable to locate module 'std'
+def assert_row2(row: List[BigZ], a: Int64, b: Int64) raises:
+                ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:44:37: error: use of unknown declaration 'Int64'
+def assert_row2(row: List[BigZ], a: Int64, b: Int64) raises:
+                                    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:44:34: error: unable to locate module 'std'
+def assert_row2(row: List[BigZ], a: Int64, b: Int64) raises:
+                                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:44:47: error: use of unknown declaration 'Int64'
+def assert_row2(row: List[BigZ], a: Int64, b: Int64) raises:
+                                              ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:44:44: error: unable to locate module 'std'
+def assert_row2(row: List[BigZ], a: Int64, b: Int64) raises:
+                                           ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:44:60: error: unable to locate module 'std'
+def assert_row2(row: List[BigZ], a: Int64, b: Int64) raises:
+                                                           ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:50:67: error: unable to locate module 'std'
+def test_generator_changes_do_not_change_embedded_lattice() raises:
+                                                                  ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:60:70: error: unable to locate module 'std'
+def test_equal_smith_shape_can_be_different_embedded_lattice() raises:
+                                                                     ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:66:53: error: unable to locate module 'std'
+def test_rank_deficient_and_zero_generators() raises:
+                                                    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:67:20: error: use of unknown declaration 'List'
+    var rank_one = List[List[BigZ]]()
+                   ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:68:13: error: use of unknown declaration 'List'
+    var r0: List[Int64] = [2, 4]
+            ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:69:13: error: use of unknown declaration 'List'
+    var r1: List[Int64] = [4, 8]
+            ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:70:13: error: use of unknown declaration 'List'
+    var r2: List[Int64] = [0, 0]
+            ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:78:16: error: use of unknown declaration 'List'
+    var zero = List[List[BigZ]]()
+               ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:84:54: error: unable to locate module 'std'
+def test_negative_entries_reduce_canonically() raises:
+                                                     ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:85:16: error: use of unknown declaration 'List'
+    var rows = List[List[BigZ]]()
+               ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:86:13: error: use of unknown declaration 'List'
+    var r0: List[Int64] = [2, 0]
+            ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:87:13: error: use of unknown declaration 'List'
+    var r1: List[Int64] = [-1, 1]
+            ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:96:50: error: unable to locate module 'std'
+def test_generators_are_rows_not_columns() raises:
+                                                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:98:16: error: use of unknown declaration 'List'
+    var rows = List[List[BigZ]]()
+               ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:99:13: error: use of unknown declaration 'List'
+    var r0: List[Int64] = [1, 0, 3]
+            ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:100:13: error: use of unknown declaration 'List'
+    var r1: List[Int64] = [0, 2, 5]
+            ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:110:19: error: use of unknown declaration 'List'
+    var columns = List[List[BigZ]]()
+                  ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:111:13: error: use of unknown declaration 'List'
+    var c0: List[Int64] = [1, 0]
+            ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:112:13: error: use of unknown declaration 'List'
+    var c1: List[Int64] = [0, 2]
+            ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:113:13: error: use of unknown declaration 'List'
+    var c2: List[Int64] = [3, 5]
+            ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:117:20: error: unable to locate module 'std'
+    var rejected = False
+                   ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:118:5: error: unable to locate module 'std'
+    try:
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:125:18: error: unable to locate module 'std'
+def main() raises:
+                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:125:5: error: unable to locate module 'std'
+def main() raises:
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:125:9: error: 'builtin' does not refer to a nested package
+def main() raises:
+        ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:126:5: error: unable to locate module 'std'
+    test_generator_changes_do_not_change_embedded_lattice()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:127:5: error: use of unknown declaration 'print'
+    print("[PASS] test_generator_changes_do_not_change_embedded_lattice")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:128:5: error: unable to locate module 'std'
+    test_equal_smith_shape_can_be_different_embedded_lattice()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:129:5: error: use of unknown declaration 'print'
+    print("[PASS] test_equal_smith_shape_can_be_different_embedded_lattice")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:130:5: error: unable to locate module 'std'
+    test_rank_deficient_and_zero_generators()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:131:5: error: use of unknown declaration 'print'
+    print("[PASS] test_rank_deficient_and_zero_generators")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:132:5: error: unable to locate module 'std'
+    test_negative_entries_reduce_canonically()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:133:5: error: use of unknown declaration 'print'
+    print("[PASS] test_negative_entries_reduce_canonically")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:134:5: error: unable to locate module 'std'
+    test_generators_are_rows_not_columns()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:135:5: error: use of unknown declaration 'print'
+    print("[PASS] test_generators_are_rows_not_columns")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_module.mojo:136:5: error: use of unknown declaration 'print'
+    print("5 embedded integer-module Mojo tests passed.")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/golden-ratio-normality-research/kernel/.pixi/envs/default/bin/mojo: error: failed to parse the provided Mojo source module

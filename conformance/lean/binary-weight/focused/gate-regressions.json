@@ -1,0 +1,21 @@
+{
+  "argv": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests/lean",
+    "-p",
+    "test_binary_weight_gate.py",
+    "-v"
+  ],
+  "cwd": "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight",
+  "elapsed_seconds": 0.3142259609994653,
+  "expected_returncode": 0,
+  "label": "gate-regressions",
+  "returncode": 0,
+  "stderr": "test_assume_unchanged_cannot_hide_changed_proof (test_binary_weight_gate.SourceIdentity.test_assume_unchanged_cannot_hide_changed_proof) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.045s\n\nOK\n",
+  "stdout": "",
+  "timeout_seconds": 900
+}

@@ -1,0 +1,8 @@
+[PASS] test_qpoly_named_modules
+[PASS] test_integer_matrix_and_module_named_modules
+[PASS] test_rational_dynamics_named_modules
+[PASS] test_krawczyk_named_module
+[PASS] test_finite_polynomial_named_modules
+[PASS] test_finite_automata_named_modules
+[PASS] test_projective_limits_named_modules
+7 named-module re-export tests passed.

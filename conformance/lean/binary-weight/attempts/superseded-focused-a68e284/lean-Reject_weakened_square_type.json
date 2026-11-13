@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "/workspace/scratch/gnr-next.qHyoM1/toolchains/lean-4.34.0-rc2-linux/bin/lean",
+    "-j1",
+    "--root=/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-acceptance",
+    "-DautoImplicit=false",
+    "-DwarningAsError=true",
+    "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-acceptance/Reject_weakened_square_type.lean"
+  ],
+  "cwd": "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight",
+  "elapsed_seconds": 7.353107319002447,
+  "expected_returncode": 1,
+  "label": "lean-Reject_weakened_square_type",
+  "returncode": 1,
+  "stderr": "",
+  "stdout": "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-acceptance/Reject_weakened_square_type.lean:6:86: error: Type mismatch\n  Weakened.square n\nhas type\n  binaryWeight n \u2264 binaryWeight n\nbut is expected to have type\n  2 * binaryWeight (n ^ 2) \u2264 binaryWeight n * (binaryWeight n + 1)\n",
+  "timeout_seconds": 900
+}

@@ -1,0 +1,664 @@
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:1:1: error: unable to locate module 'std'
+"""Consumer-style test of the stable public facades.
+^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:1:1: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+"""Consumer-style test of the stable public facades.
+^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:10:6: error: unable to locate module 'std'
+from std.testing import assert_equal, assert_false, assert_true
+     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:12:
+kernel/finite_exact/__init__.mojo:34:1: error: unable to locate module 'std'
+
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:12:
+kernel/finite_exact/closed_interval.mojo:1:1: error: unable to locate module 'std'
+"""Stable public entry point for closed exact-rational intervals."""
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:12:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:9:1: error: unable to locate module 'std'
+from finite_exact.rat_q import Q, q_min, q_max, q_rejected
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:12:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:128:18: error: use of unknown declaration 'Copyable'
+struct ComplexIQ(Copyable):
+                 ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:12:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:32:11: error: use of unknown declaration 'Copyable'
+struct IQ(Copyable):
+          ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:12:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:12:21: error: use of unknown declaration 'Copyable'
+struct IQBoolResult(Copyable):
+                    ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:12:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:21:21: error: use of unknown declaration 'Copyable'
+struct IQSignResult(Copyable):
+                    ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:12:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:230:42: error: use of unknown declaration 'Bool'
+def bigq_interval_conformance_smoke() -> Bool:
+                                         ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:12:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:230:42: error: unable to locate module 'std'
+def bigq_interval_conformance_smoke() -> Bool:
+                                         ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:12:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:203:24: error: use of unknown declaration 'Int64'
+def complex_box(re_lo: Int64, re_hi: Int64, im_lo: Int64, im_hi: Int64, den: Int64) -> ComplexIQ:
+                       ^~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:12:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:203:17: error: unable to locate module 'std'
+def complex_box(re_lo: Int64, re_hi: Int64, im_lo: Int64, im_hi: Int64, den: Int64) -> ComplexIQ:
+                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:12:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:203:38: error: use of unknown declaration 'Int64'
+def complex_box(re_lo: Int64, re_hi: Int64, im_lo: Int64, im_hi: Int64, den: Int64) -> ComplexIQ:
+                                     ^~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:12:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:203:31: error: unable to locate module 'std'
+def complex_box(re_lo: Int64, re_hi: Int64, im_lo: Int64, im_hi: Int64, den: Int64) -> ComplexIQ:
+                              ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:12:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:203:52: error: use of unknown declaration 'Int64'
+def complex_box(re_lo: Int64, re_hi: Int64, im_lo: Int64, im_hi: Int64, den: Int64) -> ComplexIQ:
+                                                   ^~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:12:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:203:45: error: unable to locate module 'std'
+def complex_box(re_lo: Int64, re_hi: Int64, im_lo: Int64, im_hi: Int64, den: Int64) -> ComplexIQ:
+                                            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:12:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:203:66: error: use of unknown declaration 'Int64'
+def complex_box(re_lo: Int64, re_hi: Int64, im_lo: Int64, im_hi: Int64, den: Int64) -> ComplexIQ:
+                                                                 ^~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:12:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:203:59: error: unable to locate module 'std'
+def complex_box(re_lo: Int64, re_hi: Int64, im_lo: Int64, im_hi: Int64, den: Int64) -> ComplexIQ:
+                                                          ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:12:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:203:78: error: use of unknown declaration 'Int64'
+def complex_box(re_lo: Int64, re_hi: Int64, im_lo: Int64, im_hi: Int64, den: Int64) -> ComplexIQ:
+                                                                             ^~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:12:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:203:73: error: unable to locate module 'std'
+def complex_box(re_lo: Int64, re_hi: Int64, im_lo: Int64, im_hi: Int64, den: Int64) -> ComplexIQ:
+                                                                        ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:12:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:203:88: error: unable to locate module 'std'
+def complex_box(re_lo: Int64, re_hi: Int64, im_lo: Int64, im_hi: Int64, den: Int64) -> ComplexIQ:
+                                                                                       ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:12:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:224:39: error: use of unknown declaration 'Bool'
+def demo_complex_quadrance_point() -> Bool:
+                                      ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:12:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:224:39: error: unable to locate module 'std'
+def demo_complex_quadrance_point() -> Bool:
+                                      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:12:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:217:28: error: use of unknown declaration 'Bool'
+def demo_interval_mul() -> Bool:
+                           ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:12:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:217:28: error: unable to locate module 'std'
+def demo_interval_mul() -> Bool:
+                           ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:12:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:212:32: error: use of unknown declaration 'Int64'
+def gaussian_singleton(re_num: Int64, re_den: Int64, im_num: Int64, im_den: Int64) -> ComplexIQ:
+                               ^~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:12:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:212:24: error: unable to locate module 'std'
+def gaussian_singleton(re_num: Int64, re_den: Int64, im_num: Int64, im_den: Int64) -> ComplexIQ:
+                       ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:12:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:212:47: error: use of unknown declaration 'Int64'
+def gaussian_singleton(re_num: Int64, re_den: Int64, im_num: Int64, im_den: Int64) -> ComplexIQ:
+                                              ^~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:12:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:212:39: error: unable to locate module 'std'
+def gaussian_singleton(re_num: Int64, re_den: Int64, im_num: Int64, im_den: Int64) -> ComplexIQ:
+                                      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:12:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:212:62: error: use of unknown declaration 'Int64'
+def gaussian_singleton(re_num: Int64, re_den: Int64, im_num: Int64, im_den: Int64) -> ComplexIQ:
+                                                             ^~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:12:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:212:54: error: unable to locate module 'std'
+def gaussian_singleton(re_num: Int64, re_den: Int64, im_num: Int64, im_den: Int64) -> ComplexIQ:
+                                                     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:12:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:212:77: error: use of unknown declaration 'Int64'
+def gaussian_singleton(re_num: Int64, re_den: Int64, im_num: Int64, im_den: Int64) -> ComplexIQ:
+                                                                            ^~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:12:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:212:69: error: unable to locate module 'std'
+def gaussian_singleton(re_num: Int64, re_den: Int64, im_num: Int64, im_den: Int64) -> ComplexIQ:
+                                                                    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:12:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:212:87: error: unable to locate module 'std'
+def gaussian_singleton(re_num: Int64, re_den: Int64, im_num: Int64, im_den: Int64) -> ComplexIQ:
+                                                                                      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:13:
+kernel/finite_exact/rational.mojo:1:1: error: unable to locate module 'std'
+"""Stable public entry point for normalized exact rational arithmetic."""
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:12:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:212:69: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+def gaussian_singleton(re_num: Int64, re_den: Int64, im_num: Int64, im_den: Int64) -> ComplexIQ:
+                                                                    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:13:
+Imported from kernel/finite_exact/rational.mojo:3:
+kernel/finite_exact/rat_q.mojo:13:1: error: unable to locate module 'std'
+from finite_exact.bigint_z import BigZ, bigz_add, bigz_canonical_bytes, bigz_div_exact, bigz_eq, bigz_from_i64, bigz_gcd, bigz_is_canonical, bigz_lt, bigz_mul, bigz_neg, bigz_sub, bigz_zero
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:13:
+Imported from kernel/finite_exact/rational.mojo:3:
+kernel/finite_exact/rat_q.mojo:16:10: error: use of unknown declaration 'Copyable'
+struct Q(Copyable):
+         ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:13:
+Imported from kernel/finite_exact/rational.mojo:3:
+kernel/finite_exact/rat_q.mojo:125:24: error: use of unknown declaration 'Copyable'
+struct QCanonicalBytes(Copyable):
+                       ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:13:
+Imported from kernel/finite_exact/rational.mojo:3:
+kernel/finite_exact/rat_q.mojo:211:29: error: use of unknown declaration 'Bool'
+def bigq_storage_smoke() -> Bool:
+                            ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:13:
+Imported from kernel/finite_exact/rational.mojo:3:
+kernel/finite_exact/rat_q.mojo:211:29: error: unable to locate module 'std'
+def bigq_storage_smoke() -> Bool:
+                            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:13:
+Imported from kernel/finite_exact/rational.mojo:3:
+kernel/finite_exact/rat_q.mojo:229:31: error: use of unknown declaration 'Bool'
+def demo_q_normalization() -> Bool:
+                              ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:13:
+Imported from kernel/finite_exact/rational.mojo:3:
+kernel/finite_exact/rat_q.mojo:229:31: error: unable to locate module 'std'
+def demo_q_normalization() -> Bool:
+                              ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:13:
+Imported from kernel/finite_exact/rational.mojo:3:
+kernel/finite_exact/rat_q.mojo:233:23: error: use of unknown declaration 'Bool'
+def demo_q_order() -> Bool:
+                      ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:13:
+Imported from kernel/finite_exact/rational.mojo:3:
+kernel/finite_exact/rat_q.mojo:233:23: error: unable to locate module 'std'
+def demo_q_order() -> Bool:
+                      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:13:
+Imported from kernel/finite_exact/rational.mojo:3:
+kernel/finite_exact/rat_q.mojo:237:31: error: use of unknown declaration 'Bool'
+def q_cancellation_smoke() -> Bool:
+                              ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:13:
+Imported from kernel/finite_exact/rational.mojo:3:
+kernel/finite_exact/rat_q.mojo:237:31: error: unable to locate module 'std'
+def q_cancellation_smoke() -> Bool:
+                              ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:13:
+Imported from kernel/finite_exact/rational.mojo:3:
+kernel/finite_exact/rat_q.mojo:170:23: error: unable to locate module 'std'
+def q_canonical_bytes(value: Q) -> QCanonicalBytes:
+                      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:13:
+Imported from kernel/finite_exact/rational.mojo:3:
+kernel/finite_exact/rat_q.mojo:170:36: error: unable to locate module 'std'
+def q_canonical_bytes(value: Q) -> QCanonicalBytes:
+                                   ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:13:
+Imported from kernel/finite_exact/rational.mojo:3:
+Imported from kernel/finite_exact/rat_q.mojo:13:
+kernel/finite_exact/bigint_z.mojo:15:1: error: unable to locate module 'std'
+comptime BIGZ_BASE = UInt64(1000000000)
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:13:
+Imported from kernel/finite_exact/rational.mojo:3:
+Imported from kernel/finite_exact/rat_q.mojo:13:
+kernel/finite_exact/bigint_z.mojo:18:13: error: use of unknown declaration 'Copyable'
+struct BigZ(Copyable):
+            ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:13:
+Imported from kernel/finite_exact/rational.mojo:3:
+kernel/finite_exact/rat_q.mojo:166:17: error: unable to locate module 'std'
+def q_from_bigz(n: BigZ, d: BigZ) -> Q:
+                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:13:
+Imported from kernel/finite_exact/rational.mojo:3:
+kernel/finite_exact/rat_q.mojo:166:26: error: unable to locate module 'std'
+def q_from_bigz(n: BigZ, d: BigZ) -> Q:
+                         ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:13:
+Imported from kernel/finite_exact/rational.mojo:3:
+kernel/finite_exact/rat_q.mojo:166:38: error: unable to locate module 'std'
+def q_from_bigz(n: BigZ, d: BigZ) -> Q:
+                                     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:13:
+Imported from kernel/finite_exact/rational.mojo:3:
+kernel/finite_exact/rat_q.mojo:203:11: error: unable to locate module 'std'
+def q_max(a: Q, b: Q) -> Q:
+          ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:13:
+Imported from kernel/finite_exact/rational.mojo:3:
+kernel/finite_exact/rat_q.mojo:203:17: error: unable to locate module 'std'
+def q_max(a: Q, b: Q) -> Q:
+                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:13:
+Imported from kernel/finite_exact/rational.mojo:3:
+kernel/finite_exact/rat_q.mojo:203:26: error: unable to locate module 'std'
+def q_max(a: Q, b: Q) -> Q:
+                         ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:13:
+Imported from kernel/finite_exact/rational.mojo:3:
+kernel/finite_exact/rat_q.mojo:195:11: error: unable to locate module 'std'
+def q_min(a: Q, b: Q) -> Q:
+          ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:13:
+Imported from kernel/finite_exact/rational.mojo:3:
+kernel/finite_exact/rat_q.mojo:195:17: error: unable to locate module 'std'
+def q_min(a: Q, b: Q) -> Q:
+                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:13:
+Imported from kernel/finite_exact/rational.mojo:3:
+kernel/finite_exact/rat_q.mojo:195:26: error: unable to locate module 'std'
+def q_min(a: Q, b: Q) -> Q:
+                         ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:13:
+Imported from kernel/finite_exact/rational.mojo:3:
+kernel/finite_exact/rat_q.mojo:137:21: error: unable to locate module 'std'
+def q_rejected() -> Q:
+                    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:14:
+kernel/finite_linear_algebra/__init__.mojo:37:1: error: unable to locate module 'std'
+
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:14:
+kernel/finite_linear_algebra/matrix.mojo:1:1: error: unable to locate module 'std'
+"""Stable public entry point for generic exact-rational matrix operations."""
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:14:
+Imported from kernel/finite_linear_algebra/matrix.mojo:3:
+kernel/finite_linear_algebra/qlinalg.mojo:1:1: error: unable to locate module 'std'
+"""Exact linear algebra over Q: RREF, rank, nullspace, span membership.
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:14:
+Imported from kernel/finite_linear_algebra/matrix.mojo:3:
+kernel/finite_linear_algebra/qlinalg.mojo:77:20: error: use of unknown declaration 'List'
+def in_span(basis: List[List[Q]], v: List[Q]) -> Bool:
+                   ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:14:
+Imported from kernel/finite_linear_algebra/matrix.mojo:3:
+kernel/finite_linear_algebra/qlinalg.mojo:77:13: error: unable to locate module 'std'
+def in_span(basis: List[List[Q]], v: List[Q]) -> Bool:
+            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:14:
+Imported from kernel/finite_linear_algebra/matrix.mojo:3:
+kernel/finite_linear_algebra/qlinalg.mojo:77:38: error: use of unknown declaration 'List'
+def in_span(basis: List[List[Q]], v: List[Q]) -> Bool:
+                                     ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:14:
+Imported from kernel/finite_linear_algebra/matrix.mojo:3:
+kernel/finite_linear_algebra/qlinalg.mojo:77:35: error: unable to locate module 'std'
+def in_span(basis: List[List[Q]], v: List[Q]) -> Bool:
+                                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:14:
+Imported from kernel/finite_linear_algebra/matrix.mojo:3:
+kernel/finite_linear_algebra/qlinalg.mojo:77:50: error: use of unknown declaration 'Bool'
+def in_span(basis: List[List[Q]], v: List[Q]) -> Bool:
+                                                 ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:14:
+Imported from kernel/finite_linear_algebra/matrix.mojo:3:
+kernel/finite_linear_algebra/qlinalg.mojo:77:50: error: unable to locate module 'std'
+def in_span(basis: List[List[Q]], v: List[Q]) -> Bool:
+                                                 ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:14:
+Imported from kernel/finite_linear_algebra/matrix.mojo:3:
+kernel/finite_linear_algebra/qlinalg.mojo:97:20: error: use of unknown declaration 'List'
+def is_zero_vec(v: List[Q]) -> Bool:
+                   ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:14:
+Imported from kernel/finite_linear_algebra/matrix.mojo:3:
+kernel/finite_linear_algebra/qlinalg.mojo:97:17: error: unable to locate module 'std'
+def is_zero_vec(v: List[Q]) -> Bool:
+                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:14:
+Imported from kernel/finite_linear_algebra/matrix.mojo:3:
+kernel/finite_linear_algebra/qlinalg.mojo:97:32: error: use of unknown declaration 'Bool'
+def is_zero_vec(v: List[Q]) -> Bool:
+                               ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:14:
+Imported from kernel/finite_linear_algebra/matrix.mojo:3:
+kernel/finite_linear_algebra/qlinalg.mojo:97:32: error: unable to locate module 'std'
+def is_zero_vec(v: List[Q]) -> Bool:
+                               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:14:
+Imported from kernel/finite_linear_algebra/matrix.mojo:3:
+kernel/finite_linear_algebra/qlinalg.mojo:87:15: error: use of unknown declaration 'List'
+def matvec(m: List[List[Q]], v: List[Q]) -> List[Q]:
+              ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:14:
+Imported from kernel/finite_linear_algebra/matrix.mojo:3:
+kernel/finite_linear_algebra/qlinalg.mojo:87:12: error: unable to locate module 'std'
+def matvec(m: List[List[Q]], v: List[Q]) -> List[Q]:
+           ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:14:
+Imported from kernel/finite_linear_algebra/matrix.mojo:3:
+kernel/finite_linear_algebra/qlinalg.mojo:87:33: error: use of unknown declaration 'List'
+def matvec(m: List[List[Q]], v: List[Q]) -> List[Q]:
+                                ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:14:
+Imported from kernel/finite_linear_algebra/matrix.mojo:3:
+kernel/finite_linear_algebra/qlinalg.mojo:87:30: error: unable to locate module 'std'
+def matvec(m: List[List[Q]], v: List[Q]) -> List[Q]:
+                             ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:14:
+Imported from kernel/finite_linear_algebra/matrix.mojo:3:
+kernel/finite_linear_algebra/qlinalg.mojo:87:45: error: use of unknown declaration 'List'
+def matvec(m: List[List[Q]], v: List[Q]) -> List[Q]:
+                                            ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:14:
+Imported from kernel/finite_linear_algebra/matrix.mojo:3:
+kernel/finite_linear_algebra/qlinalg.mojo:87:45: error: unable to locate module 'std'
+def matvec(m: List[List[Q]], v: List[Q]) -> List[Q]:
+                                            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:14:
+Imported from kernel/finite_linear_algebra/matrix.mojo:3:
+kernel/finite_linear_algebra/qlinalg.mojo:52:18: error: use of unknown declaration 'List'
+def nullspace(m: List[List[Q]], ncols: Int) -> List[List[Q]]:
+                 ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:14:
+Imported from kernel/finite_linear_algebra/matrix.mojo:3:
+kernel/finite_linear_algebra/qlinalg.mojo:52:15: error: unable to locate module 'std'
+def nullspace(m: List[List[Q]], ncols: Int) -> List[List[Q]]:
+              ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:14:
+Imported from kernel/finite_linear_algebra/matrix.mojo:3:
+kernel/finite_linear_algebra/qlinalg.mojo:52:40: error: use of unknown declaration 'Int'
+def nullspace(m: List[List[Q]], ncols: Int) -> List[List[Q]]:
+                                       ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:14:
+Imported from kernel/finite_linear_algebra/matrix.mojo:3:
+kernel/finite_linear_algebra/qlinalg.mojo:52:33: error: unable to locate module 'std'
+def nullspace(m: List[List[Q]], ncols: Int) -> List[List[Q]]:
+                                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:14:
+Imported from kernel/finite_linear_algebra/matrix.mojo:3:
+kernel/finite_linear_algebra/qlinalg.mojo:52:48: error: use of unknown declaration 'List'
+def nullspace(m: List[List[Q]], ncols: Int) -> List[List[Q]]:
+                                               ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:14:
+Imported from kernel/finite_linear_algebra/matrix.mojo:3:
+kernel/finite_linear_algebra/qlinalg.mojo:52:48: error: unable to locate module 'std'
+def nullspace(m: List[List[Q]], ncols: Int) -> List[List[Q]]:
+                                               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:14:
+Imported from kernel/finite_linear_algebra/matrix.mojo:4:
+kernel/finite_linear_algebra/scalar.mojo:1:1: error: unable to locate module 'std'
+"""Integer lifts into `finite_exact.Q` and the fail-closed zero test.
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:14:
+Imported from kernel/finite_linear_algebra/matrix.mojo:3:
+kernel/finite_linear_algebra/qlinalg.mojo:52:33: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+def nullspace(m: List[List[Q]], ncols: Int) -> List[List[Q]]:
+                                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:14:
+Imported from kernel/finite_linear_algebra/matrix.mojo:4:
+kernel/finite_linear_algebra/scalar.mojo:15:14: error: use of unknown declaration 'Int'
+def q_int(n: Int) -> Q:
+             ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:14:
+Imported from kernel/finite_linear_algebra/matrix.mojo:4:
+kernel/finite_linear_algebra/scalar.mojo:15:11: error: unable to locate module 'std'
+def q_int(n: Int) -> Q:
+          ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:14:
+Imported from kernel/finite_linear_algebra/matrix.mojo:4:
+kernel/finite_linear_algebra/scalar.mojo:15:22: error: unable to locate module 'std'
+def q_int(n: Int) -> Q:
+                     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:14:
+Imported from kernel/finite_linear_algebra/matrix.mojo:4:
+kernel/finite_linear_algebra/scalar.mojo:27:15: error: unable to locate module 'std'
+def q_is_zero(x: Q) -> Bool:
+              ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:14:
+Imported from kernel/finite_linear_algebra/matrix.mojo:4:
+kernel/finite_linear_algebra/scalar.mojo:27:24: error: use of unknown declaration 'Bool'
+def q_is_zero(x: Q) -> Bool:
+                       ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:14:
+Imported from kernel/finite_linear_algebra/matrix.mojo:4:
+kernel/finite_linear_algebra/scalar.mojo:27:24: error: unable to locate module 'std'
+def q_is_zero(x: Q) -> Bool:
+                       ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:14:
+Imported from kernel/finite_linear_algebra/matrix.mojo:4:
+kernel/finite_linear_algebra/scalar.mojo:19:14: error: use of unknown declaration 'List'
+def q_vec(v: List[Int]) -> List[Q]:
+             ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:14:
+Imported from kernel/finite_linear_algebra/matrix.mojo:4:
+kernel/finite_linear_algebra/scalar.mojo:19:11: error: unable to locate module 'std'
+def q_vec(v: List[Int]) -> List[Q]:
+          ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:14:
+Imported from kernel/finite_linear_algebra/matrix.mojo:4:
+kernel/finite_linear_algebra/scalar.mojo:19:28: error: use of unknown declaration 'List'
+def q_vec(v: List[Int]) -> List[Q]:
+                           ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:14:
+Imported from kernel/finite_linear_algebra/matrix.mojo:4:
+kernel/finite_linear_algebra/scalar.mojo:19:28: error: unable to locate module 'std'
+def q_vec(v: List[Int]) -> List[Q]:
+                           ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:14:
+Imported from kernel/finite_linear_algebra/matrix.mojo:3:
+kernel/finite_linear_algebra/qlinalg.mojo:47:13: error: use of unknown declaration 'List'
+def rank(m: List[List[Q]]) -> Int:
+            ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:14:
+Imported from kernel/finite_linear_algebra/matrix.mojo:3:
+kernel/finite_linear_algebra/qlinalg.mojo:47:10: error: unable to locate module 'std'
+def rank(m: List[List[Q]]) -> Int:
+         ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:14:
+Imported from kernel/finite_linear_algebra/matrix.mojo:3:
+kernel/finite_linear_algebra/qlinalg.mojo:47:31: error: use of unknown declaration 'Int'
+def rank(m: List[List[Q]]) -> Int:
+                              ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:14:
+Imported from kernel/finite_linear_algebra/matrix.mojo:3:
+kernel/finite_linear_algebra/qlinalg.mojo:47:31: error: unable to locate module 'std'
+def rank(m: List[List[Q]]) -> Int:
+                              ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:14:
+Imported from kernel/finite_linear_algebra/matrix.mojo:3:
+kernel/finite_linear_algebra/qlinalg.mojo:13:13: error: use of unknown declaration 'List'
+def rref(m: List[List[Q]]) -> Tuple[List[List[Q]], List[Int]]:
+            ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:14:
+Imported from kernel/finite_linear_algebra/matrix.mojo:3:
+kernel/finite_linear_algebra/qlinalg.mojo:13:10: error: unable to locate module 'std'
+def rref(m: List[List[Q]]) -> Tuple[List[List[Q]], List[Int]]:
+         ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:14:
+Imported from kernel/finite_linear_algebra/matrix.mojo:3:
+kernel/finite_linear_algebra/qlinalg.mojo:13:31: error: use of unknown declaration 'Tuple'
+def rref(m: List[List[Q]]) -> Tuple[List[List[Q]], List[Int]]:
+                              ^~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:14:
+Imported from kernel/finite_linear_algebra/matrix.mojo:3:
+kernel/finite_linear_algebra/qlinalg.mojo:13:31: error: unable to locate module 'std'
+def rref(m: List[List[Q]]) -> Tuple[List[List[Q]], List[Int]]:
+                              ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:15:
+kernel/finite_linear_algebra/matrix3.mojo:1:1: error: unable to locate module 'std'
+"""Stable public entry point for the fixed-size integer 3x3 kernel."""
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:14:
+Imported from kernel/finite_linear_algebra/matrix.mojo:3:
+kernel/finite_linear_algebra/qlinalg.mojo:13:10: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+def rref(m: List[List[Q]]) -> Tuple[List[List[Q]], List[Int]]:
+         ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:15:
+Imported from kernel/finite_linear_algebra/matrix3.mojo:3:
+kernel/finite_linear_algebra/mat3.mojo:1:1: error: unable to locate module 'std'
+"""3x3 integer matrices: the incidence matrices M_sigma and the sl_3 seed
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:15:
+Imported from kernel/finite_linear_algebra/matrix3.mojo:3:
+kernel/finite_linear_algebra/mat3.mojo:5:13: error: use of unknown declaration 'Copyable'
+struct Mat3(Copyable, Movable, Writable, Equatable):
+            ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:15:
+Imported from kernel/finite_linear_algebra/matrix3.mojo:3:
+kernel/finite_linear_algebra/mat3.mojo:113:29: error: use of unknown declaration 'List'
+def has_rational_root(poly: List[Int]) -> Bool:
+                            ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:15:
+Imported from kernel/finite_linear_algebra/matrix3.mojo:3:
+kernel/finite_linear_algebra/mat3.mojo:113:23: error: unable to locate module 'std'
+def has_rational_root(poly: List[Int]) -> Bool:
+                      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:15:
+Imported from kernel/finite_linear_algebra/matrix3.mojo:3:
+kernel/finite_linear_algebra/mat3.mojo:113:43: error: use of unknown declaration 'Bool'
+def has_rational_root(poly: List[Int]) -> Bool:
+                                          ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:15:
+Imported from kernel/finite_linear_algebra/matrix3.mojo:3:
+kernel/finite_linear_algebra/mat3.mojo:113:43: error: unable to locate module 'std'
+def has_rational_root(poly: List[Int]) -> Bool:
+                                          ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:15:
+Imported from kernel/finite_linear_algebra/matrix3.mojo:3:
+kernel/finite_linear_algebra/mat3.mojo:108:20: error: unable to locate module 'std'
+def identity3() -> Mat3:
+                   ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:16:
+kernel/finite_linear_algebra/rational_elimination.mojo:1:1: error: unable to locate module 'std'
+"""Stable public entry point for exact RREF, rank, and nullspace operations."""
+^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:19:34: error: unable to locate module 'std'
+def test_rational_facade() raises:
+                                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:39:41: error: unable to locate module 'std'
+def test_closed_interval_facade() raises:
+                                        ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:63:25: error: use of unknown declaration 'List'
+def dependent_rows() -> List[List[Q]]:
+                        ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:63:25: error: unable to locate module 'std'
+def dependent_rows() -> List[List[Q]]:
+                        ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:72:32: error: unable to locate module 'std'
+def test_matrix_facade() raises:
+                               ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:84:14: error: use of unknown declaration 'range'; did you mean 'rank'?
+    for k in range(len(kernel)):
+             ^~~~~
+             rank
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:86:17: error: use of unknown declaration 'List'
+    var inside: List[Int] = [3, 6, 9]
+                ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:87:18: error: use of unknown declaration 'List'
+    var outside: List[Int] = [1, 0, 0]
+                 ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:92:65: error: unable to locate module 'std'
+def test_rational_elimination_facade_agrees_with_matrix() raises:
+                                                                ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:98:14: error: use of unknown declaration 'range'; did you mean 'rank'?
+    for k in range(len(kernel)):
+             ^~~~~
+             rank
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:100:17: error: use of unknown declaration 'List'
+    var inside: List[Int] = [3, 6, 9]
+                ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:104:33: error: unable to locate module 'std'
+def test_matrix3_facade() raises:
+                                ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:105:12: error: use of unknown declaration 'List'
+    var e: List[Int] = [1, 1, 1, 1, 0, 0, 0, 1, 0]
+           ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:114:25: error: use of unknown declaration 'List'
+    var with_zero_root: List[Int] = [0, 1, 1, 1]
+                        ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:118:18: error: unable to locate module 'std'
+def main() raises:
+                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:118:5: error: unable to locate module 'std'
+def main() raises:
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:118:9: error: 'builtin' does not refer to a nested package
+def main() raises:
+        ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:119:5: error: unable to locate module 'std'
+    test_rational_facade()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:120:5: error: unable to locate module 'std'
+    test_closed_interval_facade()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:121:5: error: unable to locate module 'std'
+    test_matrix_facade()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:122:5: error: unable to locate module 'std'
+    test_rational_elimination_facade_agrees_with_matrix()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:123:5: error: unable to locate module 'std'
+    test_matrix3_facade()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_stable_facades.mojo:124:5: error: use of unknown declaration 'print'; did you mean 'q_int'?
+    print("stable facade checks passed.")
+    ^~~~~
+    q_int
+/workspace/scratch/gnr-next.qHyoM1/golden-ratio-normality-research/kernel/.pixi/envs/default/bin/mojo: error: failed to parse the provided Mojo source module

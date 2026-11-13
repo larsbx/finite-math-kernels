@@ -32,6 +32,10 @@
       "blob": "8e4a149c7778110fa4e87e7e6085fe284180d18f",
       "relation": "authored"
     },
+    ".github/workflows/binary-weight.yml": {
+      "blob": "a91e65c67a155afa4ae532d236f4d72a0045dca9",
+      "relation": "authored"
+    },
     ".github/workflows/ci.yml": {
       "blob": "cac5b457f6efb38651bb057c21159dc865468938",
       "relation": "authored"
@@ -108,6 +112,822 @@
       "blob": "cafd8e7e17294d76d6e2d1cb776d636d3d665db2",
       "generator": "tools/run_kernel_lean_verification.py",
       "relation": "generated"
+    },
+    "conformance/lean/binary-weight/README.md": {
+      "blob": "3f079bd3ff081ec209502ce6eff28b167190db7e",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/build-census-bend.log": {
+      "blob": "9ca429589a635bfd410eef333e62ad7aabe65371",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/build-census.log": {
+      "blob": "56dd1f76eaa109730ff3453b55f4677e2579e88e",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/build-certified-records-py.log": {
+      "blob": "e4fa15275e87233fad083b0d8c9416226b10af0e",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/cyclotomic-field-vectors.log": {
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/cyclotomic-vectors.log": {
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/gram-geometry-vectors.log": {
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/hyperbolic-rt-vectors.log": {
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/property.log": {
+      "blob": "95e8b049cd53d3a9bbddfe4cc116af013aa0295a",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/references.log": {
+      "blob": "2a83c9a90a6cb165cf4526bc0aea1266e48200a0",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/report.json": {
+      "blob": "aeb9131f9b1564ad5c5e0a19d44eb047f8f6695a",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/test-angle-doubling.log": {
+      "blob": "a8b26bf252d22310eac78c9e35e5a3a08ba06e28",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/test-audit.log": {
+      "blob": "9898b6e4b4c117be09aea39a1dd9c48568ceace3",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/test-certified-records.log": {
+      "blob": "1ed65a742c16f2f6c8e0b77a83a8eae901a3b7c9",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/test-choreography.log": {
+      "blob": "3400e598348733e0ff27e95c77c500d776696abf",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/test-chromogeometry.log": {
+      "blob": "8a5c97e45d321e7938445bb054bd5a38b367099d",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/test-claims.log": {
+      "blob": "3d1e59fa9c013e76758293c20c6beb7935089e6e",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/test-cyclotomic-field.log": {
+      "blob": "360424c0f6f7dd0e262481015559e17d5112ee40",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/test-cyclotomic-q.log": {
+      "blob": "b91785d0481d69ed55221c694e9f37ccdd62e0b4",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/test-exact-arithmetic-audit.log": {
+      "blob": "bb7fce30d07dbcfc4793fabf4af64fb2a7afacfb",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/test-facades.log": {
+      "blob": "c039bd199d69452404c923ee50f16a8f9712c47a",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/test-finite-automata.log": {
+      "blob": "8ffce19e706a585804e9f32c2514bbeb5c329ca6",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/test-finite-exact.log": {
+      "blob": "1b37c55d5da670451060a82484316a54e6d31d53",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/test-finite-graph.log": {
+      "blob": "18171a6d96d3fad8a5ede5a7075ca8d7718ee87c",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/test-finite-polynomial.log": {
+      "blob": "27961b950ff77838330cab9a2d6889514aa00c70",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/test-frontier.log": {
+      "blob": "096e8ec48d3ec00f013502e82dfdc1751132e7de",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/test-integer-matrix.log": {
+      "blob": "101b349a8c0bac771a69b0f5642f97513365ec4a",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/test-integer-module.log": {
+      "blob": "a2e20ddc6091e7b8afce73af2c673777d945dfb3",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/test-integer-vector.log": {
+      "blob": "34904c2fd7eca44fa594ba11fcb99dcc4d96602f",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/test-interval.log": {
+      "blob": "dcf9506cd0c37081683138c0c124a77bbf2b87ae",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/test-lexical-audit.log": {
+      "blob": "2f37d57af7d818336a09ddc5611f39e7b2c4a0e9",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/test-linear-algebra.log": {
+      "blob": "64856d66116e9c5fb050174d468dd2bdebd26882",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/test-machine-int.log": {
+      "blob": "87ec528d3383320d48d2f72bbac1a48fd1f2cf9a",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/test-madic-oracle.log": {
+      "blob": "c1486d4a5729066f5004c849c98108ad3557887b",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/test-madic.log": {
+      "blob": "318ea470481a4fb1841e95f8de3fd1077652e101",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/test-mojo-smoke.log": {
+      "blob": "29e53bcd1e585c2c62b8f202d9f776734be21580",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/test-named-modules.log": {
+      "blob": "b42df34fe48e8decc11baefe2e4b324502985d98",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/test-orbit-census.log": {
+      "blob": "b2fe2dde620fa28ed25fe42da77e823f88bf9770",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/test-pair-power-residue.log": {
+      "blob": "472f37f3c3b6ef25dd47b248e946e589d4a50681",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/test-parallel-fold.log": {
+      "blob": "2e4548eef3300de7ba75249ea4c5d477b835698d",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/test-polynomial-fp.log": {
+      "blob": "ed6da649205fdce28333c5b413d68825b3061e9d",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/test-projective-limits.log": {
+      "blob": "96e69c53ebb7a64bfc0928fe565035a742cb76ec",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/test-projective.log": {
+      "blob": "0216f87bbebb515a26e470e9dfbc8fdc72d41db1",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/test-proof-records.log": {
+      "blob": "31dbcd6a35d44f14e9213e9ccb70985ae74fb146",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/test-provenance.log": {
+      "blob": "c8860238b1d4f2c691885abdfdd3bb1dd8326a9c",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/test-qpoly-oracle.log": {
+      "blob": "61fc2b1f5a032c94901106737bda890d41a1c801",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/test-qpoly.log": {
+      "blob": "1dfbce80620a3373c26f4f06b837d85cdadb2c15",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/test-quadratic-germ.log": {
+      "blob": "fe2c314023778bdc65d701e25ff7ebe06ee20ef3",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/test-quadratic-orbit.log": {
+      "blob": "70a1fc65d695a6fbfde019198a460c045953052e",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/test-rational-dynamics.log": {
+      "blob": "4778a5335041f5d59da1e3d688d137582f0d6207",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/test-references.log": {
+      "blob": "f678b7350dbf8ded794b4fd253a66b079e5f6efd",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/test-refinement.log": {
+      "blob": "d8bea25fa1266d14c381e2d32e5666b9d94b32b7",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/test-root-isolation.log": {
+      "blob": "2406f9239e8ec0521a2faedb1cb956eb1d045f47",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/test-substitution.log": {
+      "blob": "fcba25276919b86e236fe30e3c0ff655a658022b",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/test-truncated-jet.log": {
+      "blob": "6e1dee88dcd8b9b311ad88c66d553806568207ea",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/test-tuning.log": {
+      "blob": "22f528a7ffa83131a4f26959290523ffaee68538",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/test-vendoring.log": {
+      "blob": "3ed6e806dd230e5e19ef3d73508d68ec23a7f735",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/test-weighted-cycle.log": {
+      "blob": "9b00a5a071b19b62e3751fef242ff1a9f36a3b34",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/test-word-range.log": {
+      "blob": "fa8680c709e19bdb38daa01ab88b781dee9f6214",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/initial-environment-a68e284/word-range-vectors.log": {
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/interrupted-command-rewrite/attempt-status.json": {
+      "blob": "04a5fe54ec478b62ee9d346080e88a5c5dabe571",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/interrupted-command-rewrite/report.json": {
+      "blob": "7803281f7c53b02fddfa1c8fb150dfbefa59b3b1",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/interrupted-command-rewrite/run_repository_gates.py": {
+      "blob": "96b23fbc181c362f0b714cd0cf28f352d7a72b6b",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/interrupted-command-rewrite/test-cyclotomic-field.log": {
+      "blob": "360424c0f6f7dd0e262481015559e17d5112ee40",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/interrupted-command-rewrite/test-cyclotomic-q.log": {
+      "blob": "8898692c6bea89760ead7380a5d9d25b7a6859bf",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/interrupted-command-rewrite/test-facades.log": {
+      "blob": "463d3ff38630d6a852143a193c334f853e02f6aa",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/interrupted-command-rewrite/test-finite-exact.log": {
+      "blob": "819045524b3038100349e1317f9e53cac9ada439",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/interrupted-command-rewrite/test-finite-polynomial.log": {
+      "blob": "4420af862a451f075eedde1a2bc774047648715f",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/interrupted-command-rewrite/test-integer-module.log": {
+      "blob": "36bcec1fec8cb5a611f882061c68ebcefe906a1b",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/interrupted-command-rewrite/test-interval.log": {
+      "blob": "093bba8322da631aaa950caf0dbfa9b86e420cf2",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/interrupted-command-rewrite/test-linear-algebra.log": {
+      "blob": "4cb71a052af931d18ee98e319625fa8251be8245",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/interrupted-command-rewrite/test-madic-oracle.log": {
+      "blob": "50af0dff84879da95b3fd201ac044f4ed0493a7a",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/interrupted-command-rewrite/test-madic.log": {
+      "blob": "b268a2011a531d82b7a087655b85226614b2d0f8",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/interrupted-command-rewrite/test-named-modules.log": {
+      "blob": "6a42abe5ae9b07e67d61e1084956944b90d66d94",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/interrupted-command-rewrite/test-pair-power-residue.log": {
+      "blob": "596d10c4f64a9eda74fbdcc1e2672208b1b1ce7d",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/interrupted-command-rewrite/test-polynomial-fp.log": {
+      "blob": "7373c8a0c53dd428ad5b5e5fbbe15ee0df5375e3",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/interrupted-command-rewrite/test-qpoly-oracle.log": {
+      "blob": "fbaa27457a09d426947b51e4387d69ca9c9bc2a6",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/interrupted-command-rewrite/test-qpoly.log": {
+      "blob": "cefb6415c4116604af4df3bfe8d69e588b3a4f99",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/interrupted-command-rewrite/test-quadratic-germ.log": {
+      "blob": "0338d6d39463f30d3673aa914858cd8c3fff8cfc",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/interrupted-command-rewrite/test-quadratic-orbit.log": {
+      "blob": "70a1fc65d695a6fbfde019198a460c045953052e",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/interrupted-command-rewrite/test-root-isolation.log": {
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/interrupted-command-rewrite/test-substitution.log": {
+      "blob": "fcba25276919b86e236fe30e3c0ff655a658022b",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/interrupted-command-rewrite/test-truncated-jet.log": {
+      "blob": "09493c3a4f20b31a0f5dce709cc8baf13a32f878",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/interrupted-command-rewrite/test-tuning.log": {
+      "blob": "01e9895db9d12f507686772f4f34293d2ce77f6f",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/superseded-focused-a68e284/Audit.lean": {
+      "blob": "a7728ffc4892df76579a532d447d287108021d6e",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/superseded-focused-a68e284/AuditTransitive.lean": {
+      "blob": "9d346884b809da52dae7403c32e0dcca7ea2bf45",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/superseded-focused-a68e284/AuditUntrusted.lean": {
+      "blob": "b3c864f999fd3ad187236df8ad2706c9e858bb41",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/superseded-focused-a68e284/Reject_addition_equality.lean": {
+      "blob": "834e1420f1cbef02ff647c05aeeb92d8c7803072",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/superseded-focused-a68e284/Reject_division_equality.lean": {
+      "blob": "62bd07ad4ae378062a9004a97de00c693a644dc8",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/superseded-focused-a68e284/Reject_stronger_square.lean": {
+      "blob": "d23bad9ec312396a8177e191d2bb1a991ceae52b",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/superseded-focused-a68e284/Reject_weakened_square_type.lean": {
+      "blob": "07e49ef10a9ff9736c43354ced88a9ee34fbd037",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/superseded-focused-a68e284/Reject_wrong_weight.lean": {
+      "blob": "6a046f4fa8a32e338757c707b6e2204c3711823e",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/superseded-focused-a68e284/TransitiveAxiom.lean": {
+      "blob": "dc4e9a033beeca3ecabe425714727397aed8ff1f",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/superseded-focused-a68e284/UntrustedAxiom.lean": {
+      "blob": "2446b8300b42b3f929e51202257add4b708c8dff",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/superseded-focused-a68e284/declaration-axioms.json": {
+      "blob": "5625252b03b40354d464b334b1c61ac41b4bbe88",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/superseded-focused-a68e284/lean-Audit.json": {
+      "blob": "8c4f3eea8dbcaf792d51d7ad48c22f5742ee6371",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/superseded-focused-a68e284/lean-AuditTransitive.json": {
+      "blob": "fa2ec9b7d46f94e35f4d6b86849916819cb3584a",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/superseded-focused-a68e284/lean-AuditUntrusted.json": {
+      "blob": "f6d0f44f2294fb7cf22deac290814e5c8b274574",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/superseded-focused-a68e284/lean-BinaryWeightControls.json": {
+      "blob": "4b879ad8e9205aa9b3082dd62a9630becf9b784b",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/superseded-focused-a68e284/lean-FiniteMathKernels.BinaryWeight.json": {
+      "blob": "af5a3e55b2595b65c1b9f4949cd6deea111a2af9",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/superseded-focused-a68e284/lean-FiniteMathKernels.BinaryWeightContracts.json": {
+      "blob": "fdcab0dd65a9e9c1f1fdc75c9c4ebe87fe055da2",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/superseded-focused-a68e284/lean-Reject_addition_equality.json": {
+      "blob": "fd0d078b80cfca2317cbfad65386353990d02736",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/superseded-focused-a68e284/lean-Reject_division_equality.json": {
+      "blob": "f1b5f8b8d81af2d45b526121d320d0c8e09075d5",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/superseded-focused-a68e284/lean-Reject_stronger_square.json": {
+      "blob": "4dcf23b99a2e9ea950b6907ee1deb189fdfa33c1",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/superseded-focused-a68e284/lean-Reject_weakened_square_type.json": {
+      "blob": "46b8853c4018a6c7062a740f01c87c4f04e3aefe",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/superseded-focused-a68e284/lean-Reject_wrong_weight.json": {
+      "blob": "9469637ce38aa7e0c515935d08843c64a66f8abb",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/superseded-focused-a68e284/lean-TransitiveAxiom.json": {
+      "blob": "a3455c1edb5470ebe048b18f0776f264ec8bb8cc",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/superseded-focused-a68e284/lean-UntrustedAxiom.json": {
+      "blob": "1f1fc906678b11185877d9c589488bbca0b3466c",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/superseded-focused-a68e284/lean-version.json": {
+      "blob": "740d21553d8276325a6d6b3a9fe80e48fb71a8ae",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/attempts/superseded-focused-a68e284/report.json": {
+      "blob": "09cf93809b5d513ea8f583eb8d9086de63768c75",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/focused/Audit.lean": {
+      "blob": "a7728ffc4892df76579a532d447d287108021d6e",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/focused/AuditTransitive.lean": {
+      "blob": "9d346884b809da52dae7403c32e0dcca7ea2bf45",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/focused/AuditUntrusted.lean": {
+      "blob": "b3c864f999fd3ad187236df8ad2706c9e858bb41",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/focused/Reject_addition_equality.lean": {
+      "blob": "834e1420f1cbef02ff647c05aeeb92d8c7803072",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/focused/Reject_division_equality.lean": {
+      "blob": "62bd07ad4ae378062a9004a97de00c693a644dc8",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/focused/Reject_stronger_square.lean": {
+      "blob": "d23bad9ec312396a8177e191d2bb1a991ceae52b",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/focused/Reject_weakened_square_type.lean": {
+      "blob": "07e49ef10a9ff9736c43354ced88a9ee34fbd037",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/focused/Reject_wrong_weight.lean": {
+      "blob": "6a046f4fa8a32e338757c707b6e2204c3711823e",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/focused/TransitiveAxiom.lean": {
+      "blob": "dc4e9a033beeca3ecabe425714727397aed8ff1f",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/focused/UntrustedAxiom.lean": {
+      "blob": "2446b8300b42b3f929e51202257add4b708c8dff",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/focused/declaration-axioms.json": {
+      "blob": "5625252b03b40354d464b334b1c61ac41b4bbe88",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/focused/gate-regressions.json": {
+      "blob": "a0cd80ea49a9a8f4e48d591a5aa1b60ec2fdaa0a",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/focused/lean-Audit.json": {
+      "blob": "500377db8269012b6e9f5c8284e0acf6861bba19",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/focused/lean-AuditTransitive.json": {
+      "blob": "7d7b8ad271a2ef740a1a1785ea000a9c943baf68",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/focused/lean-AuditUntrusted.json": {
+      "blob": "c197ec1927103dbde6c1c02b73be5b32c8d15dd5",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/focused/lean-BinaryWeightControls.json": {
+      "blob": "9a6752611656af695c43065a2a97aad013c77f30",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/focused/lean-FiniteMathKernels.BinaryWeight.json": {
+      "blob": "57e58bdff92fb52ed81e1929bae9414bc4272404",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/focused/lean-FiniteMathKernels.BinaryWeightContracts.json": {
+      "blob": "9bddd017e12f5b5937b25ad89ce2b37213dfc1bf",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/focused/lean-Reject_addition_equality.json": {
+      "blob": "693e4734d84e857b0881c507cf1f75355c55fbbf",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/focused/lean-Reject_division_equality.json": {
+      "blob": "7bae8bfce258e7a15ec7f00cb65568c9b2edd770",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/focused/lean-Reject_stronger_square.json": {
+      "blob": "da2d06ff188ea315a0fa12fd6cb62c3324a6c477",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/focused/lean-Reject_weakened_square_type.json": {
+      "blob": "e5f74b28ee5225a4d37aeb075ad33bb34d5e002e",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/focused/lean-Reject_wrong_weight.json": {
+      "blob": "7132da98798b134840f5cdc5a6f21c263d454535",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/focused/lean-TransitiveAxiom.json": {
+      "blob": "79ddce07a0e7d143c800291026762b9655453c2d",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/focused/lean-UntrustedAxiom.json": {
+      "blob": "819f15d55c19399dbd9595684a49e11307ac5f10",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/focused/lean-version.json": {
+      "blob": "94dc978bd3b8df5b172a748a4ea4b34b2bd5926a",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/focused/report.json": {
+      "blob": "919f82c73c719cd31ded6c982e025c3722a81e87",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/manifest.json": {
+      "blob": "083aa0af2bc8472c628ffc67b1f30d5e6d580f4d",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/build-census-bend.log": {
+      "blob": "9ca429589a635bfd410eef333e62ad7aabe65371",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/build-census.log": {
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/build-certified-records-py.log": {
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/cyclotomic-field-vectors.log": {
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/cyclotomic-vectors.log": {
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/environment-limits.json": {
+      "blob": "2659fa8069c647b595ece5321016097e4929a19a",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/frontier-toolchain-followup.json": {
+      "blob": "8d1c4fb52edb2e2ebc5a595d1f7e0a8bc358dbca",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/frontier-toolchain-followup.log": {
+      "blob": "66ef9f83153cd1452f8ec43522f468080ae528a4",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/gram-geometry-vectors.log": {
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/hyperbolic-rt-vectors.log": {
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/prior_attempt_report.json": {
+      "blob": "7803281f7c53b02fddfa1c8fb150dfbefa59b3b1",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/property.log": {
+      "blob": "6f0772cf21b822ac0177ad634b7866fdcfef071e",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/references.log": {
+      "blob": "e452d3e296bb82aa661e3d9dc16e3adfaa5c2921",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/report.json": {
+      "blob": "e8923d59ceba25a89522199db997ef1172da1978",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/run_repository_gates.py": {
+      "blob": "c46b9120ba4a7a946e7510bd5cdbbce0bfcbb784",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/test-angle-doubling.log": {
+      "blob": "defd223904ae71f16dec0edd249794b1578a41f3",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/test-audit.log": {
+      "blob": "1e46d6177fdb17de9f78e69bdb72779bd821360f",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/test-certified-records.log": {
+      "blob": "e339de88f12002be0e3ee87a2f9df3a2934caa96",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/test-choreography.log": {
+      "blob": "78dc8b88a3b536635cb0feb330098f168cca6bf6",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/test-chromogeometry.log": {
+      "blob": "9fb81cbef5433ac4e37f5226b998d1e472612ca0",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/test-claims.log": {
+      "blob": "9b59a5ddfbe42e80bdaeb4e709872813b686a781",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/test-cyclotomic-field.log": {
+      "blob": "2a0af77df8f8076781be262d5fc7070da7ca1b21",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/test-cyclotomic-q.log": {
+      "blob": "8898692c6bea89760ead7380a5d9d25b7a6859bf",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/test-exact-arithmetic-audit.log": {
+      "blob": "bd0135f48f4b86bd905c831373677f3875001589",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/test-facades.log": {
+      "blob": "463d3ff38630d6a852143a193c334f853e02f6aa",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/test-finite-automata.log": {
+      "blob": "da421b1112e5cfae93ba9b3599dc8843df889dd2",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/test-finite-exact.log": {
+      "blob": "819045524b3038100349e1317f9e53cac9ada439",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/test-finite-graph.log": {
+      "blob": "86ceff74a8d6048951917a8ddd96256366331b07",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/test-finite-polynomial.log": {
+      "blob": "4420af862a451f075eedde1a2bc774047648715f",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/test-frontier.log": {
+      "blob": "c074d898535cc087d603228fb74feac394e5c22a",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/test-integer-matrix.log": {
+      "blob": "d760d545da18b9f6bc239eae536498090b98fe62",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/test-integer-module.log": {
+      "blob": "36bcec1fec8cb5a611f882061c68ebcefe906a1b",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/test-integer-vector.log": {
+      "blob": "93f363aae00b074463de096f2f793bf675182c43",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/test-interval.log": {
+      "blob": "093bba8322da631aaa950caf0dbfa9b86e420cf2",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/test-lexical-audit.log": {
+      "blob": "af8f4c953ae353a49a6af0e4eb20652f7fae5831",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/test-linear-algebra.log": {
+      "blob": "4cb71a052af931d18ee98e319625fa8251be8245",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/test-machine-int.log": {
+      "blob": "4cbab30f36d3304818aac47796244f7ad48ffffb",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/test-madic-oracle.log": {
+      "blob": "50af0dff84879da95b3fd201ac044f4ed0493a7a",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/test-madic.log": {
+      "blob": "b268a2011a531d82b7a087655b85226614b2d0f8",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/test-mojo-smoke.log": {
+      "blob": "dd3a665f6d52c850e34aba244ca86369e76cfd37",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/test-named-modules.log": {
+      "blob": "6a42abe5ae9b07e67d61e1084956944b90d66d94",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/test-orbit-census.log": {
+      "blob": "ea49c22e8c3fabb09114edc292bbc40b32803c96",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/test-orbit-reference.log": {
+      "blob": "afe78270567da9b4435e42994ce08c288de416a0",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/test-pair-power-residue.log": {
+      "blob": "596d10c4f64a9eda74fbdcc1e2672208b1b1ce7d",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/test-parallel-fold.log": {
+      "blob": "806644f6788ef099291beaf30a74477a47285fc7",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/test-polynomial-fp.log": {
+      "blob": "7373c8a0c53dd428ad5b5e5fbbe15ee0df5375e3",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/test-projective-limits.log": {
+      "blob": "723966b1565356d254da2e40c3e761a4c9e6a0e8",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/test-projective.log": {
+      "blob": "99dcb47ba198ffb6786e147542097c871795a782",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/test-proof-records.log": {
+      "blob": "075e8edfc48b42ea6b8eadfff26841ea29cee536",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/test-provenance.log": {
+      "blob": "792edfec5173af2c1dcc03f8e16c7e1516a0efbf",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/test-python.log": {
+      "blob": "cd3e547ab62d0fcd5ed2da432f8f565f5481fef7",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/test-qpoly-oracle.log": {
+      "blob": "fbaa27457a09d426947b51e4387d69ca9c9bc2a6",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/test-qpoly.log": {
+      "blob": "cefb6415c4116604af4df3bfe8d69e588b3a4f99",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/test-quadratic-germ.log": {
+      "blob": "0338d6d39463f30d3673aa914858cd8c3fff8cfc",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/test-quadratic-orbit.log": {
+      "blob": "33b9f6985402bac97425884dfe06425ba7ca0c3e",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/test-rational-dynamics.log": {
+      "blob": "3ccb7b8d3d2fa2acecacc0e0c5a0a8a9abc6f419",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/test-references.log": {
+      "blob": "b395b10f3ba428b9ca57a42cd66d0b052b34056e",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/test-refinement.log": {
+      "blob": "f3ed8f407a584bbd547bb44f22b2202f2316a531",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/test-root-isolation.log": {
+      "blob": "af21947d989e52c632dae80c8aeeffdbc162181b",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/test-substitution.log": {
+      "blob": "f5d448d59fa9fd21bd1465155c919e3f7d0bdbc5",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/test-truncated-jet.log": {
+      "blob": "09493c3a4f20b31a0f5dce709cc8baf13a32f878",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/test-tuning.log": {
+      "blob": "01e9895db9d12f507686772f4f34293d2ce77f6f",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/test-vendoring.log": {
+      "blob": "c54b9303ce521ca0dc324801e654b18db40ca814",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/test-weighted-cycle.log": {
+      "blob": "4082d2a5d414f6eba540876a8405fff841987680",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/test-word-range.log": {
+      "blob": "523531771ffb922c29455d1645fc0c1331ee3985",
+      "relation": "authored"
+    },
+    "conformance/lean/binary-weight/repository-gates/word-range-vectors.log": {
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "relation": "authored"
     },
     "conformance/lean/known-counterexample-326ac959.log": {
       "blob": "d03ea119f4cc6e1c1a7c1b130c715b6427c49741",
@@ -253,6 +1073,10 @@
       "source_blob": "1aabe8474bbdd10bea1f268e70448265387c1c33",
       "source_path": "docs/policy-format.md"
     },
+    "docs/binary-weight.md": {
+      "blob": "e121dcb727715a596cb3e1eb4b69d250a22c9cf2",
+      "relation": "authored"
+    },
     "docs/canonical-encoding.md": {
       "blob": "86cdc9b23467706e59d9768822ced6054c987847",
       "relation": "modified",
@@ -308,7 +1132,7 @@
       "relation": "authored"
     },
     "docs/lean-verification.md": {
-      "blob": "993b68ca11275997371ee93ef55c1db9dc2eb802",
+      "blob": "551000af69bec585f03aeae306ffd1904819026a",
       "relation": "authored"
     },
     "docs/ledger-generation-spec.md": {
@@ -1793,12 +2617,24 @@
       "source_blob": "0ee6e90f0e5c2f13faee3fe2c63b97aa9653f166",
       "source_path": "tests/test_interval_q.mojo"
     },
+    "tests/lean/BinaryWeightControls.lean": {
+      "blob": "95821b404e687f06c9cf8769c2a1195a9abf3a04",
+      "relation": "authored"
+    },
     "tests/lean/FiniteMathKernels.lean": {
-      "blob": "58ce23694329006fee69bda35d31526ba85e38f3",
+      "blob": "c19136020dece1f386f937555e4feb26a1fc50f3",
       "relation": "authored"
     },
     "tests/lean/FiniteMathKernels/AcceptedField.lean": {
       "blob": "73af7ca8562458ae883c1fa2cf5a15c32e66ebaf",
+      "relation": "authored"
+    },
+    "tests/lean/FiniteMathKernels/BinaryWeight.lean": {
+      "blob": "6cb6897b190013b69535ccac807cca1138083767",
+      "relation": "authored"
+    },
+    "tests/lean/FiniteMathKernels/BinaryWeightContracts.lean": {
+      "blob": "cd72517d99d57d2d70d7dfc1a60191922af1fdb1",
       "relation": "authored"
     },
     "tests/lean/FiniteMathKernels/CheckedInt.lean": {
@@ -1835,6 +2671,10 @@
     },
     "tests/lean/native_transcript.mojo": {
       "blob": "0aa4f288773aedc92215ea0e0beb576d31754f0d",
+      "relation": "authored"
+    },
+    "tests/lean/test_binary_weight_gate.py": {
+      "blob": "45163e404508b3fafe94c3c25995baa98cbc9fce",
       "relation": "authored"
     },
     "tests/lean/test_bridge.py": {
@@ -2351,6 +3191,10 @@
       "source": "finite_mandelbrot_research",
       "source_blob": "76ddda76a2cc3dea8221ac8b8192fe3d7e4f14c4",
       "source_path": "tools/check_vendored_sync.py"
+    },
+    "tools/verify_binary_weight.py": {
+      "blob": "2e80bbc6e1bc71de0e9ed7fd09ca0e34830b19bf",
+      "relation": "authored"
     }
   },
   "format": "finite-math-kernels provenance 1",

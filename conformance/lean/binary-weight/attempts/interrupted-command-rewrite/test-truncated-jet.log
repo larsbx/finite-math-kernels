@@ -1,0 +1,12 @@
+[PASS] test_q_jets_carry_every_derivative
+[PASS] test_reciprocal_is_the_fibonacci_series
+[PASS] test_reciprocal_over_f13_and_q_zeta5
+[PASS] test_refusals_are_sticky
+[PASS] test_gaussian_jets_agree_over_q_zeta4_and_singleton_boxes
+[PASS] test_multiplicities_of_the_quadratic_family
+[PASS] test_box_jets_enclose_point_jets
+[PASS] test_taylor_model_specimens
+[PASS] test_taylor_square_is_the_product_with_itself
+[PASS] test_taylor_enclosure_contains_the_orbit
+[PASS] test_taylor_refusals
+11 truncated-jet and Taylor-model tests passed.

@@ -1,0 +1,183 @@
+...................F................ssssss....................ssssssssss [ 57%]
+FF.......................................FFF.........    [100%]
+=================================== FAILURES ===================================
+_ test_every_installed_kernel_agrees_with_the_oracle_on_the_regression_corpus __
+
+tmp_path = PosixPath('/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-repository-gates/tmp-_px1fqc8/pytest-of-agent/pytest-0/test_every_installed_kernel_ag0')
+
+    def test_every_installed_kernel_agrees_with_the_oracle_on_the_regression_corpus(tmp_path):
+        have = installed()
+        registry = {name: impl for name, impl in harness.load_registry("ff_orbit_census").items() if name in have}
+        if not registry:
+            pytest.skip("no kernel toolchain on PATH")
+        lanes = ["cpu_single", "cpu_all"]
+        rows = harness.run_candidate("ff_orbit_census", "regress", registry, lanes=lanes, repeats=1, build_dir=tmp_path)
+        status = {(r["implementation"], r["lane"]): r["status"] for r in rows}
+>       assert status == {(n, lane): "ok" for n in registry for lane in lanes}
+E       AssertionError: assert {('mojo', 'cp...build_failed'} == {('mojo', 'cp...u_all'): 'ok'}
+E         
+E         Differing items:
+E         {('mojo', 'cpu_single'): 'build_failed'} != {('mojo', 'cpu_single'): 'ok'}
+E         {('mojo', 'cpu_all'): 'build_failed'} != {('mojo', 'cpu_all'): 'ok'}
+E         Use -v to get more diff
+
+tests/frontier/test_harness.py:103: AssertionError
+___________ test_missing_runner_writes_rejected_receipt_and_no_skip ____________
+
+tmp_path = PosixPath('/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-repository-gates/tmp-_px1fqc8/pytest-of-agent/pytest-0/test_missing_runner_writes_rej0')
+
+    def test_missing_runner_writes_rejected_receipt_and_no_skip(tmp_path):
+        config = args(tmp_path / "run")
+        config.gpu_runner = None
+>       receipt = gate.run(config)
+                  ^^^^^^^^^^^^^^^^
+
+tests/frontier/test_lean_max_hardware_acceptance.py:65: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+experiments/frontier/lean_max/hardware_acceptance.py:370: in run
+    require(not args.out.is_relative_to(ROOT), "output must be outside the repository")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+condition = False, message = 'output must be outside the repository'
+
+    def require(condition, message):
+        if not condition:
+>           raise Rejected(message)
+E           experiments.frontier.lean_max.hardware_acceptance.Rejected: output must be outside the repository
+
+experiments/frontier/lean_max/hardware_acceptance.py:43: Rejected
+____________________ test_cli_without_runner_exits_nonzero _____________________
+
+tmp_path = PosixPath('/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-repository-gates/tmp-_px1fqc8/pytest-of-agent/pytest-0/test_cli_without_runner_exits_0')
+
+    def test_cli_without_runner_exits_nonzero(tmp_path):
+        proc = subprocess.run([sys.executable, "-m", gate.MODULE, "--expected-revision", "a" * 40,
+                               "--out", str(tmp_path / "cli")], capture_output=True, cwd=gate.ROOT)
+        assert proc.returncode == 1
+>       assert json.loads((tmp_path / "cli/hardware-receipt.json").read_text())["status"] == "rejected"
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/frontier/test_lean_max_hardware_acceptance.py:77: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py:1027: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-repository-gates/tmp-_px1fqc8/pytest-of-agent/pytest-0/test_cli_without_runner_exits_0/cli/hardware-receipt.json')
+mode = 'r', buffering = -1, encoding = 'locale', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-repository-gates/tmp-_px1fqc8/pytest-of-agent/pytest-0/test_cli_without_runner_exits_0/cli/hardware-receipt.json'
+
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py:1013: FileNotFoundError
+_____________ test_failures_never_emit_accepted_receipts[failure0] _____________
+
+tmp_path = PosixPath('/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-repository-gates/tmp-_px1fqc8/pytest-of-agent/pytest-0/test_failures_never_emit_accep0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f5b33be70b0>
+failure = RuntimeError('simulated runner failure')
+
+    @pytest.mark.parametrize("failure", [RuntimeError("simulated runner failure"), KeyboardInterrupt(),
+                                         subprocess.TimeoutExpired("simulated profiler", 1)])
+    def test_failures_never_emit_accepted_receipts(tmp_path, monkeypatch, failure):
+        def fail(*a): raise failure
+        monkeypatch.setattr(gate, "execute", fail)
+>       receipt = gate.run(args(tmp_path / "run"))
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/frontier/test_lean_max_hardware_acceptance.py:268: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+experiments/frontier/lean_max/hardware_acceptance.py:370: in run
+    require(not args.out.is_relative_to(ROOT), "output must be outside the repository")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+condition = False, message = 'output must be outside the repository'
+
+    def require(condition, message):
+        if not condition:
+>           raise Rejected(message)
+E           experiments.frontier.lean_max.hardware_acceptance.Rejected: output must be outside the repository
+
+experiments/frontier/lean_max/hardware_acceptance.py:43: Rejected
+_____________ test_failures_never_emit_accepted_receipts[failure1] _____________
+
+tmp_path = PosixPath('/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-repository-gates/tmp-_px1fqc8/pytest-of-agent/pytest-0/test_failures_never_emit_accep1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f5b33be7560>
+failure = KeyboardInterrupt()
+
+    @pytest.mark.parametrize("failure", [RuntimeError("simulated runner failure"), KeyboardInterrupt(),
+                                         subprocess.TimeoutExpired("simulated profiler", 1)])
+    def test_failures_never_emit_accepted_receipts(tmp_path, monkeypatch, failure):
+        def fail(*a): raise failure
+        monkeypatch.setattr(gate, "execute", fail)
+>       receipt = gate.run(args(tmp_path / "run"))
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/frontier/test_lean_max_hardware_acceptance.py:268: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+experiments/frontier/lean_max/hardware_acceptance.py:370: in run
+    require(not args.out.is_relative_to(ROOT), "output must be outside the repository")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+condition = False, message = 'output must be outside the repository'
+
+    def require(condition, message):
+        if not condition:
+>           raise Rejected(message)
+E           experiments.frontier.lean_max.hardware_acceptance.Rejected: output must be outside the repository
+
+experiments/frontier/lean_max/hardware_acceptance.py:43: Rejected
+_____________ test_failures_never_emit_accepted_receipts[failure2] _____________
+
+tmp_path = PosixPath('/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-repository-gates/tmp-_px1fqc8/pytest-of-agent/pytest-0/test_failures_never_emit_accep2')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f5b34054aa0>
+failure = TimeoutExpired('simulated profiler', 1)
+
+    @pytest.mark.parametrize("failure", [RuntimeError("simulated runner failure"), KeyboardInterrupt(),
+                                         subprocess.TimeoutExpired("simulated profiler", 1)])
+    def test_failures_never_emit_accepted_receipts(tmp_path, monkeypatch, failure):
+        def fail(*a): raise failure
+        monkeypatch.setattr(gate, "execute", fail)
+>       receipt = gate.run(args(tmp_path / "run"))
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/frontier/test_lean_max_hardware_acceptance.py:268: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+experiments/frontier/lean_max/hardware_acceptance.py:370: in run
+    require(not args.out.is_relative_to(ROOT), "output must be outside the repository")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+condition = False, message = 'output must be outside the repository'
+
+    def require(condition, message):
+        if not condition:
+>           raise Rejected(message)
+E           experiments.frontier.lean_max.hardware_acceptance.Rejected: output must be outside the repository
+
+experiments/frontier/lean_max/hardware_acceptance.py:43: Rejected
+=============================== warnings summary ===============================
+../../../../opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/anyio/pytest_plugin.py:14
+  /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/anyio/pytest_plugin.py:14: PytestRemovedIn10Warning: _pytest.python.CallSpec2 has been renamed to CallSpec.
+  The CallSpec2 alias will be removed in pytest 10.
+  Update imports to use CallSpec instead.
+  See https://docs.pytest.org/en/stable/deprecations.html#callspec2-renamed
+    from _pytest.python import CallSpec2
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/frontier/test_harness.py::test_every_installed_kernel_agrees_with_the_oracle_on_the_regression_corpus
+FAILED tests/frontier/test_lean_max_hardware_acceptance.py::test_missing_runner_writes_rejected_receipt_and_no_skip
+FAILED tests/frontier/test_lean_max_hardware_acceptance.py::test_cli_without_runner_exits_nonzero
+FAILED tests/frontier/test_lean_max_hardware_acceptance.py::test_failures_never_emit_accepted_receipts[failure0]
+FAILED tests/frontier/test_lean_max_hardware_acceptance.py::test_failures_never_emit_accepted_receipts[failure1]
+FAILED tests/frontier/test_lean_max_hardware_acceptance.py::test_failures_never_emit_accepted_receipts[failure2]
+6 failed, 103 passed, 16 skipped, 1 warning, 16 subtests passed in 5.05s
