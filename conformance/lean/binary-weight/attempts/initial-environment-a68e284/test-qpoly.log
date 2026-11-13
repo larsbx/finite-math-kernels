@@ -1,0 +1,759 @@
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:1:1: error: unable to locate module 'std'
+"""Regressions for finite_linear_algebra/qpoly.mojo and the general charpoly.
+^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:1:1: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+"""Regressions for finite_linear_algebra/qpoly.mojo and the general charpoly.
+^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:9:6: error: unable to locate module 'std'
+from std.testing import assert_equal, assert_false, assert_true
+     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:11:
+kernel/finite_exact/__init__.mojo:34:1: error: unable to locate module 'std'
+
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:11:
+kernel/finite_exact/rat_q.mojo:13:1: error: unable to locate module 'std'
+from finite_exact.bigint_z import BigZ, bigz_add, bigz_canonical_bytes, bigz_div_exact, bigz_eq, bigz_from_i64, bigz_gcd, bigz_is_canonical, bigz_lt, bigz_mul, bigz_neg, bigz_sub, bigz_zero
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:11:
+kernel/finite_exact/rat_q.mojo:16:10: error: use of unknown declaration 'Copyable'
+struct Q(Copyable):
+         ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:12:
+kernel/finite_linear_algebra/__init__.mojo:37:1: error: unable to locate module 'std'
+
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:12:
+kernel/finite_linear_algebra/mat3.mojo:1:1: error: unable to locate module 'std'
+"""3x3 integer matrices: the incidence matrices M_sigma and the sl_3 seed
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:12:
+kernel/finite_linear_algebra/mat3.mojo:5:13: error: use of unknown declaration 'Copyable'
+struct Mat3(Copyable, Movable, Writable, Equatable):
+            ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+kernel/finite_linear_algebra/qpoly.mojo:1:1: error: unable to locate module 'std'
+"""Exact polynomials over Q: arithmetic, division, gcd, squarefree part.
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+Imported from kernel/finite_linear_algebra/qpoly.mojo:21:
+kernel/finite_linear_algebra/faddeev_leverrier.mojo:1:1: error: unable to locate module 'std'
+"""The characteristic polynomial in any dimension, by Faddeev-LeVerrier.
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+Imported from kernel/finite_linear_algebra/qpoly.mojo:21:
+kernel/finite_linear_algebra/faddeev_leverrier.mojo:19:17: error: use of unknown declaration 'List'
+def charpoly(m: List[List[Q]]) -> List[Q]:
+                ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+Imported from kernel/finite_linear_algebra/qpoly.mojo:21:
+kernel/finite_linear_algebra/faddeev_leverrier.mojo:19:14: error: unable to locate module 'std'
+def charpoly(m: List[List[Q]]) -> List[Q]:
+             ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+Imported from kernel/finite_linear_algebra/qpoly.mojo:21:
+kernel/finite_linear_algebra/faddeev_leverrier.mojo:19:35: error: use of unknown declaration 'List'
+def charpoly(m: List[List[Q]]) -> List[Q]:
+                                  ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+Imported from kernel/finite_linear_algebra/qpoly.mojo:21:
+kernel/finite_linear_algebra/faddeev_leverrier.mojo:19:35: error: unable to locate module 'std'
+def charpoly(m: List[List[Q]]) -> List[Q]:
+                                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+kernel/finite_linear_algebra/qpoly.mojo:43:15: error: use of unknown declaration 'List'
+def degree(p: List[Q]) -> Int:
+              ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+kernel/finite_linear_algebra/qpoly.mojo:43:12: error: unable to locate module 'std'
+def degree(p: List[Q]) -> Int:
+           ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+kernel/finite_linear_algebra/qpoly.mojo:43:27: error: use of unknown declaration 'Int'
+def degree(p: List[Q]) -> Int:
+                          ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+kernel/finite_linear_algebra/qpoly.mojo:43:27: error: unable to locate module 'std'
+def degree(p: List[Q]) -> Int:
+                          ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+kernel/finite_linear_algebra/qpoly.mojo:56:19: error: use of unknown declaration 'List'
+def derivative(p: List[Q]) -> List[Q]:
+                  ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+kernel/finite_linear_algebra/qpoly.mojo:56:16: error: unable to locate module 'std'
+def derivative(p: List[Q]) -> List[Q]:
+               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+kernel/finite_linear_algebra/qpoly.mojo:56:31: error: use of unknown declaration 'List'
+def derivative(p: List[Q]) -> List[Q]:
+                              ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+kernel/finite_linear_algebra/qpoly.mojo:56:31: error: unable to locate module 'std'
+def derivative(p: List[Q]) -> List[Q]:
+                              ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+kernel/finite_linear_algebra/qpoly.mojo:122:15: error: use of unknown declaration 'List'
+def divide(a: List[Q], b: List[Q]) -> QPolyDivision:
+              ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+kernel/finite_linear_algebra/qpoly.mojo:122:12: error: unable to locate module 'std'
+def divide(a: List[Q], b: List[Q]) -> QPolyDivision:
+           ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+kernel/finite_linear_algebra/qpoly.mojo:122:27: error: use of unknown declaration 'List'
+def divide(a: List[Q], b: List[Q]) -> QPolyDivision:
+                          ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+kernel/finite_linear_algebra/qpoly.mojo:122:24: error: unable to locate module 'std'
+def divide(a: List[Q], b: List[Q]) -> QPolyDivision:
+                       ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+kernel/finite_linear_algebra/qpoly.mojo:109:22: error: use of unknown declaration 'Copyable'
+struct QPolyDivision(Copyable, Movable):
+                     ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+kernel/finite_linear_algebra/qpoly.mojo:122:39: error: unable to locate module 'std'
+def divide(a: List[Q], b: List[Q]) -> QPolyDivision:
+                                      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+kernel/finite_linear_algebra/qpoly.mojo:48:17: error: use of unknown declaration 'List'
+def evaluate(p: List[Q], x: Q) -> Q:
+                ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+kernel/finite_linear_algebra/qpoly.mojo:48:14: error: unable to locate module 'std'
+def evaluate(p: List[Q], x: Q) -> Q:
+             ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+kernel/finite_linear_algebra/qpoly.mojo:48:26: error: unable to locate module 'std'
+def evaluate(p: List[Q], x: Q) -> Q:
+                         ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+kernel/finite_linear_algebra/qpoly.mojo:48:35: error: unable to locate module 'std'
+def evaluate(p: List[Q], x: Q) -> Q:
+                                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+kernel/finite_linear_algebra/qpoly.mojo:157:12: error: use of unknown declaration 'List'
+def gcd(a: List[Q], b: List[Q]) -> List[Q]:
+           ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+kernel/finite_linear_algebra/qpoly.mojo:157:9: error: unable to locate module 'std'
+def gcd(a: List[Q], b: List[Q]) -> List[Q]:
+        ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+kernel/finite_linear_algebra/qpoly.mojo:157:24: error: use of unknown declaration 'List'
+def gcd(a: List[Q], b: List[Q]) -> List[Q]:
+                       ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+kernel/finite_linear_algebra/qpoly.mojo:157:21: error: unable to locate module 'std'
+def gcd(a: List[Q], b: List[Q]) -> List[Q]:
+                    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+kernel/finite_linear_algebra/qpoly.mojo:157:36: error: use of unknown declaration 'List'
+def gcd(a: List[Q], b: List[Q]) -> List[Q]:
+                                   ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+kernel/finite_linear_algebra/qpoly.mojo:157:36: error: unable to locate module 'std'
+def gcd(a: List[Q], b: List[Q]) -> List[Q]:
+                                   ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+Imported from kernel/finite_linear_algebra/qpoly.mojo:24:
+kernel/finite_linear_algebra/sturm_sequence.mojo:1:1: error: unable to locate module 'std'
+"""Sturm sequences over Q, sign variations, and root isolation by bisection.
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+kernel/finite_linear_algebra/qpoly.mojo:157:21: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+def gcd(a: List[Q], b: List[Q]) -> List[Q]:
+                    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+Imported from kernel/finite_linear_algebra/qpoly.mojo:24:
+kernel/finite_linear_algebra/sturm_sequence.mojo:84:29: error: use of unknown declaration 'List'
+def largest_root_bracket(p: List[Q], width: Q, max_steps: Int) -> RootBracket:
+                            ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+Imported from kernel/finite_linear_algebra/qpoly.mojo:24:
+kernel/finite_linear_algebra/sturm_sequence.mojo:84:26: error: unable to locate module 'std'
+def largest_root_bracket(p: List[Q], width: Q, max_steps: Int) -> RootBracket:
+                         ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+Imported from kernel/finite_linear_algebra/qpoly.mojo:24:
+kernel/finite_linear_algebra/sturm_sequence.mojo:84:38: error: unable to locate module 'std'
+def largest_root_bracket(p: List[Q], width: Q, max_steps: Int) -> RootBracket:
+                                     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+Imported from kernel/finite_linear_algebra/qpoly.mojo:24:
+kernel/finite_linear_algebra/sturm_sequence.mojo:84:59: error: use of unknown declaration 'Int'
+def largest_root_bracket(p: List[Q], width: Q, max_steps: Int) -> RootBracket:
+                                                          ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+Imported from kernel/finite_linear_algebra/qpoly.mojo:24:
+kernel/finite_linear_algebra/sturm_sequence.mojo:84:48: error: unable to locate module 'std'
+def largest_root_bracket(p: List[Q], width: Q, max_steps: Int) -> RootBracket:
+                                               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+Imported from kernel/finite_linear_algebra/qpoly.mojo:24:
+kernel/finite_linear_algebra/sturm_sequence.mojo:65:20: error: use of unknown declaration 'Copyable'
+struct RootBracket(Copyable, Movable):
+                   ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+Imported from kernel/finite_linear_algebra/qpoly.mojo:24:
+kernel/finite_linear_algebra/sturm_sequence.mojo:84:67: error: unable to locate module 'std'
+def largest_root_bracket(p: List[Q], width: Q, max_steps: Int) -> RootBracket:
+                                                                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+kernel/finite_linear_algebra/qpoly.mojo:95:12: error: use of unknown declaration 'List'
+def mul(a: List[Q], b: List[Q]) -> List[Q]:
+           ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+kernel/finite_linear_algebra/qpoly.mojo:95:9: error: unable to locate module 'std'
+def mul(a: List[Q], b: List[Q]) -> List[Q]:
+        ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+kernel/finite_linear_algebra/qpoly.mojo:95:24: error: use of unknown declaration 'List'
+def mul(a: List[Q], b: List[Q]) -> List[Q]:
+                       ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+kernel/finite_linear_algebra/qpoly.mojo:95:21: error: unable to locate module 'std'
+def mul(a: List[Q], b: List[Q]) -> List[Q]:
+                    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+kernel/finite_linear_algebra/qpoly.mojo:95:36: error: use of unknown declaration 'List'
+def mul(a: List[Q], b: List[Q]) -> List[Q]:
+                                   ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+kernel/finite_linear_algebra/qpoly.mojo:95:36: error: unable to locate module 'std'
+def mul(a: List[Q], b: List[Q]) -> List[Q]:
+                                   ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+kernel/finite_linear_algebra/qpoly.mojo:32:18: error: use of unknown declaration 'List'
+def normalize(p: List[Q]) -> List[Q]:
+                 ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+kernel/finite_linear_algebra/qpoly.mojo:32:15: error: unable to locate module 'std'
+def normalize(p: List[Q]) -> List[Q]:
+              ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+kernel/finite_linear_algebra/qpoly.mojo:32:30: error: use of unknown declaration 'List'
+def normalize(p: List[Q]) -> List[Q]:
+                             ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+kernel/finite_linear_algebra/qpoly.mojo:32:30: error: unable to locate module 'std'
+def normalize(p: List[Q]) -> List[Q]:
+                             ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+Imported from kernel/finite_linear_algebra/qpoly.mojo:20:
+kernel/finite_linear_algebra/cauchy_bound.mojo:1:1: error: unable to locate module 'std'
+"""The Cauchy bound on the real roots of a polynomial over Q.
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+kernel/finite_linear_algebra/qpoly.mojo:32:15: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+def normalize(p: List[Q]) -> List[Q]:
+              ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+Imported from kernel/finite_linear_algebra/qpoly.mojo:20:
+kernel/finite_linear_algebra/cauchy_bound.mojo:21:19: error: use of unknown declaration 'List'
+def root_bound(p: List[Q]) -> Q:
+                  ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+Imported from kernel/finite_linear_algebra/qpoly.mojo:20:
+kernel/finite_linear_algebra/cauchy_bound.mojo:21:16: error: unable to locate module 'std'
+def root_bound(p: List[Q]) -> Q:
+               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+Imported from kernel/finite_linear_algebra/qpoly.mojo:20:
+kernel/finite_linear_algebra/cauchy_bound.mojo:21:31: error: unable to locate module 'std'
+def root_bound(p: List[Q]) -> Q:
+                              ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+Imported from kernel/finite_linear_algebra/qpoly.mojo:24:
+kernel/finite_linear_algebra/sturm_sequence.mojo:46:28: error: use of unknown declaration 'List'
+def sign_variations(chain: List[List[Q]], x: Q) -> Int:
+                           ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+Imported from kernel/finite_linear_algebra/qpoly.mojo:24:
+kernel/finite_linear_algebra/sturm_sequence.mojo:46:21: error: unable to locate module 'std'
+def sign_variations(chain: List[List[Q]], x: Q) -> Int:
+                    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+Imported from kernel/finite_linear_algebra/qpoly.mojo:24:
+kernel/finite_linear_algebra/sturm_sequence.mojo:46:43: error: unable to locate module 'std'
+def sign_variations(chain: List[List[Q]], x: Q) -> Int:
+                                          ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+Imported from kernel/finite_linear_algebra/qpoly.mojo:24:
+kernel/finite_linear_algebra/sturm_sequence.mojo:46:52: error: use of unknown declaration 'Int'
+def sign_variations(chain: List[List[Q]], x: Q) -> Int:
+                                                   ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+Imported from kernel/finite_linear_algebra/qpoly.mojo:24:
+kernel/finite_linear_algebra/sturm_sequence.mojo:46:52: error: unable to locate module 'std'
+def sign_variations(chain: List[List[Q]], x: Q) -> Int:
+                                                   ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+kernel/finite_linear_algebra/qpoly.mojo:168:24: error: use of unknown declaration 'List'
+def squarefree_part(p: List[Q]) -> List[Q]:
+                       ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+kernel/finite_linear_algebra/qpoly.mojo:168:21: error: unable to locate module 'std'
+def squarefree_part(p: List[Q]) -> List[Q]:
+                    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+kernel/finite_linear_algebra/qpoly.mojo:168:36: error: use of unknown declaration 'List'
+def squarefree_part(p: List[Q]) -> List[Q]:
+                                   ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+kernel/finite_linear_algebra/qpoly.mojo:168:36: error: unable to locate module 'std'
+def squarefree_part(p: List[Q]) -> List[Q]:
+                                   ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+Imported from kernel/finite_linear_algebra/qpoly.mojo:24:
+kernel/finite_linear_algebra/sturm_sequence.mojo:30:20: error: use of unknown declaration 'List'
+def sturm_chain(p: List[Q]) -> List[List[Q]]:
+                   ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+Imported from kernel/finite_linear_algebra/qpoly.mojo:24:
+kernel/finite_linear_algebra/sturm_sequence.mojo:30:17: error: unable to locate module 'std'
+def sturm_chain(p: List[Q]) -> List[List[Q]]:
+                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+Imported from kernel/finite_linear_algebra/qpoly.mojo:24:
+kernel/finite_linear_algebra/sturm_sequence.mojo:30:32: error: use of unknown declaration 'List'
+def sturm_chain(p: List[Q]) -> List[List[Q]]:
+                               ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+Imported from kernel/finite_linear_algebra/qpoly.mojo:24:
+kernel/finite_linear_algebra/sturm_sequence.mojo:30:32: error: unable to locate module 'std'
+def sturm_chain(p: List[Q]) -> List[List[Q]]:
+                               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+kernel/finite_linear_algebra/qpoly.mojo:91:12: error: use of unknown declaration 'List'
+def sub(a: List[Q], b: List[Q]) -> List[Q]:
+           ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+kernel/finite_linear_algebra/qpoly.mojo:91:9: error: unable to locate module 'std'
+def sub(a: List[Q], b: List[Q]) -> List[Q]:
+        ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+kernel/finite_linear_algebra/qpoly.mojo:91:24: error: use of unknown declaration 'List'
+def sub(a: List[Q], b: List[Q]) -> List[Q]:
+                       ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+kernel/finite_linear_algebra/qpoly.mojo:91:21: error: unable to locate module 'std'
+def sub(a: List[Q], b: List[Q]) -> List[Q]:
+                    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+kernel/finite_linear_algebra/qpoly.mojo:91:36: error: use of unknown declaration 'List'
+def sub(a: List[Q], b: List[Q]) -> List[Q]:
+                                   ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+kernel/finite_linear_algebra/qpoly.mojo:91:36: error: unable to locate module 'std'
+def sub(a: List[Q], b: List[Q]) -> List[Q]:
+                                   ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+Imported from kernel/finite_linear_algebra/qpoly.mojo:24:
+kernel/finite_linear_algebra/sturm_sequence.mojo:60:33: error: use of unknown declaration 'List'
+def variation_difference(chain: List[List[Q]], a: Q, b: Q) -> Int:
+                                ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+Imported from kernel/finite_linear_algebra/qpoly.mojo:24:
+kernel/finite_linear_algebra/sturm_sequence.mojo:60:26: error: unable to locate module 'std'
+def variation_difference(chain: List[List[Q]], a: Q, b: Q) -> Int:
+                         ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+Imported from kernel/finite_linear_algebra/qpoly.mojo:24:
+kernel/finite_linear_algebra/sturm_sequence.mojo:60:48: error: unable to locate module 'std'
+def variation_difference(chain: List[List[Q]], a: Q, b: Q) -> Int:
+                                               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+Imported from kernel/finite_linear_algebra/qpoly.mojo:24:
+kernel/finite_linear_algebra/sturm_sequence.mojo:60:54: error: unable to locate module 'std'
+def variation_difference(chain: List[List[Q]], a: Q, b: Q) -> Int:
+                                                     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+Imported from kernel/finite_linear_algebra/qpoly.mojo:24:
+kernel/finite_linear_algebra/sturm_sequence.mojo:60:63: error: use of unknown declaration 'Int'
+def variation_difference(chain: List[List[Q]], a: Q, b: Q) -> Int:
+                                                              ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+Imported from kernel/finite_linear_algebra/qpoly.mojo:24:
+kernel/finite_linear_algebra/sturm_sequence.mojo:60:63: error: unable to locate module 'std'
+def variation_difference(chain: List[List[Q]], a: Q, b: Q) -> Int:
+                                                              ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:30:
+kernel/finite_linear_algebra/scalar.mojo:1:1: error: unable to locate module 'std'
+"""Integer lifts into `finite_exact.Q` and the fail-closed zero test.
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:14:
+Imported from kernel/finite_linear_algebra/qpoly.mojo:24:
+kernel/finite_linear_algebra/sturm_sequence.mojo:60:54: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+def variation_difference(chain: List[List[Q]], a: Q, b: Q) -> Int:
+                                                     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:30:
+kernel/finite_linear_algebra/scalar.mojo:15:14: error: use of unknown declaration 'Int'
+def q_int(n: Int) -> Q:
+             ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:30:
+kernel/finite_linear_algebra/scalar.mojo:15:11: error: unable to locate module 'std'
+def q_int(n: Int) -> Q:
+          ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:30:
+kernel/finite_linear_algebra/scalar.mojo:15:22: error: unable to locate module 'std'
+def q_int(n: Int) -> Q:
+                     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:30:
+kernel/finite_linear_algebra/scalar.mojo:19:14: error: use of unknown declaration 'List'
+def q_vec(v: List[Int]) -> List[Q]:
+             ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:30:
+kernel/finite_linear_algebra/scalar.mojo:19:11: error: unable to locate module 'std'
+def q_vec(v: List[Int]) -> List[Q]:
+          ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:30:
+kernel/finite_linear_algebra/scalar.mojo:19:28: error: use of unknown declaration 'List'
+def q_vec(v: List[Int]) -> List[Q]:
+                           ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:30:
+kernel/finite_linear_algebra/scalar.mojo:19:28: error: unable to locate module 'std'
+def q_vec(v: List[Int]) -> List[Q]:
+                           ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:32:26: error: unable to locate module 'std'
+comptime BRACKET_STEPS = 256
+                         ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:35:16: error: unable to locate module 'std'
+def width() -> Q:
+               ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:39:13: error: use of unknown declaration 'List'
+def poly(c: List[Int]) -> List[Q]:
+            ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:39:10: error: unable to locate module 'std'
+def poly(c: List[Int]) -> List[Q]:
+         ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:39:27: error: use of unknown declaration 'List'
+def poly(c: List[Int]) -> List[Q]:
+                          ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:39:27: error: unable to locate module 'std'
+def poly(c: List[Int]) -> List[Q]:
+                          ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:43:18: error: use of unknown declaration 'List'
+def matrix(rows: List[List[Int]]) -> List[List[Q]]:
+                 ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:43:12: error: unable to locate module 'std'
+def matrix(rows: List[List[Int]]) -> List[List[Q]]:
+           ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:43:38: error: use of unknown declaration 'List'
+def matrix(rows: List[List[Int]]) -> List[List[Q]]:
+                                     ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:43:38: error: unable to locate module 'std'
+def matrix(rows: List[List[Int]]) -> List[List[Q]]:
+                                     ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:50:27: error: use of unknown declaration 'List'
+def fibonacci_matrix() -> List[List[Q]]:
+                          ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:50:27: error: unable to locate module 'std'
+def fibonacci_matrix() -> List[List[Q]]:
+                          ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:55:28: error: use of unknown declaration 'List'
+def tribonacci_matrix() -> List[List[Q]]:
+                           ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:55:28: error: unable to locate module 'std'
+def tribonacci_matrix() -> List[List[Q]]:
+                           ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:60:23: error: use of unknown declaration 'List'
+def all_ones_two() -> List[List[Q]]:
+                      ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:60:23: error: unable to locate module 'std'
+def all_ones_two() -> List[List[Q]]:
+                      ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:65:20: error: use of unknown declaration 'List'
+def assert_poly(p: List[Q], expected: List[Int]) raises:
+                   ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:65:17: error: unable to locate module 'std'
+def assert_poly(p: List[Q], expected: List[Int]) raises:
+                ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:65:39: error: use of unknown declaration 'List'
+def assert_poly(p: List[Q], expected: List[Int]) raises:
+                                      ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:65:29: error: unable to locate module 'std'
+def assert_poly(p: List[Q], expected: List[Int]) raises:
+                            ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:65:56: error: unable to locate module 'std'
+def assert_poly(p: List[Q], expected: List[Int]) raises:
+                                                       ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:71:43: error: unable to locate module 'std'
+def test_normalization_and_degree() raises:
+                                          ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:72:19: error: use of unknown declaration 'List'
+    var trailing: List[Int] = [1, 2, 0, 0]
+                  ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:74:15: error: use of unknown declaration 'List'
+    var zero: List[Int] = [0, 0]
+              ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:76:19: error: use of unknown declaration 'List'
+    var constant: List[Int] = [7]
+                  ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:80:51: error: unable to locate module 'std'
+def test_division_is_exact_over_the_field() raises:
+                                                  ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:81:15: error: use of unknown declaration 'List'
+    var cube: List[Int] = [-1, 0, 0, 1]
+              ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:82:17: error: use of unknown declaration 'List'
+    var linear: List[Int] = [-1, 1]
+                ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:85:19: error: use of unknown declaration 'List'
+    var expected: List[Int] = [1, 1, 1]
+                  ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:91:43: error: unable to locate module 'std'
+def test_division_by_zero_refuses() raises:
+                                          ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:92:15: error: use of unknown declaration 'List'
+    var cube: List[Int] = [-1, 0, 0, 1]
+              ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:93:19: error: use of unknown declaration 'List'
+    var nothing = List[Q]()
+                  ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:97:66: error: unable to locate module 'std'
+def test_gcd_is_monic_and_the_squarefree_part_simplifies() raises:
+                                                                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:98:21: error: use of unknown declaration 'List'
+    var difference: List[Int] = [-1, 0, 1]
+                    ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:99:17: error: use of unknown declaration 'List'
+    var linear: List[Int] = [-1, 1]
+                ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:101:17: error: use of unknown declaration 'List'
+    var square: List[Int] = [1, -2, 1]
+                ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:105:66: error: unable to locate module 'std'
+def test_the_root_bound_is_rational_and_above_every_root() raises:
+                                                                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:106:17: error: use of unknown declaration 'List'
+    var golden: List[Int] = [-1, -1, 1]
+                ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:107:21: error: use of unknown declaration 'List'
+    var tribonacci: List[Int] = [-1, -1, -1, 1]
+                    ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:112:53: error: unable to locate module 'std'
+def test_the_sturm_chain_and_its_variations() raises:
+                                                    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:113:17: error: use of unknown declaration 'List'
+    var golden: List[Int] = [-1, -1, 1]
+                ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:124:23: error: use of unknown declaration 'List'
+def assert_bracket(p: List[Q], lo: Q, hi: Q) raises:
+                      ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:124:20: error: unable to locate module 'std'
+def assert_bracket(p: List[Q], lo: Q, hi: Q) raises:
+                   ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:124:32: error: unable to locate module 'std'
+def assert_bracket(p: List[Q], lo: Q, hi: Q) raises:
+                               ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:124:39: error: unable to locate module 'std'
+def assert_bracket(p: List[Q], lo: Q, hi: Q) raises:
+                                      ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:124:52: error: unable to locate module 'std'
+def assert_bracket(p: List[Q], lo: Q, hi: Q) raises:
+                                                   ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:137:53: error: unable to locate module 'std'
+def test_the_golden_and_tribonacci_brackets() raises:
+                                                    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:138:17: error: use of unknown declaration 'List'
+    var golden: List[Int] = [-1, -1, 1]
+                ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:140:21: error: use of unknown declaration 'List'
+    var tribonacci: List[Int] = [-1, -1, -1, 1]
+                    ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:144:63: error: unable to locate module 'std'
+def test_the_chebyshev_transition_matrix_brackets_two() raises:
+                                                              ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:146:19: error: use of unknown declaration 'List'
+    var expected: List[Int] = [0, -2, 1]
+                  ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:151:63: error: unable to locate module 'std'
+def test_an_exact_rational_root_is_returned_as_itself() raises:
+                                                              ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:152:17: error: use of unknown declaration 'List'
+    var linear: List[Int] = [-1, 1]
+                ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:160:49: error: unable to locate module 'std'
+def test_a_repeated_root_still_isolates() raises:
+                                                ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:161:17: error: use of unknown declaration 'List'
+    var square: List[Int] = [1, -2, 1]
+                ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:165:58: error: unable to locate module 'std'
+def test_no_real_root_is_a_refusal_not_a_bracket() raises:
+                                                         ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:166:22: error: use of unknown declaration 'List'
+    var irreducible: List[Int] = [1, 0, 1]
+                     ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:168:19: error: use of unknown declaration 'List'
+    var constant: List[Int] = [5]
+                  ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:172:45: error: unable to locate module 'std'
+def test_a_capped_bisection_refuses() raises:
+                                            ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:174:17: error: use of unknown declaration 'List'
+    var golden: List[Int] = [-1, -1, 1]
+                ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:178:82: error: unable to locate module 'std'
+def test_the_general_charpoly_agrees_with_the_three_by_three_closed_form() raises:
+                                                                                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:179:18: error: use of unknown declaration 'List'
+    var entries: List[Int] = [1, 1, 1, 1, 0, 0, 0, 1, 0]
+                 ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:183:14: error: use of unknown declaration 'range'
+    for i in range(len(closed)):
+             ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:187:59: error: unable to locate module 'std'
+def test_the_general_charpoly_in_other_dimensions() raises:
+                                                          ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:188:20: error: use of unknown declaration 'List'
+    var fibonacci: List[Int] = [-1, -1, 1]
+                   ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:190:19: error: use of unknown declaration 'List'
+    var identity: List[List[Int]] = [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
+                  ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:191:19: error: use of unknown declaration 'List'
+    var expected: List[Int] = [-1, 3, -3, 1]
+                  ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:193:17: error: use of unknown declaration 'List'
+    var empty = List[List[Q]]()
+                ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:194:14: error: use of unknown declaration 'List'
+    var one: List[Int] = [1]
+             ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:198:85: error: unable to locate module 'std'
+def test_the_matrix_satisfies_its_own_characteristic_polynomial_at_its_root() raises:
+                                                                                    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:208:18: error: unable to locate module 'std'
+def main() raises:
+                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:208:5: error: unable to locate module 'std'
+def main() raises:
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:208:9: error: 'builtin' does not refer to a nested package
+def main() raises:
+        ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:209:5: error: unable to locate module 'std'
+    test_normalization_and_degree()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:210:5: error: use of unknown declaration 'print'; did you mean 'q_int'?
+    print("[PASS]", "test_normalization_and_degree")
+    ^~~~~
+    q_int
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:211:5: error: unable to locate module 'std'
+    test_division_is_exact_over_the_field()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:212:5: error: use of unknown declaration 'print'; did you mean 'q_int'?
+    print("[PASS]", "test_division_is_exact_over_the_field")
+    ^~~~~
+    q_int
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:213:5: error: unable to locate module 'std'
+    test_division_by_zero_refuses()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:214:5: error: use of unknown declaration 'print'; did you mean 'q_int'?
+    print("[PASS]", "test_division_by_zero_refuses")
+    ^~~~~
+    q_int
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:215:5: error: unable to locate module 'std'
+    test_gcd_is_monic_and_the_squarefree_part_simplifies()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:216:5: error: use of unknown declaration 'print'; did you mean 'q_int'?
+    print("[PASS]", "test_gcd_is_monic_and_the_squarefree_part_simplifies")
+    ^~~~~
+    q_int
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:217:5: error: unable to locate module 'std'
+    test_the_root_bound_is_rational_and_above_every_root()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:218:5: error: use of unknown declaration 'print'; did you mean 'q_int'?
+    print("[PASS]", "test_the_root_bound_is_rational_and_above_every_root")
+    ^~~~~
+    q_int
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:219:5: error: unable to locate module 'std'
+    test_the_sturm_chain_and_its_variations()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:220:5: error: use of unknown declaration 'print'; did you mean 'q_int'?
+    print("[PASS]", "test_the_sturm_chain_and_its_variations")
+    ^~~~~
+    q_int
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:221:5: error: unable to locate module 'std'
+    test_the_golden_and_tribonacci_brackets()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:222:5: error: use of unknown declaration 'print'; did you mean 'q_int'?
+    print("[PASS]", "test_the_golden_and_tribonacci_brackets")
+    ^~~~~
+    q_int
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:223:5: error: unable to locate module 'std'
+    test_the_chebyshev_transition_matrix_brackets_two()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:224:5: error: use of unknown declaration 'print'; did you mean 'q_int'?
+    print("[PASS]", "test_the_chebyshev_transition_matrix_brackets_two")
+    ^~~~~
+    q_int
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:225:5: error: unable to locate module 'std'
+    test_an_exact_rational_root_is_returned_as_itself()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:226:5: error: use of unknown declaration 'print'; did you mean 'q_int'?
+    print("[PASS]", "test_an_exact_rational_root_is_returned_as_itself")
+    ^~~~~
+    q_int
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:227:5: error: unable to locate module 'std'
+    test_a_repeated_root_still_isolates()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:228:5: error: use of unknown declaration 'print'; did you mean 'q_int'?
+    print("[PASS]", "test_a_repeated_root_still_isolates")
+    ^~~~~
+    q_int
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:229:5: error: unable to locate module 'std'
+    test_no_real_root_is_a_refusal_not_a_bracket()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:230:5: error: use of unknown declaration 'print'; did you mean 'q_int'?
+    print("[PASS]", "test_no_real_root_is_a_refusal_not_a_bracket")
+    ^~~~~
+    q_int
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:231:5: error: unable to locate module 'std'
+    test_a_capped_bisection_refuses()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:232:5: error: use of unknown declaration 'print'; did you mean 'q_int'?
+    print("[PASS]", "test_a_capped_bisection_refuses")
+    ^~~~~
+    q_int
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:233:5: error: unable to locate module 'std'
+    test_the_general_charpoly_agrees_with_the_three_by_three_closed_form()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:234:5: error: use of unknown declaration 'print'; did you mean 'q_int'?
+    print("[PASS]", "test_the_general_charpoly_agrees_with_the_three_by_three_closed_form")
+    ^~~~~
+    q_int
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:235:5: error: unable to locate module 'std'
+    test_the_general_charpoly_in_other_dimensions()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:236:5: error: use of unknown declaration 'print'; did you mean 'q_int'?
+    print("[PASS]", "test_the_general_charpoly_in_other_dimensions")
+    ^~~~~
+    q_int
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:237:5: error: unable to locate module 'std'
+    test_the_matrix_satisfies_its_own_characteristic_polynomial_at_its_root()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:238:5: error: use of unknown declaration 'print'; did you mean 'q_int'?
+    print("[PASS]", "test_the_matrix_satisfies_its_own_characteristic_polynomial_at_its_root")
+    ^~~~~
+    q_int
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_qpoly.mojo:239:5: error: use of unknown declaration 'print'; did you mean 'q_int'?
+    print("15 qpoly tests passed.")
+    ^~~~~
+    q_int
+/workspace/scratch/gnr-next.qHyoM1/golden-ratio-normality-research/kernel/.pixi/envs/default/bin/mojo: error: failed to parse the provided Mojo source module

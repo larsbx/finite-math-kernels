@@ -1,0 +1,7 @@
+[PASS] test_triangle_gain
+[PASS] test_parallel_edges_preserve_multiplicity
+[PASS] test_self_loop_is_its_own_cycle
+[PASS] test_tree_has_no_cycle_generators
+[PASS] test_two_cycle_multigraph_is_deterministic
+[PASS] test_rejects_incomplete_and_malformed_inputs
+6 weighted cycle-gain Mojo tests passed.

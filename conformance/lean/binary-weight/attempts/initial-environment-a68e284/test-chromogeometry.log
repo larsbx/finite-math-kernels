@@ -1,0 +1,236 @@
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:1:1: error: unable to locate module 'std'
+"""Exact tests of the domain-neutral chromogeometry kernel.
+^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:1:1: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+"""Exact tests of the domain-neutral chromogeometry kernel.
+^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:7:6: error: unable to locate module 'std'
+from std.testing import assert_false, assert_true
+     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:9:
+kernel/finite_exact/__init__.mojo:34:1: error: unable to locate module 'std'
+
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:9:
+kernel/finite_exact/fp.mojo:10:1: error: unable to locate module 'std'
+from finite_exact.field import ExactField
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:9:
+kernel/finite_exact/fp.mojo:27:14: error: use of unknown declaration 'Int64'
+struct Fp[p: Int64](Copyable, Writable):
+             ^~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:9:
+kernel/finite_exact/fp.mojo:107:19: error: use of unknown declaration 'Int64'
+struct FpField[p: Int64](ExactField):
+                  ^~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:10:
+kernel/finite_exact/field.mojo:15:1: error: unable to locate module 'std'
+from finite_exact.rat_q import Q, q_rejected
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:9:
+kernel/finite_exact/fp.mojo:107:16: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+struct FpField[p: Int64](ExactField):
+               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:10:
+kernel/finite_exact/field.mojo:18:7: error: unable to locate module 'std'
+trait ExactField:
+      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:10:
+kernel/finite_exact/field.mojo:70:8: error: unable to locate module 'std'
+struct QField(ExactField):
+       ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:11:
+kernel/finite_exact/rat_q.mojo:13:1: error: unable to locate module 'std'
+from finite_exact.bigint_z import BigZ, bigz_add, bigz_canonical_bytes, bigz_div_exact, bigz_eq, bigz_from_i64, bigz_gcd, bigz_is_canonical, bigz_lt, bigz_mul, bigz_neg, bigz_sub, bigz_zero
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:11:
+kernel/finite_exact/rat_q.mojo:16:10: error: use of unknown declaration 'Copyable'
+struct Q(Copyable):
+         ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:12:
+kernel/chromogeometry/__init__.mojo:4:1: error: unable to locate module 'std'
+
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:13:
+kernel/chromogeometry/chromatic.mojo:8:1: error: unable to locate module 'std'
+from finite_exact.field import ExactField
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:13:
+kernel/chromogeometry/chromatic.mojo:11:34: error: use of unknown declaration 'Copyable'
+struct ChromoVec2[K: ExactField](Copyable):
+                                 ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:13:
+kernel/chromogeometry/chromatic.mojo:27:32: error: unable to locate module 'std'
+def chromo_blue[K: ExactField](u: ChromoVec2[K]) -> K.Element:
+                               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:10:
+kernel/finite_exact/field.mojo:19:23: error: use of unknown declaration 'Copyable'
+    comptime Element: Copyable & Deinitable
+                      ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:10:
+kernel/finite_exact/field.mojo:19:34: error: use of unknown declaration 'Deinitable'
+    comptime Element: Copyable & Deinitable
+                                 ^~~~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:13:
+kernel/chromogeometry/chromatic.mojo:27:53: error: unable to locate module 'std'
+def chromo_blue[K: ExactField](u: ChromoVec2[K]) -> K.Element:
+                                                    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:13:
+kernel/chromogeometry/chromatic.mojo:31:31: error: unable to locate module 'std'
+def chromo_red[K: ExactField](u: ChromoVec2[K]) -> K.Element:
+                              ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:13:
+kernel/chromogeometry/chromatic.mojo:31:52: error: unable to locate module 'std'
+def chromo_red[K: ExactField](u: ChromoVec2[K]) -> K.Element:
+                                                   ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:13:
+kernel/chromogeometry/chromatic.mojo:35:33: error: unable to locate module 'std'
+def chromo_green[K: ExactField](u: ChromoVec2[K]) -> K.Element:
+                                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:13:
+kernel/chromogeometry/chromatic.mojo:35:54: error: unable to locate module 'std'
+def chromo_green[K: ExactField](u: ChromoVec2[K]) -> K.Element:
+                                                     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:13:
+kernel/chromogeometry/chromatic.mojo:63:39: error: unable to locate module 'std'
+def chromo_blue_spread[K: ExactField](u: ChromoVec2[K], v: ChromoVec2[K]) -> K.Element:
+                                      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:13:
+kernel/chromogeometry/chromatic.mojo:63:57: error: unable to locate module 'std'
+def chromo_blue_spread[K: ExactField](u: ChromoVec2[K], v: ChromoVec2[K]) -> K.Element:
+                                                        ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:13:
+kernel/chromogeometry/chromatic.mojo:63:78: error: unable to locate module 'std'
+def chromo_blue_spread[K: ExactField](u: ChromoVec2[K], v: ChromoVec2[K]) -> K.Element:
+                                                                             ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:13:
+kernel/chromogeometry/chromatic.mojo:67:38: error: unable to locate module 'std'
+def chromo_red_spread[K: ExactField](u: ChromoVec2[K], v: ChromoVec2[K]) -> K.Element:
+                                     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:13:
+kernel/chromogeometry/chromatic.mojo:67:56: error: unable to locate module 'std'
+def chromo_red_spread[K: ExactField](u: ChromoVec2[K], v: ChromoVec2[K]) -> K.Element:
+                                                       ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:13:
+kernel/chromogeometry/chromatic.mojo:67:77: error: unable to locate module 'std'
+def chromo_red_spread[K: ExactField](u: ChromoVec2[K], v: ChromoVec2[K]) -> K.Element:
+                                                                            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:13:
+kernel/chromogeometry/chromatic.mojo:71:40: error: unable to locate module 'std'
+def chromo_green_spread[K: ExactField](u: ChromoVec2[K], v: ChromoVec2[K]) -> K.Element:
+                                       ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:13:
+kernel/chromogeometry/chromatic.mojo:71:58: error: unable to locate module 'std'
+def chromo_green_spread[K: ExactField](u: ChromoVec2[K], v: ChromoVec2[K]) -> K.Element:
+                                                         ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:13:
+kernel/chromogeometry/chromatic.mojo:71:79: error: unable to locate module 'std'
+def chromo_green_spread[K: ExactField](u: ChromoVec2[K], v: ChromoVec2[K]) -> K.Element:
+                                                                              ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:13:
+kernel/chromogeometry/chromatic.mojo:75:38: error: unable to locate module 'std'
+def chromo_pythagoras[K: ExactField](u: ChromoVec2[K]) -> Bool:
+                                     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:13:
+kernel/chromogeometry/chromatic.mojo:75:59: error: use of unknown declaration 'Bool'
+def chromo_pythagoras[K: ExactField](u: ChromoVec2[K]) -> Bool:
+                                                          ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:13:
+kernel/chromogeometry/chromatic.mojo:75:59: error: unable to locate module 'std'
+def chromo_pythagoras[K: ExactField](u: ChromoVec2[K]) -> Bool:
+                                                          ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:13:
+kernel/chromogeometry/chromatic.mojo:85:43: error: unable to locate module 'std'
+def chromo_harmonic_spread[K: ExactField](u: ChromoVec2[K], v: ChromoVec2[K]) -> Bool:
+                                          ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:13:
+kernel/chromogeometry/chromatic.mojo:85:61: error: unable to locate module 'std'
+def chromo_harmonic_spread[K: ExactField](u: ChromoVec2[K], v: ChromoVec2[K]) -> Bool:
+                                                            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:13:
+kernel/chromogeometry/chromatic.mojo:85:82: error: use of unknown declaration 'Bool'
+def chromo_harmonic_spread[K: ExactField](u: ChromoVec2[K], v: ChromoVec2[K]) -> Bool:
+                                                                                 ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:13:
+kernel/chromogeometry/chromatic.mojo:85:82: error: unable to locate module 'std'
+def chromo_harmonic_spread[K: ExactField](u: ChromoVec2[K], v: ChromoVec2[K]) -> Bool:
+                                                                                 ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:13:
+kernel/chromogeometry/chromatic.mojo:103:5: error: unable to locate module 'std'
+    u: ChromoVec2[K], v: ChromoVec2[K], color: Int
+    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:13:
+kernel/chromogeometry/chromatic.mojo:103:23: error: unable to locate module 'std'
+    u: ChromoVec2[K], v: ChromoVec2[K], color: Int
+                      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:13:
+kernel/chromogeometry/chromatic.mojo:103:48: error: use of unknown declaration 'Int'
+    u: ChromoVec2[K], v: ChromoVec2[K], color: Int
+                                               ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:13:
+kernel/chromogeometry/chromatic.mojo:103:41: error: unable to locate module 'std'
+    u: ChromoVec2[K], v: ChromoVec2[K], color: Int
+                                        ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:13:
+kernel/chromogeometry/chromatic.mojo:104:6: error: use of unknown declaration 'Bool'
+) -> Bool:
+     ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:13:
+kernel/chromogeometry/chromatic.mojo:104:6: error: unable to locate module 'std'
+) -> Bool:
+     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:13:
+kernel/chromogeometry/chromatic.mojo:23:31: error: unable to locate module 'std'
+def chromo_det[K: ExactField](u: ChromoVec2[K], v: ChromoVec2[K]) -> K.Element:
+                              ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:13:
+kernel/chromogeometry/chromatic.mojo:23:49: error: unable to locate module 'std'
+def chromo_det[K: ExactField](u: ChromoVec2[K], v: ChromoVec2[K]) -> K.Element:
+                                                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:13:
+kernel/chromogeometry/chromatic.mojo:23:70: error: unable to locate module 'std'
+def chromo_det[K: ExactField](u: ChromoVec2[K], v: ChromoVec2[K]) -> K.Element:
+                                                                     ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:20:23: error: use of unknown declaration 'Int64'
+def finite_vectors[p: Int64]() raises:
+                      ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:44:27: error: use of unknown declaration 'Bool'
+def assert_equal_guard(x: Bool, y: Bool) raises:
+                          ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:44:24: error: unable to locate module 'std'
+def assert_equal_guard(x: Bool, y: Bool) raises:
+                       ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:44:36: error: use of unknown declaration 'Bool'
+def assert_equal_guard(x: Bool, y: Bool) raises:
+                                   ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:44:33: error: unable to locate module 'std'
+def assert_equal_guard(x: Bool, y: Bool) raises:
+                                ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:44:48: error: unable to locate module 'std'
+def assert_equal_guard(x: Bool, y: Bool) raises:
+                                               ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:48:33: error: unable to locate module 'std'
+def test_rational_field() raises:
+                                ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:62:18: error: unable to locate module 'std'
+def main() raises:
+                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:62:5: error: unable to locate module 'std'
+def main() raises:
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:62:9: error: 'builtin' does not refer to a nested package
+def main() raises:
+        ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:65:5: error: unable to locate module 'std'
+    test_rational_field()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/chromogeometry/test_chromogeometry.mojo:66:5: error: use of unknown declaration 'print'
+    print("Chromogeometry field-generic laws passed: F_7, F_13, Q.")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/golden-ratio-normality-research/kernel/.pixi/envs/default/bin/mojo: error: failed to parse the provided Mojo source module

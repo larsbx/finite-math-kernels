@@ -1,0 +1,19 @@
+[PASS] test_components_partition_the_vertices
+[PASS] test_a_long_path_does_not_recurse
+[PASS] test_union_find_merges_classes
+3 finite_graph tests passed.
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_graph/test_signing.mojo:4:
+kernel/finite_graph/signing.mojo:194:39: warning: transfer from an owned value has no effect and can be removed
+                    return List[Int]()^
+                                      ^
+                                      
+Included from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_graph/test_signing.mojo:4:
+kernel/finite_graph/signing.mojo:144:9: warning: ref 'v' was never used, remove it?
+    for v in range(n):
+        ^
+[PASS] test_positive_loop_is_trivial_phase
+[PASS] test_negative_loop_is_half_phase
+[PASS] test_two_cycle_with_one_negative_edge_is_half_phase
+[PASS] test_two_cycle_with_two_negative_edges_switches_to_positive
+[PASS] test_mixed_self_loop_signs_are_perron_strict
+5 finite_graph signing tests passed.

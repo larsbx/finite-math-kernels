@@ -1,0 +1,151 @@
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/angle_doubling/test_angle_doubling.mojo:1:1: error: unable to locate module 'std'
+"""Executable laws for the angle_doubling package.
+^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/angle_doubling/test_angle_doubling.mojo:1:1: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+"""Executable laws for the angle_doubling package.
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/angle_doubling/test_angle_doubling.mojo:10:
+kernel/angle_doubling/__init__.mojo:14:1: error: unable to locate module 'std'
+
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/angle_doubling/test_angle_doubling.mojo:11:
+kernel/angle_doubling/angle.mojo:19:1: error: unable to locate module 'std'
+def denominator_limit() -> Int64:
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/angle_doubling/test_angle_doubling.mojo:11:
+kernel/angle_doubling/angle.mojo:40:14: error: use of unknown declaration 'Copyable'
+struct Angle(Copyable, Movable):
+             ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/angle_doubling/test_angle_doubling.mojo:11:
+kernel/angle_doubling/angle.mojo:159:22: error: use of unknown declaration 'Bool'
+def angle_smoke() -> Bool:
+                     ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/angle_doubling/test_angle_doubling.mojo:11:
+kernel/angle_doubling/angle.mojo:159:22: error: unable to locate module 'std'
+def angle_smoke() -> Bool:
+                     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/angle_doubling/test_angle_doubling.mojo:11:
+kernel/angle_doubling/angle.mojo:87:12: error: unable to locate module 'std'
+def double(t: Angle) -> Angle:
+           ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/angle_doubling/test_angle_doubling.mojo:11:
+kernel/angle_doubling/angle.mojo:87:25: error: unable to locate module 'std'
+def double(t: Angle) -> Angle:
+                        ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/angle_doubling/test_angle_doubling.mojo:11:
+kernel/angle_doubling/angle.mojo:139:14: error: unable to locate module 'std'
+def has_type(t: Angle, l: Int, k: Int) -> Bool:
+             ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/angle_doubling/test_angle_doubling.mojo:11:
+kernel/angle_doubling/angle.mojo:139:27: error: use of unknown declaration 'Int'
+def has_type(t: Angle, l: Int, k: Int) -> Bool:
+                          ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/angle_doubling/test_angle_doubling.mojo:11:
+kernel/angle_doubling/angle.mojo:139:24: error: unable to locate module 'std'
+def has_type(t: Angle, l: Int, k: Int) -> Bool:
+                       ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/angle_doubling/test_angle_doubling.mojo:11:
+kernel/angle_doubling/angle.mojo:139:35: error: use of unknown declaration 'Int'
+def has_type(t: Angle, l: Int, k: Int) -> Bool:
+                                  ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/angle_doubling/test_angle_doubling.mojo:11:
+kernel/angle_doubling/angle.mojo:139:32: error: unable to locate module 'std'
+def has_type(t: Angle, l: Int, k: Int) -> Bool:
+                               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/angle_doubling/test_angle_doubling.mojo:11:
+kernel/angle_doubling/angle.mojo:139:43: error: use of unknown declaration 'Bool'
+def has_type(t: Angle, l: Int, k: Int) -> Bool:
+                                          ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/angle_doubling/test_angle_doubling.mojo:11:
+kernel/angle_doubling/angle.mojo:139:43: error: unable to locate module 'std'
+def has_type(t: Angle, l: Int, k: Int) -> Bool:
+                                          ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/angle_doubling/test_angle_doubling.mojo:11:
+kernel/angle_doubling/angle.mojo:94:16: error: unable to locate module 'std'
+def orbit_term(t: Angle, steps: Int) -> Angle:
+               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/angle_doubling/test_angle_doubling.mojo:11:
+kernel/angle_doubling/angle.mojo:94:33: error: use of unknown declaration 'Int'
+def orbit_term(t: Angle, steps: Int) -> Angle:
+                                ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/angle_doubling/test_angle_doubling.mojo:11:
+kernel/angle_doubling/angle.mojo:94:26: error: unable to locate module 'std'
+def orbit_term(t: Angle, steps: Int) -> Angle:
+                         ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/angle_doubling/test_angle_doubling.mojo:11:
+kernel/angle_doubling/angle.mojo:94:41: error: unable to locate module 'std'
+def orbit_term(t: Angle, steps: Int) -> Angle:
+                                        ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/angle_doubling/test_angle_doubling.mojo:11:
+kernel/angle_doubling/angle.mojo:116:12: error: unable to locate module 'std'
+def period(t: Angle) -> Int:
+           ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/angle_doubling/test_angle_doubling.mojo:11:
+kernel/angle_doubling/angle.mojo:116:25: error: use of unknown declaration 'Int'
+def period(t: Angle) -> Int:
+                        ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/angle_doubling/test_angle_doubling.mojo:11:
+kernel/angle_doubling/angle.mojo:116:25: error: unable to locate module 'std'
+def period(t: Angle) -> Int:
+                        ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/angle_doubling/test_angle_doubling.mojo:11:
+kernel/angle_doubling/angle.mojo:104:15: error: unable to locate module 'std'
+def preperiod(t: Angle) -> Int:
+              ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/angle_doubling/test_angle_doubling.mojo:11:
+kernel/angle_doubling/angle.mojo:104:28: error: use of unknown declaration 'Int'
+def preperiod(t: Angle) -> Int:
+                           ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/angle_doubling/test_angle_doubling.mojo:11:
+kernel/angle_doubling/angle.mojo:104:28: error: unable to locate module 'std'
+def preperiod(t: Angle) -> Int:
+                           ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/angle_doubling/test_angle_doubling.mojo:11:
+kernel/angle_doubling/angle.mojo:149:19: error: use of unknown declaration 'Int'
+def type_count(l: Int, k: Int) -> Int64:
+                  ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/angle_doubling/test_angle_doubling.mojo:11:
+kernel/angle_doubling/angle.mojo:149:16: error: unable to locate module 'std'
+def type_count(l: Int, k: Int) -> Int64:
+               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/angle_doubling/test_angle_doubling.mojo:11:
+kernel/angle_doubling/angle.mojo:149:27: error: use of unknown declaration 'Int'
+def type_count(l: Int, k: Int) -> Int64:
+                          ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/angle_doubling/test_angle_doubling.mojo:11:
+kernel/angle_doubling/angle.mojo:149:24: error: unable to locate module 'std'
+def type_count(l: Int, k: Int) -> Int64:
+                       ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/angle_doubling/test_angle_doubling.mojo:11:
+kernel/angle_doubling/angle.mojo:149:35: error: use of unknown declaration 'Int64'
+def type_count(l: Int, k: Int) -> Int64:
+                                  ^~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/angle_doubling/test_angle_doubling.mojo:11:
+kernel/angle_doubling/angle.mojo:149:35: error: unable to locate module 'std'
+def type_count(l: Int, k: Int) -> Int64:
+                                  ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/angle_doubling/test_angle_doubling.mojo:22:49: error: use of unknown declaration 'Bool'
+def test_closed_forms_agree_with_the_orbit() -> Bool:
+                                                ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/angle_doubling/test_angle_doubling.mojo:22:49: error: unable to locate module 'std'
+def test_closed_forms_agree_with_the_orbit() -> Bool:
+                                                ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/angle_doubling/test_angle_doubling.mojo:47:62: error: use of unknown declaration 'Bool'
+def test_the_count_is_the_number_of_angles_of_that_type() -> Bool:
+                                                             ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/angle_doubling/test_angle_doubling.mojo:47:62: error: unable to locate module 'std'
+def test_the_count_is_the_number_of_angles_of_that_type() -> Bool:
+                                                             ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/angle_doubling/test_angle_doubling.mojo:65:18: error: unable to locate module 'std'
+def main() raises:
+                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/angle_doubling/test_angle_doubling.mojo:65:5: error: unable to locate module 'std'
+def main() raises:
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/angle_doubling/test_angle_doubling.mojo:65:9: error: 'builtin' does not refer to a nested package
+def main() raises:
+        ^
+/workspace/scratch/gnr-next.qHyoM1/golden-ratio-normality-research/kernel/.pixi/envs/default/bin/mojo: error: failed to parse the provided Mojo source module

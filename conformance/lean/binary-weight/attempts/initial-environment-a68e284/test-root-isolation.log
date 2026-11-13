@@ -1,0 +1,315 @@
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:1:1: error: unable to locate module 'std'
+"""Executable laws for the root_isolation package.
+^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:1:1: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+"""Executable laws for the root_isolation package.
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:11:
+kernel/finite_exact/__init__.mojo:34:1: error: unable to locate module 'std'
+
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:11:
+kernel/finite_exact/closed_interval.mojo:1:1: error: unable to locate module 'std'
+"""Stable public entry point for closed exact-rational intervals."""
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:11:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:9:1: error: unable to locate module 'std'
+from finite_exact.rat_q import Q, q_min, q_max, q_rejected
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:11:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:128:18: error: use of unknown declaration 'Copyable'
+struct ComplexIQ(Copyable):
+                 ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:11:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:32:11: error: use of unknown declaration 'Copyable'
+struct IQ(Copyable):
+          ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:11:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:12:21: error: use of unknown declaration 'Copyable'
+struct IQBoolResult(Copyable):
+                    ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:12:
+kernel/finite_exact/rat_q.mojo:13:1: error: unable to locate module 'std'
+from finite_exact.bigint_z import BigZ, bigz_add, bigz_canonical_bytes, bigz_div_exact, bigz_eq, bigz_from_i64, bigz_gcd, bigz_is_canonical, bigz_lt, bigz_mul, bigz_neg, bigz_sub, bigz_zero
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:12:
+kernel/finite_exact/rat_q.mojo:16:10: error: use of unknown declaration 'Copyable'
+struct Q(Copyable):
+         ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:13:
+kernel/root_isolation/__init__.mojo:22:1: error: unable to locate module 'std'
+from .boxes import centre, disjoint, exact_inverse, excludes_zero, is_point, rejected_box
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:13:
+Imported from kernel/root_isolation/__init__.mojo:22:
+kernel/root_isolation/boxes.mojo:12:1: error: unable to locate module 'std'
+from finite_exact.closed_interval import ComplexIQ, IQ, IQBoolResult
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:13:
+Imported from kernel/root_isolation/__init__.mojo:22:
+kernel/root_isolation/boxes.mojo:20:12: error: unable to locate module 'std'
+def centre(x: ComplexIQ) -> ComplexIQ:
+           ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:13:
+Imported from kernel/root_isolation/__init__.mojo:22:
+kernel/root_isolation/boxes.mojo:20:29: error: unable to locate module 'std'
+def centre(x: ComplexIQ) -> ComplexIQ:
+                            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:13:
+Imported from kernel/root_isolation/__init__.mojo:22:
+kernel/root_isolation/boxes.mojo:51:14: error: unable to locate module 'std'
+def disjoint(a: ComplexIQ, b: ComplexIQ) -> IQBoolResult:
+             ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:13:
+Imported from kernel/root_isolation/__init__.mojo:22:
+kernel/root_isolation/boxes.mojo:51:28: error: unable to locate module 'std'
+def disjoint(a: ComplexIQ, b: ComplexIQ) -> IQBoolResult:
+                           ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:13:
+Imported from kernel/root_isolation/__init__.mojo:22:
+kernel/root_isolation/boxes.mojo:51:45: error: unable to locate module 'std'
+def disjoint(a: ComplexIQ, b: ComplexIQ) -> IQBoolResult:
+                                            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:13:
+Imported from kernel/root_isolation/__init__.mojo:22:
+kernel/root_isolation/boxes.mojo:30:19: error: unable to locate module 'std'
+def exact_inverse(w: ComplexIQ) -> ComplexIQ:
+                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:13:
+Imported from kernel/root_isolation/__init__.mojo:22:
+kernel/root_isolation/boxes.mojo:30:36: error: unable to locate module 'std'
+def exact_inverse(w: ComplexIQ) -> ComplexIQ:
+                                   ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:13:
+Imported from kernel/root_isolation/__init__.mojo:22:
+kernel/root_isolation/boxes.mojo:44:19: error: unable to locate module 'std'
+def excludes_zero(value: ComplexIQ) -> IQBoolResult:
+                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:13:
+Imported from kernel/root_isolation/__init__.mojo:22:
+kernel/root_isolation/boxes.mojo:44:40: error: unable to locate module 'std'
+def excludes_zero(value: ComplexIQ) -> IQBoolResult:
+                                       ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:13:
+Imported from kernel/root_isolation/__init__.mojo:23:
+kernel/root_isolation/krawczyk.mojo:19:1: error: unable to locate module 'std'
+from finite_exact.closed_interval import ComplexIQ
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:13:
+Imported from kernel/root_isolation/__init__.mojo:22:
+kernel/root_isolation/boxes.mojo:44:19: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+def excludes_zero(value: ComplexIQ) -> IQBoolResult:
+                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:13:
+Imported from kernel/root_isolation/__init__.mojo:23:
+kernel/root_isolation/krawczyk.mojo:24:20: error: unable to locate module 'std'
+def krawczyk_image(x: ComplexIQ, m: ComplexIQ, y: ComplexIQ, f_m: ComplexIQ, d_x: ComplexIQ) -> ComplexIQ:
+                   ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:13:
+Imported from kernel/root_isolation/__init__.mojo:23:
+kernel/root_isolation/krawczyk.mojo:24:34: error: unable to locate module 'std'
+def krawczyk_image(x: ComplexIQ, m: ComplexIQ, y: ComplexIQ, f_m: ComplexIQ, d_x: ComplexIQ) -> ComplexIQ:
+                                 ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:13:
+Imported from kernel/root_isolation/__init__.mojo:23:
+kernel/root_isolation/krawczyk.mojo:24:48: error: unable to locate module 'std'
+def krawczyk_image(x: ComplexIQ, m: ComplexIQ, y: ComplexIQ, f_m: ComplexIQ, d_x: ComplexIQ) -> ComplexIQ:
+                                               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:13:
+Imported from kernel/root_isolation/__init__.mojo:23:
+kernel/root_isolation/krawczyk.mojo:24:62: error: unable to locate module 'std'
+def krawczyk_image(x: ComplexIQ, m: ComplexIQ, y: ComplexIQ, f_m: ComplexIQ, d_x: ComplexIQ) -> ComplexIQ:
+                                                             ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:13:
+Imported from kernel/root_isolation/__init__.mojo:23:
+kernel/root_isolation/krawczyk.mojo:24:78: error: unable to locate module 'std'
+def krawczyk_image(x: ComplexIQ, m: ComplexIQ, y: ComplexIQ, f_m: ComplexIQ, d_x: ComplexIQ) -> ComplexIQ:
+                                                                             ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:13:
+Imported from kernel/root_isolation/__init__.mojo:23:
+kernel/root_isolation/krawczyk.mojo:24:97: error: unable to locate module 'std'
+def krawczyk_image(x: ComplexIQ, m: ComplexIQ, y: ComplexIQ, f_m: ComplexIQ, d_x: ComplexIQ) -> ComplexIQ:
+                                                                                                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:13:
+Imported from kernel/root_isolation/__init__.mojo:22:
+kernel/root_isolation/boxes.mojo:16:23: error: unable to locate module 'std'
+def rejected_box() -> ComplexIQ:
+                      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:13:
+Imported from kernel/root_isolation/__init__.mojo:24:
+kernel/root_isolation/krawczyk_moore.mojo:17:1: error: unable to locate module 'std'
+from finite_exact.closed_interval import ComplexIQ, IQBoolResult
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:13:
+Imported from kernel/root_isolation/__init__.mojo:24:
+kernel/root_isolation/krawczyk_moore.mojo:20:21: error: unable to locate module 'std'
+def strictly_inside(image: ComplexIQ, x: ComplexIQ) -> IQBoolResult:
+                    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:13:
+Imported from kernel/root_isolation/__init__.mojo:24:
+kernel/root_isolation/krawczyk_moore.mojo:20:39: error: unable to locate module 'std'
+def strictly_inside(image: ComplexIQ, x: ComplexIQ) -> IQBoolResult:
+                                      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:13:
+Imported from kernel/root_isolation/__init__.mojo:24:
+kernel/root_isolation/krawczyk_moore.mojo:20:56: error: unable to locate module 'std'
+def strictly_inside(image: ComplexIQ, x: ComplexIQ) -> IQBoolResult:
+                                                       ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:24:17: error: use of unknown declaration 'Int64'
+def box(re_num: Int64, re_den: Int64, im_num: Int64, im_den: Int64, r_den: Int64) -> ComplexIQ:
+                ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:24:9: error: unable to locate module 'std'
+def box(re_num: Int64, re_den: Int64, im_num: Int64, im_den: Int64, r_den: Int64) -> ComplexIQ:
+        ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:24:32: error: use of unknown declaration 'Int64'
+def box(re_num: Int64, re_den: Int64, im_num: Int64, im_den: Int64, r_den: Int64) -> ComplexIQ:
+                               ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:24:24: error: unable to locate module 'std'
+def box(re_num: Int64, re_den: Int64, im_num: Int64, im_den: Int64, r_den: Int64) -> ComplexIQ:
+                       ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:24:47: error: use of unknown declaration 'Int64'
+def box(re_num: Int64, re_den: Int64, im_num: Int64, im_den: Int64, r_den: Int64) -> ComplexIQ:
+                                              ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:24:39: error: unable to locate module 'std'
+def box(re_num: Int64, re_den: Int64, im_num: Int64, im_den: Int64, r_den: Int64) -> ComplexIQ:
+                                      ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:24:62: error: use of unknown declaration 'Int64'
+def box(re_num: Int64, re_den: Int64, im_num: Int64, im_den: Int64, r_den: Int64) -> ComplexIQ:
+                                                             ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:24:54: error: unable to locate module 'std'
+def box(re_num: Int64, re_den: Int64, im_num: Int64, im_den: Int64, r_den: Int64) -> ComplexIQ:
+                                                     ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:24:76: error: use of unknown declaration 'Int64'
+def box(re_num: Int64, re_den: Int64, im_num: Int64, im_den: Int64, r_den: Int64) -> ComplexIQ:
+                                                                           ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:24:69: error: unable to locate module 'std'
+def box(re_num: Int64, re_den: Int64, im_num: Int64, im_den: Int64, r_den: Int64) -> ComplexIQ:
+                                                                    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:24:86: error: unable to locate module 'std'
+def box(re_num: Int64, re_den: Int64, im_num: Int64, im_den: Int64, r_den: Int64) -> ComplexIQ:
+                                                                                     ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:31:15: error: use of unknown declaration 'Int64'
+def point(re: Int64, im: Int64) -> ComplexIQ:
+              ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:31:11: error: unable to locate module 'std'
+def point(re: Int64, im: Int64) -> ComplexIQ:
+          ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:31:26: error: use of unknown declaration 'Int64'
+def point(re: Int64, im: Int64) -> ComplexIQ:
+                         ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:31:22: error: unable to locate module 'std'
+def point(re: Int64, im: Int64) -> ComplexIQ:
+                     ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:31:36: error: unable to locate module 'std'
+def point(re: Int64, im: Int64) -> ComplexIQ:
+                                   ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:35:11: error: unable to locate module 'std'
+def holds(result: IQBoolResult) -> Bool:
+          ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:35:36: error: use of unknown declaration 'Bool'
+def holds(result: IQBoolResult) -> Bool:
+                                   ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:35:36: error: unable to locate module 'std'
+def holds(result: IQBoolResult) -> Bool:
+                                   ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:40:17: error: unable to locate module 'std'
+def sqrt2_value(z: ComplexIQ) -> ComplexIQ:
+                ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:40:34: error: unable to locate module 'std'
+def sqrt2_value(z: ComplexIQ) -> ComplexIQ:
+                                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:44:17: error: unable to locate module 'std'
+def sqrt2_slope(z: ComplexIQ) -> ComplexIQ:
+                ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:44:34: error: unable to locate module 'std'
+def sqrt2_slope(z: ComplexIQ) -> ComplexIQ:
+                                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:48:20: error: unable to locate module 'std'
+def isolates_sqrt2(x: ComplexIQ) -> IQBoolResult:
+                   ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:48:37: error: unable to locate module 'std'
+def isolates_sqrt2(x: ComplexIQ) -> IQBoolResult:
+                                    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:55:18: error: unable to locate module 'std'
+def unity4_value(z: ComplexIQ) -> ComplexIQ:
+                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:55:35: error: unable to locate module 'std'
+def unity4_value(z: ComplexIQ) -> ComplexIQ:
+                                  ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:59:18: error: unable to locate module 'std'
+def unity4_slope(z: ComplexIQ) -> ComplexIQ:
+                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:59:35: error: unable to locate module 'std'
+def unity4_slope(z: ComplexIQ) -> ComplexIQ:
+                                  ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:63:21: error: unable to locate module 'std'
+def isolates_unity4(x: ComplexIQ) -> Bool:
+                    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:63:38: error: use of unknown declaration 'Bool'
+def isolates_unity4(x: ComplexIQ) -> Bool:
+                                     ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:63:38: error: unable to locate module 'std'
+def isolates_unity4(x: ComplexIQ) -> Bool:
+                                     ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:68:48: error: use of unknown declaration 'Bool'
+def test_the_centre_and_the_exact_inverse() -> Bool:
+                                               ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:68:48: error: unable to locate module 'std'
+def test_the_centre_and_the_exact_inverse() -> Bool:
+                                               ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:78:41: error: use of unknown declaration 'Bool'
+def test_the_exact_inverse_refuses() -> Bool:
+                                        ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:78:41: error: unable to locate module 'std'
+def test_the_exact_inverse_refuses() -> Bool:
+                                        ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:87:38: error: use of unknown declaration 'Bool'
+def test_the_square_root_of_two() -> Bool:
+                                     ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:87:38: error: unable to locate module 'std'
+def test_the_square_root_of_two() -> Bool:
+                                     ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:99:59: error: use of unknown declaration 'Bool'
+def test_the_fourth_roots_of_unity_in_disjoint_boxes() -> Bool:
+                                                          ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:99:59: error: unable to locate module 'std'
+def test_the_fourth_roots_of_unity_in_disjoint_boxes() -> Bool:
+                                                          ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:110:51: error: use of unknown declaration 'Bool'
+def test_the_mandelbrot_witness_at_minus_two() -> Bool:
+                                                  ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:110:51: error: unable to locate module 'std'
+def test_the_mandelbrot_witness_at_minus_two() -> Bool:
+                                                  ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:119:35: error: use of unknown declaration 'Bool'
+def test_refusals_are_values() -> Bool:
+                                  ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:119:35: error: unable to locate module 'std'
+def test_refusals_are_values() -> Bool:
+                                  ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:133:38: error: use of unknown declaration 'Bool'
+def test_disjointness_is_strict() -> Bool:
+                                     ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:133:38: error: unable to locate module 'std'
+def test_disjointness_is_strict() -> Bool:
+                                     ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:140:18: error: unable to locate module 'std'
+def main() raises:
+                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:140:5: error: unable to locate module 'std'
+def main() raises:
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/root_isolation/test_root_isolation.mojo:140:9: error: 'builtin' does not refer to a nested package
+def main() raises:
+        ^
+/workspace/scratch/gnr-next.qHyoM1/golden-ratio-normality-research/kernel/.pixi/envs/default/bin/mojo: error: failed to parse the provided Mojo source module

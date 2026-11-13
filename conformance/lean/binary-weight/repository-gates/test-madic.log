@@ -1,0 +1,11 @@
+[PASS] test_quotient_order_is_the_absolute_determinant
+[PASS] test_the_quotient_need_not_be_cyclic
+[PASS] test_the_invariant_factors_change_shape_with_the_level
+[PASS] test_the_unit_branch_has_a_trivial_filtration
+[PASS] test_membership_of_the_lattice
+[PASS] test_the_generators_are_the_columns_not_the_rows
+[PASS] test_same_coset_is_the_unknown_answer_and_refinement_can_separate
+[PASS] test_separation_is_the_only_certificate
+[PASS] test_far_apart_coordinates_do_not_wrap
+[PASS] test_index_subsets_enumerates_each_subset_once
+10 M-adic ball Mojo tests passed.

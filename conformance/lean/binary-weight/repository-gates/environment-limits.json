@@ -1,0 +1,13 @@
+{
+  "observed_utc": "2026-11-13T13:43:41.274085+00:00",
+  "inspection": "read-only installed runtime inventory",
+  "mojo_library_directory": "/workspace/scratch/gnr-next.qHyoM1/golden-ratio-normality-research/kernel/.pixi/envs/default/lib/mojo",
+  "mojo_library_entries": [
+    "std.mojoc"
+  ],
+  "installed_max_package_records": [],
+  "affected_task": "test-projective-limits",
+  "observed_diagnostic": "kernel/parallel_fold/map_fold.mojo:28:6: error: unable to locate module 'max'",
+  "remaining_compound_task_commands": "not executed after the failing && command",
+  "no_installation_attempted": true
+}

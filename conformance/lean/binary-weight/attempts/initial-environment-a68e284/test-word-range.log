@@ -1,0 +1,168 @@
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_word_range.mojo:1:1: error: unable to locate module 'std'
+"""Signed machine-word ranges: edge cases, then the independent corpus.
+^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_word_range.mojo:1:1: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+"""Signed machine-word ranges: edge cases, then the independent corpus.
+^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_word_range.mojo:10:6: error: unable to locate module 'std'
+from std.testing import assert_equal, assert_false, assert_true
+     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_word_range.mojo:12:
+kernel/finite_exact/__init__.mojo:34:1: error: unable to locate module 'std'
+
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_word_range.mojo:12:
+kernel/finite_exact/word_range.mojo:1:1: error: unable to locate module 'std'
+"""Closed integer ranges inside a signed w-bit two's-complement word.
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_word_range.mojo:12:
+kernel/finite_exact/word_range.mojo:61:18: error: use of unknown declaration 'Copyable'
+struct WordRange(Copyable, Writable):
+                 ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_word_range.mojo:12:
+kernel/finite_exact/word_range.mojo:40:21: error: use of unknown declaration 'Int'
+def word_max(width: Int) -> Int:
+                    ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_word_range.mojo:12:
+kernel/finite_exact/word_range.mojo:40:14: error: unable to locate module 'std'
+def word_max(width: Int) -> Int:
+             ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_word_range.mojo:12:
+kernel/finite_exact/word_range.mojo:40:29: error: use of unknown declaration 'Int'
+def word_max(width: Int) -> Int:
+                            ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_word_range.mojo:12:
+kernel/finite_exact/word_range.mojo:40:29: error: unable to locate module 'std'
+def word_max(width: Int) -> Int:
+                            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_word_range.mojo:12:
+kernel/finite_exact/word_range.mojo:35:21: error: use of unknown declaration 'Int'
+def word_min(width: Int) -> Int:
+                    ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_word_range.mojo:12:
+kernel/finite_exact/word_range.mojo:35:14: error: unable to locate module 'std'
+def word_min(width: Int) -> Int:
+             ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_word_range.mojo:12:
+kernel/finite_exact/word_range.mojo:35:29: error: use of unknown declaration 'Int'
+def word_min(width: Int) -> Int:
+                            ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_word_range.mojo:12:
+kernel/finite_exact/word_range.mojo:35:29: error: unable to locate module 'std'
+def word_min(width: Int) -> Int:
+                            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_word_range.mojo:12:
+kernel/finite_exact/word_range.mojo:45:18: error: use of unknown declaration 'Int'
+def wrap_word(x: Int, width: Int) -> Int:
+                 ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_word_range.mojo:12:
+kernel/finite_exact/word_range.mojo:45:15: error: unable to locate module 'std'
+def wrap_word(x: Int, width: Int) -> Int:
+              ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_word_range.mojo:12:
+kernel/finite_exact/word_range.mojo:45:30: error: use of unknown declaration 'Int'
+def wrap_word(x: Int, width: Int) -> Int:
+                             ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_word_range.mojo:12:
+kernel/finite_exact/word_range.mojo:45:23: error: unable to locate module 'std'
+def wrap_word(x: Int, width: Int) -> Int:
+                      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_word_range.mojo:12:
+kernel/finite_exact/word_range.mojo:45:38: error: use of unknown declaration 'Int'
+def wrap_word(x: Int, width: Int) -> Int:
+                                     ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_word_range.mojo:12:
+kernel/finite_exact/word_range.mojo:45:38: error: unable to locate module 'std'
+def wrap_word(x: Int, width: Int) -> Int:
+                                     ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_word_range.mojo:14:20: error: unable to locate module 'std'
+comptime FIXTURE = "conformance/word_range_v1.txt"
+                   ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_word_range.mojo:17:30: error: unable to locate module 'std'
+def test_word_bounds() raises:
+                             ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_word_range.mojo:24:40: error: unable to locate module 'std'
+def test_wrap_is_tfhe_overflow() raises:
+                                       ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_word_range.mojo:31:36: error: unable to locate module 'std'
+def test_refusal_is_sticky() raises:
+                                   ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_word_range.mojo:41:44: error: unable to locate module 'std'
+def test_products_at_the_word_edge() raises:
+                                           ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_word_range.mojo:51:41: error: unable to locate module 'std'
+def test_the_64_bit_word_is_int() raises:
+                                        ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_word_range.mojo:73:42: error: unable to locate module 'std'
+def test_clamp_holds_any_operand() raises:
+                                         ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_word_range.mojo:83:17: error: use of unknown declaration 'Int'
+def cell(width: Int, s: String) raises -> WordRange:
+                ^~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_word_range.mojo:83:10: error: unable to locate module 'std'
+def cell(width: Int, s: String) raises -> WordRange:
+         ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_word_range.mojo:83:25: error: use of unknown declaration 'String'
+def cell(width: Int, s: String) raises -> WordRange:
+                        ^~~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_word_range.mojo:83:22: error: unable to locate module 'std'
+def cell(width: Int, s: String) raises -> WordRange:
+                     ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_word_range.mojo:83:43: error: unable to locate module 'std'
+def cell(width: Int, s: String) raises -> WordRange:
+                                          ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_word_range.mojo:90:15: error: use of unknown declaration 'String'
+def apply(op: String, a: WordRange, b: WordRange) raises -> WordRange:
+              ^~~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_word_range.mojo:90:11: error: unable to locate module 'std'
+def apply(op: String, a: WordRange, b: WordRange) raises -> WordRange:
+          ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_word_range.mojo:90:23: error: unable to locate module 'std'
+def apply(op: String, a: WordRange, b: WordRange) raises -> WordRange:
+                      ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_word_range.mojo:90:37: error: unable to locate module 'std'
+def apply(op: String, a: WordRange, b: WordRange) raises -> WordRange:
+                                    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_word_range.mojo:90:61: error: unable to locate module 'std'
+def apply(op: String, a: WordRange, b: WordRange) raises -> WordRange:
+                                                            ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_word_range.mojo:106:24: error: use of unknown declaration 'Int'
+def replay() raises -> Int:
+                       ^~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_word_range.mojo:106:24: error: unable to locate module 'std'
+def replay() raises -> Int:
+                       ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_word_range.mojo:132:18: error: unable to locate module 'std'
+def main() raises:
+                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_word_range.mojo:132:5: error: unable to locate module 'std'
+def main() raises:
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_word_range.mojo:132:9: error: 'builtin' does not refer to a nested package
+def main() raises:
+        ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_word_range.mojo:133:5: error: unable to locate module 'std'
+    test_word_bounds()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_word_range.mojo:134:5: error: unable to locate module 'std'
+    test_wrap_is_tfhe_overflow()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_word_range.mojo:135:5: error: unable to locate module 'std'
+    test_refusal_is_sticky()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_word_range.mojo:136:5: error: unable to locate module 'std'
+    test_products_at_the_word_edge()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_word_range.mojo:137:5: error: unable to locate module 'std'
+    test_the_64_bit_word_is_int()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_word_range.mojo:138:5: error: unable to locate module 'std'
+    test_clamp_holds_any_operand()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/test_word_range.mojo:141:5: error: use of unknown declaration 'print'
+    print(n, "word-range vectors replayed; 6 edge tests passed.")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/golden-ratio-normality-research/kernel/.pixi/envs/default/bin/mojo: error: failed to parse the provided Mojo source module

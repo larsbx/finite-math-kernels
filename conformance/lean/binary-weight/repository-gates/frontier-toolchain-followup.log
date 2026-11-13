@@ -1,0 +1,42 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_ test_every_installed_kernel_agrees_with_the_oracle_on_the_regression_corpus __
+
+tmp_path = PosixPath('/workspace/scratch/gnr-next.qHyoM1/fmk-binary-weight-task-tmp/followup-f_k2re1y/pytest-of-agent/pytest-0/test_every_installed_kernel_ag0')
+
+    def test_every_installed_kernel_agrees_with_the_oracle_on_the_regression_corpus(tmp_path):
+>       have = installed()
+               ^^^^^^^^^^^
+
+tests/frontier/test_harness.py:96: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+env = environ({'CAAS_PREFIX_TRANSFER_AUTH_TOKEN_FILE': '/dev/shm/caas-prefix-transfer/token', 'COLORTERM': '', 'no_proxy': '... 'tests/frontier/test_harness.py::test_every_installed_kernel_agrees_with_the_oracle_on_the_regression_corpus (call)'})
+
+    def installed(env: dict[str, str] | None = None) -> set[str]:
+        """Kernels whose toolchain is on PATH; fails if one that FRONTIER_REQUIRE names is not."""
+        env = os.environ if env is None else env
+        have = {name for name, tool in TOOLCHAINS.items() if shutil.which(tool)}
+        required = {name for name in env.get("FRONTIER_REQUIRE", "").split(",") if name}
+        assert required <= set(TOOLCHAINS), f"FRONTIER_REQUIRE names unknown kernels: {sorted(required - set(TOOLCHAINS))}"
+>       assert required <= have, f"required kernel toolchains missing: {sorted(required - have)}"
+E       AssertionError: required kernel toolchains missing: ['bend', 'julia']
+E       assert {'bend', 'jul...mojo', 'rust'} <= {'mojo', 'rust'}
+E         
+E         Extra items in the left set:
+E         'julia'
+E         'bend'
+
+tests/frontier/test_harness.py:76: AssertionError
+=============================== warnings summary ===============================
+../../../../opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/anyio/pytest_plugin.py:14
+  /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/anyio/pytest_plugin.py:14: PytestRemovedIn10Warning: _pytest.python.CallSpec2 has been renamed to CallSpec.
+  The CallSpec2 alias will be removed in pytest 10.
+  Update imports to use CallSpec instead.
+  See https://docs.pytest.org/en/stable/deprecations.html#callspec2-renamed
+    from _pytest.python import CallSpec2
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/frontier/test_harness.py::test_every_installed_kernel_agrees_with_the_oracle_on_the_regression_corpus
+1 failed, 1 warning in 0.13s

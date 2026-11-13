@@ -1,0 +1,730 @@
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:1:1: error: unable to locate module 'std'
+"""Executable laws and pinned values of finite_polynomial.polynomial_fp.
+^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:1:1: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+"""Executable laws and pinned values of finite_polynomial.polynomial_fp.
+^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:10:6: error: unable to locate module 'std'
+from std.testing import assert_equal, assert_false, assert_raises, assert_true
+     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:12:
+kernel/finite_exact/__init__.mojo:34:1: error: unable to locate module 'std'
+
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:12:
+kernel/finite_exact/bigint_z.mojo:15:1: error: unable to locate module 'std'
+comptime BIGZ_BASE = UInt64(1000000000)
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:12:
+kernel/finite_exact/bigint_z.mojo:18:13: error: use of unknown declaration 'Copyable'
+struct BigZ(Copyable):
+            ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:12:
+kernel/finite_exact/bigint_z.mojo:77:26: error: use of unknown declaration 'Int64'
+def bigz_from_i64(value: Int64) -> BigZ:
+                         ^~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:12:
+kernel/finite_exact/bigint_z.mojo:77:19: error: unable to locate module 'std'
+def bigz_from_i64(value: Int64) -> BigZ:
+                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:12:
+kernel/finite_exact/bigint_z.mojo:77:36: error: unable to locate module 'std'
+def bigz_from_i64(value: Int64) -> BigZ:
+                                   ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:12:
+kernel/finite_exact/bigint_z.mojo:182:14: error: unable to locate module 'std'
+def bigz_mul(a: BigZ, b: BigZ) -> BigZ:
+             ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:12:
+kernel/finite_exact/bigint_z.mojo:182:23: error: unable to locate module 'std'
+def bigz_mul(a: BigZ, b: BigZ) -> BigZ:
+                      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:12:
+kernel/finite_exact/bigint_z.mojo:182:35: error: unable to locate module 'std'
+def bigz_mul(a: BigZ, b: BigZ) -> BigZ:
+                                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:12:
+kernel/finite_exact/bigint_z.mojo:144:14: error: unable to locate module 'std'
+def bigz_neg(a: BigZ) -> BigZ:
+             ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:12:
+kernel/finite_exact/bigint_z.mojo:144:26: error: unable to locate module 'std'
+def bigz_neg(a: BigZ) -> BigZ:
+                         ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+kernel/finite_polynomial/__init__.mojo:42:1: error: unable to locate module 'std'
+from .taylor_model import (
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+kernel/finite_polynomial/polynomial_z.mojo:14:1: error: unable to locate module 'std'
+from finite_exact.bigint_z import (
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+kernel/finite_polynomial/polynomial_z.mojo:80:36: error: use of unknown declaration 'List'
+def poly_from_coeffs(coefficients: List[BigZ]) -> PolyZ:
+                                   ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+kernel/finite_polynomial/polynomial_z.mojo:80:22: error: unable to locate module 'std'
+def poly_from_coeffs(coefficients: List[BigZ]) -> PolyZ:
+                     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+kernel/finite_polynomial/polynomial_z.mojo:31:14: error: use of unknown declaration 'Copyable'
+struct PolyZ(Copyable, Movable):
+             ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+kernel/finite_polynomial/polynomial_z.mojo:80:51: error: unable to locate module 'std'
+def poly_from_coeffs(coefficients: List[BigZ]) -> PolyZ:
+                                                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+kernel/finite_polynomial/hensel_lifting.mojo:11:1: error: unable to locate module 'std'
+from finite_polynomial.polynomial_fp import (
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+kernel/finite_polynomial/hensel_lifting.mojo:21:19: error: use of unknown declaration 'ImplicitlyCopyable'
+struct HenselStep(ImplicitlyCopyable):
+                  ^~~~~~~~~~~~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:34:1: error: unable to locate module 'std'
+from finite_exact.bigint_z import BigZ, bigz_abs_mod_small
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:132:15: error: use of unknown declaration 'Copyable'
+struct PolyFp(Copyable, Movable, Writable):
+              ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+kernel/finite_polynomial/hensel_lifting.mojo:43:17: error: unable to locate module 'std'
+def hensel_step(f: PolyFp, root: Int, prime: Int) raises -> HenselStep:
+                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+kernel/finite_polynomial/hensel_lifting.mojo:43:34: error: use of unknown declaration 'Int'
+def hensel_step(f: PolyFp, root: Int, prime: Int) raises -> HenselStep:
+                                 ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+kernel/finite_polynomial/hensel_lifting.mojo:43:28: error: unable to locate module 'std'
+def hensel_step(f: PolyFp, root: Int, prime: Int) raises -> HenselStep:
+                           ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+kernel/finite_polynomial/hensel_lifting.mojo:43:46: error: use of unknown declaration 'Int'
+def hensel_step(f: PolyFp, root: Int, prime: Int) raises -> HenselStep:
+                                             ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+kernel/finite_polynomial/hensel_lifting.mojo:43:39: error: unable to locate module 'std'
+def hensel_step(f: PolyFp, root: Int, prime: Int) raises -> HenselStep:
+                                      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+kernel/finite_polynomial/hensel_lifting.mojo:43:61: error: unable to locate module 'std'
+def hensel_step(f: PolyFp, root: Int, prime: Int) raises -> HenselStep:
+                                                            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+kernel/finite_polynomial/hensel_lifting.mojo:61:23: error: unable to locate module 'std'
+def hensel_step_valid(f: PolyFp, step: HenselStep) -> Bool:
+                      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+kernel/finite_polynomial/hensel_lifting.mojo:61:34: error: unable to locate module 'std'
+def hensel_step_valid(f: PolyFp, step: HenselStep) -> Bool:
+                                 ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+kernel/finite_polynomial/hensel_lifting.mojo:61:55: error: use of unknown declaration 'Bool'
+def hensel_step_valid(f: PolyFp, step: HenselStep) -> Bool:
+                                                      ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+kernel/finite_polynomial/hensel_lifting.mojo:61:55: error: unable to locate module 'std'
+def hensel_step_valid(f: PolyFp, step: HenselStep) -> Bool:
+                                                      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:53:
+kernel/finite_polynomial/miller_rabin.mojo:17:1: error: unable to locate module 'std'
+comptime MILLER_RABIN_BOUND = 2147483648  # 2^31
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+kernel/finite_polynomial/hensel_lifting.mojo:61:34: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+def hensel_step_valid(f: PolyFp, step: HenselStep) -> Bool:
+                                 ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:53:
+kernel/finite_polynomial/miller_rabin.mojo:39:17: error: use of unknown declaration 'Int'
+def is_prime(n: Int) raises -> Bool:
+                ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:53:
+kernel/finite_polynomial/miller_rabin.mojo:39:14: error: unable to locate module 'std'
+def is_prime(n: Int) raises -> Bool:
+             ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:53:
+kernel/finite_polynomial/miller_rabin.mojo:39:32: error: use of unknown declaration 'Bool'
+def is_prime(n: Int) raises -> Bool:
+                               ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:53:
+kernel/finite_polynomial/miller_rabin.mojo:39:32: error: unable to locate module 'std'
+def is_prime(n: Int) raises -> Bool:
+                               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:57:
+kernel/finite_polynomial/rabin_irreducibility.mojo:13:1: error: unable to locate module 'std'
+from finite_polynomial.polynomial_fp import (
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:53:
+kernel/finite_polynomial/miller_rabin.mojo:39:32: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+def is_prime(n: Int) raises -> Bool:
+                               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:57:
+kernel/finite_polynomial/rabin_irreducibility.mojo:62:34: error: use of unknown declaration 'Copyable'
+struct IrreducibilityCertificate(Copyable, Movable):
+                                 ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:57:
+kernel/finite_polynomial/rabin_irreducibility.mojo:97:31: error: unable to locate module 'std'
+def poly_fp_certificate_valid(c: IrreducibilityCertificate) -> Bool:
+                              ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:57:
+kernel/finite_polynomial/rabin_irreducibility.mojo:97:64: error: use of unknown declaration 'Bool'
+def poly_fp_certificate_valid(c: IrreducibilityCertificate) -> Bool:
+                                                               ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:57:
+kernel/finite_polynomial/rabin_irreducibility.mojo:97:64: error: unable to locate module 'std'
+def poly_fp_certificate_valid(c: IrreducibilityCertificate) -> Bool:
+                                                               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:54:
+kernel/finite_polynomial/distinct_degree.mojo:13:1: error: unable to locate module 'std'
+from finite_polynomial.polynomial_fp import (
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:57:
+kernel/finite_polynomial/rabin_irreducibility.mojo:97:31: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+def poly_fp_certificate_valid(c: IrreducibilityCertificate) -> Bool:
+                              ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:54:
+kernel/finite_polynomial/distinct_degree.mojo:35:29: error: unable to locate module 'std'
+def poly_fp_distinct_degree(f: PolyFp) raises -> List[DegreePart]:
+                            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:54:
+kernel/finite_polynomial/distinct_degree.mojo:35:50: error: use of unknown declaration 'List'
+def poly_fp_distinct_degree(f: PolyFp) raises -> List[DegreePart]:
+                                                 ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:54:
+kernel/finite_polynomial/distinct_degree.mojo:35:50: error: unable to locate module 'std'
+def poly_fp_distinct_degree(f: PolyFp) raises -> List[DegreePart]:
+                                                 ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:54:
+kernel/finite_polynomial/distinct_degree.mojo:61:28: error: unable to locate module 'std'
+def poly_fp_factor_degrees(f: PolyFp) raises -> List[Int]:
+                           ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:54:
+kernel/finite_polynomial/distinct_degree.mojo:61:49: error: use of unknown declaration 'List'
+def poly_fp_factor_degrees(f: PolyFp) raises -> List[Int]:
+                                                ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:54:
+kernel/finite_polynomial/distinct_degree.mojo:61:49: error: unable to locate module 'std'
+def poly_fp_factor_degrees(f: PolyFp) raises -> List[Int]:
+                                                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:57:
+kernel/finite_polynomial/rabin_irreducibility.mojo:80:40: error: unable to locate module 'std'
+def poly_fp_irreducibility_certificate(f: PolyFp) raises -> IrreducibilityCertificate:
+                                       ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:57:
+kernel/finite_polynomial/rabin_irreducibility.mojo:80:61: error: unable to locate module 'std'
+def poly_fp_irreducibility_certificate(f: PolyFp) raises -> IrreducibilityCertificate:
+                                                            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:57:
+kernel/finite_polynomial/rabin_irreducibility.mojo:45:28: error: unable to locate module 'std'
+def poly_fp_is_irreducible(f: PolyFp) raises -> Bool:
+                           ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:57:
+kernel/finite_polynomial/rabin_irreducibility.mojo:45:49: error: use of unknown declaration 'Bool'
+def poly_fp_is_irreducible(f: PolyFp) raises -> Bool:
+                                                ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:57:
+kernel/finite_polynomial/rabin_irreducibility.mojo:45:49: error: unable to locate module 'std'
+def poly_fp_is_irreducible(f: PolyFp) raises -> Bool:
+                                                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:57:
+kernel/finite_polynomial/rabin_irreducibility.mojo:29:23: error: use of unknown declaration 'Int'
+def prime_divisors(n: Int) -> List[Int]:
+                      ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:57:
+kernel/finite_polynomial/rabin_irreducibility.mojo:29:20: error: unable to locate module 'std'
+def prime_divisors(n: Int) -> List[Int]:
+                   ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:57:
+kernel/finite_polynomial/rabin_irreducibility.mojo:29:31: error: use of unknown declaration 'List'
+def prime_divisors(n: Int) -> List[Int]:
+                              ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:57:
+kernel/finite_polynomial/rabin_irreducibility.mojo:29:31: error: unable to locate module 'std'
+def prime_divisors(n: Int) -> List[Int]:
+                              ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:60:16: error: use of unknown declaration 'ImplicitlyCopyable'
+struct Modulus(ImplicitlyCopyable, Writable):
+               ^~~~~~~~~~~~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:211:17: error: unable to locate module 'std'
+def poly_fp_add(a: PolyFp, b: PolyFp) raises -> PolyFp:
+                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:211:28: error: unable to locate module 'std'
+def poly_fp_add(a: PolyFp, b: PolyFp) raises -> PolyFp:
+                           ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:211:49: error: unable to locate module 'std'
+def poly_fp_add(a: PolyFp, b: PolyFp) raises -> PolyFp:
+                                                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:296:24: error: unable to locate module 'std'
+def poly_fp_derivative(a: PolyFp) -> PolyFp:
+                       ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:296:38: error: unable to locate module 'std'
+def poly_fp_derivative(a: PolyFp) -> PolyFp:
+                                     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:260:20: error: unable to locate module 'std'
+def poly_fp_divmod(a: PolyFp, b: PolyFp) raises -> PolyFpDivMod:
+                   ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:260:31: error: unable to locate module 'std'
+def poly_fp_divmod(a: PolyFp, b: PolyFp) raises -> PolyFpDivMod:
+                              ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:251:21: error: use of unknown declaration 'Movable'
+struct PolyFpDivMod(Movable):
+                    ^~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:260:52: error: unable to locate module 'std'
+def poly_fp_divmod(a: PolyFp, b: PolyFp) raises -> PolyFpDivMod:
+                                                   ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:202:19: error: unable to locate module 'std'
+def poly_fp_equal(a: PolyFp, b: PolyFp) -> Bool:
+                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:202:30: error: unable to locate module 'std'
+def poly_fp_equal(a: PolyFp, b: PolyFp) -> Bool:
+                             ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:202:44: error: use of unknown declaration 'Bool'
+def poly_fp_equal(a: PolyFp, b: PolyFp) -> Bool:
+                                           ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:202:44: error: unable to locate module 'std'
+def poly_fp_equal(a: PolyFp, b: PolyFp) -> Bool:
+                                           ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:303:18: error: unable to locate module 'std'
+def poly_fp_eval(a: PolyFp, x: Int) -> Int:
+                 ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:303:32: error: use of unknown declaration 'Int'
+def poly_fp_eval(a: PolyFp, x: Int) -> Int:
+                               ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:303:29: error: unable to locate module 'std'
+def poly_fp_eval(a: PolyFp, x: Int) -> Int:
+                            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:303:40: error: use of unknown declaration 'Int'
+def poly_fp_eval(a: PolyFp, x: Int) -> Int:
+                                       ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:303:40: error: unable to locate module 'std'
+def poly_fp_eval(a: PolyFp, x: Int) -> Int:
+                                       ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:390:29: error: unable to locate module 'std'
+def poly_fp_frobenius_power(f: PolyFp, k: Int) raises -> PolyFp:
+                            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:390:43: error: use of unknown declaration 'Int'
+def poly_fp_frobenius_power(f: PolyFp, k: Int) raises -> PolyFp:
+                                          ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:390:40: error: unable to locate module 'std'
+def poly_fp_frobenius_power(f: PolyFp, k: Int) raises -> PolyFp:
+                                       ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:390:58: error: unable to locate module 'std'
+def poly_fp_frobenius_power(f: PolyFp, k: Int) raises -> PolyFp:
+                                                         ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:361:17: error: unable to locate module 'std'
+def poly_fp_gcd(a: PolyFp, b: PolyFp) raises -> PolyFp:
+                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:361:28: error: unable to locate module 'std'
+def poly_fp_gcd(a: PolyFp, b: PolyFp) raises -> PolyFp:
+                           ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:361:49: error: unable to locate module 'std'
+def poly_fp_gcd(a: PolyFp, b: PolyFp) raises -> PolyFp:
+                                                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:431:27: error: unable to locate module 'std'
+def poly_fp_is_squarefree(f: PolyFp) raises -> Bool:
+                          ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:431:48: error: use of unknown declaration 'Bool'
+def poly_fp_is_squarefree(f: PolyFp) raises -> Bool:
+                                               ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:431:48: error: unable to locate module 'std'
+def poly_fp_is_squarefree(f: PolyFp) raises -> Bool:
+                                               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:237:17: error: unable to locate module 'std'
+def poly_fp_mul(a: PolyFp, b: PolyFp) raises -> PolyFp:
+                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:237:28: error: unable to locate module 'std'
+def poly_fp_mul(a: PolyFp, b: PolyFp) raises -> PolyFp:
+                           ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:237:49: error: unable to locate module 'std'
+def poly_fp_mul(a: PolyFp, b: PolyFp) raises -> PolyFp:
+                                                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:374:20: error: unable to locate module 'std'
+def poly_fp_powmod(base: PolyFp, e: Int, f: PolyFp) raises -> PolyFp:
+                   ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:374:37: error: use of unknown declaration 'Int'
+def poly_fp_powmod(base: PolyFp, e: Int, f: PolyFp) raises -> PolyFp:
+                                    ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:374:34: error: unable to locate module 'std'
+def poly_fp_powmod(base: PolyFp, e: Int, f: PolyFp) raises -> PolyFp:
+                                 ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:374:42: error: unable to locate module 'std'
+def poly_fp_powmod(base: PolyFp, e: Int, f: PolyFp) raises -> PolyFp:
+                                         ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:374:63: error: unable to locate module 'std'
+def poly_fp_powmod(base: PolyFp, e: Int, f: PolyFp) raises -> PolyFp:
+                                                              ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:175:20: error: unable to locate module 'std'
+def poly_fp_reduce(f: PolyZ, modulus: Modulus) raises -> PolyFp:
+                   ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:175:30: error: unable to locate module 'std'
+def poly_fp_reduce(f: PolyZ, modulus: Modulus) raises -> PolyFp:
+                             ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:175:58: error: unable to locate module 'std'
+def poly_fp_reduce(f: PolyZ, modulus: Modulus) raises -> PolyFp:
+                                                         ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:313:24: error: unable to locate module 'std'
+def poly_fp_root_count(a: PolyFp) -> Int:
+                       ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:313:38: error: use of unknown declaration 'Int'
+def poly_fp_root_count(a: PolyFp) -> Int:
+                                     ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:313:38: error: unable to locate module 'std'
+def poly_fp_root_count(a: PolyFp) -> Int:
+                                     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:220:17: error: unable to locate module 'std'
+def poly_fp_sub(a: PolyFp, b: PolyFp) raises -> PolyFp:
+                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:220:28: error: unable to locate module 'std'
+def poly_fp_sub(a: PolyFp, b: PolyFp) raises -> PolyFp:
+                           ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:220:49: error: unable to locate module 'std'
+def poly_fp_sub(a: PolyFp, b: PolyFp) raises -> PolyFp:
+                                                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:336:18: error: unable to locate module 'std'
+def poly_fp_xgcd(a: PolyFp, b: PolyFp) raises -> PolyFpBezout:
+                 ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:336:29: error: unable to locate module 'std'
+def poly_fp_xgcd(a: PolyFp, b: PolyFp) raises -> PolyFpBezout:
+                            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:323:21: error: use of unknown declaration 'Movable'
+struct PolyFpBezout(Movable):
+                    ^~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:336:50: error: unable to locate module 'std'
+def poly_fp_xgcd(a: PolyFp, b: PolyFp) raises -> PolyFpBezout:
+                                                 ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:121:20: error: use of unknown declaration 'Int'
+def prime_field(p: Int) raises -> Modulus:
+                   ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:121:17: error: unable to locate module 'std'
+def prime_field(p: Int) raises -> Modulus:
+                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:13:
+Imported from kernel/finite_polynomial/__init__.mojo:62:
+Imported from kernel/finite_polynomial/hensel_lifting.mojo:13:
+kernel/finite_polynomial/polynomial_fp.mojo:121:35: error: unable to locate module 'std'
+def prime_field(p: Int) raises -> Modulus:
+                                  ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:47:10: error: unable to locate module 'std'
+def same(a: PolyFp, coefficients: List[Int]) raises:
+         ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:47:35: error: use of unknown declaration 'List'
+def same(a: PolyFp, coefficients: List[Int]) raises:
+                                  ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:47:21: error: unable to locate module 'std'
+def same(a: PolyFp, coefficients: List[Int]) raises:
+                    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:47:52: error: unable to locate module 'std'
+def same(a: PolyFp, coefficients: List[Int]) raises:
+                                                   ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:51:38: error: unable to locate module 'std'
+def test_moduli_and_residues() raises:
+                                     ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:86:34: error: unable to locate module 'std'
+def test_ring_operations() raises:
+                                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:123:22: error: use of unknown declaration 'Int'
+def check_degrees(p: Int, coefficients: List[Int], expected: List[Int], irreducible: Bool) raises:
+                     ^~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:123:19: error: unable to locate module 'std'
+def check_degrees(p: Int, coefficients: List[Int], expected: List[Int], irreducible: Bool) raises:
+                  ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:123:41: error: use of unknown declaration 'List'
+def check_degrees(p: Int, coefficients: List[Int], expected: List[Int], irreducible: Bool) raises:
+                                        ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:123:27: error: unable to locate module 'std'
+def check_degrees(p: Int, coefficients: List[Int], expected: List[Int], irreducible: Bool) raises:
+                          ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:123:62: error: use of unknown declaration 'List'
+def check_degrees(p: Int, coefficients: List[Int], expected: List[Int], irreducible: Bool) raises:
+                                                             ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:123:52: error: unable to locate module 'std'
+def check_degrees(p: Int, coefficients: List[Int], expected: List[Int], irreducible: Bool) raises:
+                                                   ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:123:86: error: use of unknown declaration 'Bool'
+def check_degrees(p: Int, coefficients: List[Int], expected: List[Int], irreducible: Bool) raises:
+                                                                                     ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:123:73: error: unable to locate module 'std'
+def check_degrees(p: Int, coefficients: List[Int], expected: List[Int], irreducible: Bool) raises:
+                                                                        ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:123:98: error: unable to locate module 'std'
+def check_degrees(p: Int, coefficients: List[Int], expected: List[Int], irreducible: Bool) raises:
+                                                                                                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:133:48: error: unable to locate module 'std'
+def test_distinct_degree_factorization() raises:
+                                               ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:159:59: error: unable to locate module 'std'
+def test_frobenius_power_refuses_a_negative_count() raises:
+                                                          ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:171:45: error: unable to locate module 'std'
+def test_irreducibility_certificate() raises:
+                                            ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:194:30: error: unable to locate module 'std'
+def test_hensel_step() raises:
+                             ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:214:18: error: unable to locate module 'std'
+def main() raises:
+                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:214:5: error: unable to locate module 'std'
+def main() raises:
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:214:9: error: 'builtin' does not refer to a nested package
+def main() raises:
+        ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:215:5: error: unable to locate module 'std'
+    test_moduli_and_residues()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:216:5: error: use of unknown declaration 'print'
+    print("[PASS] test_moduli_and_residues")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:217:5: error: unable to locate module 'std'
+    test_ring_operations()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:218:5: error: use of unknown declaration 'print'
+    print("[PASS] test_ring_operations")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:219:5: error: unable to locate module 'std'
+    test_distinct_degree_factorization()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:220:5: error: use of unknown declaration 'print'
+    print("[PASS] test_distinct_degree_factorization")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:221:5: error: unable to locate module 'std'
+    test_frobenius_power_refuses_a_negative_count()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:222:5: error: use of unknown declaration 'print'
+    print("[PASS] test_frobenius_power_refuses_a_negative_count")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:223:5: error: unable to locate module 'std'
+    test_irreducibility_certificate()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:224:5: error: use of unknown declaration 'print'
+    print("[PASS] test_irreducibility_certificate")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:225:5: error: unable to locate module 'std'
+    test_hensel_step()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:226:5: error: use of unknown declaration 'print'
+    print("[PASS] test_hensel_step")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_fp.mojo:227:5: error: use of unknown declaration 'print'
+    print("6 polynomial_fp Mojo tests passed.")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/golden-ratio-normality-research/kernel/.pixi/envs/default/bin/mojo: error: failed to parse the provided Mojo source module

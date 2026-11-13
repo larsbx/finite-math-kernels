@@ -1,0 +1,402 @@
+{
+  "BinaryWeightControls": {
+    "FiniteMathKernels.BinaryWeightControls.additionNotEquality": {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem": true
+    },
+    "FiniteMathKernels.BinaryWeightControls.allOnesAtZero": {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem": true
+    },
+    "FiniteMathKernels.BinaryWeightControls.carryRemovesOne": {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem": true
+    },
+    "FiniteMathKernels.BinaryWeightControls.divisionCanLoseBits": {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem": true
+    },
+    "FiniteMathKernels.BinaryWeightControls.divisionNotEquality": {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem": true
+    },
+    "FiniteMathKernels.BinaryWeightControls.shiftedZero": {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem": true
+    },
+    "FiniteMathKernels.BinaryWeightControls.squareBoundAttained": {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem": true
+    },
+    "FiniteMathKernels.BinaryWeightControls.squareHasMoreBits": {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem": true
+    },
+    "FiniteMathKernels.BinaryWeightControls.strongerSquareBoundFalse": {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem": true
+    },
+    "FiniteMathKernels.BinaryWeightControls.weightEight": {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem": true
+    },
+    "FiniteMathKernels.BinaryWeightControls.weightFifteen": {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem": true
+    },
+    "FiniteMathKernels.BinaryWeightControls.weightZero": {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem": true
+    }
+  },
+  "FiniteMathKernels.BinaryWeight": {
+    "FiniteMathKernels.binaryWeight": {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem": false
+    },
+    "FiniteMathKernels.binaryWeight.eq_1": {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem": true
+    },
+    "FiniteMathKernels.binaryWeight_add_le": {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem": true
+    },
+    "FiniteMathKernels.binaryWeight_add_le._proof_1_1": {
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem": true
+    },
+    "FiniteMathKernels.binaryWeight_add_le._proof_1_2": {
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem": true
+    },
+    "FiniteMathKernels.binaryWeight_add_le._proof_1_3": {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem": true
+    },
+    "FiniteMathKernels.binaryWeight_add_le._proof_1_4": {
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem": true
+    },
+    "FiniteMathKernels.binaryWeight_add_le._proof_1_5": {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem": true
+    },
+    "FiniteMathKernels.binaryWeight_add_le._proof_1_6": {
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem": true
+    },
+    "FiniteMathKernels.binaryWeight_add_le._proof_1_7": {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem": true
+    },
+    "FiniteMathKernels.binaryWeight_div_two_le": {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem": true
+    },
+    "FiniteMathKernels.binaryWeight_div_two_pow_le": {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem": true
+    },
+    "FiniteMathKernels.binaryWeight_mul_two_pow": {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem": true
+    },
+    "FiniteMathKernels.binaryWeight_one": {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem": true
+    },
+    "FiniteMathKernels.binaryWeight_sq_le": {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem": true
+    },
+    "FiniteMathKernels.binaryWeight_succ_le": {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem": true
+    },
+    "FiniteMathKernels.binaryWeight_succ_le._proof_1_1": {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem": true
+    },
+    "FiniteMathKernels.binaryWeight_succ_le._proof_1_2": {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem": true
+    },
+    "FiniteMathKernels.binaryWeight_two_mul": {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem": true
+    },
+    "FiniteMathKernels.binaryWeight_two_mul._proof_1_1": {
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem": true
+    },
+    "FiniteMathKernels.binaryWeight_two_mul_add_one": {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem": true
+    },
+    "FiniteMathKernels.binaryWeight_two_mul_add_one._proof_1_1": {
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem": true
+    },
+    "FiniteMathKernels.binaryWeight_two_pow_mul": {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem": true
+    },
+    "FiniteMathKernels.binaryWeight_two_pow_sub_one": {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem": true
+    },
+    "FiniteMathKernels.binaryWeight_two_pow_sub_one._proof_1_1": {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem": true
+    },
+    "FiniteMathKernels.binaryWeight_zero": {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem": true
+    }
+  },
+  "FiniteMathKernels.BinaryWeightContracts": {
+    "FiniteMathKernels.BinaryWeightContracts.addition": {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem": true
+    },
+    "FiniteMathKernels.BinaryWeightContracts.dropBit": {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem": true
+    },
+    "FiniteMathKernels.BinaryWeightContracts.dropBits": {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem": true
+    },
+    "FiniteMathKernels.BinaryWeightContracts.leftShift": {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem": true
+    },
+    "FiniteMathKernels.BinaryWeightContracts.lowOne": {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem": true
+    },
+    "FiniteMathKernels.BinaryWeightContracts.lowOnes": {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem": true
+    },
+    "FiniteMathKernels.BinaryWeightContracts.lowZero": {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem": true
+    },
+    "FiniteMathKernels.BinaryWeightContracts.one": {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem": true
+    },
+    "FiniteMathKernels.BinaryWeightContracts.rightFactor": {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem": true
+    },
+    "FiniteMathKernels.BinaryWeightContracts.square": {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem": true
+    },
+    "FiniteMathKernels.BinaryWeightContracts.successor": {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem": true
+    },
+    "FiniteMathKernels.BinaryWeightContracts.zero": {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "theorem": true
+    }
+  }
+}

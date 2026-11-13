@@ -1,0 +1,62 @@
+[PASS] test_homogeneous_normal_form
+[PASS] test_continuity_at_regular_points
+[PASS] test_pole_is_continuity_into_infinity
+[PASS] test_degree_rule_at_infinity
+[PASS] test_infinity_maps_through_finite_image
+[PASS] test_rejected_coefficient_refuses_degree_rule
+[PASS] test_chordal_distance_squared
+[PASS] test_tangent_slope_smooth_vertical_and_cusp
+[PASS] test_oblique_and_horizontal_asymptotes
+[PASS] test_landing_is_lhopital
+[PASS] test_cancellation_law
+[PASS] test_cancellation_sweep_against_evaluation
+[PASS] test_directional_limits_on_the_divisor
+[PASS] test_path_dependence_witness_certifies_nonexistence
+[PASS] test_second_blow_up_along_a_parabola
+[PASS] test_negative_monomial_exponent_rejects
+[PASS] test_mobius_is_continuous_at_infinity
+[PASS] test_convergents_are_the_orbit_of_infinity
+18 projective_limits Mojo tests passed.
+466 projective-limits-v1 vectors agree with the Python reference.
+[PASS] test_prime_field_axioms
+[PASS] test_rejection_is_sticky
+[PASS] test_normal_form_over_fp
+[PASS] test_projective_line_has_p_plus_one_points
+[PASS] test_half_turn_is_an_involution
+[PASS] test_half_turn_over_q_has_no_fixed_points
+[PASS] test_chordal_quadrance_is_rotation_invariant
+[PASS] test_chordal_quadrance_is_four_spread
+[PASS] test_wilson_theorem_is_a_limit
+[PASS] test_landing_survives_where_lhopital_fails
+[PASS] test_degree_rule_at_infinity_over_fp
+[PASS] test_tangent_slope_and_asymptote_over_fp
+[PASS] test_path_dependence_over_fp
+13 projective_limits field-generic Mojo tests passed.
+[PASS] test_identity_and_half_turn
+[PASS] test_isotropic_points_are_not_rotors
+[PASS] test_group_law_is_composition_of_rotations
+[PASS] test_group_axioms
+[PASS] test_group_law_is_circle_multiplication
+[PASS] test_circle_is_the_rotor_group
+[PASS] test_rational_rotors
+[PASS] test_powers
+[PASS] test_orders_divide_the_group_order
+[PASS] test_half_turn_is_the_unique_involution
+[PASS] test_rational_torsion_is_niven
+[PASS] test_turns_are_a_homomorphism
+[PASS] test_turn_requires_the_generator_order_to_divide_order
+[PASS] test_quarter_turn_is_plus_or_minus_one
+[PASS] test_spread_polynomials
+[PASS] test_rotor_spread_is_s2_of_the_half_angle_spread
+[PASS] test_spread_of_a_power_is_a_spread_polynomial
+17 projective_limits rotor Mojo tests passed.
+[PASS] field-generic RT over F3/F5/F7
+[PASS] complete F3^8 norm-one shell
+[PASS] exact batch spread equals independent scalar, including null guards
+[PASS] 48 independent RT golden vectors (Mojo exact)
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/projective_limits/test_hyperbolic_rt_max.mojo:7:
+Imported from kernel/projective_limits/hyperbolic_rt_max.mojo:14:
+kernel/parallel_fold/map_fold.mojo:28:6: error: unable to locate module 'max'
+from max.algorithm import parallelize
+     ^
+mojo: error: failed to parse the provided Mojo source module

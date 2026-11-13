@@ -1,0 +1,6 @@
+[PASS] test_q1_q2_exact_values
+[PASS] test_q3_exact_value
+[PASS] test_q4_exact_value_and_conjugation
+[PASS] test_q5_exact_value_and_galois_transport
+[PASS] test_malformed_internal_fraction_refuses
+5 exact quadratic-germ coefficient tests passed.

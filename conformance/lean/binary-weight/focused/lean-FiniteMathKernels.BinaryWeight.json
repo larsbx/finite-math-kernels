@@ -1,0 +1,20 @@
+{
+  "argv": [
+    "/workspace/scratch/gnr-next.qHyoM1/toolchains/lean-4.34.0-rc2-linux/bin/lean",
+    "-j1",
+    "--root=/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/lean",
+    "-DautoImplicit=false",
+    "-DwarningAsError=true",
+    "-o",
+    "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-hardened-acceptance/lib/FiniteMathKernels/BinaryWeight.olean",
+    "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/lean/FiniteMathKernels/BinaryWeight.lean"
+  ],
+  "cwd": "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight",
+  "elapsed_seconds": 6.048699225000746,
+  "expected_returncode": 0,
+  "label": "lean-FiniteMathKernels.BinaryWeight",
+  "returncode": 0,
+  "stderr": "",
+  "stdout": "",
+  "timeout_seconds": 900
+}

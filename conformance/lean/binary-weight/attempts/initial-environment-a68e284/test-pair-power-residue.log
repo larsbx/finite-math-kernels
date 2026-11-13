@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_pair_power_residue_reference.py", line 50, in <module>
+    test_native()
+  File "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_pair_power_residue_reference.py", line 40, in test_native
+    proc = subprocess.run(
+           ^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['mojo', 'run', '-I', 'kernel', 'tests/finite_polynomial/test_pair_power_residue.mojo']' returned non-zero exit status 1.

@@ -1,0 +1,441 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/oracles/property_oracle.py", line 398, in <module>
+    sys.exit(main(sys.argv))
+             ^^^^^^^^^^^^^^
+  File "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/oracles/property_oracle.py", line 382, in main
+    actual = run_probe()
+             ^^^^^^^^^^^
+  File "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/oracles/property_oracle.py", line 332, in run_probe
+    raise RuntimeError(f"mojo probe failed with status {result.returncode}:\n{result.stderr}")
+RuntimeError: mojo probe failed with status 1:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:30:1: error: unable to locate module 'std'
+from finite_exact.bigint_z import BIGZ_BASE, BigZ, BigZCanonicalBytes, bigz_abs_divmod, bigz_abs_divmod_shift_subtract, bigz_add, bigz_canonical_bytes, bigz_divmod, bigz_eq, bigz_from_i64, bigz_gcd, bigz_is_canonical, bigz_lt, bigz_mul, bigz_sub
+^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:30:1: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+from finite_exact.bigint_z import BIGZ_BASE, BigZ, BigZCanonicalBytes, bigz_abs_divmod, bigz_abs_divmod_shift_subtract, bigz_add, bigz_canonical_bytes, bigz_divmod, bigz_eq, bigz_from_i64, bigz_gcd, bigz_is_canonical, bigz_lt, bigz_mul, bigz_sub
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:30:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/__init__.mojo:34:1: error: unable to locate module 'std'
+
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:30:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/bigint_z.mojo:15:1: error: unable to locate module 'std'
+comptime BIGZ_BASE = UInt64(1000000000)
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:30:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/bigint_z.mojo:15:22: error: use of unknown declaration 'UInt64'
+comptime BIGZ_BASE = UInt64(1000000000)
+                     ^~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:30:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/bigint_z.mojo:18:13: error: use of unknown declaration 'Copyable'
+struct BigZ(Copyable):
+            ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:30:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/bigint_z.mojo:64:27: error: use of unknown declaration 'Copyable'
+struct BigZCanonicalBytes(Copyable):
+                          ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:30:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/bigint_z.mojo:312:21: error: unable to locate module 'std'
+def bigz_abs_divmod(dividend: BigZ, divisor: BigZ) -> BigZDivModResult:
+                    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:30:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/bigint_z.mojo:312:37: error: unable to locate module 'std'
+def bigz_abs_divmod(dividend: BigZ, divisor: BigZ) -> BigZDivModResult:
+                                    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:30:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/bigint_z.mojo:44:25: error: use of unknown declaration 'Copyable'
+struct BigZDivModResult(Copyable):
+                        ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:30:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/bigint_z.mojo:312:55: error: unable to locate module 'std'
+def bigz_abs_divmod(dividend: BigZ, divisor: BigZ) -> BigZDivModResult:
+                                                      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:30:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/bigint_z.mojo:280:36: error: unable to locate module 'std'
+def bigz_abs_divmod_shift_subtract(dividend: BigZ, divisor: BigZ) -> BigZDivModResult:
+                                   ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:30:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/bigint_z.mojo:280:52: error: unable to locate module 'std'
+def bigz_abs_divmod_shift_subtract(dividend: BigZ, divisor: BigZ) -> BigZDivModResult:
+                                                   ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:30:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/bigint_z.mojo:280:70: error: unable to locate module 'std'
+def bigz_abs_divmod_shift_subtract(dividend: BigZ, divisor: BigZ) -> BigZDivModResult:
+                                                                     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:30:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/bigint_z.mojo:157:14: error: unable to locate module 'std'
+def bigz_add(a: BigZ, b: BigZ) -> BigZ:
+             ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:30:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/bigint_z.mojo:157:23: error: unable to locate module 'std'
+def bigz_add(a: BigZ, b: BigZ) -> BigZ:
+                      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:30:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/bigint_z.mojo:157:35: error: unable to locate module 'std'
+def bigz_add(a: BigZ, b: BigZ) -> BigZ:
+                                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:30:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/bigint_z.mojo:468:26: error: unable to locate module 'std'
+def bigz_canonical_bytes(value: BigZ) -> BigZCanonicalBytes:
+                         ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:30:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/bigint_z.mojo:468:42: error: unable to locate module 'std'
+def bigz_canonical_bytes(value: BigZ) -> BigZCanonicalBytes:
+                                         ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:30:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/bigint_z.mojo:404:17: error: unable to locate module 'std'
+def bigz_divmod(dividend: BigZ, divisor: BigZ) -> BigZDivModResult:
+                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:30:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/bigint_z.mojo:404:33: error: unable to locate module 'std'
+def bigz_divmod(dividend: BigZ, divisor: BigZ) -> BigZDivModResult:
+                                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:30:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/bigint_z.mojo:404:51: error: unable to locate module 'std'
+def bigz_divmod(dividend: BigZ, divisor: BigZ) -> BigZDivModResult:
+                                                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:30:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/bigint_z.mojo:206:13: error: unable to locate module 'std'
+def bigz_eq(a: BigZ, b: BigZ) -> Bool:
+            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:30:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/bigint_z.mojo:206:22: error: unable to locate module 'std'
+def bigz_eq(a: BigZ, b: BigZ) -> Bool:
+                     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:30:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/bigint_z.mojo:206:34: error: use of unknown declaration 'Bool'
+def bigz_eq(a: BigZ, b: BigZ) -> Bool:
+                                 ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:30:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/bigint_z.mojo:206:34: error: unable to locate module 'std'
+def bigz_eq(a: BigZ, b: BigZ) -> Bool:
+                                 ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:30:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/bigint_z.mojo:77:26: error: use of unknown declaration 'Int64'
+def bigz_from_i64(value: Int64) -> BigZ:
+                         ^~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:30:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/bigint_z.mojo:77:19: error: unable to locate module 'std'
+def bigz_from_i64(value: Int64) -> BigZ:
+                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:30:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/bigint_z.mojo:77:36: error: unable to locate module 'std'
+def bigz_from_i64(value: Int64) -> BigZ:
+                                   ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:30:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/bigint_z.mojo:425:14: error: unable to locate module 'std'
+def bigz_gcd(a: BigZ, b: BigZ) -> BigZ:
+             ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:30:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/bigint_z.mojo:425:23: error: unable to locate module 'std'
+def bigz_gcd(a: BigZ, b: BigZ) -> BigZ:
+                      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:30:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/bigint_z.mojo:425:35: error: unable to locate module 'std'
+def bigz_gcd(a: BigZ, b: BigZ) -> BigZ:
+                                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:30:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/bigint_z.mojo:449:23: error: unable to locate module 'std'
+def bigz_is_canonical(value: BigZ) -> Bool:
+                      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:30:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/bigint_z.mojo:449:39: error: use of unknown declaration 'Bool'
+def bigz_is_canonical(value: BigZ) -> Bool:
+                                      ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:30:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/bigint_z.mojo:449:39: error: unable to locate module 'std'
+def bigz_is_canonical(value: BigZ) -> Bool:
+                                      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:30:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/bigint_z.mojo:215:13: error: unable to locate module 'std'
+def bigz_lt(a: BigZ, b: BigZ) -> Bool:
+            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:30:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/bigint_z.mojo:215:22: error: unable to locate module 'std'
+def bigz_lt(a: BigZ, b: BigZ) -> Bool:
+                     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:30:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/bigint_z.mojo:215:34: error: use of unknown declaration 'Bool'
+def bigz_lt(a: BigZ, b: BigZ) -> Bool:
+                                 ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:30:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/bigint_z.mojo:215:34: error: unable to locate module 'std'
+def bigz_lt(a: BigZ, b: BigZ) -> Bool:
+                                 ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:30:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/bigint_z.mojo:182:14: error: unable to locate module 'std'
+def bigz_mul(a: BigZ, b: BigZ) -> BigZ:
+             ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:30:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/bigint_z.mojo:182:23: error: unable to locate module 'std'
+def bigz_mul(a: BigZ, b: BigZ) -> BigZ:
+                      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:30:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/bigint_z.mojo:182:35: error: unable to locate module 'std'
+def bigz_mul(a: BigZ, b: BigZ) -> BigZ:
+                                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:30:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/bigint_z.mojo:178:14: error: unable to locate module 'std'
+def bigz_sub(a: BigZ, b: BigZ) -> BigZ:
+             ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:30:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/bigint_z.mojo:178:23: error: unable to locate module 'std'
+def bigz_sub(a: BigZ, b: BigZ) -> BigZ:
+                      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:30:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/bigint_z.mojo:178:35: error: unable to locate module 'std'
+def bigz_sub(a: BigZ, b: BigZ) -> BigZ:
+                                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:31:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/rat_q.mojo:13:1: error: unable to locate module 'std'
+from finite_exact.bigint_z import BigZ, bigz_add, bigz_canonical_bytes, bigz_div_exact, bigz_eq, bigz_from_i64, bigz_gcd, bigz_is_canonical, bigz_lt, bigz_mul, bigz_neg, bigz_sub, bigz_zero
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:30:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/bigint_z.mojo:178:23: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+def bigz_sub(a: BigZ, b: BigZ) -> BigZ:
+                      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:31:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/rat_q.mojo:16:10: error: use of unknown declaration 'Copyable'
+struct Q(Copyable):
+         ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:31:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/rat_q.mojo:125:24: error: use of unknown declaration 'Copyable'
+struct QCanonicalBytes(Copyable):
+                       ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:31:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/rat_q.mojo:170:23: error: unable to locate module 'std'
+def q_canonical_bytes(value: Q) -> QCanonicalBytes:
+                      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:31:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/rat_q.mojo:170:36: error: unable to locate module 'std'
+def q_canonical_bytes(value: Q) -> QCanonicalBytes:
+                                   ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:31:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/rat_q.mojo:166:17: error: unable to locate module 'std'
+def q_from_bigz(n: BigZ, d: BigZ) -> Q:
+                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:31:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/rat_q.mojo:166:26: error: unable to locate module 'std'
+def q_from_bigz(n: BigZ, d: BigZ) -> Q:
+                         ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:31:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/rat_q.mojo:166:38: error: unable to locate module 'std'
+def q_from_bigz(n: BigZ, d: BigZ) -> Q:
+                                     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:31:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/rat_q.mojo:203:11: error: unable to locate module 'std'
+def q_max(a: Q, b: Q) -> Q:
+          ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:31:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/rat_q.mojo:203:17: error: unable to locate module 'std'
+def q_max(a: Q, b: Q) -> Q:
+                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:31:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/rat_q.mojo:203:26: error: unable to locate module 'std'
+def q_max(a: Q, b: Q) -> Q:
+                         ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:31:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/rat_q.mojo:195:11: error: unable to locate module 'std'
+def q_min(a: Q, b: Q) -> Q:
+          ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:31:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/rat_q.mojo:195:17: error: unable to locate module 'std'
+def q_min(a: Q, b: Q) -> Q:
+                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:31:
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/finite_exact/rat_q.mojo:195:26: error: unable to locate module 'std'
+def q_min(a: Q, b: Q) -> Q:
+                         ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:33:23: error: use of unknown declaration 'UInt64'
+comptime PROBE_SEED = UInt64(11400714819323198485)
+                      ^~~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:34:26: error: unable to locate module 'std'
+comptime PROBE_Z_CASES = 300
+                         ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:35:26: error: unable to locate module 'std'
+comptime PROBE_Q_CASES = 200
+                         ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:36:28: error: unable to locate module 'std'
+comptime PROBE_MAX_LIMBS = 6
+                           ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:39:23: error: use of unknown declaration 'Copyable'
+struct Xorshift64Star(Copyable):
+                      ^~~~~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:56:53: error: use of unknown declaration 'Int'
+def random_bigz(mut rng: Xorshift64Star, max_limbs: Int) -> BigZ:
+                                                    ^~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:56:42: error: unable to locate module 'std'
+def random_bigz(mut rng: Xorshift64Star, max_limbs: Int) -> BigZ:
+                                         ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:56:61: error: unable to locate module 'std'
+def random_bigz(mut rng: Xorshift64Star, max_limbs: Int) -> BigZ:
+                                                            ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:78:61: error: use of unknown declaration 'Int'
+def random_nonzero_bigz(mut rng: Xorshift64Star, max_limbs: Int) -> BigZ:
+                                                            ^~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:78:50: error: unable to locate module 'std'
+def random_nonzero_bigz(mut rng: Xorshift64Star, max_limbs: Int) -> BigZ:
+                                                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:78:69: error: unable to locate module 'std'
+def random_nonzero_bigz(mut rng: Xorshift64Star, max_limbs: Int) -> BigZ:
+                                                                    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:85:19: error: use of unknown declaration 'List'
+def octets(bytes: List[UInt8], rejected: Bool) -> String:
+                  ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:85:12: error: unable to locate module 'std'
+def octets(bytes: List[UInt8], rejected: Bool) -> String:
+           ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:85:42: error: use of unknown declaration 'Bool'
+def octets(bytes: List[UInt8], rejected: Bool) -> String:
+                                         ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:85:32: error: unable to locate module 'std'
+def octets(bytes: List[UInt8], rejected: Bool) -> String:
+                               ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:85:51: error: use of unknown declaration 'String'
+def octets(bytes: List[UInt8], rejected: Bool) -> String:
+                                                  ^~~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:85:51: error: unable to locate module 'std'
+def octets(bytes: List[UInt8], rejected: Bool) -> String:
+                                                  ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:96:13: error: unable to locate module 'std'
+def z_token(value: BigZ) -> String:
+            ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:96:29: error: use of unknown declaration 'String'
+def z_token(value: BigZ) -> String:
+                            ^~~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:96:29: error: unable to locate module 'std'
+def z_token(value: BigZ) -> String:
+                            ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:101:13: error: unable to locate module 'std'
+def q_token(value: Q) -> String:
+            ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:101:26: error: use of unknown declaration 'String'
+def q_token(value: Q) -> String:
+                         ^~~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:101:26: error: unable to locate module 'std'
+def q_token(value: Q) -> String:
+                         ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:106:23: error: use of unknown declaration 'Bool'
+def bool_token(value: Bool) -> String:
+                      ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:106:16: error: unable to locate module 'std'
+def bool_token(value: Bool) -> String:
+               ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:106:32: error: use of unknown declaration 'String'
+def bool_token(value: Bool) -> String:
+                               ^~~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:106:32: error: unable to locate module 'std'
+def bool_token(value: Bool) -> String:
+                               ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:110:19: error: unable to locate module 'std'
+def divmod_tokens(dividend: BigZ, divisor: BigZ) -> String:
+                  ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:110:35: error: unable to locate module 'std'
+def divmod_tokens(dividend: BigZ, divisor: BigZ) -> String:
+                                  ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:110:53: error: use of unknown declaration 'String'
+def divmod_tokens(dividend: BigZ, divisor: BigZ) -> String:
+                                                    ^~~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:110:53: error: unable to locate module 'std'
+def divmod_tokens(dividend: BigZ, divisor: BigZ) -> String:
+                                                    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:117:17: error: unable to locate module 'std'
+def z_selfcheck(a: BigZ, b: BigZ, sum: BigZ, difference: BigZ, product: BigZ, common: BigZ) -> Bool:
+                ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:117:26: error: unable to locate module 'std'
+def z_selfcheck(a: BigZ, b: BigZ, sum: BigZ, difference: BigZ, product: BigZ, common: BigZ) -> Bool:
+                         ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:117:35: error: unable to locate module 'std'
+def z_selfcheck(a: BigZ, b: BigZ, sum: BigZ, difference: BigZ, product: BigZ, common: BigZ) -> Bool:
+                                  ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:117:46: error: unable to locate module 'std'
+def z_selfcheck(a: BigZ, b: BigZ, sum: BigZ, difference: BigZ, product: BigZ, common: BigZ) -> Bool:
+                                             ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:117:64: error: unable to locate module 'std'
+def z_selfcheck(a: BigZ, b: BigZ, sum: BigZ, difference: BigZ, product: BigZ, common: BigZ) -> Bool:
+                                                               ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:117:79: error: unable to locate module 'std'
+def z_selfcheck(a: BigZ, b: BigZ, sum: BigZ, difference: BigZ, product: BigZ, common: BigZ) -> Bool:
+                                                                              ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:117:96: error: use of unknown declaration 'Bool'
+def z_selfcheck(a: BigZ, b: BigZ, sum: BigZ, difference: BigZ, product: BigZ, common: BigZ) -> Bool:
+                                                                                               ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:117:96: error: unable to locate module 'std'
+def z_selfcheck(a: BigZ, b: BigZ, sum: BigZ, difference: BigZ, product: BigZ, common: BigZ) -> Bool:
+                                                                                               ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:132:25: error: use of unknown declaration 'List'
+def q_selfcheck(values: List[Q]) -> Bool:
+                        ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:132:17: error: unable to locate module 'std'
+def q_selfcheck(values: List[Q]) -> Bool:
+                ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:132:37: error: use of unknown declaration 'Bool'
+def q_selfcheck(values: List[Q]) -> Bool:
+                                    ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:132:37: error: unable to locate module 'std'
+def q_selfcheck(values: List[Q]) -> Bool:
+                                    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:143:25: error: use of unknown declaration 'Int'
+def print_z_case(index: Int, a: BigZ, b: BigZ):
+                        ^~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:143:18: error: unable to locate module 'std'
+def print_z_case(index: Int, a: BigZ, b: BigZ):
+                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:143:30: error: unable to locate module 'std'
+def print_z_case(index: Int, a: BigZ, b: BigZ):
+                             ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:143:39: error: unable to locate module 'std'
+def print_z_case(index: Int, a: BigZ, b: BigZ):
+                                      ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:143:47: error: unable to locate module 'std'
+def print_z_case(index: Int, a: BigZ, b: BigZ):
+                                              ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:155:25: error: use of unknown declaration 'Int'
+def print_q_case(index: Int, a: Q, b: Q):
+                        ^~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:155:18: error: unable to locate module 'std'
+def print_q_case(index: Int, a: Q, b: Q):
+                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:155:30: error: unable to locate module 'std'
+def print_q_case(index: Int, a: Q, b: Q):
+                             ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:155:36: error: unable to locate module 'std'
+def print_q_case(index: Int, a: Q, b: Q):
+                                   ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:155:41: error: unable to locate module 'std'
+def print_q_case(index: Int, a: Q, b: Q):
+                                        ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:172:42: error: unable to locate module 'std'
+def random_q(mut rng: Xorshift64Star) -> Q:
+                                         ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:178:11: error: unable to locate module 'std'
+def main():
+          ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:178:5: error: unable to locate module 'std'
+def main():
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:178:9: error: 'builtin' does not refer to a nested package
+def main():
+        ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:180:5: error: use of unknown declaration 'print'
+    print("HEADER exact-arithmetic-property-probe 1", PROBE_SEED, PROBE_Z_CASES, PROBE_Q_CASES, 0)
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:181:18: error: use of unknown declaration 'range'; did you mean 'rng'?
+    for index in range(PROBE_Z_CASES):
+                 ^~~~~
+                 rng
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:185:18: error: use of unknown declaration 'range'; did you mean 'rng'?
+    for index in range(PROBE_Q_CASES):
+                 ^~~~~
+                 rng
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_exact/property_probe.mojo:189:5: error: use of unknown declaration 'print'
+    print("END")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/golden-ratio-normality-research/kernel/.pixi/envs/default/bin/mojo: error: failed to parse the provided Mojo source module
+

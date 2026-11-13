@@ -1,0 +1,393 @@
+{
+  "accepted": true,
+  "artifact_sha256": {
+    "Audit.lean": "4a8c63aa7bb62b2251988de076a0007031c9583b75a35a15fe9dccd8d3243ee2",
+    "AuditTransitive.lean": "ecbade50d76db3279197a4a2700248d26a4a9a2b09f8d23fef054f1acc719cda",
+    "AuditUntrusted.lean": "4d98051e1f125c1f8ef6ab203aa981a4d53ca7b5b95ab9955bff6b502fe2ca2c",
+    "Reject_addition_equality.lean": "78561ef4eccc56a4d2253e9a72bad2122b5ec9f812842a225822d1bdd6dc3f31",
+    "Reject_division_equality.lean": "d7d4be36b21d0b3c3a5016c5861e5c5f3442a5a81d48fe6b029071a0e1b2cba1",
+    "Reject_stronger_square.lean": "fc1d1b89477d25f4209e271f7d373abed1136e63f438050efaf132c0545d9596",
+    "Reject_weakened_square_type.lean": "694aa35524d82e23c26d810eca899c6f4fcfbffd1fd9bceed5effd630e22713a",
+    "Reject_wrong_weight.lean": "c7037afbd68d1dd862b4295dbb877b99e3fb86437fab5b68dda41bc97091d41b",
+    "TransitiveAxiom.lean": "e3e85613d9846ceabf4dea60239f5c120c7d8ad3ea26598d35dd18fa5f980352",
+    "UntrustedAxiom.lean": "62d0ef8c69d6b3c26bf31b56ad2a53a2ae9765e96dffe0cea61729c119e7fd15",
+    "declaration-axioms.json": "6f68a528fb5c49a815a444813cbde00678361cc7cdd9b6a2fb4ecff6282dfa24",
+    "gate-regressions.json": "9681ea9f509d3377a42dc75b97b1c2236c53a1b559218fb27629e3e865885a45",
+    "lean-Audit.json": "d106b137caf7ddf670479868a856af5384d5d0fd3f06e27372591f5cb0521b60",
+    "lean-AuditTransitive.json": "cd8196c77179fea95629471da3fa36fc53cc46badb890947de34262f0cf6b369",
+    "lean-AuditUntrusted.json": "036ee78b399352c610e0c2aa341323d7f46573abfe66842bfc949e21995bee8b",
+    "lean-BinaryWeightControls.json": "3551949d5ef41db9d3ca488b16f5e15abcaf7d0b74625b9a7581b695a5dd9974",
+    "lean-FiniteMathKernels.BinaryWeight.json": "3503461ac5fc0654cd6e5efb107a493e6d647acbc109cbcd9a46e497652e38aa",
+    "lean-FiniteMathKernels.BinaryWeightContracts.json": "3117e857ae9d9d6da96a5f550698f1393f9dd206f74a3b815158a937ff7ee025",
+    "lean-Reject_addition_equality.json": "c2db51fc66af8c264f59f147fab03962803c231dce8f7a0203141e7699e0aae9",
+    "lean-Reject_division_equality.json": "4194e4bb7b4b1846cfd95a136e9661a015245f996ce6ed2c75714d8f1cf38645",
+    "lean-Reject_stronger_square.json": "77a89358f456f14265837a1a63c3b0b05affd69ab99d6d226d68d955ee99fffe",
+    "lean-Reject_weakened_square_type.json": "1d2f304b3d348a8d92d4bda970f621eb4bc47c85eaaa4582e0586768d1813e40",
+    "lean-Reject_wrong_weight.json": "a53834dc1d703156e8c441fef9d043dd3e43998bc723275b46e3c79ec9113aab",
+    "lean-TransitiveAxiom.json": "113167168c164890c2b8d253f91ae1e14c5a69ffd34ca9fd17f3ca9fc331d0f0",
+    "lean-UntrustedAxiom.json": "1fb3a0b76c22c9dc75a69a266999a5461674a6da7800b116c98e82866c444f6f",
+    "lean-version.json": "57a147cce7ea584675ffc41ac430bc9939363c867950206e96dced0224ba0abc"
+  },
+  "checks_passed": true,
+  "commands": [
+    {
+      "argv": [
+        "/workspace/scratch/gnr-next.qHyoM1/toolchains/lean-4.34.0-rc2-linux/bin/lean",
+        "--version"
+      ],
+      "cwd": "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight",
+      "elapsed_seconds": 0.1412750990020868,
+      "expected_returncode": 0,
+      "label": "lean-version",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "Lean (version 4.34.0-rc2, x86_64-unknown-linux-gnu, commit 6a10ac8c22beadecabdbb0919c2b50214762f91d, Release)\n",
+      "timeout_seconds": 900
+    },
+    {
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/lean",
+        "-p",
+        "test_binary_weight_gate.py",
+        "-v"
+      ],
+      "cwd": "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight",
+      "elapsed_seconds": 0.3142259609994653,
+      "expected_returncode": 0,
+      "label": "gate-regressions",
+      "returncode": 0,
+      "stderr": "test_assume_unchanged_cannot_hide_changed_proof (test_binary_weight_gate.SourceIdentity.test_assume_unchanged_cannot_hide_changed_proof) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.045s\n\nOK\n",
+      "stdout": "",
+      "timeout_seconds": 900
+    },
+    {
+      "argv": [
+        "/workspace/scratch/gnr-next.qHyoM1/toolchains/lean-4.34.0-rc2-linux/bin/lean",
+        "-j1",
+        "--root=/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/lean",
+        "-DautoImplicit=false",
+        "-DwarningAsError=true",
+        "-o",
+        "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-hardened-acceptance/lib/FiniteMathKernels/BinaryWeight.olean",
+        "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/lean/FiniteMathKernels/BinaryWeight.lean"
+      ],
+      "cwd": "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight",
+      "elapsed_seconds": 6.048699225000746,
+      "expected_returncode": 0,
+      "label": "lean-FiniteMathKernels.BinaryWeight",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "",
+      "timeout_seconds": 900
+    },
+    {
+      "argv": [
+        "/workspace/scratch/gnr-next.qHyoM1/toolchains/lean-4.34.0-rc2-linux/bin/lean",
+        "-j1",
+        "--root=/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/lean",
+        "-DautoImplicit=false",
+        "-DwarningAsError=true",
+        "-o",
+        "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-hardened-acceptance/lib/FiniteMathKernels/BinaryWeightContracts.olean",
+        "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/lean/FiniteMathKernels/BinaryWeightContracts.lean"
+      ],
+      "cwd": "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight",
+      "elapsed_seconds": 2.4358448010025313,
+      "expected_returncode": 0,
+      "label": "lean-FiniteMathKernels.BinaryWeightContracts",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "",
+      "timeout_seconds": 900
+    },
+    {
+      "argv": [
+        "/workspace/scratch/gnr-next.qHyoM1/toolchains/lean-4.34.0-rc2-linux/bin/lean",
+        "-j1",
+        "--root=/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/lean",
+        "-DautoImplicit=false",
+        "-DwarningAsError=true",
+        "-o",
+        "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-hardened-acceptance/lib/BinaryWeightControls.olean",
+        "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/lean/BinaryWeightControls.lean"
+      ],
+      "cwd": "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight",
+      "elapsed_seconds": 3.614097009998659,
+      "expected_returncode": 0,
+      "label": "lean-BinaryWeightControls",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "",
+      "timeout_seconds": 900
+    },
+    {
+      "argv": [
+        "/workspace/scratch/gnr-next.qHyoM1/toolchains/lean-4.34.0-rc2-linux/bin/lean",
+        "-j1",
+        "--root=/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-hardened-acceptance",
+        "-DautoImplicit=false",
+        "-DwarningAsError=true",
+        "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-hardened-acceptance/Audit.lean"
+      ],
+      "cwd": "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight",
+      "elapsed_seconds": 2.6840276240000094,
+      "expected_returncode": 0,
+      "label": "lean-Audit",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "FMK_AXIOMS\tFiniteMathKernels.BinaryWeight\tFiniteMathKernels.binaryWeight_add_le\ttrue\tpropext,Classical.choice,Quot.sound\nFMK_AXIOMS\tFiniteMathKernels.BinaryWeight\tFiniteMathKernels.binaryWeight_two_pow_mul\ttrue\tpropext,Classical.choice,Quot.sound\nFMK_AXIOMS\tFiniteMathKernels.BinaryWeight\tFiniteMathKernels.binaryWeight_add_le._proof_1_7\ttrue\tpropext,Classical.choice,Quot.sound\nFMK_AXIOMS\tFiniteMathKernels.BinaryWeight\tFiniteMathKernels.binaryWeight_succ_le._proof_1_2\ttrue\tpropext,Classical.choice,Quot.sound\nFMK_AXIOMS\tFiniteMathKernels.BinaryWeight\tFiniteMathKernels.binaryWeight_two_mul._proof_1_1\ttrue\tpropext,Quot.sound\nFMK_AXIOMS\tFiniteMathKernels.BinaryWeight\tFiniteMathKernels.binaryWeight_two_mul\ttrue\tpropext,Classical.choice,Quot.sound\nFMK_AXIOMS\tFiniteMathKernels.BinaryWeight\tFiniteMathKernels.binaryWeight_add_le._proof_1_6\ttrue\tpropext,Quot.sound\nFMK_AXIOMS\tFiniteMathKernels.BinaryWeight\tFiniteMathKernels.binaryWeight_two_mul_add_one._proof_1_1\ttrue\tpropext,Quot.sound\nFMK_AXIOMS\tFiniteMathKernels.BinaryWeight\tFiniteMathKernels.binaryWeight_two_mul_add_one\ttrue\tpropext,Classical.choice,Quot.sound\nFMK_AXIOMS\tFiniteMathKernels.BinaryWeight\tFiniteMathKernels.binaryWeight_add_le._proof_1_2\ttrue\tpropext,Quot.sound\nFMK_AXIOMS\tFiniteMathKernels.BinaryWeight\tFiniteMathKernels.binaryWeight_add_le._proof_1_3\ttrue\tpropext,Classical.choice,Quot.sound\nFMK_AXIOMS\tFiniteMathKernels.BinaryWeight\tFiniteMathKernels.binaryWeight_one\ttrue\tpropext,Classical.choice,Quot.sound\nFMK_AXIOMS\tFiniteMathKernels.BinaryWeight\tFiniteMathKernels.binaryWeight_add_le._proof_1_5\ttrue\tpropext,Classical.choice,Quot.sound\nFMK_AXIOMS\tFiniteMathKernels.BinaryWeight\tFiniteMathKernels.binaryWeight_two_pow_sub_one._proof_1_1\ttrue\tpropext,Classical.choice,Quot.sound\nFMK_AXIOMS\tFiniteMathKernels.BinaryWeight\tFiniteMathKernels.binaryWeight.eq_1\ttrue\tpropext,Classical.choice,Quot.sound\nFMK_AXIOMS\tFiniteMathKernels.BinaryWeight\tFiniteMathKernels.binaryWeight\tfalse\tpropext,Classical.choice,Quot.sound\nFMK_AXIOMS\tFiniteMathKernels.BinaryWeight\tFiniteMathKernels.binaryWeight_div_two_le\ttrue\tpropext,Classical.choice,Quot.sound\nFMK_AXIOMS\tFiniteMathKernels.BinaryWeight\tFiniteMathKernels.binaryWeight_add_le._proof_1_1\ttrue\tpropext,Quot.sound\nFMK_AXIOMS\tFiniteMathKernels.BinaryWeight\tFiniteMathKernels.binaryWeight_sq_le\ttrue\tpropext,Classical.choice,Quot.sound\nFMK_AXIOMS\tFiniteMathKernels.BinaryWeight\tFiniteMathKernels.binaryWeight_succ_le\ttrue\tpropext,Classical.choice,Quot.sound\nFMK_AXIOMS\tFiniteMathKernels.BinaryWeight\tFiniteMathKernels.binaryWeight_add_le._proof_1_4\ttrue\tpropext,Quot.sound\nFMK_AXIOMS\tFiniteMathKernels.BinaryWeight\tFiniteMathKernels.binaryWeight_div_two_pow_le\ttrue\tpropext,Classical.choice,Quot.sound\nFMK_AXIOMS\tFiniteMathKernels.BinaryWeight\tFiniteMathKernels.binaryWeight_two_pow_sub_one\ttrue\tpropext,Classical.choice,Quot.sound\nFMK_AXIOMS\tFiniteMathKernels.BinaryWeight\tFiniteMathKernels.binaryWeight_succ_le._proof_1_1\ttrue\tpropext,Classical.choice,Quot.sound\nFMK_AXIOMS\tFiniteMathKernels.BinaryWeight\tFiniteMathKernels.binaryWeight_mul_two_pow\ttrue\tpropext,Classical.choice,Quot.sound\nFMK_AXIOMS\tFiniteMathKernels.BinaryWeight\tFiniteMathKernels.binaryWeight_zero\ttrue\tpropext,Classical.choice,Quot.sound\nFMK_COMPLETE\tFiniteMathKernels.BinaryWeight\t26\t25\nFMK_AXIOMS\tFiniteMathKernels.BinaryWeightContracts\tFiniteMathKernels.BinaryWeightContracts.dropBit\ttrue\tpropext,Classical.choice,Quot.sound\nFMK_AXIOMS\tFiniteMathKernels.BinaryWeightContracts\tFiniteMathKernels.BinaryWeightContracts.successor\ttrue\tpropext,Classical.choice,Quot.sound\nFMK_AXIOMS\tFiniteMathKernels.BinaryWeightContracts\tFiniteMathKernels.BinaryWeightContracts.zero\ttrue\tpropext,Classical.choice,Quot.sound\nFMK_AXIOMS\tFiniteMathKernels.BinaryWeightContracts\tFiniteMathKernels.BinaryWeightContracts.rightFactor\ttrue\tpropext,Classical.choice,Quot.sound\nFMK_AXIOMS\tFiniteMathKernels.BinaryWeightContracts\tFiniteMathKernels.BinaryWeightContracts.lowOnes\ttrue\tpropext,Classical.choice,Quot.sound\nFMK_AXIOMS\tFiniteMathKernels.BinaryWeightContracts\tFiniteMathKernels.BinaryWeightContracts.leftShift\ttrue\tpropext,Classical.choice,Quot.sound\nFMK_AXIOMS\tFiniteMathKernels.BinaryWeightContracts\tFiniteMathKernels.BinaryWeightContracts.lowZero\ttrue\tpropext,Classical.choice,Quot.sound\nFMK_AXIOMS\tFiniteMathKernels.BinaryWeightContracts\tFiniteMathKernels.BinaryWeightContracts.one\ttrue\tpropext,Classical.choice,Quot.sound\nFMK_AXIOMS\tFiniteMathKernels.BinaryWeightContracts\tFiniteMathKernels.BinaryWeightContracts.lowOne\ttrue\tpropext,Classical.choice,Quot.sound\nFMK_AXIOMS\tFiniteMathKernels.BinaryWeightContracts\tFiniteMathKernels.BinaryWeightContracts.square\ttrue\tpropext,Classical.choice,Quot.sound\nFMK_AXIOMS\tFiniteMathKernels.BinaryWeightContracts\tFiniteMathKernels.BinaryWeightContracts.addition\ttrue\tpropext,Classical.choice,Quot.sound\nFMK_AXIOMS\tFiniteMathKernels.BinaryWeightContracts\tFiniteMathKernels.BinaryWeightContracts.dropBits\ttrue\tpropext,Classical.choice,Quot.sound\nFMK_COMPLETE\tFiniteMathKernels.BinaryWeightContracts\t12\t12\nFMK_AXIOMS\tBinaryWeightControls\tFiniteMathKernels.BinaryWeightControls.weightEight\ttrue\tpropext,Classical.choice,Quot.sound\nFMK_AXIOMS\tBinaryWeightControls\tFiniteMathKernels.BinaryWeightControls.weightZero\ttrue\tpropext,Classical.choice,Quot.sound\nFMK_AXIOMS\tBinaryWeightControls\tFiniteMathKernels.BinaryWeightControls.additionNotEquality\ttrue\tpropext,Classical.choice,Quot.sound\nFMK_AXIOMS\tBinaryWeightControls\tFiniteMathKernels.BinaryWeightControls.divisionCanLoseBits\ttrue\tpropext,Classical.choice,Quot.sound\nFMK_AXIOMS\tBinaryWeightControls\tFiniteMathKernels.BinaryWeightControls.squareHasMoreBits\ttrue\tpropext,Classical.choice,Quot.sound\nFMK_AXIOMS\tBinaryWeightControls\tFiniteMathKernels.BinaryWeightControls.weightFifteen\ttrue\tpropext,Classical.choice,Quot.sound\nFMK_AXIOMS\tBinaryWeightControls\tFiniteMathKernels.BinaryWeightControls.shiftedZero\ttrue\tpropext,Classical.choice,Quot.sound\nFMK_AXIOMS\tBinaryWeightControls\tFiniteMathKernels.BinaryWeightControls.strongerSquareBoundFalse\ttrue\tpropext,Classical.choice,Quot.sound\nFMK_AXIOMS\tBinaryWeightControls\tFiniteMathKernels.BinaryWeightControls.carryRemovesOne\ttrue\tpropext,Classical.choice,Quot.sound\nFMK_AXIOMS\tBinaryWeightControls\tFiniteMathKernels.BinaryWeightControls.squareBoundAttained\ttrue\tpropext,Classical.choice,Quot.sound\nFMK_AXIOMS\tBinaryWeightControls\tFiniteMathKernels.BinaryWeightControls.divisionNotEquality\ttrue\tpropext,Classical.choice,Quot.sound\nFMK_AXIOMS\tBinaryWeightControls\tFiniteMathKernels.BinaryWeightControls.allOnesAtZero\ttrue\tpropext,Classical.choice,Quot.sound\nFMK_COMPLETE\tBinaryWeightControls\t12\t12\nFiniteMathKernels.BinaryWeightContracts.zero : FiniteMathKernels.binaryWeight 0 = 0\nFiniteMathKernels.BinaryWeightContracts.one : FiniteMathKernels.binaryWeight 1 = 1\nFiniteMathKernels.BinaryWeightContracts.lowZero (n : \u2115) :\n  FiniteMathKernels.binaryWeight (2 * n) = FiniteMathKernels.binaryWeight n\nFiniteMathKernels.BinaryWeightContracts.lowOne (n : \u2115) :\n  FiniteMathKernels.binaryWeight (2 * n + 1) = FiniteMathKernels.binaryWeight n + 1\nFiniteMathKernels.BinaryWeightContracts.successor (n : \u2115) :\n  FiniteMathKernels.binaryWeight (n + 1) \u2264 FiniteMathKernels.binaryWeight n + 1\nFiniteMathKernels.BinaryWeightContracts.addition (m n : \u2115) :\n  FiniteMathKernels.binaryWeight (m + n) \u2264 FiniteMathKernels.binaryWeight m + FiniteMathKernels.binaryWeight n\nFiniteMathKernels.BinaryWeightContracts.leftShift (k n : \u2115) :\n  FiniteMathKernels.binaryWeight (2 ^ k * n) = FiniteMathKernels.binaryWeight n\nFiniteMathKernels.BinaryWeightContracts.rightFactor (n k : \u2115) :\n  FiniteMathKernels.binaryWeight (n * 2 ^ k) = FiniteMathKernels.binaryWeight n\nFiniteMathKernels.BinaryWeightContracts.dropBit (n : \u2115) :\n  FiniteMathKernels.binaryWeight (n / 2) \u2264 FiniteMathKernels.binaryWeight n\nFiniteMathKernels.BinaryWeightContracts.dropBits (n k : \u2115) :\n  FiniteMathKernels.binaryWeight (n / 2 ^ k) \u2264 FiniteMathKernels.binaryWeight n\nFiniteMathKernels.BinaryWeightContracts.lowOnes (k : \u2115) : FiniteMathKernels.binaryWeight (2 ^ k - 1) = k\nFiniteMathKernels.BinaryWeightContracts.square (n : \u2115) :\n  2 * FiniteMathKernels.binaryWeight (n ^ 2) \u2264 FiniteMathKernels.binaryWeight n * (FiniteMathKernels.binaryWeight n + 1)\n",
+      "timeout_seconds": 900
+    },
+    {
+      "argv": [
+        "/workspace/scratch/gnr-next.qHyoM1/toolchains/lean-4.34.0-rc2-linux/bin/lean",
+        "-j1",
+        "--root=/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-hardened-acceptance",
+        "-DautoImplicit=false",
+        "-DwarningAsError=true",
+        "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-hardened-acceptance/Reject_wrong_weight.lean"
+      ],
+      "cwd": "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight",
+      "elapsed_seconds": 2.5439357249997556,
+      "expected_returncode": 1,
+      "label": "lean-Reject_wrong_weight",
+      "returncode": 1,
+      "stderr": "",
+      "stdout": "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-hardened-acceptance/Reject_wrong_weight.lean:3:35: error: Tactic `decide` proved that the proposition\n  binaryWeight 8 = 8\nis false\n",
+      "timeout_seconds": 900
+    },
+    {
+      "argv": [
+        "/workspace/scratch/gnr-next.qHyoM1/toolchains/lean-4.34.0-rc2-linux/bin/lean",
+        "-j1",
+        "--root=/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-hardened-acceptance",
+        "-DautoImplicit=false",
+        "-DwarningAsError=true",
+        "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-hardened-acceptance/Reject_addition_equality.lean"
+      ],
+      "cwd": "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight",
+      "elapsed_seconds": 2.770864824000455,
+      "expected_returncode": 1,
+      "label": "lean-Reject_addition_equality",
+      "returncode": 1,
+      "stderr": "",
+      "stdout": "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-hardened-acceptance/Reject_addition_equality.lean:3:71: error: Tactic `decide` proved that the proposition\n  binaryWeight (1 + 1) = binaryWeight 1 + binaryWeight 1\nis false\n",
+      "timeout_seconds": 900
+    },
+    {
+      "argv": [
+        "/workspace/scratch/gnr-next.qHyoM1/toolchains/lean-4.34.0-rc2-linux/bin/lean",
+        "-j1",
+        "--root=/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-hardened-acceptance",
+        "-DautoImplicit=false",
+        "-DwarningAsError=true",
+        "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-hardened-acceptance/Reject_division_equality.lean"
+      ],
+      "cwd": "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight",
+      "elapsed_seconds": 3.0355463170017174,
+      "expected_returncode": 1,
+      "label": "lean-Reject_division_equality",
+      "returncode": 1,
+      "stderr": "",
+      "stdout": "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-hardened-acceptance/Reject_division_equality.lean:3:58: error: Tactic `decide` proved that the proposition\n  binaryWeight (7 / 2 ^ 2) = binaryWeight 7\nis false\n",
+      "timeout_seconds": 900
+    },
+    {
+      "argv": [
+        "/workspace/scratch/gnr-next.qHyoM1/toolchains/lean-4.34.0-rc2-linux/bin/lean",
+        "-j1",
+        "--root=/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-hardened-acceptance",
+        "-DautoImplicit=false",
+        "-DwarningAsError=true",
+        "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-hardened-acceptance/Reject_stronger_square.lean"
+      ],
+      "cwd": "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight",
+      "elapsed_seconds": 4.347977298999467,
+      "expected_returncode": 1,
+      "label": "lean-Reject_stronger_square",
+      "returncode": 1,
+      "stderr": "",
+      "stdout": "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-hardened-acceptance/Reject_stronger_square.lean:3:62: error: Tactic `decide` proved that the proposition\n  2 * binaryWeight (5 ^ 2) \u2264 binaryWeight 5 ^ 2\nis false\n",
+      "timeout_seconds": 900
+    },
+    {
+      "argv": [
+        "/workspace/scratch/gnr-next.qHyoM1/toolchains/lean-4.34.0-rc2-linux/bin/lean",
+        "-j1",
+        "--root=/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-hardened-acceptance",
+        "-DautoImplicit=false",
+        "-DwarningAsError=true",
+        "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-hardened-acceptance/Reject_weakened_square_type.lean"
+      ],
+      "cwd": "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight",
+      "elapsed_seconds": 4.648728012001811,
+      "expected_returncode": 1,
+      "label": "lean-Reject_weakened_square_type",
+      "returncode": 1,
+      "stderr": "",
+      "stdout": "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-hardened-acceptance/Reject_weakened_square_type.lean:6:86: error: Type mismatch\n  Weakened.square n\nhas type\n  binaryWeight n \u2264 binaryWeight n\nbut is expected to have type\n  2 * binaryWeight (n ^ 2) \u2264 binaryWeight n * (binaryWeight n + 1)\n",
+      "timeout_seconds": 900
+    },
+    {
+      "argv": [
+        "/workspace/scratch/gnr-next.qHyoM1/toolchains/lean-4.34.0-rc2-linux/bin/lean",
+        "-j1",
+        "--root=/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-hardened-acceptance",
+        "-DautoImplicit=false",
+        "-DwarningAsError=true",
+        "-o",
+        "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-hardened-acceptance/lib/UntrustedAxiom.olean",
+        "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-hardened-acceptance/UntrustedAxiom.lean"
+      ],
+      "cwd": "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight",
+      "elapsed_seconds": 1.0053166120014794,
+      "expected_returncode": 0,
+      "label": "lean-UntrustedAxiom",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "",
+      "timeout_seconds": 900
+    },
+    {
+      "argv": [
+        "/workspace/scratch/gnr-next.qHyoM1/toolchains/lean-4.34.0-rc2-linux/bin/lean",
+        "-j1",
+        "--root=/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-hardened-acceptance",
+        "-DautoImplicit=false",
+        "-DwarningAsError=true",
+        "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-hardened-acceptance/AuditUntrusted.lean"
+      ],
+      "cwd": "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight",
+      "elapsed_seconds": 1.4133736850017158,
+      "expected_returncode": 1,
+      "label": "lean-AuditUntrusted",
+      "returncode": 1,
+      "stderr": "",
+      "stdout": "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-hardened-acceptance/AuditUntrusted.lean:5:0: error: Local audited axiom\n",
+      "timeout_seconds": 900
+    },
+    {
+      "argv": [
+        "/workspace/scratch/gnr-next.qHyoM1/toolchains/lean-4.34.0-rc2-linux/bin/lean",
+        "-j1",
+        "--root=/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-hardened-acceptance",
+        "-DautoImplicit=false",
+        "-DwarningAsError=true",
+        "-o",
+        "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-hardened-acceptance/lib/TransitiveAxiom.olean",
+        "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-hardened-acceptance/TransitiveAxiom.lean"
+      ],
+      "cwd": "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight",
+      "elapsed_seconds": 0.7647166569986439,
+      "expected_returncode": 0,
+      "label": "lean-TransitiveAxiom",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "",
+      "timeout_seconds": 900
+    },
+    {
+      "argv": [
+        "/workspace/scratch/gnr-next.qHyoM1/toolchains/lean-4.34.0-rc2-linux/bin/lean",
+        "-j1",
+        "--root=/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-hardened-acceptance",
+        "-DautoImplicit=false",
+        "-DwarningAsError=true",
+        "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-hardened-acceptance/AuditTransitive.lean"
+      ],
+      "cwd": "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight",
+      "elapsed_seconds": 2.542901628999971,
+      "expected_returncode": 1,
+      "label": "lean-AuditTransitive",
+      "returncode": 1,
+      "stderr": "",
+      "stdout": "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-hardened-acceptance/AuditTransitive.lean:5:0: error: Nonstandard transitive axiom\n",
+      "timeout_seconds": 900
+    }
+  ],
+  "compiled_modules": {
+    "BinaryWeightControls": {
+      "declarations": 12,
+      "theorems": 12
+    },
+    "FiniteMathKernels.BinaryWeight": {
+      "declarations": 26,
+      "theorems": 25
+    },
+    "FiniteMathKernels.BinaryWeightContracts": {
+      "declarations": 12,
+      "theorems": 12
+    }
+  },
+  "dependency_revisions": {
+    "Cli": "ab3a82db9fea14cf0fd7f5a2de650f4b534640af",
+    "LeanSearchClient": "ba67e212be1197b84c1f1f6299488a10a3002713",
+    "Qq": "507746ab8f4b643ccdacb2ec4cdb5853fa9f8ab3",
+    "aesop": "18889deb9e83ea7420ef51c160d6f88552e744e3",
+    "batteries": "4cac2177c37f5530c4da76aa8e4307f3fc9e4dcb",
+    "importGraph": "1681d78dd6e65e38b143f9740d829c826673807c",
+    "mathlib": "4edb0dbaa3b3cf729d86d1e2f035474d5ae2ac09",
+    "plausible": "d9598f07b1bc701f1e3aae163d2681c1fd978793",
+    "proofwidgets": "a8acbfd87375ff4abe14ce09db5b7664d383bc7f"
+  },
+  "expected_revision": "8750345c496390a7ce4f6a80be331451aa999408",
+  "explicit_model_theorems": 12,
+  "explicit_type_wrappers": 12,
+  "finished_utc": "2026-11-13T13:31:55.802982+00:00",
+  "lean": {
+    "LD_PRELOAD": "",
+    "LEAN_PATH": "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-hardened-acceptance/lib:/workspace/scratch/gnr-next.qHyoM1/golden-ratio-normality-research/.lake/packages/mathlib/.lake/build/lib/lean:/workspace/scratch/gnr-next.qHyoM1/golden-ratio-normality-research/.lake/packages/plausible/.lake/build/lib/lean:/workspace/scratch/gnr-next.qHyoM1/golden-ratio-normality-research/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/workspace/scratch/gnr-next.qHyoM1/golden-ratio-normality-research/.lake/packages/importGraph/.lake/build/lib/lean:/workspace/scratch/gnr-next.qHyoM1/golden-ratio-normality-research/.lake/packages/proofwidgets/.lake/build/lib/lean:/workspace/scratch/gnr-next.qHyoM1/golden-ratio-normality-research/.lake/packages/aesop/.lake/build/lib/lean:/workspace/scratch/gnr-next.qHyoM1/golden-ratio-normality-research/.lake/packages/Qq/.lake/build/lib/lean:/workspace/scratch/gnr-next.qHyoM1/golden-ratio-normality-research/.lake/packages/batteries/.lake/build/lib/lean",
+    "executable": "/workspace/scratch/gnr-next.qHyoM1/toolchains/lean-4.34.0-rc2-linux/bin/lean",
+    "package_cache": "/workspace/scratch/gnr-next.qHyoM1/golden-ratio-normality-research/.lake/packages",
+    "sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+    "version": "Lean (version 4.34.0-rc2, x86_64-unknown-linux-gnu, commit 6a10ac8c22beadecabdbb0919c2b50214762f91d, Release)"
+  },
+  "mode": "acceptance",
+  "negative_controls": {
+    "addition_equality": "rejected",
+    "division_equality": "rejected",
+    "local_axiom_injection": "rejected",
+    "stronger_square": "rejected",
+    "transitive_axiom_injection": "rejected",
+    "weakened_square_type": "rejected",
+    "wrong_weight": "rejected"
+  },
+  "permitted_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "positive_controls": 12,
+  "python": {
+    "executable": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "version": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+  },
+  "schema": "finite-math-kernels-binary-weight-v1",
+  "scope": "universal natural-number binary-weight arithmetic; no native implementation refinement or normality claim",
+  "source_commit": "8750345c496390a7ce4f6a80be331451aa999408",
+  "source_sha256": {
+    ".github/workflows/binary-weight.yml": "371acfc2105f2710cc3fd6d42bcd60354e5958955f62467f806c5b7372150fe5",
+    "AGENTS.md": "fb9ceab5abeeb086b4cdc7311314803a9bcae292744f234300871f5837b775a7",
+    "docs/binary-weight.md": "d0491ce2a7c61987bd3f6aa8a944287ad8d7a08f238dd25cfbafa3e611a48b16",
+    "docs/lean-verification.md": "2de8bb8459840df26c4a86b458f08f0c26498a1028c61c4635c7d52668b5f81b",
+    "policy/provenance.json": "379cd25e41cef87019f2fb4ffd82d22b90714b5b5e991afd1222e70f23d9fa11",
+    "tests/lean/BinaryWeightControls.lean": "74dd6b0fb0ed3edb7e4c8fe213c0db9e89c19d4e7c572e385072db682876c486",
+    "tests/lean/FiniteMathKernels.lean": "8ac614efaaeb7e7cdf8cba3891c2adb335aa76f8323a698d811b7a4adbd687d7",
+    "tests/lean/FiniteMathKernels/BinaryWeight.lean": "47bc675ccb9b01094074ab3fb989e1dc6d0abb9b8a86aa751df97cc400f38614",
+    "tests/lean/FiniteMathKernels/BinaryWeightContracts.lean": "36f384f051bca5bc6f7b8a206a9add71518a2bc1bb61245b820260cd6501bd1f",
+    "tests/lean/lake-manifest.json": "53a74cb815b783036f5e5fb25bc57a12911b55c7dcd44bff5795b1ff7cda52be",
+    "tests/lean/lakefile.toml": "dfed7234e2792624af23fe1070ca6630af650f2ac24d9f08966bfb33295a4ca7",
+    "tests/lean/lean-toolchain": "8190e75a201741065fe508b28955dd64dd72d090babe5f70ce6848879d68ae88",
+    "tests/lean/test_binary_weight_gate.py": "4017dee6fe1c0e7be4d9fb0f9b727e88cf47e4ec6c6906abb989151d27198226",
+    "tools/verify_binary_weight.py": "3396ae342303304cd1f69dfb4f3eccba0dea50228bdf7fd59e598cc194537157"
+  },
+  "source_tree": "2a3cc11797c1bca3acc35c1ec1b51946fd1f4b0e",
+  "source_tree_dirty": false,
+  "started_utc": "2026-11-13T13:31:16.788632+00:00"
+}

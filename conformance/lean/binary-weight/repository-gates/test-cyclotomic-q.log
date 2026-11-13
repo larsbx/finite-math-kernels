@@ -1,0 +1,10 @@
+[PASS] test_small_conductors_reduce_exactly
+[PASS] test_root_of_unity_identity
+[PASS] test_defining_cyclotomic_polynomial_is_zero
+[PASS] test_high_degree_input_reduces_canonically
+[PASS] test_rational_coefficients_remain_exact
+[PASS] test_field_inverse_is_exact
+[PASS] test_galois_action_is_exact
+[PASS] test_conductor_is_part_of_identity_and_encoding
+[PASS] test_invalid_conductor_and_rejected_coefficient_fail_closed
+9 cyclotomic quotient Mojo tests passed.

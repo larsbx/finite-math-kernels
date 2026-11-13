@@ -1,0 +1,16 @@
+[PASS] test_normalization_and_degree
+[PASS] test_division_is_exact_over_the_field
+[PASS] test_division_by_zero_refuses
+[PASS] test_gcd_is_monic_and_the_squarefree_part_simplifies
+[PASS] test_the_root_bound_is_rational_and_above_every_root
+[PASS] test_the_sturm_chain_and_its_variations
+[PASS] test_the_golden_and_tribonacci_brackets
+[PASS] test_the_chebyshev_transition_matrix_brackets_two
+[PASS] test_an_exact_rational_root_is_returned_as_itself
+[PASS] test_a_repeated_root_still_isolates
+[PASS] test_no_real_root_is_a_refusal_not_a_bracket
+[PASS] test_a_capped_bisection_refuses
+[PASS] test_the_general_charpoly_agrees_with_the_three_by_three_closed_form
+[PASS] test_the_general_charpoly_in_other_dimensions
+[PASS] test_the_matrix_satisfies_its_own_characteristic_polynomial_at_its_root
+15 qpoly tests passed.

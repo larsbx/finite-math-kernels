@@ -1,0 +1,249 @@
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:1:1: error: unable to locate module 'std'
+"""Executable laws for the finite_field_orbit package.
+^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:1:1: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+"""Executable laws for the finite_field_orbit package.
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:12:
+kernel/certified_records/__init__.mojo:11:1: error: unable to locate module 'std'
+
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:12:
+kernel/certified_records/codec.mojo:16:1: error: unable to locate module 'std'
+struct Schema(Copyable, Movable):
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:12:
+kernel/certified_records/codec.mojo:88:24: error: use of unknown declaration 'String'
+def vector_cases(text: String, kind: String) -> List[List[String]]:
+                       ^~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:12:
+kernel/certified_records/codec.mojo:88:18: error: unable to locate module 'std'
+def vector_cases(text: String, kind: String) -> List[List[String]]:
+                 ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:12:
+kernel/certified_records/codec.mojo:88:38: error: use of unknown declaration 'String'
+def vector_cases(text: String, kind: String) -> List[List[String]]:
+                                     ^~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:12:
+kernel/certified_records/codec.mojo:88:32: error: unable to locate module 'std'
+def vector_cases(text: String, kind: String) -> List[List[String]]:
+                               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:12:
+kernel/certified_records/codec.mojo:88:49: error: use of unknown declaration 'List'
+def vector_cases(text: String, kind: String) -> List[List[String]]:
+                                                ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:12:
+kernel/certified_records/codec.mojo:88:49: error: unable to locate module 'std'
+def vector_cases(text: String, kind: String) -> List[List[String]]:
+                                                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:13:
+kernel/finite_field_orbit/__init__.mojo:10:1: error: unable to locate module 'std'
+
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:14:
+kernel/finite_field_orbit/census.mojo:17:1: error: unable to locate module 'std'
+from certified_records import codec
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:14:
+kernel/finite_field_orbit/census.mojo:42:12: error: use of unknown declaration 'Copyable'
+struct Agg(Copyable, Movable):
+           ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:14:
+kernel/finite_field_orbit/census.mojo:25:14: error: use of unknown declaration 'Copyable'
+struct Block(Copyable, Movable):
+             ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:14:
+kernel/finite_field_orbit/census.mojo:202:12: error: unable to locate module 'std'
+def census(b: Block) raises -> Agg:
+           ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:14:
+kernel/finite_field_orbit/census.mojo:202:32: error: unable to locate module 'std'
+def census(b: Block) raises -> Agg:
+                               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:14:
+kernel/finite_field_orbit/census.mojo:231:18: error: use of unknown declaration 'String'
+def decode(line: String) -> Decoded:
+                 ^~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:14:
+kernel/finite_field_orbit/census.mojo:231:12: error: unable to locate module 'std'
+def decode(line: String) -> Decoded:
+           ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:14:
+kernel/finite_field_orbit/census.mojo:218:16: error: use of unknown declaration 'Movable'
+struct Decoded(Movable):
+               ^~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:14:
+kernel/finite_field_orbit/census.mojo:231:29: error: unable to locate module 'std'
+def decode(line: String) -> Decoded:
+                            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:14:
+kernel/finite_field_orbit/census.mojo:214:12: error: unable to locate module 'std'
+def encode(b: Block, a: Agg) -> String:
+           ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:14:
+kernel/finite_field_orbit/census.mojo:214:22: error: unable to locate module 'std'
+def encode(b: Block, a: Agg) -> String:
+                     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:14:
+kernel/finite_field_orbit/census.mojo:214:33: error: use of unknown declaration 'String'
+def encode(b: Block, a: Agg) -> String:
+                                ^~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:14:
+kernel/finite_field_orbit/census.mojo:214:33: error: unable to locate module 'std'
+def encode(b: Block, a: Agg) -> String:
+                                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:14:
+kernel/finite_field_orbit/census.mojo:106:11: error: unable to locate module 'std'
+def merge(a: Agg, b: Agg) -> Agg:
+          ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:14:
+kernel/finite_field_orbit/census.mojo:106:19: error: unable to locate module 'std'
+def merge(a: Agg, b: Agg) -> Agg:
+                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:14:
+kernel/finite_field_orbit/census.mojo:106:30: error: unable to locate module 'std'
+def merge(a: Agg, b: Agg) -> Agg:
+                             ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:14:
+kernel/finite_field_orbit/census.mojo:270:18: error: use of unknown declaration 'String'
+def replay(line: String) -> String:
+                 ^~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:14:
+kernel/finite_field_orbit/census.mojo:270:12: error: unable to locate module 'std'
+def replay(line: String) -> String:
+           ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:14:
+kernel/finite_field_orbit/census.mojo:270:29: error: use of unknown declaration 'String'
+def replay(line: String) -> String:
+                            ^~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:14:
+kernel/finite_field_orbit/census.mojo:270:29: error: unable to locate module 'std'
+def replay(line: String) -> String:
+                            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:14:
+kernel/finite_field_orbit/census.mojo:130:21: error: unable to locate module 'std'
+def request_verdict(b: Block) -> String:
+                    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:14:
+kernel/finite_field_orbit/census.mojo:130:34: error: use of unknown declaration 'String'
+def request_verdict(b: Block) -> String:
+                                 ^~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:14:
+kernel/finite_field_orbit/census.mojo:130:34: error: unable to locate module 'std'
+def request_verdict(b: Block) -> String:
+                                 ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:14:
+kernel/finite_field_orbit/census.mojo:113:13: error: use of unknown declaration 'Int'
+def step(x: Int, c: Int, p: Int) -> Int:
+            ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:14:
+kernel/finite_field_orbit/census.mojo:113:10: error: unable to locate module 'std'
+def step(x: Int, c: Int, p: Int) -> Int:
+         ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:14:
+kernel/finite_field_orbit/census.mojo:113:21: error: use of unknown declaration 'Int'
+def step(x: Int, c: Int, p: Int) -> Int:
+                    ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:14:
+kernel/finite_field_orbit/census.mojo:113:18: error: unable to locate module 'std'
+def step(x: Int, c: Int, p: Int) -> Int:
+                 ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:14:
+kernel/finite_field_orbit/census.mojo:113:29: error: use of unknown declaration 'Int'
+def step(x: Int, c: Int, p: Int) -> Int:
+                            ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:14:
+kernel/finite_field_orbit/census.mojo:113:26: error: unable to locate module 'std'
+def step(x: Int, c: Int, p: Int) -> Int:
+                         ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:14:
+kernel/finite_field_orbit/census.mojo:113:37: error: use of unknown declaration 'Int'
+def step(x: Int, c: Int, p: Int) -> Int:
+                                    ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:14:
+kernel/finite_field_orbit/census.mojo:113:37: error: unable to locate module 'std'
+def step(x: Int, c: Int, p: Int) -> Int:
+                                    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:14:
+kernel/finite_field_orbit/census.mojo:244:21: error: unable to locate module 'std'
+def witness_verdict(b: Block, a: Agg) -> String:
+                    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:14:
+kernel/finite_field_orbit/census.mojo:244:31: error: unable to locate module 'std'
+def witness_verdict(b: Block, a: Agg) -> String:
+                              ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:14:
+kernel/finite_field_orbit/census.mojo:244:42: error: use of unknown declaration 'String'
+def witness_verdict(b: Block, a: Agg) -> String:
+                                         ^~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:14:
+kernel/finite_field_orbit/census.mojo:244:42: error: unable to locate module 'std'
+def witness_verdict(b: Block, a: Agg) -> String:
+                                         ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:27:19: error: use of unknown declaration 'String'
+def expect(label: String, got: String, want: String) raises:
+                  ^~~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:27:12: error: unable to locate module 'std'
+def expect(label: String, got: String, want: String) raises:
+           ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:27:32: error: use of unknown declaration 'String'
+def expect(label: String, got: String, want: String) raises:
+                               ^~~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:27:27: error: unable to locate module 'std'
+def expect(label: String, got: String, want: String) raises:
+                          ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:27:46: error: use of unknown declaration 'String'
+def expect(label: String, got: String, want: String) raises:
+                                             ^~~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:27:40: error: unable to locate module 'std'
+def expect(label: String, got: String, want: String) raises:
+                                       ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:27:60: error: unable to locate module 'std'
+def expect(label: String, got: String, want: String) raises:
+                                                           ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:32:31: error: use of unknown declaration 'Int'
+def check_vectors() raises -> Int:
+                              ^~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:32:31: error: unable to locate module 'std'
+def check_vectors() raises -> Int:
+                              ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:63:57: error: unable to locate module 'std'
+def test_the_whole_contract_domain_is_supported() raises:
+                                                        ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:70:47: error: unable to locate module 'std'
+def test_the_step_is_exact_in_64_bits() raises:
+                                              ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:72:13: error: unable to locate module 'std'
+    var p = 4294967291
+            ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:73:29: error: unable to locate module 'std'
+    if step(p - 1, 5, p) != 6 or step(2147483648, 7, p) != 1073741836 or step(p - 1, p - 1, p) != 0:
+                            ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:77:44: error: unable to locate module 'std'
+def test_sums_range_to_2_to_the_64() raises:
+                                           ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:85:48: error: unable to locate module 'std'
+def test_witness_replay_is_independent() raises:
+                                               ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:99:47: error: unable to locate module 'std'
+def test_merge_is_partition_invariant() raises:
+                                              ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:102:17: error: unable to locate module 'std'
+    for cut in [0, 1, 17, 500, 1008, 1009]:
+                ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:109:18: error: unable to locate module 'std'
+def main() raises:
+                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:109:5: error: unable to locate module 'std'
+def main() raises:
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:109:9: error: 'builtin' does not refer to a nested package
+def main() raises:
+        ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_field_orbit/test_orbit_census.mojo:111:18: error: unable to locate module 'std'
+    if checked < 50:
+                 ^
+/workspace/scratch/gnr-next.qHyoM1/golden-ratio-normality-research/kernel/.pixi/envs/default/bin/mojo: error: failed to parse the provided Mojo source module

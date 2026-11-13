@@ -1,0 +1,10 @@
+[PASS] test_the_kernel_is_a_boolean_algebra_of_languages
+[PASS] test_emptiness_reports_the_instance_not_only_the_verdict
+[PASS] test_projection_discharges_one_existential_quantifier
+[PASS] test_minimisation_identifies_exactly_equal_languages
+[PASS] test_a_partial_table_is_completed_by_one_rejecting_sink
+[PASS] test_projection_over_three_tracks_eliminates_a_real_quantifier
+[PASS] test_two_quantifiers_eliminate_in_sequence
+[PASS] test_a_count_past_the_machine_range_is_still_exact
+[PASS] test_a_track_condition_enters_and_leaves_a_product
+9 finite_automata tests passed.

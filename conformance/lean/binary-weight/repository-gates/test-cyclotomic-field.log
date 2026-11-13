@@ -1,0 +1,14 @@
+[PASS] test_totient_and_mobius
+[PASS] test_zeta_has_exact_order_q
+[PASS] test_field_axioms
+[PASS] test_rejection_is_sticky
+[PASS] test_direct_construction_checks_the_conductor
+[PASS] test_reduction_modulo_phi
+[PASS] test_galois_action
+[PASS] test_trace_of_zeta_is_mobius
+[PASS] test_norm_of_one_minus_zeta
+[PASS] test_landing_over_q_zeta
+[PASS] test_turns_beyond_niven_have_exact_order
+[PASS] test_spread_of_an_eighth_turn_is_one_half
+12 cyclotomic-field Mojo tests passed.
+226 cyclotomic-field-v1 vectors agree with the Python reference.

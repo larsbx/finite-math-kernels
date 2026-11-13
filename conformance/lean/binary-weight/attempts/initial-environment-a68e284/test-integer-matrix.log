@@ -1,0 +1,288 @@
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:1:1: error: unable to locate module 'std'
+"""Primitivity of non-negative integer matrices by Wielandt's bound.
+^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:1:1: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+"""Primitivity of non-negative integer matrices by Wielandt's bound.
+^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:9:6: error: unable to locate module 'std'
+from std.testing import assert_equal, assert_false, assert_true
+     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:11:
+kernel/finite_linear_algebra/__init__.mojo:37:1: error: unable to locate module 'std'
+
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:11:
+kernel/finite_linear_algebra/integer_matrix.mojo:1:1: error: unable to locate module 'std'
+"""Row-major square non-negative integer matrices on any alphabet size.
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:11:
+kernel/finite_linear_algebra/integer_matrix.mojo:62:23: error: use of unknown declaration 'List'
+def is_nonnegative(m: List[Int]) -> Bool:
+                      ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:11:
+kernel/finite_linear_algebra/integer_matrix.mojo:62:20: error: unable to locate module 'std'
+def is_nonnegative(m: List[Int]) -> Bool:
+                   ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:11:
+kernel/finite_linear_algebra/integer_matrix.mojo:62:37: error: use of unknown declaration 'Bool'
+def is_nonnegative(m: List[Int]) -> Bool:
+                                    ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:11:
+kernel/finite_linear_algebra/integer_matrix.mojo:62:37: error: unable to locate module 'std'
+def is_nonnegative(m: List[Int]) -> Bool:
+                                    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:11:
+kernel/finite_linear_algebra/integer_matrix.mojo:55:20: error: use of unknown declaration 'List'
+def is_positive(m: List[Int]) -> Bool:
+                   ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:11:
+kernel/finite_linear_algebra/integer_matrix.mojo:55:17: error: unable to locate module 'std'
+def is_positive(m: List[Int]) -> Bool:
+                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:11:
+kernel/finite_linear_algebra/integer_matrix.mojo:55:34: error: use of unknown declaration 'Bool'
+def is_positive(m: List[Int]) -> Bool:
+                                 ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:11:
+kernel/finite_linear_algebra/integer_matrix.mojo:55:34: error: unable to locate module 'std'
+def is_positive(m: List[Int]) -> Bool:
+                                 ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:11:
+kernel/finite_linear_algebra/integer_matrix.mojo:69:21: error: use of unknown declaration 'List'
+def is_primitive(m: List[Int], size: Int) raises -> Bool:
+                    ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:11:
+kernel/finite_linear_algebra/integer_matrix.mojo:69:18: error: unable to locate module 'std'
+def is_primitive(m: List[Int], size: Int) raises -> Bool:
+                 ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:11:
+kernel/finite_linear_algebra/integer_matrix.mojo:69:38: error: use of unknown declaration 'Int'
+def is_primitive(m: List[Int], size: Int) raises -> Bool:
+                                     ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:11:
+kernel/finite_linear_algebra/integer_matrix.mojo:69:32: error: unable to locate module 'std'
+def is_primitive(m: List[Int], size: Int) raises -> Bool:
+                               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:11:
+kernel/finite_linear_algebra/integer_matrix.mojo:69:53: error: use of unknown declaration 'Bool'
+def is_primitive(m: List[Int], size: Int) raises -> Bool:
+                                                    ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:11:
+kernel/finite_linear_algebra/integer_matrix.mojo:69:53: error: unable to locate module 'std'
+def is_primitive(m: List[Int], size: Int) raises -> Bool:
+                                                    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:11:
+kernel/finite_linear_algebra/integer_matrix.mojo:27:15: error: use of unknown declaration 'List'
+def matmul(a: List[Int], b: List[Int], size: Int) raises -> List[Int]:
+              ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:11:
+kernel/finite_linear_algebra/integer_matrix.mojo:27:12: error: unable to locate module 'std'
+def matmul(a: List[Int], b: List[Int], size: Int) raises -> List[Int]:
+           ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:11:
+kernel/finite_linear_algebra/integer_matrix.mojo:27:29: error: use of unknown declaration 'List'
+def matmul(a: List[Int], b: List[Int], size: Int) raises -> List[Int]:
+                            ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:11:
+kernel/finite_linear_algebra/integer_matrix.mojo:27:26: error: unable to locate module 'std'
+def matmul(a: List[Int], b: List[Int], size: Int) raises -> List[Int]:
+                         ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:11:
+kernel/finite_linear_algebra/integer_matrix.mojo:27:46: error: use of unknown declaration 'Int'
+def matmul(a: List[Int], b: List[Int], size: Int) raises -> List[Int]:
+                                             ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:11:
+kernel/finite_linear_algebra/integer_matrix.mojo:27:40: error: unable to locate module 'std'
+def matmul(a: List[Int], b: List[Int], size: Int) raises -> List[Int]:
+                                       ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:11:
+kernel/finite_linear_algebra/integer_matrix.mojo:27:61: error: use of unknown declaration 'List'
+def matmul(a: List[Int], b: List[Int], size: Int) raises -> List[Int]:
+                                                            ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:11:
+kernel/finite_linear_algebra/integer_matrix.mojo:27:61: error: unable to locate module 'std'
+def matmul(a: List[Int], b: List[Int], size: Int) raises -> List[Int]:
+                                                            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:11:
+Imported from kernel/finite_linear_algebra/integer_matrix.mojo:18:
+kernel/finite_linear_algebra/wielandt_bound.mojo:1:1: error: unable to locate module 'std'
+"""Wielandt's bound on the exponent of a primitive non-negative matrix.
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:11:
+kernel/finite_linear_algebra/integer_matrix.mojo:27:61: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+def matmul(a: List[Int], b: List[Int], size: Int) raises -> List[Int]:
+                                                            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:11:
+Imported from kernel/finite_linear_algebra/integer_matrix.mojo:18:
+kernel/finite_linear_algebra/wielandt_bound.mojo:21:26: error: use of unknown declaration 'Int'
+def wielandt_bound(size: Int) raises -> Int:
+                         ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:11:
+Imported from kernel/finite_linear_algebra/integer_matrix.mojo:18:
+kernel/finite_linear_algebra/wielandt_bound.mojo:21:20: error: unable to locate module 'std'
+def wielandt_bound(size: Int) raises -> Int:
+                   ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:11:
+Imported from kernel/finite_linear_algebra/integer_matrix.mojo:18:
+kernel/finite_linear_algebra/wielandt_bound.mojo:21:41: error: use of unknown declaration 'Int'
+def wielandt_bound(size: Int) raises -> Int:
+                                        ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:11:
+Imported from kernel/finite_linear_algebra/integer_matrix.mojo:18:
+kernel/finite_linear_algebra/wielandt_bound.mojo:21:41: error: unable to locate module 'std'
+def wielandt_bound(size: Int) raises -> Int:
+                                        ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:14:17: error: use of unknown declaration 'Int'
+def wielandt(n: Int) -> List[Int]:
+                ^~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:14:14: error: unable to locate module 'std'
+def wielandt(n: Int) -> List[Int]:
+             ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:14:25: error: use of unknown declaration 'List'
+def wielandt(n: Int) -> List[Int]:
+                        ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:14:25: error: unable to locate module 'std'
+def wielandt(n: Int) -> List[Int]:
+                        ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:24:29: error: use of unknown declaration 'List'
+def first_positive_power(m: List[Int], n: Int) raises -> Int:
+                            ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:24:26: error: unable to locate module 'std'
+def first_positive_power(m: List[Int], n: Int) raises -> Int:
+                         ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:24:43: error: use of unknown declaration 'Int'
+def first_positive_power(m: List[Int], n: Int) raises -> Int:
+                                          ^~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:24:40: error: unable to locate module 'std'
+def first_positive_power(m: List[Int], n: Int) raises -> Int:
+                                       ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:24:58: error: use of unknown declaration 'Int'
+def first_positive_power(m: List[Int], n: Int) raises -> Int:
+                                                         ^~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:24:58: error: unable to locate module 'std'
+def first_positive_power(m: List[Int], n: Int) raises -> Int:
+                                                         ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:33:55: error: unable to locate module 'std'
+def test_the_bound_is_attained_and_sufficient() raises:
+                                                      ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:34:14: error: use of unknown declaration 'range'
+    for n in range(2, 6):
+             ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:41:60: error: unable to locate module 'std'
+def test_irreducible_but_periodic_is_not_primitive() raises:
+                                                           ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:42:15: error: use of unknown declaration 'List'
+    var swap: List[Int] = [0, 1, 1, 0]
+              ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:44:20: error: use of unknown declaration 'List'
+    var fibonacci: List[Int] = [1, 1, 1, 0]
+                   ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:46:21: error: use of unknown declaration 'List'
+    var tribonacci: List[Int] = [1, 1, 1, 1, 0, 0, 0, 1, 0]
+                    ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:50:34: error: unable to locate module 'std'
+def test_sign_predicates() raises:
+                                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:51:12: error: use of unknown declaration 'List'
+    var m: List[Int] = [1, 0, 2, 3]
+           ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:54:12: error: use of unknown declaration 'List'
+    var n: List[Int] = [1, -1, 2, 3]
+           ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:57:19: error: use of unknown declaration 'List'
+    var expected: List[Int] = [1, 0, 8, 9]
+                  ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:58:14: error: use of unknown declaration 'range'
+    for i in range(4):
+             ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:62:50: error: unable to locate module 'std'
+def test_matrix_products_refuse_overflow() raises:
+                                                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:63:27: error: unable to locate module 'std'
+    var product_refused = False
+                          ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:64:32: error: unable to locate module 'std'
+    var accumulation_refused = False
+                               ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:65:16: error: use of unknown declaration 'List'
+    var large: List[Int] = [3037000500, 1, 1, 0]
+               ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:66:5: error: unable to locate module 'std'
+    try:
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:70:12: error: use of unknown declaration 'List'
+    var a: List[Int] = [Int.MAX, 1, 0, 0]
+           ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:71:12: error: use of unknown declaration 'List'
+    var b: List[Int] = [1, 0, 1, 0]
+           ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:72:5: error: unable to locate module 'std'
+    try:
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:78:19: error: use of unknown declaration 'List'
+    var identity: List[Int] = [1, 0, 0, 1]
+                  ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:79:17: error: use of unknown declaration 'List'
+    var minima: List[Int] = [Int.MIN, 0, 0, 1]
+                ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:83:54: error: unable to locate module 'std'
+def test_primitivity_depends_only_on_support() raises:
+                                                     ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:84:16: error: use of unknown declaration 'List'
+    var large: List[Int] = [3037000500, 1, 1, 0]
+               ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:86:19: error: use of unknown declaration 'List'
+    var periodic: List[Int] = [0, Int.MAX, Int.MAX, 0]
+                  ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:88:20: error: use of unknown declaration 'List'
+    var reducible: List[Int] = [Int.MAX, 0, 0, Int.MAX]
+                   ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:92:18: error: unable to locate module 'std'
+def main() raises:
+                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:92:5: error: unable to locate module 'std'
+def main() raises:
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:92:9: error: 'builtin' does not refer to a nested package
+def main() raises:
+        ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:93:5: error: unable to locate module 'std'
+    test_the_bound_is_attained_and_sufficient()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:94:5: error: use of unknown declaration 'print'
+    print("[PASS] test_the_bound_is_attained_and_sufficient")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:95:5: error: unable to locate module 'std'
+    test_irreducible_but_periodic_is_not_primitive()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:96:5: error: use of unknown declaration 'print'
+    print("[PASS] test_irreducible_but_periodic_is_not_primitive")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:97:5: error: unable to locate module 'std'
+    test_sign_predicates()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:98:5: error: use of unknown declaration 'print'
+    print("[PASS] test_sign_predicates")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:99:5: error: unable to locate module 'std'
+    test_matrix_products_refuse_overflow()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:100:5: error: use of unknown declaration 'print'
+    print("[PASS] test_matrix_products_refuse_overflow")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:101:5: error: unable to locate module 'std'
+    test_primitivity_depends_only_on_support()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:102:5: error: use of unknown declaration 'print'
+    print("[PASS] test_primitivity_depends_only_on_support")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_integer_matrix.mojo:103:5: error: use of unknown declaration 'print'
+    print("5 integer_matrix tests passed.")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/golden-ratio-normality-research/kernel/.pixi/envs/default/bin/mojo: error: failed to parse the provided Mojo source module

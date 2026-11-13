@@ -1,0 +1,6 @@
+[PASS] test_scalar_lifts
+[PASS] test_exact_nullspace_rank_and_span
+[PASS] test_mat3_adjugate_and_charpoly
+[PASS] test_levi_civita_and_tensor_action
+[PASS] test_w3_is_eight_dimensional_and_invariant
+5 finite_linear_algebra tests passed.

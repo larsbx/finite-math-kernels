@@ -1,0 +1,20 @@
+{
+  "argv": [
+    "/workspace/scratch/gnr-next.qHyoM1/toolchains/lean-4.34.0-rc2-linux/bin/lean",
+    "-j1",
+    "--root=/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-acceptance",
+    "-DautoImplicit=false",
+    "-DwarningAsError=true",
+    "-o",
+    "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-acceptance/lib/UntrustedAxiom.olean",
+    "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-acceptance/UntrustedAxiom.lean"
+  ],
+  "cwd": "/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight",
+  "elapsed_seconds": 1.6351575150001736,
+  "expected_returncode": 0,
+  "label": "lean-UntrustedAxiom",
+  "returncode": 0,
+  "stderr": "",
+  "stdout": "",
+  "timeout_seconds": 900
+}

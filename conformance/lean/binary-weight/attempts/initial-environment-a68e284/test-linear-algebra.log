@@ -1,0 +1,533 @@
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:1:1: error: unable to locate module 'std'
+"""Regressions for the finite_linear_algebra package.
+^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:1:1: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+"""Regressions for the finite_linear_algebra package.
+^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:8:6: error: unable to locate module 'std'
+from std.testing import assert_equal, assert_false, assert_true
+     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:10:
+kernel/finite_exact/__init__.mojo:34:1: error: unable to locate module 'std'
+
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:10:
+kernel/finite_exact/rat_q.mojo:13:1: error: unable to locate module 'std'
+from finite_exact.bigint_z import BigZ, bigz_add, bigz_canonical_bytes, bigz_div_exact, bigz_eq, bigz_from_i64, bigz_gcd, bigz_is_canonical, bigz_lt, bigz_mul, bigz_neg, bigz_sub, bigz_zero
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:10:
+kernel/finite_exact/rat_q.mojo:16:10: error: use of unknown declaration 'Copyable'
+struct Q(Copyable):
+         ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:11:
+kernel/finite_linear_algebra/__init__.mojo:37:1: error: unable to locate module 'std'
+
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:11:
+kernel/finite_linear_algebra/mat3.mojo:1:1: error: unable to locate module 'std'
+"""3x3 integer matrices: the incidence matrices M_sigma and the sl_3 seed
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:11:
+kernel/finite_linear_algebra/mat3.mojo:5:13: error: use of unknown declaration 'Copyable'
+struct Mat3(Copyable, Movable, Writable, Equatable):
+            ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:11:
+kernel/finite_linear_algebra/mat3.mojo:113:29: error: use of unknown declaration 'List'
+def has_rational_root(poly: List[Int]) -> Bool:
+                            ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:11:
+kernel/finite_linear_algebra/mat3.mojo:113:23: error: unable to locate module 'std'
+def has_rational_root(poly: List[Int]) -> Bool:
+                      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:11:
+kernel/finite_linear_algebra/mat3.mojo:113:43: error: use of unknown declaration 'Bool'
+def has_rational_root(poly: List[Int]) -> Bool:
+                                          ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:11:
+kernel/finite_linear_algebra/mat3.mojo:113:43: error: unable to locate module 'std'
+def has_rational_root(poly: List[Int]) -> Bool:
+                                          ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:11:
+kernel/finite_linear_algebra/mat3.mojo:108:20: error: unable to locate module 'std'
+def identity3() -> Mat3:
+                   ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:12:
+kernel/finite_linear_algebra/qlinalg.mojo:1:1: error: unable to locate module 'std'
+"""Exact linear algebra over Q: RREF, rank, nullspace, span membership.
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:12:
+kernel/finite_linear_algebra/qlinalg.mojo:77:20: error: use of unknown declaration 'List'
+def in_span(basis: List[List[Q]], v: List[Q]) -> Bool:
+                   ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:12:
+kernel/finite_linear_algebra/qlinalg.mojo:77:13: error: unable to locate module 'std'
+def in_span(basis: List[List[Q]], v: List[Q]) -> Bool:
+            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:12:
+kernel/finite_linear_algebra/qlinalg.mojo:77:38: error: use of unknown declaration 'List'
+def in_span(basis: List[List[Q]], v: List[Q]) -> Bool:
+                                     ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:12:
+kernel/finite_linear_algebra/qlinalg.mojo:77:35: error: unable to locate module 'std'
+def in_span(basis: List[List[Q]], v: List[Q]) -> Bool:
+                                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:12:
+kernel/finite_linear_algebra/qlinalg.mojo:77:50: error: use of unknown declaration 'Bool'
+def in_span(basis: List[List[Q]], v: List[Q]) -> Bool:
+                                                 ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:12:
+kernel/finite_linear_algebra/qlinalg.mojo:77:50: error: unable to locate module 'std'
+def in_span(basis: List[List[Q]], v: List[Q]) -> Bool:
+                                                 ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:12:
+kernel/finite_linear_algebra/qlinalg.mojo:97:20: error: use of unknown declaration 'List'
+def is_zero_vec(v: List[Q]) -> Bool:
+                   ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:12:
+kernel/finite_linear_algebra/qlinalg.mojo:97:17: error: unable to locate module 'std'
+def is_zero_vec(v: List[Q]) -> Bool:
+                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:12:
+kernel/finite_linear_algebra/qlinalg.mojo:97:32: error: use of unknown declaration 'Bool'
+def is_zero_vec(v: List[Q]) -> Bool:
+                               ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:12:
+kernel/finite_linear_algebra/qlinalg.mojo:97:32: error: unable to locate module 'std'
+def is_zero_vec(v: List[Q]) -> Bool:
+                               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:12:
+kernel/finite_linear_algebra/qlinalg.mojo:87:15: error: use of unknown declaration 'List'
+def matvec(m: List[List[Q]], v: List[Q]) -> List[Q]:
+              ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:12:
+kernel/finite_linear_algebra/qlinalg.mojo:87:12: error: unable to locate module 'std'
+def matvec(m: List[List[Q]], v: List[Q]) -> List[Q]:
+           ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:12:
+kernel/finite_linear_algebra/qlinalg.mojo:87:33: error: use of unknown declaration 'List'
+def matvec(m: List[List[Q]], v: List[Q]) -> List[Q]:
+                                ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:12:
+kernel/finite_linear_algebra/qlinalg.mojo:87:30: error: unable to locate module 'std'
+def matvec(m: List[List[Q]], v: List[Q]) -> List[Q]:
+                             ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:12:
+kernel/finite_linear_algebra/qlinalg.mojo:87:45: error: use of unknown declaration 'List'
+def matvec(m: List[List[Q]], v: List[Q]) -> List[Q]:
+                                            ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:12:
+kernel/finite_linear_algebra/qlinalg.mojo:87:45: error: unable to locate module 'std'
+def matvec(m: List[List[Q]], v: List[Q]) -> List[Q]:
+                                            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:12:
+kernel/finite_linear_algebra/qlinalg.mojo:52:18: error: use of unknown declaration 'List'
+def nullspace(m: List[List[Q]], ncols: Int) -> List[List[Q]]:
+                 ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:12:
+kernel/finite_linear_algebra/qlinalg.mojo:52:15: error: unable to locate module 'std'
+def nullspace(m: List[List[Q]], ncols: Int) -> List[List[Q]]:
+              ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:12:
+kernel/finite_linear_algebra/qlinalg.mojo:52:40: error: use of unknown declaration 'Int'
+def nullspace(m: List[List[Q]], ncols: Int) -> List[List[Q]]:
+                                       ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:12:
+kernel/finite_linear_algebra/qlinalg.mojo:52:33: error: unable to locate module 'std'
+def nullspace(m: List[List[Q]], ncols: Int) -> List[List[Q]]:
+                                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:12:
+kernel/finite_linear_algebra/qlinalg.mojo:52:48: error: use of unknown declaration 'List'
+def nullspace(m: List[List[Q]], ncols: Int) -> List[List[Q]]:
+                                               ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:12:
+kernel/finite_linear_algebra/qlinalg.mojo:52:48: error: unable to locate module 'std'
+def nullspace(m: List[List[Q]], ncols: Int) -> List[List[Q]]:
+                                               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:12:
+kernel/finite_linear_algebra/qlinalg.mojo:47:13: error: use of unknown declaration 'List'
+def rank(m: List[List[Q]]) -> Int:
+            ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:12:
+kernel/finite_linear_algebra/qlinalg.mojo:47:10: error: unable to locate module 'std'
+def rank(m: List[List[Q]]) -> Int:
+         ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:12:
+kernel/finite_linear_algebra/qlinalg.mojo:47:31: error: use of unknown declaration 'Int'
+def rank(m: List[List[Q]]) -> Int:
+                              ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:12:
+kernel/finite_linear_algebra/qlinalg.mojo:47:31: error: unable to locate module 'std'
+def rank(m: List[List[Q]]) -> Int:
+                              ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:13:
+kernel/finite_linear_algebra/scalar.mojo:1:1: error: unable to locate module 'std'
+"""Integer lifts into `finite_exact.Q` and the fail-closed zero test.
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:12:
+kernel/finite_linear_algebra/qlinalg.mojo:47:10: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+def rank(m: List[List[Q]]) -> Int:
+         ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:13:
+kernel/finite_linear_algebra/scalar.mojo:15:14: error: use of unknown declaration 'Int'
+def q_int(n: Int) -> Q:
+             ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:13:
+kernel/finite_linear_algebra/scalar.mojo:15:11: error: unable to locate module 'std'
+def q_int(n: Int) -> Q:
+          ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:13:
+kernel/finite_linear_algebra/scalar.mojo:15:22: error: unable to locate module 'std'
+def q_int(n: Int) -> Q:
+                     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:13:
+kernel/finite_linear_algebra/scalar.mojo:27:15: error: unable to locate module 'std'
+def q_is_zero(x: Q) -> Bool:
+              ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:13:
+kernel/finite_linear_algebra/scalar.mojo:27:24: error: use of unknown declaration 'Bool'
+def q_is_zero(x: Q) -> Bool:
+                       ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:13:
+kernel/finite_linear_algebra/scalar.mojo:27:24: error: unable to locate module 'std'
+def q_is_zero(x: Q) -> Bool:
+                       ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:13:
+kernel/finite_linear_algebra/scalar.mojo:19:14: error: use of unknown declaration 'List'
+def q_vec(v: List[Int]) -> List[Q]:
+             ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:13:
+kernel/finite_linear_algebra/scalar.mojo:19:11: error: unable to locate module 'std'
+def q_vec(v: List[Int]) -> List[Q]:
+          ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:13:
+kernel/finite_linear_algebra/scalar.mojo:19:28: error: use of unknown declaration 'List'
+def q_vec(v: List[Int]) -> List[Q]:
+                           ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:13:
+kernel/finite_linear_algebra/scalar.mojo:19:28: error: unable to locate module 'std'
+def q_vec(v: List[Int]) -> List[Q]:
+                           ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:14:
+kernel/finite_linear_algebra/tensor3.mojo:1:1: error: unable to locate module 'std'
+"""The degree-3 tensor ambient space V^{(x)3} = Q^27 with lex coordinates.
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:13:
+kernel/finite_linear_algebra/scalar.mojo:19:11: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+def q_vec(v: List[Int]) -> List[Q]:
+          ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:14:
+kernel/finite_linear_algebra/tensor3.mojo:13:13: error: use of unknown declaration 'Int'
+def idx3(a: Int, b: Int, c: Int) -> Int:
+            ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:14:
+kernel/finite_linear_algebra/tensor3.mojo:13:10: error: unable to locate module 'std'
+def idx3(a: Int, b: Int, c: Int) -> Int:
+         ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:14:
+kernel/finite_linear_algebra/tensor3.mojo:13:21: error: use of unknown declaration 'Int'
+def idx3(a: Int, b: Int, c: Int) -> Int:
+                    ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:14:
+kernel/finite_linear_algebra/tensor3.mojo:13:18: error: unable to locate module 'std'
+def idx3(a: Int, b: Int, c: Int) -> Int:
+                 ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:14:
+kernel/finite_linear_algebra/tensor3.mojo:13:29: error: use of unknown declaration 'Int'
+def idx3(a: Int, b: Int, c: Int) -> Int:
+                            ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:14:
+kernel/finite_linear_algebra/tensor3.mojo:13:26: error: unable to locate module 'std'
+def idx3(a: Int, b: Int, c: Int) -> Int:
+                         ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:14:
+kernel/finite_linear_algebra/tensor3.mojo:13:37: error: use of unknown declaration 'Int'
+def idx3(a: Int, b: Int, c: Int) -> Int:
+                                    ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:14:
+kernel/finite_linear_algebra/tensor3.mojo:13:37: error: unable to locate module 'std'
+def idx3(a: Int, b: Int, c: Int) -> Int:
+                                    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:14:
+kernel/finite_linear_algebra/tensor3.mojo:99:18: error: use of unknown declaration 'List'
+def is_zero27(x: List[Int]) -> Bool:
+                 ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:14:
+kernel/finite_linear_algebra/tensor3.mojo:99:15: error: unable to locate module 'std'
+def is_zero27(x: List[Int]) -> Bool:
+              ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:14:
+kernel/finite_linear_algebra/tensor3.mojo:99:32: error: use of unknown declaration 'Bool'
+def is_zero27(x: List[Int]) -> Bool:
+                               ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:14:
+kernel/finite_linear_algebra/tensor3.mojo:99:32: error: unable to locate module 'std'
+def is_zero27(x: List[Int]) -> Bool:
+                               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:14:
+kernel/finite_linear_algebra/tensor3.mojo:75:20: error: use of unknown declaration 'Int'
+def levi_civita(i: Int, j: Int, k: Int) -> Int:
+                   ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:14:
+kernel/finite_linear_algebra/tensor3.mojo:75:17: error: unable to locate module 'std'
+def levi_civita(i: Int, j: Int, k: Int) -> Int:
+                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:14:
+kernel/finite_linear_algebra/tensor3.mojo:75:28: error: use of unknown declaration 'Int'
+def levi_civita(i: Int, j: Int, k: Int) -> Int:
+                           ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:14:
+kernel/finite_linear_algebra/tensor3.mojo:75:25: error: unable to locate module 'std'
+def levi_civita(i: Int, j: Int, k: Int) -> Int:
+                        ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:14:
+kernel/finite_linear_algebra/tensor3.mojo:75:36: error: use of unknown declaration 'Int'
+def levi_civita(i: Int, j: Int, k: Int) -> Int:
+                                   ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:14:
+kernel/finite_linear_algebra/tensor3.mojo:75:33: error: unable to locate module 'std'
+def levi_civita(i: Int, j: Int, k: Int) -> Int:
+                                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:14:
+kernel/finite_linear_algebra/tensor3.mojo:75:44: error: use of unknown declaration 'Int'
+def levi_civita(i: Int, j: Int, k: Int) -> Int:
+                                           ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:14:
+kernel/finite_linear_algebra/tensor3.mojo:75:44: error: unable to locate module 'std'
+def levi_civita(i: Int, j: Int, k: Int) -> Int:
+                                           ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:14:
+kernel/finite_linear_algebra/tensor3.mojo:24:22: error: use of unknown declaration 'List'
+def shuffle_image(x: List[Int]) -> List[Int]:
+                     ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:14:
+kernel/finite_linear_algebra/tensor3.mojo:24:19: error: unable to locate module 'std'
+def shuffle_image(x: List[Int]) -> List[Int]:
+                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:14:
+kernel/finite_linear_algebra/tensor3.mojo:24:36: error: use of unknown declaration 'List'
+def shuffle_image(x: List[Int]) -> List[Int]:
+                                   ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:14:
+kernel/finite_linear_algebra/tensor3.mojo:24:36: error: unable to locate module 'std'
+def shuffle_image(x: List[Int]) -> List[Int]:
+                                   ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:14:
+kernel/finite_linear_algebra/tensor3.mojo:44:25: error: use of unknown declaration 'List'
+def shuffle_matrix() -> List[List[Q]]:
+                        ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:14:
+kernel/finite_linear_algebra/tensor3.mojo:44:25: error: unable to locate module 'std'
+def shuffle_matrix() -> List[List[Q]]:
+                        ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:14:
+kernel/finite_linear_algebra/tensor3.mojo:58:23: error: unable to locate module 'std'
+def tensor_cube_apply(m: Mat3, x: List[Int]) -> List[Int]:
+                      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:14:
+kernel/finite_linear_algebra/tensor3.mojo:58:35: error: use of unknown declaration 'List'
+def tensor_cube_apply(m: Mat3, x: List[Int]) -> List[Int]:
+                                  ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:14:
+kernel/finite_linear_algebra/tensor3.mojo:58:32: error: unable to locate module 'std'
+def tensor_cube_apply(m: Mat3, x: List[Int]) -> List[Int]:
+                               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:14:
+kernel/finite_linear_algebra/tensor3.mojo:58:49: error: use of unknown declaration 'List'
+def tensor_cube_apply(m: Mat3, x: List[Int]) -> List[Int]:
+                                                ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:14:
+kernel/finite_linear_algebra/tensor3.mojo:58:49: error: unable to locate module 'std'
+def tensor_cube_apply(m: Mat3, x: List[Int]) -> List[Int]:
+                                                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:14:
+kernel/finite_linear_algebra/tensor3.mojo:81:14: error: use of unknown declaration 'List'
+def theta(x: List[Int]) -> Mat3:
+             ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:14:
+kernel/finite_linear_algebra/tensor3.mojo:81:11: error: unable to locate module 'std'
+def theta(x: List[Int]) -> Mat3:
+          ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:14:
+kernel/finite_linear_algebra/tensor3.mojo:81:28: error: unable to locate module 'std'
+def theta(x: List[Int]) -> Mat3:
+                           ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:14:
+kernel/finite_linear_algebra/tensor3.mojo:17:18: error: use of unknown declaration 'List'
+def zeros27() -> List[Int]:
+                 ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:14:
+kernel/finite_linear_algebra/tensor3.mojo:17:18: error: unable to locate module 'std'
+def zeros27() -> List[Int]:
+                 ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:15:
+kernel/finite_linear_algebra/w3.mojo:1:1: error: unable to locate module 'std'
+"""The shuffle-kernel sector W_3 = ker(S) subset V^{(x)3}.
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:15:
+kernel/finite_linear_algebra/w3.mojo:21:14: error: use of unknown declaration 'List'
+def in_w3(x: List[Int]) -> Bool:
+             ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:15:
+kernel/finite_linear_algebra/w3.mojo:21:11: error: unable to locate module 'std'
+def in_w3(x: List[Int]) -> Bool:
+          ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:15:
+kernel/finite_linear_algebra/w3.mojo:21:28: error: use of unknown declaration 'Bool'
+def in_w3(x: List[Int]) -> Bool:
+                           ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:15:
+kernel/finite_linear_algebra/w3.mojo:21:28: error: unable to locate module 'std'
+def in_w3(x: List[Int]) -> Bool:
+                           ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:15:
+kernel/finite_linear_algebra/w3.mojo:26:32: error: use of unknown declaration 'List'
+def spans_same_space(intbasis: List[List[Int]], qbasis: List[List[Q]]) -> Bool:
+                               ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:15:
+kernel/finite_linear_algebra/w3.mojo:26:22: error: unable to locate module 'std'
+def spans_same_space(intbasis: List[List[Int]], qbasis: List[List[Q]]) -> Bool:
+                     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:15:
+kernel/finite_linear_algebra/w3.mojo:26:57: error: use of unknown declaration 'List'
+def spans_same_space(intbasis: List[List[Int]], qbasis: List[List[Q]]) -> Bool:
+                                                        ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:15:
+kernel/finite_linear_algebra/w3.mojo:26:49: error: unable to locate module 'std'
+def spans_same_space(intbasis: List[List[Int]], qbasis: List[List[Q]]) -> Bool:
+                                                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:15:
+kernel/finite_linear_algebra/w3.mojo:26:75: error: use of unknown declaration 'Bool'
+def spans_same_space(intbasis: List[List[Int]], qbasis: List[List[Q]]) -> Bool:
+                                                                          ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:15:
+kernel/finite_linear_algebra/w3.mojo:26:75: error: unable to locate module 'std'
+def spans_same_space(intbasis: List[List[Int]], qbasis: List[List[Q]]) -> Bool:
+                                                                          ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:15:
+kernel/finite_linear_algebra/w3.mojo:16:19: error: use of unknown declaration 'List'
+def w3_basis() -> List[List[Q]]:
+                  ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:15:
+kernel/finite_linear_algebra/w3.mojo:16:19: error: unable to locate module 'std'
+def w3_basis() -> List[List[Q]]:
+                  ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:18:21: error: unable to locate module 'std'
+def tribonacci() -> Mat3:
+                    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:23:31: error: unable to locate module 'std'
+def test_scalar_lifts() raises:
+                              ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:27:12: error: use of unknown declaration 'List'
+    var v: List[Int] = [1, -2, 3]
+           ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:33:48: error: unable to locate module 'std'
+def test_exact_nullspace_rank_and_span() raises:
+                                               ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:34:13: error: use of unknown declaration 'List'
+    var m = List[List[Q]]()
+            ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:35:13: error: use of unknown declaration 'List'
+    var r0: List[Int] = [1, 2, 3]
+            ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:36:13: error: use of unknown declaration 'List'
+    var r1: List[Int] = [2, 4, 6]
+            ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:42:14: error: use of unknown declaration 'range'; did you mean 'rank'?
+    for k in range(len(kernel)):
+             ^~~~~
+             rank
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:44:12: error: use of unknown declaration 'List'
+    var v: List[Int] = [3, 6, 9]
+           ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:45:12: error: use of unknown declaration 'List'
+    var w: List[Int] = [1, 0, 0]
+           ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:50:45: error: unable to locate module 'std'
+def test_mat3_adjugate_and_charpoly() raises:
+                                            ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:62:12: error: use of unknown declaration 'List'
+    var e: List[Int] = [1, 1, 0, 0, 1, 1, 1, 0, 1]
+           ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:66:48: error: unable to locate module 'std'
+def test_levi_civita_and_tensor_action() raises:
+                                               ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:73:14: error: use of unknown declaration 'range'; did you mean 'rank'?
+    for i in range(27):
+             ^~~~~
+             rank
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:84:56: error: unable to locate module 'std'
+def test_w3_is_eight_dimensional_and_invariant() raises:
+                                                       ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:89:12: error: use of unknown declaration 'List'
+    var b: List[Int] = zeros27()
+           ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:90:5: error: use of unknown declaration 'b'
+    b[idx3(0, 0, 1)] = 1
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:91:5: error: use of unknown declaration 'b'
+    b[idx3(0, 1, 0)] = -2
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:92:5: error: use of unknown declaration 'b'
+    b[idx3(1, 0, 0)] = 1
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:95:18: error: use of unknown declaration 'List'
+    var family = List[List[Int]]()
+                 ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:102:18: error: unable to locate module 'std'
+def main() raises:
+                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:102:5: error: unable to locate module 'std'
+def main() raises:
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:102:9: error: 'builtin' does not refer to a nested package
+def main() raises:
+        ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:103:5: error: unable to locate module 'std'
+    test_scalar_lifts()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:104:5: error: use of unknown declaration 'print'; did you mean 'q_int'?
+    print("[PASS]", "test_scalar_lifts")
+    ^~~~~
+    q_int
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:105:5: error: unable to locate module 'std'
+    test_exact_nullspace_rank_and_span()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:106:5: error: use of unknown declaration 'print'; did you mean 'q_int'?
+    print("[PASS]", "test_exact_nullspace_rank_and_span")
+    ^~~~~
+    q_int
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:107:5: error: unable to locate module 'std'
+    test_mat3_adjugate_and_charpoly()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:108:5: error: use of unknown declaration 'print'; did you mean 'q_int'?
+    print("[PASS]", "test_mat3_adjugate_and_charpoly")
+    ^~~~~
+    q_int
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:109:5: error: unable to locate module 'std'
+    test_levi_civita_and_tensor_action()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:110:5: error: use of unknown declaration 'print'; did you mean 'q_int'?
+    print("[PASS]", "test_levi_civita_and_tensor_action")
+    ^~~~~
+    q_int
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:111:5: error: unable to locate module 'std'
+    test_w3_is_eight_dimensional_and_invariant()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:112:5: error: use of unknown declaration 'print'; did you mean 'q_int'?
+    print("[PASS]", "test_w3_is_eight_dimensional_and_invariant")
+    ^~~~~
+    q_int
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_linear_algebra/test_finite_linear_algebra.mojo:113:5: error: use of unknown declaration 'print'; did you mean 'q_int'?
+    print("5 finite_linear_algebra tests passed.")
+    ^~~~~
+    q_int
+/workspace/scratch/gnr-next.qHyoM1/golden-ratio-normality-research/kernel/.pixi/envs/default/bin/mojo: error: failed to parse the provided Mojo source module

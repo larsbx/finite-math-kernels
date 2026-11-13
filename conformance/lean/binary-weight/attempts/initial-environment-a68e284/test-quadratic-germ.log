@@ -1,0 +1,210 @@
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:1:1: error: unable to locate module 'std'
+"""Exact quadratic-germ coefficient vectors.
+^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:1:1: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+"""Exact quadratic-germ coefficient vectors.
+^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:8:6: error: unable to locate module 'std'
+from std.testing import assert_false, assert_true
+     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:10:
+kernel/finite_exact/__init__.mojo:34:1: error: unable to locate module 'std'
+
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:10:
+kernel/finite_exact/rat_q.mojo:13:1: error: unable to locate module 'std'
+from finite_exact.bigint_z import BigZ, bigz_add, bigz_canonical_bytes, bigz_div_exact, bigz_eq, bigz_from_i64, bigz_gcd, bigz_is_canonical, bigz_lt, bigz_mul, bigz_neg, bigz_sub, bigz_zero
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:10:
+kernel/finite_exact/rat_q.mojo:16:10: error: use of unknown declaration 'Copyable'
+struct Q(Copyable):
+         ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:11:
+kernel/finite_polynomial/__init__.mojo:42:1: error: unable to locate module 'std'
+from .taylor_model import (
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:17:1: error: unable to locate module 'std'
+from finite_exact.integer_gcd import gcd_int
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:35:20: error: use of unknown declaration 'Copyable'
+struct CyclotomicQ(Copyable, Movable):
+                   ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:316:29: error: unable to locate module 'std'
+def cyclotomic_automorphism(value: CyclotomicQ, exponent: Int) -> CyclotomicQ:
+                            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:316:59: error: use of unknown declaration 'Int'
+def cyclotomic_automorphism(value: CyclotomicQ, exponent: Int) -> CyclotomicQ:
+                                                          ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:316:49: error: unable to locate module 'std'
+def cyclotomic_automorphism(value: CyclotomicQ, exponent: Int) -> CyclotomicQ:
+                                                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:316:67: error: unable to locate module 'std'
+def cyclotomic_automorphism(value: CyclotomicQ, exponent: Int) -> CyclotomicQ:
+                                                                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:161:22: error: unable to locate module 'std'
+def cyclotomic_equal(left: CyclotomicQ, right: CyclotomicQ) -> Bool:
+                     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:161:41: error: unable to locate module 'std'
+def cyclotomic_equal(left: CyclotomicQ, right: CyclotomicQ) -> Bool:
+                                        ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:161:64: error: use of unknown declaration 'Bool'
+def cyclotomic_equal(left: CyclotomicQ, right: CyclotomicQ) -> Bool:
+                                                               ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:161:64: error: unable to locate module 'std'
+def cyclotomic_equal(left: CyclotomicQ, right: CyclotomicQ) -> Bool:
+                                                               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:136:39: error: use of unknown declaration 'Int'
+def cyclotomic_from_coeffs(conductor: Int, coefficients: List[Q]) -> CyclotomicQ:
+                                      ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:136:28: error: unable to locate module 'std'
+def cyclotomic_from_coeffs(conductor: Int, coefficients: List[Q]) -> CyclotomicQ:
+                           ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:136:58: error: use of unknown declaration 'List'
+def cyclotomic_from_coeffs(conductor: Int, coefficients: List[Q]) -> CyclotomicQ:
+                                                         ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:136:44: error: unable to locate module 'std'
+def cyclotomic_from_coeffs(conductor: Int, coefficients: List[Q]) -> CyclotomicQ:
+                                           ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:136:70: error: unable to locate module 'std'
+def cyclotomic_from_coeffs(conductor: Int, coefficients: List[Q]) -> CyclotomicQ:
+                                                                     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:141:32: error: use of unknown declaration 'Int'
+def cyclotomic_zero(conductor: Int) -> CyclotomicQ:
+                               ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:141:21: error: unable to locate module 'std'
+def cyclotomic_zero(conductor: Int) -> CyclotomicQ:
+                    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:141:40: error: unable to locate module 'std'
+def cyclotomic_zero(conductor: Int) -> CyclotomicQ:
+                                       ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:18:
+kernel/finite_polynomial/quadratic_germ.mojo:19:1: error: unable to locate module 'std'
+from finite_exact.integer_gcd import gcd_int
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:12:
+kernel/finite_polynomial/cyclotomic_q.mojo:141:21: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+def cyclotomic_zero(conductor: Int) -> CyclotomicQ:
+                    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:18:
+kernel/finite_polynomial/quadratic_germ.mojo:66:41: error: use of unknown declaration 'Int'
+def quadratic_germ_index_coefficient(p: Int, q: Int) -> CyclotomicQ:
+                                        ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:18:
+kernel/finite_polynomial/quadratic_germ.mojo:66:38: error: unable to locate module 'std'
+def quadratic_germ_index_coefficient(p: Int, q: Int) -> CyclotomicQ:
+                                     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:18:
+kernel/finite_polynomial/quadratic_germ.mojo:66:49: error: use of unknown declaration 'Int'
+def quadratic_germ_index_coefficient(p: Int, q: Int) -> CyclotomicQ:
+                                                ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:18:
+kernel/finite_polynomial/quadratic_germ.mojo:66:46: error: unable to locate module 'std'
+def quadratic_germ_index_coefficient(p: Int, q: Int) -> CyclotomicQ:
+                                             ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:18:
+kernel/finite_polynomial/quadratic_germ.mojo:66:57: error: unable to locate module 'std'
+def quadratic_germ_index_coefficient(p: Int, q: Int) -> CyclotomicQ:
+                                                        ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:22:16: error: use of unknown declaration 'Int'
+    conductor: Int,
+               ^~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:22:5: error: unable to locate module 'std'
+    conductor: Int,
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:23:17: error: use of unknown declaration 'List'
+    numerators: List[Int64],
+                ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:23:5: error: unable to locate module 'std'
+    numerators: List[Int64],
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:24:18: error: use of unknown declaration 'Int64'
+    denominator: Int64,
+                 ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:24:5: error: unable to locate module 'std'
+    denominator: Int64,
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:25:6: error: unable to locate module 'std'
+) -> CyclotomicQ:
+     ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:32:37: error: unable to locate module 'std'
+def test_q1_q2_exact_values() raises:
+                                    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:47:33: error: unable to locate module 'std'
+def test_q3_exact_value() raises:
+                                ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:57:49: error: unable to locate module 'std'
+def test_q4_exact_value_and_conjugation() raises:
+                                                ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:72:54: error: unable to locate module 'std'
+def test_q5_exact_value_and_galois_transport() raises:
+                                                     ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:92:54: error: unable to locate module 'std'
+def test_malformed_internal_fraction_refuses() raises:
+                                                     ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:98:18: error: unable to locate module 'std'
+def main() raises:
+                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:98:5: error: unable to locate module 'std'
+def main() raises:
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:98:9: error: 'builtin' does not refer to a nested package
+def main() raises:
+        ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:99:5: error: unable to locate module 'std'
+    test_q1_q2_exact_values()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:100:5: error: use of unknown declaration 'print'
+    print("[PASS] test_q1_q2_exact_values")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:101:5: error: unable to locate module 'std'
+    test_q3_exact_value()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:102:5: error: use of unknown declaration 'print'
+    print("[PASS] test_q3_exact_value")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:103:5: error: unable to locate module 'std'
+    test_q4_exact_value_and_conjugation()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:104:5: error: use of unknown declaration 'print'
+    print("[PASS] test_q4_exact_value_and_conjugation")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:105:5: error: unable to locate module 'std'
+    test_q5_exact_value_and_galois_transport()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:106:5: error: use of unknown declaration 'print'
+    print("[PASS] test_q5_exact_value_and_galois_transport")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:107:5: error: unable to locate module 'std'
+    test_malformed_internal_fraction_refuses()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:108:5: error: use of unknown declaration 'print'
+    print("[PASS] test_malformed_internal_fraction_refuses")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_quadratic_germ.mojo:109:5: error: use of unknown declaration 'print'
+    print("5 exact quadratic-germ coefficient tests passed.")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/golden-ratio-normality-research/kernel/.pixi/envs/default/bin/mojo: error: failed to parse the provided Mojo source module

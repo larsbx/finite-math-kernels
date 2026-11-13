@@ -1,0 +1,552 @@
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:1:1: error: unable to locate module 'std'
+"""Regressions for tuning patterns, directive prefixes, and column coincidence.
+^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:1:1: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+"""Regressions for tuning patterns, directive prefixes, and column coincidence.
+^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:8:6: error: unable to locate module 'std'
+from std.testing import assert_equal, assert_false, assert_true
+     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:10:
+kernel/substitution_dynamics/__init__.mojo:38:1: error: unable to locate module 'std'
+
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:10:
+kernel/substitution_dynamics/coincidence.mojo:1:1: error: unable to locate module 'std'
+"""Column coincidence for constant-length substitutions.
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:10:
+kernel/substitution_dynamics/coincidence.mojo:24:27: error: use of unknown declaration 'Copyable'
+struct CoincidenceWitness(Copyable, Movable):
+                          ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:10:
+Imported from kernel/substitution_dynamics/coincidence.mojo:21:
+kernel/substitution_dynamics/substitution.mojo:1:1: error: unable to locate module 'std'
+"""A substitution on the alphabet `{0, ..., size-1}`, validated once.
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:10:
+Imported from kernel/substitution_dynamics/coincidence.mojo:21:
+kernel/substitution_dynamics/substitution.mojo:17:21: error: use of unknown declaration 'Copyable'
+struct Substitution(Copyable, Movable):
+                    ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:10:
+kernel/substitution_dynamics/coincidence.mojo:64:24: error: unable to locate module 'std'
+def column_coincidence(sigma: Substitution) raises -> CoincidenceWitness:
+                       ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:10:
+kernel/substitution_dynamics/coincidence.mojo:64:55: error: unable to locate module 'std'
+def column_coincidence(sigma: Substitution) raises -> CoincidenceWitness:
+                                                      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:10:
+kernel/substitution_dynamics/coincidence.mojo:38:21: error: unable to locate module 'std'
+def constant_length(sigma: Substitution) raises -> Int:
+                    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:10:
+kernel/substitution_dynamics/coincidence.mojo:38:52: error: use of unknown declaration 'Int'
+def constant_length(sigma: Substitution) raises -> Int:
+                                                   ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:10:
+kernel/substitution_dynamics/coincidence.mojo:38:52: error: unable to locate module 'std'
+def constant_length(sigma: Substitution) raises -> Int:
+                                                   ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:10:
+kernel/substitution_dynamics/coincidence.mojo:47:24: error: unable to locate module 'std'
+def is_constant_length(sigma: Substitution) -> Bool:
+                       ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:10:
+kernel/substitution_dynamics/coincidence.mojo:47:48: error: use of unknown declaration 'Bool'
+def is_constant_length(sigma: Substitution) -> Bool:
+                                               ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:10:
+kernel/substitution_dynamics/coincidence.mojo:47:48: error: unable to locate module 'std'
+def is_constant_length(sigma: Substitution) -> Bool:
+                                               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:11:
+kernel/substitution_dynamics/sadic.mojo:1:1: error: unable to locate module 'std'
+"""Composition of substitutions and finite directive prefixes.
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:10:
+kernel/substitution_dynamics/coincidence.mojo:47:24: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+def is_constant_length(sigma: Substitution) -> Bool:
+                       ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:11:
+kernel/substitution_dynamics/sadic.mojo:38:27: error: use of unknown declaration 'List'
+def apply_directive(subs: List[Substitution], w: List[Int]) raises -> List[Int]:
+                          ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:11:
+kernel/substitution_dynamics/sadic.mojo:38:21: error: unable to locate module 'std'
+def apply_directive(subs: List[Substitution], w: List[Int]) raises -> List[Int]:
+                    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:11:
+kernel/substitution_dynamics/sadic.mojo:38:50: error: use of unknown declaration 'List'
+def apply_directive(subs: List[Substitution], w: List[Int]) raises -> List[Int]:
+                                                 ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:11:
+kernel/substitution_dynamics/sadic.mojo:38:47: error: unable to locate module 'std'
+def apply_directive(subs: List[Substitution], w: List[Int]) raises -> List[Int]:
+                                              ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:11:
+kernel/substitution_dynamics/sadic.mojo:38:71: error: use of unknown declaration 'List'
+def apply_directive(subs: List[Substitution], w: List[Int]) raises -> List[Int]:
+                                                                      ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:11:
+kernel/substitution_dynamics/sadic.mojo:38:71: error: unable to locate module 'std'
+def apply_directive(subs: List[Substitution], w: List[Int]) raises -> List[Int]:
+                                                                      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:11:
+kernel/substitution_dynamics/sadic.mojo:18:13: error: unable to locate module 'std'
+def compose(outer: Substitution, inner: Substitution) raises -> Substitution:
+            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:11:
+kernel/substitution_dynamics/sadic.mojo:18:34: error: unable to locate module 'std'
+def compose(outer: Substitution, inner: Substitution) raises -> Substitution:
+                                 ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:11:
+kernel/substitution_dynamics/sadic.mojo:18:65: error: unable to locate module 'std'
+def compose(outer: Substitution, inner: Substitution) raises -> Substitution:
+                                                                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:11:
+kernel/substitution_dynamics/sadic.mojo:28:31: error: use of unknown declaration 'List'
+def directive_composite(subs: List[Substitution]) raises -> Substitution:
+                              ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:11:
+kernel/substitution_dynamics/sadic.mojo:28:25: error: unable to locate module 'std'
+def directive_composite(subs: List[Substitution]) raises -> Substitution:
+                        ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:11:
+kernel/substitution_dynamics/sadic.mojo:28:61: error: unable to locate module 'std'
+def directive_composite(subs: List[Substitution]) raises -> Substitution:
+                                                            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:13:
+kernel/substitution_dynamics/internal_address.mojo:1:1: error: unable to locate module 'std'
+"""The internal address of a periodic 0/1 kneading sequence.
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:11:
+kernel/substitution_dynamics/sadic.mojo:28:61: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+def directive_composite(subs: List[Substitution]) raises -> Substitution:
+                                                            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:13:
+kernel/substitution_dynamics/internal_address.mojo:21:26: error: use of unknown declaration 'List'
+def internal_address(nu: List[Int]) raises -> List[Int]:
+                         ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:13:
+kernel/substitution_dynamics/internal_address.mojo:21:22: error: unable to locate module 'std'
+def internal_address(nu: List[Int]) raises -> List[Int]:
+                     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:13:
+kernel/substitution_dynamics/internal_address.mojo:21:47: error: use of unknown declaration 'List'
+def internal_address(nu: List[Int]) raises -> List[Int]:
+                                              ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:13:
+kernel/substitution_dynamics/internal_address.mojo:21:47: error: unable to locate module 'std'
+def internal_address(nu: List[Int]) raises -> List[Int]:
+                                              ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:14:
+kernel/substitution_dynamics/tuning.mojo:1:1: error: unable to locate module 'std'
+"""Tuning patterns and the star product: constant-length substitutions on
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:13:
+kernel/substitution_dynamics/internal_address.mojo:21:47: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+def internal_address(nu: List[Int]) raises -> List[Int]:
+                                              ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:14:
+kernel/substitution_dynamics/tuning.mojo:29:22: error: use of unknown declaration 'Copyable'
+struct TuningPattern(Copyable, Movable):
+                     ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:14:
+kernel/substitution_dynamics/tuning.mojo:87:32: error: use of unknown declaration 'List'
+def continuation_twist(prefix: List[Int]) raises -> Bool:
+                               ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:14:
+kernel/substitution_dynamics/tuning.mojo:87:24: error: unable to locate module 'std'
+def continuation_twist(prefix: List[Int]) raises -> Bool:
+                       ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:14:
+kernel/substitution_dynamics/tuning.mojo:87:53: error: use of unknown declaration 'Bool'
+def continuation_twist(prefix: List[Int]) raises -> Bool:
+                                                    ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:14:
+kernel/substitution_dynamics/tuning.mojo:87:53: error: unable to locate module 'std'
+def continuation_twist(prefix: List[Int]) raises -> Bool:
+                                                    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:14:
+kernel/substitution_dynamics/tuning.mojo:79:23: error: use of unknown declaration 'List'
+def dgp_twist(prefix: List[Int]) -> Bool:
+                      ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:14:
+kernel/substitution_dynamics/tuning.mojo:79:15: error: unable to locate module 'std'
+def dgp_twist(prefix: List[Int]) -> Bool:
+              ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:14:
+kernel/substitution_dynamics/tuning.mojo:79:37: error: use of unknown declaration 'Bool'
+def dgp_twist(prefix: List[Int]) -> Bool:
+                                    ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:14:
+kernel/substitution_dynamics/tuning.mojo:79:37: error: unable to locate module 'std'
+def dgp_twist(prefix: List[Int]) -> Bool:
+                                    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:14:
+kernel/substitution_dynamics/tuning.mojo:105:31: error: use of unknown declaration 'List'
+def kneading_prefix(patterns: List[TuningPattern]) raises -> List[Int]:
+                              ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:14:
+kernel/substitution_dynamics/tuning.mojo:105:21: error: unable to locate module 'std'
+def kneading_prefix(patterns: List[TuningPattern]) raises -> List[Int]:
+                    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:14:
+kernel/substitution_dynamics/tuning.mojo:105:62: error: use of unknown declaration 'List'
+def kneading_prefix(patterns: List[TuningPattern]) raises -> List[Int]:
+                                                             ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:14:
+kernel/substitution_dynamics/tuning.mojo:105:62: error: unable to locate module 'std'
+def kneading_prefix(patterns: List[TuningPattern]) raises -> List[Int]:
+                                                             ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:14:
+kernel/substitution_dynamics/tuning.mojo:97:18: error: unable to locate module 'std'
+def star_product(a: TuningPattern, b: TuningPattern) -> TuningPattern:
+                 ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:14:
+kernel/substitution_dynamics/tuning.mojo:97:36: error: unable to locate module 'std'
+def star_product(a: TuningPattern, b: TuningPattern) -> TuningPattern:
+                                   ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:14:
+kernel/substitution_dynamics/tuning.mojo:97:57: error: unable to locate module 'std'
+def star_product(a: TuningPattern, b: TuningPattern) -> TuningPattern:
+                                                        ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:17:33: error: unable to locate module 'std'
+def period_doubling() raises -> TuningPattern:
+                                ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:22:28: error: unable to locate module 'std'
+def thue_morse() raises -> Substitution:
+                           ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:27:27: error: unable to locate module 'std'
+def fibonacci() raises -> Substitution:
+                          ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:32:40: error: unable to locate module 'std'
+def three_letter_depth_two() raises -> Substitution:
+                                       ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:37:17: error: unable to locate module 'std'
+def same_images(s: Substitution, t: Substitution) -> Bool:
+                ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:37:34: error: unable to locate module 'std'
+def same_images(s: Substitution, t: Substitution) -> Bool:
+                                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:37:54: error: use of unknown declaration 'Bool'
+def same_images(s: Substitution, t: Substitution) -> Bool:
+                                                     ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:37:54: error: unable to locate module 'std'
+def same_images(s: Substitution, t: Substitution) -> Bool:
+                                                     ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:46:48: error: unable to locate module 'std'
+def test_boundary_rejects_bad_prefixes() raises:
+                                               ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:47:18: error: unable to locate module 'std'
+    var caught = False
+                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:48:5: error: unable to locate module 'std'
+    try:
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:54:14: error: use of unknown declaration 'List'
+    var bad: List[Int] = [0, 2]
+             ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:56:5: error: unable to locate module 'std'
+    try:
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:62:13: error: use of unknown declaration 'List'
+    var ok: List[Int] = [1, 0]
+            ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:68:77: error: unable to locate module 'std'
+def test_period_doubling_is_the_dgp_tuning_of_the_period_two_centre() raises:
+                                                                            ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:80:62: error: unable to locate module 'std'
+def test_star_product_of_period_doubling_with_itself() raises:
+                                                             ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:94:45: error: unable to locate module 'std'
+def test_feigenbaum_kneading_prefix() raises:
+                                            ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:96:15: error: use of unknown declaration 'List'
+    var one = List[TuningPattern]()
+              ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:99:15: error: use of unknown declaration 'List'
+    var two = List[TuningPattern]()
+              ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:103:17: error: use of unknown declaration 'List'
+    var three = List[TuningPattern]()
+                ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:108:16: error: use of unknown declaration 'List'
+    var five = List[TuningPattern]()
+               ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:109:14: error: use of unknown declaration 'range'
+    for _ in range(5):
+             ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:112:18: error: unable to locate module 'std'
+    var caught = False
+                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:113:5: error: unable to locate module 'std'
+    try:
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:120:67: error: unable to locate module 'std'
+def test_star_product_is_composition_for_arbitrary_twists() raises:
+                                                                  ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:121:13: error: use of unknown declaration 'List'
+    var pa: List[Int] = [0, 1, 1]
+            ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:122:13: error: use of unknown declaration 'List'
+    var pb: List[Int] = [1, 0]
+            ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:134:60: error: unable to locate module 'std'
+def test_directive_composite_and_application_agree() raises:
+                                                           ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:135:16: error: use of unknown declaration 'List'
+    var subs = List[Substitution]()
+               ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:138:16: error: use of unknown declaration 'List'
+    var third: List[List[Int]] = [[1, 0], [0, 0]]
+               ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:141:12: error: use of unknown declaration 'List'
+    var w: List[Int] = [0, 1, 1]
+           ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:143:12: error: use of unknown declaration 'List'
+    var x: List[Int] = [1]
+           ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:150:16: error: use of unknown declaration 'List'
+    var three: List[List[Int]] = [[0, 1, 2], [0], [1]]
+               ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:151:18: error: unable to locate module 'std'
+    var caught = False
+                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:152:5: error: unable to locate module 'std'
+    try:
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:158:5: error: unable to locate module 'std'
+    try:
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:165:68: error: unable to locate module 'std'
+def test_kneading_prefix_is_a_prefix_of_every_tuning_image() raises:
+                                                                   ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:166:13: error: use of unknown declaration 'List'
+    var p1: List[Int] = [1, 1, 0]
+            ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:167:13: error: use of unknown declaration 'List'
+    var p2: List[Int] = [0]
+            ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:168:16: error: use of unknown declaration 'List'
+    var pats = List[TuningPattern]()
+               ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:172:16: error: use of unknown declaration 'List'
+    var subs = List[Substitution]()
+               ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:176:14: error: use of unknown declaration 'range'
+    for s in range(2):
+             ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:183:80: error: unable to locate module 'std'
+def test_continuation_twist_pinned_values_and_disagreement_with_parity() raises:
+                                                                               ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:184:14: error: use of unknown declaration 'List'
+    var one: List[Int] = [1]
+             ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:185:14: error: use of unknown declaration 'List'
+    var ten: List[Int] = [1, 0]
+             ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:186:17: error: use of unknown declaration 'List'
+    var eleven: List[Int] = [1, 1]
+                ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:187:16: error: use of unknown declaration 'List'
+    var prim4: List[Int] = [1, 0, 0]
+               ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:188:15: error: use of unknown declaration 'List'
+    var sat4: List[Int] = [1, 0, 1]
+              ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:210:18: error: unable to locate module 'std'
+    var caught = False
+                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:211:5: error: unable to locate module 'std'
+    try:
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:218:19: error: use of unknown declaration 'List'
+def _contains(xs: List[Int], x: Int) -> Bool:
+                  ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:218:15: error: unable to locate module 'std'
+def _contains(xs: List[Int], x: Int) -> Bool:
+              ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:218:33: error: use of unknown declaration 'Int'
+def _contains(xs: List[Int], x: Int) -> Bool:
+                                ^~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:218:30: error: unable to locate module 'std'
+def _contains(xs: List[Int], x: Int) -> Bool:
+                             ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:218:41: error: use of unknown declaration 'Bool'
+def _contains(xs: List[Int], x: Int) -> Bool:
+                                        ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:218:41: error: unable to locate module 'std'
+def _contains(xs: List[Int], x: Int) -> Bool:
+                                        ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:225:62: error: unable to locate module 'std'
+def test_internal_address_pinned_values_and_boundary() raises:
+                                                             ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:228:19: error: use of unknown declaration 'List'
+    var basilica: List[Int] = [1, 0]
+                  ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:229:17: error: use of unknown declaration 'List'
+    var rabbit: List[Int] = [1, 1, 0]
+                ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:230:19: error: use of unknown declaration 'List'
+    var airplane: List[Int] = [1, 0, 0]
+                  ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:231:20: error: use of unknown declaration 'List'
+    var satellite: List[Int] = [1, 0, 1, 1]
+                   ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:232:19: error: use of unknown declaration 'List'
+    var constant: List[Int] = [1, 1, 1]
+                  ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:238:18: error: unable to locate module 'std'
+    var caught = False
+                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:239:5: error: unable to locate module 'std'
+    try:
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:244:14: error: use of unknown declaration 'List'
+    var bad: List[Int] = [1, 2]
+             ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:246:5: error: unable to locate module 'std'
+    try:
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:253:98: error: unable to locate module 'std'
+def test_continuation_is_the_unique_continuation_with_the_period_in_its_internal_address() raises:
+                                                                                                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:255:19: error: use of unknown declaration 'range'
+    for length in range(1, 11):
+                  ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:267:82: error: unable to locate module 'std'
+def test_every_tuning_substitution_has_a_coincidence_in_its_first_column() raises:
+                                                                                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:268:12: error: use of unknown declaration 'List'
+    var p: List[Int] = [0, 1, 1, 0]
+           ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:279:55: error: unable to locate module 'std'
+def test_thue_morse_has_no_column_coincidence() raises:
+                                                      ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:286:55: error: unable to locate module 'std'
+def test_three_letter_example_needs_depth_two() raises:
+                                                      ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:292:14: error: use of unknown declaration 'List'
+    var one: List[List[Int]] = [[0]]
+             ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:298:50: error: unable to locate module 'std'
+def test_non_constant_length_is_rejected() raises:
+                                                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:301:18: error: unable to locate module 'std'
+    var caught = False
+                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:302:5: error: unable to locate module 'std'
+    try:
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:309:18: error: unable to locate module 'std'
+def main() raises:
+                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:309:5: error: unable to locate module 'std'
+def main() raises:
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:309:9: error: 'builtin' does not refer to a nested package
+def main() raises:
+        ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:310:5: error: unable to locate module 'std'
+    test_boundary_rejects_bad_prefixes()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:311:5: error: use of unknown declaration 'print'
+    print("[PASS] test_boundary_rejects_bad_prefixes")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:312:5: error: unable to locate module 'std'
+    test_period_doubling_is_the_dgp_tuning_of_the_period_two_centre()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:313:5: error: use of unknown declaration 'print'
+    print("[PASS] test_period_doubling_is_the_dgp_tuning_of_the_period_two_centre")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:314:5: error: unable to locate module 'std'
+    test_star_product_of_period_doubling_with_itself()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:315:5: error: use of unknown declaration 'print'
+    print("[PASS] test_star_product_of_period_doubling_with_itself")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:316:5: error: unable to locate module 'std'
+    test_feigenbaum_kneading_prefix()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:317:5: error: use of unknown declaration 'print'
+    print("[PASS] test_feigenbaum_kneading_prefix")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:318:5: error: unable to locate module 'std'
+    test_star_product_is_composition_for_arbitrary_twists()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:319:5: error: use of unknown declaration 'print'
+    print("[PASS] test_star_product_is_composition_for_arbitrary_twists")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:320:5: error: unable to locate module 'std'
+    test_directive_composite_and_application_agree()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:321:5: error: use of unknown declaration 'print'
+    print("[PASS] test_directive_composite_and_application_agree")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:322:5: error: unable to locate module 'std'
+    test_kneading_prefix_is_a_prefix_of_every_tuning_image()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:323:5: error: use of unknown declaration 'print'
+    print("[PASS] test_kneading_prefix_is_a_prefix_of_every_tuning_image")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:324:5: error: unable to locate module 'std'
+    test_continuation_twist_pinned_values_and_disagreement_with_parity()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:325:5: error: use of unknown declaration 'print'
+    print("[PASS] test_continuation_twist_pinned_values_and_disagreement_with_parity")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:326:5: error: unable to locate module 'std'
+    test_internal_address_pinned_values_and_boundary()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:327:5: error: use of unknown declaration 'print'
+    print("[PASS] test_internal_address_pinned_values_and_boundary")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:328:5: error: unable to locate module 'std'
+    test_continuation_is_the_unique_continuation_with_the_period_in_its_internal_address()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:329:5: error: use of unknown declaration 'print'
+    print("[PASS] test_continuation_is_the_unique_continuation_with_the_period_in_its_internal_address")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:330:5: error: unable to locate module 'std'
+    test_every_tuning_substitution_has_a_coincidence_in_its_first_column()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:331:5: error: use of unknown declaration 'print'
+    print("[PASS] test_every_tuning_substitution_has_a_coincidence_in_its_first_column")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:332:5: error: unable to locate module 'std'
+    test_thue_morse_has_no_column_coincidence()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:333:5: error: use of unknown declaration 'print'
+    print("[PASS] test_thue_morse_has_no_column_coincidence")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:334:5: error: unable to locate module 'std'
+    test_three_letter_example_needs_depth_two()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:335:5: error: use of unknown declaration 'print'
+    print("[PASS] test_three_letter_example_needs_depth_two")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:336:5: error: unable to locate module 'std'
+    test_non_constant_length_is_rejected()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:337:5: error: use of unknown declaration 'print'
+    print("[PASS] test_non_constant_length_is_rejected")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/substitution_dynamics/test_tuning.mojo:338:5: error: use of unknown declaration 'print'
+    print("14 tuning Mojo tests passed.")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/golden-ratio-normality-research/kernel/.pixi/envs/default/bin/mojo: error: failed to parse the provided Mojo source module

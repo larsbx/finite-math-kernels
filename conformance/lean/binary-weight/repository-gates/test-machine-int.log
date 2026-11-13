@@ -1,0 +1,7 @@
+[PASS] test_checked_arithmetic_is_exact_in_range
+[PASS] test_checked_arithmetic_refuses_past_the_range
+[PASS] test_gcd_ignores_signs_and_fixes_zero
+[PASS] test_decimal_rendering_is_exact
+[PASS] test_products_at_the_negative_boundary
+[PASS] test_gcd_signed_minima
+6 machine-integer tests passed.

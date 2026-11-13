@@ -1,0 +1,263 @@
+...............s................s....................................F.. [ 60%]
+................................................                         [100%]
+=================================== FAILURES ===================================
+_________________ test_mojo_implementation_replays_the_vectors _________________
+
+    @pytest.mark.skipif(shutil.which("mojo") is None, reason="mojo binary not on PATH")
+    def test_mojo_implementation_replays_the_vectors():
+        data = replay.load()
+>       actual = replay.run_mojo(data)
+                 ^^^^^^^^^^^^^^^^^^^^^
+
+tests/proof_records/test_mojo_replay.py:74: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+data = {'closures': [{'complete': True, 'missing_links': [], 'name': 'complete closure', 'policy': 'none', ...}, {'complete':...'sha256:2420cf5ecc4839ea1ecfa0cc500eed520e2766cfea47d606bc231076588b4dda', 'kind': 'imported_theorem', ...}, ...}, ...}
+
+    def run_mojo(data: dict) -> list[str] | None:
+        mojo = shutil.which("mojo")
+        if mojo is None:
+            return None
+        with tempfile.NamedTemporaryFile("w", suffix=".tsv", delete=False, encoding="utf-8") as handle:
+            handle.write("\n".join(input_lines(data)) + "\n")
+            path = handle.name
+        env = dict(os.environ, REPLAY_INPUT=path)
+        result = subprocess.run([mojo, "run", "-I", str(ROOT / "kernel"), str(DRIVER)], cwd=ROOT, env=env, capture_output=True, text=True, check=False)
+        if result.returncode != 0:
+>           raise RuntimeError(f"mojo replay failed with status {result.returncode}:\n{result.stderr}")
+E           RuntimeError: mojo replay failed with status 1:
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:1:1: error: unable to locate module 'std'
+E           """Replays a vector transcript through the Mojo implementation.
+E           ^
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:1:1: error: 'std' is required for all normal mojo compiles.
+E           If you see this either:
+E           - Your mojo installation is broken and needs to be reinstalled or
+E           - You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+E           """Replays a vector transcript through the Mojo implementation.
+E           ^
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:24:6: error: unable to locate module 'std'
+E           from std.os import getenv
+E                ^
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:25:6: error: unable to locate module 'std'
+E           from std.sys import argv
+E                ^
+E           Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:27:
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/proof_records/__init__.mojo:13:1: error: unable to locate module 'std'
+E           
+E           ^
+E           Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:27:
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/proof_records/records.mojo:1:1: error: unable to locate module 'std'
+E           """Finite proof records: classification, identity, canonical serialization, closure.
+E           ^
+E           Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:27:
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/proof_records/records.mojo:122:16: error: use of unknown declaration 'Copyable'
+E           struct Closure(Copyable, Movable):
+E                          ^~~~~~~~
+E           Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:27:
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/proof_records/records.mojo:49:13: error: use of unknown declaration 'Copyable'
+E           struct Edge(Copyable, Movable):
+E                       ^~~~~~~~
+E           Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:27:
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/proof_records/records.mojo:135:15: error: use of unknown declaration 'Copyable'
+E           struct Ledger(Copyable, Movable):
+E                         ^~~~~~~~
+E           Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:27:
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/proof_records/records.mojo:38:13: error: use of unknown declaration 'Copyable'
+E           struct Pair(Copyable, Movable):
+E                       ^~~~~~~~
+E           Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:27:
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/proof_records/records.mojo:77:15: error: use of unknown declaration 'Copyable'
+E           struct Record(Copyable, Movable):
+E                         ^~~~~~~~
+E           Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:27:
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/proof_records/records.mojo:157:18: error: use of unknown declaration 'Copyable'
+E           struct TagPolicy(Copyable, Movable):
+E                            ^~~~~~~~
+E           Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:27:
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/proof_records/records.mojo:357:21: error: unable to locate module 'std'
+E           def canonical_bytes(record: Record) -> List[UInt8]:
+E                               ^
+E           Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:27:
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/proof_records/records.mojo:357:40: error: use of unknown declaration 'List'
+E           def canonical_bytes(record: Record) -> List[UInt8]:
+E                                                  ^~~~
+E           Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:27:
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/proof_records/records.mojo:357:40: error: unable to locate module 'std'
+E           def canonical_bytes(record: Record) -> List[UInt8]:
+E                                                  ^
+E           Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:27:
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/proof_records/records.mojo:423:11: error: unable to locate module 'std'
+E           def close(ledger: Ledger, root: String, policy: TagPolicy) -> Closure:
+E                     ^
+E           Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:27:
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/proof_records/records.mojo:423:33: error: use of unknown declaration 'String'
+E           def close(ledger: Ledger, root: String, policy: TagPolicy) -> Closure:
+E                                           ^~~~~~
+E           Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:27:
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/proof_records/records.mojo:423:27: error: unable to locate module 'std'
+E           def close(ledger: Ledger, root: String, policy: TagPolicy) -> Closure:
+E                                     ^
+E           Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:27:
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/proof_records/records.mojo:423:41: error: unable to locate module 'std'
+E           def close(ledger: Ledger, root: String, policy: TagPolicy) -> Closure:
+E                                                   ^
+E           Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:27:
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/proof_records/records.mojo:423:63: error: unable to locate module 'std'
+E           def close(ledger: Ledger, root: String, policy: TagPolicy) -> Closure:
+E                                                                         ^
+E           Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:27:
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/proof_records/records.mojo:352:14: error: unable to locate module 'std'
+E           def identity(record: Record) -> String:
+E                        ^
+E           Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:27:
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/proof_records/records.mojo:352:33: error: use of unknown declaration 'String'
+E           def identity(record: Record) -> String:
+E                                           ^~~~~~
+E           Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:27:
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/proof_records/records.mojo:352:33: error: unable to locate module 'std'
+E           def identity(record: Record) -> String:
+E                                           ^
+E           Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:27:
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/proof_records/records.mojo:263:14: error: unable to locate module 'std'
+E           def validate(record: Record) -> Record:
+E                        ^
+E           Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:27:
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/proof_records/records.mojo:263:33: error: unable to locate module 'std'
+E           def validate(record: Record) -> Record:
+E                                           ^
+E           Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:28:
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/proof_records/sha256.mojo:1:1: error: unable to locate module 'std'
+E           """SHA-256 (FIPS 180-4) over a byte list, and lowercase hex rendering.
+E           ^
+E           Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:27:
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/proof_records/records.mojo:263:14: error: 'std' is required for all normal mojo compiles.
+E           If you see this either:
+E           - Your mojo installation is broken and needs to be reinstalled or
+E           - You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+E           def validate(record: Record) -> Record:
+E                        ^
+E           Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:28:
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/proof_records/sha256.mojo:87:15: error: use of unknown declaration 'List'
+E           def hex(data: List[UInt8]) -> String:
+E                         ^~~~
+E           Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:28:
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/proof_records/sha256.mojo:87:9: error: unable to locate module 'std'
+E           def hex(data: List[UInt8]) -> String:
+E                   ^
+E           Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:28:
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/proof_records/sha256.mojo:87:31: error: use of unknown declaration 'String'
+E           def hex(data: List[UInt8]) -> String:
+E                                         ^~~~~~
+E           Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:28:
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/proof_records/sha256.mojo:87:31: error: unable to locate module 'std'
+E           def hex(data: List[UInt8]) -> String:
+E                                         ^
+E           Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:28:
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/proof_records/sha256.mojo:33:18: error: use of unknown declaration 'List'
+E           def sha256(data: List[UInt8]) -> List[UInt8]:
+E                            ^~~~
+E           Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:28:
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/proof_records/sha256.mojo:33:12: error: unable to locate module 'std'
+E           def sha256(data: List[UInt8]) -> List[UInt8]:
+E                      ^
+E           Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:28:
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/proof_records/sha256.mojo:33:34: error: use of unknown declaration 'List'
+E           def sha256(data: List[UInt8]) -> List[UInt8]:
+E                                            ^~~~
+E           Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:28:
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/kernel/proof_records/sha256.mojo:33:34: error: unable to locate module 'std'
+E           def sha256(data: List[UInt8]) -> List[UInt8]:
+E                                            ^
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:31:19: error: use of unknown declaration 'List'
+E           def octets(bytes: List[UInt8]) -> String:
+E                             ^~~~
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:31:12: error: unable to locate module 'std'
+E           def octets(bytes: List[UInt8]) -> String:
+E                      ^
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:31:35: error: use of unknown declaration 'String'
+E           def octets(bytes: List[UInt8]) -> String:
+E                                             ^~~~~~
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:31:35: error: unable to locate module 'std'
+E           def octets(bytes: List[UInt8]) -> String:
+E                                             ^
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:38:18: error: use of unknown declaration 'List'
+E           def take(fields: List[String], mut pos: Int) -> String:
+E                            ^~~~
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:38:10: error: unable to locate module 'std'
+E           def take(fields: List[String], mut pos: Int) -> String:
+E                    ^
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:38:41: error: use of unknown declaration 'Int'
+E           def take(fields: List[String], mut pos: Int) -> String:
+E                                                   ^~~
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:38:49: error: use of unknown declaration 'String'
+E           def take(fields: List[String], mut pos: Int) -> String:
+E                                                           ^~~~~~
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:38:49: error: unable to locate module 'std'
+E           def take(fields: List[String], mut pos: Int) -> String:
+E                                                           ^
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:44:24: error: use of unknown declaration 'List'
+E           def take_count(fields: List[String], mut pos: Int) raises -> Int:
+E                                  ^~~~
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:44:16: error: unable to locate module 'std'
+E           def take_count(fields: List[String], mut pos: Int) raises -> Int:
+E                          ^
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:44:47: error: use of unknown declaration 'Int'
+E           def take_count(fields: List[String], mut pos: Int) raises -> Int:
+E                                                         ^~~
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:44:62: error: use of unknown declaration 'Int'
+E           def take_count(fields: List[String], mut pos: Int) raises -> Int:
+E                                                                        ^~~
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:44:62: error: unable to locate module 'std'
+E           def take_count(fields: List[String], mut pos: Int) raises -> Int:
+E                                                                        ^
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:48:26: error: use of unknown declaration 'List'
+E           def parse_record(fields: List[String], mut pos: Int) raises -> Record:
+E                                    ^~~~
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:48:18: error: unable to locate module 'std'
+E           def parse_record(fields: List[String], mut pos: Int) raises -> Record:
+E                            ^
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:48:49: error: use of unknown declaration 'Int'
+E           def parse_record(fields: List[String], mut pos: Int) raises -> Record:
+E                                                           ^~~
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:48:64: error: unable to locate module 'std'
+E           def parse_record(fields: List[String], mut pos: Int) raises -> Record:
+E                                                                          ^
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:72:40: error: unable to locate module 'std'
+E           def check_sha256_known_answers() raises:
+E                                                  ^
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:73:17: error: use of unknown declaration 'List'
+E               var empty = List[UInt8]()
+E                           ^~~~
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:74:30: error: unable to locate module 'std'
+E               if hex(sha256(empty)) != "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855":
+E                                        ^
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:88:18: error: unable to locate module 'std'
+E           def main() raises:
+E                            ^
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:88:5: error: unable to locate module 'std'
+E           def main() raises:
+E               ^
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:88:9: error: 'builtin' does not refer to a nested package
+E           def main() raises:
+E                   ^
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:89:5: error: unable to locate module 'std'
+E               check_sha256_known_answers()
+E               ^
+E           /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/proof_records/replay_vectors.mojo:91:30: error: unable to locate module 'std'
+E               if path.byte_length() == 0:
+E                                        ^
+E           /workspace/scratch/gnr-next.qHyoM1/golden-ratio-normality-research/kernel/.pixi/envs/default/bin/mojo: error: failed to parse the provided Mojo source module
+
+tools/replay_mojo.py:106: RuntimeError
+=============================== warnings summary ===============================
+../../../../opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/anyio/pytest_plugin.py:14
+  /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/anyio/pytest_plugin.py:14: PytestRemovedIn10Warning: _pytest.python.CallSpec2 has been renamed to CallSpec.
+  The CallSpec2 alias will be removed in pytest 10.
+  Update imports to use CallSpec instead.
+  See https://docs.pytest.org/en/stable/deprecations.html#callspec2-renamed
+    from _pytest.python import CallSpec2
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/proof_records/test_mojo_replay.py::test_mojo_implementation_replays_the_vectors
+1 failed, 117 passed, 2 skipped, 1 warning in 2.89s

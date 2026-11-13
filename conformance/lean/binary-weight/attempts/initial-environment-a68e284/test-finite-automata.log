@@ -1,0 +1,586 @@
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:1:1: error: unable to locate module 'std'
+"""Regressions for the finite_automata kernel.
+^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:1:1: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+"""Regressions for the finite_automata kernel.
+^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:15:6: error: unable to locate module 'std'
+from std.testing import assert_equal, assert_false, assert_true
+     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:17:
+kernel/finite_exact/__init__.mojo:34:1: error: unable to locate module 'std'
+
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:17:
+kernel/finite_exact/bigint_z.mojo:15:1: error: unable to locate module 'std'
+comptime BIGZ_BASE = UInt64(1000000000)
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:17:
+kernel/finite_exact/bigint_z.mojo:18:13: error: use of unknown declaration 'Copyable'
+struct BigZ(Copyable):
+            ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:17:
+kernel/finite_exact/bigint_z.mojo:157:14: error: unable to locate module 'std'
+def bigz_add(a: BigZ, b: BigZ) -> BigZ:
+             ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:17:
+kernel/finite_exact/bigint_z.mojo:157:23: error: unable to locate module 'std'
+def bigz_add(a: BigZ, b: BigZ) -> BigZ:
+                      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:17:
+kernel/finite_exact/bigint_z.mojo:157:35: error: unable to locate module 'std'
+def bigz_add(a: BigZ, b: BigZ) -> BigZ:
+                                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:17:
+kernel/finite_exact/bigint_z.mojo:206:13: error: unable to locate module 'std'
+def bigz_eq(a: BigZ, b: BigZ) -> Bool:
+            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:17:
+kernel/finite_exact/bigint_z.mojo:206:22: error: unable to locate module 'std'
+def bigz_eq(a: BigZ, b: BigZ) -> Bool:
+                     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:17:
+kernel/finite_exact/bigint_z.mojo:206:34: error: use of unknown declaration 'Bool'
+def bigz_eq(a: BigZ, b: BigZ) -> Bool:
+                                 ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:17:
+kernel/finite_exact/bigint_z.mojo:206:34: error: unable to locate module 'std'
+def bigz_eq(a: BigZ, b: BigZ) -> Bool:
+                                 ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:17:
+kernel/finite_exact/bigint_z.mojo:77:26: error: use of unknown declaration 'Int64'
+def bigz_from_i64(value: Int64) -> BigZ:
+                         ^~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:17:
+kernel/finite_exact/bigint_z.mojo:77:19: error: unable to locate module 'std'
+def bigz_from_i64(value: Int64) -> BigZ:
+                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:17:
+kernel/finite_exact/bigint_z.mojo:77:36: error: unable to locate module 'std'
+def bigz_from_i64(value: Int64) -> BigZ:
+                                   ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:17:
+kernel/finite_exact/bigint_z.mojo:182:14: error: unable to locate module 'std'
+def bigz_mul(a: BigZ, b: BigZ) -> BigZ:
+             ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:17:
+kernel/finite_exact/bigint_z.mojo:182:23: error: unable to locate module 'std'
+def bigz_mul(a: BigZ, b: BigZ) -> BigZ:
+                      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:17:
+kernel/finite_exact/bigint_z.mojo:182:35: error: unable to locate module 'std'
+def bigz_mul(a: BigZ, b: BigZ) -> BigZ:
+                                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:17:
+kernel/finite_exact/bigint_z.mojo:73:20: error: unable to locate module 'std'
+def bigz_zero() -> BigZ:
+                   ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:18:
+kernel/finite_automata/__init__.mojo:15:1: error: unable to locate module 'std'
+
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+kernel/finite_automata/dfa.mojo:1:1: error: unable to locate module 'std'
+"""Deterministic finite automata over an integer alphabet.
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+kernel/finite_automata/dfa.mojo:33:12: error: use of unknown declaration 'Copyable'
+struct Dfa(Copyable, Movable):
+           ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+kernel/finite_automata/dfa.mojo:251:20: error: unable to locate module 'std'
+def accepted_count(a: Dfa, length: Int) raises -> BigZ:
+                   ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+kernel/finite_automata/dfa.mojo:251:36: error: use of unknown declaration 'Int'
+def accepted_count(a: Dfa, length: Int) raises -> BigZ:
+                                   ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+kernel/finite_automata/dfa.mojo:251:28: error: unable to locate module 'std'
+def accepted_count(a: Dfa, length: Int) raises -> BigZ:
+                           ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+kernel/finite_automata/dfa.mojo:251:51: error: unable to locate module 'std'
+def accepted_count(a: Dfa, length: Int) raises -> BigZ:
+                                                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+kernel/finite_automata/dfa.mojo:108:16: error: unable to locate module 'std'
+def complement(a: Dfa) raises -> Dfa:
+               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+kernel/finite_automata/dfa.mojo:108:34: error: unable to locate module 'std'
+def complement(a: Dfa) raises -> Dfa:
+                                 ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+kernel/finite_automata/dfa.mojo:197:14: error: unable to locate module 'std'
+def cylinder(a: Dfa, tracks: Int, track: Int, radix: Int) raises -> Dfa:
+             ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+kernel/finite_automata/dfa.mojo:197:30: error: use of unknown declaration 'Int'
+def cylinder(a: Dfa, tracks: Int, track: Int, radix: Int) raises -> Dfa:
+                             ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+kernel/finite_automata/dfa.mojo:197:22: error: unable to locate module 'std'
+def cylinder(a: Dfa, tracks: Int, track: Int, radix: Int) raises -> Dfa:
+                     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+kernel/finite_automata/dfa.mojo:197:42: error: use of unknown declaration 'Int'
+def cylinder(a: Dfa, tracks: Int, track: Int, radix: Int) raises -> Dfa:
+                                         ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+kernel/finite_automata/dfa.mojo:197:35: error: unable to locate module 'std'
+def cylinder(a: Dfa, tracks: Int, track: Int, radix: Int) raises -> Dfa:
+                                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+kernel/finite_automata/dfa.mojo:197:54: error: use of unknown declaration 'Int'
+def cylinder(a: Dfa, tracks: Int, track: Int, radix: Int) raises -> Dfa:
+                                                     ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+kernel/finite_automata/dfa.mojo:197:47: error: unable to locate module 'std'
+def cylinder(a: Dfa, tracks: Int, track: Int, radix: Int) raises -> Dfa:
+                                              ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+kernel/finite_automata/dfa.mojo:197:69: error: unable to locate module 'std'
+def cylinder(a: Dfa, tracks: Int, track: Int, radix: Int) raises -> Dfa:
+                                                                    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+kernel/finite_automata/dfa.mojo:100:18: error: unable to locate module 'std'
+def intersection(a: Dfa, b: Dfa) raises -> Dfa:
+                 ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+kernel/finite_automata/dfa.mojo:100:26: error: unable to locate module 'std'
+def intersection(a: Dfa, b: Dfa) raises -> Dfa:
+                         ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+kernel/finite_automata/dfa.mojo:100:44: error: unable to locate module 'std'
+def intersection(a: Dfa, b: Dfa) raises -> Dfa:
+                                           ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+kernel/finite_automata/dfa.mojo:162:14: error: unable to locate module 'std'
+def is_empty(a: Dfa) raises -> Bool:
+             ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+kernel/finite_automata/dfa.mojo:162:32: error: use of unknown declaration 'Bool'
+def is_empty(a: Dfa) raises -> Bool:
+                               ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+kernel/finite_automata/dfa.mojo:162:32: error: unable to locate module 'std'
+def is_empty(a: Dfa) raises -> Bool:
+                               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+Imported from kernel/finite_automata/dfa.mojo:28:
+kernel/finite_automata/moore_minimisation.mojo:1:1: error: unable to locate module 'std'
+"""Minimisation of a DFA by Moore's partition refinement.
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+kernel/finite_automata/dfa.mojo:162:32: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+def is_empty(a: Dfa) raises -> Bool:
+                               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+Imported from kernel/finite_automata/dfa.mojo:28:
+kernel/finite_automata/moore_minimisation.mojo:19:15: error: unable to locate module 'std'
+def minimised(a: Dfa) raises -> Dfa:
+              ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+Imported from kernel/finite_automata/dfa.mojo:28:
+kernel/finite_automata/moore_minimisation.mojo:19:33: error: unable to locate module 'std'
+def minimised(a: Dfa) raises -> Dfa:
+                                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+Imported from kernel/finite_automata/dfa.mojo:29:
+kernel/finite_automata/subset_construction.mojo:1:1: error: unable to locate module 'std'
+"""Projection of a product-alphabet DFA by the subset construction.
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+Imported from kernel/finite_automata/dfa.mojo:28:
+kernel/finite_automata/moore_minimisation.mojo:19:33: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+def minimised(a: Dfa) raises -> Dfa:
+                                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+Imported from kernel/finite_automata/dfa.mojo:29:
+kernel/finite_automata/subset_construction.mojo:35:13: error: unable to locate module 'std'
+def project(a: Dfa, tracks: Int, track: Int) raises -> Dfa:
+            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+Imported from kernel/finite_automata/dfa.mojo:29:
+kernel/finite_automata/subset_construction.mojo:35:29: error: use of unknown declaration 'Int'
+def project(a: Dfa, tracks: Int, track: Int) raises -> Dfa:
+                            ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+Imported from kernel/finite_automata/dfa.mojo:29:
+kernel/finite_automata/subset_construction.mojo:35:21: error: unable to locate module 'std'
+def project(a: Dfa, tracks: Int, track: Int) raises -> Dfa:
+                    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+Imported from kernel/finite_automata/dfa.mojo:29:
+kernel/finite_automata/subset_construction.mojo:35:41: error: use of unknown declaration 'Int'
+def project(a: Dfa, tracks: Int, track: Int) raises -> Dfa:
+                                        ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+Imported from kernel/finite_automata/dfa.mojo:29:
+kernel/finite_automata/subset_construction.mojo:35:34: error: unable to locate module 'std'
+def project(a: Dfa, tracks: Int, track: Int) raises -> Dfa:
+                                 ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+Imported from kernel/finite_automata/dfa.mojo:29:
+kernel/finite_automata/subset_construction.mojo:35:56: error: unable to locate module 'std'
+def project(a: Dfa, tracks: Int, track: Int) raises -> Dfa:
+                                                       ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+kernel/finite_automata/dfa.mojo:166:19: error: unable to locate module 'std'
+def same_language(a: Dfa, b: Dfa) raises -> Bool:
+                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+kernel/finite_automata/dfa.mojo:166:27: error: unable to locate module 'std'
+def same_language(a: Dfa, b: Dfa) raises -> Bool:
+                          ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+kernel/finite_automata/dfa.mojo:166:45: error: use of unknown declaration 'Bool'
+def same_language(a: Dfa, b: Dfa) raises -> Bool:
+                                            ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+kernel/finite_automata/dfa.mojo:166:45: error: unable to locate module 'std'
+def same_language(a: Dfa, b: Dfa) raises -> Bool:
+                                            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+kernel/finite_automata/dfa.mojo:104:11: error: unable to locate module 'std'
+def union(a: Dfa, b: Dfa) raises -> Dfa:
+          ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+kernel/finite_automata/dfa.mojo:104:19: error: unable to locate module 'std'
+def union(a: Dfa, b: Dfa) raises -> Dfa:
+                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+kernel/finite_automata/dfa.mojo:104:37: error: unable to locate module 'std'
+def union(a: Dfa, b: Dfa) raises -> Dfa:
+                                    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+kernel/finite_automata/dfa.mojo:176:13: error: unable to locate module 'std'
+def widened(a: Dfa, letters: Int) raises -> Dfa:
+            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+kernel/finite_automata/dfa.mojo:176:30: error: use of unknown declaration 'Int'
+def widened(a: Dfa, letters: Int) raises -> Dfa:
+                             ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+kernel/finite_automata/dfa.mojo:176:21: error: unable to locate module 'std'
+def widened(a: Dfa, letters: Int) raises -> Dfa:
+                    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+kernel/finite_automata/dfa.mojo:176:45: error: unable to locate module 'std'
+def widened(a: Dfa, letters: Int) raises -> Dfa:
+                                            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+kernel/finite_automata/dfa.mojo:70:24: error: use of unknown declaration 'Int'
+def with_sink(letters: Int, partial: List[Int], accepting: List[Bool]) raises -> Dfa:
+                       ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+kernel/finite_automata/dfa.mojo:70:15: error: unable to locate module 'std'
+def with_sink(letters: Int, partial: List[Int], accepting: List[Bool]) raises -> Dfa:
+              ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+kernel/finite_automata/dfa.mojo:70:38: error: use of unknown declaration 'List'
+def with_sink(letters: Int, partial: List[Int], accepting: List[Bool]) raises -> Dfa:
+                                     ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+kernel/finite_automata/dfa.mojo:70:29: error: unable to locate module 'std'
+def with_sink(letters: Int, partial: List[Int], accepting: List[Bool]) raises -> Dfa:
+                            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+kernel/finite_automata/dfa.mojo:70:60: error: use of unknown declaration 'List'
+def with_sink(letters: Int, partial: List[Int], accepting: List[Bool]) raises -> Dfa:
+                                                           ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+kernel/finite_automata/dfa.mojo:70:49: error: unable to locate module 'std'
+def with_sink(letters: Int, partial: List[Int], accepting: List[Bool]) raises -> Dfa:
+                                                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+kernel/finite_automata/dfa.mojo:70:82: error: unable to locate module 'std'
+def with_sink(letters: Int, partial: List[Int], accepting: List[Bool]) raises -> Dfa:
+                                                                                 ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+kernel/finite_automata/dfa.mojo:127:13: error: unable to locate module 'std'
+def witness(a: Dfa) raises -> Witness:
+            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+kernel/finite_automata/dfa.mojo:116:16: error: use of unknown declaration 'Copyable'
+struct Witness(Copyable, Movable):
+               ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:19:
+kernel/finite_automata/dfa.mojo:127:31: error: unable to locate module 'std'
+def witness(a: Dfa) raises -> Witness:
+                              ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:34:19: error: use of unknown declaration 'Int'
+def counts(value: Int) raises -> BigZ:
+                  ^~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:34:12: error: unable to locate module 'std'
+def counts(value: Int) raises -> BigZ:
+           ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:34:34: error: unable to locate module 'std'
+def counts(value: Int) raises -> BigZ:
+                                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:39:27: error: unable to locate module 'std'
+def even_ones() raises -> Dfa:
+                          ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:46:63: error: unable to locate module 'std'
+def test_the_kernel_is_a_boolean_algebra_of_languages() raises:
+                                                              ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:49:14: error: use of unknown declaration 'List'
+    var one: List[Int] = [1]
+             ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:50:14: error: use of unknown declaration 'List'
+    var two: List[Int] = [1, 1]
+             ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:67:70: error: unable to locate module 'std'
+def test_emptiness_reports_the_instance_not_only_the_verdict() raises:
+                                                                     ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:70:16: error: use of unknown declaration 'List'
+    var delta: List[Int] = [4, 1, 2, 4, 4, 3, 4, 4, 4, 4]
+               ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:71:20: error: use of unknown declaration 'List'
+    var accepting: List[Bool] = [False, False, False, True, False]
+                   ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:86:67: error: unable to locate module 'std'
+def test_projection_discharges_one_existential_quantifier() raises:
+                                                                  ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:94:17: error: use of unknown declaration 'List'
+    var delta = List[Int]()
+                ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:95:20: error: use of unknown declaration 'List'
+    var accepting: List[Bool] = [True, False]
+                   ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:96:18: error: use of unknown declaration 'range'
+    for state in range(2):
+                 ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:101:17: error: use of unknown declaration 'List'
+    var over_x: List[Int] = [0, 1]
+                ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:106:15: error: use of unknown declaration 'List'
+    var ones: List[Int] = [1, 1]
+              ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:107:16: error: use of unknown declaration 'List'
+    var zeros: List[Int] = [0, 0]
+               ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:113:66: error: unable to locate module 'std'
+def test_minimisation_identifies_exactly_equal_languages() raises:
+                                                                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:116:16: error: use of unknown declaration 'List'
+    var delta: List[Int] = [2, 1, 1, 0, 0, 1, 3, 3]
+               ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:117:20: error: use of unknown declaration 'List'
+    var accepting: List[Bool] = [True, False, True, False]
+                   ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:129:69: error: unable to locate module 'std'
+def test_a_partial_table_is_completed_by_one_rejecting_sink() raises:
+                                                                    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:130:18: error: use of unknown declaration 'List'
+    var partial: List[Int] = [0, -1]
+                 ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:131:20: error: use of unknown declaration 'List'
+    var accepting: List[Bool] = [True]
+                   ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:134:16: error: use of unknown declaration 'List'
+    var zeros: List[Int] = [0, 0]
+               ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:135:14: error: use of unknown declaration 'List'
+    var one: List[Int] = [1]
+             ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:139:15: error: use of unknown declaration 'List'
+    var back: List[Int] = [1, 0]
+              ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:143:40: error: unable to locate module 'std'
+def one_marked_coincidence() raises -> Dfa:
+                                       ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:169:30: error: use of unknown declaration 'Int'
+def contains_letter(letters: Int, target: Int) raises -> Dfa:
+                             ^~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:169:21: error: unable to locate module 'std'
+def contains_letter(letters: Int, target: Int) raises -> Dfa:
+                    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:169:43: error: use of unknown declaration 'Int'
+def contains_letter(letters: Int, target: Int) raises -> Dfa:
+                                          ^~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:169:35: error: unable to locate module 'std'
+def contains_letter(letters: Int, target: Int) raises -> Dfa:
+                                  ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:169:58: error: unable to locate module 'std'
+def contains_letter(letters: Int, target: Int) raises -> Dfa:
+                                                         ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:179:16: error: use of unknown declaration 'List'
+def packed(xs: List[Int], ys: List[Int], zs: List[Int]) -> List[Int]:
+               ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:179:12: error: unable to locate module 'std'
+def packed(xs: List[Int], ys: List[Int], zs: List[Int]) -> List[Int]:
+           ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:179:31: error: use of unknown declaration 'List'
+def packed(xs: List[Int], ys: List[Int], zs: List[Int]) -> List[Int]:
+                              ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:179:27: error: unable to locate module 'std'
+def packed(xs: List[Int], ys: List[Int], zs: List[Int]) -> List[Int]:
+                          ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:179:46: error: use of unknown declaration 'List'
+def packed(xs: List[Int], ys: List[Int], zs: List[Int]) -> List[Int]:
+                                             ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:179:42: error: unable to locate module 'std'
+def packed(xs: List[Int], ys: List[Int], zs: List[Int]) -> List[Int]:
+                                         ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:179:60: error: use of unknown declaration 'List'
+def packed(xs: List[Int], ys: List[Int], zs: List[Int]) -> List[Int]:
+                                                           ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:179:60: error: unable to locate module 'std'
+def packed(xs: List[Int], ys: List[Int], zs: List[Int]) -> List[Int]:
+                                                           ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:186:76: error: unable to locate module 'std'
+def test_projection_over_three_tracks_eliminates_a_real_quantifier() raises:
+                                                                           ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:196:13: error: use of unknown declaration 'List'
+    var xs: List[Int] = [1, 0, 1]
+            ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:197:13: error: use of unknown declaration 'List'
+    var ys: List[Int] = [0, 0, 1]
+            ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:198:16: error: use of unknown declaration 'List'
+    var legal: List[Int] = [0, 0, 1]
+               ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:199:18: error: use of unknown declaration 'List'
+    var illegal: List[Int] = [1, 0, 0]
+                 ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:200:16: error: use of unknown declaration 'List'
+    var twice: List[Int] = [0, 0, 0]
+               ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:210:20: error: use of unknown declaration 'List'
+    var both_ones: List[Int] = [1, 0, 3]
+                   ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:211:16: error: use of unknown declaration 'List'
+    var never: List[Int] = [1, 2, 1]
+               ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:226:18: error: use of unknown declaration 'List'
+    var y_track: List[Int] = [0, 0, 1]
+                 ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:227:18: error: use of unknown declaration 'List'
+    var z_track: List[Int] = [0, 0, 1]
+                 ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:228:16: error: use of unknown declaration 'List'
+    var bad_z: List[Int] = [1, 0, 0]
+               ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:229:14: error: use of unknown declaration 'List'
+    var yz = List[Int]()
+             ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:230:18: error: use of unknown declaration 'List'
+    var yz_bad = List[Int]()
+                 ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:231:14: error: use of unknown declaration 'range'
+    for i in range(3):
+             ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:239:56: error: unable to locate module 'std'
+def test_two_quantifiers_eliminate_in_sequence() raises:
+                                                       ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:253:18: error: use of unknown declaration 'List'
+    var has_one: List[Int] = [0, 1, 0]
+                 ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:254:19: error: use of unknown declaration 'List'
+    var all_zero: List[Int] = [0, 0, 0]
+                  ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:263:64: error: unable to locate module 'std'
+def test_a_count_past_the_machine_range_is_still_exact() raises:
+                                                               ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:271:16: error: use of unknown declaration 'List'
+    var delta: List[Int] = [0, 0]
+               ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:272:20: error: use of unknown declaration 'List'
+    var accepting: List[Bool] = [True]
+                   ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:276:14: error: use of unknown declaration 'range'
+    for n in range(65):
+             ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:281:64: error: unable to locate module 'std'
+def test_a_track_condition_enters_and_leaves_a_product() raises:
+                                                               ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:305:18: error: unable to locate module 'std'
+    var shrunk = False
+                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:306:5: error: unable to locate module 'std'
+    try:
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:312:22: error: unable to locate module 'std'
+    var mismatched = False
+                     ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:313:5: error: unable to locate module 'std'
+    try:
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:320:18: error: unable to locate module 'std'
+def main() raises:
+                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:320:5: error: unable to locate module 'std'
+def main() raises:
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:320:9: error: 'builtin' does not refer to a nested package
+def main() raises:
+        ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:321:5: error: unable to locate module 'std'
+    test_the_kernel_is_a_boolean_algebra_of_languages()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:322:5: error: use of unknown declaration 'print'
+    print("[PASS] test_the_kernel_is_a_boolean_algebra_of_languages")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:323:5: error: unable to locate module 'std'
+    test_emptiness_reports_the_instance_not_only_the_verdict()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:324:5: error: use of unknown declaration 'print'
+    print("[PASS] test_emptiness_reports_the_instance_not_only_the_verdict")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:325:5: error: unable to locate module 'std'
+    test_projection_discharges_one_existential_quantifier()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:326:5: error: use of unknown declaration 'print'
+    print("[PASS] test_projection_discharges_one_existential_quantifier")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:327:5: error: unable to locate module 'std'
+    test_minimisation_identifies_exactly_equal_languages()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:328:5: error: use of unknown declaration 'print'
+    print("[PASS] test_minimisation_identifies_exactly_equal_languages")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:329:5: error: unable to locate module 'std'
+    test_a_partial_table_is_completed_by_one_rejecting_sink()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:330:5: error: use of unknown declaration 'print'
+    print("[PASS] test_a_partial_table_is_completed_by_one_rejecting_sink")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:331:5: error: unable to locate module 'std'
+    test_projection_over_three_tracks_eliminates_a_real_quantifier()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:332:5: error: use of unknown declaration 'print'
+    print("[PASS] test_projection_over_three_tracks_eliminates_a_real_quantifier")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:333:5: error: unable to locate module 'std'
+    test_two_quantifiers_eliminate_in_sequence()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:334:5: error: use of unknown declaration 'print'
+    print("[PASS] test_two_quantifiers_eliminate_in_sequence")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:335:5: error: unable to locate module 'std'
+    test_a_count_past_the_machine_range_is_still_exact()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:336:5: error: use of unknown declaration 'print'
+    print("[PASS] test_a_count_past_the_machine_range_is_still_exact")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:337:5: error: unable to locate module 'std'
+    test_a_track_condition_enters_and_leaves_a_product()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:338:5: error: use of unknown declaration 'print'
+    print("[PASS] test_a_track_condition_enters_and_leaves_a_product")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_automata/test_dfa.mojo:339:5: error: use of unknown declaration 'print'
+    print("9 finite_automata tests passed.")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/golden-ratio-normality-research/kernel/.pixi/envs/default/bin/mojo: error: failed to parse the provided Mojo source module

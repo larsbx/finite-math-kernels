@@ -1,0 +1,119 @@
+FFFF                                                                     [100%]
+=================================== FAILURES ===================================
+________ test_the_choreography_satisfies_every_invariant_and_terminates ________
+
+tmp_path = PosixPath('/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-repository-gates/tmp-lpomrfpm/pytest-of-agent/pytest-0/test_the_choreography_satisfie0')
+
+    def test_the_choreography_satisfies_every_invariant_and_terminates(tmp_path):
+>       log = tlc(tmp_path, "none")
+              ^^^^^^^^^^^^^^^^^^^^^
+
+tests/finite_field_orbit/test_choreography.py:36: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-repository-gates/tmp-lpomrfpm/pytest-of-agent/pytest-0/test_the_choreography_satisfie0')
+mutant = 'none'
+
+    def tlc(tmp_path: Path, mutant: str) -> str:
+        jar = os.environ.get("TLA_TOOLS", "")
+>       assert jar and Path(jar).is_file(), "set TLA_TOOLS to a tla2tools.jar"
+E       AssertionError: set TLA_TOOLS to a tla2tools.jar
+E       assert ('')
+
+tests/finite_field_orbit/test_choreography.py:25: AssertionError
+_ test_each_broken_orchestrator_is_caught[accept_unreplayed-NoAcceptWithoutReplay] _
+
+tmp_path = PosixPath('/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-repository-gates/tmp-lpomrfpm/pytest-of-agent/pytest-0/test_each_broken_orchestrator_0')
+mutant = 'accept_unreplayed', invariant = 'NoAcceptWithoutReplay'
+
+    @pytest.mark.parametrize(("mutant", "invariant"), [
+        ("accept_unreplayed", "NoAcceptWithoutReplay"),
+        ("retry_after_verdict", "NoRetryAfterVerdict"),
+        ("unbounded_retry", "BoundedRestarts"),
+    ])
+    def test_each_broken_orchestrator_is_caught(tmp_path, mutant, invariant):
+>       log = tlc(tmp_path, mutant)
+              ^^^^^^^^^^^^^^^^^^^^^
+
+tests/finite_field_orbit/test_choreography.py:46: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-repository-gates/tmp-lpomrfpm/pytest-of-agent/pytest-0/test_each_broken_orchestrator_0')
+mutant = 'accept_unreplayed'
+
+    def tlc(tmp_path: Path, mutant: str) -> str:
+        jar = os.environ.get("TLA_TOOLS", "")
+>       assert jar and Path(jar).is_file(), "set TLA_TOOLS to a tla2tools.jar"
+E       AssertionError: set TLA_TOOLS to a tla2tools.jar
+E       assert ('')
+
+tests/finite_field_orbit/test_choreography.py:25: AssertionError
+_ test_each_broken_orchestrator_is_caught[retry_after_verdict-NoRetryAfterVerdict] _
+
+tmp_path = PosixPath('/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-repository-gates/tmp-lpomrfpm/pytest-of-agent/pytest-0/test_each_broken_orchestrator_1')
+mutant = 'retry_after_verdict', invariant = 'NoRetryAfterVerdict'
+
+    @pytest.mark.parametrize(("mutant", "invariant"), [
+        ("accept_unreplayed", "NoAcceptWithoutReplay"),
+        ("retry_after_verdict", "NoRetryAfterVerdict"),
+        ("unbounded_retry", "BoundedRestarts"),
+    ])
+    def test_each_broken_orchestrator_is_caught(tmp_path, mutant, invariant):
+>       log = tlc(tmp_path, mutant)
+              ^^^^^^^^^^^^^^^^^^^^^
+
+tests/finite_field_orbit/test_choreography.py:46: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-repository-gates/tmp-lpomrfpm/pytest-of-agent/pytest-0/test_each_broken_orchestrator_1')
+mutant = 'retry_after_verdict'
+
+    def tlc(tmp_path: Path, mutant: str) -> str:
+        jar = os.environ.get("TLA_TOOLS", "")
+>       assert jar and Path(jar).is_file(), "set TLA_TOOLS to a tla2tools.jar"
+E       AssertionError: set TLA_TOOLS to a tla2tools.jar
+E       assert ('')
+
+tests/finite_field_orbit/test_choreography.py:25: AssertionError
+___ test_each_broken_orchestrator_is_caught[unbounded_retry-BoundedRestarts] ___
+
+tmp_path = PosixPath('/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-repository-gates/tmp-lpomrfpm/pytest-of-agent/pytest-0/test_each_broken_orchestrator_2')
+mutant = 'unbounded_retry', invariant = 'BoundedRestarts'
+
+    @pytest.mark.parametrize(("mutant", "invariant"), [
+        ("accept_unreplayed", "NoAcceptWithoutReplay"),
+        ("retry_after_verdict", "NoRetryAfterVerdict"),
+        ("unbounded_retry", "BoundedRestarts"),
+    ])
+    def test_each_broken_orchestrator_is_caught(tmp_path, mutant, invariant):
+>       log = tlc(tmp_path, mutant)
+              ^^^^^^^^^^^^^^^^^^^^^
+
+tests/finite_field_orbit/test_choreography.py:46: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/.build/binary-weight-repository-gates/tmp-lpomrfpm/pytest-of-agent/pytest-0/test_each_broken_orchestrator_2')
+mutant = 'unbounded_retry'
+
+    def tlc(tmp_path: Path, mutant: str) -> str:
+        jar = os.environ.get("TLA_TOOLS", "")
+>       assert jar and Path(jar).is_file(), "set TLA_TOOLS to a tla2tools.jar"
+E       AssertionError: set TLA_TOOLS to a tla2tools.jar
+E       assert ('')
+
+tests/finite_field_orbit/test_choreography.py:25: AssertionError
+=============================== warnings summary ===============================
+../../../../opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/anyio/pytest_plugin.py:14
+  /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/anyio/pytest_plugin.py:14: PytestRemovedIn10Warning: _pytest.python.CallSpec2 has been renamed to CallSpec.
+  The CallSpec2 alias will be removed in pytest 10.
+  Update imports to use CallSpec instead.
+  See https://docs.pytest.org/en/stable/deprecations.html#callspec2-renamed
+    from _pytest.python import CallSpec2
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/finite_field_orbit/test_choreography.py::test_the_choreography_satisfies_every_invariant_and_terminates
+FAILED tests/finite_field_orbit/test_choreography.py::test_each_broken_orchestrator_is_caught[accept_unreplayed-NoAcceptWithoutReplay]
+FAILED tests/finite_field_orbit/test_choreography.py::test_each_broken_orchestrator_is_caught[retry_after_verdict-NoRetryAfterVerdict]
+FAILED tests/finite_field_orbit/test_choreography.py::test_each_broken_orchestrator_is_caught[unbounded_retry-BoundedRestarts]
+4 failed, 1 warning in 0.16s

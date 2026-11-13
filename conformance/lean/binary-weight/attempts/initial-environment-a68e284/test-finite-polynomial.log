@@ -1,0 +1,292 @@
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:1:1: error: unable to locate module 'std'
+"""Executable laws for finite_polynomial and the cyclotomic foundation.
+^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:1:1: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+"""Executable laws for finite_polynomial and the cyclotomic foundation.
+^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:7:6: error: unable to locate module 'std'
+from std.testing import assert_equal, assert_false, assert_true
+     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:9:
+kernel/finite_exact/__init__.mojo:34:1: error: unable to locate module 'std'
+
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:10:
+kernel/finite_exact/bigint_z.mojo:15:1: error: unable to locate module 'std'
+comptime BIGZ_BASE = UInt64(1000000000)
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:10:
+kernel/finite_exact/bigint_z.mojo:18:13: error: use of unknown declaration 'Copyable'
+struct BigZ(Copyable):
+            ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:10:
+kernel/finite_exact/bigint_z.mojo:157:14: error: unable to locate module 'std'
+def bigz_add(a: BigZ, b: BigZ) -> BigZ:
+             ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:10:
+kernel/finite_exact/bigint_z.mojo:157:23: error: unable to locate module 'std'
+def bigz_add(a: BigZ, b: BigZ) -> BigZ:
+                      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:10:
+kernel/finite_exact/bigint_z.mojo:157:35: error: unable to locate module 'std'
+def bigz_add(a: BigZ, b: BigZ) -> BigZ:
+                                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:10:
+kernel/finite_exact/bigint_z.mojo:206:13: error: unable to locate module 'std'
+def bigz_eq(a: BigZ, b: BigZ) -> Bool:
+            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:10:
+kernel/finite_exact/bigint_z.mojo:206:22: error: unable to locate module 'std'
+def bigz_eq(a: BigZ, b: BigZ) -> Bool:
+                     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:10:
+kernel/finite_exact/bigint_z.mojo:206:34: error: use of unknown declaration 'Bool'
+def bigz_eq(a: BigZ, b: BigZ) -> Bool:
+                                 ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:10:
+kernel/finite_exact/bigint_z.mojo:206:34: error: unable to locate module 'std'
+def bigz_eq(a: BigZ, b: BigZ) -> Bool:
+                                 ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:10:
+kernel/finite_exact/bigint_z.mojo:77:26: error: use of unknown declaration 'Int64'
+def bigz_from_i64(value: Int64) -> BigZ:
+                         ^~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:10:
+kernel/finite_exact/bigint_z.mojo:77:19: error: unable to locate module 'std'
+def bigz_from_i64(value: Int64) -> BigZ:
+                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:10:
+kernel/finite_exact/bigint_z.mojo:77:36: error: unable to locate module 'std'
+def bigz_from_i64(value: Int64) -> BigZ:
+                                   ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:10:
+kernel/finite_exact/bigint_z.mojo:182:14: error: unable to locate module 'std'
+def bigz_mul(a: BigZ, b: BigZ) -> BigZ:
+             ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:10:
+kernel/finite_exact/bigint_z.mojo:182:23: error: unable to locate module 'std'
+def bigz_mul(a: BigZ, b: BigZ) -> BigZ:
+                      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:10:
+kernel/finite_exact/bigint_z.mojo:182:35: error: unable to locate module 'std'
+def bigz_mul(a: BigZ, b: BigZ) -> BigZ:
+                                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:16:
+kernel/finite_polynomial/__init__.mojo:42:1: error: unable to locate module 'std'
+from .taylor_model import (
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:17:
+kernel/finite_polynomial/polynomial_z.mojo:14:1: error: unable to locate module 'std'
+from finite_exact.bigint_z import (
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:17:
+Imported from kernel/finite_polynomial/polynomial_z.mojo:25:
+kernel/finite_polynomial/cyclotomic_polynomial.mojo:17:1: error: unable to locate module 'std'
+from finite_polynomial.polynomial_z import (
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:17:
+Imported from kernel/finite_polynomial/polynomial_z.mojo:25:
+kernel/finite_polynomial/cyclotomic_polynomial.mojo:49:34: error: use of unknown declaration 'Int'
+def cyclotomic_degree(conductor: Int) -> Int:
+                                 ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:17:
+Imported from kernel/finite_polynomial/polynomial_z.mojo:25:
+kernel/finite_polynomial/cyclotomic_polynomial.mojo:49:23: error: unable to locate module 'std'
+def cyclotomic_degree(conductor: Int) -> Int:
+                      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:17:
+Imported from kernel/finite_polynomial/polynomial_z.mojo:25:
+kernel/finite_polynomial/cyclotomic_polynomial.mojo:49:42: error: use of unknown declaration 'Int'
+def cyclotomic_degree(conductor: Int) -> Int:
+                                         ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:17:
+Imported from kernel/finite_polynomial/polynomial_z.mojo:25:
+kernel/finite_polynomial/cyclotomic_polynomial.mojo:49:42: error: unable to locate module 'std'
+def cyclotomic_degree(conductor: Int) -> Int:
+                                         ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:17:
+Imported from kernel/finite_polynomial/polynomial_z.mojo:25:
+kernel/finite_polynomial/cyclotomic_polynomial.mojo:29:38: error: use of unknown declaration 'Int'
+def cyclotomic_polynomial(conductor: Int) -> PolyZ:
+                                     ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:17:
+Imported from kernel/finite_polynomial/polynomial_z.mojo:25:
+kernel/finite_polynomial/cyclotomic_polynomial.mojo:29:27: error: unable to locate module 'std'
+def cyclotomic_polynomial(conductor: Int) -> PolyZ:
+                          ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:17:
+kernel/finite_polynomial/polynomial_z.mojo:31:14: error: use of unknown declaration 'Copyable'
+struct PolyZ(Copyable, Movable):
+             ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:17:
+Imported from kernel/finite_polynomial/polynomial_z.mojo:25:
+kernel/finite_polynomial/cyclotomic_polynomial.mojo:29:46: error: unable to locate module 'std'
+def cyclotomic_polynomial(conductor: Int) -> PolyZ:
+                                             ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:17:
+Imported from kernel/finite_polynomial/polynomial_z.mojo:25:
+kernel/finite_polynomial/cyclotomic_polynomial.mojo:54:44: error: use of unknown declaration 'Int'
+def cyclotomic_product_identity(conductor: Int) -> Bool:
+                                           ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:17:
+Imported from kernel/finite_polynomial/polynomial_z.mojo:25:
+kernel/finite_polynomial/cyclotomic_polynomial.mojo:54:33: error: unable to locate module 'std'
+def cyclotomic_product_identity(conductor: Int) -> Bool:
+                                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:17:
+Imported from kernel/finite_polynomial/polynomial_z.mojo:25:
+kernel/finite_polynomial/cyclotomic_polynomial.mojo:54:52: error: use of unknown declaration 'Bool'
+def cyclotomic_product_identity(conductor: Int) -> Bool:
+                                                   ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:17:
+Imported from kernel/finite_polynomial/polynomial_z.mojo:25:
+kernel/finite_polynomial/cyclotomic_polynomial.mojo:54:52: error: unable to locate module 'std'
+def cyclotomic_product_identity(conductor: Int) -> Bool:
+                                                   ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:17:
+kernel/finite_polynomial/polynomial_z.mojo:189:26: error: unable to locate module 'std'
+def poly_div_exact_monic(dividend: PolyZ, divisor: PolyZ) -> PolyDivResult:
+                         ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:17:
+kernel/finite_polynomial/polynomial_z.mojo:189:43: error: unable to locate module 'std'
+def poly_div_exact_monic(dividend: PolyZ, divisor: PolyZ) -> PolyDivResult:
+                                          ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:17:
+kernel/finite_polynomial/polynomial_z.mojo:49:22: error: use of unknown declaration 'Copyable'
+struct PolyDivResult(Copyable, Movable):
+                     ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:17:
+kernel/finite_polynomial/polynomial_z.mojo:189:62: error: unable to locate module 'std'
+def poly_div_exact_monic(dividend: PolyZ, divisor: PolyZ) -> PolyDivResult:
+                                                             ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:17:
+kernel/finite_polynomial/polynomial_z.mojo:116:16: error: unable to locate module 'std'
+def poly_equal(left: PolyZ, right: PolyZ) -> Bool:
+               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:17:
+kernel/finite_polynomial/polynomial_z.mojo:116:29: error: unable to locate module 'std'
+def poly_equal(left: PolyZ, right: PolyZ) -> Bool:
+                            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:17:
+kernel/finite_polynomial/polynomial_z.mojo:116:46: error: use of unknown declaration 'Bool'
+def poly_equal(left: PolyZ, right: PolyZ) -> Bool:
+                                             ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:17:
+kernel/finite_polynomial/polynomial_z.mojo:116:46: error: unable to locate module 'std'
+def poly_equal(left: PolyZ, right: PolyZ) -> Bool:
+                                             ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:17:
+kernel/finite_polynomial/polynomial_z.mojo:80:36: error: use of unknown declaration 'List'
+def poly_from_coeffs(coefficients: List[BigZ]) -> PolyZ:
+                                   ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:17:
+kernel/finite_polynomial/polynomial_z.mojo:80:22: error: unable to locate module 'std'
+def poly_from_coeffs(coefficients: List[BigZ]) -> PolyZ:
+                     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:17:
+kernel/finite_polynomial/polynomial_z.mojo:80:51: error: unable to locate module 'std'
+def poly_from_coeffs(coefficients: List[BigZ]) -> PolyZ:
+                                                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:17:
+kernel/finite_polynomial/polynomial_z.mojo:93:33: error: use of unknown declaration 'List'
+def poly_from_i64(coefficients: List[Int64]) -> PolyZ:
+                                ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:17:
+kernel/finite_polynomial/polynomial_z.mojo:93:19: error: unable to locate module 'std'
+def poly_from_i64(coefficients: List[Int64]) -> PolyZ:
+                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:17:
+kernel/finite_polynomial/polynomial_z.mojo:93:49: error: unable to locate module 'std'
+def poly_from_i64(coefficients: List[Int64]) -> PolyZ:
+                                                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:17:
+kernel/finite_polynomial/polynomial_z.mojo:149:14: error: unable to locate module 'std'
+def poly_mul(left: PolyZ, right: PolyZ) -> PolyZ:
+             ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:17:
+kernel/finite_polynomial/polynomial_z.mojo:149:27: error: unable to locate module 'std'
+def poly_mul(left: PolyZ, right: PolyZ) -> PolyZ:
+                          ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:17:
+kernel/finite_polynomial/polynomial_z.mojo:149:44: error: unable to locate module 'std'
+def poly_mul(left: PolyZ, right: PolyZ) -> PolyZ:
+                                           ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:17:
+kernel/finite_polynomial/polynomial_z.mojo:171:33: error: use of unknown declaration 'Int'
+def poly_xn_minus_one(exponent: Int) -> PolyZ:
+                                ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:17:
+kernel/finite_polynomial/polynomial_z.mojo:171:23: error: unable to locate module 'std'
+def poly_xn_minus_one(exponent: Int) -> PolyZ:
+                      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:17:
+kernel/finite_polynomial/polynomial_z.mojo:171:41: error: unable to locate module 'std'
+def poly_xn_minus_one(exponent: Int) -> PolyZ:
+                                        ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:29:39: error: unable to locate module 'std'
+def test_exact_monic_division() raises:
+                                      ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:45:47: error: unable to locate module 'std'
+def test_known_cyclotomic_polynomials() raises:
+                                              ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:74:46: error: unable to locate module 'std'
+def test_cyclotomic_product_identity() raises:
+                                             ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:75:22: error: use of unknown declaration 'range'
+    for conductor in range(1, 17):
+                     ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:80:37: error: unable to locate module 'std'
+def test_cyclotomic_degrees() raises:
+                                    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:91:56: error: unable to locate module 'std'
+def test_polynomial_coefficients_are_unbounded() raises:
+                                                       ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:96:18: error: use of unknown declaration 'List'
+    var coeffs = List[BigZ]()
+                 ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:112:18: error: unable to locate module 'std'
+def main() raises:
+                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:112:5: error: unable to locate module 'std'
+def main() raises:
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:112:9: error: 'builtin' does not refer to a nested package
+def main() raises:
+        ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:113:5: error: unable to locate module 'std'
+    test_exact_monic_division()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:114:5: error: use of unknown declaration 'print'
+    print("[PASS] test_exact_monic_division")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:115:5: error: unable to locate module 'std'
+    test_known_cyclotomic_polynomials()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:116:5: error: use of unknown declaration 'print'
+    print("[PASS] test_known_cyclotomic_polynomials")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:117:5: error: unable to locate module 'std'
+    test_cyclotomic_product_identity()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:118:5: error: use of unknown declaration 'print'
+    print("[PASS] test_cyclotomic_product_identity")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:119:5: error: unable to locate module 'std'
+    test_cyclotomic_degrees()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:120:5: error: use of unknown declaration 'print'
+    print("[PASS] test_cyclotomic_degrees")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:121:5: error: unable to locate module 'std'
+    test_polynomial_coefficients_are_unbounded()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:122:5: error: use of unknown declaration 'print'
+    print("[PASS] test_polynomial_coefficients_are_unbounded")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_polynomial_z.mojo:123:5: error: use of unknown declaration 'print'
+    print("5 finite_polynomial Mojo tests passed.")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/golden-ratio-normality-research/kernel/.pixi/envs/default/bin/mojo: error: failed to parse the provided Mojo source module

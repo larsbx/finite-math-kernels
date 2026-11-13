@@ -1,0 +1,6 @@
+[PASS] test_exact_monic_division
+[PASS] test_known_cyclotomic_polynomials
+[PASS] test_cyclotomic_product_identity
+[PASS] test_cyclotomic_degrees
+[PASS] test_polynomial_coefficients_are_unbounded
+5 finite_polynomial Mojo tests passed.

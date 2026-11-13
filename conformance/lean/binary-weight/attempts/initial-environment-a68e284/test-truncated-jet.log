@@ -1,0 +1,437 @@
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:1:1: error: unable to locate module 'std'
+"""Truncated jets and Taylor models over a CoefficientRing.
+^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:1:1: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+"""Truncated jets and Taylor models over a CoefficientRing.
+^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:9:6: error: unable to locate module 'std'
+from std.testing import assert_equal, assert_false, assert_true
+     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:11:
+kernel/finite_exact/__init__.mojo:34:1: error: unable to locate module 'std'
+
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:11:
+kernel/finite_exact/closed_q.mojo:9:1: error: unable to locate module 'std'
+from finite_exact.rat_q import Q, q_min, q_max, q_rejected
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:11:
+kernel/finite_exact/closed_q.mojo:128:18: error: use of unknown declaration 'Copyable'
+struct ComplexIQ(Copyable):
+                 ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:11:
+kernel/finite_exact/closed_q.mojo:32:11: error: use of unknown declaration 'Copyable'
+struct IQ(Copyable):
+          ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:12:
+kernel/finite_exact/field.mojo:15:1: error: unable to locate module 'std'
+from finite_exact.rat_q import Q, q_rejected
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:12:
+kernel/finite_exact/field.mojo:18:7: error: unable to locate module 'std'
+trait ExactField:
+      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:12:
+kernel/finite_exact/field.mojo:70:8: error: unable to locate module 'std'
+struct QField(ExactField):
+       ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:13:
+kernel/finite_exact/fp.mojo:10:1: error: unable to locate module 'std'
+from finite_exact.field import ExactField
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:13:
+kernel/finite_exact/fp.mojo:27:14: error: use of unknown declaration 'Int64'
+struct Fp[p: Int64](Copyable, Writable):
+             ^~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:13:
+kernel/finite_exact/fp.mojo:107:19: error: use of unknown declaration 'Int64'
+struct FpField[p: Int64](ExactField):
+                  ^~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:14:
+kernel/finite_exact/rat_q.mojo:13:1: error: unable to locate module 'std'
+from finite_exact.bigint_z import BigZ, bigz_add, bigz_canonical_bytes, bigz_div_exact, bigz_eq, bigz_from_i64, bigz_gcd, bigz_is_canonical, bigz_lt, bigz_mul, bigz_neg, bigz_sub, bigz_zero
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:13:
+kernel/finite_exact/fp.mojo:107:16: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+struct FpField[p: Int64](ExactField):
+               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:14:
+kernel/finite_exact/rat_q.mojo:16:10: error: use of unknown declaration 'Copyable'
+struct Q(Copyable):
+         ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:14:
+kernel/finite_exact/rat_q.mojo:137:21: error: unable to locate module 'std'
+def q_rejected() -> Q:
+                    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:15:
+kernel/finite_polynomial/__init__.mojo:42:1: error: unable to locate module 'std'
+from .taylor_model import (
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:15:
+kernel/finite_polynomial/coefficient_ring.mojo:31:1: error: unable to locate module 'std'
+from finite_exact.closed_q import ComplexIQ
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:15:
+kernel/finite_polynomial/coefficient_ring.mojo:36:23: error: module 'coefficient_ring' has no declaration 'Copyable'
+trait CoefficientRing(Copyable, Deinitable):
+                      ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:16:
+kernel/finite_polynomial/cyclotomic_field.mojo:25:1: error: unable to locate module 'std'
+from finite_exact.exact_decimal import q_decimal
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:17:
+kernel/finite_polynomial/cyclotomic_q.mojo:17:1: error: unable to locate module 'std'
+from finite_exact.integer_gcd import gcd_int
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:17:
+kernel/finite_polynomial/cyclotomic_q.mojo:35:20: error: use of unknown declaration 'Copyable'
+struct CyclotomicQ(Copyable, Movable):
+                   ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:17:
+kernel/finite_polynomial/cyclotomic_q.mojo:136:39: error: use of unknown declaration 'Int'
+def cyclotomic_from_coeffs(conductor: Int, coefficients: List[Q]) -> CyclotomicQ:
+                                      ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:17:
+kernel/finite_polynomial/cyclotomic_q.mojo:136:28: error: unable to locate module 'std'
+def cyclotomic_from_coeffs(conductor: Int, coefficients: List[Q]) -> CyclotomicQ:
+                           ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:17:
+kernel/finite_polynomial/cyclotomic_q.mojo:136:58: error: use of unknown declaration 'List'
+def cyclotomic_from_coeffs(conductor: Int, coefficients: List[Q]) -> CyclotomicQ:
+                                                         ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:17:
+kernel/finite_polynomial/cyclotomic_q.mojo:136:44: error: unable to locate module 'std'
+def cyclotomic_from_coeffs(conductor: Int, coefficients: List[Q]) -> CyclotomicQ:
+                                           ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:17:
+kernel/finite_polynomial/cyclotomic_q.mojo:136:70: error: unable to locate module 'std'
+def cyclotomic_from_coeffs(conductor: Int, coefficients: List[Q]) -> CyclotomicQ:
+                                                                     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:17:
+kernel/finite_polynomial/cyclotomic_q.mojo:153:21: error: use of unknown declaration 'Int'
+def zeta(conductor: Int) -> CyclotomicQ:
+                    ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:17:
+kernel/finite_polynomial/cyclotomic_q.mojo:153:10: error: unable to locate module 'std'
+def zeta(conductor: Int) -> CyclotomicQ:
+         ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:17:
+kernel/finite_polynomial/cyclotomic_q.mojo:153:29: error: unable to locate module 'std'
+def zeta(conductor: Int) -> CyclotomicQ:
+                            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:19:
+kernel/finite_polynomial/taylor_model.mojo:32:1: error: unable to locate module 'std'
+from finite_exact.closed_q import ComplexIQ
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:17:
+kernel/finite_polynomial/cyclotomic_q.mojo:153:10: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+def zeta(conductor: Int) -> CyclotomicQ:
+         ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:19:
+kernel/finite_polynomial/taylor_model.mojo:44:21: error: unable to locate module 'std'
+def enclosure_power(box: ComplexIQ, exponent: Int) -> ComplexIQ:
+                    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:19:
+kernel/finite_polynomial/taylor_model.mojo:44:47: error: use of unknown declaration 'Int'
+def enclosure_power(box: ComplexIQ, exponent: Int) -> ComplexIQ:
+                                              ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:19:
+kernel/finite_polynomial/taylor_model.mojo:44:37: error: unable to locate module 'std'
+def enclosure_power(box: ComplexIQ, exponent: Int) -> ComplexIQ:
+                                    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:19:
+kernel/finite_polynomial/taylor_model.mojo:44:55: error: unable to locate module 'std'
+def enclosure_power(box: ComplexIQ, exponent: Int) -> ComplexIQ:
+                                                      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:19:
+kernel/finite_polynomial/taylor_model.mojo:83:20: error: use of unknown declaration 'Copyable'
+struct TaylorModel(Copyable, Movable):
+                   ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:19:
+kernel/finite_polynomial/taylor_model.mojo:139:16: error: unable to locate module 'std'
+def taylor_add(left: TaylorModel, right: TaylorModel) -> TaylorModel:
+               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:19:
+kernel/finite_polynomial/taylor_model.mojo:139:35: error: unable to locate module 'std'
+def taylor_add(left: TaylorModel, right: TaylorModel) -> TaylorModel:
+                                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:19:
+kernel/finite_polynomial/taylor_model.mojo:139:58: error: unable to locate module 'std'
+def taylor_add(left: TaylorModel, right: TaylorModel) -> TaylorModel:
+                                                         ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:19:
+kernel/finite_polynomial/taylor_model.mojo:130:25: error: unable to locate module 'std'
+def taylor_add_constant(model: TaylorModel, value: ComplexIQ) -> TaylorModel:
+                        ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:19:
+kernel/finite_polynomial/taylor_model.mojo:130:45: error: unable to locate module 'std'
+def taylor_add_constant(model: TaylorModel, value: ComplexIQ) -> TaylorModel:
+                                            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:19:
+kernel/finite_polynomial/taylor_model.mojo:130:66: error: unable to locate module 'std'
+def taylor_add_constant(model: TaylorModel, value: ComplexIQ) -> TaylorModel:
+                                                                 ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:19:
+kernel/finite_polynomial/taylor_model.mojo:167:16: error: unable to locate module 'std'
+def taylor_mul(left: TaylorModel, right: TaylorModel) -> TaylorModel:
+               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:19:
+kernel/finite_polynomial/taylor_model.mojo:167:35: error: unable to locate module 'std'
+def taylor_mul(left: TaylorModel, right: TaylorModel) -> TaylorModel:
+                                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:19:
+kernel/finite_polynomial/taylor_model.mojo:167:58: error: unable to locate module 'std'
+def taylor_mul(left: TaylorModel, right: TaylorModel) -> TaylorModel:
+                                                         ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:19:
+kernel/finite_polynomial/taylor_model.mojo:183:19: error: unable to locate module 'std'
+def taylor_square(model: TaylorModel) -> TaylorModel:
+                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:19:
+kernel/finite_polynomial/taylor_model.mojo:183:42: error: unable to locate module 'std'
+def taylor_square(model: TaylorModel) -> TaylorModel:
+                                         ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:19:
+kernel/finite_polynomial/taylor_model.mojo:115:21: error: unable to locate module 'std'
+def taylor_variable(centre: ComplexIQ, domain: ComplexIQ, order: Int) -> TaylorModel:
+                    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:19:
+kernel/finite_polynomial/taylor_model.mojo:115:40: error: unable to locate module 'std'
+def taylor_variable(centre: ComplexIQ, domain: ComplexIQ, order: Int) -> TaylorModel:
+                                       ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:19:
+kernel/finite_polynomial/taylor_model.mojo:115:66: error: use of unknown declaration 'Int'
+def taylor_variable(centre: ComplexIQ, domain: ComplexIQ, order: Int) -> TaylorModel:
+                                                                 ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:19:
+kernel/finite_polynomial/taylor_model.mojo:115:59: error: unable to locate module 'std'
+def taylor_variable(centre: ComplexIQ, domain: ComplexIQ, order: Int) -> TaylorModel:
+                                                          ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:19:
+kernel/finite_polynomial/taylor_model.mojo:115:74: error: unable to locate module 'std'
+def taylor_variable(centre: ComplexIQ, domain: ComplexIQ, order: Int) -> TaylorModel:
+                                                                         ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:27:
+kernel/finite_polynomial/truncated_jet.mojo:22:1: error: unable to locate module 'std'
+from finite_polynomial.coefficient_ring import CoefficientField, CoefficientRing
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:19:
+kernel/finite_polynomial/taylor_model.mojo:115:59: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+def taylor_variable(centre: ComplexIQ, domain: ComplexIQ, order: Int) -> TaylorModel:
+                                                          ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:54:9: error: unable to locate module 'std'
+def box(re: Q, im: Q) -> ComplexIQ:
+        ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:54:16: error: unable to locate module 'std'
+def box(re: Q, im: Q) -> ComplexIQ:
+               ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:54:26: error: unable to locate module 'std'
+def box(re: Q, im: Q) -> ComplexIQ:
+                         ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:58:14: error: unable to locate module 'std'
+def same_box(a: ComplexIQ, b: ComplexIQ) -> Bool:
+             ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:58:28: error: unable to locate module 'std'
+def same_box(a: ComplexIQ, b: ComplexIQ) -> Bool:
+                           ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:58:45: error: use of unknown declaration 'Bool'
+def same_box(a: ComplexIQ, b: ComplexIQ) -> Bool:
+                                            ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:58:45: error: unable to locate module 'std'
+def same_box(a: ComplexIQ, b: ComplexIQ) -> Bool:
+                                            ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:62:18: error: use of unknown declaration 'Int64'
+def gaussian(re: Int64, im: Int64) -> CyclotomicQ:
+                 ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:62:14: error: unable to locate module 'std'
+def gaussian(re: Int64, im: Int64) -> CyclotomicQ:
+             ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:62:29: error: use of unknown declaration 'Int64'
+def gaussian(re: Int64, im: Int64) -> CyclotomicQ:
+                            ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:62:25: error: unable to locate module 'std'
+def gaussian(re: Int64, im: Int64) -> CyclotomicQ:
+                        ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:62:39: error: unable to locate module 'std'
+def gaussian(re: Int64, im: Int64) -> CyclotomicQ:
+                                      ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:66:48: error: unable to locate module 'std'
+def test_q_jets_carry_every_derivative() raises:
+                                               ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:76:19: error: use of unknown declaration 'List'
+    var expected: List[Q] = [Q(-1, 2), Q(1, 1), Q.zero(), Q(-2, 1), Q(1, 1)]
+                  ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:77:18: error: use of unknown declaration 'range'; did you mean 'ring'?
+    for index in range(5):
+                 ^~~~~
+                 ring
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:81:53: error: unable to locate module 'std'
+def test_reciprocal_is_the_fibonacci_series() raises:
+                                                    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:85:20: error: use of unknown declaration 'List'
+    var fibonacci: List[Int64] = [1, 1, 2, 3, 5, 8, 13]
+                   ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:86:18: error: use of unknown declaration 'range'; did you mean 'ring'?
+    for index in range(7):
+                 ^~~~~
+                 ring
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:94:50: error: unable to locate module 'std'
+def test_reciprocal_over_f13_and_q_zeta5() raises:
+                                                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:107:38: error: unable to locate module 'std'
+def test_refusals_are_sticky() raises:
+                                     ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:130:71: error: unable to locate module 'std'
+def test_gaussian_jets_agree_over_q_zeta4_and_singleton_boxes() raises:
+                                                                      ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:136:13: error: use of unknown declaration 'List'
+    var re: List[Int64] = [0, 0, -4, 0]
+            ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:137:13: error: use of unknown declaration 'List'
+    var im: List[Int64] = [-1, 0, -4, 0]
+            ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:138:18: error: use of unknown declaration 'range'
+    for index in range(4):
+                 ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:143:57: error: unable to locate module 'std'
+def test_multiplicities_of_the_quadratic_family() raises:
+                                                        ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:162:46: error: unable to locate module 'std'
+def test_box_jets_enclose_point_jets() raises:
+                                             ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:167:17: error: use of unknown declaration 'List'
+    var points: List[ComplexIQ] = [box(Q(1, 4), Q(-1, 5)), box(Q(1, 3), Q(1, 7)), box(Q(2, 7), Q.zero())]
+                ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:168:18: error: use of unknown declaration 'points'
+    for point in points:
+                 ^~~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:175:15: error: unable to locate module 'std'
+def domain_of(radius: Q) -> ComplexIQ:
+              ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:175:29: error: unable to locate module 'std'
+def domain_of(radius: Q) -> ComplexIQ:
+                            ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:179:41: error: unable to locate module 'std'
+def test_taylor_model_specimens() raises:
+                                        ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:184:19: error: use of unknown declaration 'List'
+    var expected: List[Int64] = [1, -2, 1, 0]
+                  ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:185:18: error: use of unknown declaration 'range'
+    for index in range(4):
+                 ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:191:14: error: use of unknown declaration 'range'
+    for _ in range(3):
+             ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:201:59: error: unable to locate module 'std'
+def test_taylor_square_is_the_product_with_itself() raises:
+                                                          ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:205:14: error: use of unknown declaration 'range'
+    for _ in range(3):
+             ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:209:18: error: use of unknown declaration 'range'
+    for index in range(3):
+                 ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:213:54: error: unable to locate module 'std'
+def test_taylor_enclosure_contains_the_orbit() raises:
+                                                     ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:218:18: error: use of unknown declaration 'List'
+    var corners: List[ComplexIQ] = [
+                 ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:223:14: error: use of unknown declaration 'range'
+    for _ in range(5):
+             ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:231:34: error: unable to locate module 'std'
+def test_taylor_refusals() raises:
+                                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:253:18: error: unable to locate module 'std'
+def main() raises:
+                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:253:5: error: unable to locate module 'std'
+def main() raises:
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:253:9: error: 'builtin' does not refer to a nested package
+def main() raises:
+        ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:254:5: error: unable to locate module 'std'
+    test_q_jets_carry_every_derivative()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:255:5: error: use of unknown declaration 'print'
+    print("[PASS] test_q_jets_carry_every_derivative")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:256:5: error: unable to locate module 'std'
+    test_reciprocal_is_the_fibonacci_series()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:257:5: error: use of unknown declaration 'print'
+    print("[PASS] test_reciprocal_is_the_fibonacci_series")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:258:5: error: unable to locate module 'std'
+    test_reciprocal_over_f13_and_q_zeta5()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:259:5: error: use of unknown declaration 'print'
+    print("[PASS] test_reciprocal_over_f13_and_q_zeta5")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:260:5: error: unable to locate module 'std'
+    test_refusals_are_sticky()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:261:5: error: use of unknown declaration 'print'
+    print("[PASS] test_refusals_are_sticky")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:262:5: error: unable to locate module 'std'
+    test_gaussian_jets_agree_over_q_zeta4_and_singleton_boxes()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:263:5: error: use of unknown declaration 'print'
+    print("[PASS] test_gaussian_jets_agree_over_q_zeta4_and_singleton_boxes")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:264:5: error: unable to locate module 'std'
+    test_multiplicities_of_the_quadratic_family()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:265:5: error: use of unknown declaration 'print'
+    print("[PASS] test_multiplicities_of_the_quadratic_family")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:266:5: error: unable to locate module 'std'
+    test_box_jets_enclose_point_jets()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:267:5: error: use of unknown declaration 'print'
+    print("[PASS] test_box_jets_enclose_point_jets")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:268:5: error: unable to locate module 'std'
+    test_taylor_model_specimens()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:269:5: error: use of unknown declaration 'print'
+    print("[PASS] test_taylor_model_specimens")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:270:5: error: unable to locate module 'std'
+    test_taylor_square_is_the_product_with_itself()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:271:5: error: use of unknown declaration 'print'
+    print("[PASS] test_taylor_square_is_the_product_with_itself")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:272:5: error: unable to locate module 'std'
+    test_taylor_enclosure_contains_the_orbit()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:273:5: error: use of unknown declaration 'print'
+    print("[PASS] test_taylor_enclosure_contains_the_orbit")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:274:5: error: unable to locate module 'std'
+    test_taylor_refusals()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:275:5: error: use of unknown declaration 'print'
+    print("[PASS] test_taylor_refusals")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/finite_polynomial/test_truncated_jet.mojo:276:5: error: use of unknown declaration 'print'
+    print("11 truncated-jet and Taylor-model tests passed.")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/golden-ratio-normality-research/kernel/.pixi/envs/default/bin/mojo: error: failed to parse the provided Mojo source module

@@ -1,0 +1,6 @@
+[PASS] test_generator_changes_do_not_change_embedded_lattice
+[PASS] test_equal_smith_shape_can_be_different_embedded_lattice
+[PASS] test_rank_deficient_and_zero_generators
+[PASS] test_negative_entries_reduce_canonically
+[PASS] test_generators_are_rows_not_columns
+5 embedded integer-module Mojo tests passed.

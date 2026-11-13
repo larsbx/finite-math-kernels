@@ -1,0 +1,1205 @@
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:1:1: error: unable to locate module 'std'
+"""Every named object moved into a module of its own is still the same object
+^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:1:1: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+"""Every named object moved into a module of its own is still the same object
+^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:13:6: error: unable to locate module 'std'
+from std.testing import assert_equal, assert_false, assert_true
+     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:15:
+kernel/finite_exact/__init__.mojo:34:1: error: unable to locate module 'std'
+
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:15:
+kernel/finite_exact/bigint_z.mojo:15:1: error: unable to locate module 'std'
+comptime BIGZ_BASE = UInt64(1000000000)
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:15:
+kernel/finite_exact/bigint_z.mojo:18:13: error: use of unknown declaration 'Copyable'
+struct BigZ(Copyable):
+            ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:15:
+kernel/finite_exact/bigint_z.mojo:206:13: error: unable to locate module 'std'
+def bigz_eq(a: BigZ, b: BigZ) -> Bool:
+            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:15:
+kernel/finite_exact/bigint_z.mojo:206:22: error: unable to locate module 'std'
+def bigz_eq(a: BigZ, b: BigZ) -> Bool:
+                     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:15:
+kernel/finite_exact/bigint_z.mojo:206:34: error: use of unknown declaration 'Bool'
+def bigz_eq(a: BigZ, b: BigZ) -> Bool:
+                                 ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:15:
+kernel/finite_exact/bigint_z.mojo:206:34: error: unable to locate module 'std'
+def bigz_eq(a: BigZ, b: BigZ) -> Bool:
+                                 ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:15:
+kernel/finite_exact/bigint_z.mojo:77:26: error: use of unknown declaration 'Int64'
+def bigz_from_i64(value: Int64) -> BigZ:
+                         ^~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:15:
+kernel/finite_exact/bigint_z.mojo:77:19: error: unable to locate module 'std'
+def bigz_from_i64(value: Int64) -> BigZ:
+                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:15:
+kernel/finite_exact/bigint_z.mojo:77:36: error: unable to locate module 'std'
+def bigz_from_i64(value: Int64) -> BigZ:
+                                   ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:16:
+kernel/finite_exact/closed_interval.mojo:1:1: error: unable to locate module 'std'
+"""Stable public entry point for closed exact-rational intervals."""
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:15:
+kernel/finite_exact/bigint_z.mojo:77:19: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+def bigz_from_i64(value: Int64) -> BigZ:
+                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:16:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:9:1: error: unable to locate module 'std'
+from finite_exact.rat_q import Q, q_min, q_max, q_rejected
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:16:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:128:18: error: use of unknown declaration 'Copyable'
+struct ComplexIQ(Copyable):
+                 ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:16:
+Imported from kernel/finite_exact/closed_interval.mojo:3:
+kernel/finite_exact/closed_q.mojo:32:11: error: use of unknown declaration 'Copyable'
+struct IQ(Copyable):
+          ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:17:
+kernel/finite_exact/rat_q.mojo:13:1: error: unable to locate module 'std'
+from finite_exact.bigint_z import BigZ, bigz_add, bigz_canonical_bytes, bigz_div_exact, bigz_eq, bigz_from_i64, bigz_gcd, bigz_is_canonical, bigz_lt, bigz_mul, bigz_neg, bigz_sub, bigz_zero
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:17:
+kernel/finite_exact/rat_q.mojo:16:10: error: use of unknown declaration 'Copyable'
+struct Q(Copyable):
+         ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:18:
+kernel/finite_linear_algebra/__init__.mojo:37:1: error: unable to locate module 'std'
+
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:18:
+kernel/finite_linear_algebra/scalar.mojo:1:1: error: unable to locate module 'std'
+"""Integer lifts into `finite_exact.Q` and the fail-closed zero test.
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:18:
+kernel/finite_linear_algebra/scalar.mojo:19:14: error: use of unknown declaration 'List'
+def q_vec(v: List[Int]) -> List[Q]:
+             ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:18:
+kernel/finite_linear_algebra/scalar.mojo:19:11: error: unable to locate module 'std'
+def q_vec(v: List[Int]) -> List[Q]:
+          ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:18:
+kernel/finite_linear_algebra/scalar.mojo:19:28: error: use of unknown declaration 'List'
+def q_vec(v: List[Int]) -> List[Q]:
+                           ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:18:
+kernel/finite_linear_algebra/scalar.mojo:19:28: error: unable to locate module 'std'
+def q_vec(v: List[Int]) -> List[Q]:
+                           ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:20:
+kernel/finite_linear_algebra/cauchy_bound.mojo:1:1: error: unable to locate module 'std'
+"""The Cauchy bound on the real roots of a polynomial over Q.
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:18:
+kernel/finite_linear_algebra/scalar.mojo:19:11: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+def q_vec(v: List[Int]) -> List[Q]:
+          ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:20:
+kernel/finite_linear_algebra/cauchy_bound.mojo:21:19: error: use of unknown declaration 'List'
+def root_bound(p: List[Q]) -> Q:
+                  ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:20:
+kernel/finite_linear_algebra/cauchy_bound.mojo:21:16: error: unable to locate module 'std'
+def root_bound(p: List[Q]) -> Q:
+               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:20:
+kernel/finite_linear_algebra/cauchy_bound.mojo:21:31: error: unable to locate module 'std'
+def root_bound(p: List[Q]) -> Q:
+                              ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:21:
+kernel/finite_linear_algebra/faddeev_leverrier.mojo:1:1: error: unable to locate module 'std'
+"""The characteristic polynomial in any dimension, by Faddeev-LeVerrier.
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:20:
+kernel/finite_linear_algebra/cauchy_bound.mojo:21:16: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+def root_bound(p: List[Q]) -> Q:
+               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:21:
+kernel/finite_linear_algebra/faddeev_leverrier.mojo:19:17: error: use of unknown declaration 'List'
+def charpoly(m: List[List[Q]]) -> List[Q]:
+                ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:21:
+kernel/finite_linear_algebra/faddeev_leverrier.mojo:19:14: error: unable to locate module 'std'
+def charpoly(m: List[List[Q]]) -> List[Q]:
+             ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:21:
+kernel/finite_linear_algebra/faddeev_leverrier.mojo:19:35: error: use of unknown declaration 'List'
+def charpoly(m: List[List[Q]]) -> List[Q]:
+                                  ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:21:
+kernel/finite_linear_algebra/faddeev_leverrier.mojo:19:35: error: unable to locate module 'std'
+def charpoly(m: List[List[Q]]) -> List[Q]:
+                                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:23:
+kernel/finite_linear_algebra/sturm_sequence.mojo:1:1: error: unable to locate module 'std'
+"""Sturm sequences over Q, sign variations, and root isolation by bisection.
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:21:
+kernel/finite_linear_algebra/faddeev_leverrier.mojo:19:14: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+def charpoly(m: List[List[Q]]) -> List[Q]:
+             ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:23:
+kernel/finite_linear_algebra/sturm_sequence.mojo:65:20: error: use of unknown declaration 'Copyable'
+struct RootBracket(Copyable, Movable):
+                   ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:23:
+kernel/finite_linear_algebra/sturm_sequence.mojo:84:29: error: use of unknown declaration 'List'
+def largest_root_bracket(p: List[Q], width: Q, max_steps: Int) -> RootBracket:
+                            ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:23:
+kernel/finite_linear_algebra/sturm_sequence.mojo:84:26: error: unable to locate module 'std'
+def largest_root_bracket(p: List[Q], width: Q, max_steps: Int) -> RootBracket:
+                         ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:23:
+kernel/finite_linear_algebra/sturm_sequence.mojo:84:38: error: unable to locate module 'std'
+def largest_root_bracket(p: List[Q], width: Q, max_steps: Int) -> RootBracket:
+                                     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:23:
+kernel/finite_linear_algebra/sturm_sequence.mojo:84:59: error: use of unknown declaration 'Int'
+def largest_root_bracket(p: List[Q], width: Q, max_steps: Int) -> RootBracket:
+                                                          ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:23:
+kernel/finite_linear_algebra/sturm_sequence.mojo:84:48: error: unable to locate module 'std'
+def largest_root_bracket(p: List[Q], width: Q, max_steps: Int) -> RootBracket:
+                                               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:23:
+kernel/finite_linear_algebra/sturm_sequence.mojo:84:67: error: unable to locate module 'std'
+def largest_root_bracket(p: List[Q], width: Q, max_steps: Int) -> RootBracket:
+                                                                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:23:
+kernel/finite_linear_algebra/sturm_sequence.mojo:80:26: error: unable to locate module 'std'
+def refused_bracket() -> RootBracket:
+                         ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:23:
+kernel/finite_linear_algebra/sturm_sequence.mojo:46:28: error: use of unknown declaration 'List'
+def sign_variations(chain: List[List[Q]], x: Q) -> Int:
+                           ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:23:
+kernel/finite_linear_algebra/sturm_sequence.mojo:46:21: error: unable to locate module 'std'
+def sign_variations(chain: List[List[Q]], x: Q) -> Int:
+                    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:23:
+kernel/finite_linear_algebra/sturm_sequence.mojo:46:43: error: unable to locate module 'std'
+def sign_variations(chain: List[List[Q]], x: Q) -> Int:
+                                          ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:23:
+kernel/finite_linear_algebra/sturm_sequence.mojo:46:52: error: use of unknown declaration 'Int'
+def sign_variations(chain: List[List[Q]], x: Q) -> Int:
+                                                   ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:23:
+kernel/finite_linear_algebra/sturm_sequence.mojo:46:52: error: unable to locate module 'std'
+def sign_variations(chain: List[List[Q]], x: Q) -> Int:
+                                                   ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:23:
+kernel/finite_linear_algebra/sturm_sequence.mojo:30:20: error: use of unknown declaration 'List'
+def sturm_chain(p: List[Q]) -> List[List[Q]]:
+                   ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:23:
+kernel/finite_linear_algebra/sturm_sequence.mojo:30:17: error: unable to locate module 'std'
+def sturm_chain(p: List[Q]) -> List[List[Q]]:
+                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:23:
+kernel/finite_linear_algebra/sturm_sequence.mojo:30:32: error: use of unknown declaration 'List'
+def sturm_chain(p: List[Q]) -> List[List[Q]]:
+                               ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:23:
+kernel/finite_linear_algebra/sturm_sequence.mojo:30:32: error: unable to locate module 'std'
+def sturm_chain(p: List[Q]) -> List[List[Q]]:
+                               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:23:
+kernel/finite_linear_algebra/sturm_sequence.mojo:60:33: error: use of unknown declaration 'List'
+def variation_difference(chain: List[List[Q]], a: Q, b: Q) -> Int:
+                                ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:23:
+kernel/finite_linear_algebra/sturm_sequence.mojo:60:26: error: unable to locate module 'std'
+def variation_difference(chain: List[List[Q]], a: Q, b: Q) -> Int:
+                         ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:23:
+kernel/finite_linear_algebra/sturm_sequence.mojo:60:48: error: unable to locate module 'std'
+def variation_difference(chain: List[List[Q]], a: Q, b: Q) -> Int:
+                                               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:23:
+kernel/finite_linear_algebra/sturm_sequence.mojo:60:54: error: unable to locate module 'std'
+def variation_difference(chain: List[List[Q]], a: Q, b: Q) -> Int:
+                                                     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:23:
+kernel/finite_linear_algebra/sturm_sequence.mojo:60:63: error: use of unknown declaration 'Int'
+def variation_difference(chain: List[List[Q]], a: Q, b: Q) -> Int:
+                                                              ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:23:
+kernel/finite_linear_algebra/sturm_sequence.mojo:60:63: error: unable to locate module 'std'
+def variation_difference(chain: List[List[Q]], a: Q, b: Q) -> Int:
+                                                              ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:31:
+kernel/finite_linear_algebra/qpoly.mojo:1:1: error: unable to locate module 'std'
+"""Exact polynomials over Q: arithmetic, division, gcd, squarefree part.
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:23:
+kernel/finite_linear_algebra/sturm_sequence.mojo:60:54: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+def variation_difference(chain: List[List[Q]], a: Q, b: Q) -> Int:
+                                                     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:40:
+kernel/finite_linear_algebra/wielandt_bound.mojo:1:1: error: unable to locate module 'std'
+"""Wielandt's bound on the exponent of a primitive non-negative matrix.
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:40:
+kernel/finite_linear_algebra/wielandt_bound.mojo:21:26: error: use of unknown declaration 'Int'
+def wielandt_bound(size: Int) raises -> Int:
+                         ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:40:
+kernel/finite_linear_algebra/wielandt_bound.mojo:21:20: error: unable to locate module 'std'
+def wielandt_bound(size: Int) raises -> Int:
+                   ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:40:
+kernel/finite_linear_algebra/wielandt_bound.mojo:21:41: error: use of unknown declaration 'Int'
+def wielandt_bound(size: Int) raises -> Int:
+                                        ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:40:
+kernel/finite_linear_algebra/wielandt_bound.mojo:21:41: error: unable to locate module 'std'
+def wielandt_bound(size: Int) raises -> Int:
+                                        ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:41:
+kernel/finite_linear_algebra/integer_matrix.mojo:1:1: error: unable to locate module 'std'
+"""Row-major square non-negative integer matrices on any alphabet size.
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:40:
+kernel/finite_linear_algebra/wielandt_bound.mojo:21:41: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+def wielandt_bound(size: Int) raises -> Int:
+                                        ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:42:
+kernel/finite_linear_algebra/smith_normal_form.mojo:1:1: error: unable to locate module 'std'
+"""Smith normal form invariants of an integer matrix, by determinantal divisors.
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:42:
+kernel/finite_linear_algebra/smith_normal_form.mojo:25:19: error: use of unknown declaration 'List'
+def minor_gcds(a: List[List[Q]]) -> List[BigZ]:
+                  ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:42:
+kernel/finite_linear_algebra/smith_normal_form.mojo:25:16: error: unable to locate module 'std'
+def minor_gcds(a: List[List[Q]]) -> List[BigZ]:
+               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:42:
+kernel/finite_linear_algebra/smith_normal_form.mojo:25:37: error: use of unknown declaration 'List'
+def minor_gcds(a: List[List[Q]]) -> List[BigZ]:
+                                    ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:42:
+kernel/finite_linear_algebra/smith_normal_form.mojo:25:37: error: unable to locate module 'std'
+def minor_gcds(a: List[List[Q]]) -> List[BigZ]:
+                                    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:42:
+kernel/finite_linear_algebra/smith_normal_form.mojo:44:25: error: use of unknown declaration 'List'
+def smith_invariants(a: List[List[Q]]) -> List[BigZ]:
+                        ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:42:
+kernel/finite_linear_algebra/smith_normal_form.mojo:44:22: error: unable to locate module 'std'
+def smith_invariants(a: List[List[Q]]) -> List[BigZ]:
+                     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:42:
+kernel/finite_linear_algebra/smith_normal_form.mojo:44:43: error: use of unknown declaration 'List'
+def smith_invariants(a: List[List[Q]]) -> List[BigZ]:
+                                          ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:42:
+kernel/finite_linear_algebra/smith_normal_form.mojo:44:43: error: unable to locate module 'std'
+def smith_invariants(a: List[List[Q]]) -> List[BigZ]:
+                                          ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:43:
+kernel/finite_linear_algebra/madic_ball.mojo:1:1: error: unable to locate module 'std'
+"""`M`-adic balls: cosets of `M^k Z^n`, as a conservative filter over Z^n.
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:42:
+kernel/finite_linear_algebra/smith_normal_form.mojo:44:22: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+def smith_invariants(a: List[List[Q]]) -> List[BigZ]:
+                     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:44:
+kernel/finite_linear_algebra/hermite_normal_form.mojo:1:1: error: unable to locate module 'std'
+"""The Hermite normal form of an integer row module.
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:44:
+kernel/finite_linear_algebra/hermite_normal_form.mojo:31:19: error: use of unknown declaration 'List'
+def row_hnf(rows: List[List[BigZ]], dimension: Int) raises -> List[List[BigZ]]:
+                  ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:44:
+kernel/finite_linear_algebra/hermite_normal_form.mojo:31:13: error: unable to locate module 'std'
+def row_hnf(rows: List[List[BigZ]], dimension: Int) raises -> List[List[BigZ]]:
+            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:44:
+kernel/finite_linear_algebra/hermite_normal_form.mojo:31:48: error: use of unknown declaration 'Int'
+def row_hnf(rows: List[List[BigZ]], dimension: Int) raises -> List[List[BigZ]]:
+                                               ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:44:
+kernel/finite_linear_algebra/hermite_normal_form.mojo:31:37: error: unable to locate module 'std'
+def row_hnf(rows: List[List[BigZ]], dimension: Int) raises -> List[List[BigZ]]:
+                                    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:44:
+kernel/finite_linear_algebra/hermite_normal_form.mojo:31:63: error: use of unknown declaration 'List'
+def row_hnf(rows: List[List[BigZ]], dimension: Int) raises -> List[List[BigZ]]:
+                                                              ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:44:
+kernel/finite_linear_algebra/hermite_normal_form.mojo:31:63: error: unable to locate module 'std'
+def row_hnf(rows: List[List[BigZ]], dimension: Int) raises -> List[List[BigZ]]:
+                                                              ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:44:
+kernel/finite_linear_algebra/hermite_normal_form.mojo:127:11: error: use of unknown declaration 'List'
+    left: List[List[BigZ]],
+          ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:44:
+kernel/finite_linear_algebra/hermite_normal_form.mojo:127:5: error: unable to locate module 'std'
+    left: List[List[BigZ]],
+    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:44:
+kernel/finite_linear_algebra/hermite_normal_form.mojo:128:12: error: use of unknown declaration 'List'
+    right: List[List[BigZ]],
+           ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:44:
+kernel/finite_linear_algebra/hermite_normal_form.mojo:128:5: error: unable to locate module 'std'
+    right: List[List[BigZ]],
+    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:44:
+kernel/finite_linear_algebra/hermite_normal_form.mojo:129:16: error: use of unknown declaration 'Int'
+    dimension: Int,
+               ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:44:
+kernel/finite_linear_algebra/hermite_normal_form.mojo:129:5: error: unable to locate module 'std'
+    dimension: Int,
+    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:44:
+kernel/finite_linear_algebra/hermite_normal_form.mojo:130:13: error: use of unknown declaration 'Bool'
+) raises -> Bool:
+            ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:44:
+kernel/finite_linear_algebra/hermite_normal_form.mojo:130:13: error: unable to locate module 'std'
+) raises -> Bool:
+            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:46:
+kernel/finite_linear_algebra/integer_module.mojo:1:1: error: unable to locate module 'std'
+"""Canonical embedded integer-module normal form.
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:44:
+kernel/finite_linear_algebra/hermite_normal_form.mojo:130:13: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+) raises -> Bool:
+            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:46:
+kernel/finite_linear_algebra/integer_module.mojo:160:21: error: use of unknown declaration 'List'
+def i64_row(values: List[Int64]) -> List[BigZ]:
+                    ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:46:
+kernel/finite_linear_algebra/integer_module.mojo:160:13: error: unable to locate module 'std'
+def i64_row(values: List[Int64]) -> List[BigZ]:
+            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:46:
+kernel/finite_linear_algebra/integer_module.mojo:160:37: error: use of unknown declaration 'List'
+def i64_row(values: List[Int64]) -> List[BigZ]:
+                                    ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:46:
+kernel/finite_linear_algebra/integer_module.mojo:160:37: error: unable to locate module 'std'
+def i64_row(values: List[Int64]) -> List[BigZ]:
+                                    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:51:
+kernel/rational_dynamics/__init__.mojo:29:1: error: unable to locate module 'std'
+
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:52:
+kernel/rational_dynamics/continued_fractions.mojo:1:1: error: unable to locate module 'std'
+"""Regular continued fractions and convergents of a reduced fraction, exactly.
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:52:
+kernel/rational_dynamics/continued_fractions.mojo:22:32: error: use of unknown declaration 'Copyable'
+struct ContinuedFractionResult(Copyable, Movable):
+                               ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:52:
+kernel/rational_dynamics/continued_fractions.mojo:34:26: error: use of unknown declaration 'Copyable'
+struct ConvergentsResult(Copyable, Movable):
+                         ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:52:
+Imported from kernel/rational_dynamics/continued_fractions.mojo:19:
+kernel/rational_dynamics/rational.mojo:18:1: error: unable to locate module 'std'
+from finite_exact.bigint_z import (
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:52:
+Imported from kernel/rational_dynamics/continued_fractions.mojo:19:
+kernel/rational_dynamics/rational.mojo:44:24: error: use of unknown declaration 'Copyable'
+struct ReducedFraction(Copyable):
+                       ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:52:
+kernel/rational_dynamics/continued_fractions.mojo:60:24: error: unable to locate module 'std'
+def continued_fraction(value: ReducedFraction) -> ContinuedFractionResult:
+                       ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:52:
+kernel/rational_dynamics/continued_fractions.mojo:60:51: error: unable to locate module 'std'
+def continued_fraction(value: ReducedFraction) -> ContinuedFractionResult:
+                                                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:52:
+kernel/rational_dynamics/continued_fractions.mojo:78:17: error: unable to locate module 'std'
+def convergents(value: ReducedFraction) -> ConvergentsResult:
+                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:52:
+kernel/rational_dynamics/continued_fractions.mojo:78:44: error: unable to locate module 'std'
+def convergents(value: ReducedFraction) -> ConvergentsResult:
+                                           ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:52:
+kernel/rational_dynamics/continued_fractions.mojo:48:22: error: unable to locate module 'std'
+def rejected_cf() -> ContinuedFractionResult:
+                     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:52:
+kernel/rational_dynamics/continued_fractions.mojo:54:31: error: unable to locate module 'std'
+def rejected_convergents() -> ConvergentsResult:
+                              ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:59:
+kernel/rational_dynamics/farey.mojo:1:1: error: unable to locate module 'std'
+"""The Farey determinant and Farey adjacency of two reduced fractions, exactly.
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:59:
+kernel/rational_dynamics/farey.mojo:33:20: error: unable to locate module 'std'
+def farey_adjacent(left: ReducedFraction, right: ReducedFraction) -> Bool:
+                   ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:59:
+kernel/rational_dynamics/farey.mojo:33:43: error: unable to locate module 'std'
+def farey_adjacent(left: ReducedFraction, right: ReducedFraction) -> Bool:
+                                          ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:59:
+kernel/rational_dynamics/farey.mojo:33:70: error: use of unknown declaration 'Bool'
+def farey_adjacent(left: ReducedFraction, right: ReducedFraction) -> Bool:
+                                                                     ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:59:
+kernel/rational_dynamics/farey.mojo:33:70: error: unable to locate module 'std'
+def farey_adjacent(left: ReducedFraction, right: ReducedFraction) -> Bool:
+                                                                     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:59:
+kernel/rational_dynamics/farey.mojo:19:5: error: unable to locate module 'std'
+    left: ReducedFraction,
+    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:59:
+kernel/rational_dynamics/farey.mojo:20:5: error: unable to locate module 'std'
+    right: ReducedFraction,
+    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:52:
+Imported from kernel/rational_dynamics/continued_fractions.mojo:19:
+kernel/rational_dynamics/rational.mojo:78:19: error: use of unknown declaration 'Copyable'
+struct BigZResult(Copyable):
+                  ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:59:
+kernel/rational_dynamics/farey.mojo:21:6: error: unable to locate module 'std'
+) -> BigZResult:
+     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:52:
+Imported from kernel/rational_dynamics/continued_fractions.mojo:19:
+kernel/rational_dynamics/rational.mojo:142:34: error: use of unknown declaration 'Int64'
+def fraction_from_i64(numerator: Int64, denominator: Int64) -> ReducedFraction:
+                                 ^~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:52:
+Imported from kernel/rational_dynamics/continued_fractions.mojo:19:
+kernel/rational_dynamics/rational.mojo:142:23: error: unable to locate module 'std'
+def fraction_from_i64(numerator: Int64, denominator: Int64) -> ReducedFraction:
+                      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:52:
+Imported from kernel/rational_dynamics/continued_fractions.mojo:19:
+kernel/rational_dynamics/rational.mojo:142:54: error: use of unknown declaration 'Int64'
+def fraction_from_i64(numerator: Int64, denominator: Int64) -> ReducedFraction:
+                                                     ^~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:52:
+Imported from kernel/rational_dynamics/continued_fractions.mojo:19:
+kernel/rational_dynamics/rational.mojo:142:41: error: unable to locate module 'std'
+def fraction_from_i64(numerator: Int64, denominator: Int64) -> ReducedFraction:
+                                        ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:52:
+Imported from kernel/rational_dynamics/continued_fractions.mojo:19:
+kernel/rational_dynamics/rational.mojo:142:64: error: unable to locate module 'std'
+def fraction_from_i64(numerator: Int64, denominator: Int64) -> ReducedFraction:
+                                                               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:72:
+kernel/quadratic_orbit/__init__.mojo:36:1: error: unable to locate module 'std'
+from .escape_criterion import (
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:72:
+kernel/quadratic_orbit/krawczyk_operator.mojo:27:1: error: unable to locate module 'std'
+from finite_exact.closed_interval import ComplexIQ
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:72:
+kernel/quadratic_orbit/krawczyk_operator.mojo:46:32: error: unable to locate module 'std'
+def isolates_preperiodic_point(z: ComplexIQ, c: ComplexIQ, l: Int, k: Int) -> Bool:
+                               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:72:
+kernel/quadratic_orbit/krawczyk_operator.mojo:46:46: error: unable to locate module 'std'
+def isolates_preperiodic_point(z: ComplexIQ, c: ComplexIQ, l: Int, k: Int) -> Bool:
+                                             ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:72:
+kernel/quadratic_orbit/krawczyk_operator.mojo:46:63: error: use of unknown declaration 'Int'
+def isolates_preperiodic_point(z: ComplexIQ, c: ComplexIQ, l: Int, k: Int) -> Bool:
+                                                              ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:72:
+kernel/quadratic_orbit/krawczyk_operator.mojo:46:60: error: unable to locate module 'std'
+def isolates_preperiodic_point(z: ComplexIQ, c: ComplexIQ, l: Int, k: Int) -> Bool:
+                                                           ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:72:
+kernel/quadratic_orbit/krawczyk_operator.mojo:46:71: error: use of unknown declaration 'Int'
+def isolates_preperiodic_point(z: ComplexIQ, c: ComplexIQ, l: Int, k: Int) -> Bool:
+                                                                      ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:72:
+kernel/quadratic_orbit/krawczyk_operator.mojo:46:68: error: unable to locate module 'std'
+def isolates_preperiodic_point(z: ComplexIQ, c: ComplexIQ, l: Int, k: Int) -> Bool:
+                                                                   ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:72:
+kernel/quadratic_orbit/krawczyk_operator.mojo:46:79: error: use of unknown declaration 'Bool'
+def isolates_preperiodic_point(z: ComplexIQ, c: ComplexIQ, l: Int, k: Int) -> Bool:
+                                                                              ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:72:
+kernel/quadratic_orbit/krawczyk_operator.mojo:46:79: error: unable to locate module 'std'
+def isolates_preperiodic_point(z: ComplexIQ, c: ComplexIQ, l: Int, k: Int) -> Bool:
+                                                                              ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:72:
+kernel/quadratic_orbit/krawczyk_operator.mojo:33:20: error: unable to locate module 'std'
+def krawczyk_image(z: ComplexIQ, c: ComplexIQ, l: Int, k: Int) -> ComplexIQ:
+                   ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:72:
+kernel/quadratic_orbit/krawczyk_operator.mojo:33:34: error: unable to locate module 'std'
+def krawczyk_image(z: ComplexIQ, c: ComplexIQ, l: Int, k: Int) -> ComplexIQ:
+                                 ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:72:
+kernel/quadratic_orbit/krawczyk_operator.mojo:33:51: error: use of unknown declaration 'Int'
+def krawczyk_image(z: ComplexIQ, c: ComplexIQ, l: Int, k: Int) -> ComplexIQ:
+                                                  ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:72:
+kernel/quadratic_orbit/krawczyk_operator.mojo:33:48: error: unable to locate module 'std'
+def krawczyk_image(z: ComplexIQ, c: ComplexIQ, l: Int, k: Int) -> ComplexIQ:
+                                               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:72:
+kernel/quadratic_orbit/krawczyk_operator.mojo:33:59: error: use of unknown declaration 'Int'
+def krawczyk_image(z: ComplexIQ, c: ComplexIQ, l: Int, k: Int) -> ComplexIQ:
+                                                          ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:72:
+kernel/quadratic_orbit/krawczyk_operator.mojo:33:56: error: unable to locate module 'std'
+def krawczyk_image(z: ComplexIQ, c: ComplexIQ, l: Int, k: Int) -> ComplexIQ:
+                                                       ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:72:
+kernel/quadratic_orbit/krawczyk_operator.mojo:33:67: error: unable to locate module 'std'
+def krawczyk_image(z: ComplexIQ, c: ComplexIQ, l: Int, k: Int) -> ComplexIQ:
+                                                                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:74:
+kernel/quadratic_orbit/preperiodic.mojo:33:1: error: unable to locate module 'std'
+from finite_exact.closed_interval import ComplexIQ, IQ, IQBoolResult
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:72:
+kernel/quadratic_orbit/krawczyk_operator.mojo:33:56: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+def krawczyk_image(z: ComplexIQ, c: ComplexIQ, l: Int, k: Int) -> ComplexIQ:
+                                                       ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:78:
+kernel/finite_polynomial/__init__.mojo:42:1: error: unable to locate module 'std'
+from .taylor_model import (
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:79:
+kernel/finite_polynomial/cyclotomic_polynomial.mojo:17:1: error: unable to locate module 'std'
+from finite_polynomial.polynomial_z import (
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:79:
+kernel/finite_polynomial/cyclotomic_polynomial.mojo:49:34: error: use of unknown declaration 'Int'
+def cyclotomic_degree(conductor: Int) -> Int:
+                                 ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:79:
+kernel/finite_polynomial/cyclotomic_polynomial.mojo:49:23: error: unable to locate module 'std'
+def cyclotomic_degree(conductor: Int) -> Int:
+                      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:79:
+kernel/finite_polynomial/cyclotomic_polynomial.mojo:49:42: error: use of unknown declaration 'Int'
+def cyclotomic_degree(conductor: Int) -> Int:
+                                         ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:79:
+kernel/finite_polynomial/cyclotomic_polynomial.mojo:49:42: error: unable to locate module 'std'
+def cyclotomic_degree(conductor: Int) -> Int:
+                                         ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:79:
+kernel/finite_polynomial/cyclotomic_polynomial.mojo:29:38: error: use of unknown declaration 'Int'
+def cyclotomic_polynomial(conductor: Int) -> PolyZ:
+                                     ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:79:
+kernel/finite_polynomial/cyclotomic_polynomial.mojo:29:27: error: unable to locate module 'std'
+def cyclotomic_polynomial(conductor: Int) -> PolyZ:
+                          ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:79:
+Imported from kernel/finite_polynomial/cyclotomic_polynomial.mojo:18:
+kernel/finite_polynomial/polynomial_z.mojo:14:1: error: unable to locate module 'std'
+from finite_exact.bigint_z import (
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:79:
+kernel/finite_polynomial/cyclotomic_polynomial.mojo:29:27: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+def cyclotomic_polynomial(conductor: Int) -> PolyZ:
+                          ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:79:
+Imported from kernel/finite_polynomial/cyclotomic_polynomial.mojo:18:
+kernel/finite_polynomial/polynomial_z.mojo:31:14: error: use of unknown declaration 'Copyable'
+struct PolyZ(Copyable, Movable):
+             ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:79:
+kernel/finite_polynomial/cyclotomic_polynomial.mojo:29:46: error: unable to locate module 'std'
+def cyclotomic_polynomial(conductor: Int) -> PolyZ:
+                                             ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:79:
+kernel/finite_polynomial/cyclotomic_polynomial.mojo:54:44: error: use of unknown declaration 'Int'
+def cyclotomic_product_identity(conductor: Int) -> Bool:
+                                           ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:79:
+kernel/finite_polynomial/cyclotomic_polynomial.mojo:54:33: error: unable to locate module 'std'
+def cyclotomic_product_identity(conductor: Int) -> Bool:
+                                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:79:
+kernel/finite_polynomial/cyclotomic_polynomial.mojo:54:52: error: use of unknown declaration 'Bool'
+def cyclotomic_product_identity(conductor: Int) -> Bool:
+                                                   ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:79:
+kernel/finite_polynomial/cyclotomic_polynomial.mojo:54:52: error: unable to locate module 'std'
+def cyclotomic_product_identity(conductor: Int) -> Bool:
+                                                   ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:79:
+Imported from kernel/finite_polynomial/cyclotomic_polynomial.mojo:18:
+kernel/finite_polynomial/polynomial_z.mojo:116:16: error: unable to locate module 'std'
+def poly_equal(left: PolyZ, right: PolyZ) -> Bool:
+               ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:79:
+Imported from kernel/finite_polynomial/cyclotomic_polynomial.mojo:18:
+kernel/finite_polynomial/polynomial_z.mojo:116:29: error: unable to locate module 'std'
+def poly_equal(left: PolyZ, right: PolyZ) -> Bool:
+                            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:79:
+Imported from kernel/finite_polynomial/cyclotomic_polynomial.mojo:18:
+kernel/finite_polynomial/polynomial_z.mojo:116:46: error: use of unknown declaration 'Bool'
+def poly_equal(left: PolyZ, right: PolyZ) -> Bool:
+                                             ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:79:
+Imported from kernel/finite_polynomial/cyclotomic_polynomial.mojo:18:
+kernel/finite_polynomial/polynomial_z.mojo:116:46: error: unable to locate module 'std'
+def poly_equal(left: PolyZ, right: PolyZ) -> Bool:
+                                             ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:90:
+kernel/finite_polynomial/euler_totient.mojo:14:1: error: unable to locate module 'std'
+from finite_polynomial.cyclotomic_field import _coprime
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:79:
+Imported from kernel/finite_polynomial/cyclotomic_polynomial.mojo:18:
+kernel/finite_polynomial/polynomial_z.mojo:116:29: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+def poly_equal(left: PolyZ, right: PolyZ) -> Bool:
+                            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:90:
+kernel/finite_polynomial/euler_totient.mojo:17:18: error: use of unknown declaration 'Int'
+def euler_phi(n: Int) -> Int:
+                 ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:90:
+kernel/finite_polynomial/euler_totient.mojo:17:15: error: unable to locate module 'std'
+def euler_phi(n: Int) -> Int:
+              ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:90:
+kernel/finite_polynomial/euler_totient.mojo:17:26: error: use of unknown declaration 'Int'
+def euler_phi(n: Int) -> Int:
+                         ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:90:
+kernel/finite_polynomial/euler_totient.mojo:17:26: error: unable to locate module 'std'
+def euler_phi(n: Int) -> Int:
+                         ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:91:
+kernel/finite_polynomial/moebius_function.mojo:20:1: error: unable to locate module 'std'
+from rational_dynamics.moebius import moebius
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:90:
+kernel/finite_polynomial/euler_totient.mojo:17:15: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+def euler_phi(n: Int) -> Int:
+              ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:91:
+Imported from kernel/finite_polynomial/moebius_function.mojo:21:
+kernel/rational_dynamics/moebius.mojo:18:1: error: unable to locate module 'std'
+def moebius(n: Int) raises -> Int:
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:91:
+Imported from kernel/finite_polynomial/moebius_function.mojo:21:
+kernel/rational_dynamics/moebius.mojo:18:16: error: use of unknown declaration 'Int'
+def moebius(n: Int) raises -> Int:
+               ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:91:
+Imported from kernel/finite_polynomial/moebius_function.mojo:21:
+kernel/rational_dynamics/moebius.mojo:18:13: error: unable to locate module 'std'
+def moebius(n: Int) raises -> Int:
+            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:91:
+Imported from kernel/finite_polynomial/moebius_function.mojo:21:
+kernel/rational_dynamics/moebius.mojo:18:31: error: use of unknown declaration 'Int'
+def moebius(n: Int) raises -> Int:
+                              ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:91:
+Imported from kernel/finite_polynomial/moebius_function.mojo:21:
+kernel/rational_dynamics/moebius.mojo:18:31: error: unable to locate module 'std'
+def moebius(n: Int) raises -> Int:
+                              ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:93:
+kernel/finite_polynomial/cyclotomic_field.mojo:25:1: error: unable to locate module 'std'
+from finite_exact.exact_decimal import q_decimal
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:91:
+Imported from kernel/finite_polynomial/moebius_function.mojo:21:
+kernel/rational_dynamics/moebius.mojo:18:31: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+def moebius(n: Int) raises -> Int:
+                              ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:95:
+kernel/finite_automata/__init__.mojo:15:1: error: unable to locate module 'std'
+
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:95:
+kernel/finite_automata/dfa.mojo:1:1: error: unable to locate module 'std'
+"""Deterministic finite automata over an integer alphabet.
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:95:
+kernel/finite_automata/dfa.mojo:33:12: error: use of unknown declaration 'Copyable'
+struct Dfa(Copyable, Movable):
+           ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:95:
+Imported from kernel/finite_automata/dfa.mojo:28:
+kernel/finite_automata/moore_minimisation.mojo:1:1: error: unable to locate module 'std'
+"""Minimisation of a DFA by Moore's partition refinement.
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:95:
+Imported from kernel/finite_automata/dfa.mojo:28:
+kernel/finite_automata/moore_minimisation.mojo:19:15: error: unable to locate module 'std'
+def minimised(a: Dfa) raises -> Dfa:
+              ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:95:
+Imported from kernel/finite_automata/dfa.mojo:28:
+kernel/finite_automata/moore_minimisation.mojo:19:33: error: unable to locate module 'std'
+def minimised(a: Dfa) raises -> Dfa:
+                                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:95:
+Imported from kernel/finite_automata/dfa.mojo:29:
+kernel/finite_automata/subset_construction.mojo:1:1: error: unable to locate module 'std'
+"""Projection of a product-alphabet DFA by the subset construction.
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:95:
+Imported from kernel/finite_automata/dfa.mojo:28:
+kernel/finite_automata/moore_minimisation.mojo:19:33: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+def minimised(a: Dfa) raises -> Dfa:
+                                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:95:
+Imported from kernel/finite_automata/dfa.mojo:29:
+kernel/finite_automata/subset_construction.mojo:35:13: error: unable to locate module 'std'
+def project(a: Dfa, tracks: Int, track: Int) raises -> Dfa:
+            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:95:
+Imported from kernel/finite_automata/dfa.mojo:29:
+kernel/finite_automata/subset_construction.mojo:35:29: error: use of unknown declaration 'Int'
+def project(a: Dfa, tracks: Int, track: Int) raises -> Dfa:
+                            ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:95:
+Imported from kernel/finite_automata/dfa.mojo:29:
+kernel/finite_automata/subset_construction.mojo:35:21: error: unable to locate module 'std'
+def project(a: Dfa, tracks: Int, track: Int) raises -> Dfa:
+                    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:95:
+Imported from kernel/finite_automata/dfa.mojo:29:
+kernel/finite_automata/subset_construction.mojo:35:41: error: use of unknown declaration 'Int'
+def project(a: Dfa, tracks: Int, track: Int) raises -> Dfa:
+                                        ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:95:
+Imported from kernel/finite_automata/dfa.mojo:29:
+kernel/finite_automata/subset_construction.mojo:35:34: error: unable to locate module 'std'
+def project(a: Dfa, tracks: Int, track: Int) raises -> Dfa:
+                                 ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:95:
+Imported from kernel/finite_automata/dfa.mojo:29:
+kernel/finite_automata/subset_construction.mojo:35:56: error: unable to locate module 'std'
+def project(a: Dfa, tracks: Int, track: Int) raises -> Dfa:
+                                                       ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:95:
+kernel/finite_automata/dfa.mojo:166:19: error: unable to locate module 'std'
+def same_language(a: Dfa, b: Dfa) raises -> Bool:
+                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:95:
+kernel/finite_automata/dfa.mojo:166:27: error: unable to locate module 'std'
+def same_language(a: Dfa, b: Dfa) raises -> Bool:
+                          ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:95:
+kernel/finite_automata/dfa.mojo:166:45: error: use of unknown declaration 'Bool'
+def same_language(a: Dfa, b: Dfa) raises -> Bool:
+                                            ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:95:
+kernel/finite_automata/dfa.mojo:166:45: error: unable to locate module 'std'
+def same_language(a: Dfa, b: Dfa) raises -> Bool:
+                                            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:99:
+kernel/projective_limits/__init__.mojo:37:1: error: unable to locate module 'std'
+
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:99:
+kernel/projective_limits/mobius_transformation.mojo:16:1: error: unable to locate module 'std'
+from finite_exact.field import ExactField, QField
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:99:
+Imported from kernel/projective_limits/mobius_transformation.mojo:16:
+kernel/finite_exact/field.mojo:15:1: error: unable to locate module 'std'
+from finite_exact.rat_q import Q, q_rejected
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:99:
+Imported from kernel/projective_limits/mobius_transformation.mojo:16:
+kernel/finite_exact/field.mojo:18:7: error: unable to locate module 'std'
+trait ExactField:
+      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:99:
+kernel/projective_limits/mobius_transformation.mojo:20:34: error: use of unknown declaration 'Copyable'
+struct MobiusOver[K: ExactField](Copyable):
+                                 ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:99:
+Imported from kernel/projective_limits/mobius_transformation.mojo:16:
+kernel/finite_exact/field.mojo:70:8: error: unable to locate module 'std'
+struct QField(ExactField):
+       ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:99:
+Imported from kernel/projective_limits/mobius_transformation.mojo:16:
+kernel/finite_exact/field.mojo:19:23: error: use of unknown declaration 'Copyable'
+    comptime Element: Copyable & Deinitable
+                      ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:99:
+Imported from kernel/projective_limits/mobius_transformation.mojo:16:
+kernel/finite_exact/field.mojo:19:34: error: use of unknown declaration 'Deinitable'
+    comptime Element: Copyable & Deinitable
+                                 ^~~~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:99:
+kernel/projective_limits/mobius_transformation.mojo:44:5: error: unable to locate module 'std'
+    a: K.Element, b: K.Element, c: K.Element, d: K.Element
+    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:99:
+kernel/projective_limits/mobius_transformation.mojo:44:19: error: unable to locate module 'std'
+    a: K.Element, b: K.Element, c: K.Element, d: K.Element
+                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:99:
+kernel/projective_limits/mobius_transformation.mojo:44:33: error: unable to locate module 'std'
+    a: K.Element, b: K.Element, c: K.Element, d: K.Element
+                                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:99:
+kernel/projective_limits/mobius_transformation.mojo:44:47: error: unable to locate module 'std'
+    a: K.Element, b: K.Element, c: K.Element, d: K.Element
+                                              ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:99:
+kernel/projective_limits/mobius_transformation.mojo:45:6: error: unable to locate module 'std'
+) -> MobiusOver[K]:
+     ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:99:
+kernel/projective_limits/mobius_transformation.mojo:56:33: error: unable to locate module 'std'
+def mobius_apply[K: ExactField](m: MobiusOver[K], p: P1Over[K]) -> P1Over[K]:
+                                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:99:
+Imported from kernel/projective_limits/mobius_transformation.mojo:17:
+kernel/projective_limits/line.mojo:18:1: error: unable to locate module 'std'
+from finite_exact.field import ExactField, QField
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:99:
+kernel/projective_limits/mobius_transformation.mojo:56:33: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+def mobius_apply[K: ExactField](m: MobiusOver[K], p: P1Over[K]) -> P1Over[K]:
+                                ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:99:
+Imported from kernel/projective_limits/mobius_transformation.mojo:17:
+kernel/projective_limits/line.mojo:22:30: error: use of unknown declaration 'Copyable'
+struct P1Over[K: ExactField](Copyable):
+                             ^~~~~~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:99:
+kernel/projective_limits/mobius_transformation.mojo:56:51: error: unable to locate module 'std'
+def mobius_apply[K: ExactField](m: MobiusOver[K], p: P1Over[K]) -> P1Over[K]:
+                                                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:99:
+kernel/projective_limits/mobius_transformation.mojo:56:68: error: unable to locate module 'std'
+def mobius_apply[K: ExactField](m: MobiusOver[K], p: P1Over[K]) -> P1Over[K]:
+                                                                   ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:99:
+kernel/projective_limits/mobius_transformation.mojo:65:35: error: unable to locate module 'std'
+def mobius_compose[K: ExactField](m: MobiusOver[K], n: MobiusOver[K]) -> MobiusOver[K]:
+                                  ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:99:
+kernel/projective_limits/mobius_transformation.mojo:65:53: error: unable to locate module 'std'
+def mobius_compose[K: ExactField](m: MobiusOver[K], n: MobiusOver[K]) -> MobiusOver[K]:
+                                                    ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:99:
+kernel/projective_limits/mobius_transformation.mojo:65:74: error: unable to locate module 'std'
+def mobius_compose[K: ExactField](m: MobiusOver[K], n: MobiusOver[K]) -> MobiusOver[K]:
+                                                                         ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:99:
+Imported from kernel/projective_limits/mobius_transformation.mojo:17:
+kernel/projective_limits/line.mojo:60:39: error: unable to locate module 'std'
+def p1_affine[K: ExactField = QField](t: K.Element) -> P1Over[K]:
+                                      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:99:
+Imported from kernel/projective_limits/mobius_transformation.mojo:17:
+kernel/projective_limits/line.mojo:60:56: error: unable to locate module 'std'
+def p1_affine[K: ExactField = QField](t: K.Element) -> P1Over[K]:
+                                                       ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:99:
+Imported from kernel/projective_limits/mobius_transformation.mojo:17:
+kernel/projective_limits/line.mojo:72:29: error: unable to locate module 'std'
+def p1_equal[K: ExactField](a: P1Over[K], b: P1Over[K]) -> Bool:
+                            ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:99:
+Imported from kernel/projective_limits/mobius_transformation.mojo:17:
+kernel/projective_limits/line.mojo:72:43: error: unable to locate module 'std'
+def p1_equal[K: ExactField](a: P1Over[K], b: P1Over[K]) -> Bool:
+                                          ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:99:
+Imported from kernel/projective_limits/mobius_transformation.mojo:17:
+kernel/projective_limits/line.mojo:72:60: error: use of unknown declaration 'Bool'
+def p1_equal[K: ExactField](a: P1Over[K], b: P1Over[K]) -> Bool:
+                                                           ^~~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:99:
+Imported from kernel/projective_limits/mobius_transformation.mojo:17:
+kernel/projective_limits/line.mojo:72:60: error: unable to locate module 'std'
+def p1_equal[K: ExactField](a: P1Over[K], b: P1Over[K]) -> Bool:
+                                                           ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:99:
+Imported from kernel/projective_limits/mobius_transformation.mojo:17:
+kernel/projective_limits/line.mojo:64:46: error: unable to locate module 'std'
+def p1_infinity[K: ExactField = QField]() -> P1Over[K]:
+                                             ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:110:
+kernel/projective_limits/spread_polynomial.mojo:15:1: error: unable to locate module 'std'
+from finite_exact.field import ExactField, QField
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:110:
+kernel/projective_limits/spread_polynomial.mojo:18:50: error: use of unknown declaration 'Int'
+def spread_polynomial[K: ExactField = QField](n: Int, s: K.Element) -> K.Element:
+                                                 ^~~
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:110:
+kernel/projective_limits/spread_polynomial.mojo:18:47: error: unable to locate module 'std'
+def spread_polynomial[K: ExactField = QField](n: Int, s: K.Element) -> K.Element:
+                                              ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:110:
+kernel/projective_limits/spread_polynomial.mojo:18:55: error: unable to locate module 'std'
+def spread_polynomial[K: ExactField = QField](n: Int, s: K.Element) -> K.Element:
+                                                      ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:110:
+kernel/projective_limits/spread_polynomial.mojo:18:72: error: unable to locate module 'std'
+def spread_polynomial[K: ExactField = QField](n: Int, s: K.Element) -> K.Element:
+                                                                       ^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:111:
+kernel/projective_limits/rotor.mojo:24:1: error: unable to locate module 'std'
+from finite_exact.field import ExactField, QField
+^
+Imported from /workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:110:
+kernel/projective_limits/spread_polynomial.mojo:18:55: error: 'std' is required for all normal mojo compiles.
+If you see this either:
+- Your mojo installation is broken and needs to be reinstalled or
+- You are a 'std' developer and are intentionally avoiding a pre-built 'std'
+def spread_polynomial[K: ExactField = QField](n: Int, s: K.Element) -> K.Element:
+                                                      ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:115:13: error: use of unknown declaration 'List'
+def poly(c: List[Int]) -> List[Q]:
+            ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:115:10: error: unable to locate module 'std'
+def poly(c: List[Int]) -> List[Q]:
+         ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:115:27: error: use of unknown declaration 'List'
+def poly(c: List[Int]) -> List[Q]:
+                          ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:115:27: error: unable to locate module 'std'
+def poly(c: List[Int]) -> List[Q]:
+                          ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:119:20: error: use of unknown declaration 'List'
+def same_q_list(a: List[Q], b: List[Q]) -> Bool:
+                   ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:119:17: error: unable to locate module 'std'
+def same_q_list(a: List[Q], b: List[Q]) -> Bool:
+                ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:119:32: error: use of unknown declaration 'List'
+def same_q_list(a: List[Q], b: List[Q]) -> Bool:
+                               ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:119:29: error: unable to locate module 'std'
+def same_q_list(a: List[Q], b: List[Q]) -> Bool:
+                            ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:119:44: error: use of unknown declaration 'Bool'
+def same_q_list(a: List[Q], b: List[Q]) -> Bool:
+                                           ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:119:44: error: unable to locate module 'std'
+def same_q_list(a: List[Q], b: List[Q]) -> Bool:
+                                           ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:128:23: error: use of unknown declaration 'List'
+def same_bigz_list(a: List[BigZ], b: List[BigZ]) -> Bool:
+                      ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:128:20: error: unable to locate module 'std'
+def same_bigz_list(a: List[BigZ], b: List[BigZ]) -> Bool:
+                   ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:128:38: error: use of unknown declaration 'List'
+def same_bigz_list(a: List[BigZ], b: List[BigZ]) -> Bool:
+                                     ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:128:35: error: unable to locate module 'std'
+def same_bigz_list(a: List[BigZ], b: List[BigZ]) -> Bool:
+                                  ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:128:53: error: use of unknown declaration 'Bool'
+def same_bigz_list(a: List[BigZ], b: List[BigZ]) -> Bool:
+                                                    ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:128:53: error: unable to locate module 'std'
+def same_bigz_list(a: List[BigZ], b: List[BigZ]) -> Bool:
+                                                    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:137:38: error: unable to locate module 'std'
+def test_qpoly_named_modules() raises:
+                                     ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:143:14: error: use of unknown declaration 'range'
+    for i in range(len(chain)):
+             ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:156:13: error: use of unknown declaration 'List'
+    var m = List[List[Q]]()
+            ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:163:58: error: unable to locate module 'std'
+def test_integer_matrix_and_module_named_modules() raises:
+                                                         ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:164:14: error: use of unknown declaration 'range'
+    for n in range(1, 6):
+             ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:166:13: error: use of unknown declaration 'List'
+    var a = List[List[Q]]()
+            ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:171:16: error: use of unknown declaration 'List'
+    var rows = List[List[BigZ]]()
+               ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:177:14: error: use of unknown declaration 'range'
+    for i in range(len(hnf)):
+             ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:182:50: error: unable to locate module 'std'
+def test_rational_dynamics_named_modules() raises:
+                                                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:200:40: error: unable to locate module 'std'
+def test_krawczyk_named_module() raises:
+                                       ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:211:50: error: unable to locate module 'std'
+def test_finite_polynomial_named_modules() raises:
+                                                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:212:14: error: use of unknown declaration 'range'
+    for n in range(1, 13):
+             ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:221:19: error: unable to locate module 'std'
+    var refused = False
+                  ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:222:5: error: unable to locate module 'std'
+    try:
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:229:48: error: unable to locate module 'std'
+def test_finite_automata_named_modules() raises:
+                                               ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:231:16: error: use of unknown declaration 'List'
+    var delta: List[Int] = [1, 0, 1, 0, 1, 1, 1, 1]
+               ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:232:20: error: use of unknown declaration 'List'
+    var accepting: List[Bool] = [True, False]
+                   ^~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:244:50: error: unable to locate module 'std'
+def test_projective_limits_named_modules() raises:
+                                                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:252:14: error: use of unknown declaration 'range'
+    for k in range(-3, 6):
+             ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:256:18: error: unable to locate module 'std'
+def main() raises:
+                 ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:256:5: error: unable to locate module 'std'
+def main() raises:
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:256:9: error: 'builtin' does not refer to a nested package
+def main() raises:
+        ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:257:5: error: unable to locate module 'std'
+    test_qpoly_named_modules()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:258:5: error: use of unknown declaration 'print'
+    print("[PASS]", "test_qpoly_named_modules")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:259:5: error: unable to locate module 'std'
+    test_integer_matrix_and_module_named_modules()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:260:5: error: use of unknown declaration 'print'
+    print("[PASS]", "test_integer_matrix_and_module_named_modules")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:261:5: error: unable to locate module 'std'
+    test_rational_dynamics_named_modules()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:262:5: error: use of unknown declaration 'print'
+    print("[PASS]", "test_rational_dynamics_named_modules")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:263:5: error: unable to locate module 'std'
+    test_krawczyk_named_module()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:264:5: error: use of unknown declaration 'print'
+    print("[PASS]", "test_krawczyk_named_module")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:265:5: error: unable to locate module 'std'
+    test_finite_polynomial_named_modules()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:266:5: error: use of unknown declaration 'print'
+    print("[PASS]", "test_finite_polynomial_named_modules")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:267:5: error: unable to locate module 'std'
+    test_finite_automata_named_modules()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:268:5: error: use of unknown declaration 'print'
+    print("[PASS]", "test_finite_automata_named_modules")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:269:5: error: unable to locate module 'std'
+    test_projective_limits_named_modules()
+    ^
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:270:5: error: use of unknown declaration 'print'
+    print("[PASS]", "test_projective_limits_named_modules")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/finite-math-kernels-binary-weight/tests/facades/test_named_modules.mojo:271:5: error: use of unknown declaration 'print'
+    print("7 named-module re-export tests passed.")
+    ^~~~~
+/workspace/scratch/gnr-next.qHyoM1/golden-ratio-normality-research/kernel/.pixi/envs/default/bin/mojo: error: failed to parse the provided Mojo source module

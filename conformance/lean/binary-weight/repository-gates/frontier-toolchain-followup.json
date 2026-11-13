@@ -1,0 +1,46 @@
+{
+  "observed_utc": "2026-11-13T13:48:28.698372+00:00",
+  "source_commit": "8750345c496390a7ce4f6a80be331451aa999408",
+  "scope": "Repeat only the previously failing required-toolchain check after adding inspected existing Rust and matching Elixir/OTP paths. No previously successful tests repeated; no installation or activation. Full aggregate remains failed.",
+  "argv": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/frontier/test_harness.py::test_every_installed_kernel_agrees_with_the_oracle_on_the_regression_corpus"
+  ],
+  "PATH": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin:/workspace/scratch/gnr-next.qHyoM1/golden-ratio-normality-research/kernel/.pixi/envs/default/bin:/workspace/scratch/304f9b1228bd/.tooling/rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin:/workspace/scratch/5f2388d391a3/beam/elixir/bin:/workspace/scratch/5f2388d391a3/beam/otp/bin:/home/agent/.codex/tmp/arg0-linux/codex-arg01alyp4:/opt/codex/codex-path:/opt/codex/runtimes/codex-primary-runtime/dependencies/bin/override:/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin:/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin:/opt/codex/runtimes/codex-primary-runtime/dependencies/bin:/opt/codex/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/agent/.local/bin:/opt/codex/runtimes/codex-primary-runtime/dependencies/bin/fallback",
+  "FRONTIER_REQUIRE": "mojo,rust,bend,julia",
+  "versions": {
+    "rustc": {
+      "argv": [
+        "/workspace/scratch/304f9b1228bd/.tooling/rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc",
+        "--version"
+      ],
+      "returncode": 0,
+      "stdout": "rustc 1.100.0 (0ef1bc386 2026-11-09)\n",
+      "stderr": ""
+    },
+    "cargo": {
+      "argv": [
+        "/workspace/scratch/304f9b1228bd/.tooling/rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/cargo",
+        "--version"
+      ],
+      "returncode": 0,
+      "stdout": "cargo 1.100.0 (3acc79c0c 2026-11-05)\n",
+      "stderr": ""
+    },
+    "mix": {
+      "argv": [
+        "/workspace/scratch/5f2388d391a3/beam/elixir/bin/mix",
+        "--version"
+      ],
+      "returncode": 0,
+      "stdout": "Erlang/OTP 27 [erts-15.2.7] [source] [64-bit] [smp:9:9] [ds:9:9:10] [async-threads:1] [jit:ns]\n\nMix 1.19.0 (compiled with Erlang/OTP 27)\n",
+      "stderr": ""
+    }
+  },
+  "returncode": 1,
+  "elapsed_seconds": 1.8434449400010635,
+  "log_sha256": "e455597cb1230f0f132f4b47ef05d1bb35af09bcb7456848b34d8463895fb472"
+}
