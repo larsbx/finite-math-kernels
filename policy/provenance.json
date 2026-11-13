@@ -253,6 +253,10 @@
       "source_blob": "1aabe8474bbdd10bea1f268e70448265387c1c33",
       "source_path": "docs/policy-format.md"
     },
+    "docs/binary-weight.md": {
+      "blob": "59f887ea758480b4b6c87314b418b2df82055556",
+      "relation": "authored"
+    },
     "docs/canonical-encoding.md": {
       "blob": "86cdc9b23467706e59d9768822ced6054c987847",
       "relation": "modified",
@@ -308,7 +312,7 @@
       "relation": "authored"
     },
     "docs/lean-verification.md": {
-      "blob": "993b68ca11275997371ee93ef55c1db9dc2eb802",
+      "blob": "551000af69bec585f03aeae306ffd1904819026a",
       "relation": "authored"
     },
     "docs/ledger-generation-spec.md": {
@@ -1793,12 +1797,24 @@
       "source_blob": "0ee6e90f0e5c2f13faee3fe2c63b97aa9653f166",
       "source_path": "tests/test_interval_q.mojo"
     },
+    "tests/lean/BinaryWeightControls.lean": {
+      "blob": "95821b404e687f06c9cf8769c2a1195a9abf3a04",
+      "relation": "authored"
+    },
     "tests/lean/FiniteMathKernels.lean": {
-      "blob": "58ce23694329006fee69bda35d31526ba85e38f3",
+      "blob": "c19136020dece1f386f937555e4feb26a1fc50f3",
       "relation": "authored"
     },
     "tests/lean/FiniteMathKernels/AcceptedField.lean": {
       "blob": "73af7ca8562458ae883c1fa2cf5a15c32e66ebaf",
+      "relation": "authored"
+    },
+    "tests/lean/FiniteMathKernels/BinaryWeight.lean": {
+      "blob": "6cb6897b190013b69535ccac807cca1138083767",
+      "relation": "authored"
+    },
+    "tests/lean/FiniteMathKernels/BinaryWeightContracts.lean": {
+      "blob": "cd72517d99d57d2d70d7dfc1a60191922af1fdb1",
       "relation": "authored"
     },
     "tests/lean/FiniteMathKernels/CheckedInt.lean": {
@@ -2351,6 +2367,10 @@
       "source": "finite_mandelbrot_research",
       "source_blob": "76ddda76a2cc3dea8221ac8b8192fe3d7e4f14c4",
       "source_path": "tools/check_vendored_sync.py"
+    },
+    "tools/verify_binary_weight.py": {
+      "blob": "f29dbf8ebc3d044dea38967c0374b0d39304c2ea",
+      "relation": "authored"
     }
   },
   "format": "finite-math-kernels provenance 1",

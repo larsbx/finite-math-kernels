@@ -122,3 +122,12 @@ local generic lemmas is a later, explicit integration step.
 The six existing repository gates remain required and are reported separately
 in the PR evidence table. This focused gate supplies no all-repository green
 claim and no general PSC, pure-discreteness or geometric conclusion.
+
+## Binary digit-weight arithmetic
+
+The [binary-weight module and focused gate](binary-weight.md) add generic
+natural-number shift, carry, quotient and square bounds. The focused gate checks
+an exact clean revision, fresh compilation, twelve explicit type wrappers,
+finite controls, and every compiled declaration's transitive assumptions.
+It changes no native implementation, facade, governed claim or consumer pin.
+Applications to a particular real number require their own source-prefix proofs.

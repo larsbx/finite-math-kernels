@@ -3,3 +3,5 @@ import FiniteMathKernels.CheckedInt
 import FiniteMathKernels.AcceptedField
 import FiniteMathKernels.Conformance
 import FiniteMathKernels.CounterBounds
+import FiniteMathKernels.BinaryWeight
+import FiniteMathKernels.BinaryWeightContracts
