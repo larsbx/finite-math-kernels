@@ -1,0 +1,63 @@
+name: Binary weight acceptance
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/binary-weight.yml'
+      - 'AGENTS.md'
+      - 'tests/lean/**'
+      - 'tools/verify_binary_weight.py'
+      - 'docs/binary-weight.md'
+      - 'docs/lean-verification.md'
+      - 'policy/provenance.json'
+  pull_request:
+    paths:
+      - '.github/workflows/binary-weight.yml'
+      - 'AGENTS.md'
+      - 'tests/lean/**'
+      - 'tools/verify_binary_weight.py'
+      - 'docs/binary-weight.md'
+      - 'docs/lean-verification.md'
+      - 'policy/provenance.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  binary-weight:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Install pinned Lean and mathlib cache
+        uses: leanprover/lean-action@ba3fdfe5c4476c925da13bf11a005ddb47e47aee
+        with:
+          lake-package-directory: tests/lean
+          auto-config: 'false'
+          build: 'false'
+          test: 'false'
+          lint: 'false'
+          use-mathlib-cache: 'true'
+      - name: Run exact-source focused acceptance
+        env:
+          SOURCE_REVISION: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          export LEAN_BIN="$(cd tests/lean && elan which lean)"
+          export FMK_MATHLIB_PACKAGES="$GITHUB_WORKSPACE/tests/lean/.lake/packages"
+          python3 tools/verify_binary_weight.py \
+            --expected-revision "$SOURCE_REVISION" \
+            --output .build/binary-weight-acceptance
+      - name: Retain focused proof evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: binary-weight-${{ github.event.pull_request.head.sha || github.sha }}
+          path: |
+            .build/binary-weight-acceptance/**/*.json
+            .build/binary-weight-acceptance/**/*.lean
+          include-hidden-files: true
+          if-no-files-found: warn

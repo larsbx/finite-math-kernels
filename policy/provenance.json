@@ -32,6 +32,10 @@
       "blob": "8e4a149c7778110fa4e87e7e6085fe284180d18f",
       "relation": "authored"
     },
+    ".github/workflows/binary-weight.yml": {
+      "blob": "a91e65c67a155afa4ae532d236f4d72a0045dca9",
+      "relation": "authored"
+    },
     ".github/workflows/ci.yml": {
       "blob": "cac5b457f6efb38651bb057c21159dc865468938",
       "relation": "authored"
@@ -254,7 +258,7 @@
       "source_path": "docs/policy-format.md"
     },
     "docs/binary-weight.md": {
-      "blob": "59f887ea758480b4b6c87314b418b2df82055556",
+      "blob": "e121dcb727715a596cb3e1eb4b69d250a22c9cf2",
       "relation": "authored"
     },
     "docs/canonical-encoding.md": {
@@ -1853,6 +1857,10 @@
       "blob": "0aa4f288773aedc92215ea0e0beb576d31754f0d",
       "relation": "authored"
     },
+    "tests/lean/test_binary_weight_gate.py": {
+      "blob": "45163e404508b3fafe94c3c25995baa98cbc9fce",
+      "relation": "authored"
+    },
     "tests/lean/test_bridge.py": {
       "blob": "51e7da8eaafa302fe9e63590fdac1c68d43f07d3",
       "relation": "authored"
@@ -2369,7 +2377,7 @@
       "source_path": "tools/check_vendored_sync.py"
     },
     "tools/verify_binary_weight.py": {
-      "blob": "f29dbf8ebc3d044dea38967c0374b0d39304c2ea",
+      "blob": "2e80bbc6e1bc71de0e9ed7fd09ca0e34830b19bf",
       "relation": "authored"
     }
   },

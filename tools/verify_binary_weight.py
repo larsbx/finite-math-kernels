@@ -45,6 +45,7 @@ SOURCE_PATHS = [
     "tests/lean/FiniteMathKernels/BinaryWeight.lean",
     "tests/lean/FiniteMathKernels/BinaryWeightContracts.lean",
     "tests/lean/BinaryWeightControls.lean", "tools/verify_binary_weight.py",
+    "tests/lean/test_binary_weight_gate.py", ".github/workflows/binary-weight.yml",
     "docs/binary-weight.md", "docs/lean-verification.md", "policy/provenance.json",
 ]
 
@@ -85,6 +86,14 @@ def git(*args, cwd=ROOT):
 
 def source_hashes():
     return {path: digest(ROOT / path) for path in SOURCE_PATHS}
+
+
+def require_source_matches_commit(expected, *, root=ROOT, paths=SOURCE_PATHS):
+    """Do not trust index flags such as assume-unchanged to establish identity."""
+    for path in paths:
+        committed = subprocess.check_output(["git", "show", f"{expected}:{path}"], cwd=root)
+        if (root / path).read_bytes() != committed:
+            raise RuntimeError("source content differs from expected commit: " + path)
 
 
 def dependency_paths(packages):
@@ -207,6 +216,8 @@ def run_gate(expected, destination, preflight=False):
                       source_tree_dirty=bool(initial_status), source_sha256=source_hashes())
         if revision != expected or (initial_status and not preflight):
             raise RuntimeError("wrong revision or dirty acceptance checkout")
+        if not preflight:
+            require_source_matches_commit(expected)
         if (PROJECT / "lean-toolchain").read_text().strip() != LEAN_PIN:
             raise RuntimeError("Lean toolchain pin changed")
         lean = os.environ.get("LEAN_BIN") or shutil.which("lean")
@@ -248,6 +259,8 @@ def run_gate(expected, destination, preflight=False):
         if (not version.stdout.startswith("Lean (version 4.34.0-rc2,") or
                 LEAN_COMMIT not in version.stdout):
             raise RuntimeError("unexpected Lean executable version or compiler commit")
+        execute("gate-regressions", [sys.executable, "-m", "unittest", "discover",
+                                    "-s", "tests/lean", "-p", "test_binary_weight_gate.py", "-v"])
 
         def compile_file(source, name, expected_code=0, emit=True):
             source = Path(source)
@@ -305,6 +318,8 @@ def run_gate(expected, destination, preflight=False):
         result = compile_file(inherited_audit, "AuditTransitive", expected_code=1, emit=False)
         require_rejection(result, "Nonstandard transitive axiom", "transitive_axiom_injection")
         _, final_dependencies = dependency_paths(packages)
+        if not preflight:
+            require_source_matches_commit(expected)
         if (source_hashes() != report["source_sha256"] or git("rev-parse", "HEAD") != revision or
                 git("status", "--porcelain") != initial_status or
                 final_dependencies != report["dependency_revisions"] or digest(lean) != report["lean"]["sha256"]):

@@ -62,6 +62,9 @@ The focused gate requires an exact clean source revision. It checks all pinned
 Lake package revisions, the exact Lean toolchain version, source and executable
 hashes, and fresh compilation into an empty output directory. It never places
 an existing project olean on `LEAN_PATH`.
+Every focused source file must also match its expected commit blob byte for
+byte before and after verification. A regression demonstrates that marking a
+modified proof as assume-unchanged in Git cannot bypass this check.
 
 ```sh
 LEAN_BIN=/absolute/path/to/lean \
@@ -85,12 +88,17 @@ the compiled audit to reject both the local assumption and a theorem that uses
 it through another module. Each rejection must have the intended diagnostic;
 an arbitrary compilation failure does not count as acceptance.
 
-`report.json` records the exact source revision and tree, source hashes, dependency
+The generated report records the exact source revision and tree, source hashes, dependency
 revisions, compiler hash and version, commands, compiled theorem types, complete
 assumption inventory, control outcomes and artifact hashes. It checks source,
 revision, dependency and compiler identities again before acceptance. A separate
 evidence-only child commit may preserve that report without changing which source
 revision it checked.
+
+The dedicated Binary weight acceptance workflow checks the exact pull-request
+head and runs the same focused gate with pinned Lean and Mathlib. It installs no
+Mojo environment and executes no environment activation hooks. Its artifact
+upload preserves the report and proof diagnostics even when acceptance fails.
 
 The six repository-wide gates in `AGENTS.md` remain separate. This focused result
 does not turn a missing optional toolchain or a failure elsewhere into a pass.
