@@ -77,11 +77,11 @@
       "relation": "authored"
     },
     "ESTATE.toml": {
-      "blob": "46119699652cb7af26c6d183f33f8c7801ac110b",
+      "blob": "c216a5c5ac8ac8d4f6dd176d375d62b4e8224595",
       "relation": "authored"
     },
     "README.md": {
-      "blob": "13261457320d6b741843c1a563bc73005d8862d3",
+      "blob": "0187639ab3f07e0c1c8cf0a4c1cb1548218fb326",
       "relation": "authored"
     },
     "conformance/certified_records_v1.txt": {
@@ -284,11 +284,15 @@
       "source_path": "docs/exact-arithmetic-public-boundary.md"
     },
     "docs/exact-polynomial-root-isolation-spec.md": {
-      "blob": "c15132b95d9139552e888f205369a02aacc2d536",
+      "blob": "f8059e971048e33e6cab394cf42c0ca37cc4bd87",
       "relation": "authored"
     },
     "docs/exact-power-residue-prefix.md": {
       "blob": "8ba66b62b2c9799ab2bf2a077228ef76079e6aac",
+      "relation": "authored"
+    },
+    "docs/fibonacci-hamiltonian-band-edges-spec.md": {
+      "blob": "5723860dcce4859dc7cb16a9b0720e1e300aa4d6",
       "relation": "authored"
     },
     "docs/frontier-math-compute-candidates.md": {
@@ -670,6 +674,18 @@
       "blob": "84dbf81716716cc8b52a734ca943afa31af930f0",
       "relation": "authored"
     },
+    "kernel/fibonacci_hamiltonian/__init__.mojo": {
+      "blob": "8fc313304b1405a6e15ab36915b1fc860323c435",
+      "relation": "authored"
+    },
+    "kernel/fibonacci_hamiltonian/band_edges.mojo": {
+      "blob": "6cee4f3ed539be1f040e8a81f34763c038b0d9da",
+      "relation": "authored"
+    },
+    "kernel/fibonacci_hamiltonian/trace_polynomial.mojo": {
+      "blob": "f5cd2f731db291fff2fc8026fb966c9b7014c8b6",
+      "relation": "authored"
+    },
     "kernel/finite_automata/__init__.mojo": {
       "blob": "e0e8da94f4339cc6cc3f13f0ad9e9fb9a2be8a1f",
       "relation": "authored"
@@ -775,7 +791,7 @@
       "relation": "authored"
     },
     "kernel/finite_linear_algebra/__init__.mojo": {
-      "blob": "38c05672dbb84f803c9474b077295fa6135dc3bb",
+      "blob": "96197d363fe63ce1a92c1f7eddf1d98049b9147b",
       "relation": "modified",
       "source": "finite_linear_algebra",
       "source_blob": "5cefbb9810a7919dfd37a6cf4360d60e87e7b12e",
@@ -838,6 +854,10 @@
     "kernel/finite_linear_algebra/rational_elimination.mojo": {
       "blob": "de5ced5965b42f088ea473ca32f0b48db54a6d1e",
       "relation": "facade"
+    },
+    "kernel/finite_linear_algebra/real_root_isolation.mojo": {
+      "blob": "828b11ccf15c32ccc5dc66120fbd4313e01bdc48",
+      "relation": "authored"
     },
     "kernel/finite_linear_algebra/scalar.mojo": {
       "blob": "a997c2dc3c21581ad51be43fb5087dd5622f0110",
@@ -1359,7 +1379,7 @@
       "relation": "authored"
     },
     "pixi.toml": {
-      "blob": "7843f21a88eb50b86f47de23ba0ec3fe373e1f8b",
+      "blob": "171b7b4c4a4073fe49963cceca7f5d9456ca121d",
       "relation": "authored"
     },
     "policy/estate-audits/0833929ed82d42cf3674a1565681625a9622827b.py": {
@@ -1383,6 +1403,10 @@
     },
     "reference/cyclotomic_reference.py": {
       "blob": "af727635754608924b7386ed20ed637ad7631b27",
+      "relation": "authored"
+    },
+    "reference/fibonacci_hamiltonian_reference.py": {
+      "blob": "91fa5fae657dc74a87519de08841697c2ad9d646",
       "relation": "authored"
     },
     "reference/gram_geometry_reference.py": {
@@ -1410,7 +1434,7 @@
       "relation": "authored"
     },
     "reference/qpoly_reference.py": {
-      "blob": "27e4fece7703d06a41aa30630e86ca49c8d4e570",
+      "blob": "cada06a5a527e279c490670870f1a2722469b1b8",
       "relation": "authored"
     },
     "reference/rational_dynamics_reference.py": {
@@ -1583,6 +1607,14 @@
       "blob": "7d234759ca2bd3a693f52b059be8f2fa2aa2781b",
       "relation": "authored"
     },
+    "tests/fibonacci_hamiltonian/test_band_edges.mojo": {
+      "blob": "fe734cc8dbf0469c393a65bfd91da61b0404a91c",
+      "relation": "authored"
+    },
+    "tests/fibonacci_hamiltonian/test_band_edges_reference.py": {
+      "blob": "e93360e7cf2b1e03688dd9ce6d9d505cf4598ea8",
+      "relation": "authored"
+    },
     "tests/finite_automata/test_dfa.mojo": {
       "blob": "d55f9d43a23a2b37cfe497ff22012f4a4b23ba12",
       "relation": "authored"
@@ -1691,7 +1723,11 @@
       "relation": "authored"
     },
     "tests/finite_linear_algebra/test_qpoly_reference.py": {
-      "blob": "86dfb50fb402bc9cd04b91af82ccc84346e5b4e6",
+      "blob": "65e1a223cfdcd149372995e03ad0e0926a5b25d9",
+      "relation": "authored"
+    },
+    "tests/finite_linear_algebra/test_real_root_isolation.mojo": {
+      "blob": "1ef2e19eb7b33b54c6b53c2bba429894722635d3",
       "relation": "authored"
     },
     "tests/finite_polynomial/test_cyclotomic_field.mojo": {
@@ -1818,7 +1854,7 @@
       "relation": "authored"
     },
     "tests/lean/coverage.json": {
-      "blob": "182a264671d99a33cf0c7d3de5b7d3fb1d7faec0",
+      "blob": "6b776bc146f7b1704bb0b08e5b4e509ab6e6455e",
       "relation": "authored"
     },
     "tests/lean/lake-manifest.json": {

@@ -232,3 +232,49 @@ def test_the_charpoly_is_monic_and_integral_on_an_integer_matrix(size):
 def test_a_constant_row_sum_is_a_root_of_the_charpoly(size):
     matrix = tuple(tuple(F(1) for _ in range(size)) for _ in range(size))
     assert qp.evaluate(qp.charpoly(matrix), size) == 0
+
+
+# --- section 6a: every real root, as disjoint brackets --------------------------
+
+
+def test_every_real_root_of_pinned_polynomials():
+    assert qp.real_root_brackets(qp.of(-2, 0, 1), WIDTH, STEPS) == (
+        qp.RootBracket(True, False, F(-2965821, 2097152), F(-5931639, 4194304)),
+        qp.RootBracket(True, False, F(5931639, 4194304), F(2965821, 2097152)),
+    )
+    # (x - 1)^2 (x - 2) (x^2 + 1) (2x + 1): a repeated, two rational and no other real roots.
+    mixed = qp.of(-2, 1, 4, -6, 8, -7, 2)
+    assert qp.real_root_brackets(mixed, WIDTH, STEPS) == (
+        qp.RootBracket(True, False, F(-4194305, 8388608), F(-1048575, 2097152)),
+        qp.RootBracket(True, False, F(8388605, 8388608), F(4194305, 4194304)),
+        qp.RootBracket(True, False, F(16777215, 8388608), F(4194305, 2097152)),
+    )
+    # x^3 - 3x: the root 0 is every midpoint of a symmetric bisection.
+    assert qp.real_root_brackets(qp.of(0, -3, 0, 1), WIDTH, STEPS)[1] == qp.RootBracket(
+        True, False, F(-4, 14348907), F(4, 14348907)
+    )
+
+
+def test_real_root_brackets_isolate_known_rational_roots():
+    generator = random.Random(20261115)
+    for _ in range(40):
+        roots = sorted({F(generator.randint(-9, 9), generator.randint(1, 5)) for _ in range(generator.randint(1, 6))})
+        p = qp.of(generator.randint(1, 3), 0, 1)
+        for root in roots:
+            for _ in range(generator.randint(1, 2)):
+                p = qp.mul(p, qp.of(-root, 1))
+        brackets = qp.real_root_brackets(p, WIDTH, STEPS * 8)
+        s = qp.squarefree_part(p)
+        assert len(brackets) == len(roots)
+        for bracket, root in zip(brackets, roots):
+            assert bracket.lo < root < bracket.hi and bracket.width() <= WIDTH
+            assert qp.evaluate(s, bracket.lo) * qp.evaluate(s, bracket.hi) < 0
+        for left, right in zip(brackets, brackets[1:]):
+            assert left.hi <= right.lo
+
+
+def test_real_root_brackets_refusals_and_empty_answers():
+    assert qp.real_root_brackets(qp.ZERO, WIDTH, STEPS) is None
+    assert qp.real_root_brackets(qp.of(7), WIDTH, STEPS) == ()
+    assert qp.real_root_brackets(qp.of(1, 0, 1), WIDTH, STEPS) == ()
+    assert qp.real_root_brackets(qp.of(-2, 0, 1), WIDTH, 8) is None

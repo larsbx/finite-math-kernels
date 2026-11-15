@@ -15,6 +15,7 @@ In scope:
 - the Cauchy root bound;
 - the Sturm chain and the sign-variation count at a rational point;
 - an isolating bracket for the largest real root, carrying its own sign change;
+- ascending disjoint brackets for every real root, each carrying its own sign change (section 6a);
 - the characteristic polynomial of a square matrix over `Q`, in any dimension.
 
 Out of scope, by design:
@@ -138,6 +139,38 @@ Step 4 maintains the invariant that `s` does not vanish at either endpoint and t
 
 **What is not here.** Whether the isolated root is the Perron root of a nonnegative matrix is Perron-Frobenius, a further import. Whether it is a Pisot number needs the quadrance of the other roots of its *minimal* polynomial, which needs irreducibility and a root-location test by quadrance; neither is specified here and neither is implemented. A consumer must not read `largest_root_bracket` as a Pisot screen.
 
+## 6a. Every real root
+
+Added after sections 1 to 6, in its own module `finite_linear_algebra/real_root_isolation.mojo`, which `qpoly` does not re-export; the reference is the section of the same name in `reference/qpoly_reference.py`. Its first consumer is `docs/fibonacci-hamiltonian-band-edges-spec.md`.
+
+`real_root_brackets(p, width, max_steps)` returns a refusal or an ascending list of brackets `(lo, hi)`. With `s = squarefree_part(p)`:
+
+```text
+split_point(s, lo, hi)    the first of  lo + (hi - lo) / j,  j = 2, 3, ...,  with s nonzero there
+halve_bracket(s, lo, hi)  (lo, m) if s(lo) s(m) < 0, else (m, hi),  for m = split_point(s, lo, hi)
+```
+
+`split_point` ends by `j = degree(s) + 2`, because the candidates are distinct and `s` has at most `degree(s)` roots. It replaces the exact-root case of section 6: a rational root is never returned as itself here, it is bracketed like any other, so every bracket has the same shape.
+
+The algorithm:
+
+1. normalize `p`; the zero polynomial is **refused**; a nonzero constant returns the empty list;
+2. `chain = sturm_chain(p)`, `B = root_bound(p)`; start a stack with the one interval `(-B, B)` and its count `variation_difference(chain, -B, B)`;
+3. pop an interval `(lo, hi)` with count `c`; `s` vanishes at neither end:
+   - `c = 0`: drop it;
+   - `c = 1` and `hi - lo <= width`: emit it;
+   - `c = 1` otherwise: push `halve_bracket(s, lo, hi)` with count `1`;
+   - `c >= 2`: with `m = split_point(s, lo, hi)` and `l = variation_difference(chain, lo, m)`, push `(m, hi)` with count `c - l`, then `(lo, m)` with count `l`;
+4. every pop with a nonzero count spends one of `max_steps`; when none is left the call **refuses**.
+
+The left interval is pushed last, so brackets are emitted in ascending order.
+
+**What the list carries by itself.** Each bracket has `lo < hi`, `hi - lo <= width`, and nonzero values of `s` of opposite sign at its ends; consecutive brackets satisfy `hi <= lo`, and a shared endpoint is a point where `s` is nonzero. So each bracket holds a root of `s`, hence of `p`, by the intermediate value theorem alone, and distinct brackets hold distinct roots. The sign change at a bracket of count `1` is maintained by `halve_bracket`, which never consults the chain; that the first such interval has one is tested, and is Sturm's theorem together with the simplicity of the roots of `s`.
+
+**What it imports.** That the list is *every* real root, one per bracket, is Sturm's theorem (section 5). A consumer may replace that import by a count: when the list has `degree(s)` brackets it is complete because a polynomial of degree `n` has at most `n` roots.
+
+Sturm's chain is used only to separate. Narrowing costs one evaluation of `s` per step, where section 6 spends a full sign-variation count.
+
 ## 7. The characteristic polynomial, in any dimension
 
 `charpoly(m)` takes a square `List[List[Q]]` and returns `det(x I - m)` as a normalized ascending coefficient list, by the Faddeev-LeVerrier recurrence
@@ -156,6 +189,6 @@ The `3x3` closed form in `finite_linear_algebra/mat3.mojo` stays where it is and
 ## 8. Boundaries
 
 - Every function is total on normalized input except `divmod` by the zero polynomial and `squarefree_part` of an input whose gcd division does not divide; both refuse rather than returning a value.
-- `largest_root_bracket` refuses rather than returning a bracket it could not isolate. A capped bisection is inconclusive, never a claim that no root exists.
+- `largest_root_bracket` and `real_root_brackets` refuse rather than returning a bracket they could not isolate. A capped bisection is inconclusive, never a claim that no root exists.
 - No function returns a floating-point number, and no function names a root. A root is a bracket, and a bracket is two rationals.
 - The module states no spectral fact. It does not know that its input came from a matrix, and `charpoly` does not know what its roots mean.

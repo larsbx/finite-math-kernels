@@ -75,6 +75,36 @@
       ]
     },
     {
+      "source": "kernel/fibonacci_hamiltonian/__init__.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "known_counterexample": null,
+      "remaining_obligations": [
+        "package-specific semantic model, guards and source refinement; no coverage claimed"
+      ]
+    },
+    {
+      "source": "kernel/fibonacci_hamiltonian/band_edges.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "known_counterexample": null,
+      "remaining_obligations": [
+        "package-specific semantic model, guards and source refinement; no coverage claimed"
+      ]
+    },
+    {
+      "source": "kernel/fibonacci_hamiltonian/trace_polynomial.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "known_counterexample": null,
+      "remaining_obligations": [
+        "package-specific semantic model, guards and source refinement; no coverage claimed"
+      ]
+    },
+    {
       "source": "kernel/finite_automata/__init__.mojo",
       "model_declarations": [],
       "finite_native_lane": false,
@@ -546,6 +576,18 @@
     },
     {
       "source": "kernel/finite_linear_algebra/rational_elimination.mojo",
+      "model_declarations": [],
+      "finite_native_lane": false,
+      "implementation_refinement": "open",
+      "known_counterexample": null,
+      "remaining_obligations": [
+        "matrix/vector dimensions, exact operations and overflow refusal",
+        "elimination, rank and normal-form certificates",
+        "Sturm and M-adic hypotheses and enclosures"
+      ]
+    },
+    {
+      "source": "kernel/finite_linear_algebra/real_root_isolation.mojo",
       "model_declarations": [],
       "finite_native_lane": false,
       "implementation_refinement": "open",

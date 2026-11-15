@@ -229,6 +229,69 @@ def largest_root_bracket(
     return REFUSED
 
 
+# --- section 6a: every real root, as disjoint brackets --------------------------
+
+
+def split_point(s: Poly, lo: Fraction, hi: Fraction) -> Fraction:
+    """The first of `lo + (hi - lo)/j`, `j = 2, 3, ...`, at which `s` is nonzero."""
+    for j in range(2, degree(s) + 3):
+        point = lo + (hi - lo) / j
+        if evaluate(s, point) != 0:
+            return point
+    raise ArithmeticError("more roots than the degree; an impossible state")
+
+
+def halve_bracket(s: Poly, lo: Fraction, hi: Fraction) -> tuple[Fraction, Fraction]:
+    """The side of the split point that keeps the sign change of `s`."""
+    point = split_point(s, lo, hi)
+    if evaluate(s, lo) * evaluate(s, point) < 0:
+        return lo, point
+    return point, hi
+
+
+def real_root_brackets(
+    p: Poly,
+    width: int | Fraction = DEFAULT_WIDTH,
+    max_steps: int = DEFAULT_MAX_STEPS,
+) -> tuple[RootBracket, ...] | None:
+    """Ascending brackets, one per sign-variation unit, or `None` for a refusal.
+
+    Every bracket has `lo < hi`, width at most `width`, and opposite nonzero
+    signs of the squarefree part at its ends; consecutive brackets satisfy
+    `hi <= lo`. That they are all of the real roots is Sturm's theorem.
+    """
+    p = normalize(p)
+    if not p:
+        return None
+    if degree(p) < 1:
+        return ()
+    s = squarefree_part(p)
+    chain = sturm_chain(p)
+    bound = root_bound(p)
+    width = Fraction(width)
+    steps = 0
+    out: list[RootBracket] = []
+    pending = [(-bound, bound, variation_difference(chain, -bound, bound))]
+    while pending:
+        lo, hi, count = pending.pop()
+        if count == 0:
+            continue
+        if steps >= max_steps:
+            return None
+        steps += 1
+        if count == 1:
+            if hi - lo <= width:
+                out.append(RootBracket(found=True, lo=lo, hi=hi))
+            else:
+                pending.append((*halve_bracket(s, lo, hi), 1))
+            continue
+        point = split_point(s, lo, hi)
+        left = variation_difference(chain, lo, point)
+        pending.append((point, hi, count - left))
+        pending.append((lo, point, left))
+    return tuple(out)
+
+
 # --- section 7: the characteristic polynomial ----------------------------------
 
 

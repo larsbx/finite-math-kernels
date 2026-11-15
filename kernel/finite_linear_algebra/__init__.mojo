@@ -11,6 +11,9 @@
 #   cauchy_bound       the Cauchy root bound (Cauchy 1829).
 #   sturm_sequence     the Sturm chain, sign variations, and an isolating
 #             bracket for the largest real root (Sturm 1829).
+#   real_root_isolation  every real root as ascending disjoint brackets,
+#             each carrying a sign change (Sturm 1829); not re-exported by
+#             qpoly.
 #   faddeev_leverrier  the characteristic polynomial in any dimension
 #             (Le Verrier 1840; Faddeev-Sominsky 1949).
 #   integer_matrix  square non-negative Int matrices of any size: product,
