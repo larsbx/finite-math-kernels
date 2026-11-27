@@ -253,6 +253,10 @@
       "source_blob": "1aabe8474bbdd10bea1f268e70448265387c1c33",
       "source_path": "docs/policy-format.md"
     },
+    "docs/beta-numeration-carry-contract-2026-11-27.md": {
+      "blob": "e149cbdd9a3eb5246a2eccf21809d4e1a09d3a99",
+      "relation": "authored"
+    },
     "docs/canonical-encoding.md": {
       "blob": "86cdc9b23467706e59d9768822ced6054c987847",
       "relation": "modified",
